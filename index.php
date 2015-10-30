@@ -73,9 +73,11 @@ check_ssl();
 
             <div class="content-wrapper">
 
-            <div id="logo"></div>
+                <div id="logo">
+                    <img src="./images/logo.png" />
+                </div>
 
-                
+
                 <div class="col-md-12">
 
                     <div class="row">
@@ -84,7 +86,7 @@ check_ssl();
                         </nav>
 
                         <div id="Contenue_Principal" class="col-md-8"></div> 
-                        
+
 
                         <nav class="col-md-2">
                             <?php include_once 'includes/Sidebar_Droite.php'; ?>
@@ -94,7 +96,10 @@ check_ssl();
             </div>
 
             <footer>
-                <?php include_once 'includes/Footer.php'; ?> 
+                <div class="col-md-12">
+                    <?php include_once 'includes/Footer.php'; ?> 
+                    <div class="clearfix"></div>
+                </div>
             </footer>
         </div>
     </body>

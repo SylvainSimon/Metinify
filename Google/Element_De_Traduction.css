@@ -61,7 +61,7 @@
 #goog-gt-tt ul,#goog-gt-tt li,#goog-gt-tt ol{list-style:none}
 #goog-gt-tt table{border-collapse:collapse;border-spacing:0}
 
-#goog-gt-tt{background-color:grey;border:1px solid #eee;-webkit-box-shadow:0px 2px 4px #9999aa;-moz-box-shadow:0px 2px 4px #9999aa;box-shadow:0px 2px 4px #9999aa;font-family:arial;font-size:10pt;width:1px; height: 1px;}
+#goog-gt-tt{background-color:grey;border:0px solid #eee;-webkit-box-shadow:0px 2px 4px #9999aa;-moz-box-shadow:0px 2px 4px #9999aa;box-shadow:0px 2px 4px #9999aa;font-family:arial;font-size:10pt;width:0px; height: 0px;}
 #goog-gt-tt .original-text,.gt-hl-layer{clear:both;font-size:10pt;position:relative;text-align:justify;width:100%}
 #goog-gt-tt .title{font-weight:bolder;margin-bottom:2px}
 

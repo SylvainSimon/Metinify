@@ -1,16 +1,17 @@
 <?php @session_write_close(); ?>
 <?php @session_start(); ?>
 
-<div class="Cadre_Principal">
+<div class="box box-default flat">
 
-    <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-        <h1>Téléchargement du client VamosMt2</h1>
+    <div class="box-header">
+        <h3 class="box-title">Téléchargement du client VamosMt2</h3>
     </div>
-    <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1">
 
-            <div class="Bouton_Telecharger Pointer No_Select" onclick="window.open('http://vamosmt2.org:81/Installateur%20VamosMT2%20Client%20officiel%202014-2015.exe', '_self')"></div>
- 
-       <fieldset class = "Fieldset_Configuration_Recommande No_Select">
+    <div class="box-body">
+
+        <div class="Bouton_Telecharger Pointer No_Select" onclick="window.open('http://vamosmt2.org:81/Installateur%20VamosMT2%20Client%20officiel%202014-2015.exe', '_self')"></div>
+
+        <fieldset class = "Fieldset_Configuration_Recommande No_Select">
             <legend>&nbsp;
                 Configuration minimale&nbsp;
             </legend>
@@ -73,7 +74,7 @@
 
             </table>
         </fieldset>
-		<br /><br />
-<i>Il est également possible de télécharger le jeu par uTorrent en cliquant <a href="http://vamosmt2.org:81/VamosMT2%20Client%20officiel%202014-2015.exe.torrent">ici</a>.</i>
+        <br /><br />
+        <i>Il est également possible de télécharger le jeu par uTorrent en cliquant <a href="http://vamosmt2.org:81/VamosMT2%20Client%20officiel%202014-2015.exe.torrent">ici</a>.</i>
     </div>
 </div>

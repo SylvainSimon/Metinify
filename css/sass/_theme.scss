@@ -19,14 +19,15 @@ html {
     position:relative;
     width:360px;
     height:73px;
-    background:url("../../images/logo.png") top left no-repeat;
     display: block;
-    margin: 74px auto 20px auto;
+    margin: 0 auto 0 auto;
+    padding-top: 80px;
+    padding-bottom: 100px;
 }
 
 @media (max-width: 767px) {
     #logo{
-        margin: 132px auto 20px auto;
+    padding-top: 140px;
     }
 }
 
@@ -42,9 +43,6 @@ body {
     color:white;
 }
 
-a:link {text-decoration: underline; color:white;}
-a:visited {text-decoration: underline; color:#1292ef;}
-a:hover {text-decoration: underline; color:#000;}
 form { margin:0; padding:0; }
 .Bold {font-weight: bold;}
 .Pointer{ cursor: pointer; }
@@ -429,31 +427,26 @@ h6 {color: #9d9d9d; font: 10px Arial, Helvetica, sans-serif; text-align:left; li
 
 /* ------------ Bas de page, footer -------------------  */
 footer {
-
-    font-size:12px;
-    text-align:left; 
-    width:100%; 
     bottom:0px; 
-    position:fixed; 
-    left:0px; 
-    background: url('../../images/bg_fonction.png');
-    height: 29px;
-    -webkit-box-shadow: 0px 0px 8px 2px black;
-    -moz-box-shadow: 0px 0px 8px 2px black;
-    -o-box-shadow: 0px 0px 8px 2px black;
-    box-shadow: 0px 0px 4px 1px black;
-
-    color:white;
-    line-height: 29px;
-    z-index: 99998;
-    text-align: center;
+    width: 100%;
+    min-height: 30px;
+    background: #2B2B2B;
+    position: fixed;
+    z-index: 99999;
+    line-height: 50px;
 }
+@media (max-width: 767px) {
+    footer {
+        position: relative;
+    }
+}
+
+
 #Copyright{
     display: inline-block;
     text-align: center;
 }
 
-footer p {margin:0; font: 9px Verdana, Arial, Helvetica, sans-serif; color: #bcb9b3; text-align: center; }
 
 /* ------------------------------------------------------  */
 /* ------ Mise en forme des pages spécifiques -----------  */
@@ -1187,32 +1180,6 @@ li.current {
 
     position: absolute;
     top:5px;
-}
-
-#Barre_De_Statut{
-
-    display: inline-block;
-    position: absolute;
-    left:0px;
-    background: #303030;
-    border-right: 1px solid grey;
-    height: 29px;
-    width: 25%;
-    text-align: left;
-    text-indent: 18px;
-    line-height: 29px;
-}
-
-#Barre_Social{
-
-    display: inline-block;
-    position: absolute;
-    width: 25%;
-    border-left: 1px solid grey;
-    height: 29px;
-    right: 5px;
-    text-align: right;
-
 }
 
 #Barre_Social img{
