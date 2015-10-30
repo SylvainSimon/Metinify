@@ -16,6 +16,7 @@ check_ssl();
 <?php @session_start(); ?>
 <?php include 'configPDO.php'; ?>
 
+
 <!DOCTYPE html>
 <html>
     <head>
