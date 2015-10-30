@@ -52,25 +52,25 @@ function Icone_Chargement(etat){
     
     if(etat == 1){
         
-        $('#Icone_Chargement').attr("src", "images/chargement.gif");
+        $('#Icone_Chargement').attr("class", "fa fa-spin material-icons md-icon-spin");
         $('#Icone_Chargement').show();
     }
     
     if(etat == 2){
         
-        $('#Icone_Chargement').attr("src", "images/croix.png");
+        $('#Icone_Chargement').attr("class", "material-icons md-icon-close text-red");
         $('#Icone_Chargement').show();
     }
     
     if(etat == 0){
         
-        $('#Icone_Chargement').attr("src", "images/valid.gif");
+        $('#Icone_Chargement').attr("class", "material-icons md-icon-done text-success");
         $('#Icone_Chargement').show();
     }
     
     if(etat == 99){
         
-        $('#Icone_Chargement').attr("src", "images/youtube.png");
+        $('#Icone_Chargement').attr("class", "material-icons md-icon-tv");
         $('#Icone_Chargement').show();
     }
 }

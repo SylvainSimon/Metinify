@@ -15,14 +15,17 @@
                             <input name="login" id="login" maxlength="16" autofocus="autofocus" type="text" class="form-control input-sm" placeholder="Utilisateur" />
                         </div>
                     </div>
-                    <div class="col-xs-5">
-                        <div class="input-group"  style="margin-bottom: 8px; margin-top: 8px;">
-                            <span class="input-group-addon"><i class="material-icons md-icon-lock md-dark"></i></span>
-                            <input name="mdp" id="password" type="password" class="form-control input-sm" placeholder="●●●●●●●●"/>
+                    <div class="col-xs-7" style="padding-right: 5px;">
+
+                        <div class="col-xs-9">
+                            <div class="input-group"  style="margin-bottom: 8px; margin-top: 8px;">
+                                <span class="input-group-addon"><i class="material-icons md-icon-lock md-dark"></i></span>
+                                <input name="mdp" id="password" type="password" class="form-control input-sm" placeholder="●●●●●●●●"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-xs-2"  style="margin-bottom: 8px; margin-top: 8px;">
-                        <input name="envoyer2" type="button" class="center-block btn btn-primary btn-flat btn-sm" src="images/ok2.gif" value="OK" />
+                        <div class="col-xs-3">
+                            <input style="display: inherit; margin-bottom: 8px; margin-top: 8px;" name="envoyer2" type="submit" class="btn btn-primary btn-flat btn-sm" src="images/ok2.gif" value="OK" />
+                        </div>
                     </div>
                 </div>
             </div>
