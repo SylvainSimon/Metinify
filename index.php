@@ -12,6 +12,7 @@ function check_ssl() {
 
 check_ssl();
 ?>
+
 <?php @session_start(); ?>
 <?php include 'configPDO.php'; ?>
 
