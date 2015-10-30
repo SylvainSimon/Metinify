@@ -11,8 +11,13 @@
 /* Handle */
 *::-webkit-scrollbar-thumb {-webkit-border-radius: 3px;border-radius: 3px;width: 13px;border: 1px solid grey;background: #111111; -webkit-box-shadow: inset 0 0 6px #111111;}
 
-html {
+
+html { 
+
     -ms-overflow-style: scrollbar;
+    background: url("../../images/fond.jpg") fixed no-repeat top center #252219;
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
 }
 
 #logo{
@@ -35,8 +40,8 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: transparent;
     font-weight: 400;
-    background: url("../../images/fond.jpg") fixed no-repeat top center #252219;
     overflow-x: hidden;
     overflow-y: auto;
     font-size:13px;

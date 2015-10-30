@@ -1,4 +1,4 @@
-<div class="col-md-3 col-sm-3" style="line-height: 40px;">
+<div class="col-md-3 col-sm-4" style="line-height: 40px;">
     <div class="pull-left">
         <i id="Icone_Chargement" class="fa fa-spin material-icons md-icon-spin"></i>
         &nbsp;
@@ -6,13 +6,13 @@
     </div>
 </div>
 
-<div class="col-md-6 col-sm-7" style="text-align: center;">
-    <div id="Copyright">Copyright &copy; <a href="https://vamosmt2.org/">VamosMT2</a> | Coded by <a href="skype:sylvanusproduction?add" target="_blank">Sylvanus</a> 2010 - <?php echo Date('Y'); ?>. All rights reserved.</div>
-
-    <div id="traducteur"></div>
+<div class="col-md-6 col-sm-5" style="text-align: center;">
+    
+    <div id="Copyright"><a href="https://vamosmt2.org/">© VamosMT2</a> | Coded by <a href="skype:sylvanusproduction?add" target="_blank">Sylvanus</a></div>
+    
 </div>
 
-<div class="col-md-3 col-sm-2">
+<div class="col-md-3 col-sm-3">
 
     <div class="pull-right" style="padding-top: 5px; padding-bottom: 2px;">
 
