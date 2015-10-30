@@ -1,6 +1,45 @@
 <?php @session_write_close(); ?>
 <?php
 
+function Formatage_Taille($bytes, $format = '%.2f', $lang = 'fr') {
+
+    $units = array(
+        'fr' => array(
+            'o',
+            'Ko',
+            'Mo',
+            'Go',
+            'To'
+        ),
+        'en' => array(
+            'B',
+            'KB',
+            'MB',
+            'GB',
+            'TB'
+    ));
+    $translatedUnits = $units[$lang];
+
+    if (isset($translatedUnits) === false) {
+        $translatedUnits = $units['en'];
+    }
+
+    $b = (double) $bytes;
+    /* On gére le cas des tailles de fichier négatives */
+    if ($b > 0) {
+        $e = (int) (log($b, 1024));
+        /*         * Si on a pas l'unité on retourne en To */
+        if (isset($translatedUnits[$e]) === false) {
+            $e = 4;
+        }
+        $b = $b / pow(1024, $e);
+    } else {
+        $b = 0;
+        $e = 0;
+    }
+    return sprintf($format . ' %s', $b, $translatedUnits[$e]);
+}
+
 function check_ssl() {
     // Check if accessed via SSL
     if ($_SERVER['HTTPS'] != 'on') {

@@ -449,12 +449,22 @@ footer {
     #Barre_Haut {
         position: absolute;
     }
-    
+
     .paddingPrincipal{
         padding-bottom: 10px;
     }
 }
 
+.table-hover>tbody>tr:hover{
+    background-color: #3F3F3F;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+    border-top: 1px solid grey;
+}
+.table>thead>tr>th{
+    border-bottom: 2px solid #8E8E8E;
+}
 
 #Copyright{
     display: inline-block;
