@@ -1,17 +1,18 @@
-<div class="Menu_Sidebar">
-    <div class="Menu_Sidebar_Haut Pointer No_Select" onclick="Slider_Sidebar_Droite_1();">Classement des guildes</div>
-    <div class="Menu_Sidebar_Milieu" id="Div_Sidebar_Droite_1">
-        <table class="Table_Top_5_Guilde">
+<div class="box box-default flat">
 
-            <tr><td colspan="3"><div class="barre"></div></td></tr>
+    <div class="box-header">
+        <h3 class="box-title">Classement des guildes</h3>
+    </div>
+
+    <div class="box-body">
+
+        <table class="table table-bordered">
 
             <tr>
                 <th class="Align_Left">Place</th>
                 <th class="Align_Left">Nom</th>
                 <th class="Align_Right">Lvl.</th>
             </tr>
-
-            <tr><td colspan="3"><div class="barre"></div></td></tr>
 
             <?php
             $i = 0;
@@ -40,7 +41,7 @@
 
                 <?php $i++; ?>
 
-                <tr class="Pointer Ligne_Classement" onmouseover="this.style.backgroundColor='#666666';" onmouseout="this.style.backgroundColor='transparent';">
+                <tr class="Pointer Ligne_Classement" onmouseover="this.style.backgroundColor = '#666666';" onmouseout="this.style.backgroundColor = 'transparent';">
                     <td class="Align_Left">
                         <?php if ($i == 1) {
                             ?><img src="images/rang/or.png"/>
@@ -76,7 +77,6 @@
                 <?php
             }
             ?>
-            <tr><td colspan="3"><div class="barre"></div></td></tr>
         </table>
     </div>
 </div>

@@ -23,7 +23,7 @@
     list-style-type: none;
 
     border: 1px solid #AAAAAA;
-    background: url("../images/bg_fonction.png") #AAAAAA;
+    background:url('../../images/bg_fonction.png') #AAAAAA;
 
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
@@ -38,7 +38,7 @@
 
 .context-menu-item {
     padding: 0px 2px 0px 24px;
-    background: url("../images/bg_fonction.png");
+    background:url('../../images/bg_fonction.png');
     position: relative;
     color: #cfcfcf;
     -webkit-user-select: none;
@@ -93,15 +93,15 @@
 
 
 .context-menu-item.icon { height: 21px; background-repeat: no-repeat;}
-.context-menu-item.icon-apropo { background-image: url("../images/contextmenu/apropo.png"); }
-.context-menu-item.icon-stati { background-image: url("../images/contextmenu/stati.png"); }
-.context-menu-item.icon-calen { background-image: url("../images/contextmenu/calen.png"); }
-.context-menu-item.icon-teamspeack { background-image: url("../images/contextmenu/teamspeack.png"); }
-.context-menu-item.icon-youtube { background-image: url("../images/contextmenu/youtube.png"); }
-.context-menu-item.icon-twitter { background-image: url("../images/contextmenu/twitter.png"); }
-.context-menu-item.icon-facebook { background-image: url("../images/contextmenu/facebook.png"); }
-.context-menu-item.icon-pilori { background-image: url("../images/contextmenu/pilori.png"); }
-.context-menu-item.icon-equipe { background-image: url("../images/contextmenu/equipe.png"); }
+.context-menu-item.icon-apropo { background-image: url("../../images/contextmenu/apropo.png"); }
+.context-menu-item.icon-stati { background-image: url("../../images/contextmenu/stati.png"); }
+.context-menu-item.icon-calen { background-image: url("../../images/contextmenu/calen.png"); }
+.context-menu-item.icon-teamspeack { background-image: url("../../images/contextmenu/teamspeack.png"); }
+.context-menu-item.icon-youtube { background-image: url("../../images/contextmenu/youtube.png"); }
+.context-menu-item.icon-twitter { background-image: url("../../images/contextmenu/twitter.png"); }
+.context-menu-item.icon-facebook { background-image: url("../../images/contextmenu/facebook.png"); }
+.context-menu-item.icon-pilori { background-image: url("../../images/contextmenu/pilori.png"); }
+.context-menu-item.icon-equipe { background-image: url("../../images/contextmenu/equipe.png"); }
 
 
 

@@ -78,7 +78,6 @@
                 <?php
             }
             ?>
-            <tr><td colspan="3"><div class="barre"></div></td></tr>
         </table>
     </div>
 </div>

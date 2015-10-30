@@ -36,6 +36,7 @@ check_ssl();
 
         <script src='./components/jquery/jquery.min.js' type='text/javascript'></script>
         <script src='./components/jquery-ui/jquery-ui.min.js' type='text/javascript'></script>
+        <script src='./js/jquery.browser.min.js' type='text/javascript'></script>
         <script src='./vendor/almasaeed2010/adminlte/dist/js/app.min.js' type='text/javascript'></script>
 
         <script src="js/Jquery_Sliders.js" type='text/javascript'></script>
@@ -82,11 +83,12 @@ check_ssl();
                             <?php include_once 'includes/Sidebar_Gauche.php'; ?>
                         </nav>
 
-                        <nav id="Sidebar_Droite" class="col-md-2">
+                        <div id="Contenue_Principal" class="col-md-8"></div> 
+                        
+
+                        <nav class="col-md-2">
                             <?php include_once 'includes/Sidebar_Droite.php'; ?>
                         </nav>
-
-                        <div id="Contenue_Principal" class="col-md-8"></div> 
                     </div>
                 </div>
             </div>

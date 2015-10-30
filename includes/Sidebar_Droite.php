@@ -1,9 +1,12 @@
 <?php @include '../configPDO.php'; ?>
 <?php include 'Top_5_Guildes.php'; ?>
 
-<div class="Menu_Sidebar">
-    <div class="Menu_Sidebar_Haut Pointer No_Select" onclick="Slider_Sidebar_Droite_2();">Serveur Classyd</div>
-    <div class="Menu_Sidebar_Milieu" id="Div_Sidebar_Droite_2">
+<div class="box box-default flat">
+    <div class="box-header">
+        <h3 class="box-title">Serveur Classyd</h3>
+    </div>
+
+    <div class="box-body">
 
         <script type="text/javascript" src="js/Actualisation_Status.js"></script>
 
