@@ -45,9 +45,6 @@ include ($files[$rand]);
 </div>
 
 <div class="box box-default flat">
-    <div class="box-header">
-        <h3 class="box-title">Trailer</h3>
-    </div>
     <div class="box-body no-padding">
         <a href="trailer.php" onclick="Icone_Chargement(1);
                 Barre_De_Statut('Ouverture du trailer...')" class="fancybox_Trailer" data-fancybox-type="iframe">

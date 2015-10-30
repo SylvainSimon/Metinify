@@ -455,6 +455,12 @@ footer {
     }
 }
 
+@media screen and (max-width: 767px){
+    .table-responsive {
+        border: 0px solid #ddd;
+    }
+}
+
 .table-hover>tbody>tr:hover{
     background-color: #3F3F3F;
 }

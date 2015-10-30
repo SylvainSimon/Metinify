@@ -4,15 +4,16 @@
         <h3 class="box-title">Top guilde</h3>
     </div>
 
-    <div class="box-body">
+    <div class="box-body no-padding">
 
-        <table class="table table-bordered">
+        <table class="table table-hover table-condensed table-responsive" style="border-collapse: collapse;">
 
-            <tr>
-                <th class="Align_Left">Place</th>
-                <th class="Align_Left">Nom</th>
-                <th class="Align_Right">Lvl.</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th class="">Nom</th>
+                    <th class="Align_Right">Level</th>
+                </tr>
+            </thead>
 
             <?php
             $i = 0;
@@ -41,34 +42,31 @@
 
                 <?php $i++; ?>
 
-                <tr class="Pointer Ligne_Classement" onmouseover="this.style.backgroundColor = '#666666';" onmouseout="this.style.backgroundColor = 'transparent';">
-                    <td class="Align_Left">
+                <tr>
+                    <td style="line-height: 10px;">
                         <?php if ($i == 1) {
-                            ?><img src="images/rang/or.png"/>
+                            ?><i class="material-icons md-icon-star" style="color:#F3EC12;"></i>
                             <?php
                         } else if ($i == 2) {
-                            ?><img src="images/rang/argent.png"/>
+                            ?><i class="material-icons md-icon-star text-gray"></i>
                             <?php
                         } else if ($i == 3) {
-                            ?><img src="images/rang/bronze.png"/>
+                            ?><i class="material-icons md-icon-star" style="color:#813838;"></i>
                             <?php
                         } else if ($i == 4) {
-                            ?><img src="images/rang/Medaille_Or.png"/>
+                            ?><i class="material-icons md-icon-bookmark" style="color:#F3EC12; opacity: 0.5"></i>
                             <?php
                         } else if ($i == 5) {
-                            ?><img src="images/rang/Medaille_Argent.png"/>
+                            ?><i class="material-icons md-icon-bookmark text-gray" style="opacity: 0.5"></i>
                             <?php
                         } else if ($i == 6) {
-                            ?><img src="images/rang/Medaille_Bronze.png"/>
+                            ?><i class="material-icons md-icon-bookmark" style="color:#813838; opacity: 0.5"></i>
                             <?php
                         } else {
-
                             echo $i . " eme";
                         }
                         ?>
-                    </td>
-                    <td class="Align_Left">
-                        <?php echo $Donnees_Top_5_Guildes->guild_Name; ?>
+                        <span style="vertical-align: text-top;"><?php echo $Donnees_Top_5_Guildes->guild_Name; ?></span>
                     </td>
                     <td class="Align_Right">
                         <?php echo $Donnees_Top_5_Guildes->guild_Level; ?>

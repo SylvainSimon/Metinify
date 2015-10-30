@@ -45,31 +45,30 @@
                     <?php $i++; ?>
 
                     <tr>
-                        <td class="">
+                    <td style="line-height: 10px;">
                             <?php if ($i == 1) {
-                                ?><img src="images/rang/or.png"/>
+                                ?><i class="material-icons md-icon-star" style="color:#F3EC12;"></i>
                                 <?php
                             } else if ($i == 2) {
-                                ?><img src="images/rang/argent.png"/>
+                                ?><i class="material-icons md-icon-star text-gray"></i>
                                 <?php
                             } else if ($i == 3) {
-                                ?><img src="images/rang/bronze.png"/>
+                                ?><i class="material-icons md-icon-star" style="color:#813838;"></i>
                                 <?php
                             } else if ($i == 4) {
-                                ?><img src="images/rang/Medaille_Or.png"/>
+                                ?><i class="material-icons md-icon-bookmark" style="color:#F3EC12; opacity: 0.5"></i>
                                 <?php
                             } else if ($i == 5) {
-                                ?><img src="images/rang/Medaille_Argent.png"/>
+                                ?><i class="material-icons md-icon-bookmark text-gray" style="opacity: 0.5"></i>
                                 <?php
                             } else if ($i == 6) {
-                                ?><img src="images/rang/Medaille_Bronze.png"/>
+                                ?><i class="material-icons md-icon-bookmark" style="color:#813838; opacity: 0.5"></i>
                                 <?php
                             } else {
-
                                 echo $i . " eme";
                             }
                             ?>
-                            <?php echo $Donnees_Top_5_Joueurs->name; ?>
+                            <span style="vertical-align: text-top;"><?php echo $Donnees_Top_5_Joueurs->name; ?></span>
                         </td>
                         <td class="Align_Right">
                             <?php echo $Donnees_Top_5_Joueurs->score_pve; ?>

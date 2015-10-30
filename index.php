@@ -120,18 +120,19 @@ check_ssl();
                 <div class="col-md-12 paddingPrincipal">
 
                     <div class="row">
-                        <nav class="col-md-2">
+                        <nav class="col-lg-2 col-md-3 col-sm-4">
                             <?php include_once 'includes/Sidebar_Gauche.php'; ?>
                         </nav>
 
-                        <div id="Contenue_Principal" class="col-md-8"></div> 
+                        <div id="Contenue_Principal" class="col-lg-8 col-md-6 col-sm-4"></div> 
 
 
-                        <nav class="col-md-2">
+                        <nav class="col-lg-2 col-md-3 col-sm-4">
                             <?php include_once 'includes/Sidebar_Droite.php'; ?>
                         </nav>
                     </div>
                 </div>
+
             </div>
 
             <footer>
@@ -141,6 +142,8 @@ check_ssl();
                 </div>
             </footer>
         </div>
+        
+        <div class="clearfix"></div>
     </body>
 
     <a style="display: none;" id="Lien_Statistiques" href="includes/Statistiques/Statistiques.php" class="fancybox_Statistiques" data-fancybox-type="iframe"></a>
