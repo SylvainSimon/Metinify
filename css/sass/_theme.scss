@@ -312,10 +312,6 @@ header {
 .Menu_Sidebar_Milieu a:hover {color: #fff; text-decoration: none; }
 
 /* ------------ Colonne Centre (texte)-------------------  */
-#Contenue_Principal {
-    min-height:420px; 
-    opacity: 1;
-}
 
 .Cadre_Principal{
 
@@ -431,6 +427,11 @@ h6 {color: #9d9d9d; font: 10px Arial, Helvetica, sans-serif; text-align:left; li
 /* ------------ Patch pour floating -------------------  */
 #patch {clear: both;} 
 
+
+.paddingPrincipal{
+    padding-bottom: 60px;
+}
+
 /* ------------ Bas de page, footer -------------------  */
 footer {
     bottom:0px; 
@@ -444,6 +445,13 @@ footer {
 @media (max-width: 767px) {
     footer {
         position: relative;
+    }
+    #Barre_Haut {
+        position: absolute;
+    }
+    
+    .paddingPrincipal{
+        padding-bottom: 10px;
     }
 }
 
@@ -726,19 +734,16 @@ li.current {
 .Ligne_Classement{ font-size: 13px;color: #cccccc;}
 .Table_Top_5_Guilde{ width: 95%; position: relative; margin: 0 auto 0 auto; border-collapse: collapse;}
 .Table_Top_5_Guilde th{color: white; line-height: 12px; font-size:15px;}
-.ImageVideoNouveauté{
 
-    background: url('../../images/trailer.png') no-repeat;
-    border-radius: 10px;
-    width: 190px;
-    height: 105px;
-    margin: 5px auto 5px auto;
-    margin-left: 5px;
-    box-shadow: 0px 0px 3px 2px grey;
+.ImageVideoNouveaute{
+    width: 100%;
+    height: auto;
+    opacity: 0.8;
 }
 
-.ImageVideoNouveauté:hover{background: url('../../images/trailer_survoler.png') no-repeat;}
-.ImageVideoNouveauté:active{background: url('../../images/trailer_appuyer.png') no-repeat;}
+.ImageVideoNouveaute:hover{
+    opacity: 1;
+}
 
 .Table_Classement_Joueur{
     position: relative;
@@ -1302,6 +1307,26 @@ li.current {
     position: relative;
     float: right;
     top:1px;
+}
+
+.btn-default{
+    background-color: #373737; 
+    border-color: #606060;
+    color:white;
+}
+
+.btn-default:hover{
+    background-color: #3E3E3E; 
+    border-color: #606060;
+    color:white;
+}
+
+.btn-pile{
+    margin-bottom: 10px;
+}
+
+.btn-pile:last-child{
+    margin-bottom: 0px;
 }
 
 .Bouton_De_Vote{

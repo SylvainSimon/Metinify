@@ -3,39 +3,31 @@
 
 <div class="box box-default flat">
     <div class="box-header">
-        <h3 class="box-title">Serveur Classyd</h3>
+        <h3 class="box-title">Serveur</h3>
+
+        <div class="box-tools" style="padding-top: 3px; padding-right: 1px;">
+            <?php
+            $port = '81';
+            $ip = '178.32.80.49';
+
+
+            if (!$sock = @fsockopen($ip, $port, $num, $error, 0.5)) {
+                ?> <span id="ServeurClassyd"><i class="text-red material-icons md-icon-public md-22" title="Hors-Ligne"></i></span> <?php
+            } else {
+                ?> <span id="ServeurClassyd"><i class="text-green material-icons md-icon-public md-22" title="En ligne"></i></span> <?php
+                fclose($sock);
+            }
+            ?>
+        </div>
     </div>
 
     <div class="box-body">
 
         <script type="text/javascript" src="js/Actualisation_Status.js"></script>
 
-        <table class="Table_Status_Serveurs">
-            <tr><td colspan="3"><div class="barre"></div></td></tr>
-            <tr class="Pointer" onmouseover="this.style.backgroundColor='#666666';" onmouseout="this.style.backgroundColor='transparent';">
-                <td>
-                    Status du serveur :
-                </td>		
-                <?php
-                $port = '81';
-                $ip = '178.32.80.49';
+        <table class="">
 
-
-                if (!$sock = @fsockopen($ip, $port, $num, $error, 0.5)) {
-                    ?> <td id="ServeurClassyd" class="Align_Right"><img class="Ombre_Grise_2 Deplacement_Bouton_Status" title="Hors-Ligne" src="images/offline.gif" /></td> <?php
-            } else {
-                    ?> <td id="ServeurClassyd" class="Align_Right"><img class="Ombre_Grise_2 Deplacement_Bouton_Status" title="En Ligne" src="images/online.gif" /></td> <?php
-                    fclose($sock);
-                }
-                ?>
-            </tr>
-            <tr><td colspan="3"><div class="barre"></div></td></tr>
-
-            <tr title="Joueurs connectés ou téléportés les 15 dernières minutes" class="Pointer" onmouseover="this.style.backgroundColor='#666666';" onmouseout="this.style.backgroundColor='transparent';">
-
-                <td>
-                    Joueurs connectés :
-                </td>
+            <tr title="Joueurs connectés ou téléportés les 15 dernières minutes">
 
                 <?php
                 /* ------------------------------ Vérification connecte ---------------------------------------------- */
@@ -48,10 +40,20 @@
                 /* -------------------------------------------------------------------------------------------------- */
                 ?>
 
-                <td id="nombreconnecter" class="Align_Right Decalage_Nombre_Co"><?php echo $Nombre_De_Resultat; ?></td>
+                <?php if ($Nombre_De_Resultat == 0) { ?>
+                    <td>
+                        Aucun joueur connecté
+                    </td>
+                <?php } else { ?>
+
+                    <td id="nombreconnecter"><?php echo $Nombre_De_Resultat; ?></td>
+
+                    <td>
+                        Joueur connectés
+                    </td>
+                <?php } ?>
             </tr>
 
-            <tr><td colspan="3"><div class="barre"></div></td></tr>
         </table>
 
         <script type="text/javascript">

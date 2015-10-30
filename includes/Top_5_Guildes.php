@@ -1,7 +1,7 @@
 <div class="box box-default flat">
 
     <div class="box-header">
-        <h3 class="box-title">Classement des guildes</h3>
+        <h3 class="box-title">Top guilde</h3>
     </div>
 
     <div class="box-body">

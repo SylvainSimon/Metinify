@@ -25,7 +25,7 @@ include ($files[$rand]);
 
 <div class="box box-default flat">
     <div class="box-header">
-        <h3 class="box-title">Télécharger le jeu</h3>
+        <h3 class="box-title">Télécharger</h3>
     </div>
 
     <div class="box-body">
@@ -35,10 +35,13 @@ include ($files[$rand]);
 
 <div class="box box-default flat">
     <div class="box-header">
-        <h3 class="box-title">Trailer officiel</h3>
+        <h3 class="box-title">Trailer</h3>
     </div>
-    <div class="box-body">
+    <div class="box-body no-padding">
         <a href="trailer.php" onclick="Icone_Chargement(1);
-                Barre_De_Statut('Ouverture du trailer...')" class="fancybox_Trailer" data-fancybox-type="iframe"><div class="ImageVideoNouveauté"></div></a>
+                Barre_De_Statut('Ouverture du trailer...')" class="fancybox_Trailer" data-fancybox-type="iframe">
+
+            <img class="ImageVideoNouveaute" src="./images/trailer.png" />
+        </a>
     </div>
 </div>

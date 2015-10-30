@@ -71,7 +71,7 @@ function Formatage_Date_News($Donnees_Brute) {
     }
 
     if ($Explosion_DateEntiere[0] != '0000-00-00') {
-        $Recomposition_Date = "Le " . $Date_Jours . " " . $Date_Mois . " " . $Date_Annee . "";
+        $Recomposition_Date = "" . $Date_Jours . " " . $Date_Mois . " " . $Date_Annee . "";
     } else {
         $Recomposition_Date = "La date n'a pas été définie.";
     }

@@ -25,21 +25,25 @@ $Variable_De_Merde = 0;
 ?>
 
 
-    <?php while ($Donnees_Recuperation_News = $Parametres_Recuperation_News->fetch()) { ?>
-        <?php
-        $Variable_De_Merde++;
-        $Parametres_Recherche_Auteur->execute(array($Donnees_Recuperation_News->auteur));
-        $Parametres_Recherche_Auteur->setFetchMode(PDO::FETCH_OBJ);
-        $Donnees_Recherche_Auteur = $Parametres_Recherche_Auteur->fetch();
-        ?>
+<?php while ($Donnees_Recuperation_News = $Parametres_Recuperation_News->fetch()) { ?>
+    <?php
+    $Variable_De_Merde++;
+    $Parametres_Recherche_Auteur->execute(array($Donnees_Recuperation_News->auteur));
+    $Parametres_Recherche_Auteur->setFetchMode(PDO::FETCH_OBJ);
+    $Donnees_Recherche_Auteur = $Parametres_Recherche_Auteur->fetch();
+    ?>
 
-<div class="box box-default flat">
+    <div class="box box-default flat">
 
-    <div class="box-header">
-        <h3 class="box-title"><?= $Donnees_Recuperation_News->titre_message; ?></h3>
-    </div>
+        <div class="box-header">
+            <h3 class="box-title"><?= $Donnees_Recuperation_News->titre_message; ?></h3>
 
-    <div class="box-body">
+            <div class="box-tools" style="padding-top: 5px;">
+                <i title="<?= Formatage_Date_News($Donnees_Recuperation_News->date); ?>" class="material-icons md-icon-event md-20"></i>
+            </div>
+        </div>
+
+        <div class="box-body">
 
             <?php if ($Donnees_Recuperation_News->lien_illustration != "") { ?>
                 <div class="Texte_News">
@@ -50,7 +54,10 @@ $Variable_De_Merde = 0;
                 <?= $Donnees_Recuperation_News->contenue_message; ?>
             <?php } ?>
 
-            <img src="images/icones/calendrier.png" height="14" style="position: relative; top:3px;"/>&nbsp;<?= Formatage_Date_News($Donnees_Recuperation_News->date); ?>
-            <span class="Auteur_News"><img style="position: relative; top:3px;" src="images/icones/utilisateur.png" height="14" />&nbsp;<?= $Donnees_Recherche_Auteur->pseudo_messagerie; ?></span>
+
+            <div style="position: absolute; bottom: 2px; right: 6px; color: grey;">
+                <small>Publié par <?= $Donnees_Recherche_Auteur->pseudo_messagerie; ?></small>
+            </div>
         </div>
-    <?php } ?>
+    </div>
+<?php } ?>

@@ -1,25 +1,21 @@
-function ServeurClassyd(){
+function ServeurClassyd() {
 
     $.ajax({
         type: "POST",
         url: "ajax/Actualisation_Classyd.php",
-        success: function(msg){
-
-            $("#ServeurClassyd").fadeOut("fast", function(){
-                $("#ServeurClassyd").html(msg);
-                $("#ServeurClassyd").fadeIn("fast");
-            });
+        success: function (msg) {
+            $("#ServeurClassyd").html(msg);
         }
     });
     return false;
 }
 
-function JoueursConnectes(){
+function JoueursConnectes() {
 
     $.ajax({
         type: "POST",
         url: "ajax/Joueurs_Connectes.php",
-        success: function(msg){
+        success: function (msg) {
             $("#nombreconnecter").html(msg);
         }
     });

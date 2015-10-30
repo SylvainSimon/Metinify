@@ -78,7 +78,7 @@ check_ssl();
                 </div>
 
 
-                <div class="col-md-12">
+                <div class="col-md-12 paddingPrincipal">
 
                     <div class="row">
                         <nav class="col-md-2">

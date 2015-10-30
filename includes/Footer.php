@@ -6,7 +6,7 @@
     </div>
 </div>
 
-<div class="col-md-6 col-sm-5" style="text-align: center;">
+<div class="col-md-6 col-sm-5" style="line-height: 40px; text-align: center;">
     
     <div id="Copyright"><a href="https://vamosmt2.org/">© VamosMT2</a> | Coded by <a href="skype:sylvanusproduction?add" target="_blank">Sylvanus</a></div>
     
