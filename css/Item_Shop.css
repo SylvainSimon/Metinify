@@ -1,0 +1,653 @@
+*{
+
+    user-select: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -o-user-select: none; 
+    -moz-user-select: -moz-none;
+    outline: none;
+}
+
+/* Let's get this party started */
+*::-webkit-scrollbar {width: 17px;border: 1px solid grey;background: #333333;}
+/* Track */
+*::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 6px #111111; -webkit-border-radius: 3px;border-radius: 3px;}
+/* Handle */
+*::-webkit-scrollbar-thumb {-webkit-border-radius: 3px;border-radius: 3px;width: 13px;border: 1px solid grey;background: #111111; -webkit-box-shadow: inset 0 0 6px #111111; }
+
+
+.user_select{
+
+    user-select: all; 
+    -webkit-user-select: all; 
+    -khtml-user-select: all; 
+    -o-user-select: all; 
+    -moz-user-select: -moz-all;
+
+}
+
+body{
+
+    margin: 0px;
+    padding: 0px;
+    background: url('../images/item_shop/item_shop_fond.png');
+    border-radius: 9px;
+    overflow: hidden;
+}
+
+.Texte_Blanc_Bold_Shadow{color: white; font-weight: bold; text-shadow: 1px 0 3px black;}
+
+.Pointer{cursor: pointer;}
+
+#ItemShop_Partie_Haute{
+
+    background: url('../images/item_shop/item_shop_haut.png');
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid grey;
+}
+
+.Titre_Fenetre_Item_Shop{
+
+    position: relative;
+    top:14px;
+    left:24px;
+    font: bold 25px Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.Bouton_Fermer_Fenetre{
+    position: absolute;
+    top:11px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+    background: url('../images/icones/fermer.png') no-repeat;
+    opacity: .8;
+}
+.Bouton_Fermer_Fenetre:hover{opacity: 1;}
+.Bouton_Fermer_Fenetre:active{opacity: .9;}
+
+#ItemShop_Partie_Menu{
+
+    background: url('../images/motif_th.png');
+    position: absolute;
+    top:76px;
+    left:15px;
+    width: 218px;
+    height: 455px;
+    border: 1px solid grey;
+}
+
+.Liste_Menu{
+
+    position: relative;
+    left:-24px;
+    color: #e2e2e2;
+    font-weight: bold;
+    list-style-type: none;
+}
+
+.Liste_Menu li{
+
+    background: url('../images/item_shop/motif_perso.png');
+    width: 170px;
+    height: 27px;
+    margin-bottom: 7px;
+    text-indent: 12px;
+    line-height: 27px;
+    cursor: pointer;
+    border: 1px solid grey;
+
+    transition: width 200ms;
+    -moz-transition: width 200ms;
+    -webkit-transition: width 200ms;
+    -o-transition: width 200ms;
+}
+
+.Liste_Menu li:hover{
+
+    opacity: 0.8;
+    width: 182px;
+}
+
+#Item_Shop_Contenue{
+
+    position: absolute;
+    background: transparent;
+    width: 512px;
+    height: 455px;
+    top:76px;
+    right: 15px;
+}
+
+#Contenue_Categorie{
+
+    position: absolute;
+    width: 100%;
+    height: 455px;
+    border: 1px solid grey;
+    border-radius: 2px;
+    overflow: hidden;
+    overflow-y: auto;
+    background: url('../images/motif_th.png');
+
+}
+
+#Tableau_Liste_Article{
+
+    border-collapse: collapse;
+
+}
+
+#Tableau_Liste_Article td{
+
+    background: url('../images/item_shop/liste_item.png');
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: inset 0 0 2px 1px grey;
+}
+
+.Article_IS{
+
+    border: 1px solid #AAAAAA;
+    height: 106px;
+    background: url('../images/motif_th.png');
+}
+.Nom_Article{
+
+    position: relative;
+    top:7px;
+    left:90px;
+    color: gold;
+    font-weight: bold;
+    width: 271px;
+    font-size: 12px;
+    height: 20px;
+    background: url('../images/motif.png'); 
+    text-shadow: 1px 0 3px black;
+    border: 1px solid grey;
+    padding-left: 5px;
+    padding-top: 2px;
+    line-height: 18px;
+}
+
+.Prix_Article{
+
+    position: relative;
+    top:-17px;
+    left:379px;
+    color: gold;
+    font-weight: bold;
+    width: 100px;
+    font-size: 12px;
+    height: 20px;
+    background: url('../images/motif.png'); 
+    text-shadow: 1px 0 3px black;
+    border: 1px solid grey;
+    padding-top: 2px;
+    text-align: right;
+    padding-right: 3px;
+    overflow: hidden;
+}
+
+.Position_Label_Prix{
+
+    position: relative;
+    float: left;
+    width: 35px;
+    left:4px;
+    top:1px;
+}
+.Position_Prix{
+
+    position: relative;
+    float: right;
+    text-align: right;
+    width: 20px;
+    right: 30px;
+    top:1px;
+}
+
+.Icone_Piece{
+
+    position: relative;
+    float: right;
+    width: 16px;
+    height: 16px;
+    left:18px;
+}
+.Icone_Article{
+    background: url('../images/motif.png'); 
+    position: relative;
+    width: 70px;
+    height: 90px;
+    border: 1px solid grey;
+    top:-41px;
+    left:7px;
+}
+
+.Description_Article{
+
+    position: relative;
+    width: 267px;
+    height: 50px;
+
+    top:-97px;
+    left:89px;
+
+    border: 1px solid grey;
+    text-shadow: 1px 0 3px black;
+    color: white;
+    font-size: 13px;
+    padding-top: 3px;
+    padding-right: 5px;
+    padding-left: 5px;
+    overflow-y: auto;
+
+    background: url('../images/motif.png'); 
+}
+
+.Detail_Article{
+
+    position: relative;
+    width: 100px;
+    height: 54px;
+
+    top:-151px;
+    left:381px;
+    color: white;
+    font-weight: bold;
+
+    border-radius: 10px;
+}
+
+.Position_Loupe_Detail{
+
+    position: relative;
+    top:7px;
+    left:3px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+.Position_Loupe_Detail:hover{
+
+    opacity: 1;
+}
+
+.Position_Loupe_Detail:active{
+
+    opacity: 0.9;
+}
+
+.Position_Icone_Article_1Case_Petite{
+
+    position: relative;
+    top:27px;
+    left: 20px;
+    width: 32px;
+    margin: 0 auto 0 auto;
+}
+
+.Position_Icone_Article_1Case_Grande{
+
+    position: relative;
+    top:13px;
+    left: 20px;
+    width: 32px;
+    margin: 0 auto 0 auto;
+}
+
+/* --------------------- Detail items --------------------- */
+
+#Detail_Item_Titre{
+
+    width: 100%;
+    height: 23px;
+    background: url('../images/item_shop/item_shop_haut.png');
+    border-bottom: 1px solid grey;
+    text-align: center;
+    font: bold 12px Arial, Helvetica, sans-serif;
+    color: white;
+    padding-top: 7px;
+}
+
+.Detail_Item_Icone{
+
+    background: url('../images/menusecondaire_bg.png');
+    position: relative;
+    width: 70px;
+    height: 90px;
+    border: 1px solid grey;
+    left:20px;
+    top:25px;
+}
+
+.Detail_Item_Description{
+
+    position: absolute;
+    top:56px;
+    left:110px;
+    width: 352px;
+    height: 150px;
+    border: 1px solid grey;
+    text-shadow: 1px 0 3px black;
+    color: white;
+    font-size: 13px;
+    padding-top: 3px;
+    padding-right: 5px;
+    padding-left: 5px;
+
+    background: url('../images/menusecondaire_bg.png');
+}
+
+.Barre_Choix_Quantité{
+
+    position: absolute;
+    top: 240px;
+    height: 30px;
+    width: 100%;
+
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    background: url('../images/menusecondaire_bg.png');
+    box-shadow: inset 0 0 5ps 1px black;
+
+}
+
+.Rappel_Prix_Unité{
+
+    position: relative;
+    top:2px;
+    width: 110px;
+    height: 24px;
+    border: 1px solid grey;
+    background: #444444;
+    color: gold;
+    font-weight: bold;
+    font-size: 16px;
+    background: url('../images/motif_th.png');
+    line-height: 24px;
+    text-indent: 5px;
+}
+
+.Image_Piece_Detail_Item{
+
+    position: relative;
+    float: right;
+    right: 5px;
+    top:4px;
+}
+
+.Barre_Choix_Quantité select{
+
+    position: absolute;
+    top:3px;
+    left:170px;
+    width: 140px;
+    background: #444444;
+    color: white;
+    border: 1px solid grey;
+}
+
+.Bouton_Valider_Achat{
+
+    position: absolute;
+    top:4px;
+    left:352px;
+    width: 130px;
+    height: 20px;
+    background: #555555;
+    border: 1px solid grey;
+    border-radius: 10px;
+    color: white;
+    text-shadow: 1px 0 3px black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 13px;
+    box-shadow: inset 0 0 4px 1px grey;
+    cursor: pointer;
+    line-height: 20px;
+
+}
+.Bouton_Valider_Achat:active{
+
+    box-shadow: inset 0 0 5px 1px black;
+}
+
+.Texte_Achat_Termine{
+
+    position: relative;
+    top:20px;
+    width: 90%;
+    margin: 0 auto 0 auto;
+    height: 102px;
+    border: 1px solid grey;
+    font-size: 14px;
+    background: #111111;
+    color: white;
+    padding: 5px;
+
+}
+
+
+.Titre_Bouton_Recharger{
+
+    position: absolute;
+    background:url('../images/bg_fonction.png');
+    top:13px;
+    width: 180px;
+    height: 20px;
+    text-align: center;
+    right: 100px;
+    border: 1px solid grey;
+    font-size: 14px;
+    color: #DDDDDD;
+    font-weight: bold;
+    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
+
+    padding: 6px; 
+    text-decoration: none;
+
+}
+
+.Titre_Bouton_Recharger:hover{
+
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.Titre_Bouton_Recharger:active{
+
+    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
+}
+
+/* ---------------------- Item SHOP ------------------------- */
+
+#Rechargement_Titre_Allopass{
+
+    width: 100%;
+    height: 30px;
+    background: url('../images/item_shop/item_shop_haut.png');
+    border-bottom: 1px solid grey;
+    line-height: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+#Rechargement_Titre_Paypal{
+
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    background: url('../images/item_shop/item_shop_haut.png');
+    border-bottom: 1px solid grey;
+    line-height: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    top:201px;
+}
+
+.Choix_Rechargement{
+
+    width: 100%;
+
+}
+
+.Position_Rechargement_Allopass{
+
+    position: absolute;
+    top:120px;
+    width: 100%;
+    height: 80px;
+    margin: 0 auto 0 auto;
+    border-bottom: 1px solid grey;
+}
+
+.Position_Rechargement_Paypal {
+
+    position: absolute;
+    top:374px;
+    width: 100%;
+    height: 80px;
+    margin: 0 auto 0 auto;
+    border-bottom: 1px solid grey;
+
+}
+
+.Bouton_Paypal{
+    background:url('../images/bg_fonction.png');
+    width: 185px;
+    height: 30px;
+    text-align: center;
+    right: 100px;
+    border: 1px solid grey;
+    font-size: 14px;
+    color: #DDDDDD;
+    font-weight: bold;
+    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
+
+    padding: 6px; 
+    text-decoration: none;
+}
+
+.Bouton_Paypal:hover{
+
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.Bouton_Paypal:active{
+
+    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
+}
+
+#Bouton_Acheter_5000{
+    position: absolute;
+    top:-127px;
+    right: 15px;
+}
+#Bouton_Acheter_20000{
+    position: absolute;
+    top:-87px;
+    right: 15px;
+}
+#Bouton_Acheter_50000{
+    position: absolute;
+    top:-47px;
+    right: 15px;
+}
+
+.Position_Rechargement_Paypal input{
+
+    user-select:all;
+}
+
+#Position_Bouton_Allopass{
+    position: absolute;
+    right: 15px;
+    top:-74px;
+}
+
+#Rechargement_Resultat_Titre{
+
+    width: 100%;
+    height: 26px;
+    background: url('../images/item_shop/item_shop_haut.png');
+    border-bottom: 1px solid white;
+    border-radius: 0 0 15px 15px;
+
+
+    text-align: center;
+    font: bold 12px Arial, Helvetica, sans-serif;
+    color: white;
+    padding-top: 9px;
+}
+
+.Contenue_Resultat_Rechargement{
+    position: relative;
+    top:20px;
+    width: 90%;
+    margin: 0 auto 0 auto;
+    height: 102px;
+    border: 1px solid grey;
+    font-size: 14px;
+    background: #111111;
+    color: white;
+    padding: 5px;
+}
+
+.Texte_Resultat_Rechargement{
+
+    position: relative;
+    width: 100%;
+    padding-top: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    font-size: 14px;
+    top:5px;
+    left:5px;
+
+}
+
+.Description_Rechargement_Paypal{
+    
+    background: #AAAAAA;
+    width: 285px;
+    height: 192px;
+    border: 1px solid grey;
+    background: url('../images/bg_fonction.png');
+}
+
+#Description_Paypal{
+    
+    position: absolute;
+    top:-128px;
+    left:15px;
+}
+
+.Description_Rechargement_Allopass{
+    
+    width: 285px;
+    height: 139px;
+    border: 1px solid grey;
+    background: url('../images/bg_fonction.png');
+}
+
+#Description_Allopass{
+    
+    position: absolute;
+    top:-75px;
+    left:15px;
+}
+
+.Texte_Rechargement{
+    
+    color: #DDDDDD;
+    padding-top: 3px;
+    padding-left: 7px;
+    padding-right: 7px;
+}

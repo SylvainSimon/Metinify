@@ -1,0 +1,1248 @@
+body{
+
+    margin: 0px;
+    padding: 0px;
+    background: url('../images/item_shop/item_shop_fond.png');
+    border-radius: 9px;
+    overflow: hidden;
+}
+
+/* Let's get this party started */
+*::-webkit-scrollbar {width: 17px;border: 1px solid grey;background: #333333;}
+/* Track */
+*::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 6px #111111; -webkit-border-radius: 3px;border-radius: 3px;}
+/* Handle */
+*::-webkit-scrollbar-thumb {-webkit-border-radius: 3px;border-radius: 3px;width: 13px;border: 1px solid grey;background: #111111; -webkit-box-shadow: inset 0 0 6px #111111; }
+
+
+*{
+    outline: none;
+}
+
+.Pointer{cursor: pointer;}
+
+body a{
+
+    color: #999999;
+}
+
+.ui-tabs { 
+    position: relative; 
+
+}
+
+.ui-tabs .ui-tabs-nav { 
+    display: block;
+    margin: 0; 
+
+}
+
+.Cursor{
+
+    cursor: pointer;
+}
+
+.ui-tabs .ui-tabs-nav li { 
+
+    list-style: none; 
+    position: relative; 
+    margin: 0 .2em 0px 0;
+    border-bottom: 0 !important; 
+    padding: 0; 
+    white-space: nowrap; 
+    left:-40px;
+
+}
+
+.ui-tabs .ui-tabs-nav li a {
+
+    float: left; 
+    padding: 6px; 
+    text-decoration: none;
+
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
+.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; }
+.ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 1em 1.4em; background: none; }
+.ui-tabs .ui-tabs-hide { display: none !important; }
+
+#Onglets ul li a{
+
+    position: relative;
+    background:url('../images/bg_fonction.png');
+    top:13px;
+    margin-left: 25px;
+    border: 1px solid grey;
+    font-size: 14px;
+    color: #DDDDDD;
+    font-weight: bold;
+
+    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
+
+}
+
+#Onglets ul li a:hover{
+
+    box-shadow: none;
+}
+
+#Onglets ul li a:active{
+
+    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
+}
+
+#Onglets ul{
+
+    position: relative;
+    height: 60px;
+    background: url('../images/motif_th.png');
+    box-shadow:0 0 2px 1px #333333;
+    border-bottom :1px solid grey;
+    padding-left: 35px;
+    margin-top: 0px;
+}
+
+#Tableau_Recapitulatif_Paiement{position: absolute;top:80px;left:20px;width: 230px;border: 1px solid #303030;text-align: left;text-indent: 7px;line-height: 20px;font-size: 13px;border-collapse: collapse;border-radius:3px;margin-right: 20px;color: #cccccc;background: url('../images/motif_th.png');}
+#Tableau_Recapitulatif_Paiement .Colonne_Gauche{width: 170px;background:url('../images/motif.png');border: 1px solid grey;color: #DDDDDD;text-align: left;font-variant: small-caps;font-weight: bold;font-size: 15px; }
+#Tableau_Recapitulatif_Paiement th{
+
+    height: 23px;
+    font-size: 14px;
+    border: 1px solid grey;
+}
+
+#Tableau_Recapitulatif_Achats{position: absolute;top:80px;left:20px;width: 230px;border: 1px solid #303030;text-align: left;text-indent: 7px;line-height: 20px;font-size: 13px;border-collapse: collapse;border-radius:3px;margin-right: 20px;color: #cccccc;background: url('../images/motif_th.png');}
+#Tableau_Recapitulatif_Achats .Colonne_Gauche{width: 160px;background:url('../images/motif.png');border: 1px solid grey;color: #DDDDDD;text-align: left;font-variant: small-caps;font-weight: bold;font-size: 15px; }
+#Tableau_Recapitulatif_Achats th{
+
+    height: 23px;
+    font-size: 14px;
+    border: 1px solid grey;
+}
+
+#Tableau_Recapitulatif_Amis{position: absolute;top:80px;left:20px;width: 230px;border: 1px solid #303030;text-align: left;text-indent: 7px;line-height: 20px;font-size: 13px;border-collapse: collapse;border-radius:3px;margin-right: 20px;color: #cccccc;background: url('../images/motif_th.png');}
+#Tableau_Recapitulatif_Amis .Colonne_Gauche{width: 160px;background:url('../images/motif.png');border: 1px solid grey;color: #DDDDDD;text-align: left;font-variant: small-caps;font-weight: bold;font-size: 15px; }
+#Tableau_Recapitulatif_Amis th{
+
+    height: 23px;
+    font-size: 14px;
+    border: 1px solid grey;
+}
+
+#Tableau1{
+    position: absolute;
+    top:80px;
+    left:20px;
+    width: 340px;
+    border: 1px solid #303030;
+    text-align: left;
+    text-indent: 7px;
+    line-height: 20px;
+    font-size: 13px;
+    border-collapse: collapse;
+    border-radius:3px;
+    margin-right: 20px;
+    color: #cccccc;
+}
+
+#Tableau1 th{
+
+    height: 23px;
+    font-size: 14px;
+    border: 1px solid grey;
+}
+
+#Tableau_Personnage_Informations_General{
+    position: absolute;
+    top:80px;
+    left:20px;
+    width: 380px;
+    border: 1px solid #303030;
+    text-align: left;
+    text-indent: 7px;
+    line-height: 20px;
+    font-size: 13px;
+    border-collapse: collapse;
+    border-radius:3px;
+    margin-right: 20px;
+    color: #cccccc;
+    background: url('../images/motif_th.png');
+}
+
+#Tableau_Personnage_Informations_General td{ border: 1px solid grey; }
+#Tableau_Personnage_Informations_General th{height: 23px;font-size: 14px;border: 1px solid grey;}
+#Tableau_Personnage_Informations_General .Colonne_Gauche{
+    width: 180px;
+    background:url('../images/motif.png');
+    border: 1px solid grey;
+    color: #DDDDDD;
+    text-align: left;
+    font-variant: small-caps;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#Tableau_Personnage_Informations_General .Colonne_Gauche img{
+    position: relative; top:2px;
+    width: 14px;
+    height: 14px;
+    background: #444444;
+    border: 1px solid grey;
+}
+#Tableau_Personnage_Informations_General .Colonne_Gauche span{
+    position: relative; top:-1px;
+}
+
+#Tableau_Personnage_Compte{
+
+    position: absolute;
+    top:80px;
+    left:440px;
+    width: 380px;
+    border: 1px solid #303030;
+    text-align: left;
+    text-indent: 7px;
+    line-height: 20px;
+    font-size: 13px;
+    border-collapse: collapse;
+    border-radius:3px;
+    margin-right: 20px;
+    color: #cccccc;
+
+    background: url('../images/motif_th.png');
+}
+#Tableau_Personnage_Compte td{ border: 1px solid grey; }
+#Tableau_Personnage_Compte th{height: 23px;font-size: 14px;border: 1px solid grey;}
+
+#Tableau_Relation_Guilde{
+
+    position: absolute;
+    top:373px;
+    left:440px;
+    width: 380px;
+    border: 1px solid #303030;
+    text-align: left;
+    text-indent: 7px;
+    line-height: 20px;
+    font-size: 13px;
+    border-collapse: collapse;
+    border-radius:3px;
+    margin-right: 20px;
+    color: #cccccc;
+
+    background: url('../images/motif_th.png');
+}
+
+#Tableau_Relation_Guilde td{ border: 1px solid grey; }
+#Tableau_Relation_Guilde th{height: 23px;font-size: 14px;border: 1px solid grey;}
+
+
+#Tableau_Personnages_Actions{
+
+    position: absolute;
+    top:358px;
+    left:20px;
+    width: 300px;
+    border: 1px solid #303030;
+    text-align: left;
+    text-indent: 7px;
+    line-height: 20px;
+    font-size: 13px;
+    border-collapse: collapse;
+    border-radius:3px;
+    margin-right: 20px;
+    color: #cccccc;
+
+    background: url('../images/motif_th.png');
+}
+
+#Tableau_Personnages_Actions td{ border: 1px solid grey; opacity: .8;}
+#Tableau_Personnages_Actions td:hover{cursor: pointer; opacity: 1;}
+#Tableau_Personnages_Actions th{height: 23px;font-size: 14px;border: 1px solid grey;}
+#Tableau_Personnages_Actions span{position: relative; top:-1px;}
+#Tableau_Personnages_Actions img{position: relative; top:1px;}
+
+#Tableau4{
+
+    position: absolute;
+    width: 32%;
+    left:408px;
+    top:167px;
+    border: 1px solid #303030;
+    text-align: left;
+    text-indent: 7px;
+    line-height: 15px;
+    border-collapse: collapse;
+    border-radius:3px;
+    color: #cccccc;
+}
+
+#Tableau_Caracteristiques{
+
+    position: absolute;
+    top:215px;
+    left:440px;
+    width: 380px;
+    border: 1px solid #303030;
+    text-align: left;
+    text-indent: 7px;
+    line-height: 20px;
+    font-size: 13px;
+    border-collapse: collapse;
+    border-radius:3px;
+    margin-right: 20px;
+    color: #cccccc;
+
+    background: url('../images/motif_th.png');
+}
+
+#Tableau_Caracteristiques td{ border: 1px solid grey; }
+#Tableau_Caracteristiques th{height: 23px;font-size: 14px;border: 1px solid grey;}
+
+#Tableau_Personnage_Cheval{
+
+    position: absolute;
+    top:80px;
+    left:20px;
+    width: 580px;
+    border: 1px solid #303030;
+    text-align: left;
+    text-indent: 7px;
+    line-height: 20px;
+    font-size: 13px;
+    border-collapse: collapse;
+    border-radius:3px;
+    margin-right: 20px;
+    color: #cccccc;
+
+    background: url('../images/motif_th.png');
+}
+#Tableau_Personnage_Cheval td{ border: 1px solid grey; }
+#Tableau_Personnage_Cheval th{height: 23px;font-size: 14px;border: 1px solid grey;}
+#Tableau_Personnage_Cheval .Colonne_Gauche{
+    width: 150px;
+    background:url('../images/motif.png');
+    border: 1px solid grey;
+    color: #DDDDDD;
+    text-align: left;
+    font-variant: small-caps;
+    font-weight: bold;
+    font-size: 15px;
+
+}
+
+.box_shadows{
+
+    -webkit-box-shadow: 0px 0px 8px 1px black;
+    -moz-box-shadow: 0px 0px 8px 1px black;
+    -o-box-shadow: 0px 0px 8px 1px black;
+    box-shadow: 0px 0px 8px 1px black;
+
+    background: url('../images/motif_th.png');
+}
+
+table td, #Tableau1 td, #Tableau3 td, #Tableau_Joueur_ID td, #Tableau5 td, #Tableau_Equitation td{
+
+    border: 1px solid grey;
+}
+
+.TD_Bleu{
+    width: 40%;
+    background:url('../images/motif.png');
+    border: 1px solid grey;
+    color: #DDDDDD;
+    text-align: left;
+    font-variant: small-caps;
+    font-weight: bold;
+    font-size: 15px;
+
+}
+
+.Affichage_Joueur{
+
+    position: absolute;
+    border: 1px solid grey;
+    right: 20px;
+    top: 80px;
+    width: 335px;
+    height: 450px;
+    background: url('../images/motif_perso.png');
+
+}
+
+.Affichage_Joueur img{
+
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Position_Etat{
+
+    position:relative;
+    top:-3px;
+}
+
+.Position_Etat_Ligne{
+
+    position: relative; 
+    top:1px;
+}
+
+/*-----------INVENTAIRE-------------------*/
+#Inventaire{
+
+    position: absolute;
+    border: 1px solid grey;
+    left:20px;
+    top: 80px;
+    width: 169px;
+    height: 327px;
+    background: url('../images/inventaire.png') no-repeat;
+
+}
+
+#Conteneur_Inventaire{
+
+    position: relative;
+    width: 160px;
+    height: 288px;
+
+    top: 32px;
+    left:5px;
+    overflow: hidden;
+
+    font-size: 1px; 
+    letter-spacing: -1px;
+    word-spacing: -1px;
+
+}
+
+.Case_Inventaire{
+
+    display: inline-table;
+    height: 32px;
+    width: 32px;
+    max-width: 32px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    color: white;
+    vertical-align: bottom;
+
+    font-size: 10px; 
+
+}
+
+.Interieur_Case{
+
+    width: 32px;
+    height: 32px;
+
+}
+.Bouton_Inventaire_1{
+
+    position: absolute;
+    top:7px;
+    left:6px;
+    height: 18px;
+    width: 35px;
+    border: 1px solid grey;
+    background: url("../images/Bouton_Inventaire.png") no-repeat;
+    text-align: center;
+    color: white;
+    font-size: 11px;
+    line-height: 18px;
+
+}
+
+.Bouton_Inventaire_2{
+
+    position: absolute;
+    top:7px;
+    left:45px;
+    height: 18px;
+    width: 35px;
+    border: 1px solid grey;
+    background: url("../images/Bouton_Inventaire.png") no-repeat;
+    text-align: center;
+    color: white;
+    font-size: 11px;
+    line-height: 18px;
+}
+
+.Bouton_Inventaire_3{
+
+    position: absolute;
+    top:7px;
+    left:84px;
+    height: 18px;
+    width: 35px;
+    border: 1px solid grey;
+    background: url("../images/Bouton_Inventaire.png") no-repeat;
+    text-align: center;
+    color: white;
+    font-size: 11px;
+    line-height: 18px;
+}
+
+.Bouton_Inventaire_4{
+
+    position: absolute;
+    top:7px;
+    left:123px;
+    height: 18px;
+    width: 35px;
+    border: 1px solid grey;
+    background: url("../images/Bouton_Inventaire.png") no-repeat;
+    text-align: center;
+    color: white;
+    font-size: 11px;
+    line-height: 18px;
+}
+
+
+
+/*--------------------------ENTREPOT---------------------------*/
+#Entrepot{
+
+    position: absolute;
+    border: 1px solid black;
+    left:20px;
+    top: 80px;
+    width: 169px;
+    height: 357px;
+    background: url('../images/entrepot.png') no-repeat;
+    box-shadow: 0px 0px 8px 1px black;
+
+    border-radius: 8px;
+
+}
+
+#Conteneur_Entrepot{
+
+    position: relative;
+    width: 160px;
+    height: 288px;
+
+    top: 30px;
+    left:4px;
+    overflow: hidden;
+
+    font-size: 1px; 
+    letter-spacing: -1px;
+    word-spacing: -1px;
+
+}
+
+.Bouton_Entrepot_1{
+
+    position: absolute;
+    top:328px;
+    left:5px;
+    height: 18px;
+    width: 50px;
+    border: 1px solid grey;
+    background: url("../images/Bouton_Entrepot.png") no-repeat;
+    text-align: center;
+    color: white;
+    font-size: 11px;
+    line-height: 18px;
+
+}
+
+.Bouton_Entrepot_2{
+
+    position: absolute;
+    top:328px;
+    left:58px;
+    height: 18px;
+    width: 50px;
+    border: 1px solid grey;
+    background: url("../images/Bouton_Entrepot.png") no-repeat;
+    text-align: center;
+    color: white;
+    font-size: 11px;
+    line-height: 18px;
+
+}
+
+.Bouton_Entrepot_3{
+
+    position: absolute;
+    top:328px;
+    left:111px;
+    height: 18px;
+    width: 50px;
+    border: 1px solid grey;
+    background: url("../images/Bouton_Entrepot.png") no-repeat;
+    text-align: center;
+    color: white;
+    font-size: 11px;
+    line-height: 18px;
+
+}
+
+/* ----------------- Entrepot IS ------------------- */
+
+#Entrepot_IS{
+
+    position: absolute;
+    border: 1px solid black;
+    left:20px;
+    top: 80px;
+    width: 169px;
+    height: 327px;
+    background: url('../images/entrepot_IS.png') no-repeat;
+
+    -webkit-box-shadow: 0px 0px 8px 1px black;
+    -moz-box-shadow: 0px 0px 8px 1px black;
+    -o-box-shadow: 0px 0px 8px 1px black;
+    box-shadow: 0px 0px 8px 1px black;
+
+    border-radius: 8px;
+
+}
+
+#Conteneur_Entrepot_IS{
+
+    position: relative;
+    width: 160px;
+    height: 288px;
+    top: 30px;
+    left:4px;
+    overflow: hidden;
+
+    font-size: 1px; 
+    letter-spacing: -1px;
+    word-spacing: -1px;
+
+}
+
+.Couleur_Nom_Item{
+
+    color:#FFC700;
+    font-family: serif;
+    font-size: 13px;
+    text-shadow: 0px 2px 1px black;
+}
+
+.Couleur_Level_Item{
+
+    color:#EFF1EE;
+    font-family: serif;
+    font-size: 13px;
+    text-shadow: 0px 2px 1px black;
+}
+
+.Couleur_Bonus_Item{
+
+    color:#69A972;
+    font-family: serif;
+    font-size: 13px;
+    text-shadow: 0px 2px 1px black;
+}
+
+.Couleur_Malus_Item{
+
+    color:#B3646B;
+    font-family: serif;
+    font-size: 13px;
+    text-shadow: 0px 2px 1px black;
+}
+
+#Conteneur_Bonus{
+
+    position: absolute;
+    left: 210px;
+    top:80px;
+}
+#Haut_Bonus{
+
+    background: url(../images/Infobulle_Haut.png) no-repeat;
+    width: 325px;
+    height: 10px;
+}
+
+#Milieu_Bonus{
+
+    text-align: center;
+    background: url(../images/Infobulle_Milieu.png) repeat-y;
+    width: 325px;
+}
+
+#Bas_Bonus{
+
+    background: url(../images/Infobulle_Bas.png) no-repeat;
+    width: 325px;
+    height: 13px;
+}
+
+#Contenue_Milieu_Bonus{
+
+    text-align: center;
+    color:#EFF1EE;
+    font-family: serif;
+    font-size: 13px;
+    text-shadow: 0px 2px 1px black;
+}
+
+#Detail_Liste_Inventaire{
+
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    width: 625px;
+    max-height: 450px;
+    overflow-y:auto;
+    border-bottom: 1px solid grey;
+}
+
+
+#Tableau_Inventaire {
+    background: url('../images/motif_th.png');
+    border-collapse:collapse;
+    color: #cccccc;
+    width: 100%;
+    border:1px solid grey;
+    border-bottom: none;
+    font-size: 13px;
+}
+#Tableau_Inventaire th, #Tableau_Inventaire td {padding:3px 3px;}
+
+#Tableau_Inventaire th {
+    background: url('../images/motif.png'); 
+    color:#DDDDDD;
+    font-variant: small-caps;
+    text-align:left;
+    border:1px solid grey;
+    text-indent: 2px;
+    font-size: 15px;
+}
+#Tableau_Inventaire tr.bg td {background-color:#e8f6ff;}
+
+
+.Zone_Tableau_Amis{
+
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    width: 900px;
+    max-height: 450px;
+    overflow-y:auto;
+    border-bottom: 1px solid grey;
+}
+
+
+#Tableau_Amis {
+    background: url('../images/motif_th.png');
+    border-collapse:collapse;
+    color: #cccccc;
+    width: 100%;
+    border:1px solid grey;
+    border-bottom: none;
+    font-size: 13px;
+}
+#Tableau_Amis th, #Tableau_Amis td {text-indent: 3px;}
+
+#Tableau_Amis th {
+    background: url('../images/motif.png'); 
+    color:#DDDDDD;
+    font-variant: small-caps;
+    text-align:left;
+    border:1px solid grey;
+    text-indent: 2px;
+    font-size: 15px;
+}
+#Tableau_Amis tr.bg td {background-color:#e8f6ff;}
+
+#Tableau_Amis .Image_Royaume {
+    border: 1px solid grey;
+}
+
+#Tableau_Personnages{
+
+    position: absolute;
+    float: right;
+    top: 80px;
+    right: 20px;
+
+    width:784px;
+
+    box-shadow: 0px 0px 1px 1px black;
+
+    border: 1px solid #cfcfcf;
+    background: url('../images/motif_th.png');
+    color: #cccccc;
+
+    margin:0; 
+    border-collapse:collapse; 
+
+}
+#Tableau_Personnages th, #Tableau_Personnages td {padding:3px 3px; font-size: 13px;}
+#Tableau_Personnages th { border:1px solid grey;  background-color:#0085cc;  color:#DDDDDD; text-align:left; text-indent: 2px; font-weight:bold; background:url('../images/motif.png');}
+#Tableau_Personnages td {text-indent: 3px; border:1px solid #666666;}
+#Tableau_Personnages tr.bg td {background-color:#e8f6ff;}
+
+#Tableau_Bonus{
+
+    position: absolute;
+    top: 455px;
+    left:0px;
+    width:100%;
+    font-size: 14px;
+    background: url('../images/motif_th.png');
+    border-top: 1px solid white;
+    color: #cccccc;
+
+
+}
+
+#Tableau_Bonus img{
+
+    border: 1px solid grey;
+}
+
+#Tableau_Bonus {margin:0; border-collapse:collapse; border-radius: 0 0 5px 5px; max-height: 465px;}
+#Tableau_Bonus th, #Tableau_Bonus td {padding:3px 3px; font-size: 15px;}
+#Tableau_Bonus th {text-align:left; vertical-align:middle; font-weight:bold;}
+
+#Tableau_Bonus img{
+    position: relative;
+    top:2px;
+    left:4px;
+    -webkit-box-shadow: 0px 0px 8px 1px black;
+    -moz-box-shadow: 0px 0px 8px 1px black;
+    -o-box-shadow: 0px 0px 8px 1px black;
+    box-shadow: 0px 0px 8px 1px black;
+}
+#Tableau_Bonus {border:1px solid #666666;}
+#Tableau_Bonus th {border-right:1px solid #666666; background-color:#0085cc; color:#fff;}
+#Tableau_Bonus td {border:1px solid #666666;}
+#Tableau_Bonus tr.bg td {background-color:#e8f6ff;}
+
+/*-----------EQUIPEMENT-------------------*/
+#Equipement{
+
+    position: absolute;
+    border: 1px solid grey;
+    left:20px;
+    top: 80px;
+    width: 160px;
+    height: 192px;
+    background: url('../images/equipement.png') no-repeat;
+    overflow: hidden;
+}
+
+.Case_Equipement{
+
+    display: inline-table;
+    height: 32px;
+    min-width: 32px;
+    max-width: 32px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    color: white;
+    font-size: 10px; 
+
+}
+
+.Case_Arme{
+
+    position: absolute;
+    top:7px;
+    left:8px;
+}
+
+.Case_Armure{
+
+    position: absolute;
+    top:41px;
+    left:44px;
+}
+
+.Case_Casque{
+
+    position: absolute;
+    top:7px;
+    left:44px;
+}
+
+.Case_Bouclier{
+
+    position: absolute;
+    top:41px;
+    left:81px;
+}
+
+.Case_Bracelet{
+
+    position: absolute;
+    top:73px;
+    left:81px;
+}
+
+.Case_Boucles{
+
+    position: absolute;
+    top:58px;
+    left:120px;
+}
+
+.Case_Collier{
+
+    position: absolute;
+    top:90px;
+    left:120px;
+}
+
+.Case_Chaussure{
+
+    position: absolute;
+    top:150px;
+    left:45px;
+}
+
+.Case_Fleche{
+
+    position: absolute;
+    top:7px;
+    left:120px;
+}
+
+.Case_Special1{
+
+    position: absolute;
+    top:118px;
+    left:8px;
+}
+
+.Case_Special2{
+
+    position: absolute;
+    top:119px;
+    left:82px;
+}
+
+#Conteneur_Bonus2{
+    position: absolute;
+    left: 210px;
+    top:80px;
+}
+#Haut_Bonus2{
+
+    background: url(../images/Infobulle_Haut.png) no-repeat;
+    width: 325px;
+    height: 10px;
+}
+
+#Milieu_Bonus2{
+
+    text-align: center;
+    background: url(../images/Infobulle_Milieu.png) repeat-y;
+    width: 325px;
+}
+
+#Bas_Bonus2{
+
+    background: url(../images/Infobulle_Bas.png) no-repeat;
+    width: 325px;
+    height: 13px;
+}
+
+#Contenue_Milieu_Bonus_Equipement{
+
+    text-align: center;
+    color:#EFF1EE;
+    font-family: serif;
+    font-size: 13px;
+    text-shadow: 0px 2px 1px black;
+}
+
+#Contenue_Milieu_Bonus_EntrepotIS{
+
+    text-align: center;
+    color:#EFF1EE;
+    font-family: serif;
+    font-size: 13px;
+    text-shadow: 0px 2px 1px black;
+}
+
+
+#Detail_Liste_Equipement{
+
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    width: 625px;
+    max-height: 450px;
+    overflow-y:auto;
+    border-bottom: 1px solid grey;
+}
+
+
+#Tableau_Equipement {
+    background: url('../images/motif_th.png');
+    border-collapse:collapse;
+    color: #cccccc;
+    width: 100%;
+    border:1px solid grey;
+    border-bottom: none;
+    font-size: 13px;
+}
+#Tableau_Equipement th, #Tableau_Equipement td {padding:3px 3px;}
+
+#Tableau_Equipement tr {
+    padding:3px 3px;
+}
+
+#Tableau_Equipement th {
+    background: url('../images/motif.png'); 
+    color:#DDDDDD;
+    font-variant: small-caps;
+    text-align:left;
+    border:1px solid grey;
+    text-indent: 2px;
+    font-size: 15px;
+}
+#Tableau_Equipement tr.bg td {background-color:#e8f6ff;}
+
+.Couleur_Grade_Negatif{ color: red; }
+.Couleur_Grade_Positif{ color: #0066ff; }
+
+.Affichage_Cheval{
+
+    position: absolute;
+    border: 1px solid grey;
+    right: 20px;
+    top: 80px;
+    width: 548px;
+    height: 430px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: url('../images/motif_perso.png');
+}
+
+.Affichage_Cheval img{
+
+    margin-top: 55px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Icone_Modifier_Email{
+
+    background: url('../images/modifier.gif') no-repeat;
+    position: absolute;
+    z-index: 9999999;
+    top:176px;
+    left:337px;
+    width: 30px;
+    height: 25px;
+    opacity: 0.7;
+}
+
+.Icone_Modifier_Email:hover{opacity: 1;}
+
+.Icone_Modifier_Mot_De_Passe{
+
+    background: url('../images/modifier.gif') no-repeat;
+    position: absolute;
+    z-index: 9999999;
+    top:200px;
+    left:337px;
+    width: 30px;
+    height: 25px;
+    opacity: 0.7;
+}
+
+.Icone_Modifier_Mot_De_Passe:hover{opacity: 1;}
+
+.Icone_Voir_Code_Effacement{background: url('../images/icones/oeuil.png') no-repeat;position: absolute;z-index: 9999999;top:222px;left:311px;width: 16px;height: 16px;opacity: 0.7;box-shadow: 0px 0px 1px 1px grey; border-radius: 5px; }
+.Icone_Voir_Code_Effacement:hover{opacity: 1;}
+
+.Icone_Modifier_Code_Effacement{background: url('../images/modifier.gif') no-repeat;position: absolute;z-index: 9999999;top:223px;left:337px;width: 18px;height: 18px;opacity: 0.7;}
+.Icone_Modifier_Code_Effacement:hover{opacity: 1;}
+
+.Icone_Creer_Code_Effacement{background: url('../images/icones/add.png') no-repeat;position: absolute;z-index: 9999999;top:222px;left:337px;width: 18px;height: 18px;opacity: 0.7;}
+.Icone_Creer_Code_Effacement:hover{opacity: 1;}
+
+/* ------------------------------------- */
+
+.Icone_Voir_Code_Entrepot{background: url('../images/icones/oeuil.png') no-repeat;position: absolute;z-index: 9999999;top:246px;left:311px;width: 16px;height: 16px;opacity: 0.7;box-shadow: 0px 0px 1px 1px grey; border-radius: 5px; }
+.Icone_Voir_Code_Entrepot:hover{opacity: 1;}
+
+.Icone_Modifier_Code_Entrepot{background: url('../images/modifier.gif') no-repeat;position: absolute;z-index: 9999999;top:246px;left:337px;width: 18px;height: 18px;opacity: 0.7;}
+.Icone_Modifier_Code_Entrepot:hover{opacity: 1;}
+
+.Icone_Chef_Guilde{
+
+    position: absolute;
+    z-index: 9999;
+    width: 20px;
+    height: 20px;
+    left:348px;
+    top:26px;
+}
+.Deplacement_Status{position: relative; top:1px; left:-1px;}
+
+
+.Zone_Tableau_Rechargements{
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    width: 896px;
+    max-height: 450px;
+    overflow-y:auto;
+    border-bottom: 1px solid grey;
+}
+
+#Tableau_Rechargements {
+    background: url('../images/motif_th.png');
+    border-collapse:collapse;
+    color: #cccccc;
+    width: 100%;
+    border:1px solid grey;
+    border-bottom: none;
+    font-size: 13px;
+}
+#Tableau_Rechargements th, #Tableau_Rechargements td {padding:3px 3px;}
+
+#Tableau_Rechargements th {
+
+    background: url('../images/motif.png'); 
+    color:#DDDDDD;
+    font-variant: small-caps;
+    text-align:left;
+    border:1px solid grey;
+    text-indent: 2px;
+    font-size: 15px;
+}
+
+.Zone_Tableau_Achats{
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    width: 896px;
+    max-height: 450px;
+    overflow-y:auto;
+    border-bottom: 1px solid grey;
+}
+
+#Tableau_Achats {
+    background: url('../images/motif_th.png');
+    border-collapse:collapse;
+    color: #cccccc;
+    width: 100%;
+    border:1px solid grey;
+    border-bottom: none;
+    font-size: 13px;
+}
+#Tableau_Achats th, #Tableau_Achats td {padding:3px 3px;}
+#Tableau_Achats img{
+    width: 25px;
+    background: #333333;
+    border: 1px solid grey;
+}
+
+#Tableau_Achats th {
+
+    background: url('../images/motif.png'); 
+    color:#DDDDDD;
+    font-variant: small-caps;
+    text-align:left;
+    border:1px solid grey;
+    text-indent: 2px;
+    font-size: 15px;
+}
+
+.Bouton_Fermer_Fenetre{
+    position: absolute;
+    top:11px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+    background: url('../images/icones/fermer.png') no-repeat;
+    opacity: .8;
+}
+.Bouton_Fermer_Fenetre:hover{opacity: 1;}
+.Bouton_Fermer_Fenetre:active{opacity: .9;}
+
+.cadrephotoclassement{
+
+    background: #444444;
+    border: 1px solid grey;
+    margin: 0px;
+    position: relative;
+    left:-1px;
+}
+
+#Detail_Vente_Partie_Haute{
+
+    background: url('../images/item_shop/item_shop_haut.png');
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid grey;
+}
+
+.Titre_Fenetre_Detail_Vente{
+
+    position: relative;
+    top:14px;
+    left:24px;
+    font: bold 25px Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.Tableau_Informations_Detail_Vente{
+    position: absolute;
+    top:80px;
+    left:20px;
+    width: 187px;
+    border: 1px solid #303030;
+    text-align: left;
+    text-indent: 7px;
+    line-height: 20px;
+    font-size: 13px;
+    border-collapse: collapse;
+    border-radius:3px;
+    margin-right: 20px;
+    color: #cccccc;
+    background: url('../images/motif_th.png');
+}
+
+.Tableau_Informations_Detail_Vente td{border: 1px solid grey;}
+.Tableau_Informations_Detail_Vente th{height: 23px;font-size: 14px;border: 1px solid grey;}
+.Tableau_Informations_Detail_Vente .Colonne_Gauche{width: 80px;background:url('../images/motif.png');border: 1px solid grey;color: #DDDDDD;text-align: left;font-variant: small-caps;font-weight: bold;font-size: 15px;}
+
+
+.Tableau_Informations_Temps_de_Jeux_Vente{
+    position: absolute;
+    top:215px;
+    left:20px;
+    width: 187px;
+    border: 1px solid #303030;
+    text-align: left;
+    text-indent: 7px;
+    line-height: 20px;
+    font-size: 13px;
+    border-collapse: collapse;
+    border-radius:3px;
+    margin-right: 20px;
+    color: #cccccc;
+    background: url('../images/motif_th.png');
+}
+
+.Tableau_Informations_Temps_de_Jeux_Vente td{border: 1px solid grey;}
+.Tableau_Informations_Temps_de_Jeux_Vente th{height: 23px;font-size: 14px;border: 1px solid grey;}
+.Tableau_Informations_Temps_de_Jeux_Vente .Colonne_Gauche{width: 60px;background:url('../images/motif.png');border: 1px solid grey;color: #DDDDDD;text-align: left;font-variant: small-caps;font-weight: bold;font-size: 15px;}
+
+.Images_Recherches{
+    position: relative;
+    height: 20px;
+    background: #303030;
+    border: 1px solid grey;
+}

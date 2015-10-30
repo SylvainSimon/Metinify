@@ -1,0 +1,15 @@
+/* Base Superbox Styles */
+#superbox-overlay{position:fixed;top:0;left:0;z-index:9998;width:100%;height:100%; background-color: red;}
+#superbox-wrapper{position:fixed;z-index:9999;top:0;display:table;width:100%;height:100%; background-color: none;}
+#superbox-container{position:relative;display:table-cell;width:100%;height:100%;margin:0;padding:0;vertical-align:middle;}
+#superbox{margin:0 auto;padding:0;}
+#superbox-container .loading{margin:0;text-align:center;}
+
+/* Default Theme */
+#superbox-overlay{background:#000;}
+#superbox-container .loading{text-align:center;font-size:40px;color:#fff;}
+#superbox{ border: 1px solid #bbbbbb; overflow: hidden;}
+#superbox-innerbox{padding:0px 0; background: black;}
+#superbox.image{text-align:center;}
+#superbox .close,
+#superbox .nextprev{height: 0px; overflow:hidden;margin:0;}

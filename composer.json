@@ -1,0 +1,12 @@
+{
+    "require": {
+        "robloach/component-installer": "0.2.3",
+        "components/bootstrap": "3.3.4",
+        "afarkas/html5shiv": "3.7.2",
+        "components/jquery": "1.11.0",
+        "components/jqueryui": "1.11.4",
+        "almasaeed2010/adminlte": "2.2.*",
+        "afarkas/html5shiv": "3.7.2",
+        "rogeriopradoj/respond": "1.4.2"
+    }
+}

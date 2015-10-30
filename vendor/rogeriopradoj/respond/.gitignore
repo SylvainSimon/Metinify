@@ -1,0 +1,7 @@
+.DS_Store
+.vimdir
+node_modules
+
+/vendor/
+/components/
+composer.lock

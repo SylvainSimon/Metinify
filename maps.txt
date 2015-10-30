@@ -1,0 +1,32 @@
+1|||metin2_map_a1|||409600|||896000|||1040|||1280|||Rotes Reich Map 1
+3|||metin2_map_a3|||307200|||819200|||1030|||1030|||Rotes Reich Map 2
+4|||metin2_map_guild_01|||
+5|||metin2_map_monkey_dungeon_11|||
+21|||metin2_map_b1|||0|||102400|||1040|||1280|||Gelbes Reich Map 1
+23|||metin2_map_b3|||102400|||204800|||1030|||1030|||Gelbes Reich Map 2
+24|||metin2_map_guild_02|||
+25|||metin2_map_monkey_dungeon_12|||
+41|||metin2_map_c1|||921600|||204800|||1040|||1280|||Blaues Reich Map 1
+43|||metin2_map_c3|||819200|||204800|||1030|||1030|||Blaues Reich Map 2
+44|||metin2_map_guild_03|||
+45|||metin2_map_monkey_dungeon_13|||
+61|||map_n_snowm_01|||358400|||153600|||1535|||1535|||Eisland
+62|||metin2_map_n_flame_01|||588800|||614400|||1535|||1535|||Feuerland
+63|||metin2_map_n_desert_01|||204800|||486400|||1535|||1535|||Große Wüste
+64|||map_n_threeway|||256000|||665600|||1535|||1535|||Orktal
+65|||metin2_map_milgyo|||537600|||51200|||1020|||1020|||Tempel
+66|||metin2_map_deviltower1|||
+67|||metin2_map_trent|||281600|||0|||510|||510|||Geisterwald
+68|||metin2_map_trent02|||1049600|||0|||770|||770|||Roter Wald
+69|||metin2_map_WL_01|||
+70|||metin2_map_nusluck01|||
+71|||metin2_map_spiderdungeon_02|||665600|||435200|||770|||1025|||Spinnendungeon (2)
+72|||metin2_map_skipia_dungeon_01|||
+73|||metin2_map_skipia_dungeon_02|||
+74|||map_n_snowm_02|||0|||1049600|||1535|||1535|||Eisland (2)
+75|||metin2_map_milgyo_a|||153600|||1049600|||1020|||1020|||Tempel (2)
+77|||metin2_map_n_flame_02|||460800|||1049600|||1535|||1535|||Feuerland (2)
+78|||metin2_map_a2_1|||614400|||1049600|||1535|||1535|||Orktal (2)
+199|||vamosmt2_map_230|||912300|||912300|||1040|||1280|||Map 230
+200|||vamosmt2_map_xking|||83200|||0|||1040|||1280|||Map x-king
+201|||vamosmt2_map_dd|||8000000|||0|||1040|||1280|||Map 130 à 205

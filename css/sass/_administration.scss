@@ -1,0 +1,135 @@
+*{
+    outline: none;
+}
+
+.Liste_Menu_Administration{
+    list-style-type: none;
+}
+
+.Underline{
+    text-decoration: underline;
+}
+
+.Liste_Menu_Administration li{
+
+    position: relative;
+    width: 180px;
+    color: #FFFFFF;
+    margin: 7px auto 7px auto;
+    background:url('../images/bg_fonction.png');
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+    line-height: 20px;
+    text-indent: 3px;
+    border: 1px solid grey;
+    height: 20px;
+    opacity: .7;
+    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
+}
+
+.Liste_Menu_Administration li:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+.Table_Menu_Administration{position: relative;width: 94%;left:-4px;margin: 3px auto 10px auto;color: #FFFFFF;border-collapse: collapse;font-size: 13px;}
+.Table_Menu_Administration td{border-bottom: 1px solid grey;text-indent: 3px;}
+.Table_Menu_Administration tr{border-bottom: 1px solid grey;height: 20px;line-height: 20px;opacity: .7;box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;}
+.Table_Menu_Administration tr:hover{opacity: 1;cursor: pointer;background: #555555;}
+
+.Form_Recherche_Joueurs{
+
+    border: 1px solid grey;
+    width: 98%;
+    height: 50px;
+    margin: 8px auto 0 auto;
+    background:url('../images/slashit.png');
+}
+
+.Input_Rechercher_Joueurs{
+
+    position: relative;
+    top:5px;
+    left: 5px;
+    width: 170px;
+    height: 20px;
+    border: 1px solid grey;
+    color: grey;
+    text-indent: 3px;
+    background: url("../images/slashit2.png");
+}
+
+.Nombre_De_Resultat_Recherches{
+    position: relative;
+    top:9px;
+    left:6px;
+}
+
+.Choix_Grandeur{
+    
+    position: relative;
+    width: 100px;
+    height: 44px;
+    left:271px;
+    top:-36px;
+    padding-top: 7px;
+    padding-left: 10px;
+    border-right: 1px solid grey;
+    border-left: 1px solid grey;
+}
+
+.Input_Radio_Recherches{
+    
+    position:relative;
+    margin-bottom:7px;
+    top: 2px;
+}
+
+
+.Bouton_Rechercher_Joueurs{
+
+    position: relative;
+    top:5px;
+    left:7px;
+    width: 80px;
+    height: 20px;
+    border: 1px solid grey;
+    text-align: center;
+    background:url('../images/bg_fonction.png');
+    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
+    color: white;
+}
+
+.Bouton_Rechercher_Joueurs:hover{
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.Bouton_Rechercher_Joueurs:active{
+    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
+}
+
+
+.Table_Recherches{position: relative;width: 98%;margin: 10px auto 10px auto;border-collapse: collapse;border: 1px solid grey;background:url('../images/slashit.png');padding-left: 3px;padding-right: 3px;}
+.Table_Recherches tbody tr:hover{background: #444444;}
+.Table_Recherches td{border-bottom: 1px solid grey;border-right: 1px solid grey;padding-bottom: 1px;padding-top: 1px;text-indent: 3px;min-height: 18px;line-height: 18px;}
+.Table_Recherches thead{background: url("../images/slashit2.png");border-bottom: 1px solid grey;}
+.Table_Recherches th{height: 20px;border-right: 1px solid grey;line-height: 20px;text-indent: 3px;text-align: left;}
+
+.Cellule_Pseudonyme{width: 140px;}
+.Cellule_Compte{width: 180px;}
+.Cellule_Level{width: 35px;}
+.Cellule_Yangs{width: 92px;}
+.Cellule_Classe{width: 41px;}
+.Cellule_Empire{width: 42px;}
+.Cellule_IP{width: 103px;}
+.Cellule_Status{width: 29px;}
+
+.Images_Recherches{
+    position: relative;
+    top:2px;
+    height: 21px;
+    background: #303030;
+    border: 1px solid grey;
+}

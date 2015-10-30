@@ -1,0 +1,181 @@
+
+
+
+<nav id="mainnav">
+  <ul class="sidebar-menu">
+            <li><a href="javascript:void(0)" onclick="Ajax('pages/Accueil.php')">Accueil</a></li>
+            <li><a href="javascript:void(0)" onclick="Ajax('pages/Presentation.php')">Présentation</a></li>
+
+            <?php if (empty($_SESSION['Utilisateur'])) { ?>
+                <li id="Menu_Inscription_MonCompte2"><a href="javascript:void(0)" onclick="Ajax('pages/Inscription_Formulaire.php')">Inscription</a></li>
+                <li id="Menu_Inscription_MonCompte" style="display: none;"><a id="Lien_Mon_Compte" href="" class="fancybox_Mon_Compte" data-fancybox-type="iframe">Mon Compte</a></li>
+            <?php } else { ?>
+                <li id="Menu_Inscription_MonCompte"><a id="Lien_Mon_Compte" href="includes/Onglet.php?id=<?php echo $_SESSION['ID']; ?>&type=compte" class="fancybox_Mon_Compte" data-fancybox-type="iframe">Mon Compte</a></li>
+                <li id="Menu_Inscription_MonCompte2" style="display: none;"><li><a href="javascript:void(0)" onclick="Ajax('pages/Inscription_Formulaire.php')">Inscription</a></li>
+            <?php } ?>
+
+            <li><a href="javascript:void(0)" onclick="Ajax('pages/Classement_Joueurs_PvE.php')">Classement pve</a></li>
+            <li><a href="javascript:void(0)" onclick="Ajax('pages/Classement_Guildes.php')">Top des guildes</a></li>
+
+            <?php if (empty($_SESSION['Utilisateur'])) { ?>
+                <li id="Menu_Telechargement_ItemShop2" style="display: inline;"><a href="javascript:void(0)" onclick="Ajax('pages/Telechargement.php')">Téléchargement</a></li>
+                <li id="Menu_Telechargement_ItemShop" style="display: none;"><a id="Lien_Item_Shop" href="" class="fancybox_ItemShop" data-fancybox-type="iframe">Item-Shop</a></li>
+            <?php } else { ?>
+                <li id="Menu_Telechargement_ItemShop" style="display: inline;"><a id="Lien_Item_Shop" href="includes/Item_Shop/Item_Shop.php?id=<?php echo $_SESSION['ID']; ?>&type=ItemShop" class="fancybox_ItemShop" data-fancybox-type="iframe">Item-Shop</a></li>
+                <li id="Menu_Telechargement_ItemShop2" style="display: none;"><a href="javascript:void(0)" onclick="Ajax('pages/Telechargement.php')">Téléchargement</a></li>
+            <?php } ?>
+
+            <?php if (empty($_SESSION['Utilisateur'])) { ?>
+                <li id="Menu_Telechargement_Equipe2" style="display: inline;"><a href="javascript:void(0)" onclick="Ajax('pages/Calendrier.php')">Calendrier</a></li>
+                <li id="Menu_Telechargement_Equipe" style="display: none;"><a id="Lien_Marche" href="" class="fancybox_Marche" data-fancybox-type="iframe">Marché</a></li>
+            <?php } else { ?>
+                <li id="Menu_Telechargement_Equipe" style="display: inline;"><a id="Lien_Marche" href="includes/Marche/Marche.php" class="fancybox_Marche" data-fancybox-type="iframe">Marché</a></li>
+                <li id="Menu_Telechargement_Equipe2" style="display: none;"><a href="javascript:void(0)" onclick="Ajax('pages/Calendrier.php')">Calendrier</a></li>
+            <?php } ?>
+
+            <li><a href="javascript:void(0)" onclick="window.open('http://forum.vamosmt2.org/forum/')">Notre forum</a></li>
+
+            <?php if (empty($_SESSION['Utilisateur'])) { ?>
+                <li id="Menu_Support2"><a href="javascript:void(0)" onclick="Ajax('pages/Contacts.php')">Support</a></li>
+                <li id="Menu_Support" style="display: none;"><a id="Lien_Support" href="" class="fancybox_Messagerie" data-fancybox-type="iframe">Support</a></li>
+            <?php } else { ?>
+                <li id="Menu_Support"><a href="includes/Messagerie/Messagerie.php" id="Lien_Support" class="fancybox_Messagerie" data-fancybox-type="iframe">Support</a></li>
+                <li id="Menu_Support2" style="display: none;"><a href="javascript:void(0)" onclick="Ajax('pages/Contacts.php');">Support</a></li>
+                <?php } ?>
+        </ul>
+</nav>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".fancybox_Mon_Compte").fancybox({
+            minWidth: 1200,
+            minHeight: 550,
+            maxHeight: 550,
+            padding: 0,
+            closeBtn: false,
+            scrolling: 'no',
+            scrollOutside: false,
+            fitToView: true,
+            autoSize: false,
+            closeClick: false,
+            openEffect: 'elastic',
+            closeEffect: 'elastic',
+            openSpeed: 400,
+            closeSpeed: 200
+        });
+    });
+
+    $(document).ready(function () {
+        $(".fancybox_Marche").fancybox({
+            minWidth: 1200,
+            minHeight: 550,
+            maxHeight: 550,
+            padding: 0,
+            closeBtn: false,
+            scrolling: 'no',
+            scrollOutside: false,
+            fitToView: true,
+            autoSize: false,
+            closeClick: false,
+            openEffect: 'elastic',
+            closeEffect: 'elastic',
+            openSpeed: 400,
+            closeSpeed: 200
+        });
+    });
+
+    $(document).ready(function () {
+        $(".fancybox_Vote").fancybox({
+            minWidth: 1200,
+            minHeight: 550,
+            maxHeight: 550,
+            padding: 0,
+            closeBtn: false,
+            scrolling: 'no',
+            scrollOutside: false,
+            fitToView: true,
+            autoSize: false,
+            closeClick: false,
+            openEffect: 'elastic',
+            closeEffect: 'elastic',
+            openSpeed: 400,
+            closeSpeed: 200
+        });
+    });
+
+    $(document).ready(function () {
+        $(".fancybox_Messagerie").fancybox({
+            minWidth: 1000,
+            minHeight: 550,
+            maxHeight: 550,
+            padding: 0,
+            closeBtn: false,
+            scrolling: 'no',
+            scrollOutside: false,
+            fitToView: true,
+            autoSize: false,
+            closeClick: false,
+            openEffect: 'elastic',
+            closeEffect: 'elastic',
+            openSpeed: 400,
+            closeSpeed: 200
+        });
+    });
+
+    $(document).ready(function () {
+        $(".fancybox_ItemShop").fancybox({
+            minWidth: 780,
+            minHeight: 550,
+            maxHeight: 550,
+            padding: 0,
+            closeBtn: false,
+            scrolling: 'no',
+            scrollOutside: false,
+            fitToView: true,
+            autoSize: false,
+            closeClick: false,
+            openEffect: 'elastic',
+            closeEffect: 'elastic',
+            openSpeed: 400,
+            closeSpeed: 200
+        });
+    });
+
+    $(document).ready(function () {
+        $(".fancybox_Statistiques").fancybox({
+            minWidth: 1000,
+            minHeight: 550,
+            maxHeight: 550,
+            padding: 0,
+            closeBtn: false,
+            scrolling: 'no',
+            scrollOutside: false,
+            fitToView: true,
+            autoSize: false,
+            closeClick: false,
+            openEffect: 'elastic',
+            closeEffect: 'elastic',
+            openSpeed: 400,
+            closeSpeed: 200
+        });
+    });
+
+    $(document).ready(function () {
+        $(".fancybox_Trailer").fancybox({
+            minWidth: 1200,
+            minHeight: 521,
+            maxHeight: 521,
+            padding: 0,
+            closeBtn: false,
+            scrolling: 'no',
+            scrollOutside: false,
+            fitToView: true,
+            autoSize: false,
+            closeClick: false,
+            openEffect: 'elastic',
+            closeEffect: 'elastic',
+            openSpeed: 400,
+            closeSpeed: 200
+        });
+    });
+</script>

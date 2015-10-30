@@ -1,0 +1,124 @@
+<?php @session_write_close(); ?>
+<?php @session_start(); ?>
+<?php @include '../../configPDO.php'; ?>
+<?php @include '../../pages/Fonctions_Utiles.php'; ?>
+<?php if (!empty($_SESSION["Administration_PannelAdmin_Jeton"])) { ?>
+    <?php
+    /* ------------------------ Vérification Données ---------------------------- */
+    $Recuperation_Droits = "SELECT * 
+                            FROM $BDD_Site.administration_users
+                            WHERE id_compte = :id_compte
+                            LIMIT 1";
+    $Parametres_Recuperation_Droits = $Connexion->prepare($Recuperation_Droits);
+    $Parametres_Recuperation_Droits->execute(array(':id_compte' => $_SESSION["ID"]));
+    $Parametres_Recuperation_Droits->setFetchMode(PDO::FETCH_OBJ);
+    $Nombre_De_Resultat_Recuperation_Droits = $Parametres_Recuperation_Droits->rowCount();
+    /* -------------------------------------------------------------------------- */
+    ?>
+    <?php if ($Nombre_De_Resultat_Recuperation_Droits != 0) { ?>
+        <?php $Donnees_Recuperation_Droits = $Parametres_Recuperation_Droits->fetch(); ?>
+
+        <?php if ($Donnees_Recuperation_Droits->recherche_joueurs == 1) { ?>
+
+            <?php
+            $Terme_A_Recherche = $_POST["terme"];
+            $Param_Recherche = $_POST["param"];
+            $Param_Grandeur = $_POST["grandeur"];
+
+            $Tableau_Grandeurs = array("ASC", "DESC");
+            $Tableau_Parametres = array("player.name", "player.level", "account.login", "player.job", "player.gold", "player_index.empire", "player.ip", "account.status");
+
+            if (in_array($Param_Recherche, $Tableau_Parametres)) {
+
+                if (in_array($Param_Grandeur, $Tableau_Grandeurs)) {
+
+            $Listage_Joueur = "SELECT player.name,
+                                  player.level,
+                                  player.id,
+								  player.last_play,
+                                  player.playtime,
+								  player.ip,
+                                  player.job,
+                                  player_index.empire,
+                                      account.status
+                               FROM $BDD_Player.player
+                               LEFT JOIN $BDD_Account.account
+                               ON account.id = player.account_id
+                               LEFT JOIN $BDD_Player.player_index
+                               ON account.id = player_index.id
+                               WHERE player.name LIKE '%' ? '%'
+							   AND player.name != 'PvPStory'
+                               ORDER by $Param_Recherche $Param_Grandeur";
+                } else {
+                    echo "Paramètre non-valide.";
+                    exit();
+                }
+            } else {
+
+                echo "Paramètre non-valide.";
+                exit();
+            }
+            $Parametres_Listage_Joueur = $Connexion->prepare($Listage_Joueur);
+            $Parametres_Listage_Joueur->execute(array(
+                $Terme_A_Recherche
+            ));
+            $Parametres_Listage_Joueur->setFetchMode(PDO::FETCH_OBJ);
+            $Nombre_De_Resultat_Listage_Joueur = $Parametres_Listage_Joueur->rowCount();
+            ?>
+
+            <?php echo $Nombre_De_Resultat_Listage_Joueur . "|"; ?>
+
+            <?php if ($Nombre_De_Resultat_Listage_Joueur != 0) { ?>
+
+                <?php while ($Donnees_Listage_Joueur = $Parametres_Listage_Joueur->fetch()) { ?>
+                    <tr>
+                                        <td><?= $Donnees_Listage_Joueur->name; ?></td>
+                                        <td><?= $Donnees_Listage_Joueur->last_play; ?></td>
+                                        <td><?= $Donnees_Listage_Joueur->level; ?></td>
+                        <td><?= $Donnees_Listage_Joueur->playtime; ?></td>
+                        <td>
+                            <img class="Images_Recherches" title="<?= Find_Name_Race($Donnees_Listage_Joueur->job); ?>" src="<?= Find_Image_Race($Donnees_Listage_Joueur->job); ?>" height="20" />
+                        </td>
+                        <td>
+                            <img class="Images_Recherches" title="<?= Find_Name_Empire($Donnees_Listage_Joueur->empire); ?>" src="<?= Find_Image_Empire($Donnees_Listage_Joueur->empire); ?>" height="20" />
+                        </td>
+                        <td><?= $Donnees_Listage_Joueur->ip; ?></td>
+                        <?php if ($Donnees_Listage_Joueur->status == "OK") { ?>
+                            <?php if ($Donnees_Recuperation_Droits->bannissement == 1) { ?>
+                                <td id="Personnage_ID_<?php echo $Donnees_Listage_Joueur->id; ?>" class="fancybox" data-fancybox-type="iframe" href="administration/includes/Bannissement.php?player_id=<?= $Donnees_Listage_Joueur->id; ?>">
+                                    <img class="Images_Recherches Pointer" title="<?= Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
+                                </td>
+                            <?php } else { ?>
+                                <td>
+                                    <img class="Images_Recherches" title="<?= Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
+                                </td>
+                            <?php } ?>
+                        <?php } else if ($Donnees_Listage_Joueur->status == "BLOCK") { ?>
+                            <?php if ($Donnees_Recuperation_Droits->debannissement == 1) { ?>
+                                <td id="Personnage_ID_<?php echo $Donnees_Listage_Joueur->id; ?>" class="fancybox" data-fancybox-type="iframe" href="administration/includes/Debannissement.php?player_id=<?= $Donnees_Listage_Joueur->id; ?>">
+                                    <img class="Images_Recherches Pointer" title="<?= Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
+                                </td>
+                            <?php } else { ?>
+                                <td>
+                                    <img class="Images_Recherches" title="<?= Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
+                                </td>
+                            <?php } ?>
+                        <?php } ?>
+                    </tr>
+                <?php } ?>
+
+            <?php } else { ?>
+                <tr>
+                    <td colspan='7'>Aucun résultat n'as été trouvé.</td>
+                </tr>
+            <?php } ?>
+
+        <?php } else { ?>
+            <?= "Interdiction_Acces"; ?>
+        <?php } ?>
+    <?php } else { ?>
+        <?= "Interdiction_Acces"; ?>
+    <?php } ?>
+<?php } else { ?>
+    <?= "Interdiction_Acces"; ?>
+<?php } ?>
