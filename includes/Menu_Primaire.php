@@ -14,8 +14,8 @@
                 <li id="Menu_Inscription_MonCompte2" style="display: none;"><li><a href="javascript:void(0)" onclick="Ajax('pages/Inscription_Formulaire.php')">Inscription</a></li>
             <?php } ?>
 
-            <li><a href="javascript:void(0)" onclick="Ajax('pages/Classement_Joueurs_PvE.php')">Classement pve</a></li>
-            <li><a href="javascript:void(0)" onclick="Ajax('pages/Classement_Guildes.php')">Top des guildes</a></li>
+            <li><a href="javascript:void(0)" onclick="Ajax('pages/Classement_Joueurs_PvE.php')">Classement PVE</a></li>
+            <li><a href="javascript:void(0)" onclick="Ajax('pages/Classement_Guildes.php')">Classement des guildes</a></li>
 
             <?php if (empty($_SESSION['Utilisateur'])) { ?>
                 <li id="Menu_Telechargement_ItemShop2" style="display: inline;"><a href="javascript:void(0)" onclick="Ajax('pages/Telechargement.php')">Téléchargement</a></li>
@@ -26,7 +26,7 @@
             <?php } ?>
 
             <?php if (empty($_SESSION['Utilisateur'])) { ?>
-                <li id="Menu_Telechargement_Equipe2" style="display: inline;"><a href="javascript:void(0)" onclick="Ajax('pages/Calendrier.php')">Calendrier</a></li>
+                <li id="Menu_Telechargement_Equipe2" style="display: inline;"><a href="javascript:void(0)" onclick="Ajax('pages/Calendrier.php')">Calendrier des events</a></li>
                 <li id="Menu_Telechargement_Equipe" style="display: none;"><a id="Lien_Marche" href="" class="fancybox_Marche" data-fancybox-type="iframe">Marché</a></li>
             <?php } else { ?>
                 <li id="Menu_Telechargement_Equipe" style="display: inline;"><a id="Lien_Marche" href="includes/Marche/Marche.php" class="fancybox_Marche" data-fancybox-type="iframe">Marché</a></li>
