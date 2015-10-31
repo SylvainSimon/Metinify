@@ -23,11 +23,11 @@ if (!empty($_SESSION['ID'])) {
 
     <div class="row">
 
-        <div class="col-lg-3 col-md-4 col-sm-4">
+        <div class="col-lg-3 col-md-4 col-sm-4" style="padding-left: 40px;">
             Bienvenue <span onclick="Ajax('pages/Logs_Connexion.php')" data-tooltip="Historique des connexions" class="Bold Pointer"><?php echo $_SESSION['Utilisateur'] ?></span>
         </div>
 
-        <div style="position: relative; left:-4px;"  class="col-lg-5 col-md-6 col-sm-6">
+        <div style="position: relative; left:-4px; top: -1px;"  class="col-lg-5 col-md-6 col-sm-6">
             <span data-tooltip="VamoNaies">
                 <img class="inline" src="images/rectopiece.png" height="35"/>
                 <div class="inline" id="Nombre_De_Vamonaies"><?php echo $_SESSION['VamoNaies']; ?></div>

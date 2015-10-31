@@ -58,6 +58,29 @@ form { margin:0; padding:0; }
 
 .No_Select{user-select: none; -webkit-user-select: none; -khtml-user-select: none; -o-user-select: none; -moz-user-select: -moz-none;}
 
+
+.box-telechargement-exe{
+    border: 1px solid #6D4949; 
+    background-color: #6D1A0C !important; 
+    cursor: pointer;
+    color:white;
+}
+
+.box-telechargement-exe:hover{
+    background-color: #8F220F !important; 
+}
+
+.box-telechargement-torrent{
+    border: 1px solid #668D47; 
+    background-color: #3E661E !important; 
+    cursor: pointer;
+    color:white;
+}
+
+.box-telechargement-torrent:hover{
+    background-color: #53852A !important; 
+}
+
 .barre_menu {
     height:2px;
     background : url('../../images/h1.gif') repeat-x 0px 0px;
@@ -453,9 +476,6 @@ footer {
 @media (max-width: 767px) {
     footer {
         position: relative;
-    }
-    #Barre_Haut {
-        position: absolute;
     }
 
     .paddingPrincipal{

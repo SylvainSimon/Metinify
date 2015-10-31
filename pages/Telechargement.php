@@ -12,7 +12,7 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <div class="info-box flat" style="border: 1px solid #6D4949; background-color: #6D1A0C !important; cursor: pointer;" onclick="window.open('http://vamosmt2.org:81/Installateur%20VamosMT2%20Client%20officiel%202014-2015.exe', '_self')">
+                <div class="info-box flat box-telechargement-exe" onclick="window.open('http://vamosmt2.org:81/Installateur%20VamosMT2%20Client%20officiel%202014-2015.exe', '_self')">
 
                     <span class="info-box-icon"><i class="material-icons md-icon-download md-36"></i></span>
 
@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="info-box flat" style="border: 1px solid #668D47; background-color: #53852A !important; cursor: pointer;" onclick="window.open('http://vamosmt2.org:81/VamosMT2%20Client%20officiel%202014-2015.exe.torrent', '_self')">
+                <div class="info-box flat box-telechargement-torrent" onclick="window.open('http://vamosmt2.org:81/VamosMT2%20Client%20officiel%202014-2015.exe.torrent', '_self')">
 
                     <span class="info-box-icon"><i class="material-icons md-icon-shuffle md-36"></i></span>
 
@@ -57,7 +57,7 @@
                     Configuration minimale
                 </h4>
 
-                <table class="table table-hover table-condensed table-responsive" style="border-collapse: collapse;">
+                <table class="table table-hover table-condensed table-responsive no-margin" style="border-collapse: collapse;">
 
                     <tr>
                         <td>Système d'exploitation</td>
@@ -94,7 +94,7 @@
                     Configuration recommandé
                 </h4>
 
-                <table class="table table-hover table-condensed table-responsive" style="border-collapse: collapse;">
+                <table class="table table-hover table-condensed table-responsive no-margin" style="border-collapse: collapse;">
 
                     <tr>
                         <td>Système d'exploitation</td>

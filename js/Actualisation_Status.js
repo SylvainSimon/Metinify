@@ -5,6 +5,7 @@ function ServeurClassyd() {
         url: "ajax/Actualisation_Classyd.php",
         success: function (msg) {
             $("#ServeurClassyd").html(msg);
+            redraw();
         }
     });
     return false;
@@ -17,6 +18,7 @@ function JoueursConnectes() {
         url: "ajax/Joueurs_Connectes.php",
         success: function (msg) {
             $("#nombreconnecter").html(msg);
+            redraw();
         }
     });
     return false;
