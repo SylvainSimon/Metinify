@@ -16,19 +16,19 @@
 
     <div class="pull-right" style="padding-top: 5px; padding-bottom: 2px;">
 
-        <a href="https://www.facebook.com/groups/vamosmt2" target="_blank" style="color:white; margin-left: 5px;">
+        <a data-tooltip-position="top" data-tooltip="Notre page Facebook" href="https://www.facebook.com/groups/vamosmt2" target="_blank" style="color:white; margin-left: 5px;">
             <i class="genericon genericon-facebook-alt withOpacity" style="background: #3b5998; border-radius: 50%; padding: 6px;"></i>
         </a>
 
-        <a href="https://twitter.com/VamosMT2" target="_blank" style="color:white; margin-left: 5px;">
+        <a data-tooltip-position="top" data-tooltip="Notre page Twiter" href="https://twitter.com/VamosMT2" target="_blank" style="color:white; margin-left: 5px;">
             <i class="genericon genericon-twitter withOpacity" style="background: #55acee; border-radius: 50%; padding: 6px;"></i>
         </a>
 
-        <a href="http://www.youtube.com/VamosMt2" target="_blank" style="color:white; margin-left: 5px;">
+        <a data-tooltip-position="top" data-tooltip="Notre chaine Youtube" href="http://www.youtube.com/VamosMt2" target="_blank" style="color:white; margin-left: 5px;">
             <i class="genericon genericon-youtube withOpacity" style="background: #FF2D2D; border-radius: 50%; padding: 6px;"></i>
         </a>
 
-        <a href="ts3server://ts3.vamosmt2.org" style="color:white; margin-left: 5px;">
+        <a data-tooltip-position="top" data-tooltip="Teamspeack" href="ts3server://ts3.vamosmt2.org" style="color:white; margin-left: 5px;">
             <i class="genericon genericon-microphone withOpacity" style="background: #676B77; border-radius: 50%; padding: 6px;"></i>
         </a>
 
@@ -40,4 +40,3 @@
     </div>
 
 </div>
-<script src="Google/Element_Traduction.js" type='text/javascript'></script>

@@ -10,11 +10,11 @@ function Ajax(url) {
 
             nav = document.getElementById("Contenue_Principal");
 
+            $("#Contenue_Principal").html(msg);
+            Barre_De_Statut("Chargement terminé.");
+            Icone_Chargement(0);
 
-                $("#Contenue_Principal").html(msg);
-                Barre_De_Statut("Chargement terminé.");
-                Icone_Chargement(0);
-
+            redraw();
 
             history.pushState({
                 isMine: true
@@ -33,7 +33,7 @@ function Ajax(url) {
                     window.eval(scripts[i].text);
                 }
             }
-            
+
         },
         error: function () {
 

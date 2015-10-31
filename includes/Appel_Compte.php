@@ -9,7 +9,7 @@ include '../pages/Tableaux_Arrays.php';
 $date = Date("d/m/Y H:i:s");
 $Date_Actuel_En_Seconde = time();
 
-$Appel_Compte_Id = $_POST['id'];
+$Appel_Compte_Id = $_GET['id'];
 
 /* ------------------------------ Vérification connecte ---------------------------------------------- */
 $Verification_Connecte = "SELECT id FROM player.player
@@ -66,34 +66,47 @@ $Nombre_De_Transaction = $Parametres_Nombre_Transaction->rowCount();
 /* -------------------------------------------------------------------------- */
 ?>
 
-<div id="Onglets">
+<link rel="stylesheet" href="../css/demos.css">
 
-    <ul>
+<div class="box box-default flat">
 
-        <li><a href="#Onglet_InformationGeneral">Informations générales</a></li>
-        <li><a href="#Onglet_Entrepot">Entrepôt</a></li>
-        <li><a href="#Onglet_Entrepot_IS">Entrepot Item-Shop</a></li>
-        <li><a href="#Historiques_Paiements">Historique Paiements</a></li>
-        <li><a href="#Historiques_Achats">Historique Achats</a></li>
+    <div class="box-header">
+        <h3 class="box-title">hjfghj</h3>
+    </div>
 
-        <div class="Bouton_Fermer_Fenetre Pointer" title="Fermer cette fenêtre" onclick="window.parent.$.fancybox.close();"></div>
+    <div class="box-body no-padding">
 
-    </ul>
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                
+                <li class="active"><a href="#Onglet_InformationGeneral" data-toggle="tab" aria-expanded="true">Générales</a></li>
+                <li class=""><a href="#Onglet_Entrepot" data-toggle="tab" aria-expanded="false">Entrepôt</a></li>
+                <li class=""><a href="#Onglet_Entrepot_IS" data-toggle="tab" aria-expanded="false">Entrepot Item-Shop</a></li>
+                <li class=""><a href="#Historiques_Paiements" data-toggle="tab" aria-expanded="false">Paiements</a></li>
+                <li class=""><a href="#Historiques_Achats" data-toggle="tab" aria-expanded="false">Achats</a></li>
+            </ul>
+            <div class="tab-content">
 
-    <?php include 'Appel_Compte/Onglet_Informations_General.php'; ?>
-    <?php include 'Appel_Compte/Onglet_Entrepot.php'; ?>
-    <?php include 'Appel_Compte/Onglet_Entrepot_IS.php'; ?>
-    <?php include 'Appel_Compte/Onglet_Historiques_Paiements.php'; ?>
-    <?php include 'Appel_Compte/Onglet_Historiques_Achats.php'; ?>
+                <?php include 'Appel_Compte/Onglet_Informations_General.php'; ?>
+                <?php include 'Appel_Compte/Onglet_Entrepot.php'; ?>
+                <?php include 'Appel_Compte/Onglet_Entrepot_IS.php'; ?>
+                <?php include 'Appel_Compte/Onglet_Historiques_Paiements.php'; ?>
+                <?php include 'Appel_Compte/Onglet_Historiques_Achats.php'; ?>
 
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <script>
+            $(function () {
+                $("#Onglets").tabs({
+                    event: "click"
+                });
+            });
+
+        </script>
+
+
+        <div class="clear"></div>
+    </div>
 </div>
-
-
-<script>
-    $(function() {
-        $( "#Onglets" ).tabs({
-            event: "click"
-        });
-    });
-
-</script>

@@ -1,30 +1,4 @@
-body{
-
-    margin: 0px;
-    padding: 0px;
-    background: url('../images/item_shop/item_shop_fond.png');
-    border-radius: 9px;
-    overflow: hidden;
-}
-
-/* Let's get this party started */
-*::-webkit-scrollbar {width: 17px;border: 1px solid grey;background: #333333;}
-/* Track */
-*::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 6px #111111; -webkit-border-radius: 3px;border-radius: 3px;}
-/* Handle */
-*::-webkit-scrollbar-thumb {-webkit-border-radius: 3px;border-radius: 3px;width: 13px;border: 1px solid grey;background: #111111; -webkit-box-shadow: inset 0 0 6px #111111; }
-
-
-*{
-    outline: none;
-}
-
 .Pointer{cursor: pointer;}
-
-body a{
-
-    color: #999999;
-}
 
 .ui-tabs { 
     position: relative; 
@@ -35,11 +9,6 @@ body a{
     display: block;
     margin: 0; 
 
-}
-
-.Cursor{
-
-    cursor: pointer;
 }
 
 .ui-tabs .ui-tabs-nav li { 
@@ -68,41 +37,7 @@ body a{
 .ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 1em 1.4em; background: none; }
 .ui-tabs .ui-tabs-hide { display: none !important; }
 
-#Onglets ul li a{
 
-    position: relative;
-    background:url('../images/bg_fonction.png');
-    top:13px;
-    margin-left: 25px;
-    border: 1px solid grey;
-    font-size: 14px;
-    color: #DDDDDD;
-    font-weight: bold;
-
-    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
-
-}
-
-#Onglets ul li a:hover{
-
-    box-shadow: none;
-}
-
-#Onglets ul li a:active{
-
-    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
-}
-
-#Onglets ul{
-
-    position: relative;
-    height: 60px;
-    background: url('../images/motif_th.png');
-    box-shadow:0 0 2px 1px #333333;
-    border-bottom :1px solid grey;
-    padding-left: 35px;
-    margin-top: 0px;
-}
 
 #Tableau_Recapitulatif_Paiement{position: absolute;top:80px;left:20px;width: 230px;border: 1px solid #303030;text-align: left;text-indent: 7px;line-height: 20px;font-size: 13px;border-collapse: collapse;border-radius:3px;margin-right: 20px;color: #cccccc;background: url('../images/motif_th.png');}
 #Tableau_Recapitulatif_Paiement .Colonne_Gauche{width: 170px;background:url('../images/motif.png');border: 1px solid grey;color: #DDDDDD;text-align: left;font-variant: small-caps;font-weight: bold;font-size: 15px; }
@@ -333,21 +268,6 @@ body a{
 
 }
 
-.box_shadows{
-
-    -webkit-box-shadow: 0px 0px 8px 1px black;
-    -moz-box-shadow: 0px 0px 8px 1px black;
-    -o-box-shadow: 0px 0px 8px 1px black;
-    box-shadow: 0px 0px 8px 1px black;
-
-    background: url('../images/motif_th.png');
-}
-
-table td, #Tableau1 td, #Tableau3 td, #Tableau_Joueur_ID td, #Tableau5 td, #Tableau_Equitation td{
-
-    border: 1px solid grey;
-}
-
 .TD_Bleu{
     width: 40%;
     background:url('../images/motif.png');
@@ -515,8 +435,6 @@ table td, #Tableau1 td, #Tableau3 td, #Tableau_Joueur_ID td, #Tableau5 td, #Tabl
     width: 169px;
     height: 357px;
     background: url('../images/entrepot.png') no-repeat;
-    box-shadow: 0px 0px 8px 1px black;
-
     border-radius: 8px;
 
 }
@@ -596,13 +514,6 @@ table td, #Tableau1 td, #Tableau3 td, #Tableau_Joueur_ID td, #Tableau5 td, #Tabl
     width: 169px;
     height: 327px;
     background: url('../images/entrepot_IS.png') no-repeat;
-
-    -webkit-box-shadow: 0px 0px 8px 1px black;
-    -moz-box-shadow: 0px 0px 8px 1px black;
-    -o-box-shadow: 0px 0px 8px 1px black;
-    box-shadow: 0px 0px 8px 1px black;
-
-    border-radius: 8px;
 
 }
 
@@ -771,8 +682,6 @@ table td, #Tableau1 td, #Tableau3 td, #Tableau_Joueur_ID td, #Tableau5 td, #Tabl
 
     width:784px;
 
-    box-shadow: 0px 0px 1px 1px black;
-
     border: 1px solid #cfcfcf;
     background: url('../images/motif_th.png');
     color: #cccccc;
@@ -813,10 +722,6 @@ table td, #Tableau1 td, #Tableau3 td, #Tableau_Joueur_ID td, #Tableau5 td, #Tabl
     position: relative;
     top:2px;
     left:4px;
-    -webkit-box-shadow: 0px 0px 8px 1px black;
-    -moz-box-shadow: 0px 0px 8px 1px black;
-    -o-box-shadow: 0px 0px 8px 1px black;
-    box-shadow: 0px 0px 8px 1px black;
 }
 #Tableau_Bonus {border:1px solid #666666;}
 #Tableau_Bonus th {border-right:1px solid #666666; background-color:#0085cc; color:#fff;}
@@ -1061,7 +966,7 @@ table td, #Tableau1 td, #Tableau3 td, #Tableau_Joueur_ID td, #Tableau5 td, #Tabl
 
 .Icone_Modifier_Mot_De_Passe:hover{opacity: 1;}
 
-.Icone_Voir_Code_Effacement{background: url('../images/icones/oeuil.png') no-repeat;position: absolute;z-index: 9999999;top:222px;left:311px;width: 16px;height: 16px;opacity: 0.7;box-shadow: 0px 0px 1px 1px grey; border-radius: 5px; }
+.Icone_Voir_Code_Effacement{background: url('../images/icones/oeuil.png') no-repeat;position: absolute;z-index: 9999999;top:222px;left:311px;width: 16px;height: 16px;opacity: 0.7; border-radius: 5px; }
 .Icone_Voir_Code_Effacement:hover{opacity: 1;}
 
 .Icone_Modifier_Code_Effacement{background: url('../images/modifier.gif') no-repeat;position: absolute;z-index: 9999999;top:223px;left:337px;width: 18px;height: 18px;opacity: 0.7;}

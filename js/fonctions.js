@@ -37,7 +37,16 @@ function createTooltip() {
                 case "left":
                     positionTooltip = {my: 'right center', at: 'left center'};
                     tooltipClass = "left";
-
+                    break;
+                    
+                case "top":
+                    positionTooltip = {my: 'center bottom', at: 'center top-20'};
+                    tooltipClass = "top";
+                    break;
+                    
+                case "right":
+                    positionTooltip = {my: 'left center', at: 'right+25 center'};
+                    tooltipClass = "right";
                     break;
             }
 

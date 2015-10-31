@@ -1,48 +1,57 @@
-
-
-
 <nav id="mainnav">
-  <ul class="sidebar-menu">
-            <li><a href="javascript:void(0)" onclick="Ajax('pages/Accueil.php')">Accueil</a></li>
-            <li><a href="javascript:void(0)" onclick="Ajax('pages/Presentation.php')">Présentation</a></li>
+    <ul class="sidebar-menu">
+        <li><a href="javascript:void(0)" onclick="Ajax('pages/Accueil.php')">Accueil</a></li>
+        <li><a href="javascript:void(0)" onclick="Ajax('pages/Presentation.php')">Présentation</a></li>
 
-            <?php if (empty($_SESSION['Utilisateur'])) { ?>
-                <li id="Menu_Inscription_MonCompte2"><a href="javascript:void(0)" onclick="Ajax('pages/Inscription_Formulaire.php')">Inscription</a></li>
-                <li id="Menu_Inscription_MonCompte" style="display: none;"><a id="Lien_Mon_Compte" href="" class="fancybox_Mon_Compte" data-fancybox-type="iframe">Mon Compte</a></li>
-            <?php } else { ?>
-                <li id="Menu_Inscription_MonCompte"><a id="Lien_Mon_Compte" href="includes/Onglet.php?id=<?php echo $_SESSION['ID']; ?>&type=compte" class="fancybox_Mon_Compte" data-fancybox-type="iframe">Mon Compte</a></li>
-                <li id="Menu_Inscription_MonCompte2" style="display: none;"><a href="javascript:void(0)" onclick="Ajax('pages/Inscription_Formulaire.php')">Inscription</a></li>
+
+        <?php if (empty($_SESSION['Utilisateur'])) { ?>
+            <li id="Menu_Inscription_MonCompte2"><a href="javascript:void(0)" onclick="Ajax('pages/Inscription_Formulaire.php')">Inscription</a></li>
+            <li id="Menu_Inscription_MonCompte" style="display: none;"><a id="Lien_Mon_Compte" href="" class="fancybox_Mon_Compte">Mon Compte</a></li>
+        <?php } else { ?>
+            <li id="Menu_Inscription_MonCompte"><a id="Lien_Mon_Compte" href="javascript:void(0)" onclick="Ajax('includes/Appel_Compte.php?id=<?php echo $_SESSION['ID']; ?>')">Mon Compte</a></li>
+            <li id="Menu_Inscription_MonCompte2" style="display: none;"><a href="javascript:void(0)" onclick="Ajax('pages/Inscription_Formulaire.php')">Inscription</a></li>
+        <?php } ?>
+
+        <li class="treeview">
+            <a href="#">
+                <span>Classements</span>
+                <i class="material-icons md-icon-arrow-down pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="#" onclick="Ajax('pages/Classement_Joueurs_PvE.php')">Joueurs PVE</a>
+                    <a href="#">Joueurs PVP</a>
+                    <a href="#" onclick="Ajax('pages/Classement_Guildes.php')">Guildes</a>
+                </li>
+            </ul>
+        </li>
+        
+        <?php if (empty($_SESSION['Utilisateur'])) { ?>
+            <li id="Menu_Telechargement_ItemShop2" style="display: inline;"><a href="javascript:void(0)" onclick="Ajax('pages/Telechargement.php')">Téléchargement</a></li>
+            <li id="Menu_Telechargement_ItemShop" style="display: none;"><a id="Lien_Item_Shop" href="" class="fancybox_ItemShop" data-fancybox-type="iframe">Item-Shop</a></li>
+        <?php } else { ?>
+            <li id="Menu_Telechargement_ItemShop" style="display: inline;"><a id="Lien_Item_Shop" href="includes/Item_Shop/Item_Shop.php?id=<?php echo $_SESSION['ID']; ?>&type=ItemShop" class="fancybox_ItemShop" data-fancybox-type="iframe">Item-Shop</a></li>
+            <li id="Menu_Telechargement_ItemShop2"><a href="javascript:void(0)" onclick="Ajax('pages/Telechargement.php')">Téléchargement</a></li>
+        <?php } ?>
+
+        <?php if (empty($_SESSION['Utilisateur'])) { ?>
+            <li id="Menu_Telechargement_Equipe2" style="display: inline;"><a href="javascript:void(0)" onclick="Ajax('pages/Calendrier.php')">Calendrier des events</a></li>
+            <li id="Menu_Telechargement_Equipe" style="display: none;"><a id="Lien_Marche" href="" class="fancybox_Marche" data-fancybox-type="iframe">Marché des personnages</a></li>
+        <?php } else { ?>
+            <li id="Menu_Telechargement_Equipe" style="display: inline;"><a id="Lien_Marche" href="includes/Marche/Marche.php" class="fancybox_Marche" data-fancybox-type="iframe">Marché des personnages</a></li>
+            <li id="Menu_Telechargement_Equipe2" style="display: none;"><a href="javascript:void(0)" onclick="Ajax('pages/Calendrier.php')">Calendrier</a></li>
+        <?php } ?>
+
+        <li><a href="javascript:void(0)" onclick="window.open('http://forum.vamosmt2.org/forum/')">Notre forum</a></li>
+
+        <?php if (empty($_SESSION['Utilisateur'])) { ?>
+            <li id="Menu_Support2"><a href="javascript:void(0)" onclick="Ajax('pages/Contacts.php')">Support</a></li>
+            <li id="Menu_Support" style="display: none;"><a id="Lien_Support" href="" class="fancybox_Messagerie" data-fancybox-type="iframe">Support</a></li>
+        <?php } else { ?>
+            <li id="Menu_Support"><a href="includes/Messagerie/Messagerie.php" id="Lien_Support" class="fancybox_Messagerie" data-fancybox-type="iframe">Support</a></li>
+            <li id="Menu_Support2" style="display: none;"><a href="javascript:void(0)" onclick="Ajax('pages/Contacts.php');">Support</a></li>
             <?php } ?>
-
-            <li><a href="javascript:void(0)" onclick="Ajax('pages/Classement_Joueurs_PvE.php')">Classement PVE</a></li>
-            <li><a href="javascript:void(0)" onclick="Ajax('pages/Classement_Guildes.php')">Classement des guildes</a></li>
-
-            <?php if (empty($_SESSION['Utilisateur'])) { ?>
-                <li id="Menu_Telechargement_ItemShop2" style="display: inline;"><a href="javascript:void(0)" onclick="Ajax('pages/Telechargement.php')">Téléchargement</a></li>
-                <li id="Menu_Telechargement_ItemShop" style="display: none;"><a id="Lien_Item_Shop" href="" class="fancybox_ItemShop" data-fancybox-type="iframe">Item-Shop</a></li>
-            <?php } else { ?>
-                <li id="Menu_Telechargement_ItemShop" style="display: inline;"><a id="Lien_Item_Shop" href="includes/Item_Shop/Item_Shop.php?id=<?php echo $_SESSION['ID']; ?>&type=ItemShop" class="fancybox_ItemShop" data-fancybox-type="iframe">Item-Shop</a></li>
-                <li id="Menu_Telechargement_ItemShop2"><a href="javascript:void(0)" onclick="Ajax('pages/Telechargement.php')">Téléchargement</a></li>
-            <?php } ?>
-
-            <?php if (empty($_SESSION['Utilisateur'])) { ?>
-                <li id="Menu_Telechargement_Equipe2" style="display: inline;"><a href="javascript:void(0)" onclick="Ajax('pages/Calendrier.php')">Calendrier des events</a></li>
-                <li id="Menu_Telechargement_Equipe" style="display: none;"><a id="Lien_Marche" href="" class="fancybox_Marche" data-fancybox-type="iframe">Marché</a></li>
-            <?php } else { ?>
-                <li id="Menu_Telechargement_Equipe" style="display: inline;"><a id="Lien_Marche" href="includes/Marche/Marche.php" class="fancybox_Marche" data-fancybox-type="iframe">Marché</a></li>
-                <li id="Menu_Telechargement_Equipe2" style="display: none;"><a href="javascript:void(0)" onclick="Ajax('pages/Calendrier.php')">Calendrier</a></li>
-            <?php } ?>
-
-            <li><a href="javascript:void(0)" onclick="window.open('http://forum.vamosmt2.org/forum/')">Notre forum</a></li>
-
-            <?php if (empty($_SESSION['Utilisateur'])) { ?>
-                <li id="Menu_Support2"><a href="javascript:void(0)" onclick="Ajax('pages/Contacts.php')">Support</a></li>
-                <li id="Menu_Support" style="display: none;"><a id="Lien_Support" href="" class="fancybox_Messagerie" data-fancybox-type="iframe">Support</a></li>
-            <?php } else { ?>
-                <li id="Menu_Support"><a href="includes/Messagerie/Messagerie.php" id="Lien_Support" class="fancybox_Messagerie" data-fancybox-type="iframe">Support</a></li>
-                <li id="Menu_Support2" style="display: none;"><a href="javascript:void(0)" onclick="Ajax('pages/Contacts.php');">Support</a></li>
-                <?php } ?>
-        </ul>
+    </ul>
 </nav>
 
 <script type="text/javascript">

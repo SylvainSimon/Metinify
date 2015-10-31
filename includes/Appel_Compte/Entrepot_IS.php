@@ -69,7 +69,7 @@ $Window = "MALL";
                                                                                                                                                                                                             	                                                       
                         $.ajax({
                             type: "POST",
-                            url: "Inventaire_Infos_Item.php",
+                            url: "./includes/Inventaire_Infos_Item.php",
                             data: "id="+item, // données à transmettre
                             success: function(msg){
                                                                                                                                                                                                                                                                                                     

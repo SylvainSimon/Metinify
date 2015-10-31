@@ -15,9 +15,9 @@
                 ?> <span id="ServeurClassyd"><i class="text-red material-icons md-icon-public md-22" data-tooltip="Hors-Ligne" data-tooltip-position="left"></i></span> <?php
             } else {
                 ?> <span id="ServeurClassyd"><i class="text-green material-icons md-icon-public md-22" data-tooltip="En ligne" data-tooltip-position="left"></i></span> <?php
-                fclose($sock);
-            }
-            ?>
+                    fclose($sock);
+                }
+                ?>
         </div>
     </div>
 
@@ -27,33 +27,32 @@
 
         <table class="">
 
-            <tr title="Joueurs connectés ou téléportés les 15 dernières minutes">
-
-                <?php
-                /* ------------------------------ Vérification connecte ---------------------------------------------- */
-                $Comptage_Connectes = "SELECT id FROM player.player
+            <?php
+            /* ------------------------------ Vérification connecte ---------------------------------------------- */
+            $Comptage_Connectes = "SELECT id FROM player.player
                           WHERE player.last_play >= (NOW() - INTERVAL 90 MINUTE)";
-                $Parametres_Comptage_Connectes = $Connexion->prepare($Comptage_Connectes);
-                $Parametres_Comptage_Connectes->execute();
-                $Parametres_Comptage_Connectes->setFetchMode(PDO::FETCH_OBJ);
-                $Nombre_De_Resultat = $Parametres_Comptage_Connectes->rowCount();
-                /* -------------------------------------------------------------------------------------------------- */
-                ?>
+            $Parametres_Comptage_Connectes = $Connexion->prepare($Comptage_Connectes);
+            $Parametres_Comptage_Connectes->execute();
+            $Parametres_Comptage_Connectes->setFetchMode(PDO::FETCH_OBJ);
+            $Nombre_De_Resultat = $Parametres_Comptage_Connectes->rowCount();
+            /* -------------------------------------------------------------------------------------------------- */
+            ?>
 
-                <?php if ($Nombre_De_Resultat == 0) { ?>
+            <?php if ($Nombre_De_Resultat == 0) { ?>
+                <tr>
                     <td>
                         Aucun joueur connecté
                     </td>
-                <?php } else { ?>
+                </tr>
+            <?php } else { ?>
 
+                <tr data-tooltip="Connectés ou téléportés les 15 dernières minutes.">
                     <td id="nombreconnecter"><?php echo $Nombre_De_Resultat; ?></td>
-
                     <td>
                         Joueur connectés
                     </td>
-                <?php } ?>
-            </tr>
-
+                </tr>
+            <?php } ?>
         </table>
 
         <script type="text/javascript">

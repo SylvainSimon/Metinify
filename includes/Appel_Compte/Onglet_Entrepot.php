@@ -1,4 +1,4 @@
-<div id="Onglet_Entrepot">
+<div class="tab-pane" id="Onglet_Entrepot">
     <div id="Entrepot">
 
         <div class="Bouton_Entrepot_1 Cursor" onclick="Page_Entrepot(1);"> I </div>
@@ -11,7 +11,7 @@
 	                                                       
                 $.ajax({
                     type: "POST",
-                    url: "Appel_Compte/Entrepot_Page_"+page+".php",
+                    url: "./includes/Appel_Compte/Entrepot_Page_"+page+".php",
                     data: "id=<?php echo $Resultat_Appel_Compte->id; ?>", // données à transmettre
                     success: function(msg){
                                                                                         

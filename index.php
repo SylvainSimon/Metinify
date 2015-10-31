@@ -1,6 +1,10 @@
 <?php @session_write_close(); ?>
 <?php
 
+if (extension_loaded("zlib") && (ini_get("output_handler") != "ob_gzhandler")) {
+    ini_set("zlib.output_compression", 1);
+}
+
 function check_ssl() {
     // Check if accessed via SSL
     if ($_SERVER['HTTPS'] != 'on') {
@@ -35,6 +39,8 @@ check_ssl();
 
         <script src='./components/jquery/jquery.min.js' type='text/javascript'></script>
         <script src='./components/jquery-ui/jquery-ui.min.js' type='text/javascript'></script>
+        <script src='./components/bootstrap/js/tab.js' type='text/javascript'></script>
+        
         <script src='./js/jquery.browser.min.js' type='text/javascript'></script>
         <script src='./vendor/almasaeed2010/adminlte/plugins/slimScroll/jquery.slimscroll.min.js' type='text/javascript'></script>
         <script src='./vendor/almasaeed2010/adminlte/dist/js/app.min.js' type='text/javascript'></script>
@@ -46,10 +52,9 @@ check_ssl();
         <script src="js/Ajax_Connexion.js" type='text/javascript'></script>
         <script src="js/Ajax_Classement.js" type="text/javascript"></script>
 
-        <script src="js/jquery.contextMenu.js" type='text/javascript'></script>
+        <script src="js/jquery.contextMenu.min.js" type='text/javascript'></script>
         <script src="js/jquery_coutdown.js" type='text/javascript'></script>
         <script src="js/jquery.fancybox.js" type='text/javascript'></script>
-        <script src="js/modernizr-latest.js" type='text/javascript'></script>
 
         <!--[if lt IE 9]>
         <script src="./vendor/afarkas/html5shiv/dist/html5shiv.min.js"></script>

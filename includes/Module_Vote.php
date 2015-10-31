@@ -141,7 +141,7 @@ $Nombre_De_Resultat_Recuperation_Site_De_Vote = $Parametres_Recuperation_Site_De
         <div class="box-body">
             <?php while ($Donnees_Recuperation_Site_De_Vote = $Parametres_Recuperation_Site_De_Vote->fetch()) { ?>
                 <a id="Lien_Popup" href="" onclick="return false;" class="fancybox_Vote" data-fancybox-type="iframe"></a>    
-                <input title="Voter et gagner 20 Vamonaies" class="btn btn-default btn-flat btn-pile" style="width: 100%;" type="button" onclick=" Ajax(Verification_Connection_Vote(<?php echo $Donnees_Recuperation_Site_De_Vote->id_site_vote ?>));
+                <input data-tooltip="Voter et gagner 20 Vamonaies" data-tooltip-position="left" class="btn btn-default btn-flat btn-pile" style="width: 100%;" type="button" onclick=" Ajax(Verification_Connection_Vote(<?php echo $Donnees_Recuperation_Site_De_Vote->id_site_vote ?>));
                                 window.open('<?php echo $Donnees_Recuperation_Site_De_Vote->lien_site_vote; ?>');" value="<?php echo $Donnees_Recuperation_Site_De_Vote->nom_site_vote; ?> " />
                    <?php } ?>
         </div>

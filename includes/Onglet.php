@@ -12,10 +12,6 @@ include '../pages/Tableaux_Arrays.php';
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link rel="stylesheet" href="../css/demos.css">
-        <link rel="stylesheet" href="../css/jquery-ui-1.8.23.custom.css">
-        <script type="text/javascript" src="../js/Jquery 1.8.0.js"></script>
-        <script type="text/javascript" src="../js/ui/Jquery_UI_1.8.23.js"></script>
 
         <script type="text/javascript">
             
@@ -65,7 +61,7 @@ include '../pages/Tableaux_Arrays.php';
                 
                 $.ajax({
                     type: "POST",
-                    url: "Appel_Compte.php",
+                    url: "./includes/Appel_Compte.php",
                     data: "id="+id, // données à transmettre
                     success: function(msg){
                                 

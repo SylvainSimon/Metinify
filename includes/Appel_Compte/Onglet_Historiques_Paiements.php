@@ -1,4 +1,4 @@
-<div id="Historiques_Paiements">
+<div class="tab-pane" id="Historiques_Paiements">
 
     <?php
     /* -------------------------- Liste rechargements ------------------------------ */
