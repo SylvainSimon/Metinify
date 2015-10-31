@@ -35,7 +35,7 @@ function createTooltip() {
 
             switch ($(this).attr("data-tooltip-position")) {
                 case "left":
-                    positionTooltip = {my: 'right center', at: 'left-10 center'};
+                    positionTooltip = {my: 'right center', at: 'left center'};
                     tooltipClass = "left";
 
                     break;

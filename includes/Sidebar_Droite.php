@@ -12,9 +12,9 @@
 
 
             if (!$sock = @fsockopen($ip, $port, $num, $error, 0.5)) {
-                ?> <span id="ServeurClassyd"><i class="text-red material-icons md-icon-public md-22" data-tooltip="Hors-Ligne"></i></span> <?php
+                ?> <span id="ServeurClassyd"><i class="text-red material-icons md-icon-public md-22" data-tooltip="Hors-Ligne" data-tooltip-position="left"></i></span> <?php
             } else {
-                ?> <span id="ServeurClassyd"><i class="text-green material-icons md-icon-public md-22" data-tooltip="En ligne"></i></span> <?php
+                ?> <span id="ServeurClassyd"><i class="text-green material-icons md-icon-public md-22" data-tooltip="En ligne" data-tooltip-position="left"></i></span> <?php
                 fclose($sock);
             }
             ?>

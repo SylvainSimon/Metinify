@@ -34,6 +34,8 @@ function Ajax(url) {
                     window.eval(scripts[i].text);
                 }
             }
+            
+            redraw();
         },
         error: function () {
 
