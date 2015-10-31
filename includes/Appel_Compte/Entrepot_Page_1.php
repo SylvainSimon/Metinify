@@ -63,30 +63,9 @@ $Window = "SAFEBOX";
 
                 <?php $Resultat_Chercher_Chemin = $Parametres_Chercher_Chemin->fetch(); ?>
 
-                <script type="text/javascript">
-                                                                                                                                                                                                                    
-                    function Chercher_Infos_Item2(item){
-                                                                                                                                                                                                            	                                                       
-                        $.ajax({
-                            type: "POST",
-                            url: "./includes/Inventaire_Infos_Item.php",
-                            data: "id="+item, // données à transmettre
-                            success: function(msg){
-                                                                                                                                                                                                                                                                                                    
-                                $("#Contenue_Milieu_Bonus").fadeOut("medium", function(){
-                                    $("#Contenue_Milieu_Bonus").html(msg);
-                                    $("#Contenue_Milieu_Bonus").fadeIn("medium");
-                                });
-
-                            }
-                        });
-                        return false;
-                                                                                                                                                                                                                                        
-                    }
-                </script>
 
                 <div class="Interieur_Case">
-                    <img onmouseover="Chercher_Infos_Item2(<?php echo $Donnees_Case->item_id; ?>)" src="<?php echo $Resultat_Chercher_Chemin->chemin; ?>" style="position: absolute;" />
+                    <img  data-tooltip="" id="cade_id_<?php echo $Donnees_Case->item_id; ?>" src="<?php echo $Resultat_Chercher_Chemin->chemin; ?>" style="position: absolute; cursor: default;" />
                     <?php
                     $flag = $Donnees_Case->flag;
                     ?>
@@ -106,6 +85,24 @@ $Window = "SAFEBOX";
                     <?php } ?>
 
                 </div>
+
+                <script type="text/javascript">
+
+                    $.ajax({
+                        type: "POST",
+                        url: "./includes/Inventaire_Infos_Item.php",
+                        data: "id=" + <?php echo $Donnees_Case->item_id; ?>, // données à transmettre
+                        success: function (msg) {
+
+
+                            if ($("#cade_id_<?php echo $Donnees_Case->item_id; ?>").attr("data-tooltip") === "") {
+                                $("#cade_id_<?php echo $Donnees_Case->item_id; ?>").attr("data-tooltip", msg);
+                                redraw();
+                            }
+                        }
+                    });
+
+                </script>
 
             <?php } else { ?>
 

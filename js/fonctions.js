@@ -7,6 +7,9 @@ function createTooltip() {
         var hideEffect = "none";
         var hideDelay = 10;
         var persistence = 5000;
+        var track = false;
+        var positionTooltip = {my: 'center top', at: 'center bottom+10'};
+        var tooltipClass = "bottom";
 
         if ($(this).attr("data-tooltip-showEffect") !== undefined) {
             showEffect = $(this).attr("data-tooltip-showEffect");
@@ -28,8 +31,15 @@ function createTooltip() {
             persistence = $(this).attr("data-tooltip-persistence");
         }
 
-        var positionTooltip = {my: 'center top', at: 'center bottom+10'};
-        var tooltipClass = "bottom";
+        if ($(this).attr("data-tooltip-track") !== undefined) {
+            track = true;
+            var positionTooltip = {my: "left bottom-5",
+                at: "left bottom",
+                collision: "flipfit flip"};
+            var tooltipClass = null;
+        }
+
+
 
         if ($(this).attr("data-tooltip-position") !== undefined) {
 
@@ -38,12 +48,12 @@ function createTooltip() {
                     positionTooltip = {my: 'right center', at: 'left center'};
                     tooltipClass = "left";
                     break;
-                    
+
                 case "top":
                     positionTooltip = {my: 'center bottom', at: 'center top-20'};
                     tooltipClass = "top";
                     break;
-                    
+
                 case "right":
                     positionTooltip = {my: 'left center', at: 'right+25 center'};
                     tooltipClass = "right";
@@ -56,6 +66,7 @@ function createTooltip() {
         $(this).tooltip({
             position: positionTooltip,
             tooltipClass: tooltipClass,
+            track: track,
             show: {effect: showEffect, delay: showDelay},
             hide: {effect: hideEffect, delay: hideDelay},
             content: function () {

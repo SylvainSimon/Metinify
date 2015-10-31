@@ -4,6 +4,14 @@
 <?php @include_once '../pages/Fonctions_Utiles.php'; ?>
 
 <?php
+if ($_SESSION['ID'] != $_GET['id']) {
+
+    include 'Onglet_Mauvais_Compte.php';
+    exit();
+}
+?>
+
+<?php
 include '../pages/Tableaux_Arrays.php';
 
 $date = Date("d/m/Y H:i:s");
@@ -78,7 +86,7 @@ $Nombre_De_Transaction = $Parametres_Nombre_Transaction->rowCount();
 
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                
+
                 <li class="active"><a href="#Onglet_InformationGeneral" data-toggle="tab" aria-expanded="true">Générales</a></li>
                 <li class=""><a href="#Onglet_Entrepot" data-toggle="tab" aria-expanded="false">Entrepôt</a></li>
                 <li class=""><a href="#Onglet_Entrepot_IS" data-toggle="tab" aria-expanded="false">Entrepot Item-Shop</a></li>

@@ -428,10 +428,7 @@
 /*--------------------------ENTREPOT---------------------------*/
 #Entrepot{
 
-    position: absolute;
-    border: 1px solid black;
-    left:20px;
-    top: 80px;
+
     width: 169px;
     height: 357px;
     background: url('../images/entrepot.png') no-repeat;
@@ -458,8 +455,8 @@
 .Bouton_Entrepot_1{
 
     position: absolute;
-    top:328px;
-    left:5px;
+    top: 330px;
+    left: 23px;
     height: 18px;
     width: 50px;
     border: 1px solid grey;
@@ -474,8 +471,8 @@
 .Bouton_Entrepot_2{
 
     position: absolute;
-    top:328px;
-    left:58px;
+    top: 330px;
+    left: 74px;
     height: 18px;
     width: 50px;
     border: 1px solid grey;
@@ -490,8 +487,8 @@
 .Bouton_Entrepot_3{
 
     position: absolute;
-    top:328px;
-    left:111px;
+    top: 330px;
+    left: 127px;
     height: 18px;
     width: 50px;
     border: 1px solid grey;
@@ -564,12 +561,7 @@
     text-shadow: 0px 2px 1px black;
 }
 
-#Conteneur_Bonus{
 
-    position: absolute;
-    left: 210px;
-    top:80px;
-}
 #Haut_Bonus{
 
     background: url(../images/Infobulle_Haut.png) no-repeat;
@@ -602,13 +594,9 @@
 
 #Detail_Liste_Inventaire{
 
-    position: absolute;
-    top: 80px;
-    right: 20px;
-    width: 625px;
+    width: 100%;
     max-height: 450px;
     overflow-y:auto;
-    border-bottom: 1px solid grey;
 }
 
 
