@@ -31,7 +31,6 @@ check_ssl();
         <link href="./css/css/AdminLTE.css" rel="stylesheet" type="text/css" />
         <link href="./css/css/styles.css" rel="stylesheet" type="text/css" />
 
-        <link href="css/jquery-ui-1.8.23.custom.css" rel="stylesheet" type="text/css" />
         <link href="css/jquery.fancybox.css" rel="stylesheet" type="text/css" />
 
         <script src='./components/jquery/jquery.min.js' type='text/javascript'></script>
@@ -42,6 +41,7 @@ check_ssl();
 
         <script src="js/Jquery_Sliders.js" type='text/javascript'></script>
         <script src="js/Jquery_Superbox.js" type="text/javascript"></script>
+        <script src="js/fonctions.min.js" type='text/javascript'></script>
         <script src="js/Ajax.js" type='text/javascript'></script>
         <script src="js/Ajax_Connexion.js" type='text/javascript'></script>
         <script src="js/Ajax_Classement.js" type="text/javascript"></script>

@@ -39,7 +39,7 @@ $Variable_De_Merde = 0;
             <h3 class="box-title"><?= $Donnees_Recuperation_News->titre_message; ?></h3>
 
             <div class="box-tools" style="padding-top: 5px;">
-                <i title="<?= Formatage_Date_News($Donnees_Recuperation_News->date); ?>" class="material-icons md-icon-event md-20"></i>
+                <i data-tooltip="<?= Formatage_Date_News($Donnees_Recuperation_News->date); ?>" class="material-icons md-icon-event md-20"></i>
             </div>
         </div>
 

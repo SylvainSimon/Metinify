@@ -24,15 +24,19 @@ if (!empty($_SESSION['ID'])) {
     <div class="row">
 
         <div class="col-lg-3 col-md-4 col-sm-4">
-            Bienvenue <span onclick="Ajax('pages/Logs_Connexion.php')" title="Voir l'historique de vos connexions" class="Bold Pointer"><?php echo $_SESSION['Utilisateur'] ?></span>
+            Bienvenue <span onclick="Ajax('pages/Logs_Connexion.php')" data-tooltip="Historique des connexions" class="Bold Pointer"><?php echo $_SESSION['Utilisateur'] ?></span>
         </div>
 
         <div style="position: relative; left:-4px;"  class="col-lg-5 col-md-6 col-sm-6">
-            <img class="inline" src="images/rectopiece.png" height="35" title="VamoNaies"/>
-            <div class="inline" id="Nombre_De_Vamonaies"><?php echo $_SESSION['VamoNaies']; ?></div>
+            <span data-tooltip="VamoNaies">
+                <img class="inline" src="images/rectopiece.png" height="35"/>
+                <div class="inline" id="Nombre_De_Vamonaies"><?php echo $_SESSION['VamoNaies']; ?></div>
+            </span>
 
-            <img class="inline" src="images/versopiece.png" height="35" title="TanaNaies"/>
-            <div class="inline" id="Nombre_De_Tananaies"><?php echo $_SESSION['TanaNaies']; ?></div>
+            <span data-tooltip="TanaNaies">
+                <img class="inline" src="images/versopiece.png" height="35"/>
+                <div class="inline" id="Nombre_De_Tananaies"><?php echo $_SESSION['TanaNaies']; ?></div>
+            </span>
         </div>
     </div>
 </div>
@@ -43,7 +47,7 @@ if (!empty($_SESSION['ID'])) {
 
         <?php include 'Messagerie/Messagerie_Notifications.php'; ?>
 
-        <i style="top: 7px; position: relative; margin-left: 7px;" id="Icone_Sons" class="" onclick="Clique_Bouton_Sons()"></i>
+        <i data-tooltip="Activer/Désactiver le son" data-tooltip-position='left' style="top: 7px; position: relative; margin-left: 7px;" id="Icone_Sons" class="" onclick="Clique_Bouton_Sons()"></i>
         <script type="text/javascript">
 
             if (getCookie("cookieAudio") != null) {
@@ -68,7 +72,7 @@ if (!empty($_SESSION['ID'])) {
         </script>
 
 
-        <a title="Se déconnecter" class="pull-right" style="cursor: pointer; margin-left: 7px;" onclick="Ajax_Connexion('includes/Barre_Deconnexion.php')">
+        <a data-tooltip="Déconnexion" data-tooltip-position='left' class="pull-right" style="cursor: pointer; margin-left: 7px;" onclick="Ajax_Connexion('includes/Barre_Deconnexion.php')">
             <i style="top: 7px; position: relative;" class="material-icons md-icon-power md-24 text-red"></i>
         </a>
     </div>

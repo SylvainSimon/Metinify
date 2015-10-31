@@ -1577,3 +1577,51 @@ label{
     width: 100%;
     z-index: 10;
 }
+
+.ui-tooltip {
+    background: #666;
+    color: white;
+    border: none;
+    padding: 0;
+    opacity: 1;
+    border-radius: 0px !important;
+    box-shadow: none;
+    z-index: 999999;
+}
+.ui-tooltip-content {
+    position: relative;
+    padding: 0.7em;
+    border-radius: 0px !important;
+    box-shadow: none;
+}
+.ui-tooltip-content::after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    display: block;
+    width: 0;
+}
+.right .ui-tooltip-content::after {
+    top: 18px;
+    left: -10px;
+    border-color: transparent #666;
+    border-width: 10px 10px 10px 0;
+}
+.left .ui-tooltip-content::after {
+    top: 5px;
+    right: -10px;
+    border-color: transparent #666;
+    border-width: 10px 0 10px 10px;
+}
+.top .ui-tooltip-content::after {
+    bottom: -10px;
+    left: 72px;
+    border-color: #666 transparent;
+    border-width: 10px 10px 0;    
+}
+.bottom .ui-tooltip-content::after {
+    top: -10px;
+    left: 50%;
+    border-color: #666 transparent;
+    border-width: 0 10px 10px;
+}
