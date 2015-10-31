@@ -7,6 +7,7 @@ $rand = array_rand($files);
 include ($files[$rand]);
 ?>
 
+<?php include './pages/Fonctions_Utiles.php'; ?>
 
 <script type="text/javascript">
 

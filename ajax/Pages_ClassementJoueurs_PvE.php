@@ -2,7 +2,7 @@
 include '../configPDO.php';
 
 $Numero_De_Page = $_GET['page'];
-$Limite_Basse = ($Numero_De_Page * 20);
+$Limite_Basse = ($Numero_De_Page * 10);
 
 /* ------------------------------ Vérification connecte ---------------------------------------------- */
 $Verification_Connecte = "SELECT id FROM player.player
@@ -38,7 +38,7 @@ $Classement_Joueur_Page = "SELECT player.name,
                                   AND player.name NOT IN(SELECT mName FROM common.gmlist)
 
 								  ORDER BY score_pve DESC, level DESC, exp DESC
-                                  LIMIT " . $Limite_Basse . ",20";
+                                  LIMIT " . $Limite_Basse . ",10";
 
 $Parametres_Classement_Joueur_Page = $Connexion->query($Classement_Joueur_Page);
 $Parametres_Classement_Joueur_Page->setFetchMode(PDO::FETCH_OBJ);
@@ -72,7 +72,7 @@ $i = $Limite_Basse + 1;
     <tbody id="pagedeclassement">
         <?php while ($Donnees_Classement_Joueurs_Page = $Parametres_Classement_Joueur_Page->fetch()) { ?> 
 
-            <tr onmouseover="this.style.backgroundColor = '#666666';" onmouseout="this.style.backgroundColor = 'transparent';">
+            <tr>
                 <td align="center">
                     <?php if ($i == 1) {
                         ?><i class="material-icons md-icon-star" style="color:#F3EC12;"></i>

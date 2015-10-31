@@ -1,80 +1,129 @@
 <?php @session_write_close(); ?>
 <?php @session_start(); ?>
+<?php include 'Fonctions_Utiles.php'; ?>
 
 <div class="box box-default flat">
 
     <div class="box-header">
-        <h3 class="box-title">Téléchargement du client VamosMt2</h3>
+        <h3 class="box-title">Téléchargement du jeu</h3>
     </div>
 
     <div class="box-body">
 
-        <div class="Bouton_Telecharger Pointer No_Select" onclick="window.open('http://vamosmt2.org:81/Installateur%20VamosMT2%20Client%20officiel%202014-2015.exe', '_self')"></div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="info-box flat" style="border: 1px solid #6D4949; background-color: #6D1A0C !important; cursor: pointer;" onclick="window.open('http://vamosmt2.org:81/Installateur%20VamosMT2%20Client%20officiel%202014-2015.exe', '_self')">
 
-        <fieldset class = "Fieldset_Configuration_Recommande No_Select">
-            <legend>&nbsp;
-                Configuration minimale&nbsp;
-            </legend>
-            <table class = "Tableau_Configuration_Requise box_shadows">
-                <tr>
-                    <td class = "TD_Blanc">Système d'exploitation</td>
-                    <td>Windows & Linux</td>
-                </tr>
-                <tr>
-                    <td class="TD_Blanc">Processeur</td>
-                    <td>Pentium 3, 1.0GHz</td>
-                </tr>
-                <tr>
-                    <td class="TD_Blanc">Mémoire vive (RAM)</td>
-                    <td>1 GB</td>
-                </tr>
-                <tr>
-                    <td class="TD_Blanc">Carte graphique</td>
-                    <td>Sup. à 32Mb de RAM</td>
-                </tr>
-                <tr>
-                    <td class="TD_Blanc">Carte son</td>
-                    <td>DirectX 9.0 minimum</td>
-                </tr>
-                <tr>
-                    <td class="TD_Blanc">Programmes</td>
-                    <td><a href="http://www.microsoft.com/fr-fr/download/details.aspx?id=17851" target="_blank">Net Framework 4</td>
-                </tr>
+                    <span class="info-box-icon"><i class="material-icons md-icon-download md-36"></i></span>
 
-            </table>
-        </fieldset>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Télécharger l'installeur .exe</span>
 
-        <fieldset class="Fieldset_Configuration_Requise No_Select">
-            <legend>&nbsp;Configuration recommandé&nbsp;</legend>
-            <table class="Tableau_Configuration_Requise box_shadows">
-                <tr>
-                    <td class="TD_Blanc">Système d'exploitation</td>
-                    <td>Windows & Linux</td>
-                </tr>
-                <tr>
-                    <td class = "TD_Blanc">Processeur</td>
-                    <td>Pentium 4, 1.8GHz</td>
-                </tr>
-                <tr>
-                    <td class = "TD_Blanc">Mémoire vive (RAM)</td>
-                    <td>2 GB</td>
-                </tr>
-                <tr>
-                    <td class = "TD_Blanc">Carte graphique</td>
-                    <td>Sup. à 64Mb de RAM</td>
-                </tr>
-                <tr>
-                    <td class = "TD_Blanc">Carte son</td>
-                    <td>DirectX 9.0 minimum</td>
-                </tr>
-                <tr>
-                    <td class = "TD_Blanc">Programmes</td>
-                    <td><a href="http://www.microsoft.com/fr-fr/download/details.aspx?id=17851" target="_blank">Net Framework 4</td>
-                </tr>
+                        <?php
+                        $url = 'http://vamosmt2.org:81/Installateur%20VamosMT2%20Client%20officiel%202014-2015.exe';
+                        $headers = get_headers($url, true);
 
-            </table>
-        </fieldset>
-        <br /><br />
-        <i>Il est également possible de télécharger le jeu par uTorrent en cliquant <a href="http://vamosmt2.org:81/VamosMT2%20Client%20officiel%202014-2015.exe.torrent">ici</a>.</i>
+                        if (isset($headers['Content-Length'])) {
+                            $size = $headers['Content-Length'];
+                        } else {
+                            $size = 0;
+                        }
+                        ?>
+
+                        <span class="info-box-number"><?php echo Formatage_Taille($size); ?></span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="info-box flat" style="border: 1px solid #668D47; background-color: #53852A !important; cursor: pointer;" onclick="window.open('http://vamosmt2.org:81/VamosMT2%20Client%20officiel%202014-2015.exe.torrent', '_self')">
+
+                    <span class="info-box-icon"><i class="material-icons md-icon-shuffle md-36"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Télécharger via torrent</span>
+
+                        <span class="info-box-number"><?php echo Formatage_Taille($size); ?></span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+
+                <h4>
+                    Configuration minimale
+                </h4>
+
+                <table class="table table-hover table-condensed table-responsive" style="border-collapse: collapse;">
+
+                    <tr>
+                        <td>Système d'exploitation</td>
+                        <td class="Align_Right">Windows & Linux</td>
+                    </tr>
+                    <tr>
+                        <td>Processeur</td>
+                        <td class="Align_Right">Pentium 3, 1.0GHz</td>
+                    </tr>
+                    <tr>
+                        <td>Mémoire vive (RAM)</td>
+                        <td class="Align_Right">1 GB</td>
+                    </tr>
+                    <tr>
+                        <td>Carte graphique</td>
+                        <td class="Align_Right">Sup. à 32Mb de RAM</td>
+                    </tr>
+                    <tr>
+                        <td>Carte son</td>
+                        <td class="Align_Right">DirectX 9.0</td>
+                    </tr>
+                    <tr>
+                        <td>Programmes</td>
+                        <td class="Align_Right"><a href="http://www.microsoft.com/fr-fr/download/details.aspx?id=17851" target="_blank">Net Framework 4</a></td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <h4>
+                    Configuration recommandé
+                </h4>
+
+                <table class="table table-hover table-condensed table-responsive" style="border-collapse: collapse;">
+
+                    <tr>
+                        <td>Système d'exploitation</td>
+                        <td class="Align_Right">Windows & Linux</td>
+                    </tr>
+                    <tr>
+                        <td>Processeur</td>
+                        <td class="Align_Right">Pentium 4, 1.8GHz</td>
+                    </tr>
+                    <tr>
+                        <td>Mémoire vive (RAM)</td>
+                        <td class="Align_Right">2 GB</td>
+                    </tr>
+                    <tr>
+                        <td>Carte graphique</td>
+                        <td class="Align_Right">Sup. à 64Mb de RAM</td>
+                    </tr>
+                    <tr>
+                        <td>Carte son</td>
+                        <td class="Align_Right">DirectX 9.0</td>
+                    </tr>
+                    <tr>
+                        <td>Programmes</td>
+                        <td class="Align_Right"><a href="http://www.microsoft.com/fr-fr/download/details.aspx?id=17851" target="_blank">Net Framework 4</a></td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
     </div>
 </div>

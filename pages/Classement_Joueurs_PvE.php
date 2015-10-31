@@ -39,7 +39,7 @@ $Classement_Joueur = "SELECT player.name,
                              AND player.name NOT IN(SELECT mName FROM common.gmlist)
 
                              ORDER BY score_pve DESC, level DESC, exp DESC
-                             LIMIT 0,20";
+                             LIMIT 0,10";
 $Parametres_Classement_Joueur = $Connexion->query($Classement_Joueur);
 $Parametres_Classement_Joueur->setFetchMode(PDO::FETCH_OBJ);
 /* -------------------------------------------------------------------------- */
@@ -50,7 +50,7 @@ $Parametres_Comptage_Joueurs = $Connexion->query($Comptage_Joueurs);
 $Nombre_De_Joueurs = $Parametres_Comptage_Joueurs->rowCount();
 /* --------------------------------------------------------------------------------- */
 
-$nombredePage = (($Nombre_De_Joueurs / 20) - 1);
+$nombredePage = (($Nombre_De_Joueurs / 10) - 1);
 $i = $Numero_De_Page + 1;
 ?>
 

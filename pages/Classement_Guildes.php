@@ -26,7 +26,7 @@ $Classement_Guildes = "SELECT guild.name,
                        AND player.name NOT IN(SELECT mName FROM common.gmlist)
 
                        ORDER BY guild.level DESC, guild.win DESC
-                       LIMIT 20";
+                       LIMIT 10";
 $Parametres_Classement_Guildes = $Connexion->query($Classement_Guildes);
 $Parametres_Classement_Guildes->setFetchMode(PDO::FETCH_OBJ);
 /* -------------------------------------------------------------------------- */
@@ -37,30 +37,33 @@ $Parametres_Comptage_Joueurs = $Connexion->query($Comptage_Joueurs);
 $Nombre_De_Guildes = $Parametres_Comptage_Joueurs->rowCount();
 /* --------------------------------------------------------------------------------- */
 
-$nombredePage = (($Nombre_De_Guildes / 20) - 1);
+$nombredePage = (($Nombre_De_Guildes / 10) - 1);
 $i = $Numero_De_Page + 1;
 ?>
-<div class="Cadre_Principal">
 
-    <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-        <h1>Classement des Guildes</h1>
+<div class="box box-default flat">
+
+    <div class="box-header">
+        <h3 class="box-title">Classement des guildes</h3>
+
     </div>
-    <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1"> 
+
+    <div class="box-body no-padding">
 
         <script type="text/javascript">
-        
-            function Recherche_Guildes(){
+
+            function Recherche_Guildes() {
 
                 Barre_De_Statut("Recherche de la guilde en cours...");
                 Icone_Chargement(1);
-                
+
                 $.ajax({
                     type: "POST",
                     url: "ajax/Pages_ClassementGuildes_Recherche.php",
-                    data: "recherche="+$("#SaisieRecherche").val(),
-                    success: function(msg){
-                    
-                        $("#pagedeclassement").fadeOut("slow", function(){
+                    data: "recherche=" + $("#SaisieRecherche").val(),
+                    success: function (msg) {
+
+                        $("#pagedeclassement").fadeOut("slow", function () {
                             $("#pagedeclassement").html(msg);
                             Barre_De_Statut("Recherche terminé.");
                             Icone_Chargement(0);
@@ -72,108 +75,95 @@ $i = $Numero_De_Page + 1;
                 return false;
 
             }
-    
+
         </script>
-        <hr class="Hr_Haut"/>
-        <form action="javascript:void(0);" class="Formulaire_Recherche_Guilde">
-            <input type="text" class="Zone_Saisie_Recherche_Joueur" autofocus="autofocus" placeholder="Nom de la guilde..." id="SaisieRecherche"/>
-            &nbsp;
-            <input type="submit" class="Bouton_Formulaire_Recherche_Joueur Bouton_Normal" src="images/Bouton_Rechercher.png" onclick="if(document.getElementById('SaisieRecherche').value != ''){ Recherche_Guildes(); }" value="Rechercher"/>
-        </form>
-        <hr class="Hr_Bas">
+
+        <div class="row" style="padding: 10px;">
+            <div class="col-md-4">
+                <input type="text" class="form-control input-sm inline" autofocus="autofocus" placeholder="Guilde..." id="SaisieRecherche"/>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" class="btn btn-primary btn-flat btn-sm inline" src="images/Bouton_Rechercher.png" onclick="if (document.getElementById('SaisieRecherche').value != '') {
+                            Recherche_Guildes();
+                        }" value="Rechercher"/>
+            </div>
+        </div>
+
 
         <div id="Changement_de_Page">
 
-            <div class="Suivante_Precendent">
-
-                <div class="Position_Bouton_Precedent Bold">
-                    <?php if ($Numero_De_Page >= 1) { ?>
-                        <a href="javascript:void(0)" onclick="Ajax_Classement('ajax/Pages_ClassementGuildes.php?page=<?php echo ($Numero_De_Page - 1); ?>')"><= Précédente</a>
-                    <?php } else { ?>
-                        <= Précédente
-                    <?php } ?>
-                </div>
-
-                <div class="Position_Bouton_Suivant Bold">
-                    <?php if ($Numero_De_Page <= $nombredePage) {
-                        ?>
-                        <a href="javascript:void(0)" onclick="Ajax_Classement('ajax/Pages_ClassementGuildes.php?page=<?php echo ($Numero_De_Page + 1); ?>')">Suivante =></a>
-                    <?php } else { ?>
-                        Suivante =>
-                    <?php } ?>
-                </div>
-            </div>
-            <hr class="Hr_Bas">
-
-            <table class="Table_Classement_Guilde No_Select"> 
-                <thead >
+            <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;"> 
+                <thead>
                     <tr>
 
-                        <th align="center" class="Colonne_Numero_Classement">N°</th>
-                        <th style="text-indent: 5px;" class="Align_Left" >Nom</th>
-                        <th class="Align_Left">Level</th>
-                        <th class="Align_Left">Chef</th>
-                        <th class="Align_Left">Experience</th>
-                        <th class="Align_center">Victoires</th>
-                        <th class="Align_center">Defaites</th>
-                        <th class="Align_center">Match nuls</th>
-                        <th align="center">Empire</th>
-
+                        <th style="width: 15px;" align="center"></th>
+                        <th style="width: 150px;">Nom</th>
+                        <th style="width: 25px;"></th>
+                        <th class="Align_center">Level</th>
+                        <th>Chef</th>
+                        <th class="hidden-md hidden-sm hidden-xs">Experience</th>
+                        <th style="width: 100px;">Score</th>
                     </tr>
                 </thead>
+                
                 <tbody id="pagedeclassement">
-
                     <?php while ($Donnees_Classement_Guildes = $Parametres_Classement_Guildes->fetch()) { ?>
 
-                        <tr onmouseover="this.style.backgroundColor='#555555';" onmouseout="this.style.backgroundColor='transparent';">
-                            <td align="center" class="Colonne_Numero_Classement">
-                                <?php if ($i == 1) { ?>
-                                    <img src="images/rang/or.png"/>
-                                <?php } else if ($i == 2) { ?>
-                                    <img src="images/rang/argent.png"/>
-                                <?php } else if ($i == 3) { ?>
-                                    <img src="images/rang/bronze.png"/>
-                                <?php } else if ($i == 4) { ?>
-                                    <img src="images/rang/Medaille_Or.png"/>
-                                <?php } else if ($i == 5) { ?>
-                                    <img src="images/rang/Medaille_Argent.png"/>
-                                <?php } else if ($i == 6) { ?>
-                                    <img src="images/rang/Medaille_Bronze.png"/>
-                                <?php } else { ?>
-                                    <?php echo $i; ?>
+                        <tr>
+                            <td align="center">
+                                <?php if ($i == 1) {
+                                    ?><i class="material-icons md-icon-star" style="color:#F3EC12;"></i>
+                                    <?php
+                                } else if ($i == 2) {
+                                    ?><i class="material-icons md-icon-star text-gray"></i>
+                                    <?php
+                                } else if ($i == 3) {
+                                    ?><i class="material-icons md-icon-star" style="color:#813838;"></i>
+                                    <?php
+                                } else if ($i == 4) {
+                                    ?><i class="material-icons md-icon-bookmark" style="color:#F3EC12; opacity: 0.5"></i>
+                                    <?php
+                                } else if ($i == 5) {
+                                    ?><i class="material-icons md-icon-bookmark text-gray" style="opacity: 0.5"></i>
+                                    <?php
+                                } else if ($i == 6) {
+                                    ?><i class="material-icons md-icon-bookmark" style="color:#813838; opacity: 0.5"></i>
+                                    <?php
+                                } else {
+                                    echo $i;
+                                }
+                                ?>
+                            </td>
+
+                            <td>
+                                <?php echo $Donnees_Classement_Guildes->name; ?>
+                            </td>
+
+                            <td>
+                                <?php if ($Donnees_Classement_Guildes->guild_empire == 1) { ?>
+                                    <i class="text-red material-icons md-icon-map md-20"></i>
+                                <?php } else if ($Donnees_Classement_Guildes->guild_empire == 2) { ?>
+                                    <i class="text-yellow material-icons md-icon-map md-20"></i>
+                                <?php } else if ($Donnees_Classement_Guildes->guild_empire == 3) { ?>
+                                    <i class="text-blue material-icons md-icon-map md-20"></i>
                                 <?php } ?>
                             </td>
 
-                            <td style="text-indent: 5px;">
-                                <?php echo $Donnees_Classement_Guildes->name; ?>
-                            </td>
-                            <td class="Align_Left">
+                            <td class="Align_center">
                                 <?php echo $Donnees_Classement_Guildes->level; ?>
                             </td>
                             <td>
                                 <?php echo $Donnees_Classement_Guildes->master_name; ?>
                             </td>
-                            <td>
+                            <td  class="hidden-md hidden-sm hidden-xs">
                                 <?php echo $Donnees_Classement_Guildes->exp; ?>
                             </td>
-                            <td class="Align_center">
-                                <?php echo $Donnees_Classement_Guildes->win; ?>
-                            </td>
-
-                            <td class="Align_center">
-                                <?php echo $Donnees_Classement_Guildes->loss; ?>
-                            </td>
-                            <td class="Align_center">
+                            <td>
+                                <span class="text-green"><?php echo $Donnees_Classement_Guildes->win; ?></span>
+                                /
+                                <span class="text-red"><?php echo $Donnees_Classement_Guildes->loss; ?></span>
+                                /
                                 <?php echo $Donnees_Classement_Guildes->draw; ?>
-                            </td>
-                            <td align="center">
-                                <?php if ($Donnees_Classement_Guildes->guild_empire == 1) { ?>
-                                    <img class="Dimension_Image_Classement Deplacement_Drapeau" src="images/empire/red.jpg"/> 
-                                <?php } else if ($Donnees_Classement_Guildes->guild_empire == 2) { ?>
-                                    <img class="Dimension_Image_Classement Deplacement_Drapeau" src="images/empire/yellow.jpg"/> 
-                                <?php } else if ($Donnees_Classement_Guildes->guild_empire == 3) { ?>
-                                    <img class="Dimension_Image_Classement Deplacement_Drapeau" src="images/empire/blue.jpg"/>
-                                <?php } ?>
                             </td>
 
                         </tr>
@@ -183,26 +173,28 @@ $i = $Numero_De_Page + 1;
                 </tbody>
 
             </table>
-            <hr class="Hr_Haut"/>
-            <div class="Position_SuivantPrecedent_BasClassement">
-                <div class="Position_Bouton_Precedent Bold">
-                    <?php if ($Numero_De_Page >= 1) { ?>
-                        <a href="javascript:void(0)" onclick="Ajax_Classement('ajax/Pages_ClassementGuildes.php?page=<?php echo ($Numero_De_Page - 1); ?>')"><= Précédente</a>
-                    <?php } else { ?>
-                        <= Précédente
-                    <?php } ?>
+
+            <div class="row" style="padding: 10px;">
+
+                <div class="col-xs-6">
+                    <div class="pull-left">
+                        <?php if ($Numero_De_Page >= 1) { ?>
+                            <a href="javascript:void(0)" onclick="Ajax_Classement('ajax/Pages_ClassementGuildes.php?page=<?php echo ($Numero_De_Page - 1); ?>')">Page précédente</a>
+                        <?php } ?>
+                    </div>
                 </div>
 
-                <div class="Position_Bouton_Suivant Bold">
-                    <?php if ($Numero_De_Page <= $nombredePage) {
-                        ?>
-                        <a href="javascript:void(0)" onclick="Ajax_Classement('ajax/Pages_ClassementGuildes.php?page=<?php echo ($Numero_De_Page + 1); ?>')">Suivante =></a>
-                    <?php } else { ?>
-                        Suivante =>
-                    <?php } ?>
+                <div class="col-xs-6">
+                    <div class="pull-right">
+                        <?php if ($Numero_De_Page <= $nombredePage) {
+                            ?>
+                            <a href="javascript:void(0)" onclick="Ajax_Classement('ajax/Pages_ClassementGuildes.php?page=<?php echo ($Numero_De_Page + 1); ?>')">Page suivante</a>
+                        <?php } ?>
+                    </div>
                 </div>
+
             </div>
-            <hr class="Hr_Bas">
+
         </div>
     </div>
 </div>

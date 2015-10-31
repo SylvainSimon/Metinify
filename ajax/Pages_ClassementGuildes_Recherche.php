@@ -48,7 +48,7 @@ while ($Donnees_Classement_Joueurs = $Parametres_Classement_Guilde->fetch()) {
 <?php } else { ?>
 
     <?php
-    $Index_Recherche_Decale = ($Index_Recherche - 6);
+    $Index_Recherche_Decale = ($Index_Recherche - 4);
 
     /* ------------------------------ Vérification connecte ---------------------------------------------- */
     $Verification_Connecte = "SELECT id FROM player.player
@@ -79,7 +79,7 @@ while ($Donnees_Classement_Joueurs = $Parametres_Classement_Guilde->fetch()) {
                        AND player.name NOT IN(SELECT mName FROM common.gmlist)
 
                        ORDER BY guild.level DESC, guild.win DESC, guild.draw DESC, guild.loss ASC
-                                        LIMIT " . $Index_Recherche_Decale . ", 20";
+                                        LIMIT " . $Index_Recherche_Decale . ", 10";
 
     $Parametres_Classement_Guilde_Rechercher = $Connexion->query($Classement_Guilde_Rechercher);
     $Parametres_Classement_Guilde_Rechercher->setFetchMode(PDO::FETCH_OBJ);
@@ -90,46 +90,44 @@ while ($Donnees_Classement_Joueurs = $Parametres_Classement_Guilde->fetch()) {
 
         <?php if (htmlentities($Donnees_Classement_Guildes_Recherche->name) == $Guilde_A_Chercher) { ?>
             <tr id="Ligne_Joueur_Trouve">
-
-            <script type="text/javascript">                               
-                document.getElementById('Ligne_Joueur_Trouve').style.backgroundColor='#666666';
+            <script type="text/javascript">
+                document.getElementById('Ligne_Joueur_Trouve').style.backgroundColor = '#666666';
             </script>
         <?php } else { ?>
-            <tr onmouseover="this.style.backgroundColor='#666666';" onmouseout="this.style.backgroundColor='transparent';">
+            <tr>
             <?php } ?>
-            <td align="center" class="Colonne_Numero_Classement">
+            <td align="center">
                 <?php echo ($Index_Recherche - 5); ?>
             </td>
-            <td style="text-indent: 5px;">
+            <td>
                 <?php echo $Donnees_Classement_Guildes_Recherche->name; ?>
             </td>
-            <td class="Align_Left">
+
+            <td>
+                <?php if ($Donnees_Classement_Guildes_Recherche->guild_empire == 1) { ?>
+                    <i class="text-red material-icons md-icon-map md-20"></i>
+                <?php } else if ($Donnees_Classement_Guildes_Recherche->guild_empire == 2) { ?>
+                    <i class="text-yellow material-icons md-icon-map md-20"></i>
+                <?php } else if ($Donnees_Classement_Guildes_Recherche->guild_empire == 3) { ?>
+                    <i class="text-blue material-icons md-icon-map md-20"></i>
+                <?php } ?>
+            </td>
+
+            <td class="Align_center">
                 <?php echo $Donnees_Classement_Guildes_Recherche->level; ?>
             </td>
             <td>
                 <?php echo $Donnees_Classement_Guildes_Recherche->master_name; ?>
             </td>
-            <td>
+            <td  class="hidden-md hidden-sm hidden-xs">
                 <?php echo $Donnees_Classement_Guildes_Recherche->exp; ?>
             </td>
-            <td class="Align_center">
-                <?php echo $Donnees_Classement_Guildes_Recherche->win; ?>
-            </td>
-
-            <td class="Align_center">
-                <?php echo $Donnees_Classement_Guildes_Recherche->loss; ?>
-            </td>
-            <td class="Align_center">
+            <td>
+                <span class="text-green"><?php echo $Donnees_Classement_Guildes_Recherche->win; ?></span>
+                /
+                <span class="text-red"><?php echo $Donnees_Classement_Guildes_Recherche->loss; ?></span>
+                /
                 <?php echo $Donnees_Classement_Guildes_Recherche->draw; ?>
-            </td>
-            <td align="center">
-                <?php if ($Donnees_Classement_Guildes_Recherche->guild_empire == 1) { ?>
-                    <img class="Dimension_Image_Classement Deplacement_Drapeau" src="images/empire/red.jpg"/> 
-                <?php } else if ($Donnees_Classement_Guildes_Recherche->guild_empire == 2) { ?>
-                    <img class="Dimension_Image_Classement Deplacement_Drapeau" src="images/empire/yellow.jpg"/> 
-                <?php } else if ($Donnees_Classement_Guildes_Recherche->guild_empire == 3) { ?>
-                    <img class="Dimension_Image_Classement Deplacement_Drapeau" src="images/empire/blue.jpg"/>
-                <?php } ?>
             </td>
         </tr>
 

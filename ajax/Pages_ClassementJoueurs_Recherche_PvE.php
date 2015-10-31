@@ -51,7 +51,7 @@ while ($Donnees_Classement_Joueurs = $Parametres_Classement_Joueur->fetch()) {
 <?php } else { ?>
 
     <?php
-    $Index_Recherche_Decale = ($Index_Recherche - 6);
+    $Index_Recherche_Decale = ($Index_Recherche - 4);
 
     /* ------------------------------ Vérification connecte ---------------------------------------------- */
     $Verification_Connecte = "SELECT id FROM player.player
@@ -88,7 +88,7 @@ while ($Donnees_Classement_Joueurs = $Parametres_Classement_Joueur->fetch()) {
                                         AND player.name NOT IN(SELECT mName FROM common.gmlist)
 
                                         ORDER BY level DESC, exp DESC, victimes_pvp DESC
-                                        LIMIT " . $Index_Recherche_Decale . ", 20";
+                                        LIMIT " . $Index_Recherche_Decale . ", 10";
 
     $Parametres_Classement_Joueur_Rechercher = $Connexion->query($Classement_Joueur_Rechercher);
     $Parametres_Classement_Joueur_Rechercher->setFetchMode(PDO::FETCH_OBJ);
@@ -100,24 +100,16 @@ while ($Donnees_Classement_Joueurs = $Parametres_Classement_Joueur->fetch()) {
         <?php if ($Donnees_Classement_Joueurs_Recherche->name == $Perso_A_Chercher) { ?>
             <tr id="Ligne_Joueur_Trouve">
 
-            <script type="text/javascript">                               
-                document.getElementById('Ligne_Joueur_Trouve').style.backgroundColor='#666666';
+            <script type="text/javascript">
+                document.getElementById('Ligne_Joueur_Trouve').style.backgroundColor = '#666666';
             </script>
         <?php } else { ?>
-            <tr onmouseover="this.style.backgroundColor='#666666';" onmouseout="this.style.backgroundColor='transparent';">
+            <tr>
             <?php } ?>
-            <td align="center" class="Colonne_Numero_Classement">
+             <td align="center">
                 <?php echo ($Index_Recherche - 5); ?>
             </td>
-            <td style="text-indent: 5px;">
-                <?php echo $Donnees_Classement_Joueurs_Recherche->name; ?>
-            </td>
-            <td>
-                <?php echo $Donnees_Classement_Joueurs_Recherche->level; ?>
-            </td>
-            <td>
-                <?php echo $Donnees_Classement_Joueurs_Recherche->exp; ?>
-            </td>
+
             <td>
                 <?php if ($Donnees_Classement_Joueurs_Recherche->job == "0") { ?> 
                     <img class="Dimension_Image_Classement" src="images/races/0_mini.png"/>
@@ -136,6 +128,16 @@ while ($Donnees_Classement_Joueurs = $Parametres_Classement_Joueur->fetch()) {
                 <?php } else if ($Donnees_Classement_Joueurs_Recherche->job == "7") { ?> 
                     <img class="Dimension_Image_Classement" src="images/races/7_mini.png"/>
                 <?php } ?>
+            </td>
+
+            <td style="text-indent: 5px;">
+                <?php echo $Donnees_Classement_Joueurs_Recherche->name; ?>
+            </td>
+            <td>
+                <?php echo $Donnees_Classement_Joueurs_Recherche->level; ?>
+            </td>
+            <td  class="hidden-md hidden-sm hidden-xs">
+                <?php echo $Donnees_Classement_Joueurs_Recherche->exp; ?>
             </td>
 
             <td>
@@ -207,38 +209,39 @@ while ($Donnees_Classement_Joueurs = $Parametres_Classement_Joueur->fetch()) {
                     Non-définie
                 <?php } ?>
             </td>
-			
-				
-				<td>
-                    <?php echo $Donnees_Classement_Joueurs_Recherche->score_pve; ?>
-                </td>
 
-            <td class="Align_center">
+
+            <td>
+                <?php echo $Donnees_Classement_Joueurs_Recherche->score_pve; ?>
+            </td>
+
+            <td>
                 <?php if ($Donnees_Classement_Joueurs_Recherche->empire == 1) { ?>
-                    <img class="Dimension_Image_Classement Deplacement_Drapeau" src="images/empire/red.jpg"/> 
+                    <i class="text-red material-icons md-icon-map md-20"></i>
                 <?php } else if ($Donnees_Classement_Joueurs_Recherche->empire == 2) { ?>
-                    <img class="Dimension_Image_Classement Deplacement_Drapeau" src="images/empire/yellow.jpg"/> 
+                    <i class="text-yellow material-icons md-icon-map md-20"></i>
                 <?php } else if ($Donnees_Classement_Joueurs_Recherche->empire == 3) { ?>
-                    <img class="Dimension_Image_Classement Deplacement_Drapeau" src="images/empire/blue.jpg"/>
+                    <i class="text-blue material-icons md-icon-map md-20"></i>
+                <?php } ?>
+            </td>
+            <td>
+                <?php
+                $Parametres_Verification_Connecte->execute(array(
+                    $Donnees_Classement_Joueurs_Recherche->player_id));
+                $Parametres_Verification_Connecte->setFetchMode(PDO::FETCH_OBJ);
+                $Resultat_Verification_Connecte = $Parametres_Verification_Connecte->rowCount();
+                ?>
+                <?php if ($Resultat_Verification_Connecte != "1") { ?>
+                    <span title="Hors-ligne" class="hidden-md pull-right">
+                        <i class="text-red material-icons md-icon-account-circle"></i>
+                    </span>
+                <?php } else { ?>
+                    <span title="En ligne" class="hidden-md pull-right">
+                        <i class="text-green material-icons md-icon-account-circle"></i>
+                    </span>
                 <?php } ?>
 
             </td>
-            <?php
-            $Parametres_Verification_Connecte->execute(array(
-                $Donnees_Classement_Joueurs_Recherche->player_id));
-            $Parametres_Verification_Connecte->setFetchMode(PDO::FETCH_OBJ);
-            $Resultat_Verification_Connecte = $Parametres_Verification_Connecte->rowCount();
-            ?>
-            <?php if ($Resultat_Verification_Connecte != "1") { ?>
-                <td title="Hors-ligne" class="Align_Right Deplacement_Drapeau ">
-                    <img class="Ombre_Grise" src="images/offline.gif" />
-                </td>
-            <?php } else { ?>
-                <td title="En ligne" class="Align_Right Deplacement_Drapeau">
-                    <img class="Ombre_Grise" src="images/online.gif" />
-
-                </td>
-            <?php } ?>
         </tr>
 
         <?php $Index_Recherche++; ?>
