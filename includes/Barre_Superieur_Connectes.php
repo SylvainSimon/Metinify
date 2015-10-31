@@ -13,32 +13,63 @@ if (!empty($_SESSION['ID'])) {
         ":id" => $_SESSION['ID']));
     $Parametres_Verification_Donnees->setFetchMode(PDO::FETCH_OBJ);
     $Donnees_Verification_Donnees = $Parametres_Verification_Donnees->fetch();
-    
+
     $_SESSION["VamoNaies"] = $Donnees_Verification_Donnees->cash;
     $_SESSION["TanaNaies"] = $Donnees_Verification_Donnees->mileage;
 }
 ?>
 
-<div id="Zone_Identité">
-    <span>Bienvenue <span onclick="Ajax('pages/Logs_Connexion.php')" title="Voir l'historique de vos connexions" class="Bold Pointer"><?php echo $_SESSION['Utilisateur'] ?></span> (<?php echo $_SERVER["REMOTE_ADDR"]; ?>)</span>
+<div class="col-md-7 col-sm-7 col-xs-7">
 
+    <div class="row">
+
+        <div class="col-lg-3 col-md-4 col-sm-4">
+            Bienvenue <span onclick="Ajax('pages/Logs_Connexion.php')" title="Voir l'historique de vos connexions" class="Bold Pointer"><?php echo $_SESSION['Utilisateur'] ?></span>
+        </div>
+
+        <div style="position: relative; left:-4px;"  class="col-lg-5 col-md-6 col-sm-6">
+            <img class="inline" src="images/rectopiece.png" height="35" title="VamoNaies"/>
+            <div class="inline" id="Nombre_De_Vamonaies"><?php echo $_SESSION['VamoNaies']; ?></div>
+
+            <img class="inline" src="images/versopiece.png" height="35" title="TanaNaies"/>
+            <div class="inline" id="Nombre_De_Tananaies"><?php echo $_SESSION['TanaNaies']; ?></div>
+        </div>
+    </div>
 </div>
 
-<div class="Separateur_Vertical Separateur_Vertical_1"></div>
+<div class="col-md-5 col-sm-5 col-xs-5">
 
-<div id="Zone_Centrale">
+    <div class="pull-right">
 
-    <img class="Piece_Recto Ombre" src="images/rectopiece.png" title="VamoNaies"/>
-    <div class="Position_VamoNaies Ombre_Interieur" id="Nombre_De_Vamonaies"><?php echo $_SESSION['VamoNaies']; ?></div>
+        <?php include 'Messagerie/Messagerie_Notifications.php'; ?>
+
+        <i style="top: 7px; position: relative; margin-left: 7px;" id="Icone_Sons" class="" onclick="Clique_Bouton_Sons()"></i>
+        <script type="text/javascript">
+
+            if (getCookie("cookieAudio") != null) {
+
+                if (getCookie("cookieAudio") == "On") {
+
+                    $("#Icone_Sons").attr("class", "material-icons md-icon-volume-up md-24 text-blue");
+
+                } else if (getCookie("cookieAudio") == "Off") {
+
+                    $("#Icone_Sons").attr("class", "material-icons md-icon-volume-off md-24 text-red");
+
+                }
+            } else {
+
+                setCookie("cookieAudio", "On");
+                $("#Icone_Sons").attr("class", "material-icons md-icon-volume-up md-24 text-blue");
+            }
+
+            setTimeout("Actualisation_Messages()", 20000);
+
+        </script>
 
 
-    <img class="Piece_Verso Ombre" src="images/versopiece.png" title="TanaNaies"/>
-    <div class="Position_TanaNaies Ombre_Interieur" id="Nombre_De_Tananaies"><?php echo $_SESSION['TanaNaies']; ?></div>
-
+        <a title="Se déconnecter" class="pull-right" style="cursor: pointer; margin-left: 7px;" onclick="Ajax_Connexion('includes/Barre_Deconnexion.php')">
+            <i style="top: 7px; position: relative;" class="material-icons md-icon-power md-24 text-red"></i>
+        </a>
+    </div>
 </div>
-<div class="Separateur_Vertical Separateur_Vertical_3"></div>
-<div class="Separateur_Vertical Separateur_Vertical_2"></div>
-
-<?php include 'Messagerie/Messagerie_Notifications.php'; ?>
-
-<div class="Zone_Deconnexion Pointer" title="Se déconnecter" onclick="Ajax_Connexion('includes/Barre_Deconnexion.php')"></div>

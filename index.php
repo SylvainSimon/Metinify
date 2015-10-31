@@ -37,6 +37,7 @@ check_ssl();
         <script src='./components/jquery/jquery.min.js' type='text/javascript'></script>
         <script src='./components/jquery-ui/jquery-ui.min.js' type='text/javascript'></script>
         <script src='./js/jquery.browser.min.js' type='text/javascript'></script>
+        <script src='./vendor/almasaeed2010/adminlte/plugins/slimScroll/jquery.slimscroll.min.js' type='text/javascript'></script>
         <script src='./vendor/almasaeed2010/adminlte/dist/js/app.min.js' type='text/javascript'></script>
 
         <script src="js/Jquery_Sliders.js" type='text/javascript'></script>

@@ -11,7 +11,7 @@
                 <li id="Menu_Inscription_MonCompte" style="display: none;"><a id="Lien_Mon_Compte" href="" class="fancybox_Mon_Compte" data-fancybox-type="iframe">Mon Compte</a></li>
             <?php } else { ?>
                 <li id="Menu_Inscription_MonCompte"><a id="Lien_Mon_Compte" href="includes/Onglet.php?id=<?php echo $_SESSION['ID']; ?>&type=compte" class="fancybox_Mon_Compte" data-fancybox-type="iframe">Mon Compte</a></li>
-                <li id="Menu_Inscription_MonCompte2" style="display: none;"><li><a href="javascript:void(0)" onclick="Ajax('pages/Inscription_Formulaire.php')">Inscription</a></li>
+                <li id="Menu_Inscription_MonCompte2" style="display: none;"><a href="javascript:void(0)" onclick="Ajax('pages/Inscription_Formulaire.php')">Inscription</a></li>
             <?php } ?>
 
             <li><a href="javascript:void(0)" onclick="Ajax('pages/Classement_Joueurs_PvE.php')">Classement PVE</a></li>
@@ -22,7 +22,7 @@
                 <li id="Menu_Telechargement_ItemShop" style="display: none;"><a id="Lien_Item_Shop" href="" class="fancybox_ItemShop" data-fancybox-type="iframe">Item-Shop</a></li>
             <?php } else { ?>
                 <li id="Menu_Telechargement_ItemShop" style="display: inline;"><a id="Lien_Item_Shop" href="includes/Item_Shop/Item_Shop.php?id=<?php echo $_SESSION['ID']; ?>&type=ItemShop" class="fancybox_ItemShop" data-fancybox-type="iframe">Item-Shop</a></li>
-                <li id="Menu_Telechargement_ItemShop2" style="display: none;"><a href="javascript:void(0)" onclick="Ajax('pages/Telechargement.php')">Téléchargement</a></li>
+                <li id="Menu_Telechargement_ItemShop2"><a href="javascript:void(0)" onclick="Ajax('pages/Telechargement.php')">Téléchargement</a></li>
             <?php } ?>
 
             <?php if (empty($_SESSION['Utilisateur'])) { ?>

@@ -1,4 +1,4 @@
-<div id="Messagerie_Notification">
+<div class="inline">
     <?php
     /* ------------------------ Vérification Données ---------------------------- */
     $Recuperation_Droits = "SELECT * 
@@ -61,22 +61,22 @@
         ?>
         <script type="text/javascript">
     <?php if ($Nombre_De_Resultat_Message_Traitement > 0) { ?>
-            var mon_title = "(<?= $Nombre_De_Resultat_Message_Traitement ?>) VamosMt2 :: Site Officiel"
+                var mon_title = "(<?= $Nombre_De_Resultat_Message_Traitement ?>) VamosMt2 :: Site Officiel"
     <?php } ?>
-                                                
+
     <?php if ($Nombre_De_Resultat_Discussion_Attente > 0) { ?>
-            var mon_title = "(<?= $Nombre_De_Resultat_Discussion_Attente ?>) VamosMt2 :: Site Officiel"
+                var mon_title = "(<?= $Nombre_De_Resultat_Discussion_Attente ?>) VamosMt2 :: Site Officiel"
     <?php } ?>
-                                                    
+
     <?php if (($Nombre_De_Resultat_Message_Traitement > 0) && ($Nombre_De_Resultat_Discussion_Attente > 0)) { ?>
-            var mon_title = "(<?= $Nombre_De_Resultat_Message_Traitement ?>) (<?= $Nombre_De_Resultat_Discussion_Attente ?>) VamosMt2 :: Site Officiel"
+                var mon_title = "(<?= $Nombre_De_Resultat_Message_Traitement ?>) (<?= $Nombre_De_Resultat_Discussion_Attente ?>) VamosMt2 :: Site Officiel"
     <?php } ?>
-                                    
+
     <?php if (($Nombre_De_Resultat_Message_Traitement == 0) && ($Nombre_De_Resultat_Discussion_Attente == 0)) { ?>
-            var mon_title = "VamosMt2 :: Site Officiel"               
+                var mon_title = "VamosMt2 :: Site Officiel"
     <?php } ?>
-        document.title = mon_title;
-                                    
+            document.title = mon_title;
+
         </script>
 
     <?php } else { ?>
@@ -111,48 +111,26 @@
             $Discussion = "discussions";
         }
 
-        echo "Vous avez <span id='Nombre_Message_Non_Lu'>" . $Nombre_De_Resultat_Message_Traitement . "</span> " . $Message . " dans " . $Nombre_De_Resultat_Discussion_Traitement . " " . $Discussion . ".";
+        if ($Nombre_De_Resultat_Message_Traitement == 0) {
+            echo "<i title='Aucun nouveau message' style='top: 7px; position: relative;' class='material-icons md-icon-chat md-24'></i>";
+        } else {
+
+            echo "<i title='" . $Nombre_De_Resultat_Message_Traitement . " " . $Message . "' style='top: 7px; position: relative;' class='material-icons text-green md-icon-chat md-22'></i>";
+        }
         ?>
 
         <script type="text/javascript">
     <?php if ($Nombre_De_Resultat_Message_Traitement > 0) { ?>
-            var mon_title = "(<?= $Nombre_De_Resultat_Message_Traitement ?>) VamosMt2 :: Site Officiel"
+                var mon_title = "(<?= $Nombre_De_Resultat_Message_Traitement ?>) VamosMt2 :: Site Officiel"
     <?php } ?>
-                                    
+
     <?php if ($Nombre_De_Resultat_Message_Traitement == 0) { ?>
-            var mon_title = "VamosMt2 :: Site Officiel"               
+                var mon_title = "VamosMt2 :: Site Officiel"
     <?php } ?>
-        document.title = mon_title;
-                                    
+            document.title = mon_title;
+
         </script>
 
     <?php } ?>
 
 </div>
-
-<div id="Icone_Sons" onclick="Clique_Bouton_Sons()">
-
-</div>
-
-<script type="text/javascript">
-   
-    if(getCookie("cookieAudio") != null){
-        
-        if(getCookie("cookieAudio") == "On"){
-                
-            $("#Icone_Sons").html("<img src='images/icones/volumeon.png' height='20' >");
-   
-        }else if (getCookie("cookieAudio") == "Off"){
-            
-            $("#Icone_Sons").html("<img src='images/icones/volumeoff.png' height='20' >");
-            
-        }
-    }else{
-        
-        setCookie("cookieAudio", "On");
-        $("#Icone_Sons").html("<img src='images/icones/volumeon.png' height='20' >");
-    }
-    
-    setTimeout("Actualisation_Messages()",20000);
-   
-</script>

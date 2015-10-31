@@ -24,7 +24,6 @@ $(document).ready( function () {
                         document.getElementById('Menu_Inscription_MonCompte2').style.display = 'none';        
                         document.getElementById('Lien_Mon_Compte').href = "includes/Onglet.php?id="+Parse_Json.id+"&type=compte"; 
                  
-                        document.getElementById('Menu_Telechargement_ItemShop2').style.display = 'none'; 
                         document.getElementById('Menu_Telechargement_ItemShop').style.display = 'inline';       
                         document.getElementById('Lien_Item_Shop').href = "includes/Item_Shop/Item_Shop.php?type=Item_Shop";  
                     
