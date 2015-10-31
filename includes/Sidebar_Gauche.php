@@ -21,7 +21,7 @@ include ($files[$rand]);
     });
 </script>
 
-<div class="info-box flat" style="background-color: #6D1A0C !important; cursor: pointer;" onclick="window.open('http://vamosmt2.org:81/Installateur%20VamosMT2%20Client%20officiel%202014-2015.exe', '_self')">
+<div class="info-box flat" style="border: 1px solid #6D4949; background-color: #6D1A0C !important; cursor: pointer;" onclick="window.open('http://vamosmt2.org:81/Installateur%20VamosMT2%20Client%20officiel%202014-2015.exe', '_self')">
     
     <span class="info-box-icon"><i class="material-icons md-icon-download md-36"></i></span>
 

@@ -19,7 +19,7 @@
             $i = 0;
 
             /* ------------------------------- Top 5 Joueur ----------------------------- */
-            $Top_5_Joueurs = "SELECT name,level,exp,score_pve
+            $Top_5_Joueurs = "SELECT *
                                          
                                      FROM player.player
                                      LEFT JOIN account.account
@@ -32,7 +32,7 @@
                                      AND ( not (name like '[TM]%' ))
                                      AND ( not (name like '[SGM]%' ))
                                      AND player.name NOT IN(SELECT mName FROM common.gmlist)
-									 ORDER BY score_pve DESC, level DESC, exp DESC
+                                     ORDER BY score_pve DESC, level DESC, exp DESC
                                      LIMIT 0,6";
 
             $Parametres_Top_5_Joueurs = $Connexion->query($Top_5_Joueurs);

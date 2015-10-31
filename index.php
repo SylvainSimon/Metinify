@@ -96,7 +96,7 @@ check_ssl();
 
     </head>
 
-    <body class="skin-red">
+    <body class="skin-red fixed">
         <div class="wrapper">
 
             <?php include_once 'includes/Barre_Superieur.php'; ?>

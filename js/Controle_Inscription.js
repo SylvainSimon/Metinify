@@ -32,8 +32,8 @@ function verifNomDutilisateur()
             (pseudo.charCodeAt(i) > 122) && (pseudo.charCodeAt(i) < 128) ||
             (pseudo.charCodeAt(i) > 144)) {
                 
-            document.getElementById('ReponseDuTestNomDutilisateur').innerHTML = "<font color=\"#FD130B\">Caractère(s) non-autorisé(s).</font>";
-            document.getElementById("SaisieUtilisateur").className = "Zone_Saisie_Inscription_Rouge";
+            document.getElementById('ReponseDuTestNomDutilisateur').innerHTML = "<span class='text-danger'>Caractère(s) non-autorisé(s)</span>";
+            document.getElementById("SaisieUtilisateur").className = "form-control input-sm text";
                 
             UtilisateurSyntax = 1;
                 
@@ -45,8 +45,7 @@ function verifNomDutilisateur()
     }
     if(pseudo.length<2){
             
-        document.getElementById('ReponseDuTestNomDutilisateur').innerHTML = "<font color=\"#FD130B\">Nom d\'utilisateur trop court.</font>";
-        document.getElementById("SaisieUtilisateur").className = "Zone_Saisie_Inscription_Rouge";
+        document.getElementById('ReponseDuTestNomDutilisateur').innerHTML = "<span class='text-danger'>Identifiant trop court</span>";
             
         UtilisateurSyntax = 1;
     }
@@ -54,15 +53,13 @@ function verifNomDutilisateur()
     else if(texte = RequeteAJAX('ajax/VerifUtilisateur.php?pseudo='+escape(pseudo)))
     {  
         if(texte == 1){
-            document.getElementById('ReponseDuTestNomDutilisateur').innerHTML = "<font color=\"#FD130B\">Nom d'utilisateur déjà utilisé.</font>";
-            document.getElementById("SaisieUtilisateur").className = "Zone_Saisie_Inscription_Rouge";
+            document.getElementById('ReponseDuTestNomDutilisateur').innerHTML = "<span class='text-danger'>Identifiant déjà utilisé</span>";
                 
             UtilisateurDispo = 1;
         }
         else if(texte == 2){
                 
-            document.getElementById('ReponseDuTestNomDutilisateur').innerHTML = "<font color=\"#6FCB8A\">Nom d'utilisateur libre</font>";
-            document.getElementById("SaisieUtilisateur").className = "Zone_Saisie_Inscription_Vert";
+            document.getElementById('ReponseDuTestNomDutilisateur').innerHTML = "<span class='text-success'>Identifiant libre</span>";
                 
             UtilisateurDispo = 0;
                 
@@ -82,15 +79,13 @@ function verifMDP(){
         
     if (motdepasse.length > 5){
             
-        document.getElementById('ReponseDuTestMotDePasse').innerHTML = "<font color=\"#6FCB8A\">Mot de passe correct.</font>";
-        document.getElementById("SaisieMDP").className = "Zone_Saisie_Inscription_Vert";
+        document.getElementById('ReponseDuTestMotDePasse').innerHTML = "<span class='text-success'>Mot de passe correct</span>";
             
         MotdePasse = 0;
             
     }else{
             
-        document.getElementById('ReponseDuTestMotDePasse').innerHTML = "<font color=\"#FD130B\">Mot de passe trop court.</font>";
-        document.getElementById("SaisieMDP").className = "Zone_Saisie_Inscription_Rouge";
+        document.getElementById('ReponseDuTestMotDePasse').innerHTML = "<span class='text-danger'>Mot de passe trop court</span>";
             
         MotdePasse = 1;
     }
@@ -103,15 +98,13 @@ function verifRepeterMDP(){
         
     if (repetermotdepasse == document.getElementById("SaisieMDP").value){
             
-        document.getElementById('ReponseDuTestRepeterMotDePasse').innerHTML = "<font color=\"#6FCB8A\">Mot de passe identique.</font>";
-        document.getElementById("SaisieRepeterMDP").className = "Zone_Saisie_Inscription_Vert";
+        document.getElementById('ReponseDuTestRepeterMotDePasse').innerHTML = "<span class='text-success'>Mot de passe identiques</span>";
             
         MotdePasseVerif = 0;
             
     }else{
             
-        document.getElementById('ReponseDuTestRepeterMotDePasse').innerHTML = "<font color=\"#FD130B\">Mot de passe différent.</font>";
-        document.getElementById("SaisieRepeterMDP").className = "Zone_Saisie_Inscription_Rouge";
+        document.getElementById('ReponseDuTestRepeterMotDePasse').innerHTML = "<span class='text-danger'>Mot de passe différent</span>";
             
         MotdePasseVerif = 1;
     }
@@ -126,16 +119,14 @@ function VerifSyntaxEmail(){
     if(reg.test(mail)){
         
         syntax = true;
-        document.getElementById('ReponseDuTestMail').innerHTML = "<font color=\"#6FCB8A\">Adresse e-mail valide.</font>";
-        document.getElementById("SaisieMail").className = "Zone_Saisie_Inscription_Vert";
+        document.getElementById('ReponseDuTestMail').innerHTML = "<span class='text-success'>Adresse e-mail valide</span>";
         
         MailSyntax = 0;
         
     }else{
         
         syntax = false;
-        document.getElementById('ReponseDuTestMail').innerHTML = "<font color=\"#FD130B\">Adresse e-mail invalide.</font>";
-        document.getElementById("SaisieMail").className = "Zone_Saisie_Inscription_Rouge";
+        document.getElementById('ReponseDuTestMail').innerHTML = "<span class='text-danger'>Adresse e-mail non-valide</span>";
         
         MailSyntax = 1;
     }

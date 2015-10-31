@@ -70,7 +70,7 @@ while ($Donnees_Classement_Joueurs = $Parametres_Classement_Joueur->fetch()) {
                                         player.last_play,
                                         player.skill_group,
                                         player_index.empire,
-										player.victimes_pvp,
+					player.victimes_pvp,
                                         account.id
 
                                         FROM player.player
