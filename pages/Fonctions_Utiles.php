@@ -39,7 +39,7 @@ function Formatage_Taille($bytes, $format = '%.2f', $lang = 'fr') {
     return sprintf($format . ' %s', $b, $translatedUnits[$e]);
 }
 
-function Formatage_Date($Donnees_Brute) {
+function Formatage_Date($Donnees_Brute, $simplifie = false) {
 
     $Array_Mois = array(
         '01' => 'Janvier',
@@ -73,7 +73,13 @@ function Formatage_Date($Donnees_Brute) {
     $Date_Seconde = $Explosion_Heure[2];
 
     if ($Explosion_DateEntiere[0] != '0000-00-00') {
-        $Recomposition_Date = "Le " . $Date_Jours . " " . $Date_Mois . " " . $Date_Annee . " à " . $Date_Heure . "h" . $Date_Minute . "m" . $Date_Seconde . "s";
+
+        if ($simplifie) {
+            $Recomposition_Date = "" . $Date_Jours . " " . $Date_Mois . " " . $Date_Annee . " à " . $Date_Heure . "h" . $Date_Minute . "m" . $Date_Seconde . "s";
+        } else {
+            $Recomposition_Date = "Le " . $Date_Jours . " " . $Date_Mois . " " . $Date_Annee . " à " . $Date_Heure . "h" . $Date_Minute . "m" . $Date_Seconde . "s";
+        }
+
     } else {
         $Recomposition_Date = "La date n'a pas été définie.";
     }
@@ -117,7 +123,6 @@ function Formatage_Date_News($Donnees_Brute) {
 
     return $Recomposition_Date;
 }
-
 
 function Formatage_Date_Vue($Donnees_Brute) {
 
@@ -312,7 +317,7 @@ function Find_Name_Empire($Empire) {
     } else if ($Empire == "3") {
         $Nom_Empire = "Empire Jinno";
     }
-    
+
     return $Nom_Empire;
 }
 
@@ -355,4 +360,5 @@ function Find_Title_Status($Status) {
     }
     return $Title;
 }
+
 ?>

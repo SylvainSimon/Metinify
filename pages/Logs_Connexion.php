@@ -10,12 +10,15 @@ if (empty($_SESSION['ID'])) {
 ?>
 <?php include '../configPDO.php'; ?>
 
-<div class="Cadre_Principal">
+<div class="box box-default flat">
 
-    <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-        <h1>Historique de vos connexions</h1>
+    <div class="box-header">
+        <h3 class="box-title">Historique de vos connexions</h3>
+
     </div>
-    <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1">
+
+    <div class="box-body no-padding">
+
         <?php
         /* ------------------------ Listage Connexions ---------------------------- */
         $Listage_Connexions = "SELECT * 
@@ -46,13 +49,11 @@ if (empty($_SESSION['ID'])) {
         $Parametres_Traduction_Pays = $Connexion->prepare($Traduction_Pays);
         /* -------------------------------------------------------------------------- */
         ?>
-        <table class="Tableau_Logs_Connexions">
+        <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;"> 
             <thead>
                 <tr>
-                    <th>Intitulé</th>
                     <th>Date</th>
-                    <th>Adresse IP</th>
-                    <th>Pays</th>
+                    <th>Provenance</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,51 +61,57 @@ if (empty($_SESSION['ID'])) {
 
                     <?php while ($Donnees_Listage_Connexions = $Parametres_Listage_Connexions->fetch()) { ?>
                         <tr>
-                            <?php if ($Donnees_Listage_Connexions->resultat == 1) { ?>
-                                <td>Vous avez établie une connexion</td>
-                            <?php } else if($Donnees_Listage_Connexions->resultat == 3){ ?>
-                                <td>Tentative de connexion en étant banni</td>
-                            <?php } else { ?>
-                                <td>Une connexion à échoué avec votre compte</td>
-                            <?php } ?>
-                            <td><?= Formatage_Date($Donnees_Listage_Connexions->date); ?></td>
-                            <td><?= $Donnees_Listage_Connexions->ip; ?></td>
-
-                            <?php if ($Donnees_Listage_Connexions->ip != "") { ?>
-
-                                <?php $ip_formate = ipAdressNumber($Donnees_Listage_Connexions->ip); ?>
-
-                                <?php
-                                $Parametres_Recherche_Pays->execute(array(
-                                    $ip_formate));
-                                $Parametres_Recherche_Pays->setFetchMode(PDO::FETCH_OBJ);
-                                $Nombre_De_Resultat_Recherche_Pays = $Parametres_Recherche_Pays->rowCount();
-                                $Donnees_Recherche_Pays = $Parametres_Recherche_Pays->fetch();
-
-                                $Nom_Pays_Original = $Donnees_Recherche_Pays->COUNTRY;
-                                $Lien_Drapeau = "images/drapeaux/".strtolower($Donnees_Recherche_Pays->CTRY).".png";
-
-                                $Parametres_Traduction_Pays->execute(array(
-                                    addslashes($Nom_Pays_Original)));
-                                $Parametres_Traduction_Pays->setFetchMode(PDO::FETCH_OBJ);
-                                $Nombre_De_Resultat_Traduction_Pays = $Parametres_Traduction_Pays->rowCount();
-                                $Donnees_Traduction_Pays = $Parametres_Traduction_Pays->fetch();
-
-                                if ($Nombre_De_Resultat_Traduction_Pays != 0) {
-                                    $Nom_Pays_Original = $Donnees_Traduction_Pays->country_name_fr;
-                                }
-                                ?>
-
-                                <?php if ($Nombre_De_Resultat_Recherche_Pays != 0) { ?>
-
-                            <td align="center" title="<?= $Nom_Pays_Original; ?>"><img src="<?= $Lien_Drapeau ?>" height="11"/></td>
-
+                            <td style="line-height: 10px;">
+                                <?php if ($Donnees_Listage_Connexions->resultat == 1) { ?>
+                                    <i class="material-icons md-icon-done text-green md-20"></i>
+                                <?php } else if ($Donnees_Listage_Connexions->resultat == 3) { ?>
+                                    <i title="Compte banni" class="material-icons md-icon-lock text-red md-20"></i>
                                 <?php } else { ?>
-                                    <td>Inconnu</td>
+                                    <i title="Connexion échouée" class="material-icons md-icon-close text-red md-20"></i>
                                 <?php } ?>
 
+                                <span style="vertical-align: super">
+                                    <?= Formatage_Date($Donnees_Listage_Connexions->date, true); ?>
+                                </span>
+                            </td>
+
+                            <td>
+                                <?= $Donnees_Listage_Connexions->ip; ?>
+                                <?php if ($Donnees_Listage_Connexions->ip != "") { ?>
+
+                                    <?php $ip_formate = ipAdressNumber($Donnees_Listage_Connexions->ip); ?>
+
+                                    <?php
+                                    $Parametres_Recherche_Pays->execute(array(
+                                        $ip_formate));
+                                    $Parametres_Recherche_Pays->setFetchMode(PDO::FETCH_OBJ);
+                                    $Nombre_De_Resultat_Recherche_Pays = $Parametres_Recherche_Pays->rowCount();
+                                    $Donnees_Recherche_Pays = $Parametres_Recherche_Pays->fetch();
+
+                                    $Nom_Pays_Original = $Donnees_Recherche_Pays->COUNTRY;
+                                    $Lien_Drapeau = "images/drapeaux/" . strtolower($Donnees_Recherche_Pays->CTRY) . ".png";
+
+                                    $Parametres_Traduction_Pays->execute(array(
+                                        addslashes($Nom_Pays_Original)));
+                                    $Parametres_Traduction_Pays->setFetchMode(PDO::FETCH_OBJ);
+                                    $Nombre_De_Resultat_Traduction_Pays = $Parametres_Traduction_Pays->rowCount();
+                                    $Donnees_Traduction_Pays = $Parametres_Traduction_Pays->fetch();
+
+                                    if ($Nombre_De_Resultat_Traduction_Pays != 0) {
+                                        $Nom_Pays_Original = $Donnees_Traduction_Pays->country_name_fr;
+                                    }
+                                    ?>
+
+                                    <?php if ($Nombre_De_Resultat_Recherche_Pays != 0) { ?>
+
+                                        <span title="<?= $Nom_Pays_Original; ?>"><img src="<?= $Lien_Drapeau ?>" height="11"/></span>
+
+                                    <?php } else { ?>
+                                        Inconnu
+                                    <?php } ?>
+                                </td>
                             <?php } else { ?>
-                                <td></td>
+                                </td>
                             <?php } ?>
                         </tr>
                     <?php } ?>
