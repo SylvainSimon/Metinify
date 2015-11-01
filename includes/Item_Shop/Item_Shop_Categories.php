@@ -1,4 +1,3 @@
-<div id="ItemShop_Partie_Menu">
     <?php
     /* ------------------------ Catégories IS ---------------------------- */
     $Liste_Categorie = "SELECT itemshop.cat,
@@ -19,4 +18,3 @@
             <li onclick="Appel_Categorie_ItemShop(<?php echo $Resultat_Liste_Categorie->cat; ?>)"><?php echo $Resultat_Liste_Categorie->nom; ?></li>
         <?php } ?> 
     </ul>
-</div>

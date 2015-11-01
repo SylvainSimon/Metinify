@@ -30,7 +30,7 @@
             <li id="Menu_Telechargement_ItemShop2" style="display: inline;"><a href="javascript:void(0)" onclick="Ajax('pages/Telechargement.php')">Téléchargement</a></li>
             <li id="Menu_Telechargement_ItemShop" style="display: none;"><a id="Lien_Item_Shop" href="" class="fancybox_ItemShop" data-fancybox-type="iframe">Item-Shop</a></li>
         <?php } else { ?>
-            <li id="Menu_Telechargement_ItemShop" style="display: inline;"><a id="Lien_Item_Shop" href="includes/Item_Shop/Item_Shop.php?id=<?php echo $_SESSION['ID']; ?>&type=ItemShop" class="fancybox_ItemShop" data-fancybox-type="iframe">Item-Shop</a></li>
+            <li id="Menu_Telechargement_ItemShop" style="display: inline;"><a id="Lien_Item_Shop" href="javascript:void(0)" onclick="Ajax('./includes/Item_Shop/Item_Shop.php?id=<?php echo $_SESSION['ID']; ?>')">Item-Shop</a></li>
             <li id="Menu_Telechargement_ItemShop2"><a href="javascript:void(0)" onclick="Ajax('pages/Telechargement.php')">Téléchargement</a></li>
         <?php } ?>
 

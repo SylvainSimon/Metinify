@@ -1,6 +1,9 @@
 <?php @session_write_close(); ?>
 <?php @session_start(); ?>
 
+<link rel="stylesheet" href="../../css/Item_Shop.css">
+
+
 <div id="Rechargement_Titre_Allopass">
     Recharger par Allopass
 </div>
@@ -31,7 +34,8 @@ if (empty($_SESSION["ID"])) {
     </div>
 
     <div id="Position_Bouton_Allopass">
-        <a href="https://payment.allopass.com/buy/buy.apu?ids=227909&idd=898935&forward_target=current&data=<?= $Id_Compte ?>">
+
+        <a id="Lien_Item_Shop" href="https://payment.allopass.com/buy/buy.apu?ids=227909&idd=898935&forward_target=current&data=<?= $Id_Compte ?>" class="fancybox_ItemShop" data-fancybox-type="iframe">
             <input type="button" class="Bouton_Paypal" value="1 350 Vamonaies"/>
         </a>
     </div>

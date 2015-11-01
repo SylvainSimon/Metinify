@@ -12,75 +12,37 @@ if (empty($_SESSION['ID'])) {
     exit();
 }
 ?>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <script type="text/javascript" src="../../js/Jquery 1.8.0.js"></script>
-        <script type="text/javascript" src="../../js/ui/Jquery_UI_1.8.23.js"></script>
 
-        <link rel="stylesheet" href="../../css/Item_Shop.css">
+<link rel="stylesheet" href="../../css/Item_Shop.css">
 
-    </head>
+<div class="box box-default flat">
 
-    <body>
-        <div id="ItemShop_Partie_Haute">
-            <span class="Titre_Fenetre_Item_Shop">Magasin d'items</span>
-            <div onclick="Appel_Rechargement(<?php echo $Sauvegarder_ID; ?>, '<?php echo $Sauvegarder_Login; ?>');" class="Titre_Bouton_Recharger">
+    <div class="box-header">
+        <h3 class="box-title">Magasin d'items</h3>
+
+        <div class="box-tools">
+            <button onclick="Ajax('./includes/Item_Shop/Item_Shop_Rechargement_Accueil.php?idcompte=<?php echo $Sauvegarder_ID; ?>&nomCompte=<?php echo $Sauvegarder_Login; ?>');" class="btn btn-primary btn-flat">
                 Recharger mon compte
+            </button>
+        </div>
+    </div>
+
+    <div class="box-body no-padding">
+
+        <div class="row">
+            
+            <div class="col-lg-3" style="padding-left: 25px; padding-top: 10px;">
+                <div id="ItemShop_Partie_Menu">
+                    <?php include_once 'Item_Shop_Categories.php'; ?>
+                </div>
             </div>
-            <div class="Bouton_Fermer_Fenetre Pointer" onclick="window.parent.$.fancybox.close();"></div>
-        </div>
-
-        <?php include_once 'Item_Shop_Categories.php'; ?>
-
-
-        <div id="Item_Shop_Contenue">
-
-            <?php include 'Partie_ItemShop.php'; ?>
+            
+            <div class="col-lg-9">
+                <div id="Item_Shop_Contenue">
+                    <?php include 'Partie_ItemShop.php'; ?>
+                </div>
+            </div>
 
         </div>
-
-    </body>
-</html>
-
-<script type="text/javascript">
-                                                                            
-    function Appel_Rechargement(id_compte, login){
-        
-        window.parent.Barre_De_Statut("Ouverture de la zone de rechargement...");
-        window.parent.Icone_Chargement(1);
-	                                                       
-        $.ajax({
-            type: "POST",
-            url: "Item_Shop_Rechargement_Accueil.php",
-            data: "idcompte="+id_compte+"&nomCompte="+login,
-            success: function(msg){
-                                                                                        
-                $("#Tableau_Liste_Article").fadeOut("slow", function(){
-                    $("#Tableau_Liste_Article").html(msg);
-                    window.parent.Barre_De_Statut("Chargement terminé.");
-                    window.parent.Icone_Chargement(0);
-                    $("#Tableau_Liste_Article").fadeIn("slow");
-                });
-                
-                nav = document.getElementById("Tableau_Liste_Article");
-                
-                var scripts = nav.getElementsByTagName('script');
-                for(var i=0; i < scripts.length;i++)
-                {
-                    if (window.execScript)
-                    {
-                        window.execScript(scripts[i].text.replace('<!--',''));
-                    }
-                    else
-                    {
-                        window.eval(scripts[i].text);
-                    }
-                }
-            }
-        });
-        return false;
-                            
-    }
-                                                                        
-</script>
+    </div>
+</div>

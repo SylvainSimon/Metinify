@@ -1,43 +1,4 @@
-*{
-
-    user-select: none; 
-    -webkit-user-select: none; 
-    -khtml-user-select: none; 
-    -o-user-select: none; 
-    -moz-user-select: -moz-none;
-    outline: none;
-}
-
-/* Let's get this party started */
-*::-webkit-scrollbar {width: 17px;border: 1px solid grey;background: #333333;}
-/* Track */
-*::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 6px #111111; -webkit-border-radius: 3px;border-radius: 3px;}
-/* Handle */
-*::-webkit-scrollbar-thumb {-webkit-border-radius: 3px;border-radius: 3px;width: 13px;border: 1px solid grey;background: #111111; -webkit-box-shadow: inset 0 0 6px #111111; }
-
-
-.user_select{
-
-    user-select: all; 
-    -webkit-user-select: all; 
-    -khtml-user-select: all; 
-    -o-user-select: all; 
-    -moz-user-select: -moz-all;
-
-}
-
-body{
-
-    margin: 0px;
-    padding: 0px;
-    background: url('../images/item_shop/item_shop_fond.png');
-    border-radius: 9px;
-    overflow: hidden;
-}
-
 .Texte_Blanc_Bold_Shadow{color: white; font-weight: bold; text-shadow: 1px 0 3px black;}
-
-.Pointer{cursor: pointer;}
 
 #ItemShop_Partie_Haute{
 
@@ -68,21 +29,9 @@ body{
 .Bouton_Fermer_Fenetre:hover{opacity: 1;}
 .Bouton_Fermer_Fenetre:active{opacity: .9;}
 
-#ItemShop_Partie_Menu{
-
-    background: url('../images/motif_th.png');
-    position: absolute;
-    top:76px;
-    left:15px;
-    width: 218px;
-    height: 455px;
-    border: 1px solid grey;
-}
-
 .Liste_Menu{
 
     position: relative;
-    left:-24px;
     color: #e2e2e2;
     font-weight: bold;
     list-style-type: none;
@@ -90,8 +39,6 @@ body{
 
 .Liste_Menu li{
 
-    background: url('../images/item_shop/motif_perso.png');
-    width: 170px;
     height: 27px;
     margin-bottom: 7px;
     text-indent: 12px;
@@ -108,52 +55,22 @@ body{
 .Liste_Menu li:hover{
 
     opacity: 0.8;
-    width: 182px;
 }
 
 #Item_Shop_Contenue{
-
-    position: absolute;
-    background: transparent;
-    width: 512px;
     height: 455px;
-    top:76px;
-    right: 15px;
 }
 
 #Contenue_Categorie{
-
-    position: absolute;
-    width: 100%;
     height: 455px;
-    border: 1px solid grey;
-    border-radius: 2px;
     overflow: hidden;
     overflow-y: auto;
-    background: url('../images/motif_th.png');
-
-}
-
-#Tableau_Liste_Article{
-
-    border-collapse: collapse;
-
-}
-
-#Tableau_Liste_Article td{
-
-    background: url('../images/item_shop/liste_item.png');
-    border-collapse: collapse;
-    width: 100%;
-    box-shadow: inset 0 0 2px 1px grey;
 }
 
 .Article_IS{
-
-    border: 1px solid #AAAAAA;
     height: 106px;
-    background: url('../images/motif_th.png');
 }
+
 .Nom_Article{
 
     position: relative;
