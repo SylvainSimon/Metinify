@@ -29,12 +29,11 @@
     ?>
 
     <?php while ($Resultat_Liste_Article = $Parametres_Liste_Articles->fetch()) { ?>
-    <div style="display: inline; width:50px;">
+        <div class="Article_IS" onclick="Ajax('./includes/Item_Shop/Appel_Detail_Article.php?id_recu=<?= $Resultat_Liste_Article->id; ?>');" data-tooltip="<?php echo $Resultat_Liste_Article->info_item; ?>">
             <div class="Nom_Article">
                 <?php echo $Resultat_Liste_Article->name_item; ?>
             </div>
             <div class="Prix_Article">
-                <div class="Position_Label_Prix">Prix :</div>
                 <div class="Position_Prix"><?php echo $Resultat_Liste_Article->prix; ?></div>
                 <?php if ($Resultat_Liste_Article->cat == "7") { ?>
                     <div class="Icone_Piece"><img src="../../images/versopiece.png" width="16" height="16" /></div>
@@ -42,21 +41,21 @@
                     <div class="Icone_Piece"><img src="../../images/rectopiece.png" width="16" height="16" /></div>
                 <?php } ?>
             </div>
-            <div class="Icone_Article">
-                <?php $Size_Image = @getimagesize("../../images/items/" . $Resultat_Liste_Article->id_item . ".png"); ?>
-                <?php if ($Size_Image[1] > $Size_Image[0]) { ?>
-                    <img class="Position_Icone_Article_1Case_Grande" src="../../images/items/<?php echo $Resultat_Liste_Article->id_item; ?>.png" width="32" />
+
+            <?php $Size_Image = @getimagesize("../../images/items/" . $Resultat_Liste_Article->id_item . ".png"); ?>
+            <?php if ($Size_Image[1] > $Size_Image[0]) { ?>
+
+                <?php if ($Size_Image[1] > 64) { ?>
+                    <img class="Position_Icone_Article_1Case_TresGrande" src="../../images/items/<?php echo $Resultat_Liste_Article->id_item; ?>.png" width="32" />
                 <?php } else { ?>
-                    <img class="Position_Icone_Article_1Case_Petite" src="../../images/items/<?php echo $Resultat_Liste_Article->id_item; ?>.png" width="32" />
+                    <img class="Position_Icone_Article_1Case_Grande" src="../../images/items/<?php echo $Resultat_Liste_Article->id_item; ?>.png" width="32" />
                 <?php } ?>
 
-            </div>
-            <div class="Description_Article">
-                <?php echo $Resultat_Liste_Article->info_item; ?>
-            </div>
-            <div class="Detail_Article">
-                <img onclick="Detail_Article(<?= $Resultat_Liste_Article->id; ?>);" class="Position_Loupe_Detail" src="../../images/item_shop/details.png" height="45"/>
-            </div>
+            <?php } else { ?>
+                <img class="Position_Icone_Article_1Case_Petite" src="../../images/items/<?php echo $Resultat_Liste_Article->id_item; ?>.png" width="32" />
+            <?php } ?>
+
+
         </div>
 
     <?php } ?>

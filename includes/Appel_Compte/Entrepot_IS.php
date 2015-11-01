@@ -86,7 +86,7 @@ $Window = "MALL";
                 </script>
 
                 <div class="Interieur_Case" data-tooltip="" data-tooltip-track="1" data-tooltip-isItemMetin="1">
-                    <img id="cade_id_<?php echo $Resultat_Chercher_Chemin->item_id; ?>" src="<?php echo $Resultat_Chercher_Chemin->chemin; ?>" style="position: absolute;" />
+                    <img id="cade_id_<?php echo $Donnees_Case->item_id; ?>" src="<?php echo $Resultat_Chercher_Chemin->chemin; ?>" style="position: absolute;" />
                     <?php
                     $flag = $Donnees_Case->flag;
                     ?>

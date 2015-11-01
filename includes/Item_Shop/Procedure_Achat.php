@@ -543,16 +543,19 @@ if ($Tableau_Erreurs != '') {
     $Resultat_Achat = "Réussi";
     ?>
 
-    <div id="Detail_Item_Titre">
-        Achat terminé avec succée.
-    </div>
-
-    <div class="Texte_Achat_Termine">
+    <div class="box-body">
+        <span class="text-green">Achat terminé avec succée.</span>
+        <br/>
+        <br/>
 
         L'article a été placé dans votre entrepôt item-shop.<br/><br/>
-        Le numéro de transaction est le : <?php echo $Dernier_Numero; ?><br/>
+        <span class="text-yellow">Le numéro de transaction est le : <?php echo $Dernier_Numero; ?></span><br/>
         Gardez le précieusement, il vous sera utile en cas de réclamation.<br/><br/>
-        En cas de problème n'hésitez pas à contacté le support de VamosMt2.<br/>
+        En cas de problème n'hésitez pas à contacter le support de VamosMt2.<br/>
+    </div>
+
+    <div class="box-footer">
+        <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
     </div>
 
     <?php

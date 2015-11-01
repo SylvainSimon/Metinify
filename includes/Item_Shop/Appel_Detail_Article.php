@@ -2,6 +2,9 @@
 <?php @session_start(); ?>
 <?php include '../../configPDO.php'; ?>
 
+<?php $Sauvegarder_ID = $_SESSION['ID']; ?>
+<?php $Sauvegarder_Login = $_SESSION['Utilisateur']; ?>
+
 <?php if (empty($_SESSION["ID"])) { ?>
 
     <span class="Texte_Blanc_Bold_Shadow">Veuillez vous reconnecter pour accéder à cette page</span>
@@ -19,7 +22,7 @@
                            itemshop.id_item,
                            itemshop.type
                     FROM site.itemshop
-                    WHERE itemshop.id = '" . $_POST['id_recu'] . "' 
+                    WHERE itemshop.id = '" . $_GET['id_recu'] . "' 
                     LIMIT 1";
     $Parametres_Detail_Articles = $Connexion->prepare($Detail_Articles);
     $Parametres_Detail_Articles->execute();
@@ -29,134 +32,148 @@
     $Resultat_Detail_Articles = $Parametres_Detail_Articles->fetch();
     ?>
 
-    <div id="Detail_Item_Titre">
+    <link rel="stylesheet" href="../../css/Item_Shop.css">
 
-        <?php echo $Resultat_Detail_Articles->name_item; ?>
+    <div class="box box-default flat">
 
-    </div>
+        <div class="box-header">
+            <h3 class="box-title">Magasin d'items - <?php echo $Resultat_Detail_Articles->name_item; ?></h3>
 
-    <div class="Detail_Item_Icone">
-        <?php $Size_Image = @getimagesize("../../images/items/" . $Resultat_Detail_Articles->id_item . ".png"); ?>
-        <?php if ($Size_Image[1] > $Size_Image[0]) { ?>
-            <img class="Position_Icone_Article_1Case_Grande" src="../../images/items/<?php echo $Resultat_Detail_Articles->id_item; ?>.png" width="32" />
-        <?php } else { ?>
-            <img class="Position_Icone_Article_1Case_Petite" src="../../images/items/<?php echo $Resultat_Detail_Articles->id_item; ?>.png" width="32" />
-        <?php } ?>
-    </div>
+            <div class="box-tools">
+                <button onclick="Ajax('./includes/Item_Shop/Item_Shop_Rechargement_Accueil.php?idcompte=<?php echo $Sauvegarder_ID; ?>&nomCompte=<?php echo $Sauvegarder_Login; ?>');" class="btn btn-sm btn-primary btn-flat">
+                    Recharger
+                </button>
+            </div>
+        </div>
 
-    <div class="Detail_Item_Description">
-        <?php echo $Resultat_Detail_Articles->full_description; ?>
-    </div>
 
-    <div class="Barre_Choix_Quantité">
-        <?php if ($Resultat_Detail_Articles->cat == "8") { ?>
+        <div id="ContenantAchat">
+            <div class="box-body">
 
-            <div class="Rappel_Prix_Unité">
-                Prix : <?php echo $Resultat_Detail_Articles->prix; ?>
-                <?php if ($Resultat_Detail_Articles->cat == "7") { ?>
-                    <img class="Image_Piece_Detail_Item" src="../../images/versopiece.png" width="16" >
+                <?php $Size_Image = @getimagesize("../../images/items/" . $Resultat_Detail_Articles->id_item . ".png"); ?>
+                <?php if ($Size_Image[1] > $Size_Image[0]) { ?>
+                    <img class="Position_Icone_Article_1Case_Grande" src="../../images/items/<?php echo $Resultat_Detail_Articles->id_item; ?>.png" width="32" />
                 <?php } else { ?>
-                    <img class="Image_Piece_Detail_Item" src="../../images/rectopiece.png" width="16" >
+                    <img class="Position_Icone_Article_1Case_Petite" src="../../images/items/<?php echo $Resultat_Detail_Articles->id_item; ?>.png" width="32" />
                 <?php } ?>
-            </div>
 
-            <select disabled="disabled" id="Selecteur_Nombre">
-                <option value="1" selected="selected">x1 (<?php echo $Resultat_Detail_Articles->nb_item; ?> jours)</option>
-            </select>
-
-            <div onclick="Valider_Mon_Achat(<?php echo $_POST['id_recu']; ?>, document.getElementById('Selecteur_Nombre').value)" class="Bouton_Valider_Achat">
-                Je valide mon achat
-            </div>
-
-        <?php } else { ?>
-
-            <div class="Rappel_Prix_Unité">
-                Prix : <span id="Prix"><?php echo $Resultat_Detail_Articles->prix; ?></span>
-                <?php if ($Resultat_Detail_Articles->cat == "7") { ?>
-                    <img class="Image_Piece_Detail_Item" src="../../images/versopiece.png" width="16" >
+                <?php if ($Resultat_Detail_Articles->full_description == "") { ?>
+                    <?php echo $Resultat_Detail_Articles->info_item; ?>
                 <?php } else { ?>
-                    <img class="Image_Piece_Detail_Item" src="../../images/rectopiece.png" width="16" >
+                    <?php echo $Resultat_Detail_Articles->full_description; ?>
                 <?php } ?>
+
+
+                <div class="Rappel_Prix_Unité pull-right" style="display: inline;">
+                    Total à payer : <span id="Prix"><?php echo $Resultat_Detail_Articles->prix; ?></span>
+                    <?php if ($Resultat_Detail_Articles->cat == "7") { ?>
+                        <img class="Image_Piece_Detail_Item" src="../../images/versopiece.png" width="24" >
+                    <?php } else { ?>
+                        <img class="Image_Piece_Detail_Item" src="../../images/rectopiece.png" width="24" >
+                    <?php } ?>
+                </div>
             </div>
 
-            <select id="Selecteur_Nombre" onchange="document.getElementById('Prix').innerHTML = (this.value*<?php echo $Resultat_Detail_Articles->prix; ?>)">
-                <option value="1" selected="selected">x1</option>
-                <option value="2" >x2</option>
-                <option value="5">x5</option>
-                <option value="10">x10</option>
-                <option value="20">x20</option>
-                <option value="50">x50</option>
-            </select>
+            <div class="box-footer">
 
-            <div onclick="Valider_Mon_Achat(<?php echo $_POST['id_recu']; ?>, document.getElementById('Selecteur_Nombre').value)" class="Bouton_Valider_Achat">
-                Je valide mon achat
+                <?php if ($Resultat_Detail_Articles->cat == "8") { ?>
+
+                    <div class="pull-left">
+                        <select  class="form-control" disabled="disabled" id="Selecteur_Nombre">
+                            <option value="1" selected="selected">x1 (<?php echo $Resultat_Detail_Articles->nb_item; ?> jours)</option>
+                        </select>
+                    </div>
+
+                    <div class="pull-right">
+                        <button onclick="Valider_Mon_Achat(<?php echo $_GET['id_recu']; ?>, document.getElementById('Selecteur_Nombre').value)" class="btn btn-primary btn-flat">
+                            Payer
+                        </button>
+                    </div>
+                <?php } else { ?>
+
+                    <div class="pull-left">
+
+                        <select id="Selecteur_Nombre" class="form-control" onchange="document.getElementById('Prix').innerHTML = (this.value *<?php echo $Resultat_Detail_Articles->prix; ?>)">
+                            <option value="1" selected="selected">x1</option>
+                            <option value="2">x2</option>
+                            <option value="5">x5</option>
+                            <option value="10">x10</option>
+                            <option value="20">x20</option>
+                            <option value="50">x50</option>
+                        </select>
+                    </div>
+
+                    <div class="pull-right">
+                        <button onclick="Valider_Mon_Achat(<?php echo $_GET['id_recu']; ?>, document.getElementById('Selecteur_Nombre').value)" class="btn btn-primary btn-flat">
+                            Payer
+                        </button>
+                    </div>
+                <?php } ?>
+
             </div>
-        <?php } ?>
+        </div>
     </div>
 
     <script type="text/javascript">
-                                            
-        function Valider_Mon_Achat(id_item, nombre_item){
-                                                
+
+        function Valider_Mon_Achat(id_item, nombre_item) {
+
             window.parent.Barre_De_Statut("Transaction en cours...");
             window.parent.Icone_Chargement(1);
-                                            
+
             $.ajax({
                 type: "POST",
-                url: "Procedure_Achat.php",
-                data: "id_item="+id_item+"&nombre_item="+nombre_item,
-                success: function(msg){
-                                                        
-                    if(msg == 5){
-                                             
+                url: "./includes/Item_Shop/Procedure_Achat.php",
+                data: "id_item=" + id_item + "&nombre_item=" + nombre_item,
+                success: function (msg) {
+
+                    if (msg == 5) {
+
                         window.parent.Barre_De_Statut("Entrepôt plein ou inexistant.");
                         window.parent.Icone_Chargement(2);
-                            
+
                         alert("Votre entrepot n'a plus de place ou n'existe pas.");
-                            
-                    }else if(msg == 6){
-                                                           
+
+                    } else if (msg == 6) {
+
                         window.parent.Barre_De_Statut("Vous n'avez pas asser de Tananaies.");
                         window.parent.Icone_Chargement(2);
-                                    
+
                         alert("Vous n'avez pas assez de TanaNaies.")
-                                    
-                    }else if(msg == 4){
-                                                           
+
+                    } else if (msg == 4) {
+
                         window.parent.Barre_De_Statut("L'item choisie n'est pas valide.");
                         window.parent.Icone_Chargement(2);
                         alert("L'item n'est pas valide.")
-                                                        
-                    }else if(msg == 3){
-                                                            
+
+                    } else if (msg == 3) {
+
                         window.parent.Barre_De_Statut("Vous n'avez pas asser de Vamonaies.");
                         window.parent.Icone_Chargement(2);
-                                        
+
                         alert("Vous n'avez pas assez de Vamonaies.")
-                                                    
-                    }else if(msg == "Vous n'êtes pas connecté"){
-                                                            
+
+                    } else if (msg == "Vous n'êtes pas connecté") {
+
                         window.parent.Barre_De_Statut("Vous n'êtes pas/plus connecté.");
                         window.parent.Icone_Chargement(2);
-                                                
+
                         alert(msg);
-                                                            
-                    }else{
+
+                    } else {
 
                         window.parent.Barre_De_Statut("Achat effectué avec succès.");
                         window.parent.Icone_Chargement(0);
-                                            
-                        $("#Tableau_Liste_Article").fadeOut("medium", function(){
-                            $("#Tableau_Liste_Article").html(msg);
-                            $("#Tableau_Liste_Article").fadeIn("medium");
-                        });
-                                                        
+
+                        $("#ContenantAchat").html(msg);
+
                     }
 
                 }
             });
         }
-                                            
+
     </script>
 
 <?php } ?>

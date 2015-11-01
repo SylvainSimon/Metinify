@@ -1,9 +1,7 @@
 <div id="Contenue_Categorie">
-    <div id="Tableau_Liste_Article">
-
+    <div id="Tableau_Liste_Article" style="padding-top: 10px;">
 
     </div>
-
 </div>
 <script type="text/javascript">
 
@@ -21,6 +19,7 @@
                 $("#Tableau_Liste_Article").html(msg);
                 Barre_De_Statut("Catégorie chargé.");
                 Icone_Chargement(0);
+                redraw();
 
             }
         });
@@ -48,6 +47,7 @@
                 $("#Tableau_Liste_Article").html(msg);
                 Barre_De_Statut("Chargement terminé.");
                 Icone_Chargement(0);
+                redraw();
             }
         });
         return false;

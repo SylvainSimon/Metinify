@@ -29,83 +29,39 @@
 .Bouton_Fermer_Fenetre:hover{opacity: 1;}
 .Bouton_Fermer_Fenetre:active{opacity: .9;}
 
-.Liste_Menu{
-
-    position: relative;
-    color: #e2e2e2;
-    font-weight: bold;
-    list-style-type: none;
-}
-
-.Liste_Menu li{
-
-    height: 27px;
-    margin-bottom: 7px;
-    text-indent: 12px;
-    line-height: 27px;
-    cursor: pointer;
-    border: 1px solid grey;
-
-    transition: width 200ms;
-    -moz-transition: width 200ms;
-    -webkit-transition: width 200ms;
-    -o-transition: width 200ms;
-}
-
-.Liste_Menu li:hover{
-
-    opacity: 0.8;
-}
-
-#Item_Shop_Contenue{
-    height: 455px;
-}
-
 #Contenue_Categorie{
-    height: 455px;
+    height: 500px;
     overflow: hidden;
     overflow-y: auto;
 }
 
 .Article_IS{
-    height: 106px;
+    position: relative; 
+    padding: 5px; 
+    padding-top: 2px; 
+    width: 150px; 
+    height: 150px; 
+    display: inline-block; 
+    border: 1px solid #6E6E6E;
+    cursor: pointer;
+}
+
+.Article_IS:hover{
+    
+    
 }
 
 .Nom_Article{
-
-    position: relative;
-    top:7px;
-    left:90px;
-    color: gold;
-    font-weight: bold;
-    width: 271px;
-    font-size: 12px;
-    height: 20px;
-    background: url('../images/motif.png'); 
-    text-shadow: 1px 0 3px black;
-    border: 1px solid grey;
-    padding-left: 5px;
-    padding-top: 2px;
-    line-height: 18px;
+    position: absolute;
+    top: 2px;
+    left: 5px;
 }
 
 .Prix_Article{
 
-    position: relative;
-    top:-17px;
-    left:379px;
-    color: gold;
-    font-weight: bold;
-    width: 100px;
-    font-size: 12px;
-    height: 20px;
-    background: url('../images/motif.png'); 
-    text-shadow: 1px 0 3px black;
-    border: 1px solid grey;
-    padding-top: 2px;
-    text-align: right;
-    padding-right: 3px;
-    overflow: hidden;
+    position: absolute;
+    bottom: 2px;
+    left: 18px;
 }
 
 .Position_Label_Prix{
@@ -135,84 +91,47 @@
     left:18px;
 }
 .Icone_Article{
-    background: url('../images/motif.png'); 
-    position: relative;
-    width: 70px;
-    height: 90px;
-    border: 1px solid grey;
-    top:-41px;
-    left:7px;
+
 }
 
 .Description_Article{
 
-    position: relative;
-    width: 267px;
-    height: 50px;
 
-    top:-97px;
-    left:89px;
-
-    border: 1px solid grey;
-    text-shadow: 1px 0 3px black;
-    color: white;
-    font-size: 13px;
-    padding-top: 3px;
-    padding-right: 5px;
-    padding-left: 5px;
-    overflow-y: auto;
-
-    background: url('../images/motif.png'); 
 }
 
 .Detail_Article{
 
-    position: relative;
-    width: 100px;
-    height: 54px;
 
-    top:-151px;
-    left:381px;
-    color: white;
-    font-weight: bold;
-
-    border-radius: 10px;
 }
 
-.Position_Loupe_Detail{
-
-    position: relative;
-    top:7px;
-    left:3px;
-    cursor: pointer;
-    opacity: 0.8;
-}
-.Position_Loupe_Detail:hover{
-
-    opacity: 1;
-}
-
-.Position_Loupe_Detail:active{
-
-    opacity: 0.9;
-}
 
 .Position_Icone_Article_1Case_Petite{
 
+    display: block;
     position: relative;
-    top:27px;
-    left: 20px;
-    width: 32px;
-    margin: 0 auto 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    top: 40%;
+    vertical-align:middle;
 }
 
 .Position_Icone_Article_1Case_Grande{
 
+    display: block;
     position: relative;
-    top:13px;
-    left: 20px;
-    width: 32px;
-    margin: 0 auto 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    top: 30%;
+    vertical-align:middle;
+}
+.Position_Icone_Article_1Case_TresGrande{
+
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    top: 18%;
+    vertical-align:middle;
 }
 
 /* --------------------- Detail items --------------------- */
@@ -274,26 +193,11 @@
 
 .Rappel_Prix_Unité{
 
-    position: relative;
-    top:2px;
-    width: 110px;
-    height: 24px;
-    border: 1px solid grey;
-    background: #444444;
-    color: gold;
-    font-weight: bold;
-    font-size: 16px;
-    background: url('../images/motif_th.png');
-    line-height: 24px;
-    text-indent: 5px;
 }
 
 .Image_Piece_Detail_Item{
-
     position: relative;
-    float: right;
-    right: 5px;
-    top:4px;
+    top:-2px;
 }
 
 .Barre_Choix_Quantité select{
@@ -531,7 +435,7 @@
 }
 
 .Description_Rechargement_Paypal{
-    
+
     background: #AAAAAA;
     width: 285px;
     height: 192px;
@@ -540,14 +444,14 @@
 }
 
 #Description_Paypal{
-    
+
     position: absolute;
     top:-128px;
     left:15px;
 }
 
 .Description_Rechargement_Allopass{
-    
+
     width: 285px;
     height: 139px;
     border: 1px solid grey;
@@ -555,14 +459,14 @@
 }
 
 #Description_Allopass{
-    
+
     position: absolute;
     top:-75px;
     left:15px;
 }
 
 .Texte_Rechargement{
-    
+
     color: #DDDDDD;
     padding-top: 3px;
     padding-left: 7px;

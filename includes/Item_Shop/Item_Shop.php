@@ -21,8 +21,8 @@ if (empty($_SESSION['ID'])) {
         <h3 class="box-title">Magasin d'items</h3>
 
         <div class="box-tools">
-            <button onclick="Ajax('./includes/Item_Shop/Item_Shop_Rechargement_Accueil.php?idcompte=<?php echo $Sauvegarder_ID; ?>&nomCompte=<?php echo $Sauvegarder_Login; ?>');" class="btn btn-primary btn-flat">
-                Recharger mon compte
+            <button onclick="Ajax('./includes/Item_Shop/Item_Shop_Rechargement_Accueil.php?idcompte=<?php echo $Sauvegarder_ID; ?>&nomCompte=<?php echo $Sauvegarder_Login; ?>');" class="btn btn-sm btn-primary btn-flat">
+                Recharger
             </button>
         </div>
     </div>
@@ -31,7 +31,7 @@ if (empty($_SESSION['ID'])) {
 
         <div class="row">
             
-            <div class="col-lg-3" style="padding-left: 25px; padding-top: 10px;">
+            <div class="col-lg-3">
                 <div id="ItemShop_Partie_Menu">
                     <?php include_once 'Item_Shop_Categories.php'; ?>
                 </div>
