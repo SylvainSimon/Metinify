@@ -74,12 +74,9 @@ $i = $Numero_De_Page + 1;
                     data: "recherche=" + $("#SaisieRecherche").val(),
                     success: function (msg) {
 
-                        $("#pagedeclassement").fadeOut("slow", function () {
-                            $("#pagedeclassement").html(msg);
-                            Barre_De_Statut("Recherche terminé.");
-                            Icone_Chargement(0);
-                            $("#pagedeclassement").fadeIn("slow");
-                        });
+                        $("#pagedeclassement").html(msg);
+                        Barre_De_Statut("Recherche terminé.");
+                        Icone_Chargement(0);
 
                     }
                 });
@@ -145,7 +142,7 @@ $i = $Numero_De_Page + 1;
                                 }
                                 ?>
                             </td>
-                            
+
                             <td>
                                 <?php if ($Donnees_Classement_Joueurs->job == "0") { ?> 
                                     <img class="Dimension_Image_Classement" src="images/races/0_mini.png"/>
@@ -253,11 +250,11 @@ $i = $Numero_De_Page + 1;
 
                             <td>
                                 <?php if ($Donnees_Classement_Joueurs->empire == 1) { ?>
-                                    <i class="text-red material-icons md-icon-map md-20"></i>
+                                    <i data-tooltip="Empire Shinsoo" data-tooltip-position="left" class="text-red material-icons md-icon-map md-20"></i>
                                 <?php } else if ($Donnees_Classement_Joueurs->empire == 2) { ?>
-                                    <i class="text-yellow material-icons md-icon-map md-20"></i>
+                                    <i data-tooltip="Empire Chunjo" data-tooltip-position="left" class="text-yellow material-icons md-icon-map md-20"></i>
                                 <?php } else if ($Donnees_Classement_Joueurs->empire == 3) { ?>
-                                    <i class="text-blue material-icons md-icon-map md-20"></i>
+                                    <i data-tooltip="Empire Jinno" data-tooltip-position="left" class="text-blue material-icons md-icon-map md-20"></i>
                                 <?php } ?>
                             </td>
                             <td>

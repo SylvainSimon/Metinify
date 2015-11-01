@@ -21,13 +21,13 @@
                         <?php if ($Resultat_Verification_Connecte != "1") { ?>
                             <?php $Resultat_Appel_Joueur_Connecte = 0; ?>
 
-                            <span data-tooltip="Hors-ligne" data-tooltip-position="left" class="hidden-md pull-right">
+                            <span data-tooltip="Hors-ligne" data-tooltip-position="left" class="hidden-md pull-right" style="line-height: 10px;">
                                 <i class="text-red material-icons md-icon-account-circle"></i>
                             </span>
                         <?php } else { ?>
                             <?php $Resultat_Appel_Joueur_Connecte = 1; ?>
 
-                            <span data-tooltip="En ligne" data-tooltip-position="left" class="hidden-md pull-right">
+                            <span data-tooltip="En ligne" data-tooltip-position="left" class="hidden-md pull-right" style="line-height: 10px;">
                                 <i class="text-green material-icons md-icon-account-circle"></i>
                             </span>
                         <?php } ?>
@@ -97,9 +97,9 @@
                     }
                     ?>
                     <?php if ($alignement < 0) { ?>
-                        <td><span class="Couleur_Grade_Negatif"><?php echo $Array_Grades[$grade] ?></span></td>
+                        <td><span class="text-red"><?php echo $Array_Grades[$grade] ?></span></td>
                     <?php } else { ?>
-                        <td><span class="Couleur_Grade_Positif"><?php echo $Array_Grades[$grade] ?></span></td>
+                        <td><span class="text-blue"><?php echo $Array_Grades[$grade] ?></span></td>
                     <?php } ?>
                 </tr>
 
@@ -136,33 +136,29 @@
                 </tr>
                 <tr>
                     <td>Empire</td>
-                    <td>
+                    <td style="line-height: 10px;">
                         <?php if ($Donnees_Appel_Joueurs_Page->empire == 1) { ?>
-                            <img src="../images/empire/red.jpg" alt="Shinsoo" />
-                        <?php } else if ($Donnees_Appel_Joueurs_Page->empire == 2) { ?> 
-                            <img src="../images/empire/yellow.jpg" alt="Chunjo" />
-                        <?php } else if ($Donnees_Appel_Joueurs_Page->empire == 3) { ?> 
-                            <img src="../images/empire/blue.jpg" alt="Jinno" />
+                            <i data-tooltip="Empire Shinsoo" data-tooltip-position="left" class="text-red material-icons md-icon-map md-20"></i>
+                        <?php } else if ($Donnees_Appel_Joueurs_Page->empire == 2) { ?>
+                            <i data-tooltip="Empire Chunjo" data-tooltip-position="left" class="text-yellow material-icons md-icon-map md-20"></i>
+                        <?php } else if ($Donnees_Appel_Joueurs_Page->empire == 3) { ?>
+                            <i data-tooltip="Empire Jinno" data-tooltip-position="left" class="text-blue material-icons md-icon-map md-20"></i>
                         <?php } else { ?> 
-                            <img src="../images/empire/Royaume_Inconnu.jpg" alt="Inconnu" />
+                            <i data-tooltip="Empire inconnu" data-tooltip-position="left" class="material-icons md-icon-help md-20"></i>
                         <?php } ?>
                     </td>
                 </tr>
                 <tr>
                     <td>Status</td>
-                    <?php if ($Donnees_Appel_Joueurs_Page->account_status == "OK") { ?>
-                        <td onclick="Ajax('pages/Admin/Bannir_Compte.php?compte=<?php echo $Donnees_Appel_Joueurs_Page->account_id; ?>');">
-                            <img src="../images/valid.gif" title="Compte actif"/>
-                        </td>
-                    <?php } else if ($Donnees_Appel_Joueurs_Page->account_status == "BLOCK") { ?>
-                        <td>
-                            <img src="../images/invalid.gif" title="Compte banni"/>
-                        </td>
-                    <?php } else { ?>
-                        <td>
-                            <img src="../images/warning.gif" title="Etat inconnu" />
-                        </td>
-                    <?php } ?>
+                    <td style="line-height: 10px;">
+                        <?php if ($Donnees_Appel_Joueurs_Page->account_status == "OK") { ?>
+                            <i data-tooltip="Compte actif" data-tooltip-position="left" class="text-green material-icons md-icon-done md-20"></i>
+                        <?php } else if ($Donnees_Appel_Joueurs_Page->account_status == "BLOCK") { ?>
+                            <i data-tooltip="Compte banni" data-tooltip-position="left" class="text-red material-icons md-icon-close md-20"></i>
+                        <?php } else { ?>
+                            <i data-tooltip="Etat inconnu" data-tooltip-position="left" class="material-icons md-icon-help md-20"></i>
+                        <?php } ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>IP personnage</td></td>
@@ -189,12 +185,11 @@
                     <?php if ($Donnees_Appel_Joueurs_Page->guild_name == "") { ?>
                         <td>
                             Pas de guilde
-
                         </td>
                     <?php } else { ?>
                         <td>
                             <?php echo $Donnees_Appel_Joueurs_Page->guild_name; ?>
-                            <div class="Icone_Chef_Guilde">
+                            <div class="pull-right" style="line-height: 10px;">
                                 <?php if ($Nombre_De_Resultat_Verif_Guilde == 0) { ?>
                                     <img src="../images/icones/membre.png" title="Membre" />
                                 <?php } else { ?>

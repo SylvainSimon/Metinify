@@ -11,7 +11,7 @@ $Classement_Joueur = "SELECT player.name,
                              player.id AS player_id,
                              player.last_play,
                              player.skill_group,
-							 player.score_pve,
+			     player.score_pve,
                              player_index.empire
 
                              FROM player.player
@@ -71,6 +71,7 @@ while ($Donnees_Classement_Joueurs = $Parametres_Classement_Joueur->fetch()) {
                                         player.skill_group,
                                         player_index.empire,
 					player.victimes_pvp,
+                                        player.score_pve,
                                         account.id
 
                                         FROM player.player
@@ -87,7 +88,7 @@ while ($Donnees_Classement_Joueurs = $Parametres_Classement_Joueur->fetch()) {
                                         AND ( not (name like '[SGM]%'))
                                         AND player.name NOT IN(SELECT mName FROM common.gmlist)
 
-                                        ORDER BY level DESC, exp DESC, victimes_pvp DESC
+                                        ORDER BY score_pve DESC, level DESC, exp DESC
                                         LIMIT " . $Index_Recherche_Decale . ", 10";
 
     $Parametres_Classement_Joueur_Rechercher = $Connexion->query($Classement_Joueur_Rechercher);
@@ -106,7 +107,7 @@ while ($Donnees_Classement_Joueurs = $Parametres_Classement_Joueur->fetch()) {
         <?php } else { ?>
             <tr>
             <?php } ?>
-             <td align="center">
+            <td align="center">
                 <?php echo ($Index_Recherche - 5); ?>
             </td>
 

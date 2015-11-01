@@ -63,12 +63,9 @@ $i = $Numero_De_Page + 1;
                     data: "recherche=" + $("#SaisieRecherche").val(),
                     success: function (msg) {
 
-                        $("#pagedeclassement").fadeOut("slow", function () {
-                            $("#pagedeclassement").html(msg);
-                            Barre_De_Statut("Recherche terminé.");
-                            Icone_Chargement(0);
-                            $("#pagedeclassement").fadeIn("slow");
-                        });
+                        $("#pagedeclassement").html(msg);
+                        Barre_De_Statut("Recherche terminé.");
+                        Icone_Chargement(0);
 
                     }
                 });
@@ -102,10 +99,10 @@ $i = $Numero_De_Page + 1;
                         <th class="Align_center">Level</th>
                         <th>Chef</th>
                         <th class="hidden-md hidden-sm hidden-xs">Expérience</th>
-                        <th style="width: 100px;">Score</th>
+                        <th style="width: 120px;">Score</th>
                     </tr>
                 </thead>
-                
+
                 <tbody id="pagedeclassement">
                     <?php while ($Donnees_Classement_Guildes = $Parametres_Classement_Guildes->fetch()) { ?>
 

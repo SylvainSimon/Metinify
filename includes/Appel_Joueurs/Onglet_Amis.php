@@ -158,22 +158,16 @@
                                     </td>
                                     <td><?php echo $lJours . " jours et " . $lHeure . "h" . $lesMinutes; ?></td>
 
-                                    <?php if ($Resultat_Amis->status == "OK") { ?>
-
-                                        <td>
+                                    <td>
+                                        <?php if ($Resultat_Amis->status == "OK") { ?>
                                             <i data-tooltip="Compte actif" data-tooltip-position="left" class="text-green material-icons md-icon-done md-20"></i>
-                                        </td>
-
-                                    <?php } else if ($Resultat_Amis->status == "BLOCK") { ?>
-                                        <td>
+                                        <?php } else if ($Resultat_Amis->status == "BLOCK") { ?>
                                             <i data-tooltip="Compte banni" data-tooltip-position="left" class="text-red material-icons md-icon-close md-20"></i>
-                                        </td>
-
-                                    <?php } else { ?>
-                                        <td>
+                                        <?php } else { ?>
                                             <i data-tooltip="Etat inconnu" data-tooltip-position="left" class="material-icons md-icon-help md-20"></i>
-                                        </td>
-                                    <?php } ?>
+                                        <?php } ?>
+                                    </td>
+
                                     <td>
                                         <?php if ($Resultat_Amis->empire == 1) { ?>
                                             <i data-tooltip="Empire Shinsoo" data-tooltip-position="left" class="text-red material-icons md-icon-map md-20"></i>

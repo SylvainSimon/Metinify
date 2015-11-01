@@ -71,7 +71,7 @@
 
                                 <?php while ($Resultat_Liste_Entrepot = $Parametres_Liste_Entrepot->fetch()) { ?>
 
-                                    <tr class="Pointer">
+                                    <tr>
                                         
                                         <td><?php echo utf8_encode($Resultat_Liste_Entrepot->locale_name); ?></td>
                                         <td align="center"><?php echo $Resultat_Liste_Entrepot->count; ?></td>
