@@ -1643,7 +1643,21 @@ label{
     top: -10px;
     left: 50%;
     border-color: #666 transparent;
+    
     border-width: 0 10px 10px;
+}
+
+.isItemMetin .ui-tooltip-content{
+    background: #070707;
+    border: 1px solid #494949
+}
+
+.isItemMetin .ui-tooltip-content::after{
+    content: initial;
+    position: absolute;
+    border-style: solid;
+    display: block;
+    width: 0;
 }
 
 .nav-tabs-custom>.nav-tabs{

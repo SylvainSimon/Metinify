@@ -1,53 +1,39 @@
 <div class="tab-pane" id="Onglet_Entrepot">
 
     <div class="row">
-        <div class="col-lg-7">
-            <div class="row">
-                <div class="col-lg-5 col-xs-5">
-                    <div id="Entrepot">
+        <div class="col-lg-4" style="padding-left: 25px; padding-top: 10px; padding-bottom: 10px;">
+            <div id="Entrepot">
 
-                        <div data-tooltip="Page 1" class="Bouton_Entrepot_1 Pointer" onclick="Page_Entrepot(1);"> I </div>
-                        <div data-tooltip="Page 2" class="Bouton_Entrepot_2 Pointer" onclick="Page_Entrepot(2);"> II </div>
-                        <div data-tooltip="Page 3" class="Bouton_Entrepot_3 Pointer" onclick="Page_Entrepot(3);"> III </div>
+                <div data-tooltip="Page 1" class="Bouton_Entrepot_1 Pointer" onclick="Page_Entrepot(1);"> I </div>
+                <div data-tooltip="Page 2" class="Bouton_Entrepot_2 Pointer" onclick="Page_Entrepot(2);"> II </div>
+                <div data-tooltip="Page 3" class="Bouton_Entrepot_3 Pointer" onclick="Page_Entrepot(3);"> III </div>
 
-                        <script type="text/javascript">
+                <script type="text/javascript">
 
-                            function Page_Entrepot(page) {
+                    function Page_Entrepot(page) {
 
-                                $.ajax({
-                                    type: "POST",
-                                    url: "./includes/Appel_Compte/Entrepot_Page_" + page + ".php",
-                                    data: "id=<?php echo $Resultat_Appel_Compte->id; ?>", // données à transmettre
-                                    success: function (msg) {
+                        $.ajax({
+                            type: "POST",
+                            url: "./includes/Appel_Compte/Entrepot_Page_" + page + ".php",
+                            data: "id=<?php echo $Resultat_Appel_Compte->id; ?>", // données à transmettre
+                            success: function (msg) {
 
-                                        $("#Conteneur_Entrepot").html(msg);
-                                    }
-                                });
-                                return false;
-
+                                $("#Conteneur_Entrepot").html(msg);
                             }
+                        });
+                        return false;
 
-                            Page_Entrepot(1);
+                    }
 
-                        </script>
+                    Page_Entrepot(1);
 
-                        <div id="Conteneur_Entrepot"></div>
+                </script>
 
-                    </div>
-                </div>
+                <div id="Conteneur_Entrepot"></div>
 
-                <div class="col-lg-7 col-xs-7">
-                    <div class="inline">
-
-                        <div  style="min-height:100px; background: #070707; border: 1px solid #494949">
-                            <div id="Contenue_Milieu_Bonus">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>    
+            </div>
         </div>
-        <div class="col-lg-5">
+        <div class="col-lg-8">
             <div id="Detail_Liste_Inventaire">
 
                 <?php
@@ -85,19 +71,11 @@
 
                                 <?php while ($Resultat_Liste_Entrepot = $Parametres_Liste_Entrepot->fetch()) { ?>
 
-                                    <tr class="Pointer" onclick="Chercher_Infos_Item2(<?php echo $Resultat_Liste_Entrepot->item_id; ?>)">
-
-                                        <td>
-                                            <?php echo utf8_encode($Resultat_Liste_Entrepot->locale_name); ?>
-                                        </td>
-
-                                        <td align="center">
-                                            <?php echo $Resultat_Liste_Entrepot->count; ?>
-                                        </td>
-
+                                    <tr class="Pointer">
+                                        
+                                        <td><?php echo utf8_encode($Resultat_Liste_Entrepot->locale_name); ?></td>
+                                        <td align="center"><?php echo $Resultat_Liste_Entrepot->count; ?></td>
                                     </tr>
-
-
                                 <?php } ?>
 
                             <?php } else { ?>

@@ -85,8 +85,8 @@ $Window = "MALL";
                     }
                 </script>
 
-                <div class="Interieur_Case">
-                    <img onmouseover="Chercher_Infos_Item(<?php echo $Donnees_Case->item_id; ?>)" src="<?php echo $Resultat_Chercher_Chemin->chemin; ?>" style="position: absolute;" />
+                <div class="Interieur_Case" data-tooltip="" data-tooltip-track="1" data-tooltip-isItemMetin="1">
+                    <img id="cade_id_<?php echo $Resultat_Chercher_Chemin->item_id; ?>" src="<?php echo $Resultat_Chercher_Chemin->chemin; ?>" style="position: absolute;" />
                     <?php
                     $flag = $Donnees_Case->flag;
                     ?>
@@ -104,18 +104,23 @@ $Window = "MALL";
                         </span>
 
                     <?php } ?>
-
                 </div>
+                
+                <script type="text/javascript">
+                    getInformationItem(<?php echo $Donnees_Case->item_id; ?>);
+                </script>
 
             <?php } else { ?>
 
-                <?php if ($Donnees_Case->size == "1") { ?>
-                    <img class="tTip" src="../images/item_inexistant_1.png" title="<?php echo "Icone de " . $Donnees_Case->locale_name . " (" . $Donnees_Case->vnum . ") introuvable."; ?>" />
-                <?php } else if ($Donnees_Case->size == "2") { ?>
-                    <img class="tTip" src="../images/item_inexistant_2.png" title="<?php echo "Icone de " . $Donnees_Case->locale_name . " (" . $Donnees_Case->vnum . ") introuvable."; ?>" />
-                <?php } else if ($Donnees_Case->size == "3") { ?>
-                    <img class="tTip" src="../images/item_inexistant_3.png" title="<?php echo "Icone de " . $Donnees_Case->locale_name . " (" . $Donnees_Case->vnum . ") introuvable."; ?>" />
-                <?php } ?>
+                <div class="Interieur_Case">
+                    <?php if ($Donnees_Case->size == "1") { ?>
+                        <img src="../images/item_inexistant_1.png" data-tooltip-track="1" data-tooltip="<?php echo "Icone de " . $Donnees_Case->locale_name . " (" . $Donnees_Case->vnum . ") introuvable."; ?>" />
+                    <?php } else if ($Donnees_Case->size == "2") { ?>
+                        <img src="../images/item_inexistant_2.png" data-tooltip-track="1" data-tooltip="<?php echo "Icone de " . $Donnees_Case->locale_name . " (" . $Donnees_Case->vnum . ") introuvable."; ?>" />
+                    <?php } else if ($Donnees_Case->size == "3") { ?>
+                        <img src="../images/item_inexistant_3.png" data-tooltip-track="1" data-tooltip="<?php echo "Icone de " . $Donnees_Case->locale_name . " (" . $Donnees_Case->vnum . ") introuvable."; ?>" />
+                    <?php } ?>
+                </div>
 
             <?php } ?>
 

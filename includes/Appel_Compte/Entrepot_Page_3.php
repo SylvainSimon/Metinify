@@ -63,13 +63,13 @@ $Window = "SAFEBOX";
 
                 <?php $Resultat_Chercher_Chemin = $Parametres_Chercher_Chemin->fetch(); ?>
 
-                <div class="Interieur_Case" data-tooltip="" data-tooltip-track="1">
+                <div class="Interieur_Case" data-tooltip="" data-tooltip-track="1" data-tooltip-isItemMetin="1">
                     <img id="cade_id_<?php echo $Donnees_Case->item_id; ?>" src="<?php echo $Resultat_Chercher_Chemin->chemin; ?>" style="position: absolute;" />
                     <?php
                     $flag = $Donnees_Case->flag;
                     ?>
                     <?php if ($flag == 4 or $flag == 20 or $flag == 132 or $flag == 2052 or $flag == 8212) { ?>
-                        <span style="position: relative; width: 32px; top:50%; right: -15px">
+                        <span style="position: relative; width: 32px; top: 59%; right: -18px;">
                             <?php if ($Donnees_Case->count < 100) { ?>
                                 <?php if ($Donnees_Case->count < 10) { ?>
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php echo $Donnees_Case->count; ?>
@@ -80,8 +80,8 @@ $Window = "SAFEBOX";
                                 <?php echo $Donnees_Case->count; ?>
                             <?php } ?>
                         </span>
-
                     <?php } ?>
+                    
                 </div>
 
                 <script type="text/javascript">

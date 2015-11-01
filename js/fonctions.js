@@ -38,7 +38,10 @@ function createTooltip() {
                 collision: "flipfit flip"};
             var tooltipClass = null;
         }
-
+        
+        if ($(this).attr("data-tooltip-isItemMetin") !== undefined) {
+            var tooltipClass = tooltipClass + " isItemMetin ";
+        }
 
 
         if ($(this).attr("data-tooltip-position") !== undefined) {

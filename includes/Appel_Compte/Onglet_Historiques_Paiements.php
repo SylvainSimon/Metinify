@@ -28,50 +28,71 @@
     $Resultat_Somme_VamoNaies = $Parametres_Somme_VamoNaies->fetch()
     /* ----------------------------------------------------------------------------- */
     ?>
-    <table id="Tableau_Recapitulatif_Paiement">
-        <tr>
-            <th colspan="2">Récapitulatif :</th>
-        </tr>
-        <tr>
-            <td title="Nombres de paiements que vous avez effectué" class="Colonne_Gauche">Nombre de paiement<?php if ($Nombre_De_Resultat_Liste_Paiements > 1) { ?>s<?php } ?> :</td>
-            <td><?= $Nombre_De_Resultat_Liste_Paiements; ?></td>
-        </tr>
-        <tr>
-            <td title="Totalité des Vamonaies que vous avez gagné" class="Colonne_Gauche">Total de VamoNaies :</td>
-            <td><?= $Resultat_Somme_VamoNaies->nombre; ?></td>
-        </tr>
-    </table>
 
-    <div class="Zone_Tableau_Rechargements">
-        <table id="Tableau_Rechargements">
-            <thead>
+    <div class="row">
+        <div class="col-lg-4">
+            <table class="table table-condensed" style="border-collapse: collapse;">
                 <tr>
-                    <th width="50" align="center">ID</th>
-                    <th width="250">Date du rechargement</th>
-                    <th>Email du rechargement</th>
-                    <th width="80">VamoNaies</th>
-                    <th width="120">Ip</th>
+                    <td style="border-top: 0px;">
+                        <span data-tooltip="Nombres de paiements que vous avez effectué"  data-tooltip-position="right">
+                            Nombre de paiement
+                        </span>
+                    </td>
+                    <td style="border-top: 0px;">
+                        <span class="pull-right">
+                            <?= $Nombre_De_Resultat_Liste_Paiements; ?>
+                        </span>
+                    </td>
                 </tr>
-            </thead>
+                <tr>
+                    <td>
+                        <span data-tooltip="Total de Vamonaies que vous avez acheté"  data-tooltip-position="right">
+                            Total de VamoNaies
+                        </span>
+                    </td>
+                    <td>
+                        <span class="pull-right">
+                            <?= $Resultat_Somme_VamoNaies->nombre; ?>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-lg-8">
 
-            <tbody>
-                <?php if ($Nombre_De_Resultat_Liste_Paiements > 0) { ?>
-                    <?php while ($Resultat_Liste_Paiements = $Parametres_Liste_Paiements->fetch()) { ?>
-                        <tr class="Pointer" onmouseover="this.style.backgroundColor='#333333';" onmouseout="this.style.backgroundColor='transparent';">
-                            <td>
-                                <span class="Align_center"><?php echo $Resultat_Liste_Paiements->id; ?></span>
-                            </td>
-                            <td><?= Formatage_Date($Resultat_Liste_Paiements->date); ?></td>
-                            <td><?= $Resultat_Liste_Paiements->email_compte; ?></td>
-                            <td><?= $Resultat_Liste_Paiements->nombre_vamonaies; ?></td>
-                            <td><?= $Resultat_Liste_Paiements->ip; ?></td>
+            <div class="Zone_Tableau_Rechargements">
+
+                <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;">
+                    <thead>
+                        <tr>
+                            <th width="50" align="center">ID</th>
+                            <th width="250">Date du rechargement</th>
+                            <th>Email du rechargement</th>
+                            <th width="80">VamoNaies</th>
+                            <th width="120">Ip</th>
                         </tr>
-                    <?php } ?>
-                <?php } else { ?>
-                    <tr><td colspan="5">Vous n'avez jamais rechargé votre compte.</td></tr>
-                <?php } ?>
-            </tbody>
+                    </thead>
 
-        </table>
+                    <tbody>
+                        <?php if ($Nombre_De_Resultat_Liste_Paiements > 0) { ?>
+                            <?php while ($Resultat_Liste_Paiements = $Parametres_Liste_Paiements->fetch()) { ?>
+                                <tr class="Pointer" onmouseover="this.style.backgroundColor = '#333333';" onmouseout="this.style.backgroundColor = 'transparent';">
+                                    <td>
+                                        <span class="Align_center"><?php echo $Resultat_Liste_Paiements->id; ?></span>
+                                    </td>
+                                    <td><?= Formatage_Date($Resultat_Liste_Paiements->date); ?></td>
+                                    <td><?= $Resultat_Liste_Paiements->email_compte; ?></td>
+                                    <td><?= $Resultat_Liste_Paiements->nombre_vamonaies; ?></td>
+                                    <td><?= $Resultat_Liste_Paiements->ip; ?></td>
+                                </tr>
+                            <?php } ?>
+                        <?php } else { ?>
+                            <tr><td colspan="5">Vous n'avez jamais rechargé votre compte.</td></tr>
+                        <?php } ?>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
     </div>
 </div>
