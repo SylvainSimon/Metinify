@@ -101,7 +101,7 @@ $i = $Numero_De_Page + 1;
                         <th style="width: 25px;"></th>
                         <th class="Align_center">Level</th>
                         <th>Chef</th>
-                        <th class="hidden-md hidden-sm hidden-xs">Experience</th>
+                        <th class="hidden-md hidden-sm hidden-xs">Expérience</th>
                         <th style="width: 100px;">Score</th>
                     </tr>
                 </thead>

@@ -62,7 +62,7 @@ $i = $Limite_Basse + 1;
             <th style="width: 15px;">Race</th>
             <th>Pseudo</th>
             <th>Level</th>
-            <th class="hidden-md hidden-sm hidden-xs">Experience</th>
+            <th class="hidden-md hidden-sm hidden-xs">Expérience</th>
             <th>Classe</th>
             <th>Score</th>
             <th></th>

@@ -41,7 +41,7 @@
                     <td><?php echo $Donnees_Appel_Joueurs_Page->level; ?></td>
                 </tr>
                 <tr>
-                    <td class="Colonne_Gauche">Experience</td>
+                    <td class="Colonne_Gauche">Expérience</td>
                     <?php $Formatage_Experience = number_format($Donnees_Appel_Joueurs_Page->exp, 0, '.', ' ') . " exp."; ?>
                     <td><?php echo $Formatage_Experience; ?></td>
                 </tr>

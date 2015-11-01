@@ -37,15 +37,6 @@
 .ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 1em 1.4em; background: none; }
 .ui-tabs .ui-tabs-hide { display: none !important; }
 
-#Tableau_Recapitulatif_Amis{position: absolute;top:80px;left:20px;width: 230px;border: 1px solid #303030;text-align: left;text-indent: 7px;line-height: 20px;font-size: 13px;border-collapse: collapse;border-radius:3px;margin-right: 20px;color: #cccccc;background: url('../images/motif_th.png');}
-#Tableau_Recapitulatif_Amis .Colonne_Gauche{width: 160px;background:url('../images/motif.png');border: 1px solid grey;color: #DDDDDD;text-align: left;font-variant: small-caps;font-weight: bold;font-size: 15px; }
-#Tableau_Recapitulatif_Amis th{
-
-    height: 23px;
-    font-size: 14px;
-    border: 1px solid grey;
-}
-
 #Tableau1{
     position: absolute;
     top:80px;
@@ -594,13 +585,8 @@
 
 .Zone_Tableau_Amis{
 
-    position: absolute;
-    top: 80px;
-    right: 20px;
-    width: 900px;
     max-height: 450px;
     overflow-y:auto;
-    border-bottom: 1px solid grey;
 }
 
 

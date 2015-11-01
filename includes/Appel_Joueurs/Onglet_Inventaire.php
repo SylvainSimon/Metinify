@@ -43,8 +43,6 @@
 
         </div>
         <div class="col-lg-8">
-
-
             <div id="Detail_Liste_Inventaire">
 
                 <?php

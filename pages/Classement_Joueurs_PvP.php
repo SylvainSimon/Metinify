@@ -123,7 +123,7 @@ $i = $Numero_De_Page + 1;
                         <th align="center" class="Colonne_Numero_Classement">N°</th>
                         <th style="text-indent: 5px;" class="Align_Left" >Pseudo</th>
                         <th class="Align_Left">Level</th>
-                        <th class="Align_Left">Experience</th>
+                        <th class="Align_Left">Expérience</th>
                         <th class="Align_Left">Race</th>
                         <th class="Align_Left">Classe</th>
                         <th class="Align_Left">Score</th>

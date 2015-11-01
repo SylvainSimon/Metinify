@@ -112,7 +112,7 @@ $i = $Numero_De_Page + 1;
                         <th style="width: 15px;">Race</th>
                         <th>Pseudo</th>
                         <th>Level</th>
-                        <th class="hidden-md hidden-sm hidden-xs">Experience</th>
+                        <th class="hidden-md hidden-sm hidden-xs">Expérience</th>
                         <th>Classe</th>
                         <th class="hidden-md hidden-sm hidden-xs">Score</th>
                         <th></th>
