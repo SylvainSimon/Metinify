@@ -29,26 +29,23 @@
 .Bouton_Fermer_Fenetre:hover{opacity: 1;}
 .Bouton_Fermer_Fenetre:active{opacity: .9;}
 
-#Contenue_Categorie{
-    height: 500px;
-    overflow: hidden;
-    overflow-y: auto;
-}
 
 .Article_IS{
     position: relative; 
     padding: 5px; 
     padding-top: 2px; 
-    width: 150px; 
-    height: 150px; 
+    width: 130px; 
+    height: 130px; 
     display: inline-block; 
-    border: 1px solid #6E6E6E;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    border: 1px solid #424242;
     cursor: pointer;
 }
 
 .Article_IS:hover{
-    
-    
+
+
 }
 
 .Nom_Article{
@@ -60,8 +57,7 @@
 .Prix_Article{
 
     position: absolute;
-    bottom: 2px;
-    left: 18px;
+    bottom: 0px;
 }
 
 .Position_Label_Prix{
@@ -74,12 +70,7 @@
 }
 .Position_Prix{
 
-    position: relative;
-    float: right;
-    text-align: right;
-    width: 20px;
-    right: 30px;
-    top:1px;
+
 }
 
 .Icone_Piece{

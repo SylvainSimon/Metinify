@@ -21,9 +21,7 @@ if (empty($_SESSION['ID'])) {
         <h3 class="box-title">Magasin d'items</h3>
 
         <div class="box-tools">
-            <button onclick="Ajax('./includes/Item_Shop/Item_Shop_Rechargement_Accueil.php?idcompte=<?php echo $Sauvegarder_ID; ?>&nomCompte=<?php echo $Sauvegarder_Login; ?>');" class="btn btn-sm btn-primary btn-flat">
-                Recharger
-            </button>
+            <a href="includes/Item_Shop/Item_Shop_Rechargement_Accueil.php?idcompte=<?php echo $Sauvegarder_ID; ?>&nomCompte=<?php echo $Sauvegarder_Login; ?>" class="fancybox_Rechargement btn btn-sm btn-primary btn-flat" data-fancybox-type="iframe">Recharger</a>
         </div>
     </div>
 

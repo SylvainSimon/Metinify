@@ -37,18 +37,18 @@
     <div class="box box-default flat">
 
         <div class="box-header">
-            <h3 class="box-title">Magasin d'items - <?php echo $Resultat_Detail_Articles->name_item; ?></h3>
+            <h3 class="box-title">Magasin d'items - Détails</h3>
 
             <div class="box-tools">
-                <button onclick="Ajax('./includes/Item_Shop/Item_Shop_Rechargement_Accueil.php?idcompte=<?php echo $Sauvegarder_ID; ?>&nomCompte=<?php echo $Sauvegarder_Login; ?>');" class="btn btn-sm btn-primary btn-flat">
-                    Recharger
-                </button>
+                <a href="includes/Item_Shop/Item_Shop_Rechargement_Accueil.php?idcompte=<?php echo $Sauvegarder_ID; ?>&nomCompte=<?php echo $Sauvegarder_Login; ?>" class="fancybox_Rechargement btn btn-sm btn-primary btn-flat" data-fancybox-type="iframe">Recharger</a>
             </div>
         </div>
 
 
         <div id="ContenantAchat">
             <div class="box-body">
+
+                <div style="margin-bottom: 16px;"><?php echo $Resultat_Detail_Articles->name_item; ?></div>
 
                 <?php $Size_Image = @getimagesize("../../images/items/" . $Resultat_Detail_Articles->id_item . ".png"); ?>
                 <?php if ($Size_Image[1] > $Size_Image[0]) { ?>
@@ -57,14 +57,16 @@
                     <img class="Position_Icone_Article_1Case_Petite" src="../../images/items/<?php echo $Resultat_Detail_Articles->id_item; ?>.png" width="32" />
                 <?php } ?>
 
-                <?php if ($Resultat_Detail_Articles->full_description == "") { ?>
-                    <?php echo $Resultat_Detail_Articles->info_item; ?>
-                <?php } else { ?>
-                    <?php echo $Resultat_Detail_Articles->full_description; ?>
-                <?php } ?>
+                <div style="margin-top: 16px;">   
+                    <?php if ($Resultat_Detail_Articles->full_description == "") { ?>
+                        <?php echo $Resultat_Detail_Articles->info_item; ?>
+                    <?php } else { ?>
+                        <?php echo $Resultat_Detail_Articles->full_description; ?>
+                    <?php } ?>
+                </div>
 
 
-                <div class="Rappel_Prix_Unité pull-right" style="display: inline;">
+                <div class="Rappel_Prix_Unité pull-right" style="display: inline; margin-top: 15px;">
                     Total à payer : <span id="Prix"><?php echo $Resultat_Detail_Articles->prix; ?></span>
                     <?php if ($Resultat_Detail_Articles->cat == "7") { ?>
                         <img class="Image_Piece_Detail_Item" src="../../images/versopiece.png" width="24" >

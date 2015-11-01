@@ -29,16 +29,16 @@
     ?>
 
     <?php while ($Resultat_Liste_Article = $Parametres_Liste_Articles->fetch()) { ?>
-        <div class="Article_IS" onclick="Ajax('./includes/Item_Shop/Appel_Detail_Article.php?id_recu=<?= $Resultat_Liste_Article->id; ?>');" data-tooltip="<?php echo $Resultat_Liste_Article->info_item; ?>">
+        <div class="Article_IS" onclick="Ajax('./includes/Item_Shop/Appel_Detail_Article.php?id_recu=<?= $Resultat_Liste_Article->id; ?>');"  data-tooltip-isItemMetin="1" data-tooltip-track="1" data-tooltip="<?php echo $Resultat_Liste_Article->info_item; ?>">
             <div class="Nom_Article">
                 <?php echo $Resultat_Liste_Article->name_item; ?>
             </div>
             <div class="Prix_Article">
-                <div class="Position_Prix"><?php echo $Resultat_Liste_Article->prix; ?></div>
+                <span><?php echo $Resultat_Liste_Article->prix; ?></span>
                 <?php if ($Resultat_Liste_Article->cat == "7") { ?>
-                    <div class="Icone_Piece"><img src="../../images/versopiece.png" width="16" height="16" /></div>
+                <img style="position: relative; top:-2px" src="../../images/versopiece.png" width="16" height="16" />
                 <?php } else { ?>
-                    <div class="Icone_Piece"><img src="../../images/rectopiece.png" width="16" height="16" /></div>
+                    <img  style="position: relative; top:-2px" src="../../images/rectopiece.png" width="16" height="16" />
                 <?php } ?>
             </div>
 

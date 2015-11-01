@@ -151,6 +151,25 @@
     });
 
     $(document).ready(function () {
+        $(".fancybox_Rechargement").fancybox({
+            padding: 0,
+            closeBtn: false,
+            autoSize: false,
+            scrolling: 'no',
+            scrollOutside: false,
+            fitToView: true,
+            autoWidth: true,
+            height: 450,
+            closeClick: false,
+            topRatio: 0.5,
+            openEffect: 'elastic',
+            closeEffect: 'elastic',
+            openSpeed: 400,
+            closeSpeed: 200
+        });
+    });
+
+    $(document).ready(function () {
         $(".fancybox_Statistiques").fancybox({
             minWidth: 1000,
             minHeight: 550,

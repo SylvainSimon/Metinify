@@ -1,5 +1,5 @@
 <div id="Contenue_Categorie">
-    <div id="Tableau_Liste_Article" style="padding-top: 10px;">
+    <div id="Tableau_Liste_Article" style="padding: 10px;">
 
     </div>
 </div>
