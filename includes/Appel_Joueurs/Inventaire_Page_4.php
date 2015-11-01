@@ -63,35 +63,8 @@ $Window = "INVENTORY";
 
                 <?php $Resultat_Chercher_Chemin = $Parametres_Chercher_Chemin->fetch(); ?>
 
-                <script type="text/javascript">
-                                                                                                                                                                                                                                                                    
-                    function Chercher_Infos_Item(item){
-                        
-                        window.parent.parent.Barre_De_Statut("Récupération des informations de l'item...");
-                        window.parent.parent.Icone_Chargement(1);
-                                                                                                                                                                                                                                                            	                                                       
-                        $.ajax({
-                            type: "POST",
-                            url: "Inventaire_Infos_Item.php",
-                            data: "id="+item, // données à transmettre
-                            success: function(msg){
-                                                                                                                                                                                                                                                                                                                                                    
-                                $("#Contenue_Milieu_Bonus").fadeOut("medium", function(){
-                                    $("#Contenue_Milieu_Bonus").html(msg);
-                                    window.parent.parent.Barre_De_Statut("Informations récupérés.");
-                                    window.parent.parent.Icone_Chargement(0);
-                                    $("#Contenue_Milieu_Bonus").fadeIn("medium");
-                                });
-
-                            }
-                        });
-                        return false;
-                                                                                                                                                                                                                                                                                        
-                    }
-                </script>
-
-                <div class="Interieur_Case">
-                        <img onmouseover="Chercher_Infos_Item(<?php echo $Donnees_Case->item_id; ?>)" src="<?php echo $Resultat_Chercher_Chemin->chemin; ?>" style="position: absolute;" />
+                <div class="Interieur_Case" data-tooltip="" data-tooltip-track="1" data-tooltip-isItemMetin="1">
+                    <img id="cade_id_<?php echo $Donnees_Case->item_id; ?>" src="<?php echo $Resultat_Chercher_Chemin->chemin; ?>" style="position: absolute;" />
                     <?php
                     $flag = $Donnees_Case->flag;
                     ?>
@@ -112,16 +85,21 @@ $Window = "INVENTORY";
 
                 </div>
 
+                <script type="text/javascript">
+                    getInformationItem(<?php echo $Donnees_Case->item_id; ?>);
+                </script>
+
             <?php } else { ?>
 
+                <div class="Interieur_Case">
                     <?php if ($Donnees_Case->size == "1") { ?>
-                        <img onmouseover="Chercher_Infos_Item(<?php echo $Donnees_Case->item_id; ?>)" class="tTip" src="../images/item_inexistant_1.png" title="<?php echo "Icone de " . $Donnees_Case->locale_name . " (" . $Donnees_Case->vnum . ") introuvable."; ?>" />
+                        <img src="../images/item_inexistant_1.png" data-tooltip-track="1" data-tooltip="<?php echo "Icone de " . $Donnees_Case->locale_name . " (" . $Donnees_Case->vnum . ") introuvable."; ?>" />
                     <?php } else if ($Donnees_Case->size == "2") { ?>
-                        <img onmouseover="Chercher_Infos_Item(<?php echo $Donnees_Case->item_id; ?>)" class="tTip" src="../images/item_inexistant_2.png" title="<?php echo "Icone de " . $Donnees_Case->locale_name . " (" . $Donnees_Case->vnum . ") introuvable."; ?>" />
+                        <img src="../images/item_inexistant_2.png" data-tooltip-track="1" data-tooltip="<?php echo "Icone de " . $Donnees_Case->locale_name . " (" . $Donnees_Case->vnum . ") introuvable."; ?>" />
                     <?php } else if ($Donnees_Case->size == "3") { ?>
-                        <img onmouseover="Chercher_Infos_Item(<?php echo $Donnees_Case->item_id; ?>)" class="tTip" src="../images/item_inexistant_3.png" title="<?php echo "Icone de " . $Donnees_Case->locale_name . " (" . $Donnees_Case->vnum . ") introuvable."; ?>" />
+                        <img src="../images/item_inexistant_3.png" data-tooltip-track="1" data-tooltip="<?php echo "Icone de " . $Donnees_Case->locale_name . " (" . $Donnees_Case->vnum . ") introuvable."; ?>" />
                     <?php } ?>
-
+                </div>
             <?php } ?>
 
         <?php } else { ?>

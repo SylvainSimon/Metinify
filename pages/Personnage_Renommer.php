@@ -26,120 +26,138 @@
     <?php if ($Nombre_De_Resultat_Verification_Proprietaire != 0) { ?>
         <?php $Donnees_Verification_Proprietaire = $Parametres_Verification_Proprietaire->fetch(); ?>
 
-        <div class="Cadre_Principal">
 
-            <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-                <h1>Demande de renommage du perssonage <?= $Donnees_Verification_Proprietaire->name; ?></h1>
+
+        <div class="box box-default flat">
+
+            <div class="box-header">
+                <h3 class="box-title">Demande de renommage du personnage <?= $Donnees_Verification_Proprietaire->name; ?></h3>
             </div>
 
-            <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1">
-                <hr class="Hr_Haut"/>
-                Grâçe à cette fonction, vous allez pouvoir renommer votre personnage <?= $Donnees_Verification_Proprietaire->name; ?>.<br/><br/>
+            <div class="box-body">
+                Grâçe à cette fonction, vous allez pouvoir renommer votre personnage <?= $Donnees_Verification_Proprietaire->name; ?>.<br/>
+                Pour effectuer cette action, il faut debourser la somme de <span class="text-yellow">1500 Vamonaies</span>.
+                <br/>
+                <br/>
 
-                Pour effectuer cette action, il faut debourser la somme de 1500 Vamonaies.
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group ">
+                            <label>
+                                Nom actuel
+                            </label>
+                            <div class="input-group col-xs-12">
+                                <input type="texte" disabled value="<?= $Donnees_Verification_Proprietaire->name; ?>" class="form-control input-sm text"/>
+                            </div>
+                        </div>
 
-                <table class="Table_Modele">
-                    <tr>
-                        <td class="Colonne_Gauche_Formulaire">Nom actuel :</td>
-                        <td>
-                            <input type="texte" disabled value="<?= $Donnees_Verification_Proprietaire->name; ?>" class="Zone_Saisie_Changement_Code_Effacement"/>
-                        </td>
-                        <td class="Colonne_Droite_Formulaire"></td>
-                    </tr>
-                    <tr>
-                        <td class="Colonne_Gauche_Formulaire">Nouveau nom : </td>
-                        <td>
-                            <input type="text" maxlength="12" autofocus="autofocus" placeholder="Nouveau nom" id="Champs_Saisie_Nouveau_Nom" class="Zone_Saisie_Changement_Code_Effacement"/>
-                        </td>
-                        <td class="Colonne_Droite_Formulaire">Indiquez le nouveau nom souhaité</td>
-                    </tr>
-                    <tr>
-                        <td class="Colonne_Gauche_Formulaire">Répétez nouveau nom : </td>
-                        <td>
-                            <input type="text" maxlength="12" placeholder="Répétez" id="Champs_Saisie_Nouveau_Nom_Repete" class="Zone_Saisie_Changement_Code_Effacement"/>
-                        </td>
-                        <td class="Colonne_Droite_Formulaire">Répétez le nouveau nom souhaité</td>
-                    </tr>
-                </table>
+                        <div class="form-group ">
+                            <label for="Champs_Saisie_Nouveau_Nom">
+                                Nouveau nom
+                            </label>
+
+                            <div class="input-group col-xs-12">
+                                <input type="text" maxlength="12" autofocus="autofocus" placeholder="Nouveau nom" id="Champs_Saisie_Nouveau_Nom" class="form-control input-sm text"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="Champs_Saisie_Nouveau_Nom_Repete">
+                                Répétez nouveau nom
+                            </label>
+
+                            <div class="input-group col-xs-12">
+                                <input type="text" maxlength="12" placeholder="Répétez" id="Champs_Saisie_Nouveau_Nom_Repete" class="form-control input-sm text"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 Pour valider le renommage, cliquez sur le bouton "Renommer".<br/>
-                Si vous êtes là par erreur, vous pouvez toujours annuler la demande.<br/>
-                <hr class="Hr_Bas">
-                <input type="button" class="Bouton_Envoyer_Changer_Email Bouton_Normal" style="width: 80px;" value="Renommer" onclick="Procedure_Renommer_Personnage();" />
-                <input type="button" class="Bouton_Annuler_Changer_Email Bouton_Normal" value="Annuler" onclick="Ajax('pages/Accueil.php');" />
+                Si vous êtes là par erreur, vous pouvez toujours annuler la demande.
 
+            </div>
+
+            <div class="box-footer">
+                <div class="pull-left">
+                    <input type="button" class="btn btn-danger btn-flat" value="Annuler" onclick="Ajax('pages/Accueil.php');" />
+                </div>
+
+                <div class="pull-right">
+                    <input type="button" class="btn btn-success btn-flat" value="Renommer" onclick="Procedure_Renommer_Personnage();" />
+                </div>        
             </div>
 
         </div>
 
         <script type="text/javascript">
-                                                                                                                                                                                                                                                                                                                             
-            function Procedure_Renommer_Personnage(){
-                                                                                        
-                if($("#Champs_Saisie_Nouveau_Nom").val() == $("#Champs_Saisie_Nouveau_Nom_Repete").val()){
-                                                        
+
+            function Procedure_Renommer_Personnage() {
+
+                if ($("#Champs_Saisie_Nouveau_Nom").val() == $("#Champs_Saisie_Nouveau_Nom_Repete").val()) {
+
                     pseudo = $("#Champs_Saisie_Nouveau_Nom").val();
-                                                        
-                    for(i=0 ; i < pseudo.length ; i++) {
-                                                            
-                        if((pseudo.charCodeAt(i) >= 0 && pseudo.charCodeAt(i) < 45) || 
-                            (pseudo.charCodeAt(i) >= 45 && pseudo.charCodeAt(i) < 48) || 
-                            (pseudo.charCodeAt(i) > 57 && pseudo.charCodeAt(i) < 65) || 
-                            (pseudo.charCodeAt(i) > 90 && pseudo.charCodeAt(i) < 95) || 
-                            (pseudo.charCodeAt(i) >= 95 && pseudo.charCodeAt(i) < 97) || 
-                            (pseudo.charCodeAt(i) > 122) && (pseudo.charCodeAt(i) < 128) ||
-                            (pseudo.charCodeAt(i) > 144)) {
+
+                    for (i = 0; i < pseudo.length; i++) {
+
+                        if ((pseudo.charCodeAt(i) >= 0 && pseudo.charCodeAt(i) < 45) ||
+                                (pseudo.charCodeAt(i) >= 45 && pseudo.charCodeAt(i) < 48) ||
+                                (pseudo.charCodeAt(i) > 57 && pseudo.charCodeAt(i) < 65) ||
+                                (pseudo.charCodeAt(i) > 90 && pseudo.charCodeAt(i) < 95) ||
+                                (pseudo.charCodeAt(i) >= 95 && pseudo.charCodeAt(i) < 97) ||
+                                (pseudo.charCodeAt(i) > 122) && (pseudo.charCodeAt(i) < 128) ||
+                                (pseudo.charCodeAt(i) > 144)) {
 
                             UtilisateurSyntax = 1;
-                             break;                                   
-                        }else{
-                                                                
+                            break;
+                        } else {
+
                             UtilisateurSyntax = 0;
                         }
                     }
-                                                                 
-                    if(UtilisateurSyntax == 0){
+
+                    if (UtilisateurSyntax == 0) {
                         Barre_De_Statut("Traitement de la demande...");
                         Icone_Chargement(1);
-                                                                                                                                                                                                                                                                                                                                
+
                         $.ajax({
                             type: "POST",
                             url: "./ajax/SQL_Renommer_Personnage.php",
-                            data: "id_personnage=<?= $_GET["id_perso"]; ?>&nouveau_nom="+$("#Champs_Saisie_Nouveau_Nom").val(),
-                            success: function(msg){
-                                                                                                                                                                                                                                                            
+                            data: "id_personnage=<?= $_GET["id_perso"]; ?>&nouveau_nom=" + $("#Champs_Saisie_Nouveau_Nom").val(),
+                            success: function (msg) {
+
                                 try {
                                     Parse_Json = JSON.parse(msg);
-                                                                                                                                                                                                                                                        
-                                    if(Parse_Json.result == "WIN"){
-                                                                                                                                                                                                                                                            
+
+                                    if (Parse_Json.result == "WIN") {
+
                                         Barre_De_Statut(Parse_Json.reasons);
                                         Icone_Chargement(0);
-                                                
+
                                         $.ajax({
                                             type: "POST",
                                             url: "./ajax/Update_Vamonaies.php",
-                                            success: function(msg){
+                                            success: function (msg) {
                                                 Fonction_Reteneuse_Vamonaies(msg);
                                             }
                                         });
-                                        
+
                                         $.ajax({
                                             type: "POST",
                                             url: "./ajax/Update_Tananaies.php",
-                                            success: function(msg){
+                                            success: function (msg) {
                                                 Fonction_Reteneuse_Tananaies(msg);
                                             }
                                         });
-                                        
+
                                         Ajax('pages/Personnage_Renommer_Validation.php');
-                                                                                                                                                                                                                                    
-                                    }else if(Parse_Json.result == "FAIL"){
-                                                                                                                                                                                                                                            
+
+                                    } else if (Parse_Json.result == "FAIL") {
+
                                         Barre_De_Statut(Parse_Json.reasons);
                                         Icone_Chargement(2);
                                     }
-                                                                                                                                                                                                                                                        
+
                                 } catch (e) {
                                     Barre_De_Statut("Le renommage a échoué.");
                                     Icone_Chargement(2);
@@ -147,18 +165,18 @@
                             }
                         });
                         return false;
-                                                                            
-                    }else{
+
+                    } else {
                         Barre_De_Statut("Les caractère employés sont invalides.");
-                        Icone_Chargement(2); 
+                        Icone_Chargement(2);
                     }
-                }else{
-                                                                
+                } else {
+
                     Barre_De_Statut("Les deux pseudonymes ne sont pas identiques.");
-                    Icone_Chargement(2); 
+                    Icone_Chargement(2);
                 }
             }
-                                                                                                                                                                                                                                                                                                                            
+
         </script>
 
     <?php } else { ?>
