@@ -88,3 +88,20 @@ function redraw() {
 $(document).ready(function () {
     redraw();
 });
+
+function getInformationItem(idItem) {
+
+    $.ajax({
+        type: "POST",
+        url: "./includes/Inventaire_Infos_Item.php",
+        data: "id=" + idItem,
+        success: function (msg) {
+
+            if ($("#cade_id_" + idItem).parent(".Interieur_Case").attr("data-tooltip") === "") {
+                $("#cade_id_" + idItem).parent(".Interieur_Case").attr("data-tooltip", msg);
+                redraw();
+            }
+        }
+    });
+
+}
