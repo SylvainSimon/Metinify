@@ -29,7 +29,7 @@
     ?>
 
     <?php while ($Resultat_Liste_Article = $Parametres_Liste_Articles->fetch()) { ?>
-        <div class="Article_IS">
+    <div style="display: inline; width:50px;">
             <div class="Nom_Article">
                 <?php echo $Resultat_Liste_Article->name_item; ?>
             </div>
