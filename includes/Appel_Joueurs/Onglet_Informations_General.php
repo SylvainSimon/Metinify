@@ -393,7 +393,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "Appel_Joueurs/SQL_Deblocage_Yangs.php",
+                url: "./includes/Appel_Joueurs/SQL_Deblocage_Yangs.php",
                 data: "id_perso=" + $("#Id_Tempo_Deblocage_Yangs").val(),
                 success: function (msg) {
 
@@ -420,7 +420,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "Appel_Joueurs/SQL_Deblocage_Perso.php",
+                url: "./includes/Appel_Joueurs/SQL_Deblocage_Perso.php",
                 data: "id_perso=" + $("#Id_Tempo_Deblocage_Perso").val(),
                 success: function (msg) {
 

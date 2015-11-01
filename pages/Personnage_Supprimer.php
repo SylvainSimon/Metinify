@@ -63,14 +63,13 @@
 
             <?php $Donnees_Verification_Proprietaire = $Parametres_Verification_Proprietaire->fetch(); ?>
 
-            <div class="Cadre_Principal">
+            <div class="box box-default flat">
 
-                <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-                    <h1>Demande de suppression du perssonage <?= $Donnees_Verification_Proprietaire->name; ?></h1>
+                <div class="box-header">
+                    <h3 class="box-title">Suppression du personnage <?= $Donnees_Verification_Proprietaire->name; ?></h3>
                 </div>
 
-                <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1">
-                    <hr class="Hr_Haut"/>
+                <div class="box-body">
                     Grâçe à cette fonction, vous allez pouvoir supprimer votre personnage <?= $Donnees_Verification_Proprietaire->name; ?>.<br/><br/>
 
                     Pour effectuer cette action, ne vous demandons de bien vouloir quitter votre guilde actuel si vous en avez une,
@@ -81,43 +80,50 @@
 
                     Pour recevoir ce mail, cliquez sur le bouton "Envoyer".<br/>
                     Si vous êtes là par erreur, vous pouvez toujours annuler la demande.<br/>
-                    <hr class="Hr_Bas">
-                    <input type="button" class="Bouton_Envoyer_Changer_Email Bouton_Normal" value="Envoyer" onclick="Envoie_Mail_Supprimer_Perso();" />
-                    <input type="button" class="Bouton_Annuler_Changer_Email Bouton_Normal" value="Annuler" onclick="Ajax('pages/Accueil.php');" />
 
+                </div>
+
+                <div class="box-footer">
+                    <div class="pull-left">
+                        <input type="button" class="btn btn-danger btn-flat" value="Annuler" onclick="Ajax('pages/Accueil.php');" />
+                    </div>
+
+                    <div class="pull-right">
+                        <input type="button" class="btn btn-success btn-flat" value="Envoyer" onclick="Envoie_Mail_Supprimer_Perso();" />
+                    </div>        
                 </div>
 
             </div>
 
             <script type="text/javascript">
-                                                                                                                                                                                                             
-                function Envoie_Mail_Supprimer_Perso(){
-                                                                                                                                                                            
+
+                function Envoie_Mail_Supprimer_Perso() {
+
                     Barre_De_Statut("Traitement de la demande...");
                     Icone_Chargement(1);
-                                                                                                                                                                                                                
+
                     $.ajax({
                         type: "POST",
                         url: "./ajax/SQL_Suppression_Perssonage_Envoie_Mail.php",
                         data: "id_compte=<?= $_SESSION["ID"]; ?>&id_personnage=<?= $_GET["id_perso"]; ?>",
-                        success: function(msg){
-                                                                                                                                            
+                        success: function (msg) {
+
                             try {
                                 Parse_Json = JSON.parse(msg);
-                                                                                                                                        
-                                if(Parse_Json.result == "WIN"){
-                                                                                                                                            
+
+                                if (Parse_Json.result == "WIN") {
+
                                     Barre_De_Statut("Le mail a été envoyé avec succès.");
                                     Icone_Chargement(0);
-                                                                                                                    
+
                                     Ajax('pages/Personnage_Supprimer_Validation.php?id_personnage=<?= $_GET["id_perso"]; ?>');
-                                                                                                                    
-                                }else if(Parse_Json.result == "FAIL"){
-                                                                                                                            
+
+                                } else if (Parse_Json.result == "FAIL") {
+
                                     Barre_De_Statut(Parse_Json.reasons);
                                     Icone_Chargement(2);
                                 }
-                                                                                                                                        
+
                             } catch (e) {
                                 Barre_De_Statut("L'envoie du mail a échoué.");
                                 Icone_Chargement(2);
@@ -126,7 +132,7 @@
                     });
                     return false;
                 }
-                                                                                                                                                                                                            
+
             </script>
         <?php } else { ?>
 

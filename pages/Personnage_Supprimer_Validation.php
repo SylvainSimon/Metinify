@@ -27,14 +27,15 @@
     /* -------------------------------------------------------------------------- */
     ?>
     <?php if ($Nombre_De_Resultat_Verification_Demande != 0) { ?>
-        <div class="Cadre_Principal">
 
-            <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-                <h1>Saisie du code de confirmation</h1>
+        <div class="box box-default flat">
+
+            <div class="box-header">
+                <h3 class="box-title">Saisie du code de confirmation</h3>
             </div>
 
-            <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1">
-                <hr class="Hr_Haut"/>
+            <div class="box-body">
+
                 Pour continuer il faut récupérer le code de confirmation qui a été généré et
                 envoyer à votre adresse e-mail.<br/><br/>
 
@@ -44,57 +45,77 @@
                 vous fermez votre navigateur et il faudra générer une nouvelle demande.<br/><br/>
 
                 Veuillez saisir dans le champ ci-dessous votre code de confirmation unique :<br/>
-                Attention, vous n'avez le droit qu'as un seul essaie par heure.<br/>
-                <input type="text" id="Input_Saisie_Validation_Suppression" class="Input_Saisie_Validation_Suppression" placeholder="XXXXXXXXX"><br/><br/>
+                Attention, vous n'avez le droit qu'as un seul essaie par heure.
+                <br/>
+                <br/>
+
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group ">
+                            <label for="Input_Saisie_Validation_Suppression">
+                                Code d'entrepôt
+                            </label>
+
+                            <div class="input-group col-xs-12">
+                                <input type="text" id="Input_Saisie_Validation_Suppression" class="form-control input-sm text" placeholder="XXXXXXXXX"><br/><br/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 Afin de valider votre saisie, veuillez cliquez sur le bouton "Valider".<br/>
-                <hr class="Hr_Bas">
 
-                <input type="button" class="Bouton_Annuler_Changer_Email_Accueil Bouton_Normal" value="Valider" onclick="Procedure_Effacement_Personnage()" />
+            </div>
 
+            <div class="box-footer">
+
+                <div class="pull-right">
+                    <input type="button" class="btn btn-success btn-flat" value="Valider" onclick="Procedure_Effacement_Personnage()" />
+                </div>        
             </div>
 
         </div>
         <script type="text/javascript">
-            function Procedure_Effacement_Personnage(){
-                                        
+            function Procedure_Effacement_Personnage() {
+
                 Barre_De_Statut("Traitement de la suppression...");
                 Icone_Chargement(1);
-                                                                                                                
-                if($("#Input_Saisie_Validation_Suppression").val != ""){
-                                                                            
+
+                if ($("#Input_Saisie_Validation_Suppression").val != "") {
+
                     $.ajax({
                         type: "POST",
                         url: "./ajax/SQL_Suppression_Perssonage_Procedure.php",
-                        data: "id_compte=<?= $_SESSION["ID"]; ?>&id_personnage=<?= $Id_Personnage; ?>&numero_verif="+$("#Input_Saisie_Validation_Suppression").val(),
-                        success: function(msg){
-                                                                                                                                                                                                            
+                        data: "id_compte=<?= $_SESSION["ID"]; ?>&id_personnage=<?= $Id_Personnage; ?>&numero_verif=" + $("#Input_Saisie_Validation_Suppression").val(),
+                        success: function (msg) {
+
                             try {
                                 Parse_Json = JSON.parse(msg);
-                                                                                                                                                                                                        
-                                if(Parse_Json.result == "WIN"){
-                                    Barre_De_Statut("Suppression effectuer");
-                                    Icone_Chargement(0);   
-                                                                    
-                                    Ajax("pages/Personnage_Supprimer_Resultat.php?result=Oui");
-                                                                                                                                         
-                                }else if(Parse_Json.result == "FAIL"){
-                                                                                    
-                                    Ajax("pages/Personnage_Supprimer_Resultat.php?result="+Parse_Json.reasons);                                                                                            
 
-                                }else if(Parse_Json.result == "FAIL_OVER"){
-                                                    
+                                if (Parse_Json.result == "WIN") {
+                                    Barre_De_Statut("Suppression effectuer");
+                                    Icone_Chargement(0);
+
+                                    Ajax("pages/Personnage_Supprimer_Resultat.php?result=Oui");
+
+                                } else if (Parse_Json.result == "FAIL") {
+
+                                    Ajax("pages/Personnage_Supprimer_Resultat.php?result=" + Parse_Json.reasons);
+
+                                } else if (Parse_Json.result == "FAIL_OVER") {
+
                                     Ajax("pages/Personnage_Supprimer_Resultat.php?result=Bad");
-                                            
-                                }else if(Parse_Json.result == "FAIL_ONE"){
-                                                    
+
+                                } else if (Parse_Json.result == "FAIL_ONE") {
+
                                     Barre_De_Statut(Parse_Json.reasons);
-                                    Icone_Chargement(2);  
-                                            
-                                }else if(Parse_Json.result == "FAIL_EXPIRE"){
+                                    Icone_Chargement(2);
+
+                                } else if (Parse_Json.result == "FAIL_EXPIRE") {
                                     Ajax("pages/Personnage_Supprimer_Resultat.php?result=Expire");
                                 }
-                                                                                                                                                                                                        
+
                             } catch (e) {
                                 Barre_De_Statut("La suppression du personnage a échoué.");
                                 Icone_Chargement(2);
@@ -102,13 +123,13 @@
                         }
                     });
                     return false;
-                                                                            
-                }else{
+
+                } else {
                     Barre_De_Statut("Vous n'avez indiqué aucun numéro.");
                     Icone_Chargement(2);
                 }
-                                                                                                                            
-                                                                                                                            
+
+
             }
         </script>
     <?php } else { ?>
