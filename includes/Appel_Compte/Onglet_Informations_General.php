@@ -204,7 +204,7 @@
                                 $lesMinutes = "0" . $lesMinutes;
                             }
                             ?>
-                            <tr data-tooltip="Cliquez pour voir le détails du personnage" onclick="Appel_Joueur(<?php echo $Resultat_Liste_Personnages->id; ?>)" class="Pointer">
+                    <tr data-tooltip="Cliquez pour voir le détails du personnage" onclick="Ajax('./includes/Appel_Joueur.php?id=<?php echo $Resultat_Liste_Personnages->id; ?>')" class="Pointer">
                                 <td class="hidden-md hidden-sm hidden-xs">
                                     <?php if ($Resultat_Liste_Personnages->job == "0") { ?> 
                                         <img class="cadrephotoclassement" src="../images/races/0_mini.png" height="25"/>

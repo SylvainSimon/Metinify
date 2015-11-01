@@ -1,4 +1,4 @@
-<div id="Onglet_Equipement">
+<div class="tab-pane" id="Onglet_Equipement">
 
     <?php include 'Appel_Joueurs/Equipement.php'; ?>
 

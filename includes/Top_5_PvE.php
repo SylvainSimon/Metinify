@@ -45,7 +45,7 @@
                     <?php $i++; ?>
 
                     <tr>
-                    <td style="line-height: 10px;">
+                        <td style="line-height: 10px;">
                             <?php if ($i == 1) {
                                 ?><i class="material-icons md-icon-star" style="color:#F3EC12;"></i>
                                 <?php

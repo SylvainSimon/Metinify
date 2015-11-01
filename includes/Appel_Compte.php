@@ -105,16 +105,6 @@ $Nombre_De_Transaction = $Parametres_Nombre_Transaction->rowCount();
             </div>
         </div>
 
-        <script>
-            $(function () {
-                $("#Onglets").tabs({
-                    event: "click"
-                });
-            });
-
-        </script>
-
-
         <div class="clear"></div>
     </div>
 </div>

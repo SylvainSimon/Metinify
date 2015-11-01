@@ -10,7 +10,7 @@ if (empty($_SESSION['Utilisateur'])) {
 }
 include '../pages/Tableaux_Arrays.php';
 
-$Id_Personnage = $_POST['id'];
+$Id_Personnage = $_GET['id'];
 
 /* ------------------------------ Vérification connecte ---------------------------------------------- */
 $Verification_Connecte = "SELECT id FROM player.player
@@ -75,32 +75,34 @@ if ($_SESSION['ID'] != $Donnees_Appel_Joueurs_Page->account_id) {
 }
 ?>
 
-<div id="Onglets">
+<div class="box box-default flat">
 
-    <ul>
+    <div class="box-header">
+        <h3 class="box-title">Mon compte</h3>
+    </div>
 
-        <li><a href="#Onglet_InformationGeneral">Informations générales</a></li>
-        <li><a href="#Onglet_Equipement">Equipement</a></li>
-        <li><a href="#Onglet_Inventaire">Inventaire</a></li>
-        <li><a href="#Onglet_Equitation">Equitation</a></li>
-        <li><a href="#Onglet_Amis">Liste des amis</a></li>
-        <div class="Bouton_Fermer_Fenetre Pointer" onclick="window.parent.$.fancybox.close();"></div>
-        
+    <div class="box-body no-padding">
 
-    </ul>
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
 
-    <?php include 'Appel_Joueurs/Onglet_Informations_General.php'; ?>
-    <?php include 'Appel_Joueurs/Onglet_Equipement.php'; ?>
-    <?php include 'Appel_Joueurs/Onglet_Inventaire.php'; ?>
-    <?php include 'Appel_Joueurs/Onglet_Equitation.php'; ?>
-    <?php include 'Appel_Joueurs/Onglet_Amis.php'; ?>
+                <li class="active"><a href="#Onglet_InformationGeneral" data-toggle="tab" aria-expanded="true">Générales</a></li>
+                <li class=""><a href="#Onglet_Equipement" data-toggle="tab" aria-expanded="false">Équipement</a></li>
+                <li class=""><a href="#Onglet_Inventaire" data-toggle="tab" aria-expanded="false">Inventaire</a></li>
+                <li class=""><a href="#Onglet_Equitation" data-toggle="tab" aria-expanded="false">Cheval</a></li>
+                <li class=""><a href="#Onglet_Amis" data-toggle="tab" aria-expanded="false">Amis</a></li>
+            </ul>
+            <div class="tab-content">
 
+                <?php include 'Appel_Joueurs/Onglet_Informations_General.php'; ?>
+                <?php include 'Appel_Joueurs/Onglet_Equipement.php'; ?>
+                <?php include 'Appel_Joueurs/Onglet_Inventaire.php'; ?>
+                <?php include 'Appel_Joueurs/Onglet_Equitation.php'; ?>
+                <?php include 'Appel_Joueurs/Onglet_Amis.php'; ?>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+    </div>
 </div>
-
-<script>
-    $(function() {
-        $( "#Onglets" ).tabs({
-            event: "click"
-        });
-    });
-</script>

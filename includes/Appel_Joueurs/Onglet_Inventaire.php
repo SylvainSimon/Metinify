@@ -1,4 +1,4 @@
-<div id="Onglet_Inventaire">
+<div class="tab-pane" id="Onglet_Inventaire">
     <div id="Inventaire">
 
         <div class="Bouton_Inventaire_1 Cursor" onclick="Page_Inventaire(1);"> I </div>
@@ -12,7 +12,7 @@
 	                                                       
                 $.ajax({
                     type: "POST",
-                    url: "Appel_Joueurs/Inventaire_Page_"+page+".php",
+                    url: "./includes/Appel_Joueurs/Inventaire_Page_"+page+".php",
                     data: "id=<?php echo $Donnees_Appel_Joueurs_Page->player_id; ?>", // données à transmettre
                     success: function(msg){
                                                                                         

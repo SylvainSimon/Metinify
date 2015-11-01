@@ -1,4 +1,4 @@
-<div id="Onglet_Equitation">
+<div class="tab-pane" id="Onglet_Equitation">
 
     <?php if ($Donnees_Appel_Joueurs_Page->horse_level == 0) { ?>
 

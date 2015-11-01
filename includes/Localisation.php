@@ -74,14 +74,12 @@ if ($mapData != false) {
 
             <tr>
                 <td class="Colonne_Gauche">
-                    <img src="../images/icones/carte.png" height="14" width="14"/>&nbsp;
                     <span>Map de sortie :</span>
                 </td>
                 <td><?php echo @$Array_Maps[$Index_Map] ?></td>
             </tr>
             <tr>
                 <td class="Colonne_Gauche">
-                    <img src="../images/icones/position.png" height="14" width="14"/>&nbsp;
                     <span>Position :</span>
                 </td>
                 <td><?php echo floor($chaDataX) ?> - <?php echo floor(@$chaDataY) ?></td>
@@ -90,14 +88,12 @@ if ($mapData != false) {
         <?php } else { ?>
             <tr>
                 <td class="Colonne_Gauche">
-                    <img src="../images/icones/carte.png" height="14" width="14"/>&nbsp;
                     <span>Map :</span>
                 </td>
                 <td><?php echo @$Array_Maps[$Index_Map] ?></td>
             </tr>
             <tr>
                 <td class="Colonne_Gauche">
-                    <img src="../images/icones/position.png" height="14" width="14"/>&nbsp;
                     <span>Position :</span>
                 </td>
                 <td><?php echo floor(@$chaDataX) ?> - <?php echo floor(@$chaDataY) ?></td>

@@ -1,17 +1,19 @@
-<div class="Menu_Sidebar">
-    <div class="Menu_Sidebar_Haut Pointer No_Select" onclick="Slider_Sidebar_Gauche_1();">Classement joueurs pvp</div>
-    <div class="Menu_Sidebar_Milieu" id="Div_Sidebar_Gauche_1">
-        <table class="Table_Top_5_Joueur">
+<div class="box box-default flat">
 
-            <tr><td colspan="3"><div class="barre"></div></td></tr>
+    <div class="box-header">
+        <h3 class="box-title">Classement PVP</h3>
+    </div>
 
-            <tr>
-                <th class="Align_Left">Place</th>
-                <th class="Align_Left">Pseudo</th>
-                <th class="Align_Right">Score</th>
-            </tr>
+    <div class="box-body no-padding">
 
-            <tr><td colspan="3"><div class="barre"></div></td></tr>
+        <table class="table table-hover table-condensed table-responsive" style="border-collapse: collapse;">
+
+            <thead>
+                <tr>
+                    <th>Pseudo</th>
+                    <th class="Align_Right">Score</th>
+                </tr>
+            </thead>
 
             <?php
             $i = 0;
@@ -42,34 +44,31 @@
 
                 <?php $i++; ?>
 
-                <tr class="Pointer Ligne_Classement" onmouseover="this.style.backgroundColor='#666666';" onmouseout="this.style.backgroundColor='transparent';">
-                    <td class="Align_Left">
+                <tr class="Pointer Ligne_Classement" onmouseover="this.style.backgroundColor = '#666666';" onmouseout="this.style.backgroundColor = 'transparent';">
+                    <td style="line-height: 10px;">
                         <?php if ($i == 1) {
-                            ?><img src="images/rang/or.png"/>
+                            ?><i class="material-icons md-icon-star" style="color:#F3EC12;"></i>
                             <?php
                         } else if ($i == 2) {
-                            ?><img src="images/rang/argent.png"/>
+                            ?><i class="material-icons md-icon-star text-gray"></i>
                             <?php
                         } else if ($i == 3) {
-                            ?><img src="images/rang/bronze.png"/>
+                            ?><i class="material-icons md-icon-star" style="color:#813838;"></i>
                             <?php
                         } else if ($i == 4) {
-                            ?><img src="images/rang/Medaille_Or.png"/>
+                            ?><i class="material-icons md-icon-bookmark" style="color:#F3EC12; opacity: 0.5"></i>
                             <?php
                         } else if ($i == 5) {
-                            ?><img src="images/rang/Medaille_Argent.png"/>
+                            ?><i class="material-icons md-icon-bookmark text-gray" style="opacity: 0.5"></i>
                             <?php
                         } else if ($i == 6) {
-                            ?><img src="images/rang/Medaille_Bronze.png"/>
+                            ?><i class="material-icons md-icon-bookmark" style="color:#813838; opacity: 0.5"></i>
                             <?php
                         } else {
-
                             echo $i . " eme";
                         }
                         ?>
-                    </td>
-                    <td class="Align_Left">
-                        <?php echo $Donnees_Top_5_Joueurs->name; ?>
+                        <span style="vertical-align: text-top;"><?php echo $Donnees_Top_5_Joueurs->name; ?></span>
                     </td>
                     <td class="Align_Right">
                         <?php echo $Donnees_Top_5_Joueurs->victimes_pvp; ?>
@@ -78,7 +77,6 @@
                 <?php
             }
             ?>
-            <tr><td colspan="3"><div class="barre"></div></td></tr>
         </table>
     </div>
 </div>
