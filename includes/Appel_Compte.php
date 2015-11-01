@@ -79,7 +79,7 @@ $Nombre_De_Transaction = $Parametres_Nombre_Transaction->rowCount();
 <div class="box box-default flat">
 
     <div class="box-header">
-        <h3 class="box-title">hjfghj</h3>
+        <h3 class="box-title">Mon compte</h3>
     </div>
 
     <div class="box-body no-padding">

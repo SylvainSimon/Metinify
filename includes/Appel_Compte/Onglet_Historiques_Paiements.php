@@ -31,7 +31,7 @@
 
     <div class="row">
         <div class="col-lg-4">
-            <table class="table table-condensed" style="border-collapse: collapse;">
+            <table class="table table-condensed" style="border-collapse: collapse; margin-bottom: 0px;">
                 <tr>
                     <td style="border-top: 0px;">
                         <span data-tooltip="Nombres de paiements que vous avez effectué"  data-tooltip-position="right">

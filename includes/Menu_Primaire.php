@@ -6,9 +6,9 @@
 
         <?php if (empty($_SESSION['Utilisateur'])) { ?>
             <li id="Menu_Inscription_MonCompte2"><a href="javascript:void(0)" onclick="Ajax('pages/Inscription_Formulaire.php')">Inscription</a></li>
-            <li id="Menu_Inscription_MonCompte" style="display: none;"><a id="Lien_Mon_Compte" href="" class="fancybox_Mon_Compte">Mon Compte</a></li>
+            <li id="Menu_Inscription_MonCompte" style="display: none;"><a id="Lien_Mon_Compte" href="javascript:void(0)" onclick="">Mon compte</a></li>
         <?php } else { ?>
-            <li id="Menu_Inscription_MonCompte"><a id="Lien_Mon_Compte" href="javascript:void(0)" onclick="Ajax('includes/Appel_Compte.php?id=<?php echo $_SESSION['ID']; ?>')">Mon Compte</a></li>
+            <li id="Menu_Inscription_MonCompte"><a id="Lien_Mon_Compte" href="javascript:void(0)" onclick="Ajax('includes/Appel_Compte.php?id=<?php echo $_SESSION['ID']; ?>')">Mon compte</a></li>
             <li id="Menu_Inscription_MonCompte2" style="display: none;"><a href="javascript:void(0)" onclick="Ajax('pages/Inscription_Formulaire.php')">Inscription</a></li>
         <?php } ?>
 
