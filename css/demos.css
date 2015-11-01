@@ -693,10 +693,6 @@
 /*-----------EQUIPEMENT-------------------*/
 #Equipement{
 
-    position: absolute;
-    border: 1px solid grey;
-    left:20px;
-    top: 80px;
     width: 160px;
     height: 192px;
     background: url('../images/equipement.png') no-repeat;
@@ -720,78 +716,78 @@
 .Case_Arme{
 
     position: absolute;
-    top:7px;
-    left:8px;
+    top: 19px;
+    left: 32px;
 }
 
 .Case_Armure{
 
     position: absolute;
-    top:41px;
-    left:44px;
+    top: 52px;
+    left: 68px;
 }
 
 .Case_Casque{
 
     position: absolute;
-    top:7px;
-    left:44px;
+    top: 17px;
+    left: 68px;
 }
 
 .Case_Bouclier{
 
     position: absolute;
-    top:41px;
-    left:81px;
+    top: 51px;
+    left: 106px;
 }
 
 .Case_Bracelet{
 
     position: absolute;
-    top:73px;
-    left:81px;
+    top: 82px;
+    left: 106px;
 }
 
 .Case_Boucles{
 
     position: absolute;
-    top:58px;
-    left:120px;
+    top: 67px;
+    left: 144px;
 }
 
 .Case_Collier{
 
     position: absolute;
-    top:90px;
-    left:120px;
+    top: 100px;
+    left: 145px;
 }
 
 .Case_Chaussure{
 
     position: absolute;
-    top:150px;
-    left:45px;
+    top: 159px;
+    left: 69px;
 }
 
 .Case_Fleche{
 
     position: absolute;
-    top:7px;
-    left:120px;
+    top: 17px;
+    left: 145px;
 }
 
 .Case_Special1{
 
     position: absolute;
-    top:118px;
-    left:8px;
+    top: 128px;
+    left: 33px;
 }
 
 .Case_Special2{
 
     position: absolute;
-    top:119px;
-    left:82px;
+    top: 128px;
+    left: 107px;
 }
 
 #Conteneur_Bonus2{
@@ -841,13 +837,7 @@
 
 #Detail_Liste_Equipement{
 
-    position: absolute;
-    top: 80px;
-    right: 20px;
-    width: 625px;
-    max-height: 450px;
     overflow-y:auto;
-    border-bottom: 1px solid grey;
 }
 
 

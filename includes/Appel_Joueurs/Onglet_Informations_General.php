@@ -21,13 +21,13 @@
                         <?php if ($Resultat_Verification_Connecte != "1") { ?>
                             <?php $Resultat_Appel_Joueur_Connecte = 0; ?>
 
-                            <span data-tooltip="Hors-ligne" data-tooltip-position="right" class="hidden-md pull-right">
+                            <span data-tooltip="Hors-ligne" data-tooltip-position="left" class="hidden-md pull-right">
                                 <i class="text-red material-icons md-icon-account-circle"></i>
                             </span>
                         <?php } else { ?>
                             <?php $Resultat_Appel_Joueur_Connecte = 1; ?>
 
-                            <span data-tooltip="En ligne" data-tooltip-position="right" class="hidden-md pull-right">
+                            <span data-tooltip="En ligne" data-tooltip-position="left" class="hidden-md pull-right">
                                 <i class="text-green material-icons md-icon-account-circle"></i>
                             </span>
                         <?php } ?>
@@ -165,7 +165,7 @@
                     <?php } ?>
                 </tr>
                 <tr>
-                    <td>Player IP</td></td>
+                    <td>IP personnage</td></td>
                     <td><?php echo $Donnees_Appel_Joueurs_Page->player_ip; ?></td>
                 </tr>
             </table>

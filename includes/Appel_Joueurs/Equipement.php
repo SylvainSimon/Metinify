@@ -32,39 +32,13 @@ function CheckEquipement($Position_Equipement, $ID_Personnage, $Parametres_Appel
 
                 <?php $Resultat_Chercher_Chemin = $Parametres_Chercher_Chemin->fetch(); ?>
 
-                <script type="text/javascript">
-                                                                                                                                                                                                                                                                                                                
-                    function Chercher_Infos_Item_Equipement(item){
-                                    
-                        window.parent.parent.Barre_De_Statut("Récupération des informations de l'item...");
-                        window.parent.parent.Icone_Chargement(1);
-                                    
-                        $.ajax({
-                            type: "POST",
-                            url: "Inventaire_Infos_Item.php",
-                            data: "id="+item, // données à transmettre
-                            success: function(msg){
-                                                                                                                                                                                                                                                                                                                                                                                                
-                                $("#Contenue_Milieu_Bonus").fadeOut("medium", function(){
-                                    $("#Contenue_Milieu_Bonus").html(msg);
-                                    window.parent.parent.Barre_De_Statut("Informations récupérés.");
-                                    window.parent.parent.Icone_Chargement(0);
-                                    $("#Contenue_Milieu_Bonus").fadeIn("medium");
-                                });
 
-                            }
-                        });
-                                                                                                                                                                                                                                                                                                                                    
-                    }
-                </script>
-
-                <div class="Interieur_Case">
-                    <img onmouseover="Chercher_Infos_Item_Equipement(<?php echo $Donnees_Case_Equipement->item_id; ?>)" src="<?php echo $Resultat_Chercher_Chemin->chemin; ?>" style="position: absolute; top:0px; left:0px;" />
+                <div class="Interieur_Case"  data-tooltip="" data-tooltip-track="1" data-tooltip-isItemMetin="1">
+                    <img id="cade_id_<?php echo $Donnees_Case_Equipement->item_id; ?>" src="<?php echo $Resultat_Chercher_Chemin->chemin; ?>" style="position: absolute; top:0px; left:0px;" />
                     <?php
                     $flag = $Donnees_Case_Equipement->flag;
                     ?>
 
-                    <?php /* ----------------------------------Comptage nombre------------------------------ */ ?>
                     <?php if ($flag == 4 or $flag == 20 or $flag == 132 or $flag == 2052 or $flag == 8212) { ?>
                         <span style="position: relative; width: 32px; top:50%; right: -15px">
                             <?php if ($Donnees_Case_Equipement->count < 100) { ?>
@@ -78,8 +52,11 @@ function CheckEquipement($Position_Equipement, $ID_Personnage, $Parametres_Appel
                             <?php } ?>
                         </span>
                     <?php } ?>
-                    <?php /* -------------------------------------------------------------------------------- */ ?>
                 </div>
+
+                <script type="text/javascript">
+                    getInformationItem(<?php echo $Donnees_Case_Equipement->item_id; ?>);
+                </script>
 
             <?php } else { ?>
 

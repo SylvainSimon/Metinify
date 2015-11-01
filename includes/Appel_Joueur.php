@@ -75,10 +75,12 @@ if ($_SESSION['ID'] != $Donnees_Appel_Joueurs_Page->account_id) {
 }
 ?>
 
+<link rel="stylesheet" href="../css/demos.css">
+
 <div class="box box-default flat">
 
     <div class="box-header">
-        <h3 class="box-title">Mon compte</h3>
+        <h3 class="box-title">Mon personnage</h3>
     </div>
 
     <div class="box-body no-padding">
