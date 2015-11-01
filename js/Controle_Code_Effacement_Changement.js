@@ -5,24 +5,24 @@ function Verification_Longueur_Code(value){
             
     if (value.length < 7){
                 
-        document.getElementById('Champs_Saisie_Nouveau_Code_Effacement').className = "Zone_Saisie_Changement_Code_Effacement_Rouge";
+        document.getElementById('Champs_Saisie_Nouveau_Code_Effacement').className = "form-control input-sm text";
         Verification_Longueur = 1;
                     
     }else{
                 
-        document.getElementById('Champs_Saisie_Nouveau_Code_Effacement').className = "Zone_Saisie_Changement_Code_Effacement_Vert";
+        document.getElementById('Champs_Saisie_Nouveau_Code_Effacement').className = "form-control input-sm text";
         Verification_Longueur = 0;
                     
         var RE = /^-{0,1}\d*\.{0,1}\d+$/;
                     
         if (!RE.test(value)){
                         
-            document.getElementById('Champs_Saisie_Nouveau_Code_Effacement').className = "Zone_Saisie_Changement_Code_Effacement_Rouge";
+            document.getElementById('Champs_Saisie_Nouveau_Code_Effacement').className = "form-control input-sm text";
             Verification_Longueur = 1;
                         
         }else{
                         
-            document.getElementById('Champs_Saisie_Nouveau_Code_Effacement').className = "Zone_Saisie_Changement_Code_Effacement_Vert";
+            document.getElementById('Champs_Saisie_Nouveau_Code_Effacement').className = "form-control input-sm text";
             Verification_Longueur = 0;
         }
     }      
@@ -34,13 +34,13 @@ function Verifier_Mot_De_Passe_Identique(){
         
     if (repetermotdepasse == document.getElementById("Champs_Saisie_Nouveau_Code_Effacement").value){
             
-        document.getElementById("Champs_Saisie_Repeter_Nouveau_Code_Effacement").className = "Zone_Saisie_Creation_Code_Effacement_Vert";
+        document.getElementById("Champs_Saisie_Repeter_Nouveau_Code_Effacement").className = "form-control input-sm text";
             
         MotdePasseVerif = 0;
             
     }else{
             
-        document.getElementById("Champs_Saisie_Repeter_Nouveau_Code_Effacement").className = "Zone_Saisie_Creation_Code_Effacement_Rouge";
+        document.getElementById("Champs_Saisie_Repeter_Nouveau_Code_Effacement").className = "form-control input-sm text";
             
         MotdePasseVerif = 1;
     }

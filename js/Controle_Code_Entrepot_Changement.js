@@ -5,12 +5,12 @@ function Verification_Longueur_Code(value){
             
     if (value.length < 6){
                 
-        document.getElementById('Champs_Saisie_Nouveau_Code_Entrepot').className = "Zone_Saisie_Changement_Code_Entrepot_Rouge";
+        document.getElementById('Champs_Saisie_Nouveau_Code_Entrepot').className = "form-control input-sm text";
         Verification_Longueur = 1;
                     
     }else{
                 
-        document.getElementById('Champs_Saisie_Nouveau_Code_Entrepot').className = "Zone_Saisie_Changement_Code_Entrepot_Vert";
+        document.getElementById('Champs_Saisie_Nouveau_Code_Entrepot').className = "form-control input-sm text";
         Verification_Longueur = 0;
     }      
 }
@@ -21,13 +21,13 @@ function Verifier_Mot_De_Passe_Identique(){
         
     if (repetermotdepasse == document.getElementById("Champs_Saisie_Nouveau_Code_Entrepot").value){
             
-        document.getElementById("Champs_Saisie_Repeter_Nouveau_Code_Entrepot").className = "Zone_Saisie_Changement_Code_Entrepot_Vert";
+        document.getElementById("Champs_Saisie_Repeter_Nouveau_Code_Entrepot").className = "form-control input-sm text";
             
         MotdePasseVerif = 0;
             
     }else{
             
-        document.getElementById("Champs_Saisie_Repeter_Nouveau_Code_Entrepot").className = "Zone_Saisie_Changement_Code_Entrepot_Rouge";
+        document.getElementById("Champs_Saisie_Repeter_Nouveau_Code_Entrepot").className = "form-control input-sm text";
             
         MotdePasseVerif = 1;
     }

@@ -1,50 +1,68 @@
 <?php @session_write_close(); ?>
 <?php @session_start(); ?>
 
-<div class="Cadre_Principal">
+<div class="box box-default flat">
 
-    <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-        <h1>Changement du code d'effacement</h1>
+    <div class="box-header">
+        <h3 class="box-title">Changement du code d'effacement</h3>
     </div>
-    <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1">
-        <hr class="Hr_Haut"/>
+
+    <form action="javascript:void(0)" method="POST">
         <script type="text/javascript" src="./js/Controle_Code_Effacement_Changement.js"></script>
 
-        Changez ici le code qui sert à effacé l'un de vos personnage dans le jeux.
+        <div class="box-body">
 
-        <form action="javascript:void(0)" method="POST">
+            Changez ici le code qui sert à effacer l'un de vos personnage dans le jeu.
+            <br/>
+            <br/>
 
-            <table class="Table_Modele">
-                <tr>
-                    <td class="Colonne_Gauche_Formulaire">Code d'effacement : </td>
-                    <td>
-                        <input type="password" maxlength="7" autofocus="autofocus" placeholder="●●●●●●●" id="Champs_Saisie_Ancien_Code_Effacement" class="Zone_Saisie_Changement_Code_Effacement"/>
-                    </td>
-                    <td class="Colonne_Droite_Formulaire">Votre code actuel</td>
-                </tr>
-                <tr>
-                    <td class="Colonne_Gauche_Formulaire">Nouveau code : </td>
-                    <td>
-                        <input type="password" maxlength="7" placeholder="●●●●●●●" id="Champs_Saisie_Nouveau_Code_Effacement" class="Zone_Saisie_Changement_Code_Effacement" onkeyup="Verification_Longueur_Code(this.value);"/>
-                    </td>
-                    <td class="Colonne_Droite_Formulaire">Entrez le nouveau code souhaité</td>
-                </tr>
-                <tr>
-                    <td class="Colonne_Gauche_Formulaire">Répétez code : </td>
-                    <td>
-                        <input type="password" maxlength="7" placeholder="●●●●●●●" id="Champs_Saisie_Repeter_Nouveau_Code_Effacement" class="Zone_Saisie_Changement_Code_Effacement" onkeyup="Verifier_Mot_De_Passe_Identique();"/>
-                    </td>
-                    <td class="Colonne_Droite_Formulaire">Répétez le nouveau code</td>
-                </tr>
-            </table>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group ">
+                        <label for="Champs_Saisie_Ancien_Code_Effacement">
+                            Code d'effacement
+                        </label>
+
+                        <div class="input-group col-xs-12">
+                            <input type="password" maxlength="7" autofocus="autofocus" placeholder="●●●●●●●" id="Champs_Saisie_Ancien_Code_Effacement" class="form-control input-sm text"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <label for="Champs_Saisie_Nouveau_Code_Effacement">
+                            Nouveau code
+                        </label>
+
+                        <div class="input-group col-xs-12">
+                            <input type="password" maxlength="7" placeholder="●●●●●●●" id="Champs_Saisie_Nouveau_Code_Effacement" class="form-control input-sm text" onkeyup="Verification_Longueur_Code(this.value);"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <label for="Champs_Saisie_Repeter_Nouveau_Code_Effacement">
+                            Répétez code
+                        </label>
+
+                        <div class="input-group col-xs-12">
+                            <input type="password" maxlength="7" placeholder="●●●●●●●" id="Champs_Saisie_Repeter_Nouveau_Code_Effacement" class="form-control input-sm text" onkeyup="Verifier_Mot_De_Passe_Identique();"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             Pour faire le changement, cliquez sur le bouton "Changer".<br/>
             Si vous êtes là par erreur, vous pouvez toujours annuler la demande.<br/>
-            <hr class="Hr_Bas">
-            <input type="button" class="Bouton_Envoyer_Changer_Email Bouton_Normal" value="Changer" onclick="Changement_Code_Effacement();" />
-            <input type="button" class="Bouton_Annuler_Changer_Email Bouton_Normal" value="Annuler" onclick="Ajax('pages/Accueil.php');" />
+        </div>
 
-        </form>
+        <div class="box-footer">
+            <div class="pull-left">
+                <input type="button" class="btn btn-danger btn-flat" value="Annuler" onclick="Ajax('pages/Accueil.php');" />
+            </div>
 
-    </div>
+            <div class="pull-right">
+                <input type="button" class="btn btn-success btn-flat" value="Changer" onclick="Changement_Code_Effacement();" />
+            </div>        
+        </div>
+
+    </form>
 </div>

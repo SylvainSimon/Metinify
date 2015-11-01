@@ -4,25 +4,19 @@
 <?php @include_once '../pages/Fonctions_Utiles.php'; ?>
 
 
+<div class="box box-default flat">
 
-<div class="Cadre_Principal">
-
-    <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-        <h1>Code d'entrep&ocirc;t oubli&eacute;</h1>
+    <div class="box-header">
+        <h3 class="box-title">Code d'entrepôt renvoyé</h3>
     </div>
-			<div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1">
-			        <hr class="Hr_Haut"/>
-<p>
-Vous avez reçu un E-Mail contenant le code de votre entrepôt.<br />
-</p>
-        <hr class="Hr_Bas"/>
-			</div>
-        </form>
+
+    <div class="box-body">
+        Vous avez reçu un e-mail contenant le code de votre entrepôt.
+    </div>
 </div>
 
 
 <?php
-
 /* ------------------------ Vérification Données ---------------------------- */
 $Recuperatio_Entrepot_Password = "SELECT safebox.password FROM account.account
 									LEFT JOIN player.safebox
@@ -37,7 +31,7 @@ $Nombre_De_Resultat = $Parametres_Entrepot_Password->rowCount();
 /* -------------------------------------------------------------------------- */
 if ($Nombre_De_Resultat > 0) {
 
-$Donnes_Password = $Parametres_Entrepot_Password->fetch();
+    $Donnes_Password = $Parametres_Entrepot_Password->fetch();
 
     $to = $_SESSION['Email'];
 
@@ -57,10 +51,7 @@ $Donnes_Password = $Parametres_Entrepot_Password->fetch();
     $msg .= '' . "<br/>";
 
     mail($to, $subject, $msg, $headers);
-	
-}
-else
-{
+} else {
 
     $to = $_SESSION['Email'];
 
@@ -80,6 +71,5 @@ else
     $msg .= '' . "<br/>";
 
     mail($to, $subject, $msg, $headers);
-	
 }
 ?>
