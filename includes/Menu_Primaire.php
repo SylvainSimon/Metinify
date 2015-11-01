@@ -20,7 +20,7 @@
             <ul class="treeview-menu">
                 <li>
                     <a href="#" onclick="Ajax('pages/Classement_Joueurs_PvE.php')">Joueurs PVE</a>
-                    <a href="#">Joueurs PVP</a>
+                    <a href="#" onclick="Ajax('pages/Classement_Joueurs_PvP.php')">Joueurs PVP</a>
                     <a href="#" onclick="Ajax('pages/Classement_Guildes.php')">Guildes</a>
                 </li>
             </ul>

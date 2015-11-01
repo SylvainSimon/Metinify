@@ -111,10 +111,10 @@ $i = $Numero_De_Page + 1;
                         <th style="width: 15px;" align="center"></th>
                         <th style="width: 15px;">Race</th>
                         <th>Pseudo</th>
-                        <th>Level</th>
+                        <th class="hidden-md hidden-sm hidden-xs">Level</th>
                         <th class="hidden-md hidden-sm hidden-xs">Expérience</th>
                         <th>Classe</th>
-                        <th class="hidden-md hidden-sm hidden-xs">Score</th>
+                        <th>PVE</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -172,7 +172,7 @@ $i = $Numero_De_Page + 1;
                             <td>
                                 <?php echo $Donnees_Classement_Joueurs->name; ?>
                             </td>
-                            <td>
+                            <td class="hidden-md hidden-sm hidden-xs">
                                 <?php echo $Donnees_Classement_Joueurs->level; ?>
                             </td>
                             <td  class="hidden-md hidden-sm hidden-xs">
@@ -250,7 +250,7 @@ $i = $Numero_De_Page + 1;
                                 <?php } ?>
                             </td>
 
-                            <td class="hidden-md hidden-sm hidden-xs">
+                            <td>
                                 <?php echo $Donnees_Classement_Joueurs->score_pve; ?>
                             </td>
 
@@ -271,11 +271,11 @@ $i = $Numero_De_Page + 1;
                                 $Resultat_Verification_Connecte = $Parametres_Verification_Connecte->rowCount();
                                 ?>
                                 <?php if ($Resultat_Verification_Connecte != "1") { ?>
-                                    <span data-tooltip="Hors-ligne" data-tooltip-position="left" class="hidden-md pull-right">
+                                    <span data-tooltip="Hors-ligne" data-tooltip-position="left" class="pull-right">
                                         <i class="text-red material-icons md-icon-account-circle"></i>
                                     </span>
                                 <?php } else { ?>
-                                    <span data-tooltip="En ligne" data-tooltip-position="left" class="hidden-md pull-right">
+                                    <span data-tooltip="En ligne" data-tooltip-position="left" class="pull-right">
                                         <i class="text-green material-icons md-icon-account-circle"></i>
                                     </span>
                                 <?php } ?>
@@ -289,7 +289,7 @@ $i = $Numero_De_Page + 1;
                 </tbody>
             </table>
 
-        <div class="row" style="padding: 10px;">
+            <div class="row" style="padding: 10px;">
 
                 <div class="col-xs-6">
                     <div class="pull-left">

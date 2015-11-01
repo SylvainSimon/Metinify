@@ -39,7 +39,7 @@ $Classement_Joueur = "SELECT player.name,
                              AND player.name NOT IN(SELECT mName FROM common.gmlist)
 
                              ORDER BY victimes_pvp DESC, level DESC, exp DESC
-                             LIMIT 0,20";
+                             LIMIT 0,10";
 $Parametres_Classement_Joueur = $Connexion->query($Classement_Joueur);
 $Parametres_Classement_Joueur->setFetchMode(PDO::FETCH_OBJ);
 /* -------------------------------------------------------------------------- */
@@ -50,29 +50,31 @@ $Parametres_Comptage_Joueurs = $Connexion->query($Comptage_Joueurs);
 $Nombre_De_Joueurs = $Parametres_Comptage_Joueurs->rowCount();
 /* --------------------------------------------------------------------------------- */
 
-$nombredePage = (($Nombre_De_Joueurs / 20) - 1);
+$nombredePage = (($Nombre_De_Joueurs / 10) - 1);
 $i = $Numero_De_Page + 1;
 ?>
-<div class="Cadre_Principal">
+<div class="box box-default flat">
 
-    <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-        <h1>Classement map pvp des joueurs</h1>
+    <div class="box-header">
+        <h3 class="box-title">Classement map PVP</h3>
+
     </div>
-    <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1"> 
+
+    <div class="box-body no-padding">
         <script type="text/javascript">
-        
-            function Recherche_Joueurs(){
-            
+
+            function Recherche_Joueurs() {
+
                 Barre_De_Statut("Recherche du joueur en cours...");
                 Icone_Chargement(1);
-                
+
                 $.ajax({
                     type: "POST",
                     url: "ajax/Pages_ClassementJoueurs_Recherche.php",
-                    data: "recherche="+$("#SaisieRecherche").val(),
-                    success: function(msg){
-                    
-                        $("#pagedeclassement").fadeOut("slow", function(){
+                    data: "recherche=" + $("#SaisieRecherche").val(),
+                    success: function (msg) {
+
+                        $("#pagedeclassement").fadeOut("slow", function () {
                             $("#pagedeclassement").html(msg);
                             Barre_De_Statut("Recherche terminé.");
                             Icone_Chargement(0);
@@ -84,85 +86,66 @@ $i = $Numero_De_Page + 1;
                 return false;
 
             }
-    
+
         </script>
-        <hr class="Hr_Haut"/>
-        <form action="javascript:void(0);" class="Formulaire_Recherche_Joueur">
 
-            <input type="text" class="Zone_Saisie_Recherche_Joueur" autofocus="autofocus" placeholder="Pseudo du joueur..." id="SaisieRecherche"/>
-            &nbsp;
-            <input type="submit" class="Bouton_Formulaire_Recherche_Joueur Bouton_Normal" src="images/Bouton_Rechercher.png" onclick="if(document.getElementById('SaisieRecherche').value != ''){ Recherche_Joueurs(); }" value="Rechercher"/>
-
-        </form>
-        <hr class="Hr_Bas">
+        <div class="row" style="padding: 10px;">
+            <div class="col-md-4">
+                <input type="text" class="form-control input-sm inline" autofocus="autofocus" placeholder="Pseudo..." id="SaisieRecherche"/>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" class="btn btn-primary btn-flat btn-sm inline" src="images/Bouton_Rechercher.png" onclick="if (document.getElementById('SaisieRecherche').value != '') {
+                            Recherche_Joueurs();
+                        }" value="Rechercher"/>
+            </div>
+        </div>
 
         <div id="Changement_de_Page">
-            <div>
-                <div class="Position_Bouton_Precedent Bold">
-                    <?php if ($Numero_De_Page >= 1) { ?>
-                        <a href="javascript:void(0)" onclick="Ajax_Classement('ajax/Pages_ClassementJoueurs.php?page=<?php echo ($Numero_De_Page - 1); ?>')"><= Précédente</a>
-                    <?php } else { ?>
-                        <= Précédente
-                    <?php } ?>
-                </div>
 
-                <div class="Position_Bouton_Suivant Bold">
-                    <?php if ($Numero_De_Page <= $nombredePage) {
-                        ?>
-                        <a href="javascript:void(0)" onclick="Ajax_Classement('ajax/Pages_ClassementJoueurs.php?page=<?php echo ($Numero_De_Page + 1); ?>')">Suivante =></a>
-                    <?php } else { ?>
-                        Suivante =>
-                    <?php } ?>
-                </div>
-            </div>
-            <hr class="Hr_Bas">
-
-            <table class="Table_Classement_Joueur"> 
+            <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 5px;"> 
                 <thead>
                     <tr>
-                        <th align="center" class="Colonne_Numero_Classement">N°</th>
-                        <th style="text-indent: 5px;" class="Align_Left" >Pseudo</th>
-                        <th class="Align_Left">Level</th>
-                        <th class="Align_Left">Expérience</th>
-                        <th class="Align_Left">Race</th>
-                        <th class="Align_Left">Classe</th>
-                        <th class="Align_Left">Score</th>
-                        <th class="Align_center">Royaume</th>
-                        <th class="Align_Right">Status</th>
+                        <th style="width: 15px;" align="center"></th>
+                        <th style="width: 15px;">Race</th>
+                        <th>Pseudo</th>
+                        <th class="hidden-md hidden-sm hidden-xs">Level</th>
+                        <th class="hidden-md hidden-sm hidden-xs">Expérience</th>
+                        <th>Classe</th>
+                        <th>PVP</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="pagedeclassement">
 
                     <?php while ($Donnees_Classement_Joueurs = $Parametres_Classement_Joueur->fetch()) { ?>
 
-                        <tr onmouseover="this.style.backgroundColor='#555555';" onmouseout="this.style.backgroundColor='transparent';">
-                            <td align="center" class="Colonne_Numero_Classement">
-                                <?php if ($i == 1) { ?>
-                                    <img src="images/rang/or.png"/>
-                                <?php } else if ($i == 2) { ?>
-                                    <img src="images/rang/argent.png"/>
-                                <?php } else if ($i == 3) { ?>
-                                    <img src="images/rang/bronze.png"/>
-                                <?php } else if ($i == 4) { ?>
-                                    <img src="images/rang/Medaille_Or.png"/>
-                                <?php } else if ($i == 5) { ?>
-                                    <img src="images/rang/Medaille_Argent.png"/>
-                                <?php } else if ($i == 6) { ?>
-                                    <img src="images/rang/Medaille_Bronze.png"/>
-                                <?php } else { ?>
-                                    <?php echo $i; ?>
-                                <?php } ?>
+                        <tr>
+                            <td align="center">
+                                <?php if ($i == 1) {
+                                    ?><i class="material-icons md-icon-star" style="color:#F3EC12;"></i>
+                                    <?php
+                                } else if ($i == 2) {
+                                    ?><i class="material-icons md-icon-star text-gray"></i>
+                                    <?php
+                                } else if ($i == 3) {
+                                    ?><i class="material-icons md-icon-star" style="color:#813838;"></i>
+                                    <?php
+                                } else if ($i == 4) {
+                                    ?><i class="material-icons md-icon-bookmark" style="color:#F3EC12; opacity: 0.5"></i>
+                                    <?php
+                                } else if ($i == 5) {
+                                    ?><i class="material-icons md-icon-bookmark text-gray" style="opacity: 0.5"></i>
+                                    <?php
+                                } else if ($i == 6) {
+                                    ?><i class="material-icons md-icon-bookmark" style="color:#813838; opacity: 0.5"></i>
+                                    <?php
+                                } else {
+                                    echo $i;
+                                }
+                                ?>
                             </td>
-
-                            <td style="text-indent: 5px;">
-                                <?php echo $Donnees_Classement_Joueurs->name; ?>
-                            </td>
-                            <td>
-                                <?php echo $Donnees_Classement_Joueurs->level; ?>
-                            </td>
-                            <td>
-                                <?php echo $Donnees_Classement_Joueurs->exp; ?>
-                            </td>
+                            
                             <td>
                                 <?php if ($Donnees_Classement_Joueurs->job == "0") { ?> 
                                     <img class="Dimension_Image_Classement" src="images/races/0_mini.png"/>
@@ -181,6 +164,16 @@ $i = $Numero_De_Page + 1;
                                 <?php } else if ($Donnees_Classement_Joueurs->job == "7") { ?> 
                                     <img class="Dimension_Image_Classement" src="images/races/7_mini.png"/>
                                 <?php } ?>
+                            </td>
+
+                            <td>
+                                <?php echo $Donnees_Classement_Joueurs->name; ?>
+                            </td>
+                            <td class="hidden-md hidden-sm hidden-xs">
+                                <?php echo $Donnees_Classement_Joueurs->level; ?>
+                            </td>
+                            <td  class="hidden-md hidden-sm hidden-xs">
+                                <?php echo $Donnees_Classement_Joueurs->exp; ?>
                             </td>
 
                             <td>
@@ -253,37 +246,38 @@ $i = $Numero_De_Page + 1;
                                     Non-définie
                                 <?php } ?>
                             </td>
-							
-							<td>
+
+                            <td>
                                 <?php echo $Donnees_Classement_Joueurs->victimes_pvp; ?>
                             </td>
-							
-                            <td class="Align_center">
+
+                            <td>
                                 <?php if ($Donnees_Classement_Joueurs->empire == 1) { ?>
-                                    <img class="Dimension_Image_Classement Deplacement_Drapeau" src="images/empire/red.jpg"/> 
+                                    <i class="text-red material-icons md-icon-map md-20"></i>
                                 <?php } else if ($Donnees_Classement_Joueurs->empire == 2) { ?>
-                                    <img class="Dimension_Image_Classement Deplacement_Drapeau" src="images/empire/yellow.jpg"/> 
+                                    <i class="text-yellow material-icons md-icon-map md-20"></i>
                                 <?php } else if ($Donnees_Classement_Joueurs->empire == 3) { ?>
-                                    <img class="Dimension_Image_Classement Deplacement_Drapeau" src="images/empire/blue.jpg"/>
+                                    <i class="text-blue material-icons md-icon-map md-20"></i>
                                 <?php } ?>
                             </td>
+                            <td>
+                                <?php
+                                $Parametres_Verification_Connecte->execute(array(
+                                    $Donnees_Classement_Joueurs->player_id));
+                                $Parametres_Verification_Connecte->setFetchMode(PDO::FETCH_OBJ);
+                                $Resultat_Verification_Connecte = $Parametres_Verification_Connecte->rowCount();
+                                ?>
+                                <?php if ($Resultat_Verification_Connecte != "1") { ?>
+                                    <span data-tooltip="Hors-ligne" data-tooltip-position="left" class="pull-right">
+                                        <i class="text-red material-icons md-icon-account-circle"></i>
+                                    </span>
+                                <?php } else { ?>
+                                    <span data-tooltip="En ligne" data-tooltip-position="left" class="pull-right">
+                                        <i class="text-green material-icons md-icon-account-circle"></i>
+                                    </span>
+                                <?php } ?>
 
-                            <?php
-                            $Parametres_Verification_Connecte->execute(array(
-                            $Donnees_Classement_Joueurs->player_id));
-                            $Parametres_Verification_Connecte->setFetchMode(PDO::FETCH_OBJ);
-                            $Resultat_Verification_Connecte = $Parametres_Verification_Connecte->rowCount();
-                            ?>
-                            <?php if ($Resultat_Verification_Connecte != "1") { ?>
-                                <td title="Hors-ligne" class="Align_Right Deplacement_Drapeau ">
-                                    <img class="Ombre_Grise" src="images/offline.gif" />
-                                </td>
-                            <?php } else { ?>
-                                <td title="En ligne" class="Align_Right Deplacement_Drapeau">
-                                    <img class="Ombre_Grise" src="images/online.gif" />
-
-                                </td>
-                            <?php } ?>
+                            </td>
 
                         </tr>
                         <?php $i++; ?>
@@ -291,27 +285,27 @@ $i = $Numero_De_Page + 1;
                     <?php } ?>
                 </tbody>
             </table>
-            
-            <hr class="Hr_Haut"/>
-            <div class="Position_SuivantPrecedent_BasClassement">
-                <div class="Position_Bouton_Precedent Bold">
-                    <?php if ($Numero_De_Page >= 1) { ?>
-                        <a href="javascript:void(0)" onclick="Ajax_Classement('ajax/Pages_ClassementJoueurs.php?page=<?php echo ($Numero_De_Page - 1); ?>')"><= Précédente</a>
-                    <?php } else { ?>
-                        <= Précédente
-                    <?php } ?>
+
+            <div class="row" style="padding: 10px;">
+
+                <div class="col-xs-6">
+                    <div class="pull-left">
+                        <?php if ($Numero_De_Page >= 1) { ?>
+                            <a href="javascript:void(0)" onclick="Ajax_Classement('ajax/Pages_ClassementJoueurs_PvE.php?page=<?php echo ($Numero_De_Page - 1); ?>')">Page précédente</a>
+                        <?php } ?>
+                    </div>
                 </div>
-                <div class="Position_Bouton_Suivant Bold">
-                    <?php if ($Numero_De_Page <= $nombredePage) {
-                        ?>
-                        <a href="javascript:void(0)" onclick="Ajax_Classement('ajax/Pages_ClassementJoueurs.php?page=<?php echo ($Numero_De_Page + 1); ?>')">Suivante =></a>
-                    <?php } else { ?>
-                        Suivante =>
-                    <?php } ?>
+
+                <div class="col-xs-6">
+                    <div class="pull-right">
+                        <?php if ($Numero_De_Page <= $nombredePage) {
+                            ?>
+                            <a href="javascript:void(0)" onclick="Ajax_Classement('ajax/Pages_ClassementJoueurs_PvE.php?page=<?php echo ($Numero_De_Page + 1); ?>')">Page suivante</a>
+                        <?php } ?>
+                    </div>
                 </div>
 
             </div>
-            <hr class="Hr_Bas">
         </div>
     </div>
 </div>
