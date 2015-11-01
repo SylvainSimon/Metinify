@@ -114,7 +114,7 @@ $i = $Numero_De_Page + 1;
                         <th>Level</th>
                         <th class="hidden-md hidden-sm hidden-xs">Experience</th>
                         <th>Classe</th>
-                        <th>Score</th>
+                        <th class="hidden-md hidden-sm hidden-xs">Score</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -250,7 +250,7 @@ $i = $Numero_De_Page + 1;
                                 <?php } ?>
                             </td>
 
-                            <td>
+                            <td class="hidden-md hidden-sm hidden-xs">
                                 <?php echo $Donnees_Classement_Joueurs->score_pve; ?>
                             </td>
 
@@ -271,11 +271,11 @@ $i = $Numero_De_Page + 1;
                                 $Resultat_Verification_Connecte = $Parametres_Verification_Connecte->rowCount();
                                 ?>
                                 <?php if ($Resultat_Verification_Connecte != "1") { ?>
-                                    <span title="Hors-ligne" class="hidden-md pull-right">
+                                    <span data-tooltip="Hors-ligne" data-tooltip-position="left" class="hidden-md pull-right">
                                         <i class="text-red material-icons md-icon-account-circle"></i>
                                     </span>
                                 <?php } else { ?>
-                                    <span title="En ligne" class="hidden-md pull-right">
+                                    <span data-tooltip="En ligne" data-tooltip-position="left" class="hidden-md pull-right">
                                         <i class="text-green material-icons md-icon-account-circle"></i>
                                     </span>
                                 <?php } ?>

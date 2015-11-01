@@ -55,20 +55,18 @@ if ($Nombre_De_Resultat == 1) {
 
     <?php } else { ?>
 
-        <div class="Cadre_Principal">
+        <div class="box box-default flat">
 
-            <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-                <h1>Formulaire d'inscription</h1>
+            <div class="box-header">
+                <h3 class="box-title">Création de compte</h3>
             </div>
-            <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1">
-                <hr class="Hr_Haut"/>
+
+            <div class="box-body">
 
                 Suite à plusieurs tentatives d'inscriptions ratées et pour des raisons de sécurités,<br/>
                 Vous devez attendre cinq minutes avant de pouvoir de nouveau vous inscrire.
 
-                <hr class="Hr_Bas">
                 <input type="button" class="Bouton_Annuler_Changer_Email_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
-
             </div>
         </div>
         <?php exit(); ?>
@@ -188,6 +186,7 @@ if ($Nombre_De_Resultat == 1) {
                 En cliquant, j'accepte les <a style="cursor: pointer;" onclick="Ajax('pages/CDG.php');" >CGU</a> ainsi que le <a style="cursor: pointer;" onclick="Ajax('pages/regles.php');" >règlement de jeu</a>.
                 <input type="button" class="btn btn-success btn-flat" onclick="VerificationFormulaire();" src="images/Bouton_Valider.png" value="Envoyer" />
             </div>
+        </div>
     </form>
 
 </div>

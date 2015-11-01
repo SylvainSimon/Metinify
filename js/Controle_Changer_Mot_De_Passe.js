@@ -16,10 +16,10 @@ function NouveauMDP(){
     motdepasse = document.getElementById("Saisie_Nouveau_Mot_De_Passe").value;
 
     if (motdepasse.length > 5){
-        document.getElementById("Saisie_Nouveau_Mot_De_Passe").className = "Zone_Saisie_Changer_Mot_De_Passe_Vert";
+        document.getElementById("Saisie_Nouveau_Mot_De_Passe").className = "form-control input-sm text";
         NewMotdePasse = 0;
     }else{
-        document.getElementById("Saisie_Nouveau_Mot_De_Passe").className = "Zone_Saisie_Changer_Mot_De_Passe_Rouge";
+        document.getElementById("Saisie_Nouveau_Mot_De_Passe").className = "form-control input-sm text";
         NewMotdePasse = 1;
     }
 }
@@ -29,10 +29,10 @@ function RepeterNouveauMDP(){
     repetermotdepasse = document.getElementById("SaisieRepeterNewMDP").value;
 
     if (repetermotdepasse == document.getElementById("Saisie_Nouveau_Mot_De_Passe").value){
-        document.getElementById("SaisieRepeterNewMDP").className = "Zone_Saisie_Changer_Mot_De_Passe_Vert";
+        document.getElementById("SaisieRepeterNewMDP").className = "form-control input-sm text";
         NewMotdePasseVerif = 0;
     }else{
-        document.getElementById("SaisieRepeterNewMDP").className = "Zone_Saisie_Changer_Mot_De_Passe_Rouge";
+        document.getElementById("SaisieRepeterNewMDP").className = "form-control input-sm text";
         NewMotdePasseVerif = 1;
     }
 }

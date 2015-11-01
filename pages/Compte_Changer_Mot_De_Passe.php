@@ -1,43 +1,62 @@
 <?php @session_write_close(); ?>
 <?php @session_start(); ?>
 
-<div class="Cadre_Principal">
+<div class="box box-default flat">
 
-    <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-        <h1>Changement Mot de Passe</h1>
+    <div class="box-header">
+        <h3 class="box-title">Changement mot de passe</h3>
     </div>
-    <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1">
-        <hr class="Hr_Haut"/>
-        <script type="text/javascript" src="./js/Controle_Changer_Mot_De_Passe.js"></script>
 
-        <form action="javascript:void(0)" method="POST">
+    <script type="text/javascript" src="./js/Controle_Changer_Mot_De_Passe.js"></script>
+    <form action="javascript:void(0)" method="POST">
 
-            <table class="Table_Modele">
+        <div class="box-body">
 
-                <tr>
-                    <td class="Colonne_Gauche_Formulaire">Mot de passe actuel : </td>
-                    <td><input maxlength="18" autofocus="autofocus" id="Saisie_Ancien_Mot_De_Passe" placeholder="●●●●●●●●" class="Zone_Saisie_Changer_Mot_De_Passe" type="password" onKeyUp="OldMDP(this.value);" name="user"/></td>
-                    <td class="Colonne_Droite_Formulaire">Indiquez votre mot de passe</td>
-                </tr>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group ">
+                        <label for="Saisie_Ancien_Mot_De_Passe">
+                            Mot de passe actuel
+                        </label>
 
-                <tr>
-                    <td class="Colonne_Gauche_Formulaire">Nouveau mot de passe : </td>
-                    <td><input maxlength="18" id="Saisie_Nouveau_Mot_De_Passe" class="Zone_Saisie_Changer_Mot_De_Passe" placeholder="●●●●●●●●" type="password" name="password" onKeyUp="NouveauMDP(this.value);"/></td>
-                    <td class="Colonne_Droite_Formulaire">Saisissez un nouveau mot de passe</td>
-                </tr>
+                        <div class="input-group col-xs-12">
+                            <input maxlength="18" autofocus="autofocus" id="Saisie_Ancien_Mot_De_Passe" placeholder="●●●●●●●●" class="form-control input-sm text" type="password" onKeyUp="OldMDP(this.value);" name="user"/>
+                        </div>
+                    </div>
 
-                <tr>
-                    <td class="Colonne_Gauche_Formulaire">Répétez mot de passe : </td>
-                    <td><input maxlength="18" id="SaisieRepeterNewMDP" class="Zone_Saisie_Changer_Mot_De_Passe" placeholder="●●●●●●●●" type="password" name="password" onKeyUp="RepeterNouveauMDP(this.value);"/></td>
-                    <td class="Colonne_Droite_Formulaire">Répétez le nouveau mot de passe</td>
-                </tr>
+                    <div class="form-group ">
+                        <label for="Saisie_Ancien_Mot_De_Passe">
+                            Nouveau mot de passe
+                        </label>
 
-            </table>
-            <hr class="Hr_Bas">
-            <input type="button" class="Bouton_Envoyer_Modele Bouton_Normal" value="Valider" onclick="VerificationNewMDP();" />
-            <input type="button" class="Bouton_Annuler_Modele Bouton_Normal" value="Annuler" onclick="Ajax('pages/Accueil.php');" />
+                        <div class="input-group col-xs-12">
+                            <input maxlength="18" id="Saisie_Nouveau_Mot_De_Passe" class="form-control input-sm text" placeholder="●●●●●●●●" type="password" name="password" onKeyUp="NouveauMDP(this.value);"/>
+                        </div>
+                    </div>
 
-        </form>
+                    <div class="form-group ">
+                        <label for="SaisieRepeterNewMDP">
+                            Nouveau mot de passe
+                        </label>
 
-    </div>
+                        <div class="input-group col-xs-12">
+                            <input maxlength="18" id="SaisieRepeterNewMDP" class="form-control input-sm text" placeholder="●●●●●●●●" type="password" name="password" onKeyUp="RepeterNouveauMDP(this.value);"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="box-footer">
+
+            <div class="pull-left">
+                <input type="button" class="btn btn-danger btn-flat" value="Annuler" onclick="Ajax('pages/Accueil.php');" />
+            </div>
+
+            <div class="pull-right">
+                <input type="button" class="btn btn-success btn-flat" value="Valider" onclick="VerificationNewMDP();" />
+            </div>
+        </div>
+    </form>
 </div>

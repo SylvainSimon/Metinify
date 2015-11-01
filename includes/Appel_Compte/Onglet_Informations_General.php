@@ -176,7 +176,7 @@
             <table class="table table-condensed table-hover" style="border-collapse: collapse;">
                 <thead>
                     <tr>
-                        <th width="50">Race</th>
+                        <th class="hidden-md hidden-sm hidden-xs" width="50">Race</th>
                         <th width="130">Pseudonyme</th>
                         <th class="hidden-md hidden-sm hidden-xs">Classe</th>
                         <th width="30">Lvl</th>
