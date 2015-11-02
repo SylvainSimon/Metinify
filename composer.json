@@ -10,6 +10,7 @@
         "rogeriopradoj/respond": "1.4.2",
         "symfony/class-loader": "2.7.6",
         "symfony/http-foundation": "2.7.6",
-        "caseyamcl/configula": "2.4"
+        "caseyamcl/configula": "2.4",
+        "pimple/pimple": "3.0.2"
     }
 }

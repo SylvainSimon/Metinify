@@ -7,7 +7,7 @@
                             WHERE id_compte = :id_compte
                             AND administration_users.support_ticket = 1
                             LIMIT 1";
-            $Parametres_Recuperation_Droits = $Connexion->prepare($Recuperation_Droits);
+            $Parametres_Recuperation_Droits = $this->objConnection->prepare($Recuperation_Droits);
             $Parametres_Recuperation_Droits->execute(array(':id_compte' => $_SESSION["ID"]));
             $Parametres_Recuperation_Droits->setFetchMode(\PDO::FETCH_OBJ);
             $Nombre_De_Resultat_Recuperation_Droits = $Parametres_Recuperation_Droits->rowCount();
@@ -20,7 +20,7 @@
                 /* ------------------------ Vérification Données ---------------------------- */
                 $Nombre_Discussion_Attente = "SELECT numero_discussion
                                       FROM site.support_ticket_attente";
-                $Parametres_Nombre_Discussion_Attente = $Connexion->prepare($Nombre_Discussion_Attente);
+                $Parametres_Nombre_Discussion_Attente = $this->objConnection->prepare($Nombre_Discussion_Attente);
                 $Parametres_Nombre_Discussion_Attente->execute(array(':id_compte' => $_SESSION["ID"]));
                 $Nombre_De_Resultat_Discussion_Attente = $Parametres_Nombre_Discussion_Attente->rowCount();
                 /* -------------------------------------------------------------------------- */
@@ -30,7 +30,7 @@
                                       FROM site.support_ticket_traitement
                                       WHERE support_ticket_traitement.id_recepteur = :id_compte
                                       AND support_ticket_traitement.etat = 'Non-Lu'";
-                $Parametres_Nombre_Message_Traitement = $Connexion->prepare($Nombre_Message_Traitement);
+                $Parametres_Nombre_Message_Traitement = $this->objConnection->prepare($Nombre_Message_Traitement);
                 $Parametres_Nombre_Message_Traitement->execute(array(':id_compte' => $_SESSION["ID"]));
                 $Nombre_De_Resultat_Message_Traitement = $Parametres_Nombre_Message_Traitement->rowCount();
                 /* -------------------------------------------------------------------------- */
@@ -40,7 +40,7 @@
                                          FROM site.support_ticket_traitement
                                          WHERE support_ticket_traitement.id_recepteur = :id_compte
                                          AND support_ticket_traitement.etat = 'Non-Lu'";
-                $Parametres_Nombre_Discussion_Traitement = $Connexion->prepare($Nombre_Discussion_Traitement);
+                $Parametres_Nombre_Discussion_Traitement = $this->objConnection->prepare($Nombre_Discussion_Traitement);
                 $Parametres_Nombre_Discussion_Traitement->execute(array(':id_compte' => $_SESSION["ID"]));
                 $Nombre_De_Resultat_Discussion_Traitement = $Parametres_Nombre_Discussion_Traitement->rowCount();
                 /* -------------------------------------------------------------------------- */
@@ -88,7 +88,7 @@
                                       FROM site.support_ticket_traitement
                                       WHERE support_ticket_traitement.id_recepteur = :id_compte
                                       AND support_ticket_traitement.etat = 'Non-Lu'";
-                $Parametres_Nombre_Message_Traitement = $Connexion->prepare($Nombre_Message_Traitement);
+                $Parametres_Nombre_Message_Traitement = $this->objConnection->prepare($Nombre_Message_Traitement);
                 $Parametres_Nombre_Message_Traitement->execute(array(':id_compte' => $_SESSION["ID"]));
                 $Nombre_De_Resultat_Message_Traitement = $Parametres_Nombre_Message_Traitement->rowCount();
                 /* -------------------------------------------------------------------------- */
@@ -98,7 +98,7 @@
                                          FROM site.support_ticket_traitement
                                          WHERE support_ticket_traitement.id_recepteur = :id_compte
                                          AND support_ticket_traitement.etat = 'Non-Lu'";
-                $Parametres_Nombre_Discussion_Traitement = $Connexion->prepare($Nombre_Discussion_Traitement);
+                $Parametres_Nombre_Discussion_Traitement = $this->objConnection->prepare($Nombre_Discussion_Traitement);
                 $Parametres_Nombre_Discussion_Traitement->execute(array(':id_compte' => $_SESSION["ID"]));
                 $Nombre_De_Resultat_Discussion_Traitement = $Parametres_Nombre_Discussion_Traitement->rowCount();
                 /* -------------------------------------------------------------------------- */

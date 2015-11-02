@@ -14,8 +14,10 @@ class CoreHelper {
         $instanceConfig = new ConfigHelper();
         $this->objConfig = $instanceConfig->objInstance;
 
-        $instanceSession = new SessionHelper();
-        $this->objSession = $instanceSession->objInstance;
+        $service = new ServicesHelper();
+        $container = $service->container;
+        $session = $container["session"];
+        $this->objSession = $session;
 
         if (!$this->objConfig->requiredSSL) {
             $this->redirectToSSL();

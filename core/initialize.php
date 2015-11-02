@@ -1,6 +1,9 @@
 <?php
 
-define('BASE_ROOT', dirname(__DIR__));
+if (!defined("BASE_ROOT")) {
+    define('BASE_ROOT', dirname(__DIR__));
+}
+
 require_once BASE_ROOT . '/vendor/autoload.php';
 require_once BASE_ROOT . '/configPDO.php';
 

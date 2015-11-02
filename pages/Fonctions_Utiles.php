@@ -152,9 +152,6 @@ function Formatage_Date_Vue($Donnees_Brute) {
 
 function Test_Connexion() {
 
-    @session_write_close();
-    @session_start();
-
     if (empty($_SESSION['ID'])) {
         return false;
     } else {

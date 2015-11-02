@@ -1,4 +1,6 @@
 <?php
+require __DIR__ . '../../core/initialize.php';
+
 if (!empty($_SESSION['Administration_PannelAdmin'])) {
 
     /* -------------- Suppression jetons ----------------------------------------------------- */
@@ -27,8 +29,7 @@ if (!empty($_SESSION['Administration_PannelAdmin'])) {
     </script>
 <?php } ?>
 
-<?php @session_unset(); ?>
-<?php @session_destroy(); ?>
+<?php SessionHelper::destroySession(); ?>
 
 <script type="text/javascript">
 
