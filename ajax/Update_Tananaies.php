@@ -1,3 +1,16 @@
-<?php @session_write_close(); ?>
-<?php @session_start(); ?>
-<?php echo $_SESSION['TanaNaies']; ?>
+<?php
+
+namespace Ajax;
+
+require __DIR__ . '../../core/initialize.php';
+
+class Update_Tananaies extends \PageHelper {
+
+    public function run() {
+        echo $_SESSION['TanaNaies'];
+    }
+
+}
+
+$class = new Update_Tananaies();
+$class->run();

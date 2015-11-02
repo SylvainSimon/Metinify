@@ -1,10 +1,10 @@
 <?php
 $Recuperation_Site_De_Vote = "SELECT votes_liste_sites.id_site_vote, votes_liste_sites.nom_site_vote, votes_liste_sites.lien_site_vote
-                              FROM $BDD_Site.votes_liste_sites
+                              FROM site.votes_liste_sites
                               WHERE actif = '1'";
-$Parametres_Recuperation_Site_De_Vote = $Connexion->prepare($Recuperation_Site_De_Vote);
+$Parametres_Recuperation_Site_De_Vote = $this->objConnection->prepare($Recuperation_Site_De_Vote);
 $Parametres_Recuperation_Site_De_Vote->execute();
-$Parametres_Recuperation_Site_De_Vote->setFetchMode(PDO::FETCH_OBJ);
+$Parametres_Recuperation_Site_De_Vote->setFetchMode(\PDO::FETCH_OBJ);
 $Nombre_De_Resultat_Recuperation_Site_De_Vote = $Parametres_Recuperation_Site_De_Vote->rowCount();
 ?>
 <?php if ($Nombre_De_Resultat_Recuperation_Site_De_Vote != 0) { ?>

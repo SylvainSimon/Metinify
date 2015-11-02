@@ -33,8 +33,8 @@
                                      ORDER BY guild.level DESC, guild.win DESC
                                      LIMIT 0,6";
 
-            $Parametres_Top_5_Guildes = $Connexion->query($Top_5_Guildes);
-            $Parametres_Top_5_Guildes->setFetchMode(PDO::FETCH_OBJ);
+            $Parametres_Top_5_Guildes = $this->objConnection->query($Top_5_Guildes);
+            $Parametres_Top_5_Guildes->setFetchMode(\PDO::FETCH_OBJ);
             /* -------------------------------------------------------------------------- */
             ?>
 

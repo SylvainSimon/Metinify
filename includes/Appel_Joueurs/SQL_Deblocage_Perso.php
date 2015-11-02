@@ -14,7 +14,7 @@ class SQL_Deblocage_Perso extends \PageHelper {
 
         /* ------------------------ Vérification Données ---------------------------- */
         $Verification_Donnees = "SELECT player.name 
-                             FROM $BDD_Player.player
+                             FROM player.player
                              WHERE id = ?
                              AND account_id = ?
                              LIMIT 1";
@@ -29,7 +29,7 @@ class SQL_Deblocage_Perso extends \PageHelper {
         if ($Nombre_De_Resultat != 0) {
 
             $Selection_Empire = "SELECT empire 
-                     FROM $BDD_Player.player_index 
+                     FROM player.player_index 
                      WHERE id = ? 
                      LIMIT 1";
             $Parametres_Selection_Empire = $this->objConnection->prepare($Selection_Empire);
@@ -57,7 +57,7 @@ class SQL_Deblocage_Perso extends \PageHelper {
                 }
 
                 /* ----------------- Update Coordonées --------------------- */
-                $Update_Coordonees = "UPDATE $BDD_Player.player 
+                $Update_Coordonees = "UPDATE player.player 
                           SET map_index = ?, 
                               x = ?,
                               y = ?,
@@ -78,7 +78,7 @@ class SQL_Deblocage_Perso extends \PageHelper {
                 /* ----------------------------------------------------------- */
 
                 /* -------------------------------------------- Insertion logs ----------------- */
-                $Insertion_Logs = "INSERT INTO $BDD_Site.logs_deblocage_persos (id_perso, id_compte, map_index, date, ip) 
+                $Insertion_Logs = "INSERT INTO site.logs_deblocage_persos (id_perso, id_compte, map_index, date, ip) 
                               VALUES (:id_perso, :id_compte, :map_index, NOW(), :ip)";
 
                 $Parametres_Insertion = $this->objConnection->prepare($Insertion_Logs);

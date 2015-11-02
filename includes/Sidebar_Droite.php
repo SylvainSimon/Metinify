@@ -1,4 +1,3 @@
-<?php @include '../configPDO.php'; ?>
 <?php include 'Top_5_Guildes.php'; ?>
 
 <div class="box box-default flat">
@@ -31,9 +30,9 @@
             /* ------------------------------ Vérification connecte ---------------------------------------------- */
             $Comptage_Connectes = "SELECT id FROM player.player
                           WHERE player.last_play >= (NOW() - INTERVAL 90 MINUTE)";
-            $Parametres_Comptage_Connectes = $Connexion->prepare($Comptage_Connectes);
+            $Parametres_Comptage_Connectes = $this->objConnection->prepare($Comptage_Connectes);
             $Parametres_Comptage_Connectes->execute();
-            $Parametres_Comptage_Connectes->setFetchMode(PDO::FETCH_OBJ);
+            $Parametres_Comptage_Connectes->setFetchMode(\PDO::FETCH_OBJ);
             $Nombre_De_Resultat = $Parametres_Comptage_Connectes->rowCount();
             /* -------------------------------------------------------------------------------------------------- */
             ?>

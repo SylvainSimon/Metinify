@@ -35,8 +35,8 @@
 									 ORDER BY victimes_pvp DESC, level DESC, exp DESC
                                      LIMIT 0,6";
 
-            $Parametres_Top_5_Joueurs = $Connexion->query($Top_5_Joueurs);
-            $Parametres_Top_5_Joueurs->setFetchMode(PDO::FETCH_OBJ);
+            $Parametres_Top_5_Joueurs = $this->objConnection->query($Top_5_Joueurs);
+            $Parametres_Top_5_Joueurs->setFetchMode(\PDO::FETCH_OBJ);
             /* -------------------------------------------------------------------------- */
             ?>
 

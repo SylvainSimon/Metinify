@@ -1,4 +1,3 @@
-<?php @include '../configPDO.php'; ?>
 <?php
 srand();
 

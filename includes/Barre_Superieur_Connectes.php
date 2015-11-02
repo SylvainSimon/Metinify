@@ -1,6 +1,4 @@
-<?php @session_write_close(); ?>
-<?php @session_start(); ?>
-<?php @include_once '../configPDO.php'; ?>
+
 <?php
 if (!empty($_SESSION['ID'])) {
 
@@ -11,7 +9,7 @@ if (!empty($_SESSION['ID'])) {
     $Parametres_Verification_Donnees = $Connexion->prepare($Verification_Donnees);
     $Parametres_Verification_Donnees->execute(array(
         ":id" => $_SESSION['ID']));
-    $Parametres_Verification_Donnees->setFetchMode(PDO::FETCH_OBJ);
+    $Parametres_Verification_Donnees->setFetchMode(\PDO::FETCH_OBJ);
     $Donnees_Verification_Donnees = $Parametres_Verification_Donnees->fetch();
 
     $_SESSION["VamoNaies"] = $Donnees_Verification_Donnees->cash;

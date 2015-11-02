@@ -1,44 +1,52 @@
-<?php @session_write_close(); ?>
-<?php @session_start(); ?>
-
-<?php include '../configPDO.php'; ?>
-
 <?php
 
-$Blocage_Inscription_Ip = $_SERVER['REMOTE_ADDR'];
-?>
+namespace Ajax;
 
-<?php
+require __DIR__ . '../../core/initialize.php';
 
-if (empty($_SESSION['Blocage_Inscription']) || ($_SESSION['Blocage_Inscription'] == 0)) {
+class SQL_CompteurCaptcha extends \PageHelper {
 
-    echo '1';
-    $_SESSION['Blocage_Inscription'] = 1;
-} else {
+    public function run() {
 
-    if ($_SESSION['Blocage_Inscription'] == 1) {
+        $Blocage_Inscription_Ip = $_SERVER['REMOTE_ADDR'];
 
-        echo '2';
-        $_SESSION['Blocage_Inscription'] = 2;
-    } else if ($_SESSION['Blocage_Inscription'] == 2) {
 
-        echo '3';
-        $_SESSION['Blocage_Inscription'] = 3;
-    }
+        if (empty($_SESSION['Blocage_Inscription']) || ($_SESSION['Blocage_Inscription'] == 0)) {
 
-    if ($_SESSION['Blocage_Inscription'] >= 3) {
+            echo '1';
+            $_SESSION['Blocage_Inscription'] = 1;
+        } else {
 
-        echo 'Bloquer';
-        $_SESSION['Blocage_Inscription'] = 0;
+            if ($_SESSION['Blocage_Inscription'] == 1) {
 
-        /* ------------------------------------------ Blocage Inscription ----------------------------------------- */
-        $Insertion_Blocage_Inscription = "INSERT INTO site.blocage_inscription (ip, date_de_blocage) 
+                echo '2';
+                $_SESSION['Blocage_Inscription'] = 2;
+            } else if ($_SESSION['Blocage_Inscription'] == 2) {
+
+                echo '3';
+                $_SESSION['Blocage_Inscription'] = 3;
+            }
+
+            if ($_SESSION['Blocage_Inscription'] >= 3) {
+
+                echo 'Bloquer';
+                $_SESSION['Blocage_Inscription'] = 0;
+
+                /* ------------------------------------------ Blocage Inscription ----------------------------------------- */
+                $Insertion_Blocage_Inscription = "INSERT INTO site.blocage_inscription (ip, date_de_blocage) 
                                                  VALUES (:ip, NOW())";
 
-        $Parametres_Blocage_Inscription = $Connexion->prepare($Insertion_Blocage_Inscription);
-        $Parametres_Blocage_Inscription->execute(array(
-            ':ip' => $Blocage_Inscription_Ip));
-        /* -------------------------------------------------------------------------------------------------------- */
+                $Parametres_Blocage_Inscription = $this->objConnection->prepare($Insertion_Blocage_Inscription);
+                $Parametres_Blocage_Inscription->execute(array(
+                    ':ip' => $Blocage_Inscription_Ip));
+                /* -------------------------------------------------------------------------------------------------------- */
+            }
+        }
+
+
     }
+
 }
-?>
+
+$class = new SQL_CompteurCaptcha();
+$class->run();

@@ -8,8 +8,8 @@ $Liste_Categorie = "SELECT itemshop.cat,
                                 GROUP BY itemshop.cat
                                 ORDER BY itemshop_categories.nom ASC
                                 LIMIT 13";
-$Parametres_Liste_Categorie = $Connexion->query($Liste_Categorie);
-$Parametres_Liste_Categorie->setFetchMode(PDO::FETCH_OBJ);
+$Parametres_Liste_Categorie = $this->objConnection->query($Liste_Categorie);
+$Parametres_Liste_Categorie->setFetchMode(\PDO::FETCH_OBJ);
 /* -------------------------------------------------------------------------- */
 ?>
 

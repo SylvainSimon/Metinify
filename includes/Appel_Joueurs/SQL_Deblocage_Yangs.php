@@ -13,7 +13,7 @@ class SQL_Deblocage_Yangs extends \PageHelper {
         $Ip = $_SERVER["REMOTE_ADDR"];
 
         /* ------------------------ Vérification Données ---------------------------- */
-        $Verification_Donnees = "SELECT gold FROM $BDD_Player.player
+        $Verification_Donnees = "SELECT gold FROM player.player
                                   WHERE id = ?
                                   AND account_id = ?
                                   LIMIT 1";
@@ -32,7 +32,7 @@ class SQL_Deblocage_Yangs extends \PageHelper {
             if ($Donnees_Verification_Donnees->gold < 0) {
 
                 /* ----------------- Update Coordonées --------------------- */
-                $Update_Coordonees = "UPDATE $BDD_Player.player 
+                $Update_Coordonees = "UPDATE player.player 
                           SET gold = ?
                           WHERE id = ?";
 
@@ -43,7 +43,7 @@ class SQL_Deblocage_Yangs extends \PageHelper {
                 /* ----------------------------------------------------------- */
 
                 /* -------------------------------------------- Insertion logs ----------------- */
-                $Insertion_Logs = "INSERT INTO $BDD_Site.logs_deblocage_yangs (id_perso, id_compte, date, ip, log_yangs) 
+                $Insertion_Logs = "INSERT INTO site.logs_deblocage_yangs (id_perso, id_compte, date, ip, log_yangs) 
                               VALUES (:id_perso, :id_compte, NOW(), :ip, :log_yangs)";
 
                 $Parametres_Insertion = $this->objConnection->prepare($Insertion_Logs);

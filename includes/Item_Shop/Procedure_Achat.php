@@ -6,14 +6,14 @@ require __DIR__ . '../../../core/initialize.php';
 
 class Procedure_Achat extends \PageHelper {
 
-    public function Verification_Place_Inventaire_IS($Verification_Place_Account_Id, $Connexion, $Procedure_Achat_Item_Nombre = 1) {
+    public function Verification_Place_Inventaire_IS($Verification_Place_Account_Id, $lol, $Procedure_Achat_Item_Nombre = 1) {
 
 
         /* ------------------------ Vérification Item ID ---------------------------- */
         $Verification_Existance_Entrepot = "SELECT size FROM player.safebox 
                                                     WHERE account_id = ? 
                                                     LIMIT 1";
-        $Parametres_Verification_Existance_Entrepot = $Connexion->prepare($Verification_Existance_Entrepot);
+        $Parametres_Verification_Existance_Entrepot = $this->objConnection->prepare($Verification_Existance_Entrepot);
         $Parametres_Verification_Existance_Entrepot->execute(array(
             $Verification_Place_Account_Id));
         $Parametres_Verification_Existance_Entrepot->setFetchMode(\PDO::FETCH_OBJ);
@@ -31,7 +31,7 @@ class Procedure_Achat extends \PageHelper {
                                         WHERE owner_id = ?
                                         AND pos = ?
                                         AND window = 'MALL'";
-            $Parametres_Chercher_Position = $Connexion->prepare($Chercher_Position);
+            $Parametres_Chercher_Position = $this->objConnection->prepare($Chercher_Position);
             /* -------------------------------------------------------------------------- */
 
             while ($Variable_De_Sortie == false) {

@@ -18,7 +18,7 @@ class Personnage_Renommer extends \PageHelper {
         <?php
         /* ------------------------ Vérification du personnage ----------------------------------------- */
         $Verification_Proprietaire = "SELECT player.name 
-                                      FROM $BDD_Player.player
+                                      FROM player.player
                                       WHERE id = ?
                                       AND account_id = ?
                                       LIMIT 1";
