@@ -11,7 +11,7 @@ function CheckEquipement($Position_Equipement, $ID_Personnage, $Parametres_Appel
             ':pos' => $Position_Equipement,
             ':owner_id' => $ID_Personnage,
             ':window' => $Window));
-        $Parametres_Appel_Case_Equipement->setFetchMode(PDO::FETCH_OBJ);
+        $Parametres_Appel_Case_Equipement->setFetchMode(\PDO::FETCH_OBJ);
         /* ---------------------------------------------------------------------------- */
 
         $Nombre_De_Resultat_Case_Equipement = $Parametres_Appel_Case_Equipement->rowCount();
@@ -24,7 +24,7 @@ function CheckEquipement($Position_Equipement, $ID_Personnage, $Parametres_Appel
             /* ------------------------------------- Chercher Chemin ---------------------------------------- */
             $Parametres_Chercher_Chemin->execute(array(
                 ':item' => $Donnees_Case_Equipement->vnum));
-            $Parametres_Chercher_Chemin->setFetchMode(PDO::FETCH_OBJ);
+            $Parametres_Chercher_Chemin->setFetchMode(\PDO::FETCH_OBJ);
             $Nombre_De_Resultat_Chercher_Chemin = $Parametres_Chercher_Chemin->rowCount();
             /* ---------------------------------------------------------------------------------------------- */
             ?>

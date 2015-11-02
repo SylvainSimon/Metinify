@@ -15,7 +15,7 @@
                         ORDER by date DESC";
 
     $Parametres_Liste_Achats = $this->objConnection->query($Liste_Achats);
-    $Parametres_Liste_Achats->setFetchMode(PDO::FETCH_OBJ);
+    $Parametres_Liste_Achats->setFetchMode(\PDO::FETCH_OBJ);
     $Nombre_De_Resultat_Liste_Achats = $Parametres_Liste_Achats->rowCount();
     /* ------------------------------------------------------------------------------------------------------- */
 
@@ -26,7 +26,7 @@
                         AND monnaie = 1";
 
     $Parametres_Somme_Depenses = $this->objConnection->query($Somme_Depenses);
-    $Parametres_Somme_Depenses->setFetchMode(PDO::FETCH_OBJ);
+    $Parametres_Somme_Depenses->setFetchMode(\PDO::FETCH_OBJ);
     $Resultat_Somme_Depenses = $Parametres_Somme_Depenses->fetch();
     /* ----------------------------------------------------------------------------- */
 
@@ -37,7 +37,7 @@
                         AND monnaie = 2";
 
     $Parametres_Somme_Depenses_Tan = $this->objConnection->query($Somme_Depenses_Tan);
-    $Parametres_Somme_Depenses_Tan->setFetchMode(PDO::FETCH_OBJ);
+    $Parametres_Somme_Depenses_Tan->setFetchMode(\PDO::FETCH_OBJ);
     $Resultat_Somme_Depenses_Tan = $Parametres_Somme_Depenses_Tan->fetch();
     /* ----------------------------------------------------------------------------- */
     ?>

@@ -168,7 +168,7 @@
                           LIMIT 4";
             $Parametres_Liste_Personnages = $this->objConnection->prepare($Liste_Personnages);
             $Parametres_Liste_Personnages->execute(array($Appel_Compte_Id));
-            $Parametres_Liste_Personnages->setFetchMode(PDO::FETCH_OBJ);
+            $Parametres_Liste_Personnages->setFetchMode(\PDO::FETCH_OBJ);
             $Nombre_De_Resultat = $Parametres_Liste_Personnages->rowCount();
 
             /* -------------------------------------------------------------------------- */
@@ -306,7 +306,7 @@
                                 <?php
                                 $Parametres_Verification_Connecte->execute(array(
                                     $Resultat_Liste_Personnages->id));
-                                $Parametres_Verification_Connecte->setFetchMode(PDO::FETCH_OBJ);
+                                $Parametres_Verification_Connecte->setFetchMode(\PDO::FETCH_OBJ);
                                 $Resultat_Verification_Connecte = $Parametres_Verification_Connecte->rowCount();
                                 ?>
 

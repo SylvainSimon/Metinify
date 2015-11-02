@@ -19,7 +19,7 @@ class Bannissement extends \PageHelper {
             $Parametres_Recuperation_Compte = $this->objConnection->prepare($Recuperation_Compte);
             $Parametres_Recuperation_Compte->execute(array(
                 $_GET["id"]));
-            $Parametres_Recuperation_Compte->setFetchMode(PDO::FETCH_OBJ);
+            $Parametres_Recuperation_Compte->setFetchMode(\PDO::FETCH_OBJ);
             $Donnees_Recuperation_Compte = $Parametres_Recuperation_Compte->fetch();
             /* -------------------------------------------------------------------------- */
 
@@ -41,7 +41,7 @@ class Bannissement extends \PageHelper {
             $Parametres_Recuperation_Bannissement = $this->objConnection->prepare($Recuperation_Bannissement);
             $Parametres_Recuperation_Bannissement->execute(array(
                 $_GET["id"]));
-            $Parametres_Recuperation_Bannissement->setFetchMode(PDO::FETCH_OBJ);
+            $Parametres_Recuperation_Bannissement->setFetchMode(\PDO::FETCH_OBJ);
             $Nombre_De_Resultat_Recuperation_Bannissement = $Parametres_Recuperation_Bannissement->rowCount();
             /* -------------------------------------------------------------------------------- */
             ?>

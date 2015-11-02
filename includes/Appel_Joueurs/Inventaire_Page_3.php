@@ -1,4 +1,13 @@
-<?php include '../../configPDO.php'; ?>
+<?php
+
+namespace Includes;
+
+require __DIR__ . '../../../core/initialize.php';
+
+class Inventaire_Page_3 extends \PageHelper {
+
+    public function run() {
+        ?>
 <?php include '../../pages/Tableaux_Arrays.php'; ?>
 
 <?php
@@ -18,14 +27,14 @@ $Appel_Case = "SELECT item.vnum,
                AND window = :window
                LIMIT 1";
 
-$Parametres_Appel_Case = $Connexion->prepare($Appel_Case);
+$Parametres_Appel_Case = $this->objConnection->prepare($Appel_Case);
 /* ------------------------------------------------------------------------------------ */
 $Chercher_Chemin = "SELECT item_list.chemin
                            FROM player.item_list
                            WHERE item = :item
                            LIMIT 1";
 
-$Parametres_Chercher_Chemin = $Connexion->prepare($Chercher_Chemin);
+$Parametres_Chercher_Chemin = $this->objConnection->prepare($Chercher_Chemin);
 /* ------------------------------------------------------------------------------------- */
 
 $Window = "INVENTORY";
@@ -40,7 +49,7 @@ $Window = "INVENTORY";
             ':pos' => $i,
             ':owner_id' => $_POST['id'],
             ':window' => $Window));
-        $Parametres_Appel_Case->setFetchMode(PDO::FETCH_OBJ);
+        $Parametres_Appel_Case->setFetchMode(\PDO::FETCH_OBJ);
         /* ---------------------------------------------------------------------------- */
 
         $Nombre_De_Resultat_Case = $Parametres_Appel_Case->rowCount();
@@ -54,7 +63,7 @@ $Window = "INVENTORY";
             /* ------------------------------------- Chercher Chemin ---------------------------------------- */
             $Parametres_Chercher_Chemin->execute(array(
                 ':item' => $Donnees_Case->vnum));
-            $Parametres_Chercher_Chemin->setFetchMode(PDO::FETCH_OBJ);
+            $Parametres_Chercher_Chemin->setFetchMode(\PDO::FETCH_OBJ);
             $Nombre_De_Resultat_Chercher_Chemin = $Parametres_Chercher_Chemin->rowCount();
             /* ---------------------------------------------------------------------------------------------- */
             ?>
@@ -107,3 +116,10 @@ $Window = "INVENTORY";
         <?php } ?>
     </div>
 <?php } ?>
+        <?php
+    }
+
+}
+
+$class = new Inventaire_Page_3();
+$class->run();
