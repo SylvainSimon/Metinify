@@ -54,8 +54,8 @@
                                           WHERE guild.master = '" . $Donnees_Appel_Joueurs_Page->player_id . "'
                                           LIMIT 1";
 
-                    $Parametres_Verif_Chef_Guilde = $Connexion->query($Verif_Chef_Guilde);
-                    $Parametres_Verif_Chef_Guilde->setFetchMode(PDO::FETCH_OBJ);
+                    $Parametres_Verif_Chef_Guilde = $this->objConnection->query($Verif_Chef_Guilde);
+                    $Parametres_Verif_Chef_Guilde->setFetchMode(\PDO::FETCH_OBJ);
                     $Nombre_De_Resultat_Verif_Chef_Guilde = $Parametres_Verif_Chef_Guilde->rowCount();
                     /* ----------------------------------------------------------------------------------------------------- */
 

@@ -1,18 +1,35 @@
-<div class="box box-default flat">
+<?php
 
-    <div class="box-header">
-        <h3 class="box-title">Changement de mot de passe effectif</h3>
-    </div>
+namespace Pages;
 
-    <div class="box-body">
+require __DIR__ . '../../core/initialize.php';
 
-        Votre mot de passe a bien été changé.<br/><br/>
-        Pensez à le garder précieusement.<br/><br/>
+class Compte_Changer_Mot_De_Passe_Confirmation extends \PageHelper {
 
-        Pour revenir à l'accueil, merci de cliquer sur le bouton "Accueil".<br/>
-    </div>
+    public function run() {
+        ?>
+        <div class="box box-default flat">
 
-    <div class="box-footer">
-        <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
-    </div>
-</div>
+            <div class="box-header">
+                <h3 class="box-title">Changement de mot de passe effectif</h3>
+            </div>
+
+            <div class="box-body">
+
+                Votre mot de passe a bien été changé.<br/><br/>
+                Pensez à le garder précieusement.<br/><br/>
+
+                Pour revenir à l'accueil, merci de cliquer sur le bouton "Accueil".<br/>
+            </div>
+
+            <div class="box-footer">
+                <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
+            </div>
+        </div>
+        <?php
+    }
+
+}
+
+$class = new Compte_Changer_Mot_De_Passe_Confirmation();
+$class->run();

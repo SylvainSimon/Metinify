@@ -48,7 +48,7 @@
                                      AND window = 'SAFEBOX'
                                      ORDER by item_proto.locale_name ASC";
 
-                $Parametres_Liste_Entrepot = $Connexion->query($Liste_Entrepot);
+                $Parametres_Liste_Entrepot = $this->objConnection->query($Liste_Entrepot);
                 $Parametres_Liste_Entrepot->setFetchMode(PDO::FETCH_OBJ);
                 $Nombre_De_Resultat_Entrepot = $Parametres_Liste_Entrepot->rowCount();
                 /* ----------------------------------------------------------------------------------------------------- */

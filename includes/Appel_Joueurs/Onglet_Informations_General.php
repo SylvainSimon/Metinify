@@ -14,7 +14,7 @@
                         <?php
                         $Parametres_Verification_Connecte->execute(array(
                             $Donnees_Appel_Joueurs_Page->player_id));
-                        $Parametres_Verification_Connecte->setFetchMode(PDO::FETCH_OBJ);
+                        $Parametres_Verification_Connecte->setFetchMode(\PDO::FETCH_OBJ);
                         $Resultat_Verification_Connecte = $Parametres_Verification_Connecte->rowCount();
                         ?>
 
@@ -174,8 +174,8 @@
                             WHERE guild.master = '" . $Donnees_Appel_Joueurs_Page->player_id . "'
                             LIMIT 1";
 
-            $Parametres_Verif_Guilde = $Connexion->query($Verif_Guilde);
-            $Parametres_Verif_Guilde->setFetchMode(PDO::FETCH_OBJ);
+            $Parametres_Verif_Guilde = $this->objConnection->query($Verif_Guilde);
+            $Parametres_Verif_Guilde->setFetchMode(\PDO::FETCH_OBJ);
             $Nombre_De_Resultat_Verif_Guilde = $Parametres_Verif_Guilde->rowCount();
             /* ----------------------------------------------------------------------------------------------------- */
             ?>
@@ -211,8 +211,8 @@
                                               WHERE (marriage.pid1 = '" . $Donnees_Appel_Joueurs_Page->player_id . "'
                                               OR marriage.pid2 = '" . $Donnees_Appel_Joueurs_Page->player_id . "')";
 
-                    $Parametres_Appel_Joueur_Conjoint = $Connexion->query($Appel_Joueur_Conjoint);
-                    $Parametres_Appel_Joueur_Conjoint->setFetchMode(PDO::FETCH_OBJ);
+                    $Parametres_Appel_Joueur_Conjoint = $this->objConnection->query($Appel_Joueur_Conjoint);
+                    $Parametres_Appel_Joueur_Conjoint->setFetchMode(\PDO::FETCH_OBJ);
                     /* ----------------------------------------------------------------------------------------------------- */
 
                     $Resultat_Verification_Conjoint = $Parametres_Appel_Joueur_Conjoint->fetch();
@@ -230,8 +230,8 @@
                                                   WHERE (marriage.pid1 = '" . $Donnees_Appel_Joueurs_Page->player_id . "'
                                                   OR marriage.pid2 = '" . $Donnees_Appel_Joueurs_Page->player_id . "')";
 
-                        $Parametres_Appel_Joueur_Conjoint = $Connexion->query($Appel_Joueur_Conjoint);
-                        $Parametres_Appel_Joueur_Conjoint->setFetchMode(PDO::FETCH_OBJ);
+                        $Parametres_Appel_Joueur_Conjoint = $this->objConnection->query($Appel_Joueur_Conjoint);
+                        $Parametres_Appel_Joueur_Conjoint->setFetchMode(\PDO::FETCH_OBJ);
                         /* ----------------------------------------------------------------------------------------------------- */
 
                         $Resultat_Verification_Conjoint = $Parametres_Appel_Joueur_Conjoint->fetch();

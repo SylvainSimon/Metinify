@@ -22,8 +22,8 @@
                           WHERE messenger_list.account = '" . $Donnees_Appel_Joueurs_Page->name . "'
                           ORDER by account.status DESC, messenger_list.companion ASC";
 
-    $Parametres_Liste_Amis = $Connexion->query($Liste_Amis);
-    $Parametres_Liste_Amis->setFetchMode(PDO::FETCH_OBJ);
+    $Parametres_Liste_Amis = $this->objConnection->query($Liste_Amis);
+    $Parametres_Liste_Amis->setFetchMode(\PDO::FETCH_OBJ);
     $Nombre_De_Resultat_Liste_Amis = $Parametres_Liste_Amis->rowCount();
     /* ------------------------------------------------------------------------------------------------------- */
     ?>
@@ -181,7 +181,7 @@
                                         <?php
                                         $Parametres_Verification_Connecte->execute(array(
                                             $Resultat_Amis->id_amis));
-                                        $Parametres_Verification_Connecte->setFetchMode(PDO::FETCH_OBJ);
+                                        $Parametres_Verification_Connecte->setFetchMode(\PDO::FETCH_OBJ);
                                         $Resultat_Verification_Connecte = $Parametres_Verification_Connecte->rowCount();
                                         ?>
                                         <?php if ($Resultat_Verification_Connecte != "1") { ?>

@@ -1,125 +1,139 @@
-<?php @session_write_close(); ?>
-<?php @session_start(); ?>
-<?php include '../configPDO.php'; ?>
-<?php include '../pages/Fonctions_Utiles.php'; ?>
-<?php if (!empty($_GET["result"])) { ?>
+<?php
 
-    <?php if ($_GET["result"] == "Oui") { ?>
-        <div class="box box-default flat">
+namespace Pages;
 
-            <div class="box-header">
-                <h3 class="box-title">La suppression du personnage est un succès</h3>
-            </div>
+require __DIR__ . '../../core/initialize.php';
 
-            <div class="box-body">
-                Votre personnage a été complètement effacer de nos serveurs.<br/><br/>
+class Personnage_Supprimer_Resultat extends \PageHelper {
 
-                Tous les items, les amis et autres données ont été supprimées également.<br/><br/>
+    public function run() {
+        ?>
 
-                Si vous pensez qu'il s'agit d'une erreur, nous vous prions de contacter la messagerie 
-                support de VamosMt2.<br/>
+        <?php include '../pages/Fonctions_Utiles.php'; ?>
+        <?php if (!empty($_GET["result"])) { ?>
 
-            </div>
+            <?php if ($_GET["result"] == "Oui") { ?>
+                <div class="box box-default flat">
 
-            <div class="box-footer">
-                <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
-            </div>
+                    <div class="box-header">
+                        <h3 class="box-title">La suppression du personnage est un succès</h3>
+                    </div>
 
-        </div>
+                    <div class="box-body">
+                        Votre personnage a été complètement effacer de nos serveurs.<br/><br/>
 
-    <?php } else if ($_GET["result"] == "Bad") { ?>
-        <div class="box box-default flat">
+                        Tous les items, les amis et autres données ont été supprimées également.<br/><br/>
 
-            <div class="box-header">
-                <h3 class="box-title">La suppression du personnage est un échec</h3>
-            </div>
+                        Si vous pensez qu'il s'agit d'une erreur, nous vous prions de contacter la messagerie 
+                        support de VamosMt2.<br/>
 
-            <div class="box-body">
-                La suppression du personnage a été annulé a cause de vos erreurs<br/><br/>
+                    </div>
 
-                Vous avez indiqué trois fois un mauvais numéro de vérification, ce qui entraine une annulation de la demande de suppression.<br/>
-                Pour essayer de nouveau, il faut reprendre la procédure et générer une autre clés.<br/><br/>
+                    <div class="box-footer">
+                        <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
+                    </div>
 
-                Si vous pensez qu'il s'agit d'une erreur, nous vous prions de contacter la messagerie 
-                support de VamosMt2.<br/>
+                </div>
 
-            </div>
+            <?php } else if ($_GET["result"] == "Bad") { ?>
+                <div class="box box-default flat">
 
-            <div class="box-footer">
-                <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
-            </div>
+                    <div class="box-header">
+                        <h3 class="box-title">La suppression du personnage est un échec</h3>
+                    </div>
 
-        </div>
-    <?php } else if ($_GET["result"] == "Chef") { ?>
-        <div class="box box-default flat">
+                    <div class="box-body">
+                        La suppression du personnage a été annulé a cause de vos erreurs<br/><br/>
 
-            <div class="box-header">
-                <h3 class="box-title">La suppression du personnage est un échec</h3>
-            </div>
+                        Vous avez indiqué trois fois un mauvais numéro de vérification, ce qui entraine une annulation de la demande de suppression.<br/>
+                        Pour essayer de nouveau, il faut reprendre la procédure et générer une autre clés.<br/><br/>
 
-            <div class="box-body">
-                La suppression du personnage a été annulé.<br/><br/>
+                        Si vous pensez qu'il s'agit d'une erreur, nous vous prions de contacter la messagerie 
+                        support de VamosMt2.<br/>
 
-                Nous avons détecté que votre personnage est Chef d'une guilde, il faut d'abord que vous transfériez votre rôle à un autre joueur et que vous quittiez la guilde.<br/>
-                Pour essayer de nouveau, il faut reprendre la procédure et générer une autre clés.<br/><br/>
+                    </div>
 
-                Si vous pensez qu'il s'agit d'une erreur, nous vous prions de contacter la messagerie 
-                support de VamosMt2.<br/>
+                    <div class="box-footer">
+                        <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
+                    </div>
 
-            </div>
+                </div>
+            <?php } else if ($_GET["result"] == "Chef") { ?>
+                <div class="box box-default flat">
 
-            <div class="box-footer">
-                <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
-            </div>
+                    <div class="box-header">
+                        <h3 class="box-title">La suppression du personnage est un échec</h3>
+                    </div>
 
-        </div>
-    <?php } else if ($_GET["result"] == "Membre") { ?>
-        <div class="box box-default flat">
+                    <div class="box-body">
+                        La suppression du personnage a été annulé.<br/><br/>
 
-            <div class="box-header">
-                <h3 class="box-title">La suppression du personnage est un échec</h3>
-            </div>
+                        Nous avons détecté que votre personnage est Chef d'une guilde, il faut d'abord que vous transfériez votre rôle à un autre joueur et que vous quittiez la guilde.<br/>
+                        Pour essayer de nouveau, il faut reprendre la procédure et générer une autre clés.<br/><br/>
 
-            <div class="box-body">
-                La suppression du personnage a été annulé.<br/><br/>
+                        Si vous pensez qu'il s'agit d'une erreur, nous vous prions de contacter la messagerie 
+                        support de VamosMt2.<br/>
 
-                Nous avons détecté que votre personnage est Membre d'une guilde, il faut d'abord que vous quittiez la guilde afin de ne pas générer de problème de place.<br/>
-                Pour essayer de nouveau, il faut reprendre la procédure et générer une autre clés.<br/><br/>
+                    </div>
 
-                Si vous pensez qu'il s'agit d'une erreur, nous vous prions de contacter la messagerie 
-                support de VamosMt2.<br/>
+                    <div class="box-footer">
+                        <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
+                    </div>
 
-            </div>
+                </div>
+            <?php } else if ($_GET["result"] == "Membre") { ?>
+                <div class="box box-default flat">
 
-            <div class="box-footer">
-                <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
-            </div>
+                    <div class="box-header">
+                        <h3 class="box-title">La suppression du personnage est un échec</h3>
+                    </div>
 
-        </div>
-    <?php } else if ($_GET["result"] == "Expire") { ?>
-        <div class="box box-default flat">
+                    <div class="box-body">
+                        La suppression du personnage a été annulé.<br/><br/>
 
-            <div class="box-header">
-                <h3 class="box-title">La suppression du personnage est un échec</h3>
-            </div>
+                        Nous avons détecté que votre personnage est Membre d'une guilde, il faut d'abord que vous quittiez la guilde afin de ne pas générer de problème de place.<br/>
+                        Pour essayer de nouveau, il faut reprendre la procédure et générer une autre clés.<br/><br/>
 
-            <div class="box-body">
-                La suppression du personnage a été annulé.<br/><br/>
+                        Si vous pensez qu'il s'agit d'une erreur, nous vous prions de contacter la messagerie 
+                        support de VamosMt2.<br/>
 
-                Nous avons détecté que votre demande concernait sois un compte inexistant, sois vous n'avez pas suivie les procédures réglementaires.<br/>
-                Pour essayer de nouveau, il faut reprendre la procédure et générer une autre clés.<br/><br/>
+                    </div>
 
-                Si vous pensez qu'il s'agit d'une erreur, nous vous prions de contacter la messagerie 
-                support de VamosMt2.<br/>
-            </div>
+                    <div class="box-footer">
+                        <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
+                    </div>
 
-            <div class="box-footer">
-                <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
-            </div>
+                </div>
+            <?php } else if ($_GET["result"] == "Expire") { ?>
+                <div class="box box-default flat">
 
-        </div>
-    <?php } ?>
-<?php } else { ?>
+                    <div class="box-header">
+                        <h3 class="box-title">La suppression du personnage est un échec</h3>
+                    </div>
 
+                    <div class="box-body">
+                        La suppression du personnage a été annulé.<br/><br/>
 
-<?php } ?>
+                        Nous avons détecté que votre demande concernait sois un compte inexistant, sois vous n'avez pas suivie les procédures réglementaires.<br/>
+                        Pour essayer de nouveau, il faut reprendre la procédure et générer une autre clés.<br/><br/>
+
+                        Si vous pensez qu'il s'agit d'une erreur, nous vous prions de contacter la messagerie 
+                        support de VamosMt2.<br/>
+                    </div>
+
+                    <div class="box-footer">
+                        <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
+                    </div>
+
+                </div>
+            <?php } ?>
+        <?php } else { ?>
+
+        <?php } ?>
+        <?php
+    }
+
+}
+
+$class = new Personnage_Supprimer_Resultat();
+$class->run();

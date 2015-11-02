@@ -1,59 +1,87 @@
-<?php @session_write_close(); ?>
-<?php @session_start(); ?>
-
-<?php include '../configPDO.php'; ?>
-
 <?php
-$Verification_Blocage_Inscription_Ip = $_SERVER['REMOTE_ADDR'];
+
+namespace Pages;
+
+require __DIR__ . '../../core/initialize.php';
+
+class Inscription_Formulaire extends \PageHelper {
+
+    public function run() {
+        ?>
+
+        <?php
+        $Verification_Blocage_Inscription_Ip = $_SERVER['REMOTE_ADDR'];
 
 
-/* ------------------------------ Vérification Données ---------------------------------------------- */
-$Verification_Blocage_Inscription = "SELECT date_de_blocage FROM site.blocage_inscription
+        /* ------------------------------ Vérification Données ---------------------------------------------- */
+        $Verification_Blocage_Inscription = "SELECT date_de_blocage FROM site.blocage_inscription
                                                                     WHERE ip = '" . $Verification_Blocage_Inscription_Ip . "'
                                                                     AND NOW() >= (date_de_blocage + INTERVAL 5 MINUTE)
                                                                     LIMIT 1";
-$Parametres_Verification_Blocage_Inscription = $Connexion->query($Verification_Blocage_Inscription);
-$Parametres_Verification_Blocage_Inscription->setFetchMode(PDO::FETCH_OBJ);
-$Nombre_De_Resultat = $Parametres_Verification_Blocage_Inscription->rowCount();
-/* -------------------------------------------------------------------------------------------------- */
+        $Parametres_Verification_Blocage_Inscription = $this->objConnection->query($Verification_Blocage_Inscription);
+        $Parametres_Verification_Blocage_Inscription->setFetchMode(\PDO::FETCH_OBJ);
+        $Nombre_De_Resultat = $Parametres_Verification_Blocage_Inscription->rowCount();
+        /* -------------------------------------------------------------------------------------------------- */
 
-if ($Nombre_De_Resultat == 1) {
+        if ($Nombre_De_Resultat == 1) {
 
-    $Donnees_Blocage = $Parametres_Verification_Blocage_Inscription->fetch();
+            $Donnees_Blocage = $Parametres_Verification_Blocage_Inscription->fetch();
 
-    /* -------------------------------------- Insertion Logs Blocage Inscription --------------------------------------- */
-    $Insertion_Logs_Blocage_Inscription = "INSERT INTO site.logs_blocage_inscription (date_blocage, date_deblocage, ip) 
+            /* -------------------------------------- Insertion Logs Blocage Inscription --------------------------------------- */
+            $Insertion_Logs_Blocage_Inscription = "INSERT INTO site.logs_blocage_inscription (date_blocage, date_deblocage, ip) 
                                                                   VALUES (:date_blocage, NOW(), :ip)";
 
-    $Parametres_Insertion_Logs_Blocage_Inscription = $Connexion->prepare($Insertion_Logs_Blocage_Inscription);
-    $Parametres_Insertion_Logs_Blocage_Inscription->execute(array(
-        ':date_blocage' => $Donnees_Blocage->date_de_blocage,
-        ':ip' => $Verification_Blocage_Inscription_Ip));
-    /* ----------------------------------------------------------------------------------------------------------------- */
+            $Parametres_Insertion_Logs_Blocage_Inscription = $this->objConnection->prepare($Insertion_Logs_Blocage_Inscription);
+            $Parametres_Insertion_Logs_Blocage_Inscription->execute(array(
+                ':date_blocage' => $Donnees_Blocage->date_de_blocage,
+                ':ip' => $Verification_Blocage_Inscription_Ip));
+            /* ----------------------------------------------------------------------------------------------------------------- */
 
-    /* ---------------------- Debloquage ------------------------- */
-    $Update_Blocage = "DELETE FROM site.blocage_inscription
+            /* ---------------------- Debloquage ------------------------- */
+            $Update_Blocage = "DELETE FROM site.blocage_inscription
                                    WHERE ip = '" . $Verification_Blocage_Inscription_Ip . "' ";
 
-    $Parametres_Update_Blocage = $Connexion->query($Update_Blocage);
-    /* ----------------------------------------------------------- */
-    ?>
-<?php } else { ?>
+            $Parametres_Update_Blocage = $this->objConnection->query($Update_Blocage);
+            /* ----------------------------------------------------------- */
+            ?>
+        <?php } else { ?>
 
-    <?php
-    /* ------------------------------ Vérification Données ---------------------------------------------- */
-    $Verification_Blocage = "SELECT * FROM site.blocage_inscription
+            <?php
+            /* ------------------------------ Vérification Données ---------------------------------------------- */
+            $Verification_Blocage = "SELECT * FROM site.blocage_inscription
                                                   WHERE ip = '" . $Verification_Blocage_Inscription_Ip . "'
                                                   LIMIT 1";
-    $Parametres_Verification_Blocage = $Connexion->query($Verification_Blocage);
-    $Parametres_Verification_Blocage->setFetchMode(PDO::FETCH_OBJ);
-    $Nombre_De_Resultat_Blocages = $Parametres_Verification_Blocage->rowCount();
-    /* -------------------------------------------------------------------------------------------------- */
-    ?>
+            $Parametres_Verification_Blocage = $this->objConnection->query($Verification_Blocage);
+            $Parametres_Verification_Blocage->setFetchMode(\PDO::FETCH_OBJ);
+            $Nombre_De_Resultat_Blocages = $Parametres_Verification_Blocage->rowCount();
+            /* -------------------------------------------------------------------------------------------------- */
+            ?>
 
-    <?php if ($Nombre_De_Resultat_Blocages == 0) { ?>
+            <?php if ($Nombre_De_Resultat_Blocages == 0) { ?>
 
-    <?php } else { ?>
+            <?php } else { ?>
+
+                <div class="box box-default flat">
+
+                    <div class="box-header">
+                        <h3 class="box-title">Création de compte</h3>
+                    </div>
+
+                    <div class="box-body">
+
+                        Suite à plusieurs tentatives d'inscriptions ratées et pour des raisons de sécurités,<br/>
+                        Vous devez attendre cinq minutes avant de pouvoir de nouveau vous inscrire.
+
+                        <input type="button" class="Bouton_Annuler_Changer_Email_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
+                    </div>
+                </div>
+                <?php exit(); ?>
+            <?php } ?>
+        <?php } ?>
+
+        <script type="text/javascript">
+            Type_De_Calcul = Math.ceil(Math.random() * 3);
+        </script>
 
         <div class="box box-default flat">
 
@@ -61,200 +89,186 @@ if ($Nombre_De_Resultat == 1) {
                 <h3 class="box-title">Création de compte</h3>
             </div>
 
-            <div class="box-body">
+            <script type="text/javascript" src="js/Controle_Inscription.js"></script>
+            <form action="javascript:void(0)" id="FormInscription" name="FormInscription" method="POST">
 
-                Suite à plusieurs tentatives d'inscriptions ratées et pour des raisons de sécurités,<br/>
-                Vous devez attendre cinq minutes avant de pouvoir de nouveau vous inscrire.
+                <div class="box-body">
 
-                <input type="button" class="Bouton_Annuler_Changer_Email_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
-            </div>
-        </div>
-        <?php exit(); ?>
-    <?php } ?>
-<?php } ?>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group ">
+                                <label for="SaisieUtilisateur">
+                                    Identifiant
+                                </label>
 
-<script type="text/javascript">
-    Type_De_Calcul = Math.ceil(Math.random() * 3);
-</script>
+                                <div class="input-group col-xs-12">
+                                    <input type="text" name="user" onBlur="verifNomDutilisateur(this.value)" id="SaisieUtilisateur" class="form-control input-sm text" value="" required maxlength="16">
+                                </div>
 
-<div class="box box-default flat">
+                                <span class="help-block">    
+                                    <ul class="list-unstyled">
+                                        <li id="ReponseDuTestNomDutilisateur"></li>
+                                    </ul>
+                                </span>
+                            </div>
 
-    <div class="box-header">
-        <h3 class="box-title">Création de compte</h3>
-    </div>
+                            <div class="form-group ">
+                                <label for="SaisieMDP">
+                                    Mot de passe
+                                </label>
 
-    <script type="text/javascript" src="js/Controle_Inscription.js"></script>
-    <form action="javascript:void(0)" id="FormInscription" name="FormInscription" method="POST">
+                                <div class="input-group col-xs-12">
+                                    <input type="password" name="password" onKeyUp="verifMDP()" id="SaisieMDP" class="form-control input-sm text" value="" required>
+                                </div>
 
-        <div class="box-body">
+                                <span class="help-block">    
+                                    <ul class="list-unstyled">
+                                        <li id="ReponseDuTestMotDePasse"></li>
+                                    </ul>
+                                </span>
+                            </div>
 
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="form-group ">
-                        <label for="SaisieUtilisateur">
-                            Identifiant
-                        </label>
+                            <div class="form-group" style="margin-bottom: 0px;">
+                                <label for="SaisieMDP">
+                                    Répétez mot de passe
+                                </label>
 
-                        <div class="input-group col-xs-12">
-                            <input type="text" name="user" onBlur="verifNomDutilisateur(this.value)" id="SaisieUtilisateur" class="form-control input-sm text" value="" required maxlength="16">
+                                <div class="input-group col-xs-12">
+                                    <input type="password" name="password2" onKeyUp="verifRepeterMDP()" id="SaisieRepeterMDP" class="form-control input-sm text" value="" required>
+                                </div>
+
+                                <span class="help-block">    
+                                    <ul class="list-unstyled">
+                                        <li id="ReponseDuTestRepeterMotDePasse"></li>
+                                    </ul>
+                                </span>
+                            </div>
+
                         </div>
 
-                        <span class="help-block">    
-                            <ul class="list-unstyled">
-                                <li id="ReponseDuTestNomDutilisateur"></li>
-                            </ul>
-                        </span>
-                    </div>
+                        <div class="col-lg-6">
 
-                    <div class="form-group ">
-                        <label for="SaisieMDP">
-                            Mot de passe
-                        </label>
+                            <div class="form-group ">
+                                <label for="SaisieMDP">
+                                    E-mail
+                                </label>
 
-                        <div class="input-group col-xs-12">
-                            <input type="password" name="password" onKeyUp="verifMDP()" id="SaisieMDP" class="form-control input-sm text" value="" required>
+                                <div class="input-group col-xs-12">
+                                    <input type="text" name="email" onBlur="VerifSyntaxEmail()" onKeyUP="VerifSyntaxEmail()" id="SaisieMail" class="form-control input-sm text" value="" required>
+                                </div>
+
+                                <span class="help-block">    
+                                    <ul class="list-unstyled">
+                                        <li id="ReponseDuTestMail"></li>
+                                    </ul>
+                                </span>
+                            </div>
+
+                            <div class="form-group ">
+                                <label for="SaisieMDP">
+                                    Résoudre l'opération
+                                </label>
+
+                                <div class="input-group col-xs-12">
+                                    <input type="text" onfocus="if (this.value == Valeur_Temporaire)
+                                                this.value = '';" onkeyup="CaptchaVerif();" onblur="if (this.value == '')
+                                                            this.value = Valeur_Temporaire;" id="SaisieCaptcha" class="form-control input-sm text" value="" required>
+                                </div>
+
+                                <span class="help-block">    
+                                    <ul class="list-unstyled">
+                                        <li id="ReponseCaptcha"></li>
+                                    </ul>
+                                </span>
+                            </div>
+
                         </div>
-
-                        <span class="help-block">    
-                            <ul class="list-unstyled">
-                                <li id="ReponseDuTestMotDePasse"></li>
-                            </ul>
-                        </span>
                     </div>
-
-                    <div class="form-group" style="margin-bottom: 0px;">
-                        <label for="SaisieMDP">
-                            Répétez mot de passe
-                        </label>
-
-                        <div class="input-group col-xs-12">
-                            <input type="password" name="password2" onKeyUp="verifRepeterMDP()" id="SaisieRepeterMDP" class="form-control input-sm text" value="" required>
-                        </div>
-
-                        <span class="help-block">    
-                            <ul class="list-unstyled">
-                                <li id="ReponseDuTestRepeterMotDePasse"></li>
-                            </ul>
-                        </span>
-                    </div>
-
                 </div>
 
-                <div class="col-lg-6">
+                <div class="box-footer">
 
-                    <div class="form-group ">
-                        <label for="SaisieMDP">
-                            E-mail
-                        </label>
-
-                        <div class="input-group col-xs-12">
-                            <input type="text" name="email" onBlur="VerifSyntaxEmail()" onKeyUP="VerifSyntaxEmail()" id="SaisieMail" class="form-control input-sm text" value="" required>
-                        </div>
-
-                        <span class="help-block">    
-                            <ul class="list-unstyled">
-                                <li id="ReponseDuTestMail"></li>
-                            </ul>
-                        </span>
+                    <div class="pull-right">
+                        En cliquant, j'accepte les <a style="cursor: pointer;" onclick="Ajax('pages/CDG.php');" >CGU</a> ainsi que le <a style="cursor: pointer;" onclick="Ajax('pages/regles.php');" >règlement de jeu</a>.
+                        <input type="button" class="btn btn-success btn-flat" onclick="VerificationFormulaire();" src="images/Bouton_Valider.png" value="Envoyer" />
                     </div>
-
-                    <div class="form-group ">
-                        <label for="SaisieMDP">
-                            Résoudre l'opération
-                        </label>
-
-                        <div class="input-group col-xs-12">
-                            <input type="text" onfocus="if (this.value == Valeur_Temporaire)
-                                        this.value = '';" onkeyup="CaptchaVerif();" onblur="if (this.value == '')
-                                                    this.value = Valeur_Temporaire;" id="SaisieCaptcha" class="form-control input-sm text" value="" required>
-                        </div>
-
-                        <span class="help-block">    
-                            <ul class="list-unstyled">
-                                <li id="ReponseCaptcha"></li>
-                            </ul>
-                        </span>
-                    </div>
-
                 </div>
-            </div>
+            </form>
+
         </div>
 
-        <div class="box-footer">
+        <script type="text/javascript">
 
-            <div class="pull-right">
-                En cliquant, j'accepte les <a style="cursor: pointer;" onclick="Ajax('pages/CDG.php');" >CGU</a> ainsi que le <a style="cursor: pointer;" onclick="Ajax('pages/regles.php');" >règlement de jeu</a>.
-                <input type="button" class="btn btn-success btn-flat" onclick="VerificationFormulaire();" src="images/Bouton_Valider.png" value="Envoyer" />
-            </div>
-        </div>
-    </form>
+            if (Type_De_Calcul == 1) {
 
-</div>
+                var a = 0;
+                var b = 0;
+                var c = 0;
 
-<script type="text/javascript">
+                var Valeur_Temporaire = "Combien font " + a + " + " + b + " ?";
 
-    if (Type_De_Calcul == 1) {
+                function Generation1() {
 
-        var a = 0;
-        var b = 0;
-        var c = 0;
+                    a = Math.ceil(Math.random() * 20);
+                    b = Math.ceil(Math.random() * 20);
+                    c = a + b
 
-        var Valeur_Temporaire = "Combien font " + a + " + " + b + " ?";
+                    document.getElementById('SaisieCaptcha').value = "Combien font " + a + " + " + b + " ?";
+                    Valeur_Temporaire = "Combien font " + a + " + " + b + " ?";
 
-        function Generation1() {
+                }
 
-            a = Math.ceil(Math.random() * 20);
-            b = Math.ceil(Math.random() * 20);
-            c = a + b
+                Generation1();
 
-            document.getElementById('SaisieCaptcha').value = "Combien font " + a + " + " + b + " ?";
-            Valeur_Temporaire = "Combien font " + a + " + " + b + " ?";
+            } else if (Type_De_Calcul == 2) {
 
-        }
+                var a = 0;
+                var b = 0;
+                var c = 0;
 
-        Generation1();
+                var Valeur_Temporaire = "Combien font " + a + " x " + b + " ?";
 
-    } else if (Type_De_Calcul == 2) {
+                function Generation2() {
 
-        var a = 0;
-        var b = 0;
-        var c = 0;
+                    a = Math.ceil(Math.random() * 20);
+                    b = Math.ceil(Math.random() * 20);
+                    c = a * b
 
-        var Valeur_Temporaire = "Combien font " + a + " x " + b + " ?";
+                    document.getElementById('SaisieCaptcha').value = "Combien font " + a + " x " + b + " ?";
+                    Valeur_Temporaire = "Combien font " + a + " x " + b + " ?";
 
-        function Generation2() {
+                }
 
-            a = Math.ceil(Math.random() * 20);
-            b = Math.ceil(Math.random() * 20);
-            c = a * b
+                Generation2();
 
-            document.getElementById('SaisieCaptcha').value = "Combien font " + a + " x " + b + " ?";
-            Valeur_Temporaire = "Combien font " + a + " x " + b + " ?";
+            } else if (Type_De_Calcul == 3) {
 
-        }
+                var a = 0;
+                var b = 0;
+                var c = 0;
 
-        Generation2();
+                var Valeur_Temporaire = "Combien font " + a + " - " + b + " ?";
 
-    } else if (Type_De_Calcul == 3) {
+                function Generation3() {
 
-        var a = 0;
-        var b = 0;
-        var c = 0;
+                    a = Math.ceil(Math.random() * 20);
+                    b = Math.ceil(Math.random() * 20);
+                    c = a - b
 
-        var Valeur_Temporaire = "Combien font " + a + " - " + b + " ?";
+                    document.getElementById('SaisieCaptcha').value = "Combien font " + a + " - " + b + " ?";
+                    Valeur_Temporaire = "Combien font " + a + " - " + b + " ?";
 
-        function Generation3() {
+                }
 
-            a = Math.ceil(Math.random() * 20);
-            b = Math.ceil(Math.random() * 20);
-            c = a - b
+                Generation3();
+            }
 
-            document.getElementById('SaisieCaptcha').value = "Combien font " + a + " - " + b + " ?";
-            Valeur_Temporaire = "Combien font " + a + " - " + b + " ?";
+        </script>
 
-        }
-
-        Generation3();
+        <?php
     }
 
-</script>
+}
+
+$class = new Inscription_Formulaire();
+$class->run();

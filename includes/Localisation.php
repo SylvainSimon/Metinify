@@ -43,8 +43,8 @@ if ($mapData != false) {
                          WHERE map_index='" . $mapData[0] . "' 
                          AND id = '" . $Donnees_Appel_Joueurs_Page->player_id . "'
                          LIMIT 1";
-            $Parametres_Localisation = $Connexion->query($Localisation);
-            $Parametres_Localisation->setFetchMode(PDO::FETCH_OBJ);
+            $Parametres_Localisation = $this->objConnection->query($Localisation);
+            $Parametres_Localisation->setFetchMode(\PDO::FETCH_OBJ);
             $Nombre_De_Resultat = $Parametres_Localisation->rowCount();
             /* -------------------------------------------------------------------------- */
         } else {
@@ -56,8 +56,8 @@ if ($mapData != false) {
                          WHERE map_index='" . $mapData[0] . "' 
                          AND id = '" . $Donnees_Appel_Joueurs_Page->player_id . "'
                          LIMIT 1";
-            $Parametres_Localisation = $Connexion->query($Localisation);
-            $Parametres_Localisation->setFetchMode(PDO::FETCH_OBJ);
+            $Parametres_Localisation = $this->objConnection->query($Localisation);
+            $Parametres_Localisation->setFetchMode(\PDO::FETCH_OBJ);
             $Nombre_De_Resultat = $Parametres_Localisation->rowCount();
             /* -------------------------------------------------------------------------- */
         }

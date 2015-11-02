@@ -1,18 +1,37 @@
-<div class="box box-default flat">
+<?php
 
-    <div class="box-header">
-        <h3 class="box-title">Code d'effacement changé</h3>
-    </div>
+namespace Pages;
 
-    <div class="box-body">
+require __DIR__ . '../../core/initialize.php';
 
-        Votre code d'effacement a bien été changer.<br/><br/>
-        Pensez à le garder précieusement.<br/><br/>
+class Compte_Code_Effacement_Modifier_Confirmation extends \PageHelper {
 
-        Pour revenir à l'accueil, merci de cliquer sur le bouton "Accueil".
-    </div>
+    public function run() {
+        ?>
 
-    <div class="box-footer">
-        <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
-    </div>
-</div>
+
+        <div class="box box-default flat">
+
+            <div class="box-header">
+                <h3 class="box-title">Code d'effacement changé</h3>
+            </div>
+
+            <div class="box-body">
+
+                Votre code d'effacement a bien été changer.<br/><br/>
+                Pensez à le garder précieusement.<br/><br/>
+
+                Pour revenir à l'accueil, merci de cliquer sur le bouton "Accueil".
+            </div>
+
+            <div class="box-footer">
+                <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
+            </div>
+        </div>
+        <?php
+    }
+
+}
+
+$class = new Compte_Code_Effacement_Modifier_Confirmation();
+$class->run();

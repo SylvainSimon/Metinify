@@ -1,27 +1,34 @@
-<?php @session_write_close(); ?>
-<?php @session_start(); ?>
-<?php @include_once '../configPDO.php'; ?>
-<?php @include_once '../pages/Fonctions_Utiles.php'; ?>
 <?php
-if (empty($_SESSION['Utilisateur'])) {
 
-    include 'Onglet_Non_Connecter.php';
-    exit();
-}
-include '../pages/Tableaux_Arrays.php';
+namespace Includes;
 
-$Id_Personnage = $_GET['id'];
+require __DIR__ . '../../core/initialize.php';
 
-/* ------------------------------ Vérification connecte ---------------------------------------------- */
-$Verification_Connecte = "SELECT id FROM player.player
+class Appel_Joueur extends \PageHelper {
+
+    public function run() {
+        ?>
+        <?php @include_once '../pages/Fonctions_Utiles.php'; ?>
+        <?php
+        if (empty($_SESSION['Utilisateur'])) {
+
+            include 'Onglet_Non_Connecter.php';
+            exit();
+        }
+        include '../pages/Tableaux_Arrays.php';
+
+        $Id_Personnage = $_GET['id'];
+
+        /* ------------------------------ Vérification connecte ---------------------------------------------- */
+        $Verification_Connecte = "SELECT id FROM player.player
                           WHERE player.id = ?
                           AND player.last_play >= (NOW() - INTERVAL 30 MINUTE)
                           LIMIT 1";
-$Parametres_Verification_Connecte = $Connexion->prepare($Verification_Connecte);
-/* -------------------------------------------------------------------------------------------------- */
+        $Parametres_Verification_Connecte = $this->objConnection->prepare($Verification_Connecte);
+        /* -------------------------------------------------------------------------------------------------- */
 
-/* --------------------------- Appel Joueur Page ---------------------------- */
-$Appel_Joueur_Page = "SELECT player.id AS player_id,
+        /* --------------------------- Appel Joueur Page ---------------------------- */
+        $Appel_Joueur_Page = "SELECT player.id AS player_id,
                              player.ip AS player_ip,
                              player.name,
                              player.exp,
@@ -62,49 +69,56 @@ $Appel_Joueur_Page = "SELECT player.id AS player_id,
                         WHERE player.id = '" . $Id_Personnage . "'
                         LIMIT 1";
 
-$Parametres_Appel_Joueur_Page = $Connexion->query($Appel_Joueur_Page);
-$Parametres_Appel_Joueur_Page->setFetchMode(PDO::FETCH_OBJ);
-/* --------------------------------------------------------------------------- */
+        $Parametres_Appel_Joueur_Page = $this->objConnection->query($Appel_Joueur_Page);
+        $Parametres_Appel_Joueur_Page->setFetchMode(\PDO::FETCH_OBJ);
+        /* --------------------------------------------------------------------------- */
 
-$Donnees_Appel_Joueurs_Page = $Parametres_Appel_Joueur_Page->fetch();
+        $Donnees_Appel_Joueurs_Page = $Parametres_Appel_Joueur_Page->fetch();
 
-if ($_SESSION['ID'] != $Donnees_Appel_Joueurs_Page->account_id) {
+        if ($_SESSION['ID'] != $Donnees_Appel_Joueurs_Page->account_id) {
 
-    include 'Onglet_Mauvais_Compte.php';
-    exit();
-}
-?>
+            include 'Onglet_Mauvais_Compte.php';
+            exit();
+        }
+        ?>
 
-<link rel="stylesheet" href="../css/demos.css">
+        <link rel="stylesheet" href="../css/demos.css">
 
-<div class="box box-default flat">
+        <div class="box box-default flat">
 
-    <div class="box-header">
-        <h3 class="box-title">Mon personnage</h3>
-    </div>
+            <div class="box-header">
+                <h3 class="box-title">Mon personnage</h3>
+            </div>
 
-    <div class="box-body no-padding">
+            <div class="box-body no-padding">
 
-        <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
 
-                <li class="active"><a href="#Onglet_InformationGeneral" data-toggle="tab" aria-expanded="true">Générales</a></li>
-                <li class=""><a href="#Onglet_Equipement" data-toggle="tab" aria-expanded="false">Équipement</a></li>
-                <li class=""><a href="#Onglet_Inventaire" data-toggle="tab" aria-expanded="false">Inventaire</a></li>
-                <li class=""><a href="#Onglet_Equitation" data-toggle="tab" aria-expanded="false">Cheval</a></li>
-                <li class=""><a href="#Onglet_Amis" data-toggle="tab" aria-expanded="false">Amis</a></li>
-            </ul>
-            <div class="tab-content">
+                        <li class="active"><a href="#Onglet_InformationGeneral" data-toggle="tab" aria-expanded="true">Générales</a></li>
+                        <li class=""><a href="#Onglet_Equipement" data-toggle="tab" aria-expanded="false">Équipement</a></li>
+                        <li class=""><a href="#Onglet_Inventaire" data-toggle="tab" aria-expanded="false">Inventaire</a></li>
+                        <li class=""><a href="#Onglet_Equitation" data-toggle="tab" aria-expanded="false">Cheval</a></li>
+                        <li class=""><a href="#Onglet_Amis" data-toggle="tab" aria-expanded="false">Amis</a></li>
+                    </ul>
+                    <div class="tab-content">
 
-                <?php include 'Appel_Joueurs/Onglet_Informations_General.php'; ?>
-                <?php include 'Appel_Joueurs/Onglet_Equipement.php'; ?>
-                <?php include 'Appel_Joueurs/Onglet_Inventaire.php'; ?>
-                <?php include 'Appel_Joueurs/Onglet_Equitation.php'; ?>
-                <?php include 'Appel_Joueurs/Onglet_Amis.php'; ?>
+                        <?php include 'Appel_Joueurs/Onglet_Informations_General.php'; ?>
+                        <?php include 'Appel_Joueurs/Onglet_Equipement.php'; ?>
+                        <?php include 'Appel_Joueurs/Onglet_Inventaire.php'; ?>
+                        <?php include 'Appel_Joueurs/Onglet_Equitation.php'; ?>
+                        <?php include 'Appel_Joueurs/Onglet_Amis.php'; ?>
 
-                <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
             </div>
         </div>
+        <?php
+    }
 
-    </div>
-</div>
+}
+
+$class = new Appel_Joueur();
+$class->run();

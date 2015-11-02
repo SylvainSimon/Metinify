@@ -8,7 +8,7 @@ class CoreHelper {
 
     public function __construct() {
 
-        include 'configPDO.php';
+        include BASE_ROOT . '/configPDO.php';
         $this->objConnection = $Connexion;
 
         $instanceConfig = new ConfigHelper();
@@ -23,7 +23,7 @@ class CoreHelper {
     }
 
     public function redirectToSSL() {
-        
+
         if (filter_input(INPUT_SERVER, "HTTPS") !== null) {
             $newUrl = str_replace("http", "https", filter_input(INPUT_SERVER, "SCRIPT_NAME"));
             header("Location: $newUrl");

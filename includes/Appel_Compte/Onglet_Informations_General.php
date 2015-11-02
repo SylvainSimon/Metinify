@@ -166,7 +166,7 @@
                           WHERE player.account_id = ?
                           ORDER by level DESC
                           LIMIT 4";
-            $Parametres_Liste_Personnages = $Connexion->prepare($Liste_Personnages);
+            $Parametres_Liste_Personnages = $this->objConnection->prepare($Liste_Personnages);
             $Parametres_Liste_Personnages->execute(array($Appel_Compte_Id));
             $Parametres_Liste_Personnages->setFetchMode(PDO::FETCH_OBJ);
             $Nombre_De_Resultat = $Parametres_Liste_Personnages->rowCount();

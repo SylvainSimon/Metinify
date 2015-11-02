@@ -8,7 +8,7 @@
 
     /* ------------------------ Vérifications Doublons ------------------------------ */
     $Vérification_Doublon = "SELECT id
-                             FROM $BDD_Site.suppression_personnage 
+                             FROM site.suppression_personnage 
                              WHERE id_compte = :id_compte
                              AND id_personnage = :id_personnage
                              AND ip = :ip
@@ -49,7 +49,7 @@
             <?php
             /* -------------- Suppression autres demande ----------------------------------------------------- */
             $Delete_Demande_Suppresion_Persos = "DELETE 
-                                                 FROM $BDD_Site.suppression_personnage
+                                                 FROM site.suppression_personnage
                                                  WHERE id_personnage = :id_personnage";
 
             $Parametres_Delete_Demande_Suppresion_Persos = $Connexion->prepare($Delete_Demande_Suppresion_Persos);

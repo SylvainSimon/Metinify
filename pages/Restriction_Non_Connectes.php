@@ -1,27 +1,46 @@
-<div class="Cadre_Principal">
+<?php
 
-    <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-        <h1>Votre connexion n'est plus active</h1>
-    </div>
+namespace Pages;
 
-    <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1">
-        <hr class="Hr_Haut"/>
-        L'action que vous avez tentée a été annulée.<br/><br/>
+require __DIR__ . '../../core/initialize.php';
 
-        En effet il semble, après vérification, que vous ne soyez plus connecté au site de VamosMt2.<br/>
-        Vous ne pouvez donc plus continuer pour le moment.<br/><br/>
+class Restriction_Non_Connectes extends \PageHelper {
 
-        Si vous voyez ce message souvent, merci de prévenir un membre de l'équipe, ou de nous contacter via<br/>
-        la messagerie de support.<br/>
-        Elle est disponible dans le menu supérieur du site.<br/><br/>
+    public function run() {
+        ?>
 
-        Pour continuer votre action, merci de vous reconnecter grâce à la barre supérieure en haut de votre page.<br/><br/>
-        
-        En nous excusant profondément, L'équipe VamosMt2.
-        <hr class="Hr_Bas">
+        <div class="Cadre_Principal">
 
-        <input type="button" class="Bouton_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
+            <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
+                <h1>Votre connexion n'est plus active</h1>
+            </div>
 
-    </div>
+            <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1">
+                <hr class="Hr_Haut"/>
+                L'action que vous avez tentée a été annulée.<br/><br/>
 
-</div>
+                En effet il semble, après vérification, que vous ne soyez plus connecté au site de VamosMt2.<br/>
+                Vous ne pouvez donc plus continuer pour le moment.<br/><br/>
+
+                Si vous voyez ce message souvent, merci de prévenir un membre de l'équipe, ou de nous contacter via<br/>
+                la messagerie de support.<br/>
+                Elle est disponible dans le menu supérieur du site.<br/><br/>
+
+                Pour continuer votre action, merci de vous reconnecter grâce à la barre supérieure en haut de votre page.<br/><br/>
+
+                En nous excusant profondément, L'équipe VamosMt2.
+                <hr class="Hr_Bas">
+
+                <input type="button" class="Bouton_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
+
+            </div>
+
+        </div>
+
+        <?php
+    }
+
+}
+
+$class = new Restriction_Non_Connectes();
+$class->run();

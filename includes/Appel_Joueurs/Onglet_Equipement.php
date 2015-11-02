@@ -19,7 +19,7 @@
                                   AND window = :window
                                   LIMIT 1";
 
-    $Parametres_Appel_Case_Equipement = $Connexion->prepare($Appel_Case_Equipement);
+    $Parametres_Appel_Case_Equipement = $this->objConnection->prepare($Appel_Case_Equipement);
 
     /* ------------------------------------------------------------------------------------ */
 
@@ -28,7 +28,7 @@
                                        WHERE item = :item
                                        LIMIT 1";
 
-    $Parametres_Chercher_Chemin = $Connexion->prepare($Chercher_Chemin);
+    $Parametres_Chercher_Chemin = $this->objConnection->prepare($Chercher_Chemin);
     /* ------------------------------------------------------------------------------------- */
     ?>
 
@@ -90,8 +90,8 @@
                                      WHERE owner_id = '" . $Donnees_Appel_Joueurs_Page->player_id . "'
                                      AND window = 'EQUIPMENT'";
 
-                $Parametres_Liste_Equipement = $Connexion->query($Liste_Equipement);
-                $Parametres_Liste_Equipement->setFetchMode(PDO::FETCH_OBJ);
+                $Parametres_Liste_Equipement = $this->objConnection->query($Liste_Equipement);
+                $Parametres_Liste_Equipement->setFetchMode(\PDO::FETCH_OBJ);
                 $Nombre_De_Resultat_Equipement = $Parametres_Liste_Equipement->rowCount();
                 /* ----------------------------------------------------------------------------------------------------- */
                 ?>

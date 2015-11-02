@@ -26,7 +26,8 @@ $(document).ready(function () {
                         $("#Lien_Mon_Compte").attr("onclick", "Ajax('includes/Appel_Compte.php?id=" + Parse_Json.id + "');");
 
                         document.getElementById('Menu_Telechargement_ItemShop').style.display = 'inline';
-                        document.getElementById('Lien_Item_Shop').href = "includes/Item_Shop/Item_Shop.php?type=Item_Shop";
+
+                        $("#Lien_Item_Shop").attr("onclick", "Ajax('includes/Item_Shop/Item_Shop.php?type=Item_Shop');");
 
                         document.getElementById('Menu_Support2').style.display = 'none';
                         document.getElementById('Menu_Support').style.display = 'inline';

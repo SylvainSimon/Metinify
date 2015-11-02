@@ -57,8 +57,8 @@
                                      AND window = 'INVENTORY'
                                      ORDER by item_proto.locale_name ASC";
 
-                $Parametres_Liste_Inventaire = $Connexion->query($Liste_Inventaire);
-                $Parametres_Liste_Inventaire->setFetchMode(PDO::FETCH_OBJ);
+                $Parametres_Liste_Inventaire = $this->objConnection->query($Liste_Inventaire);
+                $Parametres_Liste_Inventaire->setFetchMode(\PDO::FETCH_OBJ);
                 $Nombre_De_Resultat_Inventaire = $Parametres_Liste_Inventaire->rowCount();
                 /* ----------------------------------------------------------------------------------------------------- */
                 ?>

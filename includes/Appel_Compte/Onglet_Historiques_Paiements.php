@@ -12,7 +12,7 @@
                         AND compte != ''
                         ORDER by date DESC";
 
-    $Parametres_Liste_Paiements = $Connexion->query($Liste_Paiements);
+    $Parametres_Liste_Paiements = $this->objConnection->query($Liste_Paiements);
     $Parametres_Liste_Paiements->setFetchMode(PDO::FETCH_OBJ);
     $Nombre_De_Resultat_Liste_Paiements = $Parametres_Liste_Paiements->rowCount();
     /* ----------------------------------------------------------------------------- */
@@ -23,7 +23,7 @@
                         WHERE id_compte = '" . $Resultat_Appel_Compte->id . "'
                         AND compte != ''";
 
-    $Parametres_Somme_VamoNaies = $Connexion->query($Somme_VamoNaies);
+    $Parametres_Somme_VamoNaies = $this->objConnection->query($Somme_VamoNaies);
     $Parametres_Somme_VamoNaies->setFetchMode(PDO::FETCH_OBJ);
     $Resultat_Somme_VamoNaies = $Parametres_Somme_VamoNaies->fetch()
     /* ----------------------------------------------------------------------------- */
