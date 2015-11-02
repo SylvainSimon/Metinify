@@ -7,6 +7,9 @@
         "components/jqueryui": "1.11.4",
         "almasaeed2010/adminlte": "2.2.*",
         "afarkas/html5shiv": "3.7.2",
-        "rogeriopradoj/respond": "1.4.2"
+        "rogeriopradoj/respond": "1.4.2",
+        "symfony/class-loader": "2.7.6",
+        "symfony/http-foundation": "2.7.6",
+        "caseyamcl/configula": "2.4"
     }
 }

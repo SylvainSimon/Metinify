@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Configula' => array($vendorDir . '/caseyamcl/configula/src'),
     'ComponentInstaller' => array($vendorDir . '/robloach/component-installer/src'),
     'Assetic' => array($vendorDir . '/kriswallsmith/assetic/src'),
 );

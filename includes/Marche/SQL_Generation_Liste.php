@@ -90,17 +90,6 @@ if (in_array($Filtre_Monnaie, $Tableau_Monnaie)) {
     $Variable_Monnaie = "";
 }
 
-if (in_array($Filtre_Date, $Tableau_Date)) {
-    if ($Filtre_Date == "1") {
-        $Variable_Date = " AND marche_articles.date = DESC ";
-    } else if ($Filtre_Date == "2") {
-        $Variable_Date = " AND marche_articles.date = ASC ";
-    } else {
-        $Variable_Date = "";
-    }
-} else {
-    $Variable_Date = "";
-}
 
 /* ----------------------- Recuperation Date ------------------------------- */
 $Recuperation_Articles = "SELECT marche_articles.designation, marche_articles.description, marche_articles.devise AS id_devise, marche_articles.prix, marche_categories.nom_categorie, marche_devises.devise, marche_personnages.id_proprietaire, marche_personnages.id AS id_marche_personnage, player.level, player.name, player.job

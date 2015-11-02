@@ -10,7 +10,7 @@ if (empty($_SESSION['ID'])) {
 
 /* ------------------------ Vérification Compte ---------------------------- */
 $Verification_Compte = "SELECT id 
-                        FROM $BDD_Site.administration_users
+                        FROM $BDD_Site.support_moderateurs
                         WHERE id_compte = ?
                         AND support_ticket = 1
                         LIMIT 1";

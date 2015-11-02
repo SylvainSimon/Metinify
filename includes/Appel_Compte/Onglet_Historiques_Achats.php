@@ -70,7 +70,7 @@
                         <th>Article</th>
                         <th width="40">Nbre.</th>
                         <th>Prix</th>
-                        <th width="200">Date du rechargement</th>
+                        <th width="200">Date d'achat</th>
                         <th width="50">Ip</th>
 
                     </tr>
