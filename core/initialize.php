@@ -5,7 +5,6 @@ if (!defined("BASE_ROOT")) {
 }
 
 require_once BASE_ROOT . '/vendor/autoload.php';
-require_once BASE_ROOT . '/configPDO.php';
 
 use Symfony\Component\ClassLoader\ClassLoader;
 

@@ -10,7 +10,6 @@ class IndexWebsite extends CoreHelper {
         //$this->objConfig;
         //var_dump($this->objSession->get("ID"));
         
-        include 'configPDO.php';
         ?>
 
         <!DOCTYPE html>

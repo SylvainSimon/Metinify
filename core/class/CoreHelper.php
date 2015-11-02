@@ -9,11 +9,12 @@ class CoreHelper {
     public function __construct() {
 
         include BASE_ROOT . '/configPDO.php';
-        $this->objConnection = $Connexion;
 
         $instanceConfig = new ConfigHelper();
         $this->objConfig = $instanceConfig->objInstance;
 
+        $this->objConnection = new PDO(''.$this->objConfig->driverbdd.':host=' . $this->objConfig->hostbdd . ';charset=utf8', $this->objConfig->userbdd, $this->objConfig->passwordbdd);
+        
         $service = new ServicesHelper();
         $container = $service->container;
         $session = $container["session"];

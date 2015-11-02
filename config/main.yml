@@ -1,1 +1,6 @@
 requiredSSL: true
+
+driverbdd: mysql
+hostbdd: localhost
+userbdd: root
+passwordbdd: ~
