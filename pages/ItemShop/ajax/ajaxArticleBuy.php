@@ -2,9 +2,9 @@
 
 namespace Includes;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class Procedure_Achat extends \PageHelper {
+class ajaxArticleBuy extends \PageHelper {
 
     public function Verification_Place_Inventaire_IS($Verification_Place_Account_Id, $lol, $Procedure_Achat_Item_Nombre = 1) {
 
@@ -602,5 +602,5 @@ class Procedure_Achat extends \PageHelper {
 
 }
 
-$class = new Procedure_Achat();
+$class = new ajaxArticleBuy();
 $class->run();

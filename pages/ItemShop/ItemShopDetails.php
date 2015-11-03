@@ -4,7 +4,7 @@ namespace Includes;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class Appel_Detail_Article extends \PageHelper {
+class ItemShopDetails extends \PageHelper {
 
     public function run() {
         ?>
@@ -46,7 +46,7 @@ class Appel_Detail_Article extends \PageHelper {
                     <h3 class="box-title">Magasin d'items - Détails</h3>
 
                     <div class="box-tools">
-                        <a href="includes/Item_Shop/Item_Shop_Rechargement_Accueil.php?idcompte=<?php echo $Sauvegarder_ID; ?>&nomCompte=<?php echo $Sauvegarder_Login; ?>" class="fancybox_Rechargement btn btn-sm btn-primary btn-flat" data-fancybox-type="iframe">Recharger</a>
+                        <a href="pages/ItemShop/ItemShopRechargement.php?idcompte=<?php echo $Sauvegarder_ID; ?>&nomCompte=<?php echo $Sauvegarder_Login; ?>" class="fancybox_Rechargement btn btn-sm btn-primary btn-flat" data-fancybox-type="iframe">Recharger</a>
                     </div>
                 </div>
 
@@ -131,7 +131,7 @@ class Appel_Detail_Article extends \PageHelper {
 
                     $.ajax({
                         type: "POST",
-                        url: "./includes/Item_Shop/Procedure_Achat.php",
+                        url: "pages/ItemShop/ajax/ajaxArticleBuy.php",
                         data: "id_item=" + id_item + "&nombre_item=" + nombre_item,
                         success: function (msg) {
 
@@ -190,5 +190,5 @@ class Appel_Detail_Article extends \PageHelper {
 
 }
 
-$class = new Appel_Detail_Article();
+$class = new ItemShopDetails();
 $class->run();

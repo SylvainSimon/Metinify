@@ -2,9 +2,9 @@
 
 namespace Includes;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class Appel_ItemShop extends \PageHelper {
+class ajaxCategorieGetArticles extends \PageHelper {
 
     public function run() {
         ?>
@@ -36,7 +36,7 @@ class Appel_ItemShop extends \PageHelper {
             ?>
 
             <?php while ($Resultat_Liste_Article = $Parametres_Liste_Articles->fetch()) { ?>
-                <div class="Article_IS" onclick="Ajax('./includes/Item_Shop/Appel_Detail_Article.php?id_recu=<?= $Resultat_Liste_Article->id; ?>');"  data-tooltip-isItemMetin="1" data-tooltip-track="1" data-tooltip="<?php echo $Resultat_Liste_Article->info_item; ?>">
+                <div class="Article_IS" onclick="Ajax('pages/ItemShop/ItemShopDetails.php?id_recu=<?= $Resultat_Liste_Article->id; ?>');"  data-tooltip-isItemMetin="1" data-tooltip-track="1" data-tooltip="<?php echo $Resultat_Liste_Article->info_item; ?>">
                     <div class="Nom_Article">
                         <?php echo $Resultat_Liste_Article->name_item; ?>
                     </div>
@@ -72,5 +72,5 @@ class Appel_ItemShop extends \PageHelper {
 
 }
 
-$class = new Appel_ItemShop();
+$class = new ajaxCategorieGetArticles();
 $class->run();

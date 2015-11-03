@@ -4,7 +4,7 @@ namespace Includes;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class Resultat_Rechargement extends \PageHelper {
+class ItemShopRechargementTerm extends \PageHelper {
 
     public function run() {
         ?>
@@ -55,5 +55,5 @@ class Resultat_Rechargement extends \PageHelper {
 
 }
 
-$class = new Resultat_Rechargement();
+$class = new ItemShopRechargementTerm();
 $class->run();

@@ -101,10 +101,10 @@ class payement extends \PageHelper {
             /* ---------------------------------------------------------------------------- */
 
             if (!empty($_SESSION['ID'])) {
-                header('Location: Resultat_Rechargement.php?Resultat=Reussi&id_compte=' . $_GET['data'] . '&id=' . $Dernier_Numero . '&compteur=oui');
+                header('Location: ItemShopRechargementTerm.php?Resultat=Reussi&id_compte=' . $_GET['data'] . '&id=' . $Dernier_Numero . '&compteur=oui');
                 exit;
             } else {
-                header('Location: Resultat_Rechargement.php?Resultat=Reussi&id_compte=' . $_GET['data'] . '&id=' . $Dernier_Numero . '&compteur=non');
+                header('Location: ItemShopRechargementTerm.php?Resultat=Reussi&id_compte=' . $_GET['data'] . '&id=' . $Dernier_Numero . '&compteur=non');
             }
             ?>
         <?php } else { ?>
@@ -128,7 +128,7 @@ class payement extends \PageHelper {
                 ':ip' => $Rechargement_Ip));
             /* ---------------------------------------------------------------------------- */
 
-            header('Location: Resultat_Rechargement.php?Resultat=Rate&Raison=ClesMauvaise&id_compte=' . $_GET['data'] . '&id=' . $Dernier_Numero . '');
+            header('Location: ItemShopRechargementTerm.php?Resultat=Rate&Raison=ClesMauvaise&id_compte=' . $_GET['data'] . '&id=' . $Dernier_Numero . '');
             exit;
         }
         ?>

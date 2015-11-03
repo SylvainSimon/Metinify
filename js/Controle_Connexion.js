@@ -27,7 +27,7 @@ $(document).ready(function () {
 
                         document.getElementById('Menu_Telechargement_ItemShop').style.display = 'inline';
 
-                        $("#Lien_Item_Shop").attr("onclick", "Ajax('includes/Item_Shop/Item_Shop.php?type=Item_Shop');");
+                        $("#Lien_Item_Shop").attr("onclick", "Ajax('pages/ItemShop/ItemShop.php?type=Item_Shop');");
 
                         document.getElementById('Menu_Support2').style.display = 'none';
                         document.getElementById('Menu_Support').style.display = 'inline';
