@@ -52,7 +52,7 @@ class EmailChangeSubmitEmail extends \PageHelper {
 
                     $.ajax({
                         type: "POST",
-                        url: "./ajax/SQL_Changer_Mail_Changement.php",
+                        url: "pages/MonCompte/ajax/ajaxEmailChangeExecute.php",
                         data: "emailapres=" + $("#ChampsSaisiemail").val(), // données à transmettre
                         success: function (msg) {
 

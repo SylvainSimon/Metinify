@@ -39,7 +39,7 @@ function Changement_Code_Entrepot(){
                 
         $.ajax({
             type: "POST",
-            url: "ajax/SQL_Code_Entrepot_Changer.php",
+            url: "pages/MonCompte/ajax/ajaxCodeEntrepotChangeExecute.php",
             data: "Code_Entrepot="+$("#Champs_Saisie_Repeter_Nouveau_Code_Entrepot").val()+"&Code_Avant="+$("#Champs_Saisie_Ancien_Code_Entrepot").val(),
             success: function(msg){
                 if(msg==1){

@@ -1,9 +1,8 @@
 <?php
 srand();
-
-$files = array("Top_5_PvE.php", "Top_5_PvE.php");
+$files = array("ClassementJoueursPvETop5.php", "ClassementJoueursPvETop5.php");
 $rand = array_rand($files);
-include ($files[$rand]);
+include ("pages/Classements/includes/".$files[$rand]);
 ?>
 
 <?php include './pages/Fonctions_Utiles.php'; ?>

@@ -54,7 +54,7 @@ class PasswordForgottenForm extends \PageHelper {
 
                 $.ajax({
                     type: "POST",
-                    url: "ajax/SQL_Mot_De_Passe_Oublie.php",
+                    url: "pages/MonCompte/ajax/ajaxPasswordForgottenSendEmail.php",
                     data: "Mot_De_Passe_Oublie_Compte=" + $("#SaisieCompte").val() + "&Mot_De_Passe_Oublie_Email=" + $("#SaisieEmailOublie").val(),
                     success: function (msg) {
 

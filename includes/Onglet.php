@@ -59,7 +59,7 @@ include '../pages/Tableaux_Arrays.php';
                 
                 $.ajax({
                     type: "POST",
-                    url: "./includes/Appel_Compte.php",
+                    url: "pages/MonCompte/MonCompte",
                     data: "id="+id, // données à transmettre
                     success: function(msg){
                                 

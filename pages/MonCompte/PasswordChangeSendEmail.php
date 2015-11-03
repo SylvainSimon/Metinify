@@ -54,7 +54,7 @@ class PasswordChangeSendEmail extends \PageHelper {
 
                 $.ajax({
                     type: "POST",
-                    url: "ajax/SQL_Changer_Mot_De_Passe_Verif_Code.php",
+                    url: "pages/MonCompte/ajax/ajaxPasswordChangeVerify.php",
                     data: "code=" + $("#Code_Confidentiel").val(),
                     success: function (msg) {
 

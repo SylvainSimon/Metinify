@@ -47,7 +47,7 @@ class EmailChangeForm extends \PageHelper {
 
                 $.ajax({
                     type: "POST",
-                    url: "./ajax/SQL_Changer_Mail_EnvoieMail.php",
+                    url: "pages/MonCompte/ajax/ajaxEmailChangeSendEmail.php",
                     success: function (msg) {
 
                         if (msg == 1) {

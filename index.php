@@ -109,7 +109,7 @@ class IndexWebsite extends CoreHelper {
                 <div class="clearfix"></div>
             </body>
 
-            <a style="display: none;" id="Lien_Statistiques" href="includes/Statistiques/Statistiques.php" class="fancybox_Statistiques" data-fancybox-type="iframe"></a>
+            <a style="display: none;" id="Lien_Statistiques" href="pages/Statistiques/Statistiques.php" class="fancybox_Statistiques" data-fancybox-type="iframe"></a>
 
             <script type="text/javascript" >
                 $(function () {

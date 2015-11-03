@@ -23,7 +23,7 @@ $(document).ready(function () {
                         document.getElementById('Menu_Inscription_MonCompte').style.display = 'inline';
                         document.getElementById('Menu_Inscription_MonCompte2').style.display = 'none';
 
-                        $("#Lien_Mon_Compte").attr("onclick", "Ajax('includes/Appel_Compte.php?id=" + Parse_Json.id + "');");
+                        $("#Lien_Mon_Compte").attr("onclick", "Ajax('pages/MonCompte/MonCompte.php?id=" + Parse_Json.id + "');");
 
                         document.getElementById('Menu_Telechargement_ItemShop').style.display = 'inline';
 

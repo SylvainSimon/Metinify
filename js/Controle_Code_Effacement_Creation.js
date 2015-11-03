@@ -33,7 +33,7 @@ function VerificationSecu(){
                 
         $.ajax({
             type: "POST",
-            url: "ajax/SQL_Code_Effacement_Definir.php",
+            url: "pages/MonCompte/ajax/ajaxCodeEffacementCreateExecute.php",
             data: "Code_Effacement="+$("#ChampsSaisieSecu").val(),
             success: function(msg){
                 if(msg==1){

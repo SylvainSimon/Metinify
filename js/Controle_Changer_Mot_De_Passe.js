@@ -43,7 +43,7 @@ function VerificationNewMDP() {
 						 
         $.ajax({
             type: "POST",
-            url: "ajax/SQL_Changer_Mot_De_Passe_Envoie_Mail.php",
+            url: "pages/MonCompte/ajax/ajaxPasswordChangeSendEmail.php",
             data: "Ancien_Mot_De_Passe="+$("#Saisie_Ancien_Mot_De_Passe").val()+"&Nouveau_Mot_De_Passe="+$("#Saisie_Nouveau_Mot_De_Passe").val(),
             success: function(msg){
                 if(msg==1){

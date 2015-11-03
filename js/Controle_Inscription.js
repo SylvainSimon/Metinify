@@ -173,16 +173,16 @@ function VerificationFormulaire() {
         						 
         $.ajax({
             type: "POST",
-            url: "ajax/SQL_Inscription.php",
+            url: "pages/Inscription/ajax/InscriptionSubmit.php",
             data: "Utilisateur="+$("#SaisieUtilisateur").val()+"&Mot_De_Passe="+$("#SaisieMDP").val()+"&Email="+$("#SaisieMail").val(),
             success: function(msg){
                 if(msg==1){
                     
-                    Ajax("pages/InscriptionTerm.php?Resultat=oui");
+                    Ajax("pages/Inscription/InscriptionTerm.php?Resultat=oui");
                 }
                 else{
                     
-                    Ajax("pages/InscriptionTerm.php?Resultat=non");
+                    Ajax("pages/Inscription/InscriptionTerm.php?Resultat=non");
                 }
             }
         });

@@ -49,7 +49,7 @@ class EmailChangeSendEmail extends \PageHelper {
 
                 $.ajax({
                     type: "POST",
-                    url: "ajax/SQL_Changer_Mail_Verif_Code.php",
+                    url: "pages/MonCompte/ajax/ajaxEmailChangeVerify.php",
                     data: "code=" + $("#Code_Confidentiel").val(),
                     success: function (msg) {
 

@@ -1,4 +1,4 @@
-<?php include 'Top_5_Guildes.php'; ?>
+<?php include 'pages/Classements/includes/ClassementGuildesTop5.php'; ?>
 
 <div class="box box-default flat">
     <div class="box-header">
@@ -63,4 +63,4 @@
 
     </div>
 </div>
-<?php include 'Module_Vote.php'; ?>
+<?php include 'pages/Votes/includes/Vote.php'; ?>

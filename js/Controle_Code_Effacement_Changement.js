@@ -52,7 +52,7 @@ function Changement_Code_Effacement(){
                 
         $.ajax({
             type: "POST",
-            url: "ajax/SQL_Code_Effacement_Changer.php",
+            url: "pages/MonCompte/ajax/ajaxCodeEffacementChangeExecute.php",
             data: "Code_Effacement="+$("#Champs_Saisie_Repeter_Nouveau_Code_Effacement").val()+"&Code_Avant="+$("#Champs_Saisie_Ancien_Code_Effacement").val(), // données à transmettre
             success: function(msg){
                 if(msg==1){
