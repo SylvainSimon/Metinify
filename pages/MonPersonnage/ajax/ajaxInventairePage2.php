@@ -1,14 +1,14 @@
 <?php
 
-namespace Includes;
+namespace Pages\MonPersonnage\Ajax;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class Inventaire_Page_2 extends \PageHelper {
+class ajaxInventairePage2 extends \PageHelper {
 
     public function run() {
         ?>
-        <?php include '../../pages/Tableaux_Arrays.php'; ?>
+        <?php include __DIR__ . '../../../../pages/Tableaux_Arrays.php'; ?>
 
         <?php
         /* -------------------------- Preparation des Requetes ------------------------------- */
@@ -121,5 +121,5 @@ class Inventaire_Page_2 extends \PageHelper {
 
 }
 
-$class = new Inventaire_Page_2();
+$class = new ajaxInventairePage2();
 $class->run();

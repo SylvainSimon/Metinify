@@ -1,10 +1,10 @@
 <?php
 
-namespace Includes;
+namespace Pages\MonPersonnage\Ajax;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class SQL_Deblocage_Perso extends \PageHelper {
+class ajaxRepairePosition extends \PageHelper {
 
     public function run() {
 
@@ -98,5 +98,5 @@ class SQL_Deblocage_Perso extends \PageHelper {
 
 }
 
-$class = new SQL_Deblocage_Perso();
+$class = new ajaxRepairePosition();
 $class->run();

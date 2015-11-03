@@ -1,6 +1,6 @@
 <div class="tab-pane" id="Onglet_Equipement">
 
-    <?php include 'Appel_Joueurs/Equipement.php'; ?>
+    <?php include 'ajax/ajaxEquipement.php'; ?>
 
     <?php
     /* -------------------------- Preparation des Requetes ------------------------------- */

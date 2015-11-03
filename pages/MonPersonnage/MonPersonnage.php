@@ -1,21 +1,21 @@
 <?php
 
-namespace Includes;
+namespace Pages\MonPersonnage;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
-class Appel_Joueur extends \PageHelper {
+class MonPersonnage extends \PageHelper {
 
     public function run() {
         ?>
-        <?php @include_once '../pages/Fonctions_Utiles.php'; ?>
+        <?php @include_once  __DIR__ . '../../../pages/Fonctions_Utiles.php'; ?>
         <?php
         if (empty($_SESSION['Utilisateur'])) {
 
             include 'Onglet_Non_Connecter.php';
             exit();
         }
-        include '../pages/Tableaux_Arrays.php';
+        include __DIR__ . '../../../pages/Tableaux_Arrays.php';
 
         $Id_Personnage = $_GET['id'];
 
@@ -103,11 +103,11 @@ class Appel_Joueur extends \PageHelper {
                     </ul>
                     <div class="tab-content">
 
-                        <?php include 'Appel_Joueurs/Onglet_Informations_General.php'; ?>
-                        <?php include 'Appel_Joueurs/Onglet_Equipement.php'; ?>
-                        <?php include 'Appel_Joueurs/Onglet_Inventaire.php'; ?>
-                        <?php include 'Appel_Joueurs/Onglet_Equitation.php'; ?>
-                        <?php include 'Appel_Joueurs/Onglet_Amis.php'; ?>
+                        <?php include '../../pages/MonPersonnage/includes/OngletInformationsGeneral.php'; ?>
+                        <?php include '../../pages/MonPersonnage/includes/OngletEquipement.php'; ?>
+                        <?php include '../../pages/MonPersonnage/includes/OngletInventaire.php'; ?>
+                        <?php include '../../pages/MonPersonnage/includes/OngletEquitation.php'; ?>
+                        <?php include '../../pages/MonPersonnage/includes/OngletAmis.php'; ?>
 
                         <div class="clearfix"></div>
                     </div>
@@ -120,5 +120,5 @@ class Appel_Joueur extends \PageHelper {
 
 }
 
-$class = new Appel_Joueur();
+$class = new MonPersonnage();
 $class->run();

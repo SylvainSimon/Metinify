@@ -16,7 +16,7 @@
 
                         $.ajax({
                             type: "POST",
-                            url: "./includes/Appel_Joueurs/Inventaire_Page_" + page + ".php",
+                            url: "pages/MonPersonnage/ajax/ajaxInventairePage" + page + ".php",
                             data: "id=<?php echo $Donnees_Appel_Joueurs_Page->player_id; ?>", // données à transmettre
                             success: function (msg) {
 

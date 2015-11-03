@@ -117,7 +117,7 @@
                     $Index_Map = $Donnees_Appel_Joueurs_Page->map_index;
                 }
 
-                include 'Localisation.php';
+                include __DIR__ . '../../../../pages/MonPersonnage/includes/Localisation.php';
                 ?>
 
             </table>
@@ -388,7 +388,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "./includes/Appel_Joueurs/SQL_Deblocage_Yangs.php",
+                url: "pages/MonPersonnage/ajax/ajaxRepaireYang.php",
                 data: "id_perso=" + $("#Id_Tempo_Deblocage_Yangs").val(),
                 success: function (msg) {
 
@@ -415,7 +415,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "./includes/Appel_Joueurs/SQL_Deblocage_Perso.php",
+                url: "pages/MonPersonnage/ajax/ajaxRepairePosition.php",
                 data: "id_perso=" + $("#Id_Tempo_Deblocage_Perso").val(),
                 success: function (msg) {
 

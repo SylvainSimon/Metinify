@@ -118,7 +118,7 @@ class Marche_Detail_Personnage extends \PageHelper {
 
                             $.ajax({
                                 type: "POST",
-                                url: "../includes/Appel_Joueurs/Inventaire_Page_" + page + ".php",
+                                url: "pages/MonPersonnage/ajax/ajaxInventairePage" + page + ".php",
                                 data: "id=<?php echo $Donnees_Recuperation_Marche_Personnage->id_personnage; ?>", // données à transmettre
                                 success: function (msg) {
 
@@ -155,7 +155,7 @@ class Marche_Detail_Personnage extends \PageHelper {
                     <div id="Bas_Bonus"></div>
                 </div>
 
-                <?php include '../includes/Appel_Joueurs/Equipement.php'; ?>
+                <?php include '../../../pages/MonPersonnage/ajax/ajaxEquipement.php'; ?>
 
                 <?php
                 /* -------------------------- Preparation des Requetes ------------------------------- */

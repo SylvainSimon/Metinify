@@ -2,7 +2,7 @@
 
 function getMapByIndex($mapIndex) {
 
-    $mapArchive = "../maps.txt";
+    $mapArchive = "includes/maps.txt";
     $mapContents = file($mapArchive);
     $returnArray = false;
     foreach ($mapContents AS $aktMap) {

@@ -20,7 +20,7 @@ include '../pages/Tableaux_Arrays.php';
                     
                 $.ajax({
                     type: "POST",
-                    url: "Appel_Joueur.php",
+                    url: "pages/MonPersonnage/MonPersonnage.php",
                     data: "id="+id, // données à transmettre
                     success: function(msg){
                         
