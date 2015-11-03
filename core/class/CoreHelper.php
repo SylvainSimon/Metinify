@@ -5,6 +5,7 @@ class CoreHelper {
     public $objConnection;
     public $objConfig;
     public $objSession;
+    public $objTwig;
 
     public function __construct() {
         
@@ -23,6 +24,11 @@ class CoreHelper {
         global $connexion;
         $connexion = $container["pdo"];
         $this->objConnection  = $connexion;
+        
+        /* @var $twig \Twig_Environment */
+        global $twig;
+        $twig = $container["twig"];
+        $this->objTwig = $twig;
         
         global $session;
         $session = $container["session"];

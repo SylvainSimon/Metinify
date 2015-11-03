@@ -1,5 +1,8 @@
 requiredSSL: true
 
+twigCache: false
+twigCacheUrl: /cache/twig
+
 driverbdd: mysql
 hostbdd: localhost
 userbdd: root
