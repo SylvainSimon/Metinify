@@ -9,20 +9,29 @@ class CoreHelper {
     public function __construct() {
 
         include BASE_ROOT . '/configPDO.php';
-
-        $instanceConfig = new ConfigHelper();
-        $this->objConfig = $instanceConfig->objInstance;
+        
+        $service = new ServicesHelper();
+        $container = $service->container;
+        
+        global $config;
+        $config = $container["config"];
+        $this->objConfig = $config->objInstance;
 
         if (!$this->objConfig->requiredSSL) {
             $this->redirectToSSL();
         }
-
-        $this->objConnection = new PDO('' . $this->objConfig->driverbdd . ':host=' . $this->objConfig->hostbdd . ';charset=utf8', $this->objConfig->userbdd, $this->objConfig->passwordbdd);
-
-        $service = new ServicesHelper();
-        $container = $service->container;
+        
+        global $connexion;
+        $connexion = $container["pdo"];
+        $this->objConnection  = $connexion;
+        
+        global $session;
         $session = $container["session"];
         $this->objSession = $session;
+
+        global $request;
+        $request = $container["request"];
+        $this->objRequest = $request;
     }
 
     public function redirectToSSL() {

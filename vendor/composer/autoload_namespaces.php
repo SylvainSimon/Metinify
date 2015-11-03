@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Twig_' => array($vendorDir . '/twig/twig/lib'),
     'Pimple' => array($vendorDir . '/pimple/pimple/src'),
     'Configula' => array($vendorDir . '/caseyamcl/configula/src'),
     'ComponentInstaller' => array($vendorDir . '/robloach/component-installer/src'),

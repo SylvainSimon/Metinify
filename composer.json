@@ -11,6 +11,7 @@
         "symfony/class-loader": "2.7.6",
         "symfony/http-foundation": "2.7.6",
         "caseyamcl/configula": "2.4",
-        "pimple/pimple": "3.0.2"
+        "pimple/pimple": "3.0.2",
+        "twig/twig": "1.23.0"
     }
 }
