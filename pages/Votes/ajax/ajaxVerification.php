@@ -1,10 +1,10 @@
 <?php
 
-namespace Ajax;
+namespace Pages\Votes\Ajax;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class Verification_Vote extends \PageHelper {
+class ajaxVerification extends \PageHelper {
 
     public function run() {
 
@@ -76,5 +76,5 @@ class Verification_Vote extends \PageHelper {
 
 }
 
-$class = new Verification_Vote();
+$class = new ajaxVerification();
 $class->run();

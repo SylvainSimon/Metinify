@@ -1,10 +1,10 @@
 <?php
 
-namespace Pages;
+namespace Pages\MonPersonnage;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
-class Personnage_Renommer_Validation extends \PageHelper {
+class PersonnageRenameTerm extends \PageHelper {
 
     public function run() {
         ?>
@@ -28,5 +28,5 @@ class Personnage_Renommer_Validation extends \PageHelper {
 
 }
 
-$class = new Personnage_Renommer_Validation();
+$class = new PersonnageRenameTerm();
 $class->run();

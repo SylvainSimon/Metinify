@@ -1,14 +1,14 @@
 <?php
 
-namespace Pages;
+namespace Pages\MonPersonnage;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
-class Personnage_Supprimer extends \PageHelper {
+class PersonnageDeleteForm extends \PageHelper {
 
     public function run() {
         ?>
-        <?php include '../pages/Fonctions_Utiles.php'; ?>
+        <?php include '../../pages/Fonctions_Utiles.php'; ?>
         <?php if (Test_Connexion()) { ?>
             <?php
             $Ip = $_SERVER['REMOTE_ADDR'];
@@ -111,7 +111,7 @@ class Personnage_Supprimer extends \PageHelper {
 
                             $.ajax({
                                 type: "POST",
-                                url: "./ajax/SQL_Suppression_Perssonage_Envoie_Mail.php",
+                                url: "pages/MonPersonnage/ajax/ajaxPersonnageDeleteSendEmail.php",
                                 data: "id_compte=<?= $_SESSION["ID"]; ?>&id_personnage=<?= $_GET["id_perso"]; ?>",
                                 success: function (msg) {
 
@@ -123,7 +123,7 @@ class Personnage_Supprimer extends \PageHelper {
                                             Barre_De_Statut("Le mail a été envoyé avec succès.");
                                             Icone_Chargement(0);
 
-                                            Ajax('pages/Personnage_Supprimer_Validation.php?id_personnage=<?= $_GET["id_perso"]; ?>');
+                                            Ajax('pages/MonPersonnage/PersonnageDeleteVerify.php?id_personnage=<?= $_GET["id_perso"]; ?>');
 
                                         } else if (Parse_Json.result == "FAIL") {
 
@@ -208,5 +208,5 @@ class Personnage_Supprimer extends \PageHelper {
 
 }
 
-$class = new Personnage_Supprimer();
+$class = new PersonnageDeleteForm();
 $class->run();

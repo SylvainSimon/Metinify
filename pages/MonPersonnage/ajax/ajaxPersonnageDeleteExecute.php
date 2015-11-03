@@ -1,10 +1,10 @@
 <?php
 
-namespace Ajax;
+namespace Pages\MonPersonnage\Ajax;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class SQL_Suppression_Perssonage_Procedure extends \PageHelper {
+class ajaxPersonnageDeleteExecute extends \PageHelper {
 
     public function run() {
 
@@ -403,5 +403,5 @@ class SQL_Suppression_Perssonage_Procedure extends \PageHelper {
 
 }
 
-$class = new SQL_Suppression_Perssonage_Procedure();
+$class = new ajaxPersonnageDeleteExecute();
 $class->run();

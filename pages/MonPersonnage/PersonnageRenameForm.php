@@ -1,15 +1,15 @@
 <?php
 
-namespace Pages;
+namespace Pages\MonPersonnage;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
-class Personnage_Renommer extends \PageHelper {
+class PersonnageRenameForm extends \PageHelper {
 
     public function run() {
         ?>
 
-        <?php include '../pages/Fonctions_Utiles.php'; ?>
+        <?php include '../../pages/Fonctions_Utiles.php'; ?>
 
         <?php
         $Ip = $_SERVER['REMOTE_ADDR'];
@@ -158,7 +158,7 @@ class Personnage_Renommer extends \PageHelper {
                                                 }
                                             });
 
-                                            Ajax('pages/Personnage_Renommer_Validation.php');
+                                            Ajax('pages/MonPersonnage/PersonnageRenameTerm.php');
 
                                         } else if (Parse_Json.result == "FAIL") {
 
@@ -218,5 +218,5 @@ class Personnage_Renommer extends \PageHelper {
 
 }
 
-$class = new Personnage_Renommer();
+$class = new PersonnageRenameForm();
 $class->run();

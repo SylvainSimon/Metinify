@@ -4,7 +4,7 @@ namespace Ajax;
 
 require __DIR__ . '../../core/initialize.php';
 
-class SQL_Notification extends \PageHelper {
+class ajaxMessageVerifyNew extends \PageHelper {
 
     public function run() {
 
@@ -127,5 +127,5 @@ class SQL_Notification extends \PageHelper {
 
 }
 
-$class = new SQL_Notification();
+$class = new ajaxMessageVerifyNew();
 $class->run();

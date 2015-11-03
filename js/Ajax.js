@@ -79,7 +79,7 @@ function Actualisation_Messages_Sans_Boucle() {
 
     $.ajax({
         type: "POST",
-        url: "ajax/SQL_Notification.php",
+        url: "pages/Messagerie/ajax/ajaxMessageVerifyNew.php",
         success: function (msg) {
 
 
@@ -176,7 +176,7 @@ function Actualisation_Messages() {
 
     $.ajax({
         type: "POST",
-        url: "ajax/SQL_Notification.php",
+        url: "pages/Messagerie/ajax/ajaxMessageVerifyNew.php",
         success: function (msg) {
 
 

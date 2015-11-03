@@ -1,15 +1,15 @@
 <?php
 
-namespace Pages;
+namespace Pages\MonPersonnage;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
-class Personnage_Supprimer_Resultat extends \PageHelper {
+class PersonnageDeleteTerm extends \PageHelper {
 
     public function run() {
         ?>
 
-        <?php include '../pages/Fonctions_Utiles.php'; ?>
+        <?php include '../../pages/Fonctions_Utiles.php'; ?>
         <?php if (!empty($_GET["result"])) { ?>
 
             <?php if ($_GET["result"] == "Oui") { ?>
@@ -135,5 +135,5 @@ class Personnage_Supprimer_Resultat extends \PageHelper {
 
 }
 
-$class = new Personnage_Supprimer_Resultat();
+$class = new PersonnageDeleteTerm();
 $class->run();

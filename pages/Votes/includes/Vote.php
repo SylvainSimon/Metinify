@@ -42,7 +42,7 @@ $Nombre_De_Resultat_Recuperation_Site_De_Vote = $Parametres_Recuperation_Site_De
 
                         $.ajax({
                             type: "POST",
-                            url: "ajax/Verification_Vote.php",
+                            url: "pages/Votes/ajax/ajaxVerification.php",
                             data: "id_site=" + id_site_vote,
                             success: function (msg) {
                                 if (msg != 1) {

@@ -1,15 +1,15 @@
 <?php
 
-namespace Pages;
+namespace Pages\MonPersonnage;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
-class Personnage_Supprimer_Validation extends \PageHelper {
+class PersonnageDeleteVerify extends \PageHelper {
 
     public function run() {
         ?>
 
-        <?php include '../pages/Fonctions_Utiles.php'; ?>
+        <?php include '../../pages/Fonctions_Utiles.php'; ?>
         <?php if (Test_Connexion()) { ?>
             <?php
             $Id_Personnage = $_GET['id_personnage'];
@@ -94,7 +94,7 @@ class Personnage_Supprimer_Validation extends \PageHelper {
 
                             $.ajax({
                                 type: "POST",
-                                url: "./ajax/SQL_Suppression_Perssonage_Procedure.php",
+                                url: "pages/MonPersonnage/ajax/ajaxPersonnageDeleteExecute.php",
                                 data: "id_compte=<?= $_SESSION["ID"]; ?>&id_personnage=<?= $Id_Personnage; ?>&numero_verif=" + $("#Input_Saisie_Validation_Suppression").val(),
                                 success: function (msg) {
 
@@ -105,15 +105,15 @@ class Personnage_Supprimer_Validation extends \PageHelper {
                                             Barre_De_Statut("Suppression effectuer");
                                             Icone_Chargement(0);
 
-                                            Ajax("pages/Personnage_Supprimer_Resultat.php?result=Oui");
+                                            Ajax("pages/PersonnageDeleteTerm.php?result=Oui");
 
                                         } else if (Parse_Json.result == "FAIL") {
 
-                                            Ajax("pages/Personnage_Supprimer_Resultat.php?result=" + Parse_Json.reasons);
+                                            Ajax("pages/PersonnageDeleteTerm.php?result=" + Parse_Json.reasons);
 
                                         } else if (Parse_Json.result == "FAIL_OVER") {
 
-                                            Ajax("pages/Personnage_Supprimer_Resultat.php?result=Bad");
+                                            Ajax("pages/PersonnageDeleteTerm.php?result=Bad");
 
                                         } else if (Parse_Json.result == "FAIL_ONE") {
 
@@ -121,7 +121,7 @@ class Personnage_Supprimer_Validation extends \PageHelper {
                                             Icone_Chargement(2);
 
                                         } else if (Parse_Json.result == "FAIL_EXPIRE") {
-                                            Ajax("pages/Personnage_Supprimer_Resultat.php?result=Expire");
+                                            Ajax("pages/PersonnageDeleteTerm.php?result=Expire");
                                         }
 
                                     } catch (e) {
@@ -177,5 +177,5 @@ class Personnage_Supprimer_Validation extends \PageHelper {
 
 }
 
-$class = new Personnage_Supprimer_Validation();
+$class = new PersonnageDeleteVerify();
 $class->run();

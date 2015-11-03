@@ -305,11 +305,11 @@
                 </button>
             <?php } ?>
 
-            <button type="button" data-tooltip="" class="btn btn-flat btn-primary" onclick="Ajax('pages/Personnage_Renommer.php?id_perso=<?php echo $Donnees_Appel_Joueurs_Page->player_id; ?>');">
+            <button type="button" data-tooltip="" class="btn btn-flat btn-primary" onclick="Ajax('pages/MonPersonnage/PersonnageRenameForm.php?id_perso=<?php echo $Donnees_Appel_Joueurs_Page->player_id; ?>');">
                 Renommer
             </button>
 
-            <button type="button" data-tooltip="Supprimer votre personnage" class="btn btn-flat btn-danger" onclick="Ajax('pages/Personnage_Supprimer.php?id_perso=<?php echo $Donnees_Appel_Joueurs_Page->player_id; ?>');">
+            <button type="button" data-tooltip="Supprimer votre personnage" class="btn btn-flat btn-danger" onclick="Ajax('pages/MonPersonnage/PersonnageDeleteForm.php?id_perso=<?php echo $Donnees_Appel_Joueurs_Page->player_id; ?>');">
                 Supprimer
             </button>
         </div>
