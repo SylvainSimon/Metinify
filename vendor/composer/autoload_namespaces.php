@@ -10,5 +10,6 @@ return array(
     'Pimple' => array($vendorDir . '/pimple/pimple/src'),
     'Configula' => array($vendorDir . '/caseyamcl/configula/src'),
     'ComponentInstaller' => array($vendorDir . '/robloach/component-installer/src'),
+    'Carbon' => array($vendorDir . '/nesbot/carbon/src'),
     'Assetic' => array($vendorDir . '/kriswallsmith/assetic/src'),
 );

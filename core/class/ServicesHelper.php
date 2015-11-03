@@ -32,9 +32,7 @@ class ServicesHelper {
         };
 
         $container['pdo'] = function ($container) {
-            
             $config = $container['config'];
-            
             $connexion = new \PDO('' . $config->objInstance->driverbdd . ':host=' . $config->objInstance->hostbdd . ';charset=utf8', $config->objInstance->userbdd, $config->objInstance->passwordbdd);
             return $connexion;
         };

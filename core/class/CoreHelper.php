@@ -21,6 +21,7 @@ class CoreHelper {
             $this->redirectToSSL();
         }
         
+        /* @var $connexion \PDO */
         global $connexion;
         $connexion = $container["pdo"];
         $this->objConnection  = $connexion;

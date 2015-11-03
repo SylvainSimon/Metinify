@@ -1,5 +1,7 @@
 <?php
 
+setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
+
 if (!defined("BASE_ROOT")) {
     define('BASE_ROOT', dirname(__DIR__));
 }

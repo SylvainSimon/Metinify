@@ -10,7 +10,9 @@ class IndexWebsite extends CoreHelper {
         //$this->objConfig;
         //var_dump($this->objSession->get("ID"));
         
-        global $request;
+        //global $request;
+        
+        //$this->objConnection;
         
         ?>
 
