@@ -1,10 +1,10 @@
 <?php
 
-namespace Pages;
+namespace Pages\MonCompte;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
-class Compte_ChangerMail extends \PageHelper {
+class EmailChangeForm extends \PageHelper {
 
     public function run() {
         ?>
@@ -55,7 +55,7 @@ class Compte_ChangerMail extends \PageHelper {
                             Barre_De_Statut("Mail envoyé correctement...");
                             Icone_Chargement(0);
 
-                            Ajax("pages/Compte_ChangerMail_Mail_Envoye.php");
+                            Ajax("pages/MonCompte/EmailChangeSendEmail.php");
                         }
                         else {
 
@@ -73,5 +73,5 @@ class Compte_ChangerMail extends \PageHelper {
 
 }
 
-$class = new Compte_ChangerMail();
+$class = new EmailChangeForm();
 $class->run();

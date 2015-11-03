@@ -17,3 +17,5 @@ $loader->addPrefix('', array(
 ));
 
 $loader->register();
+
+\Carbon\Carbon::setLocale('fr');

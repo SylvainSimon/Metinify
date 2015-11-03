@@ -77,7 +77,7 @@
                             <?php echo $chaineCoupe; ?>
 
 
-                            <i data-tooltip="Modifier mon E-mail" data-tooltip-position="right" onclick="Ajax('pages/Compte_ChangerMail.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
+                            <i data-tooltip="Modifier mon E-mail" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/EmailChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
 
                         </td>
 

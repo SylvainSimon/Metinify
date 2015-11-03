@@ -1,12 +1,13 @@
 <?php
 
-namespace Pages;
+namespace Pages\Classements;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
-class Classement_Joueurs_PvE extends \PageHelper {
+class Classement_Joueurs_PvP extends \PageHelper {
 
     public function run() {
+
 
         $Numero_De_Page = 0;
 
@@ -26,7 +27,7 @@ class Classement_Joueurs_PvE extends \PageHelper {
                              player.level,
                              player.skill_group,
                              player_index.empire,
-			     player.score_pve,
+					 		 player.victimes_pvp,
                              account.id
 
                              FROM player.player
@@ -43,7 +44,7 @@ class Classement_Joueurs_PvE extends \PageHelper {
                              AND ( not (name like '[SGM]%' ))
                              AND player.name NOT IN(SELECT mName FROM common.gmlist)
 
-                             ORDER BY score_pve DESC, level DESC, exp DESC
+                             ORDER BY victimes_pvp DESC, level DESC, exp DESC
                              LIMIT 0,10";
         $Parametres_Classement_Joueur = $this->objConnection->query($Classement_Joueur);
         $Parametres_Classement_Joueur->setFetchMode(\PDO::FETCH_OBJ);
@@ -58,16 +59,14 @@ class Classement_Joueurs_PvE extends \PageHelper {
         $nombredePage = (($Nombre_De_Joueurs / 10) - 1);
         $i = $Numero_De_Page + 1;
         ?>
-
         <div class="box box-default flat">
 
             <div class="box-header">
-                <h3 class="box-title">Classement arène PVE</h3>
+                <h3 class="box-title">Classement map PVP</h3>
 
             </div>
 
             <div class="box-body no-padding">
-
                 <script type="text/javascript">
 
                     function Recherche_Joueurs() {
@@ -77,7 +76,7 @@ class Classement_Joueurs_PvE extends \PageHelper {
 
                         $.ajax({
                             type: "POST",
-                            url: "ajax/Pages_ClassementJoueurs_Recherche_PvE.php",
+                            url: "ajax/Pages_ClassementJoueurs_Recherche.php",
                             data: "recherche=" + $("#SaisieRecherche").val(),
                             success: function (msg) {
 
@@ -104,7 +103,6 @@ class Classement_Joueurs_PvE extends \PageHelper {
                     </div>
                 </div>
 
-
                 <div id="Changement_de_Page">
 
                     <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 5px;"> 
@@ -116,7 +114,7 @@ class Classement_Joueurs_PvE extends \PageHelper {
                                 <th class="hidden-md hidden-sm hidden-xs">Level</th>
                                 <th class="hidden-md hidden-sm hidden-xs">Expérience</th>
                                 <th>Classe</th>
-                                <th>PVE</th>
+                                <th>PVP</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -253,7 +251,7 @@ class Classement_Joueurs_PvE extends \PageHelper {
                                     </td>
 
                                     <td>
-                                        <?php echo $Donnees_Classement_Joueurs->score_pve; ?>
+                                        <?php echo $Donnees_Classement_Joueurs->victimes_pvp; ?>
                                     </td>
 
                                     <td>
@@ -319,5 +317,5 @@ class Classement_Joueurs_PvE extends \PageHelper {
 
 }
 
-$class = new Classement_Joueurs_PvE();
+$class = new Classement_Joueurs_PvP();
 $class->run();

@@ -1,10 +1,10 @@
 <?php
 
-namespace Pages;
+namespace Pages\MonCompte;
 
 require __DIR__ . '../../core/initialize.php';
 
-class Compte_ChangerMail_Confirmation extends \PageHelper {
+class EmailChangeTerm extends \PageHelper {
 
     public function run() {
         ?>
@@ -28,5 +28,5 @@ class Compte_ChangerMail_Confirmation extends \PageHelper {
     }
 
 }
-$class = new Compte_ChangerMail_Confirmation();
+$class = new EmailChangeTerm();
 $class->run();

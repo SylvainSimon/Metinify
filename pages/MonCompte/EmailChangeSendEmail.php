@@ -4,7 +4,7 @@ namespace Pages;
 
 require __DIR__ . '../../core/initialize.php';
 
-class Compte_ChangerMail_Mail_Envoye extends \PageHelper {
+class EmailChangeSendEmail extends \PageHelper {
 
     public function run() {
         ?>
@@ -55,7 +55,7 @@ class Compte_ChangerMail_Mail_Envoye extends \PageHelper {
 
                         if (msg == 1) {
 
-                            Ajax("pages/Compte_ChangerMail_Nouveau_Mail.php");
+                            Ajax("pages/MonCompte/EmailChangeSubmitEmail.php");
                         }
                         else {
 
@@ -73,5 +73,5 @@ class Compte_ChangerMail_Mail_Envoye extends \PageHelper {
 
 }
 
-$class = new Compte_ChangerMail_Mail_Envoye();
+$class = new EmailChangeSendEmail();
 $class->run();

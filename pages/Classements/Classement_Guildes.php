@@ -1,8 +1,8 @@
 <?php
 
-namespace Pages;
+namespace Pages\Classements;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
 class Classement_Guildes extends \PageHelper {
 
