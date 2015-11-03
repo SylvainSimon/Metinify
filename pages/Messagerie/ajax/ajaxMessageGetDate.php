@@ -1,15 +1,15 @@
 <?php
 
-namespace Includes;
+namespace Pages\Messagerie\Ajax;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class SQL_Recuperation_Date_Vue extends \PageHelper {
+class ajaxMessageGetDate extends \PageHelper {
 
     public function run() {
 
 ?>
-        <?php include '../../pages/Fonctions_Utiles.php'; ?>
+        <?php include __DIR__ . '../../../../pages/Fonctions_Utiles.php'; ?>
         <?php
 
         $ID_Message = $_POST['id'];
@@ -25,10 +25,10 @@ class SQL_Recuperation_Date_Vue extends \PageHelper {
         $Donnees_Recuperation_Date = $Parametres_Recuperation_Date->fetch();
         /* -------------------------------------------------------------------------- */
 
-        echo Formatage_Date_Vue($Donnees_Recuperation_Date->date_vue);
+        echo Formatage_Date($Donnees_Recuperation_Date->date);
     }
 
 }
 
-$class = new SQL_Recuperation_Date_Vue();
+$class = new ajaxMessageGetDate();
 $class->run();

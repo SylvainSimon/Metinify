@@ -1,10 +1,10 @@
 <?php
 
-namespace Includes;
+namespace Pages\Messagerie\Ajax;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class SQL_Definition_Pseudo_Messagerie extends \PageHelper {
+class ajaxPseudoCreate extends \PageHelper {
 
     public function run() {
 
@@ -30,5 +30,5 @@ class SQL_Definition_Pseudo_Messagerie extends \PageHelper {
 
 }
 
-$class = new SQL_Definition_Pseudo_Messagerie();
+$class = new ajaxPseudoCreate();
 $class->run();

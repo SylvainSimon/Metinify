@@ -1,10 +1,10 @@
 <?php
 
-namespace Includes;
+namespace Pages\Messagerie\Ajax;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class SQL_Archivage_Fil extends \PageHelper {
+class ajaxDiscussionArchivage extends \PageHelper {
 
     public function run() {
 
@@ -73,5 +73,5 @@ class SQL_Archivage_Fil extends \PageHelper {
 
 }
 
-$class = new SQL_Archivage_Fil();
+$class = new ajaxDiscussionArchivage();
 $class->run();

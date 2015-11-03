@@ -35,7 +35,7 @@ function verifPseudo()
         UtilisateurSyntax = 1;
     }
 
-    else if(texte = RequeteAJAX('VerifPseudoMessagerie.php?pseudo='+escape(pseudo)))
+    else if(texte = RequeteAJAX('pages/Messagerie/ajax/ajaxVerificationPseudo.php?pseudo='+escape(pseudo)))
     {  
         if(texte == 1){
             document.getElementById('ReponseDuTestPseudo').innerHTML = "<font color=\"#FD130B\">Nom d'utilisateur déjà utilisé.</font>";
@@ -80,7 +80,7 @@ function VerificationFormulairePseudo() {
         						 
         $.ajax({
             type: "POST",
-            url: "SQL_Definition_Pseudo_Messagerie.php",
+            url: "pages/Messagerie/ajax/ajaxPseudoCreate.php",
             data: "Pseudo="+$("#SaisiePseudo").val(),
             success: function(msg){
                 if(msg==1){

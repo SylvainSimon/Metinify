@@ -1,10 +1,10 @@
 <?php
 
-namespace Includes;
+namespace Pages\Messagerie\Ajax;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class VerifPseudoMessagerie extends \PageHelper {
+class ajaxVerificationPseudo extends \PageHelper {
 
     public function run() {
 
@@ -32,5 +32,5 @@ class VerifPseudoMessagerie extends \PageHelper {
 
 }
 
-$class = new VerifPseudoMessagerie();
+$class = new ajaxVerificationPseudo();
 $class->run();

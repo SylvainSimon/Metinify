@@ -1,10 +1,10 @@
 <?php
 
-namespace Includes;
+namespace Pages\Messagerie\Ajax;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class SQL_Assignation_Ticket extends \PageHelper {
+class ajaxDiscussionAssign extends \PageHelper {
 
     public function run() {
 
@@ -59,5 +59,5 @@ class SQL_Assignation_Ticket extends \PageHelper {
 
 }
 
-$class = new SQL_Assignation_Ticket();
+$class = new ajaxDiscussionAssign();
 $class->run();

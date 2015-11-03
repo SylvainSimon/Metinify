@@ -1,6 +1,6 @@
 <?php
 
-namespace Includes;
+namespace pages\Messagerie;
 
 require __DIR__ . '../../../core/initialize.php';
 
@@ -110,7 +110,7 @@ class Messagerie_Creer_Ticket_Support extends \PageHelper {
                 $_SESSION['Tableau_Mots_Bannis'] = $Tableau_Mots_Bannis;
                 ?>
 
-                <script type="text/javascript" src="Controle_Nouveau_Ticket.js"></script>
+                <script type="text/javascript" src="js/Controle_Nouveau_Ticket.js"></script>
                 <form type="POST" action="javascript:void(0)" id="Formulaire_Nouveau_Ticket">
 
                     <table class="Tableau_Creation_Ticket">
@@ -219,7 +219,7 @@ class Messagerie_Creer_Ticket_Support extends \PageHelper {
 
                 $.ajax({
                     type: "POST",
-                    url: "Verification_Mots_Bannies.php",
+                    url: "ajax/ajaxVerificationBadWord.php",
                     data: "Message_Texte=" + montexte,
                     success: function (msg) {
 

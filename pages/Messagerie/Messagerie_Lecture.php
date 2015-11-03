@@ -1,6 +1,6 @@
 <?php
 
-namespace Includes;
+namespace pages\Messagerie;
 
 require __DIR__ . '../../../core/initialize.php';
 
@@ -140,13 +140,13 @@ class Messagerie_Lecture extends \PageHelper {
                                     if (isVisible) {
                                         $.ajax({
                                             type: "POST",
-                                            url: "SQL_Actualiser_Vue.php",
+                                            url: "ajax/ajaxMessageIsView.php",
                                             data: "etat=NonVue&id=" + this.id,
                                             success: function (etat) {
 
                                                 $.ajax({
                                                     type: "POST",
-                                                    url: "SQL_Recuperation_Date_Vue.php",
+                                                    url: "ajax/ajaxMessageGetDateView.php",
                                                     data: "id=<?php echo $Donnees_Recuperation_Fil->id; ?>",
                                                     success: function (date) {
 
@@ -244,7 +244,7 @@ class Messagerie_Lecture extends \PageHelper {
 
                         $.ajax({
                             type: "POST",
-                            url: "SQL_Suppression_Message.php",
+                            url: "ajax/ajaxMessageDelete.php",
                             data: "id_message=" + $("#Id_Tempo_Message").val(),
                             success: function (msg) {
 
@@ -275,7 +275,7 @@ class Messagerie_Lecture extends \PageHelper {
 
                         $.ajax({
                             type: "POST",
-                            url: "SQL_Archivage_Fil.php",
+                            url: "ajax/ajaxDiscussionArchivage.php",
                             data: "id=" + $("#Id_Tempo_Message2").val(),
                             success: function (msg) {
 
@@ -352,7 +352,7 @@ class Messagerie_Lecture extends \PageHelper {
 
                             $.ajax({
                                 type: "POST",
-                                url: "SQL_Envoie_Reponse.php",
+                                url: "ajax/ajaxMessageAdd.php",
                                 data: "ID_Emmeteur=" + ID_Emmeteur + "&ID_Recepteur=" + ID_Recepteur + "&Num_Discussion=" + Num_Discussion + "&Objet_Message=" + Objet_Message + "&Type_message=" + Type_message + "&Contenue_message=" + $("#Contenue_Reponse_Ticket").val(),
                                 success: function (msg) {
 
@@ -368,7 +368,7 @@ class Messagerie_Lecture extends \PageHelper {
 
                                     $.ajax({
                                         type: "POST",
-                                        url: "SQL_Recuperation_Date.php",
+                                        url: "ajax/ajaxMessageGetDate.php",
                                         data: "id=" + msg,
                                         success: function (date) {
 

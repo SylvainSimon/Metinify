@@ -1,1 +1,0 @@
-<?php header('location: http://forum.vamosmt2.org/forum/ '); ?>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Includes;
+namespace pages\Messagerie;
 
 require __DIR__ . '../../../core/initialize.php';
 

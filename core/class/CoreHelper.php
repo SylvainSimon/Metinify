@@ -7,8 +7,6 @@ class CoreHelper {
     public $objSession;
 
     public function __construct() {
-
-        include BASE_ROOT . '/configPDO.php';
         
         $service = new ServicesHelper();
         $container = $service->container;

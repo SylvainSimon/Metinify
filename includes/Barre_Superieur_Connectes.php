@@ -51,7 +51,7 @@ class Barre_Superieur_Connectes extends \PageHelper {
 
             <div class="pull-right">
 
-                <?php include 'Messagerie/Messagerie_Notifications.php'; ?>
+                <?php include BASE_ROOT . '/pages/Messagerie/includes/Messagerie_Notifications.php'; ?>
 
                 <i data-tooltip="Activer/Désactiver le son" data-tooltip-position='left' style="top: 7px; position: relative; margin-left: 7px;" id="Icone_Sons" class="" onclick="Clique_Bouton_Sons()"></i>
                 <script type="text/javascript">

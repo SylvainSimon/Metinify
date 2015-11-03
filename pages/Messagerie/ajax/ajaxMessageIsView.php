@@ -1,10 +1,10 @@
 <?php
 
-namespace Includes;
+namespace Pages\Messagerie\Ajax;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class SQL_Actualiser_Vue extends \PageHelper {
+class ajaxMessageIsView extends \PageHelper {
 
     public function run() {
 
@@ -29,5 +29,5 @@ class SQL_Actualiser_Vue extends \PageHelper {
 
 }
 
-$class = new SQL_Actualiser_Vue();
+$class = new ajaxMessageIsView();
 $class->run();

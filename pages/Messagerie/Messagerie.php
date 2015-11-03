@@ -1,18 +1,12 @@
 <?php
 
-namespace Includes;
+namespace pages\Messagerie;
 
 require __DIR__ . '../../../core/initialize.php';
 
 class Messagerie extends \PageHelper {
 
     public function run() {
-
-        if (empty($_SESSION['ID'])) {
-
-            echo "Vous n'êtes pas connecté";
-            exit();
-        }
 
         /* ------------------------ Vérification Compte ---------------------------- */
         $Verification_Compte = "SELECT id 
@@ -125,7 +119,7 @@ class Messagerie extends \PageHelper {
                         <div class="Zone_De_Definition_Pseudo">
 
                             <span class="Titre_Definition_Pseudo">Veuillez définir votre pseudo messagerie</span>
-                            <script type="text/javascript" src="Controle_Pseudo_Messagerie.js"></script>
+                            <script type="text/javascript" src="js/Controle_Pseudo_Messagerie.js"></script>
                             <form action="javascript:void(0)" id="FormInscription" name="FormPseudoMessagerie" method="POST">
 
                                 <table id="Table_Definition_Pseudo">

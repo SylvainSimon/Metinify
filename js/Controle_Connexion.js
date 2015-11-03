@@ -31,7 +31,7 @@ $(document).ready(function () {
 
                         document.getElementById('Menu_Support2').style.display = 'none';
                         document.getElementById('Menu_Support').style.display = 'inline';
-                        document.getElementById('Lien_Support').href = "includes/Messagerie/Messagerie.php";
+                        document.getElementById('Lien_Support').href = "pages/Messagerie/Messagerie.php";
 
                         document.getElementById('Menu_Telechargement_Equipe2').style.display = 'none';
                         document.getElementById('Menu_Telechargement_Equipe').style.display = 'inline';

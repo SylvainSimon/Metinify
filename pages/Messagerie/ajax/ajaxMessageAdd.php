@@ -1,10 +1,10 @@
 <?php
 
-namespace Includes;
+namespace Pages\Messagerie\Ajax;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class SQL_Envoie_Reponse extends \PageHelper {
+class ajaxMessageAdd extends \PageHelper {
 
     public function run() {
 
@@ -37,5 +37,5 @@ class SQL_Envoie_Reponse extends \PageHelper {
 
 }
 
-$class = new SQL_Envoie_Reponse();
+$class = new ajaxMessageAdd();
 $class->run();

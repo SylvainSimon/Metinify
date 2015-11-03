@@ -48,7 +48,7 @@
             <li id="Menu_Support2"><a href="javascript:void(0)" onclick="Ajax('pages/Contacts.php')">Support</a></li>
             <li id="Menu_Support" style="display: none;"><a id="Lien_Support" href="" class="fancybox_Messagerie" data-fancybox-type="iframe">Support</a></li>
         <?php } else { ?>
-            <li id="Menu_Support"><a href="includes/Messagerie/Messagerie.php" id="Lien_Support" class="fancybox_Messagerie" data-fancybox-type="iframe">Support</a></li>
+            <li id="Menu_Support"><a href="pages/Messagerie/Messagerie.php" id="Lien_Support" class="fancybox_Messagerie" data-fancybox-type="iframe">Support</a></li>
             <li id="Menu_Support2" style="display: none;"><a href="javascript:void(0)" onclick="Ajax('pages/Contacts.php');">Support</a></li>
             <?php } ?>
     </ul>

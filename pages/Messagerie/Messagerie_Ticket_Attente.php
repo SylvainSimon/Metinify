@@ -1,6 +1,6 @@
 <?php
 
-namespace Includes;
+namespace pages\Messagerie;
 
 require __DIR__ . '../../../core/initialize.php';
 
@@ -48,7 +48,7 @@ class Messagerie_Ticket_Attente extends \PageHelper {
 
                 $.ajax({
                     type: "POST",
-                    url: "SQL_Assignation_Ticket.php",
+                    url: "ajax/ajaxDiscussionAssign.php",
                     data: "Numero_Discussion=" + numero_discussion,
                     success: function (msg) {
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace Includes;
+namespace Pages\Messagerie\Ajax;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class SQL_Suppression_Message extends \PageHelper {
+class ajaxMessageDelete extends \PageHelper {
 
     public function run() {
 
@@ -40,5 +40,5 @@ class SQL_Suppression_Message extends \PageHelper {
 
 }
 
-$class = new SQL_Suppression_Message();
+$class = new ajaxMessageDelete();
 $class->run();

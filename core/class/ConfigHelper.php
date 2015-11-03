@@ -9,7 +9,7 @@ class ConfigHelper {
      * @return Configula\Config
      */
     public function __construct() {
-        $this->objInstance = new Configula\Config(BASE_ROOT . "/config/");
+        $this->objInstance = new Configula\Config(BASE_ROOT . "/core/config/");
     }
 
 }

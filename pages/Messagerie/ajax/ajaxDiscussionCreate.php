@@ -1,10 +1,10 @@
 <?php
 
-namespace Includes;
+namespace Pages\Messagerie\Ajax;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class SQL_Insertion_Nouveau_Ticket extends \PageHelper {
+class ajaxDiscussionCreate extends \PageHelper {
 
     public function run() {
 
@@ -29,5 +29,5 @@ class SQL_Insertion_Nouveau_Ticket extends \PageHelper {
 
 }
 
-$class = new SQL_Insertion_Nouveau_Ticket();
+$class = new ajaxDiscussionCreate();
 $class->run();
