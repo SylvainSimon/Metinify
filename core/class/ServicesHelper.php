@@ -13,7 +13,7 @@ class ServicesHelper {
                 
         $container['session'] = function ($container) {
             $session = new Session();
-            if (!@session_start()) {
+            if (session_id() == '') {
                 $session->start();
                 $session->replace($_SESSION);
             }

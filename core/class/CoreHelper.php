@@ -13,16 +13,16 @@ class CoreHelper {
         $instanceConfig = new ConfigHelper();
         $this->objConfig = $instanceConfig->objInstance;
 
-        $this->objConnection = new PDO(''.$this->objConfig->driverbdd.':host=' . $this->objConfig->hostbdd . ';charset=utf8', $this->objConfig->userbdd, $this->objConfig->passwordbdd);
-        
+        if (!$this->objConfig->requiredSSL) {
+            $this->redirectToSSL();
+        }
+
+        $this->objConnection = new PDO('' . $this->objConfig->driverbdd . ':host=' . $this->objConfig->hostbdd . ';charset=utf8', $this->objConfig->userbdd, $this->objConfig->passwordbdd);
+
         $service = new ServicesHelper();
         $container = $service->container;
         $session = $container["session"];
         $this->objSession = $session;
-
-        if (!$this->objConfig->requiredSSL) {
-            $this->redirectToSSL();
-        }
     }
 
     public function redirectToSSL() {
