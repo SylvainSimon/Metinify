@@ -57,74 +57,74 @@ class Inventaire_Infos_Item extends \PageHelper {
 
         /* ------------------------------------------------------------------------------------ */
 
-        $Nom_Item = "<span class='Couleur_Nom_Item'>" . utf8_encode($Resultat_Chercher_Infos->locale_name) . "</span>";
+        $Nom_Item = "<span class='text-yellow'>" . utf8_encode($Resultat_Chercher_Infos->locale_name) . "</span>";
         $Level_Minimum = "<span class='Couleur_Level_Item'>Level : " . htmlentities($Resultat_Chercher_Infos->limitvalue0) . "</span>";
 
         $Bonus_De_Base_1 = $Resultat_Chercher_Infos->applytype0;
         if ($Resultat_Chercher_Infos->applyvalue0 < 0) {
-            $Valeur_Bonus_De_Base_1 = "<span class='Couleur_Malus_Item'>" . $Bonus_Item[$Bonus_De_Base_1] . " : " . htmlentities($Resultat_Chercher_Infos->applyvalue0) . "</span>";
+            $Valeur_Bonus_De_Base_1 = "<span class='text-red'>" . $Bonus_Item[$Bonus_De_Base_1] . " : " . htmlentities($Resultat_Chercher_Infos->applyvalue0) . "</span>";
         } else {
-            $Valeur_Bonus_De_Base_1 = "<span class='Couleur_Bonus_Item'>" . $Bonus_Item[$Bonus_De_Base_1] . " : " . htmlentities($Resultat_Chercher_Infos->applyvalue0) . "</span>";
+            $Valeur_Bonus_De_Base_1 = "<span class='text-green'>" . $Bonus_Item[$Bonus_De_Base_1] . " : " . htmlentities($Resultat_Chercher_Infos->applyvalue0) . "</span>";
         }
 
         $Bonus_De_Base_2 = $Resultat_Chercher_Infos->applytype1;
         if ($Resultat_Chercher_Infos->applyvalue1 < 0) {
-            $Valeur_Bonus_De_Base_2 = "<span class='Couleur_Malus_Item'>" . $Bonus_Item[$Bonus_De_Base_2] . " : " . htmlentities($Resultat_Chercher_Infos->applyvalue1) . "</span>";
+            $Valeur_Bonus_De_Base_2 = "<span class='text-red'>" . $Bonus_Item[$Bonus_De_Base_2] . " : " . htmlentities($Resultat_Chercher_Infos->applyvalue1) . "</span>";
         } else {
-            $Valeur_Bonus_De_Base_2 = "<span class='Couleur_Bonus_Item'>" . $Bonus_Item[$Bonus_De_Base_2] . " : " . htmlentities($Resultat_Chercher_Infos->applyvalue1) . "</span>";
+            $Valeur_Bonus_De_Base_2 = "<span class='text-green'>" . $Bonus_Item[$Bonus_De_Base_2] . " : " . htmlentities($Resultat_Chercher_Infos->applyvalue1) . "</span>";
         }
 
         $Bonus_De_Base_3 = $Resultat_Chercher_Infos->applytype2;
         if ($Resultat_Chercher_Infos->applyvalue2 < 0) {
-            $Valeur_Bonus_De_Base_3 = "<span class='Couleur_Malus_Item'>" . $Bonus_Item[$Bonus_De_Base_3] . " : " . htmlentities($Resultat_Chercher_Infos->applyvalue2) . "</span>";
+            $Valeur_Bonus_De_Base_3 = "<span class='text-red'>" . $Bonus_Item[$Bonus_De_Base_3] . " : " . htmlentities($Resultat_Chercher_Infos->applyvalue2) . "</span>";
         } else {
-            $Valeur_Bonus_De_Base_3 = "<span class='Couleur_Bonus_Item'>" . $Bonus_Item[$Bonus_De_Base_3] . " : " . htmlentities($Resultat_Chercher_Infos->applyvalue2) . "</span>";
+            $Valeur_Bonus_De_Base_3 = "<span class='text-green'>" . $Bonus_Item[$Bonus_De_Base_3] . " : " . htmlentities($Resultat_Chercher_Infos->applyvalue2) . "</span>";
         }
 
         $Bonus_Ajouter_1 = $Resultat_Chercher_Infos->attrtype0;
         if ($Resultat_Chercher_Infos->attrvalue0 < 0) {
-            $Valeur_Bonus_Ajouter_1 = "<span class='Couleur_Malus_Item'>" . $Bonus_Item[$Bonus_Ajouter_1] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue0) . "</span>";
+            $Valeur_Bonus_Ajouter_1 = "<span class='text-red'>" . $Bonus_Item[$Bonus_Ajouter_1] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue0) . "</span>";
         } else {
-            $Valeur_Bonus_Ajouter_1 = "<span class='Couleur_Bonus_Item'>" . $Bonus_Item[$Bonus_Ajouter_1] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue0) . "</span>";
+            $Valeur_Bonus_Ajouter_1 = "<span class='text-green'>" . $Bonus_Item[$Bonus_Ajouter_1] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue0) . "</span>";
         }
 
         $Bonus_Ajouter_2 = $Resultat_Chercher_Infos->attrtype1;
         if ($Resultat_Chercher_Infos->attrvalue1 < 0) {
-            $Valeur_Bonus_Ajouter_2 = "<span class='Couleur_Malus_Item'>" . $Bonus_Item[$Bonus_Ajouter_2] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue1) . "</span>";
+            $Valeur_Bonus_Ajouter_2 = "<span class='text-red'>" . $Bonus_Item[$Bonus_Ajouter_2] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue1) . "</span>";
         } else {
-            $Valeur_Bonus_Ajouter_2 = "<span class='Couleur_Bonus_Item'>" . $Bonus_Item[$Bonus_Ajouter_2] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue1) . "</span>";
+            $Valeur_Bonus_Ajouter_2 = "<span class='text-green'>" . $Bonus_Item[$Bonus_Ajouter_2] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue1) . "</span>";
         }
 
         $Bonus_Ajouter_3 = $Resultat_Chercher_Infos->attrtype2;
         if ($Resultat_Chercher_Infos->attrvalue2 < 0) {
-            $Valeur_Bonus_Ajouter_3 = "<span class='Couleur_Malus_Item'>" . $Bonus_Item[$Bonus_Ajouter_3] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue2) . "</span>";
+            $Valeur_Bonus_Ajouter_3 = "<span class='text-red'>" . $Bonus_Item[$Bonus_Ajouter_3] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue2) . "</span>";
         } else {
-            $Valeur_Bonus_Ajouter_3 = "<span class='Couleur_Bonus_Item'>" . $Bonus_Item[$Bonus_Ajouter_3] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue2) . "</span>";
+            $Valeur_Bonus_Ajouter_3 = "<span class='text-green'>" . $Bonus_Item[$Bonus_Ajouter_3] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue2) . "</span>";
         }
 
         $Bonus_Ajouter_4 = $Resultat_Chercher_Infos->attrtype3;
         if ($Resultat_Chercher_Infos->attrvalue3 < 0) {
-            $Valeur_Bonus_Ajouter_4 = "<span class='Couleur_Malus_Item'>" . $Bonus_Item[$Bonus_Ajouter_4] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue3) . "</span>";
+            $Valeur_Bonus_Ajouter_4 = "<span class='text-red'>" . $Bonus_Item[$Bonus_Ajouter_4] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue3) . "</span>";
         } else {
-            $Valeur_Bonus_Ajouter_4 = "<span class='Couleur_Bonus_Item'>" . $Bonus_Item[$Bonus_Ajouter_4] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue3) . "</span>";
+            $Valeur_Bonus_Ajouter_4 = "<span class='text-green'>" . $Bonus_Item[$Bonus_Ajouter_4] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue3) . "</span>";
         }
         $Bonus_Ajouter_5 = $Resultat_Chercher_Infos->attrtype4;
         if ($Resultat_Chercher_Infos->attrvalue4 < 0) {
-            $Valeur_Bonus_Ajouter_5 = "<span class='Couleur_Malus_Item'>" . $Bonus_Item[$Bonus_Ajouter_5] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue4) . "</span>";
+            $Valeur_Bonus_Ajouter_5 = "<span class='text-red'>" . $Bonus_Item[$Bonus_Ajouter_5] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue4) . "</span>";
         } else {
-            $Valeur_Bonus_Ajouter_5 = "<span class='Couleur_Bonus_Item'>" . $Bonus_Item[$Bonus_Ajouter_5] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue4) . "</span>";
+            $Valeur_Bonus_Ajouter_5 = "<span class='text-green'>" . $Bonus_Item[$Bonus_Ajouter_5] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue4) . "</span>";
         }
         $Bonus_Ajouter_6 = $Resultat_Chercher_Infos->attrtype5;
         if ($Resultat_Chercher_Infos->attrvalue5 < 0) {
-            $Valeur_Bonus_Ajouter_6 = "<span class='Couleur_Malus_Item'>" . $Bonus_Item[$Bonus_Ajouter_6] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue5) . "</span>";
+            $Valeur_Bonus_Ajouter_6 = "<span class='text-red'>" . $Bonus_Item[$Bonus_Ajouter_6] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue5) . "</span>";
         } else {
-            $Valeur_Bonus_Ajouter_6 = "<span class='Couleur_Bonus_Item'>" . $Bonus_Item[$Bonus_Ajouter_6] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue5) . "</span>";
+            $Valeur_Bonus_Ajouter_6 = "<span class='text-green'>" . $Bonus_Item[$Bonus_Ajouter_6] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue5) . "</span>";
         }
         $Bonus_Ajouter_7 = $Resultat_Chercher_Infos->attrtype6;
         if ($Resultat_Chercher_Infos->attrvalue6 < 0) {
-            $Valeur_Bonus_Ajouter_7 = "<span class='Couleur_Malus_Item'>" . $Bonus_Item[$Bonus_Ajouter_7] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue6) . "</span>";
+            $Valeur_Bonus_Ajouter_7 = "<span class='text-red'>" . $Bonus_Item[$Bonus_Ajouter_7] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue6) . "</span>";
         } else {
-            $Valeur_Bonus_Ajouter_7 = "<span class='Couleur_Bonus_Item'>" . $Bonus_Item[$Bonus_Ajouter_7] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue6) . "</span>";
+            $Valeur_Bonus_Ajouter_7 = "<span class='text-green'>" . $Bonus_Item[$Bonus_Ajouter_7] . " : " . htmlentities($Resultat_Chercher_Infos->attrvalue6) . "</span>";
         }
         ?>
 

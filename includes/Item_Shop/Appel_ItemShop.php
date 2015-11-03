@@ -11,7 +11,7 @@ class Appel_ItemShop extends \PageHelper {
 
         <?php if (empty($_SESSION["ID"])) { ?>
 
-            <span class="Texte_Blanc_Bold_Shadow">Veuillez vous reconnecter pour accéder à cette page</span>
+            <span>Veuillez vous reconnecter pour accéder à cette page</span>
 
         <?php } else { ?>
             <?php

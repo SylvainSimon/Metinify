@@ -1,35 +1,3 @@
-.Texte_Blanc_Bold_Shadow{color: white; font-weight: bold; text-shadow: 1px 0 3px black;}
-
-#ItemShop_Partie_Haute{
-
-    background: url('../images/item_shop/item_shop_haut.png');
-    width: 100%;
-    height: 60px;
-    border-bottom: 1px solid grey;
-}
-
-.Titre_Fenetre_Item_Shop{
-
-    position: relative;
-    top:14px;
-    left:24px;
-    font: bold 25px Arial, Helvetica, sans-serif;
-    color: white;
-}
-
-.Bouton_Fermer_Fenetre{
-    position: absolute;
-    top:11px;
-    right: 14px;
-    width: 38px;
-    height: 38px;
-    background: url('../images/icones/fermer.png') no-repeat;
-    opacity: .8;
-}
-.Bouton_Fermer_Fenetre:hover{opacity: 1;}
-.Bouton_Fermer_Fenetre:active{opacity: .9;}
-
-
 .Article_IS{
     position: relative; 
     padding: 5px; 
@@ -55,44 +23,24 @@
 }
 
 .Prix_Article{
-
     position: absolute;
     bottom: 0px;
 }
 
 .Position_Label_Prix{
-
     position: relative;
     float: left;
     width: 35px;
     left:4px;
     top:1px;
 }
-.Position_Prix{
-
-
-}
 
 .Icone_Piece{
-
     position: relative;
     float: right;
     width: 16px;
     height: 16px;
     left:18px;
-}
-.Icone_Article{
-
-}
-
-.Description_Article{
-
-
-}
-
-.Detail_Article{
-
-
 }
 
 
@@ -127,260 +75,9 @@
 
 /* --------------------- Detail items --------------------- */
 
-#Detail_Item_Titre{
-
-    width: 100%;
-    height: 23px;
-    background: url('../images/item_shop/item_shop_haut.png');
-    border-bottom: 1px solid grey;
-    text-align: center;
-    font: bold 12px Arial, Helvetica, sans-serif;
-    color: white;
-    padding-top: 7px;
-}
-
-.Detail_Item_Icone{
-
-    background: url('../images/menusecondaire_bg.png');
-    position: relative;
-    width: 70px;
-    height: 90px;
-    border: 1px solid grey;
-    left:20px;
-    top:25px;
-}
-
-.Detail_Item_Description{
-
-    position: absolute;
-    top:56px;
-    left:110px;
-    width: 352px;
-    height: 150px;
-    border: 1px solid grey;
-    text-shadow: 1px 0 3px black;
-    color: white;
-    font-size: 13px;
-    padding-top: 3px;
-    padding-right: 5px;
-    padding-left: 5px;
-
-    background: url('../images/menusecondaire_bg.png');
-}
-
-.Barre_Choix_Quantité{
-
-    position: absolute;
-    top: 240px;
-    height: 30px;
-    width: 100%;
-
-    border-top: 1px solid grey;
-    border-bottom: 1px solid grey;
-    background: url('../images/menusecondaire_bg.png');
-    box-shadow: inset 0 0 5ps 1px black;
-
-}
-
-.Rappel_Prix_Unité{
-
-}
-
 .Image_Piece_Detail_Item{
     position: relative;
     top:-2px;
-}
-
-.Barre_Choix_Quantité select{
-
-    position: absolute;
-    top:3px;
-    left:170px;
-    width: 140px;
-    background: #444444;
-    color: white;
-    border: 1px solid grey;
-}
-
-.Bouton_Valider_Achat{
-
-    position: absolute;
-    top:4px;
-    left:352px;
-    width: 130px;
-    height: 20px;
-    background: #555555;
-    border: 1px solid grey;
-    border-radius: 10px;
-    color: white;
-    text-shadow: 1px 0 3px black;
-    font-weight: bold;
-    text-align: center;
-    font-size: 13px;
-    box-shadow: inset 0 0 4px 1px grey;
-    cursor: pointer;
-    line-height: 20px;
-
-}
-.Bouton_Valider_Achat:active{
-
-    box-shadow: inset 0 0 5px 1px black;
-}
-
-.Texte_Achat_Termine{
-
-    position: relative;
-    top:20px;
-    width: 90%;
-    margin: 0 auto 0 auto;
-    height: 102px;
-    border: 1px solid grey;
-    font-size: 14px;
-    background: #111111;
-    color: white;
-    padding: 5px;
-
-}
-
-
-.Titre_Bouton_Recharger{
-
-    position: absolute;
-    background:url('../images/bg_fonction.png');
-    top:13px;
-    width: 180px;
-    height: 20px;
-    text-align: center;
-    right: 100px;
-    border: 1px solid grey;
-    font-size: 14px;
-    color: #DDDDDD;
-    font-weight: bold;
-    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
-
-    padding: 6px; 
-    text-decoration: none;
-
-}
-
-.Titre_Bouton_Recharger:hover{
-
-    box-shadow: none;
-    cursor: pointer;
-}
-
-.Titre_Bouton_Recharger:active{
-
-    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
-}
-
-/* ---------------------- Item SHOP ------------------------- */
-
-#Rechargement_Titre_Allopass{
-
-    width: 100%;
-    height: 30px;
-    background: url('../images/item_shop/item_shop_haut.png');
-    border-bottom: 1px solid grey;
-    line-height: 30px;
-    text-align: center;
-    font-weight: bold;
-    color: white;
-}
-
-#Rechargement_Titre_Paypal{
-
-    position: absolute;
-    width: 100%;
-    height: 30px;
-    background: url('../images/item_shop/item_shop_haut.png');
-    border-bottom: 1px solid grey;
-    line-height: 30px;
-    text-align: center;
-    font-weight: bold;
-    color: white;
-    top:201px;
-}
-
-.Choix_Rechargement{
-
-    width: 100%;
-
-}
-
-.Position_Rechargement_Allopass{
-
-    position: absolute;
-    top:120px;
-    width: 100%;
-    height: 80px;
-    margin: 0 auto 0 auto;
-    border-bottom: 1px solid grey;
-}
-
-.Position_Rechargement_Paypal {
-
-    position: absolute;
-    top:374px;
-    width: 100%;
-    height: 80px;
-    margin: 0 auto 0 auto;
-    border-bottom: 1px solid grey;
-
-}
-
-.Bouton_Paypal{
-    background:url('../images/bg_fonction.png');
-    width: 185px;
-    height: 30px;
-    text-align: center;
-    right: 100px;
-    border: 1px solid grey;
-    font-size: 14px;
-    color: #DDDDDD;
-    font-weight: bold;
-    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
-
-    padding: 6px; 
-    text-decoration: none;
-}
-
-.Bouton_Paypal:hover{
-
-    box-shadow: none;
-    cursor: pointer;
-}
-
-.Bouton_Paypal:active{
-
-    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
-}
-
-#Bouton_Acheter_5000{
-    position: absolute;
-    top:-127px;
-    right: 15px;
-}
-#Bouton_Acheter_20000{
-    position: absolute;
-    top:-87px;
-    right: 15px;
-}
-#Bouton_Acheter_50000{
-    position: absolute;
-    top:-47px;
-    right: 15px;
-}
-
-.Position_Rechargement_Paypal input{
-
-    user-select:all;
-}
-
-#Position_Bouton_Allopass{
-    position: absolute;
-    right: 15px;
-    top:-74px;
 }
 
 #Rechargement_Resultat_Titre{
@@ -423,43 +120,4 @@
     top:5px;
     left:5px;
 
-}
-
-.Description_Rechargement_Paypal{
-
-    background: #AAAAAA;
-    width: 285px;
-    height: 192px;
-    border: 1px solid grey;
-    background: url('../images/bg_fonction.png');
-}
-
-#Description_Paypal{
-
-    position: absolute;
-    top:-128px;
-    left:15px;
-}
-
-.Description_Rechargement_Allopass{
-
-    width: 285px;
-    height: 139px;
-    border: 1px solid grey;
-    background: url('../images/bg_fonction.png');
-}
-
-#Description_Allopass{
-
-    position: absolute;
-    top:-75px;
-    left:15px;
-}
-
-.Texte_Rechargement{
-
-    color: #DDDDDD;
-    padding-top: 3px;
-    padding-left: 7px;
-    padding-right: 7px;
 }
