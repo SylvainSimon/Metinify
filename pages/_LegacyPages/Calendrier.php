@@ -2,12 +2,13 @@
 
 namespace Pages;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
 class Calendrier extends \PageHelper {
 
     public function run() {
-        include 'Fonctions_Utiles.php';
+
+        include __DIR__ . '../../Fonctions_Utiles.php';
         ?>
         <div class="box box-default flat">
 
@@ -20,7 +21,7 @@ class Calendrier extends \PageHelper {
             </div>
 
         </div>
-    <?php
+        <?php
     }
 
 }

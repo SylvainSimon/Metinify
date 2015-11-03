@@ -161,7 +161,7 @@ class Personnage_Supprimer_Validation extends \PageHelper {
                         Pour revenir à l'accueil, merci de cliquer sur le bouton "Accueil".<br/>
                         <hr class="Hr_Bas">
 
-                        <input type="button" class="Bouton_Annuler_Changer_Email_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
+                        <input type="button" class="Bouton_Annuler_Changer_Email_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/_LegacyPages/Accueil.php');" />
 
                     </div>
 

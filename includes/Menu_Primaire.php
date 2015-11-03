@@ -1,7 +1,7 @@
 <nav id="mainnav">
     <ul class="sidebar-menu">
-        <li><a href="javascript:void(0)" onclick="Ajax('pages/Accueil.php')">Accueil</a></li>
-        <li><a href="javascript:void(0)" onclick="Ajax('pages/Presentation.php')">Présentation</a></li>
+        <li><a href="javascript:void(0)" onclick="Ajax('pages/_LegacyPages/Accueil.php')">Accueil</a></li>
+        <li><a href="javascript:void(0)" onclick="Ajax('pages/_LegacyPages/Presentation.php')">Présentation</a></li>
 
 
         <?php if (empty($_SESSION['Utilisateur'])) { ?>
@@ -27,29 +27,29 @@
         </li>
         
         <?php if (empty($_SESSION['Utilisateur'])) { ?>
-            <li id="Menu_Telechargement_ItemShop2" style="display: inline;"><a href="javascript:void(0)" onclick="Ajax('pages/Telechargement.php')">Téléchargement</a></li>
+            <li id="Menu_Telechargement_ItemShop2" style="display: inline;"><a href="javascript:void(0)" onclick="Ajax('pages/_LegacyPages/Telechargement.php')">Téléchargement</a></li>
             <li id="Menu_Telechargement_ItemShop" style="display: none;"><a id="Lien_Item_Shop" href="javascript:void(0)" onclick="" >Item-Shop</a></li>
         <?php } else { ?>
             <li id="Menu_Telechargement_ItemShop" style="display: inline;"><a id="Lien_Item_Shop" href="javascript:void(0)" onclick="Ajax('pages/ItemShop/ItemShop.php?id=<?php echo $_SESSION['ID']; ?>')">Item-Shop</a></li>
-            <li id="Menu_Telechargement_ItemShop2"><a href="javascript:void(0)" onclick="Ajax('pages/Telechargement.php')">Téléchargement</a></li>
+            <li id="Menu_Telechargement_ItemShop2"><a href="javascript:void(0)" onclick="Ajax('pages/_LegacyPages/Telechargement.php')">Téléchargement</a></li>
         <?php } ?>
 
         <?php if (empty($_SESSION['Utilisateur'])) { ?>
-            <li id="Menu_Telechargement_Equipe2" style="display: inline;"><a href="javascript:void(0)" onclick="Ajax('pages/Calendrier.php')">Calendrier des events</a></li>
+            <li id="Menu_Telechargement_Equipe2" style="display: inline;"><a href="javascript:void(0)" onclick="Ajax('pages/_LegacyPages/Calendrier.php')">Calendrier des events</a></li>
             <li id="Menu_Telechargement_Equipe" style="display: none;"><a id="Lien_Marche" href="" class="fancybox_Marche" data-fancybox-type="iframe">Marché des personnages</a></li>
         <?php } else { ?>
             <li id="Menu_Telechargement_Equipe" style="display: inline;"><a id="Lien_Marche" href="includes/Marche/Marche.php" class="fancybox_Marche" data-fancybox-type="iframe">Marché des personnages</a></li>
-            <li id="Menu_Telechargement_Equipe2" style="display: none;"><a href="javascript:void(0)" onclick="Ajax('pages/Calendrier.php')">Calendrier</a></li>
+            <li id="Menu_Telechargement_Equipe2" style="display: none;"><a href="javascript:void(0)" onclick="Ajax('pages/_LegacyPages/Calendrier.php')">Calendrier</a></li>
         <?php } ?>
 
         <li><a href="javascript:void(0)" onclick="window.open('http://forum.vamosmt2.org/forum/')">Notre forum</a></li>
 
         <?php if (empty($_SESSION['Utilisateur'])) { ?>
-            <li id="Menu_Support2"><a href="javascript:void(0)" onclick="Ajax('pages/Contacts.php')">Support</a></li>
+            <li id="Menu_Support2"><a href="javascript:void(0)" onclick="Ajax('pages/_LegacyPages/Contacts.php')">Support</a></li>
             <li id="Menu_Support" style="display: none;"><a id="Lien_Support" href="" class="fancybox_Messagerie" data-fancybox-type="iframe">Support</a></li>
         <?php } else { ?>
             <li id="Menu_Support"><a href="pages/Messagerie/Messagerie.php" id="Lien_Support" class="fancybox_Messagerie" data-fancybox-type="iframe">Support</a></li>
-            <li id="Menu_Support2" style="display: none;"><a href="javascript:void(0)" onclick="Ajax('pages/Contacts.php');">Support</a></li>
+            <li id="Menu_Support2" style="display: none;"><a href="javascript:void(0)" onclick="Ajax('pages/_LegacyPages/Contacts.php');">Support</a></li>
             <?php } ?>
     </ul>
 </nav>

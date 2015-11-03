@@ -28,12 +28,12 @@ class InscriptionTerm extends \PageHelper {
                         Vous avez reçu une troisième main gratuite définitive dans les bonus de votre compte.<br/>
                         Ne donnez JAMAIS vos identifiants de comptes à qui que ce soit.<br/>
                         Ne prêtez jamais vos stuffs à ceux qui disent "jte fais ci-ca" c'est du fake !<br/>
-                        N'hésitez pas à consulter le guide de sécurité en cliquant <a href="javascript:void(0)" onclick="Ajax('pages/Securite.php');" >ici</a>.<br /><br/>
+                        N'hésitez pas à consulter le guide de sécurité en cliquant <a href="javascript:void(0)" onclick="Ajax('pages/_LegacyPages/Securite.php');" >ici</a>.<br /><br/>
 
                         Bon jeu à vous sur VamosMT2 !<br/>
                         <hr class="Hr_Bas">
 
-                        <input type="button" class="Bouton_Annuler_Changer_Email_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
+                        <input type="button" class="Bouton_Annuler_Changer_Email_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/_LegacyPages/Accueil.php');" />
 
 
                     </div>
@@ -58,7 +58,7 @@ class InscriptionTerm extends \PageHelper {
                         Pour revenir à l'accueil, merci de cliquer sur le bouton "Accueil".<br/>
                         <hr class="Hr_Bas">
 
-                        <input type="button" class="Bouton_Annuler_Changer_Email_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
+                        <input type="button" class="Bouton_Annuler_Changer_Email_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/_LegacyPages/Accueil.php');" />
 
                     </div>
                 </div>

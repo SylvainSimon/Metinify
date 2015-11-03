@@ -124,7 +124,7 @@ class IndexWebsite extends CoreHelper {
                         duration: 500, show: "slideDown", hide: "slideUp",
                         callback: function (key, options) {
                             if (key == "apropos") {
-                                Ajax('pages/Presentation.php');
+                                Ajax('pages/_LegacyPages/Presentation.php');
                             } else if (key == "facebook") {
                                 window.open("https://www.facebook.com/groups/vamosmt2", "_blank");
                             } else if (key == "twitter") {
@@ -136,15 +136,15 @@ class IndexWebsite extends CoreHelper {
                             } else if (key == "equipe") {
                                 Ajax('pages/Equipe.php');
                             } else if (key == "pilori") {
-                                Ajax('pages/Pilori.php');
+                                Ajax('pages/_LegacyPages/Pilori.php');
                             } else if (key == "stati") {
                                 $("#Lien_Statistiques").click();
                                 Barre_De_Statut("Ouverture des statistiques...");
                                 Icone_Chargement(1);
                             } else if (key == "calen") {
-                                Ajax("pages/Calendrier.php");
+                                Ajax("pages/_LegacyPages/Calendrier.php");
                             } else if (key == "securite") {
-                                Ajax("pages/Securite.php");
+                                Ajax("pages/_LegacyPages/Securite.php");
                             }
                         },
                         items: {
@@ -172,7 +172,7 @@ class IndexWebsite extends CoreHelper {
         <?php } elseif (isset($_GET["paypal"])) { ?>
                     Ajax('pages/Paypal.php');
         <?php } else { ?>
-                    Ajax('pages/Accueil.php');
+                    Ajax('pages/_LegacyPages/Accueil.php');
         <?php } ?>
             </script>  
         </html>

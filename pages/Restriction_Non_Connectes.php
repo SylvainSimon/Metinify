@@ -31,7 +31,7 @@ class Restriction_Non_Connectes extends \PageHelper {
                 En nous excusant profondément, L'équipe VamosMt2.
                 <hr class="Hr_Bas">
 
-                <input type="button" class="Bouton_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
+                <input type="button" class="Bouton_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/_LegacyPages/Accueil.php');" />
 
             </div>
 

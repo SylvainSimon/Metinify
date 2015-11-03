@@ -2,14 +2,14 @@
 
 namespace Pages;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
 class Pilori extends \PageHelper {
 
     public function run() {
         ?>
 
-        <?php include 'Fonctions_Utiles.php'; ?>
+        <?php include __DIR__ . '../../Fonctions_Utiles.php'; ?>
         <?php
         /* ------------------------ Classement Joueur ---------------------------- */
         $Liste_Comptes_Banni = "SELECT bannissements_actifs.date_debut_bannissement,

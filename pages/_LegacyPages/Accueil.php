@@ -2,13 +2,13 @@
 
 namespace Pages;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
 class Accueil extends \PageHelper {
 
     public function run() {
 
-        include '../pages/Fonctions_Utiles.php';
+        include '../../pages/Fonctions_Utiles.php';
 
         /* ------------------------ Vérification Données ---------------------------- */
         $Recuperation_News = "SELECT * 

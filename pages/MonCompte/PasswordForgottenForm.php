@@ -37,7 +37,7 @@ class PasswordForgottenForm extends \PageHelper {
                     Si vous êtes là par erreur, vous pouvez toujours annuler la demande.<br/>
                     <hr class="Hr_Bas">
                     <input type="button" class="Bouton_Envoyer_Changer_Email Bouton_Normal" value="Envoyer" onclick="Envoyer_Formulaire_Oublie_MDP()"/>
-                    <input type="button" class="Bouton_Annuler_Changer_Email Bouton_Normal" value="Annuler" onclick="Ajax('pages/Accueil.php');" />
+                    <input type="button" class="Bouton_Annuler_Changer_Email Bouton_Normal" value="Annuler" onclick="Ajax('pages/_LegacyPages/Accueil.php');" />
 
                 </form>
 

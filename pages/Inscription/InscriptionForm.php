@@ -72,7 +72,7 @@ class InscriptionForm extends \PageHelper {
                         Suite à plusieurs tentatives d'inscriptions ratées et pour des raisons de sécurités,<br/>
                         Vous devez attendre cinq minutes avant de pouvoir de nouveau vous inscrire.
 
-                        <input type="button" class="Bouton_Annuler_Changer_Email_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
+                        <input type="button" class="Bouton_Annuler_Changer_Email_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/_LegacyPages/Accueil.php');" />
                     </div>
                 </div>
                 <?php exit(); ?>
@@ -189,7 +189,7 @@ class InscriptionForm extends \PageHelper {
                 <div class="box-footer">
 
                     <div class="pull-right">
-                        En cliquant, j'accepte les <a style="cursor: pointer;" onclick="Ajax('pages/CGU.php');" >CGU</a> ainsi que le <a style="cursor: pointer;" onclick="Ajax('pages/regles.php');" >règlement de jeu</a>.
+                        En cliquant, j'accepte les <a style="cursor: pointer;" onclick="Ajax('pages/_LegacyPages/CGU.php');" >CGU</a> ainsi que le <a style="cursor: pointer;" onclick="Ajax('pages/regles.php');" >règlement de jeu</a>.
                         <input type="button" class="btn btn-success btn-flat" onclick="VerificationFormulaire();" src="images/Bouton_Valider.png" value="Envoyer" />
                     </div>
                 </div>

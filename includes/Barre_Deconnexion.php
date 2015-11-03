@@ -25,7 +25,7 @@ if (!empty($_SESSION['Administration_PannelAdmin'])) {
 <?php } else { ?>
     <script type="text/javascript">
 
-        Ajax('pages/Accueil.php');
+        Ajax('pages/_LegacyPages/Accueil.php');
     </script>
 <?php } ?>
 

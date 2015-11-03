@@ -58,7 +58,7 @@ class PasswordChangeForm extends \PageHelper {
                 <div class="box-footer">
 
                     <div class="pull-left">
-                        <input type="button" class="btn btn-danger btn-flat" value="Annuler" onclick="Ajax('pages/Accueil.php');" />
+                        <input type="button" class="btn btn-danger btn-flat" value="Annuler" onclick="Ajax('pages/_LegacyPages/Accueil.php');" />
                     </div>
 
                     <div class="pull-right">

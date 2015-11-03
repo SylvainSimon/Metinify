@@ -2,13 +2,13 @@
 
 namespace Pages;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
 class Telechargement extends \PageHelper {
 
     public function run() {
-        ?>
-        <?php include 'Fonctions_Utiles.php'; ?>
+        
+        include __DIR__ . '../../Fonctions_Utiles.php'; ?>
 
         <div class="box box-default flat">
 

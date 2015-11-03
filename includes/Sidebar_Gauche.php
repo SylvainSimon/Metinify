@@ -20,7 +20,7 @@ include ("pages/Classements/includes/".$files[$rand]);
     });
 </script>
 
-<div class="info-box flat box-telechargement-exe" onclick="Ajax('pages/Telechargement.php')">
+<div class="info-box flat box-telechargement-exe" onclick="Ajax('pages/_LegacyPages/Telechargement.php')">
     
     <span class="info-box-icon"><i class="material-icons md-icon-download md-36"></i></span>
 

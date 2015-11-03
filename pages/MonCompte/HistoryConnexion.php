@@ -2,13 +2,13 @@
 
 namespace Pages;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
-class Logs_Connexion extends \PageHelper {
+class HistoryConnexion extends \PageHelper {
 
     public function run() {
-        include 'Fonctions_Utiles.php';
-        ?>
+        
+        include __DIR__ . '../../Fonctions_Utiles.php'; ?>
 
 
         <div class="box box-default flat">
@@ -131,5 +131,5 @@ class Logs_Connexion extends \PageHelper {
 
 }
 
-$class = new Logs_Connexion();
+$class = new HistoryConnexion();
 $class->run();
