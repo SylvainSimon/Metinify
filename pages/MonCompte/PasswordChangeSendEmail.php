@@ -4,7 +4,7 @@ namespace Pages;
 
 require __DIR__ . '../../core/initialize.php';
 
-class Compte_Changer_Mot_De_Passe_Mail_Envoye extends \PageHelper {
+class PasswordChangeSendEmail extends \PageHelper {
 
     public function run() {
         ?>
@@ -60,7 +60,7 @@ class Compte_Changer_Mot_De_Passe_Mail_Envoye extends \PageHelper {
 
                         if (msg == 1) {
 
-                            Ajax("pages/Compte_Changer_Mot_De_Passe_Confirmation.php");
+                            Ajax("pages/MonCompte/PasswordChangeTerm.php");
                         }
                         else {
 
@@ -77,5 +77,5 @@ class Compte_Changer_Mot_De_Passe_Mail_Envoye extends \PageHelper {
     }
 
 }
-$class = new Compte_Changer_Mot_De_Passe_Mail_Envoye();
+$class = new PasswordChangeSendEmail();
 $class->run();

@@ -38,7 +38,7 @@ function VerificationSecu(){
             success: function(msg){
                 if(msg==1){
                         
-                    Ajax("pages/Compte_Code_Effacement_Creation_Confirmation.php");
+                    Ajax("pages/MonCompte/CodeEffacementCreateTerm.php");
                     
                 }else{
                     

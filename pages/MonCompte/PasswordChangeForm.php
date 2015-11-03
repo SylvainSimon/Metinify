@@ -1,10 +1,10 @@
 <?php
 
-namespace Pages;
+namespace Pages\MonCompte;
 
 require __DIR__ . '../../core/initialize.php';
 
-class Compte_Changer_Mot_De_Passe extends \PageHelper {
+class PasswordChangeForm extends \PageHelper {
 
     public function run() {
         ?>
@@ -72,5 +72,5 @@ class Compte_Changer_Mot_De_Passe extends \PageHelper {
 
 }
 
-$class = new Compte_Changer_Mot_De_Passe();
+$class = new PasswordChangeForm();
 $class->run();

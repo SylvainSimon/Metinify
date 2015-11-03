@@ -19,9 +19,9 @@
             </a>
             <ul class="treeview-menu">
                 <li>
-                    <a href="#" onclick="Ajax('pages/Classements/Classement_Joueurs_PvE.php')">Joueurs PVE</a>
-                    <a href="#" onclick="Ajax('pages/Classements/Classement_Joueurs_PvP.php')">Joueurs PVP</a>
-                    <a href="#" onclick="Ajax('pages/Classements/Classement_Guildes.php')">Guildes</a>
+                    <a href="#" onclick="Ajax('pages/Classements/ClassementJoueursPvE.php')">Joueurs PVE</a>
+                    <a href="#" onclick="Ajax('pages/Classements/ClassementJoueursPvP.php')">Joueurs PVP</a>
+                    <a href="#" onclick="Ajax('pages/Classements/ClassementGuildes.php')">Guildes</a>
                 </li>
             </ul>
         </li>

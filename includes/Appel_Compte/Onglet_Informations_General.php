@@ -87,7 +87,7 @@
                         <td>
                             ●●●●●●●●●●●●
 
-                            <i data-tooltip="Modifier mon mot de passe" data-tooltip-position="right" onclick="Ajax('pages/Compte_Changer_Mot_De_Passe.php');
+                            <i data-tooltip="Modifier mon mot de passe" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/PasswordChangeForm.php');
                                     window.parent.$.fancybox.close();" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
 
                         </td>
@@ -99,7 +99,7 @@
                             <td>Sécurité :</td>
                             <td>
                                 Aucun code définie
-                                <i data-tooltip="Définir mon code d'effacement" data-tooltip-position="right" onclick="Ajax('pages/Compte_Code_Effacement_Creation.php');" class="pull-right Pointer material-icons md-icon-add"></i>
+                                <i data-tooltip="Définir mon code d'effacement" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/CodeEffacementCreateForm.php');" class="pull-right Pointer material-icons md-icon-add"></i>
                             </td>
                         </tr>
                     <?php } else { ?>

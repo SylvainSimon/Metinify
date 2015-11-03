@@ -4,7 +4,7 @@ namespace Pages\Classements;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class Classement_Guildes extends \PageHelper {
+class ClassementGuildes extends \PageHelper {
 
     public function run() {
         
@@ -205,5 +205,5 @@ class Classement_Guildes extends \PageHelper {
 
 }
 
-$class = new Classement_Guildes();
+$class = new ClassementGuildes();
 $class->run();

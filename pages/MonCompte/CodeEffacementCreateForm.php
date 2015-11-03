@@ -4,7 +4,7 @@ namespace Pages;
 
 require __DIR__ . '../../core/initialize.php';
 
-class Compte_Code_Effacement_Creation extends \PageHelper {
+class CodeEffacementCreateForm extends \PageHelper {
 
     public function run() {
         ?>
@@ -47,5 +47,5 @@ class Compte_Code_Effacement_Creation extends \PageHelper {
 
 }
 
-$class = new Compte_Code_Effacement_Creation();
+$class = new CodeEffacementCreateForm();
 $class->run();
