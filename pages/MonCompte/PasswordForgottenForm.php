@@ -4,7 +4,7 @@ namespace Pages;
 
 require __DIR__ . '../../core/initialize.php';
 
-class Mot_De_Passe_Oublie_Formulaire extends \PageHelper {
+class PasswordForgottenForm extends \PageHelper {
 
     public function run() {
         ?>
@@ -60,7 +60,7 @@ class Mot_De_Passe_Oublie_Formulaire extends \PageHelper {
 
                         if (msg == 1) {
 
-                            Ajax("pages/Mot_De_Passe_Oublie_Resultat.php?Resultat=oui");
+                            Ajax("pages/MonCompte/PasswordForgottenTerm.php?Resultat=oui");
                         }
                         else {
 
@@ -80,5 +80,5 @@ class Mot_De_Passe_Oublie_Formulaire extends \PageHelper {
 
 }
 
-$class = new Mot_De_Passe_Oublie_Formulaire();
+$class = new PasswordForgottenForm();
 $class->run();

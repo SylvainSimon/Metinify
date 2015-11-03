@@ -4,7 +4,7 @@ namespace Pages;
 
 require __DIR__ . '../../core/initialize.php';
 
-class Mot_De_Passe_Oublie_Resultat extends \PageHelper {
+class PasswordForgottenTerm extends \PageHelper {
 
     public function run() {
         if (empty($_GET['Resultat'])) {
@@ -38,5 +38,5 @@ class Mot_De_Passe_Oublie_Resultat extends \PageHelper {
 
 }
 
-$class = new Mot_De_Passe_Oublie_Resultat();
+$class = new PasswordForgottenTerm();
 $class->run();

@@ -50,9 +50,6 @@ class Sidebar_Gauche_Seconde extends \PageHelper {
                     <?php if ($Donnees_Recuperation_Droits->recherche_ip == 1) { ?>
                         <tr onclick="Ajax('administration/Recherche_IP.php')"><td>- Recherche par ip</td></tr>
                     <?php } ?>
-                    <?php if ($Donnees_Recuperation_Droits->equipe == 1) { ?>
-                        <tr onclick="Ajax('administration/Equipe.php')"><td>- Informations de l'équipe</td></tr>
-                    <?php } ?>
                     <?php if ($Donnees_Recuperation_Droits->commandes == 1) { ?>
                         <tr onclick="Ajax('administration/Commandes.php')"><td>- Historiques des commandes</td></tr>
                     <?php } ?>

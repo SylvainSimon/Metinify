@@ -1,10 +1,10 @@
 <?php
 
-namespace Pages;
+namespace Pages\Inscription;
 
 require __DIR__ . '../../core/initialize.php';
 
-class Contacts_Mail_Resultat extends \PageHelper {
+class InscriptionTerm extends \PageHelper {
 
     public function run() {
 
@@ -15,24 +15,26 @@ class Contacts_Mail_Resultat extends \PageHelper {
 
             if ($_GET['Resultat'] == "oui") {
                 ?>
-
+                <!--<u>Veuillez activer le compte par E-Mail afin de jouer, il est possible que l'E-Mail soit dans vos spams. </u><br />Contactez le support en cas de soucis.<br /><br/>-->
                 <div class="Cadre_Principal">
 
                     <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-                        <h1>E-mail envoyé !</h1>
+                        <h1>Inscription effective !</h1>
                     </div>
                     <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1"> 
 
                         <hr class="Hr_Haut"/>
-                        L'envoie du mail s'est bien déroulé.<br/><br/>
+                        Bienvenue <?php echo $_SESSION['NomTemporaire']; ?> ! <br/><br/>
+                        Vous avez reçu une troisième main gratuite définitive dans les bonus de votre compte.<br/>
+                        Ne donnez JAMAIS vos identifiants de comptes à qui que ce soit.<br/>
+                        Ne prêtez jamais vos stuffs à ceux qui disent "jte fais ci-ca" c'est du fake !<br/>
+                        N'hésitez pas à consulter le guide de sécurité en cliquant <a href="javascript:void(0)" onclick="Ajax('pages/Securite.php');" >ici</a>.<br /><br/>
 
-                        L'équipe de VamosMt2 vous répondra au plus vite.<br/>
-                        Noubliez pas de surveiller votre boite mail.<br/><br/>
-
-                        Pour revenir à l'accueil, merci de cliquer sur le bouton "Accueil".<br/>
+                        Bon jeu à vous sur VamosMT2 !<br/>
                         <hr class="Hr_Bas">
 
                         <input type="button" class="Bouton_Annuler_Changer_Email_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
+
 
                     </div>
                 </div>
@@ -42,12 +44,12 @@ class Contacts_Mail_Resultat extends \PageHelper {
                 <div class="Cadre_Principal">
 
                     <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-                        <h1>Erreur lors de l'envoie</h1>
+                        <h1>Erreur lors de l'inscription</h1>
                     </div>
                     <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1"> 
                         <hr class="Hr_Haut"/>
-                        Votre e-mail n'as pas été envoyé à l'équipe.<br/><br/>
-                        Une erreur de nature inconnue a été détectée et nous vous invitons a recommencé ultérieurement.<br/><br/>
+                        Votre inscription sur les serveurs VamosMt2 a été annulée.<br/><br/>
+                        Une erreur de nature inconnue a été détectée et nous vous invitons a recommencer ultérieurement.<br/><br/>
 
                         Si vous pensez qu'il s'agit d'une erreur, nous vous prions de contacter la messagerie 
                         support de VamosMt2.<br/>
@@ -69,5 +71,5 @@ class Contacts_Mail_Resultat extends \PageHelper {
 
 }
 
-$class = new Contacts_Mail_Resultat();
+$class = new InscriptionTerm();
 $class->run();

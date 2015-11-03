@@ -178,11 +178,11 @@ function VerificationFormulaire() {
             success: function(msg){
                 if(msg==1){
                     
-                    Ajax("pages/Inscription_Resultat.php?Resultat=oui");
+                    Ajax("pages/InscriptionTerm.php?Resultat=oui");
                 }
                 else{
                     
-                    Ajax("pages/Inscription_Resultat.php?Resultat=non");
+                    Ajax("pages/InscriptionTerm.php?Resultat=non");
                 }
             }
         });
@@ -258,7 +258,7 @@ function VerificationFormulaire() {
                         
                     }else{
                        
-                        Ajax("pages/Inscription_Formulaire.php");
+                        Ajax("pages/Inscription/InscriptionForm.php");
                     }
 
                 }

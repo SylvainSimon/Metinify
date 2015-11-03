@@ -1,10 +1,10 @@
 <?php
 
-namespace Pages;
+namespace Pages\Inscription;
 
 require __DIR__ . '../../core/initialize.php';
 
-class Inscription_Formulaire extends \PageHelper {
+class InscriptionForm extends \PageHelper {
 
     public function run() {
         ?>
@@ -189,7 +189,7 @@ class Inscription_Formulaire extends \PageHelper {
                 <div class="box-footer">
 
                     <div class="pull-right">
-                        En cliquant, j'accepte les <a style="cursor: pointer;" onclick="Ajax('pages/CDG.php');" >CGU</a> ainsi que le <a style="cursor: pointer;" onclick="Ajax('pages/regles.php');" >règlement de jeu</a>.
+                        En cliquant, j'accepte les <a style="cursor: pointer;" onclick="Ajax('pages/CGU.php');" >CGU</a> ainsi que le <a style="cursor: pointer;" onclick="Ajax('pages/regles.php');" >règlement de jeu</a>.
                         <input type="button" class="btn btn-success btn-flat" onclick="VerificationFormulaire();" src="images/Bouton_Valider.png" value="Envoyer" />
                     </div>
                 </div>
@@ -270,5 +270,5 @@ class Inscription_Formulaire extends \PageHelper {
 
 }
 
-$class = new Inscription_Formulaire();
+$class = new InscriptionForm();
 $class->run();
