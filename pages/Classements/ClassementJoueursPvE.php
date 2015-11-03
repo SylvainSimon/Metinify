@@ -77,7 +77,7 @@ class ClassementJoueursPvE extends \PageHelper {
 
                         $.ajax({
                             type: "POST",
-                            url: "ajax/Pages_ClassementJoueurs_Recherche_PvE.php",
+                            url: "pages/Classements/ajax/ClassementJoueursPvESearch.php",
                             data: "recherche=" + $("#SaisieRecherche").val(),
                             success: function (msg) {
 
@@ -296,7 +296,7 @@ class ClassementJoueursPvE extends \PageHelper {
                         <div class="col-xs-6">
                             <div class="pull-left">
                                 <?php if ($Numero_De_Page >= 1) { ?>
-                                    <a href="javascript:void(0)" onclick="Ajax_Classement('ajax/Pages_ClassementJoueurs_PvE.php?page=<?php echo ($Numero_De_Page - 1); ?>')">Page précédente</a>
+                                    <a href="javascript:void(0)" onclick="Ajax_Classement('pages/Classements/ajax/ClassementJoueursPvEPage.php?page=<?php echo ($Numero_De_Page - 1); ?>')">Page précédente</a>
                                 <?php } ?>
                             </div>
                         </div>
@@ -305,7 +305,7 @@ class ClassementJoueursPvE extends \PageHelper {
                             <div class="pull-right">
                                 <?php if ($Numero_De_Page <= $nombredePage) {
                                     ?>
-                                    <a href="javascript:void(0)" onclick="Ajax_Classement('ajax/Pages_ClassementJoueurs_PvE.php?page=<?php echo ($Numero_De_Page + 1); ?>')">Page suivante</a>
+                                    <a href="javascript:void(0)" onclick="Ajax_Classement('pages/Classements/ajax/ClassementJoueursPvEPage.php?page=<?php echo ($Numero_De_Page + 1); ?>')">Page suivante</a>
                                 <?php } ?>
                             </div>
                         </div>

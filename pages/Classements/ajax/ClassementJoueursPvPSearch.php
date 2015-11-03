@@ -1,10 +1,10 @@
 <?php
 
-namespace Ajax;
+namespace Pages\Classements\Ajax;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class Pages_ClassementJoueurs_Recherche extends \PageHelper {
+class ClassementJoueursPvPSearch extends \PageHelper {
 
     public function run() {
 
@@ -258,5 +258,5 @@ class Pages_ClassementJoueurs_Recherche extends \PageHelper {
 
 }
 
-$class = new Pages_ClassementJoueurs_Recherche();
+$class = new ClassementJoueursPvPSearch();
 $class->run();

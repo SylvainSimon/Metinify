@@ -1,10 +1,10 @@
 <?php
 
-namespace Ajax;
+namespace Pages\Classements\Ajax;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class Pages_ClassementGuildes extends \PageHelper {
+class ClassementGuildesPage extends \PageHelper {
 
     public function run() {
 
@@ -137,7 +137,7 @@ class Pages_ClassementGuildes extends \PageHelper {
             <div class="col-xs-6">
                 <div class="pull-left">
                     <?php if ($Numero_De_Page >= 1) { ?>
-                        <a href="javascript:void(0)" onclick="Ajax_Classement('ajax/Pages_ClassementGuildes.php?page=<?php echo ($Numero_De_Page - 1); ?>')">Page précédente</a>
+                        <a href="javascript:void(0)" onclick="Ajax_Classement('pages/Classements/ajax/Pages_ClassementGuildes.php?page=<?php echo ($Numero_De_Page - 1); ?>')">Page précédente</a>
                     <?php } ?>
                 </div>
             </div>
@@ -146,7 +146,7 @@ class Pages_ClassementGuildes extends \PageHelper {
                 <div class="pull-right">
                     <?php if ($Numero_De_Page <= $Nombre_De_Page) {
                         ?>
-                        <a href="javascript:void(0)" onclick="Ajax_Classement('ajax/Pages_ClassementGuildes.php?page=<?php echo ($Numero_De_Page + 1); ?>')">Page suivante</a>
+                        <a href="javascript:void(0)" onclick="Ajax_Classement('pages/Classements/ajax/Pages_ClassementGuildes.php?page=<?php echo ($Numero_De_Page + 1); ?>')">Page suivante</a>
                     <?php } ?>
                 </div>
             </div>
@@ -157,5 +157,5 @@ class Pages_ClassementGuildes extends \PageHelper {
 
 }
 
-$class = new Pages_ClassementGuildes();
+$class = new ClassementGuildesPage();
 $class->run();

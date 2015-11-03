@@ -2,7 +2,7 @@
 
 namespace Pages\MonCompte;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
 class CodeEntrepotChangeForm extends \PageHelper {
 
