@@ -13,8 +13,8 @@ class Gestion_Monnaies extends \PageHelper {
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
                 <link rel="stylesheet" href="../css/Administration.css">
-                <link rel="stylesheet" href="../../css/jquery-ui-1.8.23.custom.css">
-                <script type="text/javascript" src="../../js/Jquery 1.8.0.js"></script>
+                <script src='../../components/jquery/jquery.min.js' type='text/javascript'></script>
+                <script src='../../components/jquery-ui/jquery-ui.min.js' type='text/javascript'></script>
             </head>
             <body>
                 <?php if (!empty($_SESSION["Administration_PannelAdmin_Jeton"])) { ?>

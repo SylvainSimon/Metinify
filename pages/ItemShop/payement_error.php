@@ -11,8 +11,8 @@ class payement_error extends \PageHelper {
         <html>
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-                <script type="text/javascript" src="../../js/Jquery 1.8.0.js"></script>
-                <script type="text/javascript" src="../../js/ui/Jquery_UI_1.8.23.js"></script>
+                <script src='../../components/jquery/jquery.min.js' type='text/javascript'></script>
+                <script src='../../components/jquery-ui/jquery-ui.min.js' type='text/javascript'></script>
 
                 <link rel="stylesheet" href="../../css/Item_Shop.css">
 

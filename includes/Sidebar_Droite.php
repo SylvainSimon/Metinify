@@ -22,8 +22,6 @@
 
     <div class="box-body">
 
-        <script type="text/javascript" src="js/Actualisation_Status.js"></script>
-
         <table class="">
 
             <?php

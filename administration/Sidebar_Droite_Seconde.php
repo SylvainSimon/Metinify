@@ -93,8 +93,6 @@ class Sidebar_Droite_Seconde extends \PageHelper {
             <div class="Menu_Sidebar_Haut Pointer No_Select" onclick="Slider_Sidebar_Droite_2();">Serveur Classyd</div>
             <div class="Menu_Sidebar_Milieu" id="Div_Sidebar_Droite_2">
 
-                <script type="text/javascript" src="js/Actualisation_Status.js"></script>
-
                 <table class="Table_Status_Serveurs">
                     <tr><td colspan="3"><div class="barre"></div></td></tr>
                     <tr class="Pointer" onmouseover="this.style.backgroundColor = '#666666';" onmouseout="this.style.backgroundColor = 'transparent';">
