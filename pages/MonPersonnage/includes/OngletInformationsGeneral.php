@@ -105,7 +105,7 @@
 
                 <tr>
                     <td class="Colonne_Gauche">Dernière conn.:</td>
-                    <td><span style="font-size: 12px; font-weight: bold;"><?= Formatage_Date($Donnees_Appel_Joueurs_Page->last_play, true); ?></span></td>
+                    <td><span style="font-size: 12px; font-weight: bold;"><?= \FonctionsUtiles::Formatage_Date($Donnees_Appel_Joueurs_Page->last_play, true); ?></span></td>
                 </tr>
 
                 <?php

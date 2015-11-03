@@ -8,7 +8,7 @@ class SQL_Mettre_En_Vente extends \PageHelper {
 
     public function run() {
         ?>
-        <?php include '../../pages/Fonctions_Utiles.php'; ?>
+        
         <?php
 
         if (is_numeric($_POST["prix"])) {

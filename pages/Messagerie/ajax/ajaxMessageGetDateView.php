@@ -9,7 +9,7 @@ class ajaxMessageGetDateView extends \PageHelper {
     public function run() {
 
 ?>
-        <?php include __DIR__ . '../../../../pages/Fonctions_Utiles.php'; ?>
+        
         <?php
 
         $ID_Message = $_POST['id'];
@@ -25,7 +25,7 @@ class ajaxMessageGetDateView extends \PageHelper {
         $Donnees_Recuperation_Date = $Parametres_Recuperation_Date->fetch();
         /* -------------------------------------------------------------------------- */
 
-        echo Formatage_Date_Vue($Donnees_Recuperation_Date->date_vue);
+        echo \FonctionsUtiles::Formatage_Date_Vue_Vue($Donnees_Recuperation_Date->date_vue);
     }
 
 }

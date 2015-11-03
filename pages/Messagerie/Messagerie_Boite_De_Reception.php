@@ -9,7 +9,7 @@ class Messagerie_Boite_De_Reception extends \PageHelper {
     public function run() {
         ?>
         <?php include '../../pages/Tableaux_Arrays.php'; ?>
-        <?php include '../../pages/Fonctions_Utiles.php'; ?>
+        
 
         <?php
         if (empty($_SESSION['ID'])) {
@@ -139,8 +139,8 @@ class Messagerie_Boite_De_Reception extends \PageHelper {
 
                                     <td><?php echo $Donnees_Pseudo_Messagerie->pseudo_messagerie; ?></td>
                                     <td><?= $Donnees_Reception_Dernier_Message_NonLu->objet_message; ?></td>
-                                    <td><?= Raccourcissement_Chaine($Donnees_Reception_Dernier_Message_NonLu->contenue_message, 10); ?></td>
-                                    <td><?= Formatage_Date($Donnees_Reception_Dernier_Message_NonLu->date); ?></td>
+                                    <td><?= \FonctionsUtiles::Raccourcissement_Chaine($Donnees_Reception_Dernier_Message_NonLu->contenue_message, 10); ?></td>
+                                    <td><?= \FonctionsUtiles::Formatage_Date($Donnees_Reception_Dernier_Message_NonLu->date); ?></td>
                                     <td><?= $Donnees_Reception_Dernier_Message_NonLu->etat; ?></td>
                                     <td><?= $Donnees_Reception_Dernier_Message_NonLu->type; ?></td>
 
@@ -175,8 +175,8 @@ class Messagerie_Boite_De_Reception extends \PageHelper {
                                     <tr title="Cliquez pour ouvrire la fil de discussion" class="Pointer" onclick="Ajax_Ouverture_Ticket(<?php echo $Donnees_Reception_Dernier_Message->id ?>)" onmouseover="this.style.backgroundColor = '#333333';" onmouseout="this.style.backgroundColor = 'transparent';">
                                         <td><?= $Donnees_Pseudo_Messagerie->pseudo_messagerie; ?></td>
                                         <td><?= $Donnees_Reception_Dernier_Message->objet_message; ?></td>
-                                        <td><?= Raccourcissement_Chaine($Donnees_Reception_Dernier_Message->contenue_message, 15); ?></td>
-                                        <td><?= Formatage_Date($Donnees_Reception_Dernier_Message->date); ?></td>
+                                        <td><?= \FonctionsUtiles::Raccourcissement_Chaine($Donnees_Reception_Dernier_Message->contenue_message, 15); ?></td>
+                                        <td><?= \FonctionsUtiles::Formatage_Date($Donnees_Reception_Dernier_Message->date); ?></td>
                                         <td><?= $Donnees_Reception_Dernier_Message->etat; ?></td>
                                         <td><?= $Donnees_Reception_Dernier_Message->type; ?></td>
                                     </tr>

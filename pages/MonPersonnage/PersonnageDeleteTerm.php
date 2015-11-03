@@ -9,7 +9,7 @@ class PersonnageDeleteTerm extends \PageHelper {
     public function run() {
         ?>
 
-        <?php include '../../pages/Fonctions_Utiles.php'; ?>
+        
         <?php if (!empty($_GET["result"])) { ?>
 
             <?php if ($_GET["result"] == "Oui") { ?>

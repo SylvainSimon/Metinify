@@ -8,7 +8,7 @@ class HistoryConnexion extends \PageHelper {
 
     public function run() {
         
-        include __DIR__ . '../../Fonctions_Utiles.php'; ?>
+    ?>
 
 
         <div class="box box-default flat">
@@ -72,7 +72,7 @@ class HistoryConnexion extends \PageHelper {
                                         <?php } ?>
 
                                         <span style="vertical-align: super">
-                                            <?= Formatage_Date($Donnees_Listage_Connexions->date, true); ?>
+                                            <?= \FonctionsUtiles::Formatage_Date($Donnees_Listage_Connexions->date, true); ?>
                                         </span>
                                     </td>
 
@@ -80,7 +80,7 @@ class HistoryConnexion extends \PageHelper {
                                         <?= $Donnees_Listage_Connexions->ip; ?>
                                         <?php if ($Donnees_Listage_Connexions->ip != "") { ?>
 
-                                            <?php $ip_formate = ipAdressNumber($Donnees_Listage_Connexions->ip); ?>
+                                            <?php $ip_formate = \FonctionsUtiles::ipAdressNumber($Donnees_Listage_Connexions->ip); ?>
 
                                             <?php
                                             $Parametres_Recherche_Pays->execute(array(

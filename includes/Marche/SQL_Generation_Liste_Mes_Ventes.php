@@ -8,7 +8,7 @@ class SQL_Generation_Liste_Mes_Ventes extends \PageHelper {
 
     public function run() {
         ?>
-        <?php include '../../pages/Fonctions_Utiles.php'; ?>
+        
         <?php
         /* ----------------------- Recuperation Date ------------------------------- */
         $Compte = $_SESSION['ID'];
@@ -48,7 +48,7 @@ class SQL_Generation_Liste_Mes_Ventes extends \PageHelper {
                     </div>
                     <div class="Prix_Article">
                         <div class="Position_Label_Prix">Prix :</div>
-                        <div class="Position_Prix"><?php echo Formatage_Yangs($Donnees_Recuperation_Articles->prix); ?></div>
+                        <div class="Position_Prix"><?php echo \FonctionsUtiles::Formatage_Yangs($Donnees_Recuperation_Articles->prix); ?></div>
                         <?php if ($Donnees_Recuperation_Articles->id_devise == "1") { ?>
                             <div class="Icone_Piece"><img src="../../images/rectopiece.png" title="Vamonaies" width="16" height="16" /></div>
                         <?php } else if ($Donnees_Recuperation_Articles->id_devise == "2") { ?>

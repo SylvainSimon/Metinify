@@ -9,7 +9,7 @@ class PersonnageRenameForm extends \PageHelper {
     public function run() {
         ?>
 
-        <?php include '../../pages/Fonctions_Utiles.php'; ?>
+        
 
         <?php
         $Ip = $_SERVER['REMOTE_ADDR'];

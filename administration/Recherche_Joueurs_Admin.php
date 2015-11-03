@@ -8,7 +8,7 @@ class Recherche_Joueurs_Admin extends \PageHelper {
 
     public function run() {
         ?>
-        <?php @include '../pages/Fonctions_Utiles.php'; ?>
+        
 
         <?php if (!empty($_SESSION["Administration_PannelAdmin_Jeton"])) { ?>
 
@@ -91,33 +91,33 @@ class Recherche_Joueurs_Admin extends \PageHelper {
                                                 <td><?= $Donnees_Listage_Joueur->name; ?></td>
                                                 <td><?= $Donnees_Listage_Joueur->login; ?></td>
                                                 <td><?= $Donnees_Listage_Joueur->level; ?></td>
-                                                <td><?= Formatage_Yangs($Donnees_Listage_Joueur->gold); ?></td>
+                                                <td><?= \FonctionsUtiles::Formatage_Yangs($Donnees_Listage_Joueur->gold); ?></td>
                                                 <td>
-                                                    <img class="Images_Recherches" title="<?= Find_Name_Race($Donnees_Listage_Joueur->job); ?>" src="<?= Find_Image_Race($Donnees_Listage_Joueur->job); ?>" height="20" />
+                                                    <img class="Images_Recherches" title="<?= \FonctionsUtiles::Find_Name_Race($Donnees_Listage_Joueur->job); ?>" src="<?= \FonctionsUtiles::Find_Image_Race($Donnees_Listage_Joueur->job); ?>" height="20" />
                                                 </td>
                                                 <td>
-                                                    <img class="Images_Recherches" title="<?= Find_Name_Empire($Donnees_Listage_Joueur->empire); ?>" src="<?= Find_Image_Empire($Donnees_Listage_Joueur->empire); ?>" height="20" />
+                                                    <img class="Images_Recherches" title="<?= \FonctionsUtiles::Find_Name_Empire($Donnees_Listage_Joueur->empire); ?>" src="<?= \FonctionsUtiles::Find_Image_Empire($Donnees_Listage_Joueur->empire); ?>" height="20" />
                                                 </td>
                                                 <td><?= $Donnees_Listage_Joueur->ip; ?></td>
 
                                                 <?php if ($Donnees_Listage_Joueur->status == "OK") { ?>
                                                     <?php if ($Donnees_Recuperation_Droits->bannissement == 1) { ?>
                                                         <td id="Personnage_ID_<?php echo $Donnees_Listage_Joueur->id; ?>" class="fancybox" data-fancybox-type="iframe" href="administration/includes/Bannissement.php?player_id=<?= $Donnees_Listage_Joueur->id; ?>">
-                                                            <img class="Images_Recherches Pointer" title="<?= Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
+                                                            <img class="Images_Recherches Pointer" title="<?= \FonctionsUtiles::Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= \FonctionsUtiles::Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
                                                         </td>
                                                     <?php } else { ?>
                                                         <td>
-                                                            <img class="Images_Recherches" title="<?= Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
+                                                            <img class="Images_Recherches" title="<?= \FonctionsUtiles::Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= \FonctionsUtiles::Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
                                                         </td>
                                                     <?php } ?>
                                                 <?php } else if ($Donnees_Listage_Joueur->status == "BLOCK") { ?>
                                                     <?php if ($Donnees_Recuperation_Droits->debannissement == 1) { ?>
                                                         <td id="Personnage_ID_<?php echo $Donnees_Listage_Joueur->id; ?>" class="fancybox" data-fancybox-type="iframe" href="administration/includes/Debannissement.php?player_id=<?= $Donnees_Listage_Joueur->id; ?>">
-                                                            <img class="Images_Recherches Pointer" title="<?= Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
+                                                            <img class="Images_Recherches Pointer" title="<?= \FonctionsUtiles::Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= \FonctionsUtiles::Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
                                                         </td>
                                                     <?php } else { ?>
                                                         <td>
-                                                            <img class="Images_Recherches" title="<?= Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
+                                                            <img class="Images_Recherches" title="<?= \FonctionsUtiles::Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= \FonctionsUtiles::Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
                                                         </td>
                                                     <?php } ?>
                                                 <?php } ?>

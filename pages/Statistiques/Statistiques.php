@@ -9,7 +9,7 @@ class Statistiques extends \PageHelper {
     public function run() {
         ?>
         <?php include '../../pages/Tableaux_Arrays.php'; ?>
-        <?php include '../../pages/Fonctions_Utiles.php'; ?>
+        
         <html>
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />

@@ -8,7 +8,7 @@ class Bannissement extends \PageHelper {
 
     public function run() {
         ?>
-        <?php @include '../../pages/Fonctions_Utiles.php'; ?>
+        
         <html>
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -141,7 +141,7 @@ class Bannissement extends \PageHelper {
                                             <table class="Tableau_Formulaire_Bannissement">
                                                 <tr>
                                                     <td class="Colonne_Gauche">Date : </td>
-                                                    <td><?= Formatage_Date($date_actuel); ?></td>
+                                                    <td><?= \FonctionsUtiles::Formatage_Date($date_actuel); ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="Colonne_Gauche">Modérateur : </td>
@@ -306,7 +306,7 @@ class Bannissement extends \PageHelper {
 
                                                                 $.ajax({
                                                                     type: "POST",
-                                                                    url: "../ajax/SQL_Formatage_Date.php",
+                                                                    url: "../ajax/SQL_\FonctionsUtiles::Formatage_Date.php",
                                                                     data: "date=" + Parse_Json.fin,
                                                                     success: function (msg) {
 
@@ -376,12 +376,12 @@ class Bannissement extends \PageHelper {
                                                     <?php while ($Donnees_Historique_Bannissement = $Parametres_Historique_Bannissement->fetch()) { ?>
 
                                                         <tr>
-                                                            <td><?= Formatage_Date($Donnees_Historique_Bannissement->date_debut_bannissement); ?></td>
+                                                            <td><?= \FonctionsUtiles::Formatage_Date($Donnees_Historique_Bannissement->date_debut_bannissement); ?></td>
                                                             <?php if (($Donnees_Historique_Bannissement->debann_par == "") && ($Donnees_Historique_Bannissement->debann_par != "0")) { ?>
                                                                 <?php if ($Donnees_Historique_Bannissement->definitif == 1) { ?>
                                                                     <td>Définitif</td>
                                                                 <?php } else { ?>
-                                                                    <td><?= Formatage_Date($Donnees_Historique_Bannissement->date_fin_bannissement); ?></td>
+                                                                    <td><?= \FonctionsUtiles::Formatage_Date($Donnees_Historique_Bannissement->date_fin_bannissement); ?></td>
                                                                 <?php } ?>
                                                                 <td><?= $Donnees_Historique_Bannissement->pseudo_messagerie ?></td>
                                                             <?php } else { ?>
@@ -397,7 +397,7 @@ class Bannissement extends \PageHelper {
                                                                     <td>Bannissement interrompu.</td>
                                                                     <td><?php echo $Donnees_Pseudo_Messagerie->pseudo_messagerie; ?></td>
                                                                 <?php } else { ?>
-                                                                    <td><?= Formatage_Date($Donnees_Historique_Bannissement->date_fin_bannissement); ?></td>
+                                                                    <td><?= \FonctionsUtiles::Formatage_Date($Donnees_Historique_Bannissement->date_fin_bannissement); ?></td>
                                                                     <td>Script automatique.</td>
                                                                 <?php } ?>
                                                             <?php } ?>

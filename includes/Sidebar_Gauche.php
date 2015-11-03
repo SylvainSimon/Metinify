@@ -5,8 +5,6 @@ $rand = array_rand($files);
 include ("pages/Classements/includes/".$files[$rand]);
 ?>
 
-<?php include './pages/Fonctions_Utiles.php'; ?>
-
 <script type="text/javascript">
 
     $(function () {
@@ -38,7 +36,7 @@ include ("pages/Classements/includes/".$files[$rand]);
         }
         ?>
 
-        <span class="info-box-number"><?php echo Formatage_Taille($size); ?></span>
+        <span class="info-box-number"><?php echo \FonctionsUtiles::Formatage_Taille($size); ?></span>
     </div>
     <!-- /.info-box-content -->
 </div>

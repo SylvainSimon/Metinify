@@ -9,7 +9,7 @@ class Messagerie_Ticket_Attente extends \PageHelper {
     public function run() {
         ?>
         <?php include '../../pages/Tableaux_Arrays.php'; ?>
-        <?php include '../../pages/Fonctions_Utiles.php'; ?>
+        
 
         <?php
         if (empty($_SESSION['ID'])) {
@@ -112,7 +112,7 @@ class Messagerie_Ticket_Attente extends \PageHelper {
                                 $Donnees_Pseudo_Messagerie = $Parametres_Pseudo_Messagerie->fetch()
                                 ?>
                                 <td><?php echo $Donnees_Pseudo_Messagerie->pseudo_messagerie; ?></td>
-                                <td><?php echo Formatage_Date($Donnees_Ticket_Attente->date); ?></td>
+                                <td><?php echo \FonctionsUtiles::Formatage_Date($Donnees_Ticket_Attente->date); ?></td>
                                 <td><?php echo $Donnees_Ticket_Attente->ip; ?></td>
                             </tr>
                         <?php } ?>

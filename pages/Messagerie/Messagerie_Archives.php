@@ -9,7 +9,7 @@ class Messagerie_Archives extends \PageHelper {
     public function run() {
         ?>
         <?php include '../../pages/Tableaux_Arrays.php'; ?>
-        <?php include '../../pages/Fonctions_Utiles.php'; ?>
+        
 
         <?php
         if (empty($_SESSION['ID'])) {
@@ -143,8 +143,8 @@ class Messagerie_Archives extends \PageHelper {
                                 <td><?= $Donnees_Pseudo_Messagerie_Emmeteur->pseudo_messagerie; ?></td>
                                 <td><?= $Donnees_Pseudo_Messagerie_Recepteur->pseudo_messagerie; ?></td>
                                 <td><?= $Donnees_Recuperation_Premier_Message->objet_message; ?></td>
-                                <td><?= Raccourcissement_Chaine($Donnees_Recuperation_Premier_Message->contenue_message, 15); ?></td>
-                                <td><?= Formatage_Date($Donnees_Recuperation_Premier_Message->date); ?></td>
+                                <td><?= \FonctionsUtiles::Raccourcissement_Chaine($Donnees_Recuperation_Premier_Message->contenue_message, 15); ?></td>
+                                <td><?= \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Premier_Message->date); ?></td>
                                 <td align="center"><?= $Nombre_De_Resultat_Recuperation_Premier_Message; ?></td>
                             </tr>
 

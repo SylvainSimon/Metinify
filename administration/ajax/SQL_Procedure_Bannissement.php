@@ -7,7 +7,6 @@ require __DIR__ . '../../../core/initialize.php';
 class SQL_Procedure_Bannissement extends \PageHelper {
 
     public function run() {
-        @include '../../pages/Fonctions_Utiles.php';
 
 
         $raison = $_POST["raison"];

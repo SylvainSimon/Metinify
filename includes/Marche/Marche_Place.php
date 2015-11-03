@@ -9,7 +9,7 @@ class Marche_Place extends \PageHelper {
     public function run() {
         ?>
         <?php include '../../pages/Tableaux_Arrays.php'; ?>
-        <?php include '../../pages/Fonctions_Utiles.php'; ?>
+        
         <?php if (!empty($_SESSION['ID'])) { ?>
 
 

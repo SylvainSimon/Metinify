@@ -8,7 +8,7 @@ class Messagerie_Lecture extends \PageHelper {
 
     public function run() {
         ?>
-        <?php include '../../pages/Fonctions_Utiles.php'; ?>
+        
         <?php
         if (empty($_SESSION['ID'])) {
 
@@ -73,7 +73,7 @@ class Messagerie_Lecture extends \PageHelper {
                     </tr>
                     <tr>
                         <td width="140">Début du ticket : </td>
-                        <td><?php echo Formatage_Date($Donnees_Recuperation_Premier_Message->date); ?></td>
+                        <td><?php echo \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Premier_Message->date); ?></td>
                     </tr>
                 </table>
 
@@ -104,9 +104,9 @@ class Messagerie_Lecture extends \PageHelper {
                             <span><?php echo $_SESSION["Pseudo_Messagerie"] ?></span> : <?php echo nl2br(htmlentities($Donnees_Recuperation_Fil->contenue_message)); ?>
                             <br/>
                             <hr/>
-                            <div class="Date_Du_Message"><?php echo Formatage_Date($Donnees_Recuperation_Fil->date); ?></div>
+                            <div class="Date_Du_Message"><?php echo \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Fil->date); ?></div>
                             <?php if ($Donnees_Recuperation_Fil->etat == "Lu") { ?>
-                                <div class="Etat_de_Visionnage"><?php echo Formatage_Date_Vue($Donnees_Recuperation_Fil->date_vue); ?></div>
+                                <div class="Etat_de_Visionnage"><?php echo \FonctionsUtiles::Formatage_Date_Vue($Donnees_Recuperation_Fil->date_vue); ?></div>
                             <?php } else { ?>
                                 <div class="Etat_de_Visionnage">Non-Lu</div>
                     <?php } ?>
@@ -123,9 +123,9 @@ class Messagerie_Lecture extends \PageHelper {
                                 <span><?php echo $Donnees_Pseudo_Messagerie->pseudo_messagerie; ?></span> : <?php echo nl2br(htmlentities($Donnees_Recuperation_Fil->contenue_message)); ?>
                                 <br/>
                                 <hr/>
-                                <div class="Date_Du_Message"><?php echo Formatage_Date($Donnees_Recuperation_Fil->date); ?></div>
+                                <div class="Date_Du_Message"><?php echo \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Fil->date); ?></div>
                                 <?php if ($Donnees_Recuperation_Fil->etat == "Lu") { ?>
-                                    <div class="Etat_de_Visionnage"><?php echo Formatage_Date_Vue($Donnees_Recuperation_Fil->date_vue); ?></div>
+                                    <div class="Etat_de_Visionnage"><?php echo \FonctionsUtiles::Formatage_Date_Vue($Donnees_Recuperation_Fil->date_vue); ?></div>
                                 <?php } else { ?>
                                     <div class="Etat_de_Visionnage">Non-Lu</div>
                             <?php } ?>

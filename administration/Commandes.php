@@ -8,7 +8,7 @@ class Commandes extends \PageHelper {
 
     public function run() {
         ?>
-        <?php @include '../pages/Fonctions_Utiles.php'; ?>
+        
 
         <?php if (!empty($_SESSION["Administration_PannelAdmin_Jeton"])) { ?>
 

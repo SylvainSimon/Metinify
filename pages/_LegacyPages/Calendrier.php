@@ -8,7 +8,6 @@ class Calendrier extends \PageHelper {
 
     public function run() {
 
-        include __DIR__ . '../../Fonctions_Utiles.php';
         ?>
         <div class="box box-default flat">
 

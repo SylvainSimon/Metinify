@@ -8,8 +8,7 @@ class PersonnageDeleteForm extends \PageHelper {
 
     public function run() {
         ?>
-        <?php include '../../pages/Fonctions_Utiles.php'; ?>
-        <?php if (Test_Connexion()) { ?>
+        
             <?php
             $Ip = $_SERVER['REMOTE_ADDR'];
 
@@ -200,9 +199,7 @@ class PersonnageDeleteForm extends \PageHelper {
                 </div>
             <?php } ?>
 
-        <?php } else { ?>
-            <?php include '../pages/Restriction_Non_Connectes.php'; ?>
-        <?php } ?>
+
         <?php
     }
 

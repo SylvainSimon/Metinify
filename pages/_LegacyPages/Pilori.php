@@ -9,7 +9,6 @@ class Pilori extends \PageHelper {
     public function run() {
         ?>
 
-        <?php include __DIR__ . '../../Fonctions_Utiles.php'; ?>
         <?php
         /* ------------------------ Classement Joueur ---------------------------- */
         $Liste_Comptes_Banni = "SELECT bannissements_actifs.date_debut_bannissement,
@@ -75,7 +74,7 @@ class Pilori extends \PageHelper {
                                     <tr>
                                         <td style="text-indent: 5px;" class="Colonne_Gauche_Formulaire"><?= $Donnees_Liste_Joueurs_Bannis->name; ?></td>
                                         <td align="center"><?= $Donnees_Liste_Joueurs_Bannis->level; ?></td>
-                                        <td class="Colonne_Droite_Formulaire" style="text-indent: 5px;"><?= Formatage_Date($Donnees_Liste_Comptes_Banni->date_debut_bannissement); ?></td>
+                                        <td class="Colonne_Droite_Formulaire" style="text-indent: 5px;"><?= \FonctionsUtiles::Formatage_Date($Donnees_Liste_Comptes_Banni->date_debut_bannissement); ?></td>
                                         <td><?= $Donnees_Liste_Comptes_Banni->raison; ?></td>
                                         <?php if ($Donnees_Liste_Comptes_Banni->sanction != 999) { ?>
                                             <td><?= $Donnees_Liste_Comptes_Banni->sanction . " jours"; ?></td>

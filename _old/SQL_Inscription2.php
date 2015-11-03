@@ -7,7 +7,6 @@ require __DIR__ . '../../core/initialize.php';
 class SQL_Inscription2 extends \PageHelper {
 
     public function run() {
-        include_once '../pages/Fonctions_Utiles.php';
 
         $Inscription_Utilisateur = $_POST["Utilisateur"];
         $Inscription_Utilisateur_Trim = trim($Inscription_Utilisateur);
@@ -19,7 +18,7 @@ class SQL_Inscription2 extends \PageHelper {
         $Inscription_Ip = $_SERVER['REMOTE_ADDR'];
         $Status = ".";
 
-        $ip_formate = ipAdressNumber($Inscription_Ip);
+        $ip_formate = \FonctionsUtiles::ipAdressNumber($Inscription_Ip);
 
         /* ------------------------ Recherche Pays ---------------------------- */
         $Recherche_Pays = "SELECT * 

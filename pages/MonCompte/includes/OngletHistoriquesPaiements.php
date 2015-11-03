@@ -80,7 +80,7 @@
                                     <td>
                                         <span class="Align_center"><?php echo $Resultat_Liste_Paiements->id; ?></span>
                                     </td>
-                                    <td><?= Formatage_Date($Resultat_Liste_Paiements->date); ?></td>
+                                    <td><?= \FonctionsUtiles::Formatage_Date($Resultat_Liste_Paiements->date); ?></td>
                                     <td><?= $Resultat_Liste_Paiements->email_compte; ?></td>
                                     <td><?= $Resultat_Liste_Paiements->nombre_vamonaies; ?></td>
                                     <td><?= $Resultat_Liste_Paiements->ip; ?></td>

@@ -8,7 +8,7 @@ class Debannissement extends \PageHelper {
 
     public function run() {
         ?>
-        <?php @include '../../pages/Fonctions_Utiles.php'; ?>
+        
         <html>
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -148,7 +148,7 @@ class Debannissement extends \PageHelper {
 
                                             $Donnees_Selection_Bannissement = $Parametres_Selection_Bannissement->fetch();
                                             $Raison = $Donnees_Selection_Bannissement->raison;
-                                            $Date_Debut_Bann = Formatage_Date($Donnees_Selection_Bannissement->date_debut_bannissement);
+                                            $Date_Debut_Bann = \FonctionsUtiles::Formatage_Date($Donnees_Selection_Bannissement->date_debut_bannissement);
 
                                             if ($Donnees_Selection_Bannissement->duree != 999) {
 
@@ -161,7 +161,7 @@ class Debannissement extends \PageHelper {
 
                                                 $Date_Fin_Bann = "Jamais";
                                             } else {
-                                                $Date_Fin_Bann = Formatage_Date($Donnees_Selection_Bannissement->date_fin_bannissement);
+                                                $Date_Fin_Bann = \FonctionsUtiles::Formatage_Date($Donnees_Selection_Bannissement->date_fin_bannissement);
                                             }
 
                                             $GM_Bann = $Donnees_Selection_Bannissement->pseudo_messagerie;
@@ -188,7 +188,7 @@ class Debannissement extends \PageHelper {
                                             <table class="Tableau_Formulaire_Bannissement">
                                                 <tr>
                                                     <td class="Colonne_Gauche">Date : </td>
-                                                    <td><?= Formatage_Date($date_actuel); ?></td>
+                                                    <td><?= \FonctionsUtiles::Formatage_Date($date_actuel); ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="Colonne_Gauche">Date Bann. : </td>
@@ -315,11 +315,11 @@ class Debannissement extends \PageHelper {
                                                 <?php if ($Nombre_De_Resultat_Bannissement_En_Cours != 0) { ?>
                                                     <?php $Donnees_Bannissement_En_Cours = $Parametres_Bannissement_En_Cours->fetch() ?>
                                                     <tr>
-                                                        <td><?= Formatage_Date($Donnees_Bannissement_En_Cours->date_debut_bannissement); ?></td>
+                                                        <td><?= \FonctionsUtiles::Formatage_Date($Donnees_Bannissement_En_Cours->date_debut_bannissement); ?></td>
                                                         <?php if ($Donnees_Bannissement_En_Cours->definitif == 1) { ?>
                                                             <td>Définitif</td>
                                                         <?php } else { ?>
-                                                            <td title="<?= Formatage_Date($Donnees_Bannissement_En_Cours->date_fin_bannissement); ?>">Bannissement actif....</td>
+                                                            <td title="<?= \FonctionsUtiles::Formatage_Date($Donnees_Bannissement_En_Cours->date_fin_bannissement); ?>">Bannissement actif....</td>
                                                         <?php } ?>
                                                         <td><?= $Donnees_Bannissement_En_Cours->pseudo_messagerie ?></td>
                                                         <td><?= $Donnees_Bannissement_En_Cours->raison ?></td>
@@ -338,12 +338,12 @@ class Debannissement extends \PageHelper {
                                                     <?php while ($Donnees_Historique_Bannissement = $Parametres_Historique_Bannissement->fetch()) { ?>
 
                                                         <tr>
-                                                            <td><?= Formatage_Date($Donnees_Historique_Bannissement->date_debut_bannissement); ?></td>
+                                                            <td><?= \FonctionsUtiles::Formatage_Date($Donnees_Historique_Bannissement->date_debut_bannissement); ?></td>
                                                             <?php if (($Donnees_Historique_Bannissement->debann_par == "") && ($Donnees_Historique_Bannissement->debann_par != "0")) { ?>
                                                                 <?php if ($Donnees_Historique_Bannissement->definitif == 1) { ?>
                                                                     <td>Définitif</td>
                                                                 <?php } else { ?>
-                                                                    <td><?= Formatage_Date($Donnees_Historique_Bannissement->date_fin_bannissement); ?></td>
+                                                                    <td><?= \FonctionsUtiles::Formatage_Date($Donnees_Historique_Bannissement->date_fin_bannissement); ?></td>
                                                                 <?php } ?>
                                                                 <td><?= $Donnees_Historique_Bannissement->pseudo_messagerie ?></td>
                                                             <?php } else { ?>
@@ -359,7 +359,7 @@ class Debannissement extends \PageHelper {
                                                                     <td>Bannissement interrompu.</td>
                                                                     <td><?php echo $Donnees_Pseudo_Messagerie->pseudo_messagerie; ?></td>
                                                                 <?php } else { ?>
-                                                                    <td><?= Formatage_Date($Donnees_Historique_Bannissement->date_fin_bannissement); ?></td>
+                                                                    <td><?= \FonctionsUtiles::Formatage_Date($Donnees_Historique_Bannissement->date_fin_bannissement); ?></td>
                                                                     <td>Script automatique.</td>
                                                                 <?php } ?>
                                                             <?php } ?>

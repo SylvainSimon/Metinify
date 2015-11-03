@@ -21,7 +21,7 @@ class Accueil_Seconde extends \PageHelper {
         <?php } ?>
 
 
-        <?php @include '../pages/Fonctions_Utiles.php'; ?>
+        
 
         <div class="Cadre_Principal">
 

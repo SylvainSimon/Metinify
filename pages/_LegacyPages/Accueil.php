@@ -8,7 +8,6 @@ class Accueil extends \PageHelper {
 
     public function run() {
 
-        include '../../pages/Fonctions_Utiles.php';
 
         /* ------------------------ Vérification Données ---------------------------- */
         $Recuperation_News = "SELECT * 

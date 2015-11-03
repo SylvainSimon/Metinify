@@ -99,7 +99,7 @@
                                         <img src="../images/versopiece.png" style="width: 16px; position: relative; top: 3px;" height="16" />
                                     <?php } ?>
                                 </td>
-                                <td><?= Formatage_Date($Resultat_Liste_Achats->date); ?></td>
+                                <td><?= \FonctionsUtiles::Formatage_Date($Resultat_Liste_Achats->date); ?></td>
                                 <td><?= $Resultat_Liste_Achats->ip; ?></td>
                             </tr>
                         <?php } ?>

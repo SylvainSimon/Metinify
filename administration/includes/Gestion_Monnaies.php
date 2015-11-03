@@ -8,7 +8,7 @@ class Gestion_Monnaies extends \PageHelper {
 
     public function run() {
         ?>
-        <?php @include '../../pages/Fonctions_Utiles.php'; ?>
+        
         <html>
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -202,7 +202,7 @@ class Gestion_Monnaies extends \PageHelper {
                                                         ?>
                                                         <td><?= $Phrase_Action; ?></td>
                                                         <td><?= $Donnees_Pseudo_Messagerie->pseudo_messagerie; ?></td>
-                                                        <td><?= Formatage_Date($Donnees_Historique_Gerer_Monnaies->date); ?></td>
+                                                        <td><?= \FonctionsUtiles::Formatage_Date($Donnees_Historique_Gerer_Monnaies->date); ?></td>
                                                     </tr>
                                                 <?php } ?>
                                             <?php } else { ?>

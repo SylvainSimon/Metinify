@@ -8,7 +8,7 @@ class Gestion_News extends \PageHelper {
 
     public function run() {
         ?>
-        <?php @include '../../pages/Fonctions_Utiles.php'; ?>
+        
         <html>
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />

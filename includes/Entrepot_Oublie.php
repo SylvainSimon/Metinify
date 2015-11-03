@@ -8,7 +8,6 @@ class Entrepot_Oublie extends \PageHelper {
 
     public function run() {
         ?>
-        <?php @include_once '../pages/Fonctions_Utiles.php'; ?>
 
 
         <div class="box box-default flat">

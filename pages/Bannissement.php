@@ -8,7 +8,6 @@ class Bannissement extends \PageHelper {
 
     public function run() {
 
-        include 'Fonctions_Utiles.php';
         
         if (!empty($_GET["id"])) {
 
@@ -54,7 +53,7 @@ class Bannissement extends \PageHelper {
                         <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1">
                             <hr class="Hr_Haut"/>
                             En effet, le membre de l'équipe <b><?= $Donnees_Recuperation_Bannissement->pseudo_messagerie; ?></b> a procédé à une sanction envers votre compte.<br/><br/>
-                            Cette sanction a été appliqué <b><?= Formatage_Date($Donnees_Recuperation_Bannissement->date_debut_bannissement); ?></b> pour : <b><?= $Donnees_Recuperation_Bannissement->raison; ?></b>
+                            Cette sanction a été appliqué <b><?= \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Bannissement->date_debut_bannissement); ?></b> pour : <b><?= $Donnees_Recuperation_Bannissement->raison; ?></b>
                             <br/><br/>
                             <?php if ($Donnees_Recuperation_Bannissement->commentaire_bannissement != "") { ?>
                                 Le modérateur a laissé un commentaire :
@@ -69,7 +68,7 @@ class Bannissement extends \PageHelper {
                                 <hr class="Hr_Bas">
                             <?php } else { ?>
 
-                                Votre compte sera débloqué <?= Formatage_Date($Donnees_Recuperation_Bannissement->date_fin_bannissement); ?>.<br/>
+                                Votre compte sera débloqué <?= \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Bannissement->date_fin_bannissement); ?>.<br/>
                                 <hr class="Hr_Bas">
                                 <br/>
                                 Temps restant : <br/><br/>
@@ -110,12 +109,12 @@ class Bannissement extends \PageHelper {
                                     jQuery(document).ready(function () {
                                         $('#countdown_dashboard').countDown({
                                             targetDate: {
-                                                'day': <?= Obtenir_Jours_Date($Donnees_Recuperation_Bannissement->date_fin_bannissement) ?>,
-                                                'month': <?= Obtenir_Mois_Date($Donnees_Recuperation_Bannissement->date_fin_bannissement) ?>,
-                                                'year': <?= Obtenir_Annee_Date($Donnees_Recuperation_Bannissement->date_fin_bannissement) ?>,
-                                                'hour': <?= Obtenir_Heure_Date($Donnees_Recuperation_Bannissement->date_fin_bannissement) ?>,
-                                                'min': <?= Obtenir_Minute_Date($Donnees_Recuperation_Bannissement->date_fin_bannissement) ?>,
-                                                'sec': <?= Obtenir_Seconde_Date($Donnees_Recuperation_Bannissement->date_fin_bannissement) ?>
+                                                'day': <?= \FonctionsUtiles::Obtenir_Jours_Date($Donnees_Recuperation_Bannissement->date_fin_bannissement) ?>,
+                                                'month': <?= \FonctionsUtiles::Obtenir_Mois_Date($Donnees_Recuperation_Bannissement->date_fin_bannissement) ?>,
+                                                'year': <?= \FonctionsUtiles::Obtenir_Annee_Date($Donnees_Recuperation_Bannissement->date_fin_bannissement) ?>,
+                                                'hour': <?= \FonctionsUtiles::Obtenir_Heure_Date($Donnees_Recuperation_Bannissement->date_fin_bannissement) ?>,
+                                                'min': <?= \FonctionsUtiles::Obtenir_Minute_Date($Donnees_Recuperation_Bannissement->date_fin_bannissement) ?>,
+                                                'sec': <?= \FonctionsUtiles::Obtenir_Seconde_Date($Donnees_Recuperation_Bannissement->date_fin_bannissement) ?>
                                             },
                                             omitWeeks: true
                                         });

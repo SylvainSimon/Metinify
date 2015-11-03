@@ -8,7 +8,7 @@ class Telechargement extends \PageHelper {
 
     public function run() {
         
-        include __DIR__ . '../../Fonctions_Utiles.php'; ?>
+?>
 
         <div class="box box-default flat">
 
@@ -38,7 +38,7 @@ class Telechargement extends \PageHelper {
                                 }
                                 ?>
 
-                                <span class="info-box-number"><?php echo Formatage_Taille($size); ?></span>
+                                <span class="info-box-number"><?php echo \FonctionsUtiles::Formatage_Taille($size); ?></span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -51,7 +51,7 @@ class Telechargement extends \PageHelper {
                             <div class="info-box-content">
                                 <span class="info-box-text">Télécharger via torrent</span>
 
-                                <span class="info-box-number"><?php echo Formatage_Taille($size); ?></span>
+                                <span class="info-box-number"><?php echo \FonctionsUtiles::Formatage_Taille($size); ?></span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>

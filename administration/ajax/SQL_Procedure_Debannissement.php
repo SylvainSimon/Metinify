@@ -8,7 +8,6 @@ class SQL_Procedure_Debannissement extends \PageHelper {
 
     public function run() {
 
-        @include '../../pages/Fonctions_Utiles.php';
 
         $Id_Compte_Debannissement = $_POST['id_compte'];
 

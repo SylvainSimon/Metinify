@@ -8,7 +8,7 @@ class SQL_Recuperer_Formulaire_Vendre_Personnage extends \PageHelper {
 
     public function run() {
         ?>
-        <?php include '../../pages/Fonctions_Utiles.php'; ?>
+        
         <?php
         $Id_Personnage = $_POST["id_personnage"];
 

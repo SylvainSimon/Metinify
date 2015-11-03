@@ -8,7 +8,7 @@ class Marche_Detail_Personnage extends \PageHelper {
 
     public function run() {
         ?>
-        <?php include '../pages/Fonctions_Utiles.php'; ?>
+        
         <?php
         /* -------------------- Recuperation_Marche_Personnage ---------------------- */
         $Recuperation_Marche_Personnage = "SELECT id_personnage
@@ -70,11 +70,11 @@ class Marche_Detail_Personnage extends \PageHelper {
                         </tr>
                         <tr>
                             <td class="Colonne_Gauche">Race : </td>
-                            <td><img class="Images_Recherches" height="16" title="<?= Find_Name_Race($Donnees_Appel_Joueurs_Page->job); ?>"  src="../<?= Find_Image_Race($Donnees_Appel_Joueurs_Page->job); ?>" /></td>
+                            <td><img class="Images_Recherches" height="16" title="<?= \FonctionsUtiles::Find_Name_Race($Donnees_Appel_Joueurs_Page->job); ?>"  src="../<?= \FonctionsUtiles::Find_Image_Race($Donnees_Appel_Joueurs_Page->job); ?>" /></td>
                         </tr>
                         <tr>
                             <td class="Colonne_Gauche">Yangs : </td>
-                            <td><?= Formatage_Yangs($Donnees_Appel_Joueurs_Page->gold); ?></td>
+                            <td><?= \FonctionsUtiles::Formatage_Yangs($Donnees_Appel_Joueurs_Page->gold); ?></td>
                         </tr>
                     </table>
 

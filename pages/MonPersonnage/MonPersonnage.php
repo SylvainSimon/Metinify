@@ -8,7 +8,7 @@ class MonPersonnage extends \PageHelper {
 
     public function run() {
         ?>
-        <?php @include_once  __DIR__ . '../../../pages/Fonctions_Utiles.php'; ?>
+        
         <?php
         if (empty($_SESSION['Utilisateur'])) {
 

@@ -8,7 +8,7 @@ class SQL_Procedure_Achat_Personnage extends \PageHelper {
 
     public function run() {
         ?>
-        <?php include '../../pages/Fonctions_Utiles.php'; ?>
+        
         <?php
 
         if (!empty($_SESSION["ID"])) {
