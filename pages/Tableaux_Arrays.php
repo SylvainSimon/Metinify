@@ -310,12 +310,12 @@ $Array_Maps = array(
 
 $Array_BonusCompte = array(
     
-    'gold_expire' => '<img src=\'../images/Bonus/1.png\' width=\'34\' />',
-    'silver_expire' => '<img src=\'../images/Bonus/2.png\' width=\'34\' />',
-    'safebox_expire' => '<img src=\'../images/Bonus/3.png\' width=\'34\' />',
-    'autoloot_expire' => '<img src=\'../images/Bonus/4.png\' width=\'34\' />',
-    'fish_mind_expire' => '<img src=\'../images/Bonus/5.png\' width=\'34\' />',
-    'marriage_fast_expire' => '<img src=\'../images/Bonus/6.png\' width=\'34\' />',
-    'money_drop_rate_expire' => '<img src=\'../images/Bonus/7.png\' width=\'34\' />'
+    'gold_expire' => '<img src=\'../images/Bonus/1.png\' width=\'63\' />',
+    'silver_expire' => '<img src=\'../images/Bonus/2.png\' width=\'63\' />',
+    'safebox_expire' => '<img src=\'../images/Bonus/3.png\' width=\'63\' />',
+    'autoloot_expire' => '<img src=\'../images/Bonus/4.png\' width=\'63\' />',
+    'fish_mind_expire' => '<img src=\'../images/Bonus/5.png\' width=\'63\' />',
+    'marriage_fast_expire' => '<img src=\'../images/Bonus/6.png\' width=\'63\' />',
+    'money_drop_rate_expire' => '<img src=\'../images/Bonus/7.png\' width=\'63\' />'
 );
 ?>
