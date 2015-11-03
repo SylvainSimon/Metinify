@@ -57,7 +57,7 @@ function Changement_Code_Effacement(){
             success: function(msg){
                 if(msg==1){
                         
-                    Ajax("pages/Compte_Code_Effacement_Modifier_Confirmation.php");
+                    Ajax("pages/MonCompte/CodeEffacementChangeTerm.php");
                     
                 }else{
                     

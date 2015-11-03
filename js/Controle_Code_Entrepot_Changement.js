@@ -44,7 +44,7 @@ function Changement_Code_Entrepot(){
             success: function(msg){
                 if(msg==1){
                         
-                    Ajax("pages/Compte_Code_Entrepot_Modifier_Confirmation.php");
+                    Ajax("pages/MonCompte/CodeEntrepotChangeTerm.php");
                     
                 }else{
                     

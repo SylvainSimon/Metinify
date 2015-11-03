@@ -1,10 +1,10 @@
 <?php
 
-namespace Pages;
+namespace Pages\MonCompte;
 
 require __DIR__ . '../../core/initialize.php';
 
-class Compte_Code_Entrepot_Modifier extends \PageHelper {
+class CodeEntrepotChangeForm extends \PageHelper {
 
     public function run() {
         ?>
@@ -80,5 +80,5 @@ class Compte_Code_Entrepot_Modifier extends \PageHelper {
 
 }
 
-$class = new Compte_Code_Entrepot_Modifier();
+$class = new CodeEntrepotChangeForm();
 $class->run();

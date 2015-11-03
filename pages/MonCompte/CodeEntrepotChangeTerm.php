@@ -1,24 +1,21 @@
 <?php
 
-namespace Pages;
+namespace Pages\MonCompte;
 
 require __DIR__ . '../../core/initialize.php';
 
-class Compte_Code_Effacement_Modifier_Confirmation extends \PageHelper {
+class CodeEntrepotChangeTerm extends \PageHelper {
 
     public function run() {
         ?>
-
-
         <div class="box box-default flat">
 
             <div class="box-header">
-                <h3 class="box-title">Code d'effacement changé</h3>
+                <h3 class="box-title">Code d'entrepôt changé</h3>
             </div>
 
             <div class="box-body">
-
-                Votre code d'effacement a bien été changer.<br/><br/>
+                Votre code d'entrepôt a bien été changer.<br/><br/>
                 Pensez à le garder précieusement.<br/><br/>
 
                 Pour revenir à l'accueil, merci de cliquer sur le bouton "Accueil".
@@ -28,10 +25,11 @@ class Compte_Code_Effacement_Modifier_Confirmation extends \PageHelper {
                 <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/Accueil.php');" />
             </div>
         </div>
+
         <?php
     }
 
 }
 
-$class = new Compte_Code_Effacement_Modifier_Confirmation();
+$class = new CodeEntrepotChangeTerm();
 $class->run();

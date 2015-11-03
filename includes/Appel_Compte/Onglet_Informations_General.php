@@ -108,7 +108,7 @@
                             <td>
                                 <span id="Code_Effacement">●●●●●●●</span>
 
-                                <i style="margin-left: 5px;" data-tooltip="Modifier mon code" onclick="Ajax('pages/Compte_Code_Effacement_Modifier.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
+                                <i style="margin-left: 5px;" data-tooltip="Modifier mon code" onclick="Ajax('pages/MonCompte/CodeEffacementChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
                                 <i data-tooltip="Voir le code" onclick="if (Clique_Code_Effacement == 0) {
                                                 document.getElementById('Code_Effacement').innerHTML = '<?php echo $Resultat_Appel_Compte->social_id; ?>';
                                                 Clique_Code_Effacement = 1;
@@ -138,7 +138,7 @@
                             <td id="Code_Entrepot">
                                 ●●●●●●
 
-                                <i style="margin-left: 5px;"  data-tooltip="Modifier mon code" onclick="Ajax('pages/Compte_Code_Entrepot_Modifier.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
+                                <i style="margin-left: 5px;"  data-tooltip="Modifier mon code" onclick="Ajax('pages/MonCompte/CodeEntrepotChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
 
                                 <i data-tooltip="Récupérer le code entrepôt" onclick="Ajax('includes/Entrepot_Oublie.php');" class="pull-right Pointer material-icons md-icon-settings_backup_restore text-blue"></i>
 
