@@ -82,7 +82,7 @@ $Nombre_De_Resultat_Recuperation_Site_De_Vote = $Parametres_Recuperation_Site_De
 
                         $.ajax({
                             type: "POST",
-                            url: "ajax/SQL_Rechercher_Site.php",
+                            url: "pages/Votes/ajax/ajaxGetUrlSite.php",
                             data: "id_site=" + $("#Id_Tempo_id_site").val(),
                             success: function (msg) {
                                 $("#Lien_Popup").attr("href", msg);
@@ -112,7 +112,7 @@ $Nombre_De_Resultat_Recuperation_Site_De_Vote = $Parametres_Recuperation_Site_De
 
                         $.ajax({
                             type: "POST",
-                            url: "ajax/SQL_Rechercher_Site.php",
+                            url: "pages/Votes/ajax/ajaxGetUrlSite.php",
                             data: "id_site=" + $("#Id_Tempo_id_site").val(),
                             success: function (msg) {
                                 $("#Lien_Popup").attr("href", msg);

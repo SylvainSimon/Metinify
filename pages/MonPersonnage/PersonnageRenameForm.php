@@ -126,7 +126,7 @@ class PersonnageRenameForm extends \PageHelper {
 
                             $.ajax({
                                 type: "POST",
-                                url: "./ajax/SQL_Renommer_Personnage.php",
+                                url: "pages/MonPersonnage/ajax/ajaxPersonnageRenameExecute.php",
                                 data: "id_personnage=<?= $_GET["id_perso"]; ?>&nouveau_nom=" + $("#Champs_Saisie_Nouveau_Nom").val(),
                                 success: function (msg) {
 

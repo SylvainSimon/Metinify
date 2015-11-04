@@ -1,10 +1,10 @@
 <?php
 
-namespace Ajax;
+namespace Pages\MonPersonnage\Ajax;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class SQL_Renommer_Personnage extends \ScriptHelper {
+class ajaxPersonnageRenameExecute extends \ScriptHelper {
 
     public function run() {
         $Suppression_Perssonage_Procedure_ID_Personnage = $_POST["id_personnage"];
@@ -128,5 +128,5 @@ class SQL_Renommer_Personnage extends \ScriptHelper {
 
 }
 
-$class = new SQL_Renommer_Personnage();
+$class = new ajaxPersonnageRenameExecute();
 $class->run();

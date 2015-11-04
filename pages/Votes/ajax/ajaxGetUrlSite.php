@@ -1,10 +1,10 @@
 <?php
 
-namespace Ajax;
+namespace Pages\Votes\Ajax;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class SQL_Rechercher_Site extends \ScriptHelper {
+class ajaxGetUrlSite extends \ScriptHelper {
 
     public function run() {
         $Id_site = $_POST['id_site'];
@@ -28,5 +28,5 @@ class SQL_Rechercher_Site extends \ScriptHelper {
 
 }
 
-$class = new SQL_Rechercher_Site();
+$class = new ajaxGetUrlSite();
 $class->run();

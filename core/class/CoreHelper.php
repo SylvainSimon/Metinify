@@ -59,22 +59,21 @@ class CoreHelper {
                         exit();
                     }
                 } else {
-                    //Va te faire foutre car t'est pas connecté
+
+                    include '../../pages/_LegacyPages/Accueil.php';
+                    exit();
                 }
             }
             if ($this->isScript) {
                 if ($session->get("ID") !== null) {
-
                     $objAccount = Account\AccountHelper::getAccountRepository()->find($session->get("ID"));
                     if ($objAccount->getStatus() == "BLOCK") {
-
                         $this->response->setStatusCode(423);
                         $this->response->setContent("");
                         echo $this->response->send();
                         exit();
                     }
                 } else {
-
                     $this->response->setStatusCode(418);
                     $this->response->setContent("");
                     echo $this->response->send();
