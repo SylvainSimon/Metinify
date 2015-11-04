@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Banword
  *
- * @ORM\Table(name="banword")
+ * @ORM\Table(name="player.banword")
  * @ORM\Entity
  */
 class Banword

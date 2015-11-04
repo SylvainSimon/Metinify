@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * AffectCopy
  *
- * @ORM\Table(name="affect_copy")
+ * @ORM\Table(name="player.affect_copy")
  * @ORM\Entity
  */
 class AffectCopy

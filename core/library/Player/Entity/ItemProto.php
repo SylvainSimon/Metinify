@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ItemProto
  *
- * @ORM\Table(name="item_proto")
+ * @ORM\Table(name="player.item_proto")
  * @ORM\Entity
  */
 class ItemProto

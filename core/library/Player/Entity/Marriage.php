@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Marriage
  *
- * @ORM\Table(name="marriage")
+ * @ORM\Table(name="player.marriage")
  * @ORM\Entity
  */
 class Marriage

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MobProtoOld
  *
- * @ORM\Table(name="mob_proto_old")
+ * @ORM\Table(name="player.mob_proto_old")
  * @ORM\Entity
  */
 class MobProtoOld

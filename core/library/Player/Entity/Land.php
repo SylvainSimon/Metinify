@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Land
  *
- * @ORM\Table(name="land")
+ * @ORM\Table(name="player.land")
  * @ORM\Entity
  */
 class Land

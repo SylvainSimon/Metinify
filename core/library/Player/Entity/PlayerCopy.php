@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * PlayerCopy
  *
- * @ORM\Table(name="player_copy", uniqueConstraints={@ORM\UniqueConstraint(name="name", columns={"name"})}, indexes={@ORM\Index(name="account_id_idx", columns={"account_id"})})
+ * @ORM\Table(name="player.player_copy", uniqueConstraints={@ORM\UniqueConstraint(name="name", columns={"name"})}, indexes={@ORM\Index(name="account_id_idx", columns={"account_id"})})
  * @ORM\Entity
  */
 class PlayerCopy

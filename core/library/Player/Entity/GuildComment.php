@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * GuildComment
  *
- * @ORM\Table(name="guild_comment", indexes={@ORM\Index(name="aaa", columns={"notice", "id", "guild_id"}), @ORM\Index(name="guild_id", columns={"guild_id"})})
+ * @ORM\Table(name="player.guild_comment", indexes={@ORM\Index(name="aaa", columns={"notice", "id", "guild_id"}), @ORM\Index(name="guild_id", columns={"guild_id"})})
  * @ORM\Entity
  */
 class GuildComment

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * SmsPool
  *
- * @ORM\Table(name="sms_pool", indexes={@ORM\Index(name="sent_idx", columns={"sent"})})
+ * @ORM\Table(name="player.sms_pool", indexes={@ORM\Index(name="sent_idx", columns={"sent"})})
  * @ORM\Entity
  */
 class SmsPool

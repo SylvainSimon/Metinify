@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MyshopPricelist
  *
- * @ORM\Table(name="myshop_pricelist", uniqueConstraints={@ORM\UniqueConstraint(name="list_id", columns={"owner_id", "item_vnum"})})
+ * @ORM\Table(name="player.myshop_pricelist", uniqueConstraints={@ORM\UniqueConstraint(name="list_id", columns={"owner_id", "item_vnum"})})
  * @ORM\Entity
  */
 class MyshopPricelist

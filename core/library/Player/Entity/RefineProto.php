@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * RefineProto
  *
- * @ORM\Table(name="refine_proto")
+ * @ORM\Table(name="player.refine_proto")
  * @ORM\Entity
  */
 class RefineProto

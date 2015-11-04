@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ItemAward
  *
- * @ORM\Table(name="item_award", indexes={@ORM\Index(name="pid_idx", columns={"pid"}), @ORM\Index(name="given_time_idx", columns={"given_time"}), @ORM\Index(name="taken_time_idx", columns={"taken_time"})})
+ * @ORM\Table(name="player.item_award", indexes={@ORM\Index(name="pid_idx", columns={"pid"}), @ORM\Index(name="given_time_idx", columns={"given_time"}), @ORM\Index(name="taken_time_idx", columns={"taken_time"})})
  * @ORM\Entity
  */
 class ItemAward

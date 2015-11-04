@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MonarchElection
  *
- * @ORM\Table(name="monarch_election")
+ * @ORM\Table(name="player.monarch_election")
  * @ORM\Entity
  */
 class MonarchElection

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * PcbangIp
  *
- * @ORM\Table(name="pcbang_ip", uniqueConstraints={@ORM\UniqueConstraint(name="ip", columns={"ip"})}, indexes={@ORM\Index(name="pcbang_id", columns={"pcbang_id"})})
+ * @ORM\Table(name="player.pcbang_ip", uniqueConstraints={@ORM\UniqueConstraint(name="ip", columns={"ip"})}, indexes={@ORM\Index(name="pcbang_id", columns={"pcbang_id"})})
  * @ORM\Entity
  */
 class PcbangIp

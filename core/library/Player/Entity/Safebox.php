@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Safebox
  *
- * @ORM\Table(name="safebox")
+ * @ORM\Table(name="player.safebox")
  * @ORM\Entity
  */
 class Safebox

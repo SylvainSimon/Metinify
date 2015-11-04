@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Account
  *
  * @ORM\Table(name="account.account", uniqueConstraints={@ORM\UniqueConstraint(name="login", columns={"login"})}, indexes={@ORM\Index(name="social_id", columns={"social_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Account\Repository\AccountRepository")
  */
 class Account
 {

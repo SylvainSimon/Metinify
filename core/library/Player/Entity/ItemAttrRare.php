@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ItemAttrRare
  *
- * @ORM\Table(name="item_attr_rare")
+ * @ORM\Table(name="player.item_attr_rare")
  * @ORM\Entity
  */
 class ItemAttrRare

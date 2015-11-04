@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * GuildGrade
  *
- * @ORM\Table(name="guild_grade")
+ * @ORM\Table(name="player.guild_grade")
  * @ORM\Entity
  */
 class GuildGrade

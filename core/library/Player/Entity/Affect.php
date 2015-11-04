@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Affect
  *
- * @ORM\Table(name="affect")
+ * @ORM\Table(name="player.affect")
  * @ORM\Entity
  */
 class Affect

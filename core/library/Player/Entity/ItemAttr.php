@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ItemAttr
  *
- * @ORM\Table(name="item_attr")
+ * @ORM\Table(name="player.item_attr")
  * @ORM\Entity
  */
 class ItemAttr

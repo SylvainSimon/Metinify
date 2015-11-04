@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Player
  *
- * @ORM\Table(name="player", uniqueConstraints={@ORM\UniqueConstraint(name="name", columns={"name"})}, indexes={@ORM\Index(name="account_id_idx", columns={"account_id"})})
- * @ORM\Entity
+ * @ORM\Table(name="player.player", uniqueConstraints={@ORM\UniqueConstraint(name="name", columns={"name"})}, indexes={@ORM\Index(name="account_id_idx", columns={"account_id"})})
+ * @ORM\Entity(repositoryClass="Player\Repository\PlayerRepository")
  */
 class Player
 {

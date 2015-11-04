@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * SkillProto05
  *
- * @ORM\Table(name="skill_proto_05")
+ * @ORM\Table(name="player.skill_proto_05")
  * @ORM\Entity
  */
 class SkillProto05

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ChangeEmpire
  *
- * @ORM\Table(name="change_empire")
+ * @ORM\Table(name="player.change_empire")
  * @ORM\Entity
  */
 class ChangeEmpire

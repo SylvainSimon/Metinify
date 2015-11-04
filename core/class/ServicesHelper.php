@@ -173,7 +173,7 @@ class ServicesHelper {
             $proxiesCacheDir = $container['doctrine.orm.proxiesCacheDir'];
             $config->setProxyDir($proxiesCacheDir);
             $config->setProxyNamespace('entities\proxies');
-
+            
             switch ($param->objInstance->cacheBdd) {
                 case 'apc':
                     $cache = new \Doctrine\Common\Cache\ApcCache();
@@ -181,7 +181,7 @@ class ServicesHelper {
                 case 'array':
                     $cache = new \Doctrine\Common\Cache\ArrayCache();
                     break;
-                case '':
+                case false:
                     $cache = false;
                     break;
             }

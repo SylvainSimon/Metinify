@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * GuildWarBet
  *
- * @ORM\Table(name="guild_war_bet")
+ * @ORM\Table(name="player.guild_war_bet")
  * @ORM\Entity
  */
 class GuildWarBet

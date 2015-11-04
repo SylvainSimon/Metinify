@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * GuildWarReservation
  *
- * @ORM\Table(name="guild_war_reservation")
+ * @ORM\Table(name="player.guild_war_reservation")
  * @ORM\Entity
  */
 class GuildWarReservation

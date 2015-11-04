@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CostumeSystem
  *
- * @ORM\Table(name="costume_system")
+ * @ORM\Table(name="player.costume_system")
  * @ORM\Entity
  */
 class CostumeSystem

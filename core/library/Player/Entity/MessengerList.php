@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MessengerList
  *
- * @ORM\Table(name="messenger_list")
+ * @ORM\Table(name="player.messenger_list")
  * @ORM\Entity
  */
 class MessengerList

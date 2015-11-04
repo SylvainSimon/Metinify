@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ChangeName
  *
- * @ORM\Table(name="change_name")
+ * @ORM\Table(name="player.change_name")
  * @ORM\Entity
  */
 class ChangeName
