@@ -1,24 +1,24 @@
 <?php
-
 require __DIR__ . '/core/initialize.php';
 
 class IndexWebsite extends CoreHelper {
 
     public function run() {
-        
+
         $objAccount = Account\AccountHelper::getAccountRepository()->find(1);
-        
-        
+        $arrObjPlayers = Player\PlayerHelper::getPlayerRepository()->findPlayers($objAccount->getId());
+
         \Debug::log($objAccount->getLogin());
-        
+
+        foreach ($arrObjPlayers as $objPlayer) {
+            \Debug::log($objPlayer->getName());
+        }
+
         //$this->objConnection;
         //$this->objConfig;
         //var_dump($this->objSession->get("ID"));
-        
         //global $request;
-        
         //$this->objConnection;
-        
         ?>
 
         <!DOCTYPE html>
@@ -67,13 +67,13 @@ class IndexWebsite extends CoreHelper {
 
                 <div class="wrapper">
 
-                    <?php include_once 'includes/Barre_Superieur.php'; ?>
+        <?php include_once 'includes/Barre_Superieur.php'; ?>
 
                     <div class="clear"></div>
 
                     <aside class="main-sidebar" style="background: #131313; border-right: 1px solid #3E3E3E;">
                         <section class="sidebar">
-                            <?php include_once 'includes/Menu_Primaire.php'; ?>
+        <?php include_once 'includes/Menu_Primaire.php'; ?>
 
                         </section>
                     </aside>
@@ -89,14 +89,14 @@ class IndexWebsite extends CoreHelper {
 
                             <div class="row">
                                 <nav class="col-lg-2 col-md-3 hidden-sm hidden-xs">
-                                    <?php include_once 'includes/Sidebar_Gauche.php'; ?>
+        <?php include_once 'includes/Sidebar_Gauche.php'; ?>
                                 </nav>
 
                                 <div id="Contenue_Principal" class="col-lg-8 col-md-6 col-sm-12"></div> 
 
 
                                 <nav class="col-lg-2 col-md-3 hidden-sm hidden-xs">
-                                    <?php include_once 'includes/Sidebar_Droite.php'; ?>
+        <?php include_once 'includes/Sidebar_Droite.php'; ?>
                                 </nav>
                             </div>
                         </div>
@@ -105,7 +105,7 @@ class IndexWebsite extends CoreHelper {
 
                     <footer>
                         <div class="col-md-12">
-                            <?php include_once 'includes/Footer.php'; ?> 
+        <?php include_once 'includes/Footer.php'; ?> 
                             <div class="clearfix"></div>
                         </div>
                     </footer>
@@ -183,6 +183,7 @@ class IndexWebsite extends CoreHelper {
         </html>
         <?php
     }
+
 }
 
 $class = new IndexWebsite();

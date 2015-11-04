@@ -17,7 +17,7 @@ class Player
      *
      * @ORM\Column(name="account_id", type="integer", nullable=false)
      */
-    private $accountId = '0';
+    private $idAccount = '0';
 
     /**
      * @var boolean
@@ -369,27 +369,27 @@ class Player
 
 
     /**
-     * Set accountId
+     * Set idAccount
      *
-     * @param integer $accountId
+     * @param integer $idAccount
      *
      * @return Player
      */
-    public function setAccountId($accountId)
+    public function setIdAccount($idAccount)
     {
-        $this->accountId = $accountId;
+        $this->idAccount = $idAccount;
 
         return $this;
     }
 
     /**
-     * Get accountId
+     * Get idAccount
      *
      * @return integer
      */
-    public function getAccountId()
+    public function getIdAccount()
     {
-        return $this->accountId;
+        return $this->idAccount;
     }
 
     /**
