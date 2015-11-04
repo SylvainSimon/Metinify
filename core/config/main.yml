@@ -16,3 +16,5 @@ smtpHost: localhost
 smtpPort: 25
 smtpUser: ~
 smtpPassword: ~
+
+encryptKey: vamoslelapin
