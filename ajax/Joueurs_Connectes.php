@@ -4,7 +4,7 @@ namespace Ajax;
 
 require __DIR__ . '../../core/initialize.php';
 
-class Joueurs_Connectes extends \PageHelper {
+class Joueurs_Connectes extends \ScriptHelper {
 
     public function run() {
 

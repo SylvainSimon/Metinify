@@ -4,7 +4,7 @@ namespace Ajax;
 
 require __DIR__ . '../../core/initialize.php';
 
-class Update_Tananaies extends \PageHelper {
+class Update_Tananaies extends \ScriptHelper {
 
     public function run() {
         echo $_SESSION['TanaNaies'];

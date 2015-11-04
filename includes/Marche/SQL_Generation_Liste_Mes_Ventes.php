@@ -4,8 +4,10 @@ namespace Includes;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class SQL_Generation_Liste_Mes_Ventes extends \PageHelper {
+class SQL_Generation_Liste_Mes_Ventes extends \ScriptHelper {
 
+    public $isProtected = true;
+    
     public function run() {
         ?>
         

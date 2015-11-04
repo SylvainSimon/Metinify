@@ -4,8 +4,10 @@ namespace Pages\MonCompte\Ajax;
 
 require __DIR__ . '../../../../core/initialize.php';
 
-class ajaxEmailChangeVerify extends \PageHelper {
+class ajaxEmailChangeVerify extends \ScriptHelper {
 
+    public $isProtected = true;
+    
     public function run() {
 
         $Changer_Mail_Verification_Ip = $_SERVER["REMOTE_ADDR"];

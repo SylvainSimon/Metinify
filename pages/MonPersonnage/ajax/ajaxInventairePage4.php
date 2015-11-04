@@ -4,9 +4,12 @@ namespace Pages\MonPersonnage\Ajax;
 
 require __DIR__ . '../../../../core/initialize.php';
 
-class ajaxInventairePage4 extends \PageHelper {
+class ajaxInventairePage4 extends \ScriptHelper {
 
+    public $isProtected = true;
+    
     public function run() {
+        
         ?>
         <?php include __DIR__ . '../../../../pages/Tableaux_Arrays.php'; ?>
 

@@ -4,7 +4,7 @@ namespace Ajax;
 
 require __DIR__ . '../../core/initialize.php';
 
-class Actualisation_Classyd extends \PageHelper {
+class Actualisation_Classyd extends \ScriptHelper {
 
     public function run() {
         $port = '3306';

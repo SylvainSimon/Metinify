@@ -4,10 +4,11 @@ namespace Pages\MonCompte\Ajax;
 
 require __DIR__ . '../../../../core/initialize.php';
 
-class ajaxCodeEffacementChangeExecute extends \PageHelper {
+class ajaxCodeEffacementChangeExecute extends \ScriptHelper {
 
+    public $isProtected = true;
+    
     public function run() {
-
 
         $Code_Effacement_Changer_Code_Avant = $_POST['Code_Avant'];
         $Code_Effacement_Changer_Code = $_POST['Code_Effacement'];

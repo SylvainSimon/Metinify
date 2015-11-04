@@ -4,7 +4,7 @@ namespace Ajax;
 
 require __DIR__ . '../../core/initialize.php';
 
-class SQL_CompteurCaptcha extends \PageHelper {
+class SQL_CompteurCaptcha extends \ScriptHelper {
 
     public function run() {
 

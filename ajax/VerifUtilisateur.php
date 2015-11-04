@@ -4,7 +4,7 @@ namespace Ajax;
 
 require __DIR__ . '../../core/initialize.php';
 
-class VerifUtilisateur extends \PageHelper {
+class VerifUtilisateur extends \ScriptHelper {
 
     public function run() {
 

@@ -4,8 +4,10 @@ namespace Pages\MonCompte\Ajax;
 
 require __DIR__ . '../../../../core/initialize.php';
 
-class ajaxEmailChangeExecute extends \PageHelper {
+class ajaxEmailChangeExecute extends \ScriptHelper {
 
+    public $isProtected = true;
+    
     public function run() {
 
 

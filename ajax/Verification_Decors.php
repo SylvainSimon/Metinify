@@ -4,7 +4,7 @@ namespace Ajax;
 
 require __DIR__ . '../../core/initialize.php';
 
-class Verification_Decors extends \PageHelper {
+class Verification_Decors extends \ScriptHelper {
 
     public function run() {
 

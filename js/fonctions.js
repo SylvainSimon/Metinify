@@ -38,7 +38,7 @@ function createTooltip() {
                 collision: "flipfit flip"};
             var tooltipClass = null;
         }
-        
+
         if ($(this).attr("data-tooltip-isItemMetin") !== undefined) {
             var tooltipClass = tooltipClass + " isItemMetin ";
         }
@@ -89,6 +89,19 @@ function redraw() {
 }
 
 $(document).ready(function () {
+
+    $.ajaxSetup({
+        error: function (jqXHR, exception) {
+
+            if (jqXHR.status === 418) {
+                Ajax("pages/_LegacyPages/Accueil.php");
+            } else if (jqXHR.status === 423) {
+                Ajax("pages/Bannissement.php");
+            }
+
+        }
+    });
+
     redraw();
 });
 

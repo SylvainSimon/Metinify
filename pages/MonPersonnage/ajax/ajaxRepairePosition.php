@@ -4,8 +4,10 @@ namespace Pages\MonPersonnage\Ajax;
 
 require __DIR__ . '../../../../core/initialize.php';
 
-class ajaxRepairePosition extends \PageHelper {
+class ajaxRepairePosition extends \ScriptHelper {
 
+    public $isProtected = true;
+    
     public function run() {
 
         $Id_Personnage = $_POST["id_perso"];

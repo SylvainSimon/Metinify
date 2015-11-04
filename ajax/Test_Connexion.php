@@ -4,7 +4,7 @@ namespace Ajax;
 
 require __DIR__ . '../../core/initialize.php';
 
-class Test_Connexion extends \PageHelper {
+class Test_Connexion extends \ScriptHelper {
 
     public function run() {
         if (empty($_SESSION['ID'])) {

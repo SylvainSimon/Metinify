@@ -4,8 +4,10 @@ namespace Includes;
 
 require __DIR__ . '../../../../core/initialize.php';
 
-class ajaxCategorieGetArticles extends \PageHelper {
+class ajaxCategorieGetArticles extends \ScriptHelper {
 
+    public $isProtected = true;
+    
     public function run() {
         ?>
 

@@ -6,6 +6,8 @@ require __DIR__ . '../../../core/initialize.php';
 
 class PersonnageDeleteTerm extends \PageHelper {
 
+    public $isProtected = true;
+    
     public function run() {
         ?>
 

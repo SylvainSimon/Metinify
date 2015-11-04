@@ -4,13 +4,15 @@ namespace Pages\MonPersonnage\Ajax;
 
 require __DIR__ . '../../../../core/initialize.php';
 
-class ajaxInventairePage3 extends \PageHelper {
+class ajaxInventairePage3 extends \ScriptHelper {
 
+    public $isProtected = true;
+
+    
     public function run() {
-        ?>
-<?php include __DIR__ . '../../../../pages/Tableaux_Arrays.php'; ?>
-
-<?php
+        
+        include __DIR__ . '../../../../pages/Tableaux_Arrays.php'; 
+        
 /* -------------------------- Preparation des Requetes ------------------------------- */
 $Appel_Case = "SELECT item.vnum,
                       item.count,

@@ -6,6 +6,8 @@ require __DIR__ . '../../../core/initialize.php';
 
 class ItemShop extends \PageHelper {
 
+    public $isProtected = true;
+    
     public function run() {
 
         $Sauvegarder_ID = $_SESSION['ID'];

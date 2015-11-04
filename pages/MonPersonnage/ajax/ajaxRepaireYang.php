@@ -4,8 +4,10 @@ namespace Pages\MonPersonnage\Ajax;
 
 require __DIR__ . '../../../../core/initialize.php';
 
-class ajaxRepaireYang extends \PageHelper {
+class ajaxRepaireYang extends \ScriptHelper {
 
+    public $isProtected = true;
+    
     public function run() {
 
 

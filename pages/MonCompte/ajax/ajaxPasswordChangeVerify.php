@@ -4,8 +4,10 @@ namespace Pages\MonCompte\Ajax;
 
 require __DIR__ . '../../../../core/initialize.php';
 
-class ajaxPasswordChangeVerify extends \PageHelper {
+class ajaxPasswordChangeVerify extends \ScriptHelper {
 
+    public $isProtected = true;
+    
     public function run() {
 
         $Changer_Mot_De_Passe_Verification_Ip = $_SERVER["REMOTE_ADDR"];

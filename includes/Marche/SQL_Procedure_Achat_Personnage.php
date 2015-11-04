@@ -4,12 +4,11 @@ namespace Includes;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class SQL_Procedure_Achat_Personnage extends \PageHelper {
+class SQL_Procedure_Achat_Personnage extends \ScriptHelper {
 
+    public $isProtected = true;
+    
     public function run() {
-        ?>
-        
-        <?php
 
         if (!empty($_SESSION["ID"])) {
             $ID_Marche_Personnage = $_POST["id_marche_personnage"];

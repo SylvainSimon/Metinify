@@ -4,7 +4,7 @@ namespace Ajax;
 
 require __DIR__ . '../../core/initialize.php';
 
-class SQL_Rechercher_Site extends \PageHelper {
+class SQL_Rechercher_Site extends \ScriptHelper {
 
     public function run() {
         $Id_site = $_POST['id_site'];

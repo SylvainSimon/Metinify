@@ -6,11 +6,10 @@ require __DIR__ . '../../../core/initialize.php';
 
 class MonCompte extends \PageHelper {
 
+    public $isProtected = true;
+    
     public function run() {
-        ?>
-        
 
-        <?php
         if ($_SESSION['ID'] != $_GET['id']) {
 
             include 'Onglet_Mauvais_Compte.php';

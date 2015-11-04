@@ -4,8 +4,10 @@ namespace Pages\MonCompte\Ajax;
 
 require __DIR__ . '../../core/initialize.php';
 
-class ajaxPasswordForgottenSendEmail extends \PageHelper {
+class ajaxPasswordForgottenSendEmail extends \ScriptHelper {
 
+    public $isProtected = true;
+    
     public function run() {
 
         $Mot_De_Passe_Oublie_Compte = $_POST['Mot_De_Passe_Oublie_Compte'];

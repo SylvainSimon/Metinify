@@ -4,7 +4,7 @@ namespace Ajax;
 
 require __DIR__ . '../../core/initialize.php';
 
-class Recuperation_Jeton extends \PageHelper {
+class Recuperation_Jeton extends \ScriptHelper {
 
     public function run() {
         if (empty($_SESSION['ID'])) {

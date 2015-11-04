@@ -4,8 +4,10 @@ namespace Pages\MonCompte\Ajax;
 
 require __DIR__ . '../../../../core/initialize.php';
 
-class ajaxPasswordChangeSendEmail extends \PageHelper {
+class ajaxPasswordChangeSendEmail extends \ScriptHelper {
 
+    public $isProtected = true;
+    
     public function run() {
 
 

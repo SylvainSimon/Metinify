@@ -41,6 +41,8 @@ $(document).ready(function () {
 
                             $("#Barre_Social").append(Parse_Json.data);
                         }
+                        
+                        Ajax("pages/_LegacyPages/Accueil.php");
 
                     } else if (Parse_Json.result == "2") {
 

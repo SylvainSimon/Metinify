@@ -1,11 +1,11 @@
 <?php
 
-class PageHelper extends CoreHelper {
+class ScriptHelper extends CoreHelper {
 
     public $template;
     public $arrayTemplate = array();
     public $strTemplate = null;
-    public $isPage = true;
+    public $isScript = true;
 
     public function __construct() {
 
@@ -15,7 +15,7 @@ class PageHelper extends CoreHelper {
         if ($this->strTemplate !== null) {
             $this->template = $this->objTwig->loadTemplate($this->strTemplate);
         }
-
+        
     }
 
 }

@@ -4,8 +4,10 @@ namespace Pages\MonCompte\Ajax;
 
 require __DIR__ . '../../../../core/initialize.php';
 
-class ajaxCodeEffacementCreateExecute extends \PageHelper {
+class ajaxCodeEffacementCreateExecute extends \ScriptHelper {
 
+    public $isProtected = true;
+    
     public function run() {
 
 

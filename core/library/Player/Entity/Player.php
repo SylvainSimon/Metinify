@@ -141,14 +141,14 @@ class Player
     /**
      * @var boolean
      *
-     * @ORM\Column(name="level", type="boolean", nullable=false)
+     * @ORM\Column(name="level", type="integer", nullable=false)
      */
     private $level = '0';
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="level_step", type="boolean", nullable=false)
+     * @ORM\Column(name="level_step", type="integer", nullable=false)
      */
     private $levelStep = '0';
 

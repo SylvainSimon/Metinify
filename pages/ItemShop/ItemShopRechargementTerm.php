@@ -6,6 +6,8 @@ require __DIR__ . '../../../core/initialize.php';
 
 class ItemShopRechargementTerm extends \PageHelper {
 
+    public $isProtected = true;
+    
     public function run() {
         ?>
         <html>

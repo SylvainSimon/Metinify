@@ -4,7 +4,7 @@ namespace Ajax;
 
 require __DIR__ . '../../core/initialize.php';
 
-class SQL_Actualiser_VamoNaies extends \PageHelper {
+class SQL_Actualiser_VamoNaies extends \ScriptHelper {
 
     public function run() {
 

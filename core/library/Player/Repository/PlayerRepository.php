@@ -10,7 +10,7 @@ class PlayerRepository extends EntityRepository {
     /**
      * Retourne les joueurs d'un compte
      * @param integer $idAccount
-     * @return object
+     * @return array of object
      */
     public function findPlayers($idAccount = 0) {
 

@@ -4,12 +4,11 @@ namespace Includes;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class SQL_Mettre_En_Vente extends \PageHelper {
+class SQL_Mettre_En_Vente extends \ScriptHelper {
 
+    public $isProtected = true;
+    
     public function run() {
-        ?>
-        
-        <?php
 
         if (is_numeric($_POST["prix"])) {
 

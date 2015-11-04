@@ -4,10 +4,10 @@ namespace Pages;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class CDG extends \PageHelper {
+class CGU extends \PageHelper {
 
     public $arrayTemplate = [];
-    public $strTemplate = "CDU.html5.twig";
+    public $strTemplate = "CGU.html5.twig";
 
     public function run() {
 
@@ -19,5 +19,5 @@ class CDG extends \PageHelper {
 
 }
 
-$class = new CDG();
+$class = new CGU();
 $class->run();

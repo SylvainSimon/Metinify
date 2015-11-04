@@ -4,7 +4,7 @@ namespace Ajax;
 
 require __DIR__ . '../../core/initialize.php';
 
-class SQL_CompteurContacts extends \PageHelper {
+class SQL_CompteurContacts extends \ScriptHelper {
 
     public function run() {
         $Blocage_Contacts_Ip = $_SERVER['REMOTE_ADDR'];

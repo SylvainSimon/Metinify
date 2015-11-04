@@ -4,7 +4,9 @@ namespace Pages\MonCompte\Ajax;
 
 require __DIR__ . '../../../../core/initialize.php';
 
-class ajaxCodeEntrepotChangeExecute extends \PageHelper {
+class ajaxCodeEntrepotChangeExecute extends \ScriptHelper {
+
+    public $isProtected = true;
 
     public function run() {
 

@@ -4,7 +4,9 @@ namespace Includes;
 
 require __DIR__ . '../../../../core/initialize.php';
 
-class ajaxArticleBuy extends \PageHelper {
+class ajaxArticleBuy extends \ScriptHelper {
+
+    public $isProtected = true;
 
     public function Verification_Place_Inventaire_IS($Verification_Place_Account_Id, $lol, $Procedure_Achat_Item_Nombre = 1) {
 

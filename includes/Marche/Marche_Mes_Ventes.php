@@ -6,6 +6,8 @@ require __DIR__ . '../../../core/initialize.php';
 
 class Marche_Mes_Ventes extends \PageHelper {
 
+    public $isProtected = true;
+    
     public function run() {
         ?>
         <?php include '../../pages/Tableaux_Arrays.php'; ?>

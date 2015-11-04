@@ -4,7 +4,7 @@ namespace Ajax;
 
 require __DIR__ . '../../core/initialize.php';
 
-class SQL_Connexion extends \PageHelper {
+class SQL_Connexion extends \ScriptHelper {
 
     public function run() {
 
@@ -46,64 +46,53 @@ class SQL_Connexion extends \PageHelper {
             $Nombre_De_Resultat_Verification_Droits = $Parametres_Verification_Droits->rowCount();
             /* -------------------------------------------------------------------------- */
 
-            if ($Donnees_Connexion->status == "BLOCK") {
+            session_write_close();
+            session_start();
 
-                $Tableau_Retour_Json = array(
-                    'result' => "3",
-                    'reasons' => "Ce compte est banni.",
-                    'id' => "" . $Donnees_Connexion->id
-                );
-                $this->objConnection_Resultat = "3";
-            } else {
+            $_SESSION['ID'] = $Donnees_Connexion->id;
+            $_SESSION['Utilisateur'] = $Donnees_Connexion->login;
+            $_SESSION['Email'] = $Donnees_Connexion->email;
+            $_SESSION['VamoNaies'] = $Donnees_Connexion->cash;
+            $_SESSION['TanaNaies'] = $Donnees_Connexion->mileage;
+            $_SESSION['Date_de_creation'] = $Donnees_Connexion->create_time;
+            $_SESSION['Status'] = $Donnees_Connexion->status;
+            $_SESSION['Pseudo_Messagerie'] = $Donnees_Connexion->pseudo_messagerie;
 
-                session_write_close();
-                session_start();
+            $this->objConnection_Resultat = "1";
 
-                $_SESSION['ID'] = $Donnees_Connexion->id;
-                $_SESSION['Utilisateur'] = $Donnees_Connexion->login;
-                $_SESSION['Email'] = $Donnees_Connexion->email;
-                $_SESSION['VamoNaies'] = $Donnees_Connexion->cash;
-                $_SESSION['TanaNaies'] = $Donnees_Connexion->mileage;
-                $_SESSION['Date_de_creation'] = $Donnees_Connexion->create_time;
-                $_SESSION['Status'] = $Donnees_Connexion->status;
-                $_SESSION['Pseudo_Messagerie'] = $Donnees_Connexion->pseudo_messagerie;
+            if ($Nombre_De_Resultat_Verification_Droits != 0) {
 
-                $this->objConnection_Resultat = "1";
+                mt_srand((float) microtime() * 1000000);
+                $Nombre_Unique = mt_rand(0, 100000000000);
 
-                if ($Nombre_De_Resultat_Verification_Droits != 0) {
+                $_SESSION['Administration_PannelAdmin'] = true;
+                $_SESSION['Administration_PannelAdmin_Jeton'] = $Nombre_Unique;
 
-                    mt_srand((float) microtime() * 1000000);
-                    $Nombre_Unique = mt_rand(0, 100000000000);
-
-                    $_SESSION['Administration_PannelAdmin'] = true;
-                    $_SESSION['Administration_PannelAdmin_Jeton'] = $Nombre_Unique;
-
-                    /* ------------------------------------- Insertion Jetons Verif --------------------------------------- */
-                    $Insertion_Jetons_Verif = "INSERT INTO site.administration_pannel_jetons (id_compte, jeton, date, ip) 
+                /* ------------------------------------- Insertion Jetons Verif --------------------------------------- */
+                $Insertion_Jetons_Verif = "INSERT INTO site.administration_pannel_jetons (id_compte, jeton, date, ip) 
                                                VALUES (:id_compte, :jeton, NOW(), :ip)";
 
-                    $Parametres_Insertion_Jetons_Verif = $this->objConnection->prepare($Insertion_Jetons_Verif);
-                    $Parametres_Insertion_Jetons_Verif->execute(array(
-                        ':id_compte' => $Donnees_Connexion->id,
-                        ':jeton' => $Nombre_Unique,
-                        ':ip' => $this->objConnection_Ip));
-                    /* ---------------------------------------------------------------------------------------------------- */
+                $Parametres_Insertion_Jetons_Verif = $this->objConnection->prepare($Insertion_Jetons_Verif);
+                $Parametres_Insertion_Jetons_Verif->execute(array(
+                    ':id_compte' => $Donnees_Connexion->id,
+                    ':jeton' => $Nombre_Unique,
+                    ':ip' => $this->objConnection_Ip));
+                /* ---------------------------------------------------------------------------------------------------- */
 
-                    $Tableau_Retour_Json = array(
-                        'result' => "1",
-                        'reasons' => "",
-                        'id' => $Donnees_Connexion->id,
-                        'data' => '<img title="Panneau d\'administration" id="Icone_Administration_Acces" onclick="Changement_De_Decors(\'' . $Nombre_Unique . '\')" src="images/icones/administration.png" height="27" />'
-                    );
-                } else {
+                $Tableau_Retour_Json = array(
+                    'result' => "1",
+                    'reasons' => "",
+                    'id' => $Donnees_Connexion->id,
+                    'data' => '<img title="Panneau d\'administration" id="Icone_Administration_Acces" onclick="Changement_De_Decors(\'' . $Nombre_Unique . '\')" src="images/icones/administration.png" height="27" />'
+                );
+            } else {
 
-                    $Tableau_Retour_Json = array(
-                        'result' => "1",
-                        'reasons' => "",
-                        'id' => $Donnees_Connexion->id,
-                        'data' => ""
-                    );
-                }
+                $Tableau_Retour_Json = array(
+                    'result' => "1",
+                    'reasons' => "",
+                    'id' => $Donnees_Connexion->id,
+                    'data' => ""
+                );
             }
         } else {
 

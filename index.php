@@ -1,24 +1,17 @@
 <?php
 require __DIR__ . '/core/initialize.php';
 
-class IndexWebsite extends CoreHelper {
+class IndexWebsite extends PageHelper {
 
     public function run() {
 
-        $objAccount = Account\AccountHelper::getAccountRepository()->find(1);
-        $arrObjPlayers = Player\PlayerHelper::getPlayerRepository()->findPlayers($objAccount->getId());
-
-        \Debug::log($objAccount->getLogin());
-
-        foreach ($arrObjPlayers as $objPlayer) {
-            \Debug::log($objPlayer->getName());
-        }
-
+        global $request;
+        
         //$this->objConnection;
         //$this->objConfig;
         //var_dump($this->objSession->get("ID"));
-        //global $request;
         //$this->objConnection;
+                
         ?>
 
         <!DOCTYPE html>
@@ -169,17 +162,19 @@ class IndexWebsite extends CoreHelper {
 
                 });
             </script>
+            
             <script type="text/javascript">
-        <?php if (isset($_GET["version"])) { ?>
+        <?php if ($request->query->get("version") !== null) { ?>
                     Ajax('pages/Version.php');
-        <?php } elseif (isset($_GET["ok"])) { ?>
+        <?php } elseif ($request->query->get("ok") !== null) { ?>
                     Ajax('pages/Bienvenue.php');
-        <?php } elseif (isset($_GET["paypal"])) { ?>
+        <?php } elseif ($request->query->get("paypal") !== null) { ?>
                     Ajax('pages/Paypal.php');
         <?php } else { ?>
                     Ajax('pages/_LegacyPages/Accueil.php');
         <?php } ?>
             </script>  
+            
         </html>
         <?php
     }

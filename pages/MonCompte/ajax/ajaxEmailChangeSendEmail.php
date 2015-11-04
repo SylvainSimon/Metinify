@@ -4,8 +4,10 @@ namespace Pages\MonCompte\Ajax;
 
 require __DIR__ . '../../../../core/initialize.php';
 
-class ajaxEmailChangeSendEmail extends \PageHelper {
+class ajaxEmailChangeSendEmail extends \ScriptHelper {
 
+    public $isProtected = true;
+    
     public function run() {
         $Envoie_Mail_Utilisateur = $_SESSION['Utilisateur'];
         $Envoie_Mail_ID = $_SESSION['ID'];

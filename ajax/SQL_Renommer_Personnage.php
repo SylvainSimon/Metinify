@@ -4,7 +4,7 @@ namespace Ajax;
 
 require __DIR__ . '../../core/initialize.php';
 
-class SQL_Renommer_Personnage extends \PageHelper {
+class SQL_Renommer_Personnage extends \ScriptHelper {
 
     public function run() {
         $Suppression_Perssonage_Procedure_ID_Personnage = $_POST["id_personnage"];

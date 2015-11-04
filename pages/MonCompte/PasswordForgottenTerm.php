@@ -6,6 +6,8 @@ require __DIR__ . '../../../core/initialize.php';
 
 class PasswordForgottenTerm extends \PageHelper {
 
+    public $isProtected = true;
+    
     public function run() {
         if (empty($_GET['Resultat'])) {
 

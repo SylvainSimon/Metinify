@@ -4,12 +4,12 @@ namespace Includes;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class SQL_Recuperer_Formulaire_Vendre_Personnage extends \PageHelper {
+class SQL_Recuperer_Formulaire_Vendre_Personnage extends \ScriptHelper {
 
+    public $isProtected = true;
+    
     public function run() {
-        ?>
-        
-        <?php
+
         $Id_Personnage = $_POST["id_personnage"];
 
         /* ------------------------ Vérification Données ---------------------------- */

@@ -4,8 +4,10 @@ namespace Pages\MonPersonnage\Ajax;
 
 require __DIR__ . '../../../../core/initialize.php';
 
-class ajaxPersonnageDeleteExecute extends \PageHelper {
+class ajaxPersonnageDeleteExecute extends \ScriptHelper {
 
+    public $isProtected = true;
+    
     public function run() {
 
         $Suppression_Perssonage_Procedure_ID_Compte = $_POST["id_compte"];

@@ -6,6 +6,8 @@ require __DIR__ . '../../../core/initialize.php';
 
 class PasswordChangeSendEmail extends \PageHelper {
 
+    public $isProtected = true;
+    
     public function run() {
         ?>
         <div class="box box-default flat">

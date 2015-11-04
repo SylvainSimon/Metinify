@@ -6,16 +6,12 @@ require __DIR__ . '../../../core/initialize.php';
 
 class PersonnageRenameForm extends \PageHelper {
 
+    public $isProtected = true;
+
     public function run() {
-        ?>
 
-        
-
-        <?php
         $Ip = $_SERVER['REMOTE_ADDR'];
-        ?>
 
-        <?php
         /* ------------------------ Vérification du personnage ----------------------------------------- */
         $Verification_Proprietaire = "SELECT player.name 
                                       FROM player.player
