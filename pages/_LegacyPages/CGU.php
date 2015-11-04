@@ -6,12 +6,15 @@ require __DIR__ . '../../../core/initialize.php';
 
 class CDG extends \PageHelper {
 
+    public $arrayTemplate = [];
     public $strTemplate = "CDU.html5.twig";
 
     public function run() {
 
-        echo $this->template->render($this->arrayTemplate);
-        
+        $view = $this->template->render($this->arrayTemplate);
+
+        $this->response->setContent($view);
+        $this->response->send();
     }
 
 }
