@@ -1,8 +1,8 @@
 <?php
 
-namespace Includes;
+namespace Pages\Marche\Ajax;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
 class SQL_Procedure_Achat_Personnage extends \ScriptHelper {
 

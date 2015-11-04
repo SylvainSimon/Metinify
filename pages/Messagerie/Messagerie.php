@@ -28,119 +28,118 @@ class Messagerie extends \PageHelper {
 
             $Moderateur_Tickets = false;
         }
-        ?>
-        <html>
-            <head>
-                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-                <script src='../../components/jquery/jquery.min.js' type='text/javascript'></script>
-                <script src='../../components/jquery-ui/jquery-ui.min.js' type='text/javascript'></script>
-                <script type="text/javascript" src="../../js/Jquery_Inview.js"></script>
+        ?>            
+        <link rel="stylesheet" href="../../css/Messagerie.css">
+        <script type="text/javascript" src="../../js/Jquery_Inview.js"></script>
 
-                <link rel="stylesheet" href="../../css/Messagerie.css">
-                <link rel="stylesheet" href="../../css/jquery-ui-1.8.23.custom.css">
 
-            </head>
+        <div class="box box-default flat">
 
-            <body>
+            <div class="box-header">
+                <h3 class="box-title">Support</h3>
+            </div>
 
-                <div id="Onglets">
+            <div class="box-body no-padding">
 
-                    <?php if ($_SESSION['Pseudo_Messagerie'] != "") { ?>
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
 
-                        <ul class="user_no_select">
+                        <li class="active"><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/Messagerie_Boite_De_Reception.php', this)">Boîte de réception</a></li>
+                        <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/Messagerie_Archives.php', this)">Discussions archivés</a></li>
+                        <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/Messagerie_Creer_Ticket_Support.php', this)">Créer un ticket support</a></li>
+                        <?php if ($Moderateur_Tickets) { ?>
+                            <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/Messagerie_Ticket_Attente.php', this)">Tickets en attentes</a></li>
+                        <?php } ?>
+                    </ul>
 
-                            <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('Messagerie_Boite_De_Reception.php')">Boîte de Réception</a></li>
-                            <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('Messagerie_Archives.php')">Discussions Archivés</a></li>
-                            <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('Messagerie_Creer_Ticket_Support.php')">Créer un ticket support</a></li>
-                            <?php if ($Moderateur_Tickets) { ?>
-                                <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('Messagerie_Ticket_Attente.php')">Tickets en attentes</a></li>
-                            <?php } ?>
-                            <div class="Bouton_Fermer_Fenetre Pointer" onclick="window.parent.$.fancybox.close();"></div>
+                    <div id="Contenue_Cadre_Messagerie"></div>
 
-                        </ul>
-
-                        <div id="Contenue_Cadre_Messagerie"></div>
-
-                        <script type="text/javascript">
-
-                            function Ajax_Appel_Messagerie(url) {
-
-                                window.parent.Barre_De_Statut("Appel de l'onglet...");
-                                window.parent.Icone_Chargement(1);
-
-                                $.ajax({
-                                    type: "POST",
-                                    url: "" + url,
-                                    success: function (msg) {
-
-                                        $("#Contenue_Cadre_Messagerie").fadeOut("medium", function () {
-                                            $("#Contenue_Cadre_Messagerie").html(msg);
-                                            window.parent.Barre_De_Statut("Chargement terminé.");
-                                            window.parent.Icone_Chargement(0);
-                                            $("#Contenue_Cadre_Messagerie").fadeIn("medium");
-                                        });
-
-                                    }
-                                });
-                                return false;
-
-                            }
-
-                            function Ajax_Ouverture_Ticket(id_ticket) {
-
-                                window.parent.Barre_De_Statut("Ouverture de la discussion...");
-                                window.parent.Icone_Chargement(1);
-
-                                $.ajax({
-                                    type: "POST",
-                                    url: "Messagerie_Lecture.php",
-                                    data: "id_ticket=" + id_ticket,
-                                    success: function (msg) {
-
-                                        $("#Contenue_Cadre_Messagerie").fadeOut("medium", function () {
-                                            $("#Contenue_Cadre_Messagerie").html(msg);
-                                            window.parent.Barre_De_Statut("Chargement terminé.");
-                                            window.parent.Icone_Chargement(0);
-                                            $("#Contenue_Cadre_Messagerie").fadeIn("medium");
-                                        });
-
-                                    }
-                                });
-                                return false;
-
-                            }
-
-                            Ajax_Appel_Messagerie("Messagerie_Boite_De_Reception.php");
-
-                        </script>
-
-                    <?php } else { ?>
-
-                        <div class="Zone_De_Definition_Pseudo">
-
-                            <span class="Titre_Definition_Pseudo">Veuillez définir votre pseudo messagerie</span>
-                            <script type="text/javascript" src="js/Controle_Pseudo_Messagerie.js"></script>
-                            <form action="javascript:void(0)" id="FormInscription" name="FormPseudoMessagerie" method="POST">
-
-                                <table id="Table_Definition_Pseudo">
-                                    <tr>
-                                        <td>Pseudo : </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input maxlength="16" placeholder="Pseudo de messagerie.." id="SaisiePseudo" class="Zone_Definition_Pseudo" type="text" name="user" onBlur="verifPseudo(this.value)"/></td>
-
-                                    </tr>
-                                    <tr>
-                                        <td id="ReponseDuTestPseudo">Indiquez un pseudo</td>
-                                    </tr>
-                                </table>
-
-                                <input class="Bouton_Zone_Definition_Pseudo" type="image" onclick="VerificationFormulairePseudo();" src="../../images/Bouton_Valider.png" value="OK" />
-                            </form>
-                        </div>
-                    <?php } ?>
                 </div>
-            </body>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+
+
+        <?php if ($_SESSION['Pseudo_Messagerie'] != "") { ?>
+            <script type="text/javascript">
+
+                function Ajax_Appel_Messagerie(url, objet) {
+
+                    window.parent.Barre_De_Statut("Appel de l'onglet...");
+                    window.parent.Icone_Chargement(1);
+
+                    $.ajax({
+                        type: "POST",
+                        url: "" + url,
+                        success: function (msg) {
+
+                            $("#Contenue_Cadre_Messagerie").html(msg);
+                            window.parent.Barre_De_Statut("Chargement terminé.");
+                            window.parent.Icone_Chargement(0);
+
+                            if (objet !== false) {
+                                $(".nav-tabs-custom li").attr("class", "");
+                                $(objet).parent("li").attr("class", "active");
+                            }
+                        }
+                    });
+                    return false;
+
+                }
+
+                function Ajax_Ouverture_Ticket(id_ticket) {
+
+                    window.parent.Barre_De_Statut("Ouverture de la discussion...");
+                    window.parent.Icone_Chargement(1);
+
+                    $.ajax({
+                        type: "POST",
+                        url: "Messagerie_Lecture.php",
+                        data: "id_ticket=" + id_ticket,
+                        success: function (msg) {
+
+                            $("#Contenue_Cadre_Messagerie").html(msg);
+                            window.parent.Barre_De_Statut("Chargement terminé.");
+                            window.parent.Icone_Chargement(0);
+
+                        }
+                    });
+                    return false;
+
+                }
+
+                Ajax_Appel_Messagerie("pages/Messagerie/Messagerie_Boite_De_Reception.php", false);
+
+            </script>
+
+        <?php } else { ?>
+
+            <div class="Zone_De_Definition_Pseudo">
+
+                <span class="Titre_Definition_Pseudo">Veuillez définir votre pseudo messagerie</span>
+                <script type="text/javascript" src="js/Controle_Pseudo_Messagerie.js"></script>
+                <form action="javascript:void(0)" id="FormInscription" name="FormPseudoMessagerie" method="POST">
+
+                    <table id="Table_Definition_Pseudo">
+                        <tr>
+                            <td>Pseudo : </td>
+                        </tr>
+                        <tr>
+                            <td><input maxlength="16" placeholder="Pseudo de messagerie.." id="SaisiePseudo" class="Zone_Definition_Pseudo" type="text" name="user" onBlur="verifPseudo(this.value)"/></td>
+
+                        </tr>
+                        <tr>
+                            <td id="ReponseDuTestPseudo">Indiquez un pseudo</td>
+                        </tr>
+                    </table>
+
+                    <input class="Bouton_Zone_Definition_Pseudo" type="image" onclick="VerificationFormulairePseudo();" src="../../images/Bouton_Valider.png" value="OK" />
+                </form>
+            </div>
+        <?php } ?>
+        </div>
+        </body>
         </html>
         <?php
     }

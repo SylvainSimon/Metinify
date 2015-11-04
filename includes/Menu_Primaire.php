@@ -36,9 +36,9 @@
 
         <?php if (empty($_SESSION['Utilisateur'])) { ?>
             <li id="Menu_Telechargement_Equipe2" style="display: inline;"><a href="javascript:void(0)" onclick="Ajax('pages/_LegacyPages/Calendrier.php')">Calendrier des events</a></li>
-            <li id="Menu_Telechargement_Equipe" style="display: none;"><a id="Lien_Marche" href="" class="fancybox_Marche" data-fancybox-type="iframe">Marché des personnages</a></li>
+            <li id="Menu_Telechargement_Equipe" style="display: none;"><a id="Lien_Marche" href="javascript:void(0)" onclick="" >Marché des personnages</a></li>
         <?php } else { ?>
-            <li id="Menu_Telechargement_Equipe" style="display: inline;"><a id="Lien_Marche" href="includes/Marche/Marche.php" class="fancybox_Marche" data-fancybox-type="iframe">Marché des personnages</a></li>
+            <li id="Menu_Telechargement_Equipe" style="display: inline;"><a id="Lien_Marche" href="javascript:void(0)" onclick="Ajax('pages/Marche/Marche.php')">Marché des personnages</a></li>
             <li id="Menu_Telechargement_Equipe2" style="display: none;"><a href="javascript:void(0)" onclick="Ajax('pages/_LegacyPages/Calendrier.php')">Calendrier</a></li>
         <?php } ?>
 
@@ -46,9 +46,9 @@
 
         <?php if (empty($_SESSION['Utilisateur'])) { ?>
             <li id="Menu_Support2"><a href="javascript:void(0)" onclick="Ajax('pages/_LegacyPages/Contacts.php')">Support</a></li>
-            <li id="Menu_Support" style="display: none;"><a id="Lien_Support" href="" class="fancybox_Messagerie" data-fancybox-type="iframe">Support</a></li>
+            <li id="Menu_Support" style="display: none;"><a id="Lien_Support" href="javascript:void(0)" onclick="">Support</a></li>
         <?php } else { ?>
-            <li id="Menu_Support"><a href="pages/Messagerie/Messagerie.php" id="Lien_Support" class="fancybox_Messagerie" data-fancybox-type="iframe">Support</a></li>
+            <li id="Menu_Support"><a href="javascript:void(0)" id="Lien_Support" onclick="Ajax('pages/Messagerie/Messagerie.php')">Support</a></li>
             <li id="Menu_Support2" style="display: none;"><a href="javascript:void(0)" onclick="Ajax('pages/_LegacyPages/Contacts.php');">Support</a></li>
             <?php } ?>
     </ul>

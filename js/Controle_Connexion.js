@@ -32,10 +32,13 @@ $(document).ready(function () {
                         document.getElementById('Menu_Support2').style.display = 'none';
                         document.getElementById('Menu_Support').style.display = 'inline';
                         document.getElementById('Lien_Support').href = "pages/Messagerie/Messagerie.php";
+                        
+                        $("#Lien_Support").attr("onclick", "Ajax('pages/Messagerie/Messagerie.php');");
 
                         document.getElementById('Menu_Telechargement_Equipe2').style.display = 'none';
                         document.getElementById('Menu_Telechargement_Equipe').style.display = 'inline';
-                        document.getElementById('Lien_Marche').href = "includes/Marche/Marche.php";
+                        
+                        $("#Lien_Marche").attr("onclick", "Ajax('pages/Marche/Marche.php');");
 
                         if (Parse_Json.data != "") {
 

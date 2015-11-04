@@ -1,8 +1,8 @@
 <?php
 
-namespace Includes;
+namespace Pages\Marche\Ajax;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
 class SQL_Generation_Liste extends \ScriptHelper {
 
@@ -129,7 +129,7 @@ class SQL_Generation_Liste extends \ScriptHelper {
         ?>
         <?php if ($Nombre_De_Resultat_Recuperation_Articles != 0) { ?>
             <?php while ($Donnees_Recuperation_Articles = $Parametres_Recuperation_Articles->fetch()) { ?>
-                <div class="Article_Marche" id="Article_Vente_<?= $Donnees_Recuperation_Articles->id_marche_personnage; ?>">
+                <div id="Article_Vente_<?= $Donnees_Recuperation_Articles->id_marche_personnage; ?>">
                     <div class="Nom_Article">
 
                         <div class="Type_Article"><?= $Donnees_Recuperation_Articles->nom_categorie; ?></div>
@@ -256,7 +256,7 @@ class SQL_Generation_Liste extends \ScriptHelper {
 
                     $.ajax({
                         type: "POST",
-                        url: "SQL_Procedure_Achat_Personnage.php",
+                        url: "pages/Marche/ajax/SQL_Procedure_Achat_Personnage.php",
                         data: "id_marche_personnage=" + $("#Id_Tempo_Message2").val(),
                         success: function (msg) {
 
@@ -268,7 +268,7 @@ class SQL_Generation_Liste extends \ScriptHelper {
 
                                     $.ajax({
                                         type: "POST",
-                                        url: "../../ajax/Update_Vamonaies.php",
+                                        url: "ajax/Update_Vamonaies.php",
                                         success: function (msg) {
                                             window.parent.Fonction_Reteneuse_Vamonaies(msg);
                                         }
@@ -276,7 +276,7 @@ class SQL_Generation_Liste extends \ScriptHelper {
 
                                     $.ajax({
                                         type: "POST",
-                                        url: "../../ajax/Update_Tananaies.php",
+                                        url: "ajax/Update_Tananaies.php",
                                         success: function (msg) {
                                             window.parent.Fonction_Reteneuse_Tananaies(msg);
                                         }
@@ -316,7 +316,7 @@ class SQL_Generation_Liste extends \ScriptHelper {
 
                     $.ajax({
                         type: "POST",
-                        url: "SQL_Retirer_Vente.php",
+                        url: "pages/Marche/ajax/SQL_Retirer_Vente.php",
                         data: "id_marche_personnage=" + $("#Id_Tempo_Message").val(),
                         success: function (msg) {
                             try {
@@ -345,7 +345,7 @@ class SQL_Generation_Liste extends \ScriptHelper {
             </script>
 
         <?php } else { ?>
-            <div class="Article_Marche" style="color: #FFFFFF; height: 27px; padding-top: 4px; text-indent: 6px; padding-left: 2px;">
+            <div>
                 Aucun personnage n'a été trouvé.
             </div>
         <?php } ?>

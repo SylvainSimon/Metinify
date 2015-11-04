@@ -6,12 +6,11 @@ class IndexWebsite extends PageHelper {
     public function run() {
 
         global $request;
-        
+
         //$this->objConnection;
         //$this->objConfig;
         //var_dump($this->objSession->get("ID"));
         //$this->objConnection;
-
         ?>
 
         <!DOCTYPE html>
@@ -60,13 +59,13 @@ class IndexWebsite extends PageHelper {
 
                 <div class="wrapper">
 
-        <?php include_once 'includes/Barre_Superieur.php'; ?>
+                    <?php include_once 'includes/Barre_Superieur.php'; ?>
 
                     <div class="clear"></div>
 
                     <aside class="main-sidebar" style="background: #131313; border-right: 1px solid #3E3E3E;">
                         <section class="sidebar">
-        <?php include_once 'includes/Menu_Primaire.php'; ?>
+                            <?php include_once 'includes/Menu_Primaire.php'; ?>
 
                         </section>
                     </aside>
@@ -82,14 +81,14 @@ class IndexWebsite extends PageHelper {
 
                             <div class="row">
                                 <nav class="col-lg-2 col-md-3 hidden-sm hidden-xs">
-        <?php include_once 'includes/Sidebar_Gauche.php'; ?>
+                                    <?php include_once 'includes/Sidebar_Gauche.php'; ?>
                                 </nav>
 
                                 <div id="Contenue_Principal" class="col-lg-8 col-md-6 col-sm-12"></div> 
 
 
                                 <nav class="col-lg-2 col-md-3 hidden-sm hidden-xs">
-        <?php include_once 'includes/Sidebar_Droite.php'; ?>
+                                    <?php include_once 'includes/Sidebar_Droite.php'; ?>
                                 </nav>
                             </div>
                         </div>
@@ -98,7 +97,7 @@ class IndexWebsite extends PageHelper {
 
                     <footer>
                         <div class="col-md-12">
-        <?php include_once 'includes/Footer.php'; ?> 
+                            <?php include_once 'includes/Footer.php'; ?> 
                             <div class="clearfix"></div>
                         </div>
                     </footer>
@@ -162,7 +161,7 @@ class IndexWebsite extends PageHelper {
 
                 });
             </script>
-            
+
             <script type="text/javascript">
         <?php if ($request->query->get("version") !== null) { ?>
                     Ajax('pages/Version.php');
@@ -174,7 +173,7 @@ class IndexWebsite extends PageHelper {
                     Ajax('pages/_LegacyPages/Accueil.php');
         <?php } ?>
             </script>  
-            
+
         </html>
         <?php
     }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Includes;
+namespace Pages\Marche\Ajax;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
 class SQL_Generation_Liste_Mes_Ventes extends \ScriptHelper {
 
@@ -164,7 +164,7 @@ class SQL_Generation_Liste_Mes_Ventes extends \ScriptHelper {
 
                     $.ajax({
                         type: "POST",
-                        url: "SQL_Procedure_Achat_Personnage.php",
+                        url: "pages/Marche/ajax/SQL_Procedure_Achat_Personnage.php",
                         data: "id_marche_personnage=" + $("#Id_Tempo_Message2").val(),
                         success: function (msg) {
 
@@ -176,7 +176,7 @@ class SQL_Generation_Liste_Mes_Ventes extends \ScriptHelper {
 
                                     $.ajax({
                                         type: "POST",
-                                        url: "../../ajax/Update_Vamonaies.php",
+                                        url: "ajax/Update_Vamonaies.php",
                                         success: function (msg) {
                                             window.parent.Fonction_Reteneuse_Vamonaies(msg);
                                         }
@@ -184,7 +184,7 @@ class SQL_Generation_Liste_Mes_Ventes extends \ScriptHelper {
 
                                     $.ajax({
                                         type: "POST",
-                                        url: "../../ajax/Update_Tananaies.php",
+                                        url: "ajax/Update_Tananaies.php",
                                         success: function (msg) {
                                             window.parent.Fonction_Reteneuse_Tananaies(msg);
                                         }
@@ -224,7 +224,7 @@ class SQL_Generation_Liste_Mes_Ventes extends \ScriptHelper {
 
                     $.ajax({
                         type: "POST",
-                        url: "SQL_Retirer_Vente.php",
+                        url: "pages/Marche/ajax/SQL_Retirer_Vente.php",
                         data: "id_marche_personnage=" + $("#Id_Tempo_Message").val(),
                         success: function (msg) {
                             try {

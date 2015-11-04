@@ -39,7 +39,7 @@ class Marche_Mes_Ventes extends \PageHelper {
 
                     $.ajax({
                         type: "POST",
-                        url: "SQL_Generation_Liste_Mes_Ventes.php",
+                        url: "pages/Marche/ajax/SQL_Generation_Liste_Mes_Ventes.php",
                         data: "race=" + $("#Selecteur_Filtre_Ventes_Race").val()
                                 + "&sexe=" + $("#Selecteur_Filtre_Ventes_Sexe").val()
                                 + "&level=" + $("#Selecteur_Filtre_Ventes_Level").val()

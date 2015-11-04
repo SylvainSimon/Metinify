@@ -37,7 +37,7 @@ function Valider_Formulaire_Nouveau_Ticket(){
         
         $.ajax({
             type: "POST",
-            url: "ajax/ajaxDiscussionCreate.php",
+            url: "pages/Messagerie/ajax/ajaxDiscussionCreate.php",
             data: "Nouveau_Ticket_Objet="+$("#Selecteur_Objet_Ticket").val()+"&Nouveau_Ticket_Message="+$("#Textarea_Nouveau_Ticket").val(),
             success: function(msg){
                 if(msg==1){

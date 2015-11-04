@@ -1,13 +1,13 @@
 <?php
 
-namespace Includes;
+namespace Pages\Marche\Ajax;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
 class SQL_Recuperer_Formulaire_Vendre_Personnage extends \ScriptHelper {
 
     public $isProtected = true;
-    
+
     public function run() {
 
         $Id_Personnage = $_POST["id_personnage"];
@@ -41,50 +41,70 @@ class SQL_Recuperer_Formulaire_Vendre_Personnage extends \ScriptHelper {
 
             <?php $Donnees_Verification_Donnees = $Parametres_Verification_Donnees->fetch(); ?>
 
-            <form id="Formulaire_Vente_Personnage" class="Formulaire_Vente_Personnage">
+            <form id="Formulaire_Vente_Personnage">
 
-                <table class="Tableau_Formulaire_Vente_Personnage">
-                    <tr>
-                        <td class="Colonne_Gauche">Personnage : </td>
-                        <td colspan="2">
-                            <input type="text" id="Input_Vendre_Personnage_Personnage" maxlength="60" value="<?= $Donnees_Verification_Donnees->name; ?>" disabled />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="Colonne_Gauche" >Titre de votre article : </td>
-                        <td colspan="2">
-                            <input type="text" id="Input_Vendre_Personnage_Titre" maxlength="43" placeholder="Titre de votre article" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="Colonne_Gauche" >Description de l'article : </td>
-                        <td colspan="2">
-                            <textarea id="Textarea_Vendre_Personnage_Description" class="Textarea_Vendre_Personnage_Description" maxlength="140" placeholder="Description de votre article" /></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Prix :
-                        </td>
-                        <td>
-                            <input type="text" id="Prix_Vente_Personnage" placeholder="Prix..."/> 
-                        </td>
-                        <td>
-                            <select id="Selecteur_Devise_Vente_Personnage" class="Selecteur_Devise_Vente_Personnage">
-                                <?php while ($Donnees_Recuperation_Devises = $Parametres_Recuperation_Devises->fetch()) { ?>
-                                    <option value="<?php echo $Donnees_Recuperation_Devises->id_devise; ?>"><?php echo $Donnees_Recuperation_Devises->devise; ?></option>
-                                <?php } ?>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            <div class="Bouton_Vendre_Personnage" onclick="Mettre_En_Vente()">
-                                Mettre mon personnage en vente    
+                <div class="row">
+                    <div class="col-lg-6">
+
+                        <div class="form-group ">
+                            <label for="Input_Vendre_Personnage_Personnage">
+                                Personnage
+                            </label>
+                            <div class="input-group col-xs-12">
+                                <input type="text" id="Input_Vendre_Personnage_Personnage" class="form-control input-sm" maxlength="60" value="<?= $Donnees_Verification_Donnees->name; ?>" disabled />
                             </div>
-                        </td>
-                    </tr>
-                </table>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="Input_Vendre_Personnage_Titre">
+                                Titre de l'annonce
+                            </label>
+                            <div class="input-group col-xs-12">
+                                <input type="text" id="Input_Vendre_Personnage_Titre" class="form-control input-sm"  maxlength="43" placeholder="Titre de votre article" />
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="Input_Vendre_Personnage_Titre">
+                                Description
+                            </label>
+                            <div class="input-group col-xs-12">
+                                <textarea id="Textarea_Vendre_Personnage_Description" class="form-control input-sm" maxlength="140" placeholder="Description de votre article" /></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group ">
+                            <label for="Prix_Vente_Personnage">
+                                Prix
+                            </label>
+                            <div class="input-group col-xs-12">
+                                <input type="text" class="form-control input-sm" id="Prix_Vente_Personnage" placeholder="Prix..."/> 
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="Selecteur_Devise_Vente_Personnage">
+                                Monnaie
+                            </label>
+                            <div class="input-group col-xs-12">
+
+                                <select id="Selecteur_Devise_Vente_Personnage" class="form-control input-sm">
+                                    <?php while ($Donnees_Recuperation_Devises = $Parametres_Recuperation_Devises->fetch()) { ?>
+                                        <option value="<?php echo $Donnees_Recuperation_Devises->id_devise; ?>"><?php echo $Donnees_Recuperation_Devises->devise; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <button type="button" class="pull-right btn btn-success btn-flat" onclick="Mettre_En_Vente()">
+                    Mettre mon personnage en vente    
+                </button>
             </form>
 
             <script type="text/javascript">
@@ -103,7 +123,7 @@ class SQL_Recuperer_Formulaire_Vendre_Personnage extends \ScriptHelper {
 
                         $.ajax({
                             type: "POST",
-                            url: "SQL_Mettre_En_Vente.php",
+                            url: "pages/Marche/ajax/SQL_Mettre_En_Vente.php",
                             data: "id_personnage=<?= $Id_Personnage ?>&texte_titre=" + $("#Input_Vendre_Personnage_Titre").val() + "&texte_description=" + $("#Textarea_Vendre_Personnage_Description").val() + "&prix=" + $("#Prix_Vente_Personnage").val() + "&id_devise=" + $("#Selecteur_Devise_Vente_Personnage").val(),
                             success: function (msg) {
 

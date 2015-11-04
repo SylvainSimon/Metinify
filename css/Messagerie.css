@@ -1,41 +1,3 @@
-*{
-
-    font: white;
-    outline: none;
-}
-
-/* Let's get this party started */
-*::-webkit-scrollbar {width: 17px;border: 1px solid grey;background: #333333;}
-/* Track */
-*::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 6px #111111; -webkit-border-radius: 3px;border-radius: 3px;}
-/* Handle */
-*::-webkit-scrollbar-thumb {-webkit-border-radius: 3px;border-radius: 3px;width: 13px;border: 1px solid grey;background: #111111; -webkit-box-shadow: inset 0 0 6px #111111; }
-
-
-.user_no_select{
-
-    user-select: none; 
-    -webkit-user-select: none; 
-    -khtml-user-select: none; 
-    -o-user-select: none; 
-    -moz-user-select: -moz-none;
-
-}
-
-body{
-
-    margin: 0px;
-    padding: 0px;
-    background: url('../images/item_shop/item_shop_fond.png');
-    border-radius: 9px;
-    overflow: hidden;
-}
-
-table td{
-
-    border: 1px solid grey;
-}
-
 .Pointer{cursor: pointer;}
 
 .Bouton_Fermer_Fenetre{
@@ -55,99 +17,6 @@ table td{
 
     cursor: pointer;
 }
-
-
-.ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; }
-.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
-.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; }
-.ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 1em 1.4em; background: none; }
-.ui-tabs .ui-tabs-hide { display: none !important; }
-
-#Onglets ul li a{
-
-    position: relative;
-    background:url('../images/bg_fonction.png');
-    top:13px;
-    margin-left: 25px;
-    border: 1px solid grey;
-    font-size: 14px;
-    color: #DDDDDD;
-    font-weight: bold;
-    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
-
-    float: left; 
-    padding: 6px; 
-    text-decoration: none;
-}
-
-
-#Onglets ul li{
-
-    list-style: none; 
-    position: relative; 
-    margin: 0 .2em 0px 0;
-    border-bottom: 0 !important; 
-    padding: 0; 
-    white-space: nowrap; 
-    left:-40px;
-}
-
-#Onglets ul li a:hover{
-
-    box-shadow: none;
-}
-
-#Onglets ul li a:active{
-
-    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
-}
-
-#Onglets ul{
-
-    position: relative;
-    height: 60px;
-    background: url('../images/motif_th.png');
-    box-shadow:0 0 2px 1px #333333;
-    border-bottom :1px solid grey;
-    padding-left: 35px;
-    margin-top: 0px;
-}
-
-/* ----------------- Contenue des onglets --------------------- */
-.Zone_Boite_de_Reception{
-
-    position: absolute;
-    top: 80px;
-    right: 20px;
-    width: 725px;
-    max-height: 450px;
-    overflow-y:auto;
-    border-bottom: 1px solid grey;
-}
-
-
-.Tableau_Boite_de_Reception {
-    background: url('../images/motif_th.png');
-    border-collapse:collapse;
-    color: #cccccc;
-    width: 100%;
-    border:1px solid grey;
-    border-bottom: none;
-    font-size: 13px;
-}
-.Tableau_Boite_de_Reception th, .Tableau_Boite_de_Reception td {padding:3px 3px;}
-
-.Tableau_Boite_de_Reception th {
-    background: url('../images/motif.png'); 
-    color:#DDDDDD;
-    font-variant: small-caps;
-    text-align:left;
-    border:1px solid grey;
-    text-indent: 2px;
-    font-size: 15px;
-}
-.Tableau_Boite_de_Reception tr.bg td {background-color:#e8f6ff;}
-
 
 
 .Zone_Archives{
@@ -391,27 +260,6 @@ table td{
     height: 18px;
     margin: 3px;
     left:250px;
-}
-
-
-.Caracteres_Nouveau_Ticket{
-
-    position: absolute;
-    top:416px;
-    color: white;
-    width: 100%;
-    border: none;
-    border-collapse: collapse;
-    background: url('../images/hexabump.png');
-}
-
-.Caracteres_Nouveau_Ticket td{
-
-    border: none;
-    border-top: 1px solid grey;
-    border-bottom: 1px solid grey;
-    width: 100%;
-    padding-left: 3px;
 }
 
 .Informations_Nouveau_Ticket{
