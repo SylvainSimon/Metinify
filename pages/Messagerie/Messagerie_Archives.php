@@ -170,7 +170,7 @@ class Messagerie_Archives extends \PageHelper {
 
                 $.ajax({
                     type: "POST",
-                    url: "Messagerie_Viewer.php",
+                    url: "pages/Messagerie/Messagerie_Viewer.php",
                     data: "id=" + id,
                     success: function (msg) {
 
