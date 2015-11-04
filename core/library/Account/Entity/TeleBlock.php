@@ -1,13 +1,13 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Account\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * TeleBlock
  *
- * @ORM\Table(name="tele_block")
+ * @ORM\Table(name="account.tele_block")
  * @ORM\Entity
  */
 class TeleBlock

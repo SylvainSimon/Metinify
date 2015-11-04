@@ -1,13 +1,13 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Account\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Shopgroups
  *
- * @ORM\Table(name="shopgroups")
+ * @ORM\Table(name="account.shopgroups")
  * @ORM\Entity
  */
 class Shopgroups

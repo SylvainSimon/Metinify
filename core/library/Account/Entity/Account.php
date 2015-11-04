@@ -1,13 +1,13 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Account\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Account
  *
- * @ORM\Table(name="account", uniqueConstraints={@ORM\UniqueConstraint(name="login", columns={"login"})}, indexes={@ORM\Index(name="social_id", columns={"social_id"})})
+ * @ORM\Table(name="account.account", uniqueConstraints={@ORM\UniqueConstraint(name="login", columns={"login"})}, indexes={@ORM\Index(name="social_id", columns={"social_id"})})
  * @ORM\Entity
  */
 class Account
@@ -29,16 +29,9 @@ class Account
     /**
      * @var string
      *
-     * @ORM\Column(name="real_name", type="string", length=16, nullable=false)
-     */
-    private $realName = '';
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="social_id", type="string", length=7, nullable=false)
      */
-    private $socialId = '';
+    private $codeEntrepot = '';
 
     /**
      * @var string
@@ -46,34 +39,6 @@ class Account
      * @ORM\Column(name="email", type="string", length=64, nullable=false)
      */
     private $email = '';
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="phone1", type="string", length=16, nullable=true)
-     */
-    private $phone1;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="phone2", type="string", length=16, nullable=true)
-     */
-    private $phone2;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="address", type="string", length=128, nullable=true)
-     */
-    private $address;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="zipcode", type="string", length=7, nullable=false)
-     */
-    private $zipcode = '';
 
     /**
      * @var \DateTime
@@ -111,25 +76,11 @@ class Account
     private $answer2;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="is_testor", type="boolean", nullable=false)
-     */
-    private $isTestor = '0';
-
-    /**
      * @var string
      *
      * @ORM\Column(name="status", type="string", length=8, nullable=false)
      */
     private $status = 'OK';
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="securitycode", type="string", length=192, nullable=true)
-     */
-    private $securitycode = '';
 
     /**
      * @var boolean
@@ -138,26 +89,6 @@ class Account
      */
     private $newsletter = '0';
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="empire", type="boolean", nullable=false)
-     */
-    private $empire = '0';
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="name_checked", type="boolean", nullable=false)
-     */
-    private $nameChecked = '0';
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="availDt", type="datetime", nullable=false)
-     */
-    private $availdt = '0000-00-00 00:00:00';
 
     /**
      * @var integer
@@ -171,7 +102,7 @@ class Account
      *
      * @ORM\Column(name="cash", type="integer", nullable=false)
      */
-    private $cash = '200000';
+    private $cash = '0';
 
     /**
      * @var \DateTime
@@ -221,27 +152,6 @@ class Account
      * @ORM\Column(name="money_drop_rate_expire", type="datetime", nullable=false)
      */
     private $moneyDropRateExpire = '0000-00-00 00:00:00';
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="ttl_cash", type="integer", nullable=false)
-     */
-    private $ttlCash = '0';
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="ttl_mileage", type="integer", nullable=false)
-     */
-    private $ttlMileage = '0';
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="channel_company", type="string", length=30, nullable=false)
-     */
-    private $channelCompany = '';
 
     /**
      * @var string
@@ -338,51 +248,27 @@ class Account
     }
 
     /**
-     * Set realName
+     * Set codeEntrepot
      *
-     * @param string $realName
+     * @param string $codeEntrepot
      *
      * @return Account
      */
-    public function setRealName($realName)
+    public function setCodeEntrepot($codeEntrepot)
     {
-        $this->realName = $realName;
+        $this->codeEntrepot = $codeEntrepot;
 
         return $this;
     }
 
     /**
-     * Get realName
+     * Get codeEntrepot
      *
      * @return string
      */
-    public function getRealName()
+    public function getCodeEntrepot()
     {
-        return $this->realName;
-    }
-
-    /**
-     * Set socialId
-     *
-     * @param string $socialId
-     *
-     * @return Account
-     */
-    public function setSocialId($socialId)
-    {
-        $this->socialId = $socialId;
-
-        return $this;
-    }
-
-    /**
-     * Get socialId
-     *
-     * @return string
-     */
-    public function getSocialId()
-    {
-        return $this->socialId;
+        return $this->codeEntrepot;
     }
 
     /**
@@ -407,102 +293,6 @@ class Account
     public function getEmail()
     {
         return $this->email;
-    }
-
-    /**
-     * Set phone1
-     *
-     * @param string $phone1
-     *
-     * @return Account
-     */
-    public function setPhone1($phone1)
-    {
-        $this->phone1 = $phone1;
-
-        return $this;
-    }
-
-    /**
-     * Get phone1
-     *
-     * @return string
-     */
-    public function getPhone1()
-    {
-        return $this->phone1;
-    }
-
-    /**
-     * Set phone2
-     *
-     * @param string $phone2
-     *
-     * @return Account
-     */
-    public function setPhone2($phone2)
-    {
-        $this->phone2 = $phone2;
-
-        return $this;
-    }
-
-    /**
-     * Get phone2
-     *
-     * @return string
-     */
-    public function getPhone2()
-    {
-        return $this->phone2;
-    }
-
-    /**
-     * Set address
-     *
-     * @param string $address
-     *
-     * @return Account
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @return string
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * Set zipcode
-     *
-     * @param string $zipcode
-     *
-     * @return Account
-     */
-    public function setZipcode($zipcode)
-    {
-        $this->zipcode = $zipcode;
-
-        return $this;
-    }
-
-    /**
-     * Get zipcode
-     *
-     * @return string
-     */
-    public function getZipcode()
-    {
-        return $this->zipcode;
     }
 
     /**
@@ -625,29 +415,6 @@ class Account
         return $this->answer2;
     }
 
-    /**
-     * Set isTestor
-     *
-     * @param boolean $isTestor
-     *
-     * @return Account
-     */
-    public function setIsTestor($isTestor)
-    {
-        $this->isTestor = $isTestor;
-
-        return $this;
-    }
-
-    /**
-     * Get isTestor
-     *
-     * @return boolean
-     */
-    public function getIsTestor()
-    {
-        return $this->isTestor;
-    }
 
     /**
      * Set status
@@ -674,30 +441,6 @@ class Account
     }
 
     /**
-     * Set securitycode
-     *
-     * @param string $securitycode
-     *
-     * @return Account
-     */
-    public function setSecuritycode($securitycode)
-    {
-        $this->securitycode = $securitycode;
-
-        return $this;
-    }
-
-    /**
-     * Get securitycode
-     *
-     * @return string
-     */
-    public function getSecuritycode()
-    {
-        return $this->securitycode;
-    }
-
-    /**
      * Set newsletter
      *
      * @param boolean $newsletter
@@ -719,78 +462,6 @@ class Account
     public function getNewsletter()
     {
         return $this->newsletter;
-    }
-
-    /**
-     * Set empire
-     *
-     * @param boolean $empire
-     *
-     * @return Account
-     */
-    public function setEmpire($empire)
-    {
-        $this->empire = $empire;
-
-        return $this;
-    }
-
-    /**
-     * Get empire
-     *
-     * @return boolean
-     */
-    public function getEmpire()
-    {
-        return $this->empire;
-    }
-
-    /**
-     * Set nameChecked
-     *
-     * @param boolean $nameChecked
-     *
-     * @return Account
-     */
-    public function setNameChecked($nameChecked)
-    {
-        $this->nameChecked = $nameChecked;
-
-        return $this;
-    }
-
-    /**
-     * Get nameChecked
-     *
-     * @return boolean
-     */
-    public function getNameChecked()
-    {
-        return $this->nameChecked;
-    }
-
-    /**
-     * Set availdt
-     *
-     * @param \DateTime $availdt
-     *
-     * @return Account
-     */
-    public function setAvaildt($availdt)
-    {
-        $this->availdt = $availdt;
-
-        return $this;
-    }
-
-    /**
-     * Get availdt
-     *
-     * @return \DateTime
-     */
-    public function getAvaildt()
-    {
-        return $this->availdt;
     }
 
     /**
@@ -1007,78 +678,6 @@ class Account
     public function getMoneyDropRateExpire()
     {
         return $this->moneyDropRateExpire;
-    }
-
-    /**
-     * Set ttlCash
-     *
-     * @param integer $ttlCash
-     *
-     * @return Account
-     */
-    public function setTtlCash($ttlCash)
-    {
-        $this->ttlCash = $ttlCash;
-
-        return $this;
-    }
-
-    /**
-     * Get ttlCash
-     *
-     * @return integer
-     */
-    public function getTtlCash()
-    {
-        return $this->ttlCash;
-    }
-
-    /**
-     * Set ttlMileage
-     *
-     * @param integer $ttlMileage
-     *
-     * @return Account
-     */
-    public function setTtlMileage($ttlMileage)
-    {
-        $this->ttlMileage = $ttlMileage;
-
-        return $this;
-    }
-
-    /**
-     * Get ttlMileage
-     *
-     * @return integer
-     */
-    public function getTtlMileage()
-    {
-        return $this->ttlMileage;
-    }
-
-    /**
-     * Set channelCompany
-     *
-     * @param string $channelCompany
-     *
-     * @return Account
-     */
-    public function setChannelCompany($channelCompany)
-    {
-        $this->channelCompany = $channelCompany;
-
-        return $this;
-    }
-
-    /**
-     * Get channelCompany
-     *
-     * @return string
-     */
-    public function getChannelCompany()
-    {
-        return $this->channelCompany;
     }
 
     /**

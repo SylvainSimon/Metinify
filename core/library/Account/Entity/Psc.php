@@ -1,13 +1,13 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Account\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Psc
  *
- * @ORM\Table(name="psc")
+ * @ORM\Table(name="account.psc")
  * @ORM\Entity
  */
 class Psc

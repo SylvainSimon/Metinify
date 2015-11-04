@@ -1,13 +1,13 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Account\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * SendNotice
  *
- * @ORM\Table(name="send_notice")
+ * @ORM\Table(name="account.send_notice")
  * @ORM\Entity
  */
 class SendNotice

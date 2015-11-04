@@ -3,7 +3,10 @@ requiredSSL: true
 twigCache: false
 twigCacheUrl: /cache/twig
 
+cacheBdd: ~
 driverbdd: mysql
 hostbdd: localhost
 userbdd: root
 passwordbdd: ~
+portbdd: 3306
+charsetbdd: UTF8

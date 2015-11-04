@@ -1,13 +1,13 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Account\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Gametimelog
  *
- * @ORM\Table(name="gametimelog", indexes={@ORM\Index(name="login_key", columns={"login"})})
+ * @ORM\Table(name="account.gametimelog", indexes={@ORM\Index(name="login_key", columns={"login"})})
  * @ORM\Entity
  */
 class Gametimelog

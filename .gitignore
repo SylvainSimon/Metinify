@@ -1,1 +1,4 @@
 nbproject
+/cache/doctrine/entities
+/cache/doctrine/proxies
+/cache/doctrine/repositories

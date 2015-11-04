@@ -1,13 +1,13 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Account\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Admin
  *
- * @ORM\Table(name="admin")
+ * @ORM\Table(name="account.admin")
  * @ORM\Entity
  */
 class Admin

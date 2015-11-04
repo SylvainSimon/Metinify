@@ -6,6 +6,10 @@ class IndexWebsite extends CoreHelper {
 
     public function run() {
         
+        $objAccount = Account\AccountHelper::getAccountRepository()->find(1);
+        
+        
+        \Debug::log($objAccount->getLogin());
         
         //$this->objConnection;
         //$this->objConfig;

@@ -1,13 +1,13 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Account\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Iptocountry
  *
- * @ORM\Table(name="iptocountry")
+ * @ORM\Table(name="account.iptocountry")
  * @ORM\Entity
  */
 class Iptocountry

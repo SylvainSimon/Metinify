@@ -1,13 +1,13 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Account\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Gametime
  *
- * @ORM\Table(name="gametime")
+ * @ORM\Table(name="account.gametime")
  * @ORM\Entity
  */
 class Gametime

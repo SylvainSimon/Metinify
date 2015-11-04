@@ -1,13 +1,13 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Account\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Gametimeip
  *
- * @ORM\Table(name="gametimeip", uniqueConstraints={@ORM\UniqueConstraint(name="ip_uniq", columns={"ip", "startIP", "endIP"})}, indexes={@ORM\Index(name="ip_idx", columns={"ip"})})
+ * @ORM\Table(name="account.gametimeip", uniqueConstraints={@ORM\UniqueConstraint(name="ip_uniq", columns={"ip", "startIP", "endIP"})}, indexes={@ORM\Index(name="ip_idx", columns={"ip"})})
  * @ORM\Entity
  */
 class Gametimeip

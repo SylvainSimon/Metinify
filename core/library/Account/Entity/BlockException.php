@@ -1,13 +1,13 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Account\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * BlockException
  *
- * @ORM\Table(name="block_exception")
+ * @ORM\Table(name="account.block_exception")
  * @ORM\Entity
  */
 class BlockException

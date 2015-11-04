@@ -1,13 +1,13 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Account\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Monarch
  *
- * @ORM\Table(name="monarch")
+ * @ORM\Table(name="account.monarch")
  * @ORM\Entity
  */
 class Monarch
