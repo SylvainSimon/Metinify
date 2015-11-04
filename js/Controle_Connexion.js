@@ -42,7 +42,7 @@ $(document).ready(function () {
 
                         if (Parse_Json.data != "") {
 
-                            $("#Barre_Social").append(Parse_Json.data);
+                            $("#barre_social").append(Parse_Json.data);
                         }
                         
                         Ajax("pages/_LegacyPages/Accueil.php");

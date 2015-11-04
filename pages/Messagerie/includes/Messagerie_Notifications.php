@@ -58,7 +58,13 @@
                     $Attente = "tickets";
                 }
 
-                echo "Vous avez <span id='Nombre_Message_Non_Lu'>" . $Nombre_De_Resultat_Message_Traitement . "</span> " . $Message . " dans " . $Nombre_De_Resultat_Discussion_Traitement . " " . $Discussion . " (" . $Nombre_De_Resultat_Discussion_Attente . " " . $Attente . " en attente).";
+                if ($Nombre_De_Resultat_Message_Traitement == 0 and $Nombre_De_Resultat_Discussion_Attente == 0) {
+                    echo "<i onclick='Ajax(\"pages/Messagerie/Messagerie.php\")' data-tooltip='Aucun nouveau message' data-tooltip-position='left' style='cursor:pointer; top: 7px; position: relative;' class='material-icons md-icon-chat md-24'></i>";
+                } else {
+
+                    echo "<i onclick='Ajax(\"pages/Messagerie/Messagerie.php\")' data-tooltip='" . $Nombre_De_Resultat_Message_Traitement . " message non-lu.<br/>".$Nombre_De_Resultat_Discussion_Attente." ticket(s) en attente.' " . $Message . "' style='cursor:pointer; top: 7px; position: relative;' class='material-icons text-green md-icon-chat md-22'></i>";
+                }
+                
                 ?>
                 <script type="text/javascript">
             <?php if ($Nombre_De_Resultat_Message_Traitement > 0) { ?>

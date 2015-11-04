@@ -83,7 +83,7 @@ class ajaxConnexionSubmit extends \ScriptHelper {
                     'result' => "1",
                     'reasons' => "",
                     'id' => $Donnees_Connexion->id,
-                    'data' => '<img title="Panneau d\'administration" id="Icone_Administration_Acces" onclick="Changement_De_Decors(\'' . $Nombre_Unique . '\')" src="images/icones/administration.png" height="27" />'
+                    'data' => '<img title="Panneau d\'administration" id="Icone_Administration_Acces" onclick="Ajax(\'administration/Accueil_Seconde.php\')" src="images/icones/administration.png" height="27" />'
                 );
             } else {
 

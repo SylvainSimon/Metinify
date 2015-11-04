@@ -14,7 +14,7 @@
 
 <div class="col-md-3 col-sm-3">
 
-    <div class="pull-right" style="padding-top: 5px; padding-bottom: 2px;">
+    <div class="pull-right" id="barre_social" style="padding-top: 5px; padding-bottom: 2px;">
 
         <a data-tooltip-position="top" data-tooltip="Notre page Facebook" href="https://www.facebook.com/groups/vamosmt2" target="_blank" style="color:white; margin-left: 5px;">
             <i class="genericon genericon-facebook-alt withOpacity" style="background: #3b5998; border-radius: 50%; padding: 6px;"></i>
@@ -34,7 +34,7 @@
 
         <?php if (!empty($_SESSION['Administration_PannelAdmin'])) { ?>
             <?php if ($_SESSION['Administration_PannelAdmin']) { ?>
-                <img title="Panneau d'administration" id="Icone_Administration_Acces" onclick="Changement_De_Decors('<?= $_SESSION['Administration_PannelAdmin_Jeton']; ?>')" src="images/icones/administration.png" height="27" />
+                <img title="Panneau d'administration" id="Icone_Administration_Acces" onclick="Ajax('administration/Accueil_Seconde.php')" src="images/icones/administration.png" height="27" />
             <?php } ?>
         <?php } ?>
     </div>

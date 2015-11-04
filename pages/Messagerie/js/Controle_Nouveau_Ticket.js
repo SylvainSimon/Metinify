@@ -45,7 +45,7 @@ function Valider_Formulaire_Nouveau_Ticket(){
                     window.parent.Barre_De_Statut("Message envoyé avec succès.");
                     window.parent.Icone_Chargement(0);
                     
-                    Ajax_Appel_Messagerie("Messagerie_Boite_De_Reception.php");
+                    Ajax_Appel_Messagerie("pages/Messagerie/Messagerie_Boite_De_Reception.php");
                 }
                 else{
                     
