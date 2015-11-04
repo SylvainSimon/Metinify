@@ -246,7 +246,7 @@ function VerificationFormulaire() {
 
             $.ajax({
                 type: "POST",
-                url: "ajax/SQL_CompteurCaptcha.php",
+                url: "ajax/ajaxInscriptionVerifTry.php",
                 success: function(msg){
 
                     if(msg == 1){

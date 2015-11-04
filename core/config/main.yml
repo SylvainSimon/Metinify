@@ -10,3 +10,9 @@ userbdd: root
 passwordbdd: ~
 portbdd: 3306
 charsetbdd: UTF8
+
+smtpSender: no-reply@vamosmt2.org
+smtpHost: localhost
+smtpPort: 25
+smtpUser: ~
+smtpPassword: ~

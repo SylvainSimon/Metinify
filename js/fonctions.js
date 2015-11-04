@@ -126,7 +126,7 @@ function ServeurClassyd() {
 
     $.ajax({
         type: "POST",
-        url: "ajax/Actualisation_Classyd.php",
+        url: "ajax/ajaxStatutServeur.php",
         success: function (msg) {
             $("#ServeurClassyd").html(msg);
             redraw();
@@ -139,7 +139,7 @@ function JoueursConnectes() {
 
     $.ajax({
         type: "POST",
-        url: "ajax/Joueurs_Connectes.php",
+        url: "ajax/ajaxStatutNombreJoueur.php",
         success: function (msg) {
             $("#nombreconnecter").html(msg);
             redraw();

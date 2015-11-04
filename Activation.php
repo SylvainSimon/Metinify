@@ -48,9 +48,6 @@ class Activation extends \PageHelper {
             } else {
                 echo "Votre compte semble d&eacute;j&agrave; activ&eacute;";
             }
-        } else {
-
-            die();
         }
     }
 

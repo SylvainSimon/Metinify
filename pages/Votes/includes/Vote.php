@@ -18,7 +18,7 @@ $Nombre_De_Resultat_Recuperation_Site_De_Vote = $Parametres_Recuperation_Site_De
 
             $.ajax({
                 type: "POST",
-                url: "ajax/SQL_Actualiser_VamoNaies.php",
+                url: "ajax/Update_Vamonaies.php",
                 success: function (msg) {
 
                     if (msg != "") {
@@ -36,7 +36,7 @@ $Nombre_De_Resultat_Recuperation_Site_De_Vote = $Parametres_Recuperation_Site_De
 
             $.ajax({
                 type: "POST",
-                url: "ajax/Test_Connexion.php",
+                url: "ajax/ajaxTestConnexion.php",
                 success: function (msg) {
                     if (msg == 1) {
 

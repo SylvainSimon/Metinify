@@ -11,7 +11,7 @@ class IndexWebsite extends PageHelper {
         //$this->objConfig;
         //var_dump($this->objSession->get("ID"));
         //$this->objConnection;
-                
+
         ?>
 
         <!DOCTYPE html>

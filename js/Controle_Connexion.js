@@ -6,7 +6,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "ajax/SQL_Connexion.php",
+            url: "ajax/ajaxConnexionSubmit.php",
             data: "Utilisateur=" + $("#login").val() + "&Mot_De_Passe=" + $("#password").val(),
             success: function (msg) {
 
