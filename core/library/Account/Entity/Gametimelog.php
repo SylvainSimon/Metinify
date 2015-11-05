@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="account.gametimelog", indexes={@ORM\Index(name="login_key", columns={"login"})})
  * @ORM\Entity
  */
-class Gametimelog
-{
+class Gametimelog {
+
     /**
      * @var string
      *
@@ -70,8 +70,6 @@ class Gametimelog
      */
     private $id;
 
-
-
     /**
      * Set login
      *
@@ -79,8 +77,7 @@ class Gametimelog
      *
      * @return Gametimelog
      */
-    public function setLogin($login)
-    {
+    public function setLogin($login) {
         $this->login = $login;
 
         return $this;
@@ -91,8 +88,7 @@ class Gametimelog
      *
      * @return string
      */
-    public function getLogin()
-    {
+    public function getLogin() {
         return $this->login;
     }
 
@@ -103,8 +99,7 @@ class Gametimelog
      *
      * @return Gametimelog
      */
-    public function setType($type)
-    {
+    public function setType($type) {
         $this->type = $type;
 
         return $this;
@@ -115,8 +110,7 @@ class Gametimelog
      *
      * @return string
      */
-    public function getType()
-    {
+    public function getType() {
         return $this->type;
     }
 
@@ -127,8 +121,7 @@ class Gametimelog
      *
      * @return Gametimelog
      */
-    public function setLogonTime($logonTime)
-    {
+    public function setLogonTime($logonTime) {
         $this->logonTime = $logonTime;
 
         return $this;
@@ -139,8 +132,7 @@ class Gametimelog
      *
      * @return \DateTime
      */
-    public function getLogonTime()
-    {
+    public function getLogonTime() {
         return $this->logonTime;
     }
 
@@ -151,8 +143,7 @@ class Gametimelog
      *
      * @return Gametimelog
      */
-    public function setLogoutTime($logoutTime)
-    {
+    public function setLogoutTime($logoutTime) {
         $this->logoutTime = $logoutTime;
 
         return $this;
@@ -163,8 +154,7 @@ class Gametimelog
      *
      * @return \DateTime
      */
-    public function getLogoutTime()
-    {
+    public function getLogoutTime() {
         return $this->logoutTime;
     }
 
@@ -175,8 +165,7 @@ class Gametimelog
      *
      * @return Gametimelog
      */
-    public function setUseTime($useTime)
-    {
+    public function setUseTime($useTime) {
         $this->useTime = $useTime;
 
         return $this;
@@ -187,8 +176,7 @@ class Gametimelog
      *
      * @return integer
      */
-    public function getUseTime()
-    {
+    public function getUseTime() {
         return $this->useTime;
     }
 
@@ -199,8 +187,7 @@ class Gametimelog
      *
      * @return Gametimelog
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -211,8 +198,7 @@ class Gametimelog
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
 
@@ -223,8 +209,7 @@ class Gametimelog
      *
      * @return Gametimelog
      */
-    public function setServer($server)
-    {
+    public function setServer($server) {
         $this->server = $server;
 
         return $this;
@@ -235,8 +220,7 @@ class Gametimelog
      *
      * @return string
      */
-    public function getServer()
-    {
+    public function getServer() {
         return $this->server;
     }
 
@@ -245,8 +229,8 @@ class Gametimelog
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
+
 }

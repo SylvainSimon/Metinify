@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="account.gametimeip", uniqueConstraints={@ORM\UniqueConstraint(name="ip_uniq", columns={"ip", "startIP", "endIP"})}, indexes={@ORM\Index(name="ip_idx", columns={"ip"})})
  * @ORM\Entity
  */
-class Gametimeip
-{
+class Gametimeip {
+
     /**
      * @var string
      *
@@ -77,8 +77,6 @@ class Gametimeip
      */
     private $ipid;
 
-
-
     /**
      * Set name
      *
@@ -86,8 +84,7 @@ class Gametimeip
      *
      * @return Gametimeip
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -98,8 +95,7 @@ class Gametimeip
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -110,8 +106,7 @@ class Gametimeip
      *
      * @return Gametimeip
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -122,8 +117,7 @@ class Gametimeip
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
 
@@ -134,8 +128,7 @@ class Gametimeip
      *
      * @return Gametimeip
      */
-    public function setStartip($startip)
-    {
+    public function setStartip($startip) {
         $this->startip = $startip;
 
         return $this;
@@ -146,8 +139,7 @@ class Gametimeip
      *
      * @return integer
      */
-    public function getStartip()
-    {
+    public function getStartip() {
         return $this->startip;
     }
 
@@ -158,8 +150,7 @@ class Gametimeip
      *
      * @return Gametimeip
      */
-    public function setEndip($endip)
-    {
+    public function setEndip($endip) {
         $this->endip = $endip;
 
         return $this;
@@ -170,8 +161,7 @@ class Gametimeip
      *
      * @return integer
      */
-    public function getEndip()
-    {
+    public function getEndip() {
         return $this->endip;
     }
 
@@ -182,8 +172,7 @@ class Gametimeip
      *
      * @return Gametimeip
      */
-    public function setPaymenttype($paymenttype)
-    {
+    public function setPaymenttype($paymenttype) {
         $this->paymenttype = $paymenttype;
 
         return $this;
@@ -194,8 +183,7 @@ class Gametimeip
      *
      * @return boolean
      */
-    public function getPaymenttype()
-    {
+    public function getPaymenttype() {
         return $this->paymenttype;
     }
 
@@ -206,8 +194,7 @@ class Gametimeip
      *
      * @return Gametimeip
      */
-    public function setLimittime($limittime)
-    {
+    public function setLimittime($limittime) {
         $this->limittime = $limittime;
 
         return $this;
@@ -218,8 +205,7 @@ class Gametimeip
      *
      * @return integer
      */
-    public function getLimittime()
-    {
+    public function getLimittime() {
         return $this->limittime;
     }
 
@@ -230,8 +216,7 @@ class Gametimeip
      *
      * @return Gametimeip
      */
-    public function setLimitdt($limitdt)
-    {
+    public function setLimitdt($limitdt) {
         $this->limitdt = $limitdt;
 
         return $this;
@@ -242,8 +227,7 @@ class Gametimeip
      *
      * @return \DateTime
      */
-    public function getLimitdt()
-    {
+    public function getLimitdt() {
         return $this->limitdt;
     }
 
@@ -254,8 +238,7 @@ class Gametimeip
      *
      * @return Gametimeip
      */
-    public function setReadme($readme)
-    {
+    public function setReadme($readme) {
         $this->readme = $readme;
 
         return $this;
@@ -266,8 +249,7 @@ class Gametimeip
      *
      * @return string
      */
-    public function getReadme()
-    {
+    public function getReadme() {
         return $this->readme;
     }
 
@@ -276,8 +258,8 @@ class Gametimeip
      *
      * @return integer
      */
-    public function getIpid()
-    {
+    public function getIpid() {
         return $this->ipid;
     }
+
 }

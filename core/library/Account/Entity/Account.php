@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="account.account", uniqueConstraints={@ORM\UniqueConstraint(name="login", columns={"login"})}, indexes={@ORM\Index(name="social_id", columns={"social_id"})})
  * @ORM\Entity(repositoryClass="Account\Repository\AccountRepository")
  */
-class Account
-{
+class Account {
+
     /**
      * @var string
      *
@@ -88,7 +88,6 @@ class Account
      * @ORM\Column(name="newsletter", type="boolean", nullable=false)
      */
     private $newsletter = '0';
-
 
     /**
      * @var integer
@@ -197,8 +196,6 @@ class Account
      */
     private $id;
 
-
-
     /**
      * Set login
      *
@@ -206,8 +203,7 @@ class Account
      *
      * @return Account
      */
-    public function setLogin($login)
-    {
+    public function setLogin($login) {
         $this->login = $login;
 
         return $this;
@@ -218,8 +214,7 @@ class Account
      *
      * @return string
      */
-    public function getLogin()
-    {
+    public function getLogin() {
         return $this->login;
     }
 
@@ -230,8 +225,7 @@ class Account
      *
      * @return Account
      */
-    public function setPassword($password)
-    {
+    public function setPassword($password) {
         $this->password = $password;
 
         return $this;
@@ -242,8 +236,7 @@ class Account
      *
      * @return string
      */
-    public function getPassword()
-    {
+    public function getPassword() {
         return $this->password;
     }
 
@@ -254,8 +247,7 @@ class Account
      *
      * @return Account
      */
-    public function setCodeEntrepot($codeEntrepot)
-    {
+    public function setCodeEntrepot($codeEntrepot) {
         $this->codeEntrepot = $codeEntrepot;
 
         return $this;
@@ -266,8 +258,7 @@ class Account
      *
      * @return string
      */
-    public function getCodeEntrepot()
-    {
+    public function getCodeEntrepot() {
         return $this->codeEntrepot;
     }
 
@@ -278,8 +269,7 @@ class Account
      *
      * @return Account
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
 
         return $this;
@@ -290,8 +280,7 @@ class Account
      *
      * @return string
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
@@ -302,8 +291,7 @@ class Account
      *
      * @return Account
      */
-    public function setCreateTime($createTime)
-    {
+    public function setCreateTime($createTime) {
         $this->createTime = $createTime;
 
         return $this;
@@ -314,8 +302,7 @@ class Account
      *
      * @return \DateTime
      */
-    public function getCreateTime()
-    {
+    public function getCreateTime() {
         return $this->createTime;
     }
 
@@ -326,8 +313,7 @@ class Account
      *
      * @return Account
      */
-    public function setQuestion1($question1)
-    {
+    public function setQuestion1($question1) {
         $this->question1 = $question1;
 
         return $this;
@@ -338,8 +324,7 @@ class Account
      *
      * @return string
      */
-    public function getQuestion1()
-    {
+    public function getQuestion1() {
         return $this->question1;
     }
 
@@ -350,8 +335,7 @@ class Account
      *
      * @return Account
      */
-    public function setAnswer1($answer1)
-    {
+    public function setAnswer1($answer1) {
         $this->answer1 = $answer1;
 
         return $this;
@@ -362,8 +346,7 @@ class Account
      *
      * @return string
      */
-    public function getAnswer1()
-    {
+    public function getAnswer1() {
         return $this->answer1;
     }
 
@@ -374,8 +357,7 @@ class Account
      *
      * @return Account
      */
-    public function setQuestion2($question2)
-    {
+    public function setQuestion2($question2) {
         $this->question2 = $question2;
 
         return $this;
@@ -386,8 +368,7 @@ class Account
      *
      * @return string
      */
-    public function getQuestion2()
-    {
+    public function getQuestion2() {
         return $this->question2;
     }
 
@@ -398,8 +379,7 @@ class Account
      *
      * @return Account
      */
-    public function setAnswer2($answer2)
-    {
+    public function setAnswer2($answer2) {
         $this->answer2 = $answer2;
 
         return $this;
@@ -410,11 +390,9 @@ class Account
      *
      * @return string
      */
-    public function getAnswer2()
-    {
+    public function getAnswer2() {
         return $this->answer2;
     }
-
 
     /**
      * Set status
@@ -423,8 +401,7 @@ class Account
      *
      * @return Account
      */
-    public function setStatus($status)
-    {
+    public function setStatus($status) {
         $this->status = $status;
 
         return $this;
@@ -435,8 +412,7 @@ class Account
      *
      * @return string
      */
-    public function getStatus()
-    {
+    public function getStatus() {
         return $this->status;
     }
 
@@ -447,8 +423,7 @@ class Account
      *
      * @return Account
      */
-    public function setNewsletter($newsletter)
-    {
+    public function setNewsletter($newsletter) {
         $this->newsletter = $newsletter;
 
         return $this;
@@ -459,8 +434,7 @@ class Account
      *
      * @return boolean
      */
-    public function getNewsletter()
-    {
+    public function getNewsletter() {
         return $this->newsletter;
     }
 
@@ -471,8 +445,7 @@ class Account
      *
      * @return Account
      */
-    public function setMileage($mileage)
-    {
+    public function setMileage($mileage) {
         $this->mileage = $mileage;
 
         return $this;
@@ -483,8 +456,7 @@ class Account
      *
      * @return integer
      */
-    public function getMileage()
-    {
+    public function getMileage() {
         return $this->mileage;
     }
 
@@ -495,8 +467,7 @@ class Account
      *
      * @return Account
      */
-    public function setCash($cash)
-    {
+    public function setCash($cash) {
         $this->cash = $cash;
 
         return $this;
@@ -507,8 +478,7 @@ class Account
      *
      * @return integer
      */
-    public function getCash()
-    {
+    public function getCash() {
         return $this->cash;
     }
 
@@ -519,8 +489,7 @@ class Account
      *
      * @return Account
      */
-    public function setGoldExpire($goldExpire)
-    {
+    public function setGoldExpire($goldExpire) {
         $this->goldExpire = $goldExpire;
 
         return $this;
@@ -531,8 +500,7 @@ class Account
      *
      * @return \DateTime
      */
-    public function getGoldExpire()
-    {
+    public function getGoldExpire() {
         return $this->goldExpire;
     }
 
@@ -543,8 +511,7 @@ class Account
      *
      * @return Account
      */
-    public function setSilverExpire($silverExpire)
-    {
+    public function setSilverExpire($silverExpire) {
         $this->silverExpire = $silverExpire;
 
         return $this;
@@ -555,8 +522,7 @@ class Account
      *
      * @return \DateTime
      */
-    public function getSilverExpire()
-    {
+    public function getSilverExpire() {
         return $this->silverExpire;
     }
 
@@ -567,8 +533,7 @@ class Account
      *
      * @return Account
      */
-    public function setSafeboxExpire($safeboxExpire)
-    {
+    public function setSafeboxExpire($safeboxExpire) {
         $this->safeboxExpire = $safeboxExpire;
 
         return $this;
@@ -579,8 +544,7 @@ class Account
      *
      * @return \DateTime
      */
-    public function getSafeboxExpire()
-    {
+    public function getSafeboxExpire() {
         return $this->safeboxExpire;
     }
 
@@ -591,8 +555,7 @@ class Account
      *
      * @return Account
      */
-    public function setAutolootExpire($autolootExpire)
-    {
+    public function setAutolootExpire($autolootExpire) {
         $this->autolootExpire = $autolootExpire;
 
         return $this;
@@ -603,8 +566,7 @@ class Account
      *
      * @return \DateTime
      */
-    public function getAutolootExpire()
-    {
+    public function getAutolootExpire() {
         return $this->autolootExpire;
     }
 
@@ -615,8 +577,7 @@ class Account
      *
      * @return Account
      */
-    public function setFishMindExpire($fishMindExpire)
-    {
+    public function setFishMindExpire($fishMindExpire) {
         $this->fishMindExpire = $fishMindExpire;
 
         return $this;
@@ -627,8 +588,7 @@ class Account
      *
      * @return \DateTime
      */
-    public function getFishMindExpire()
-    {
+    public function getFishMindExpire() {
         return $this->fishMindExpire;
     }
 
@@ -639,8 +599,7 @@ class Account
      *
      * @return Account
      */
-    public function setMarriageFastExpire($marriageFastExpire)
-    {
+    public function setMarriageFastExpire($marriageFastExpire) {
         $this->marriageFastExpire = $marriageFastExpire;
 
         return $this;
@@ -651,8 +610,7 @@ class Account
      *
      * @return \DateTime
      */
-    public function getMarriageFastExpire()
-    {
+    public function getMarriageFastExpire() {
         return $this->marriageFastExpire;
     }
 
@@ -663,8 +621,7 @@ class Account
      *
      * @return Account
      */
-    public function setMoneyDropRateExpire($moneyDropRateExpire)
-    {
+    public function setMoneyDropRateExpire($moneyDropRateExpire) {
         $this->moneyDropRateExpire = $moneyDropRateExpire;
 
         return $this;
@@ -675,8 +632,7 @@ class Account
      *
      * @return \DateTime
      */
-    public function getMoneyDropRateExpire()
-    {
+    public function getMoneyDropRateExpire() {
         return $this->moneyDropRateExpire;
     }
 
@@ -687,8 +643,7 @@ class Account
      *
      * @return Account
      */
-    public function setIpCreation($ipCreation)
-    {
+    public function setIpCreation($ipCreation) {
         $this->ipCreation = $ipCreation;
 
         return $this;
@@ -699,8 +654,7 @@ class Account
      *
      * @return string
      */
-    public function getIpCreation()
-    {
+    public function getIpCreation() {
         return $this->ipCreation;
     }
 
@@ -711,8 +665,7 @@ class Account
      *
      * @return Account
      */
-    public function setLastPlay($lastPlay)
-    {
+    public function setLastPlay($lastPlay) {
         $this->lastPlay = $lastPlay;
 
         return $this;
@@ -723,8 +676,7 @@ class Account
      *
      * @return string
      */
-    public function getLastPlay()
-    {
+    public function getLastPlay() {
         return $this->lastPlay;
     }
 
@@ -735,8 +687,7 @@ class Account
      *
      * @return Account
      */
-    public function setLangue($langue)
-    {
+    public function setLangue($langue) {
         $this->langue = $langue;
 
         return $this;
@@ -747,8 +698,7 @@ class Account
      *
      * @return string
      */
-    public function getLangue()
-    {
+    public function getLangue() {
         return $this->langue;
     }
 
@@ -759,8 +709,7 @@ class Account
      *
      * @return Account
      */
-    public function setPseudoMessagerie($pseudoMessagerie)
-    {
+    public function setPseudoMessagerie($pseudoMessagerie) {
         $this->pseudoMessagerie = $pseudoMessagerie;
 
         return $this;
@@ -771,8 +720,7 @@ class Account
      *
      * @return string
      */
-    public function getPseudoMessagerie()
-    {
+    public function getPseudoMessagerie() {
         return $this->pseudoMessagerie;
     }
 
@@ -783,8 +731,7 @@ class Account
      *
      * @return Account
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -795,8 +742,7 @@ class Account
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
 
@@ -805,8 +751,8 @@ class Account
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
+
 }

@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="account.iptocountry")
  * @ORM\Entity
  */
-class Iptocountry
-{
+class Iptocountry {
+
     /**
      * @var string
      *
@@ -42,8 +42,6 @@ class Iptocountry
      */
     private $id;
 
-
-
     /**
      * Set ipFrom
      *
@@ -51,8 +49,7 @@ class Iptocountry
      *
      * @return Iptocountry
      */
-    public function setIpFrom($ipFrom)
-    {
+    public function setIpFrom($ipFrom) {
         $this->ipFrom = $ipFrom;
 
         return $this;
@@ -63,8 +60,7 @@ class Iptocountry
      *
      * @return string
      */
-    public function getIpFrom()
-    {
+    public function getIpFrom() {
         return $this->ipFrom;
     }
 
@@ -75,8 +71,7 @@ class Iptocountry
      *
      * @return Iptocountry
      */
-    public function setIpTo($ipTo)
-    {
+    public function setIpTo($ipTo) {
         $this->ipTo = $ipTo;
 
         return $this;
@@ -87,8 +82,7 @@ class Iptocountry
      *
      * @return string
      */
-    public function getIpTo()
-    {
+    public function getIpTo() {
         return $this->ipTo;
     }
 
@@ -99,8 +93,7 @@ class Iptocountry
      *
      * @return Iptocountry
      */
-    public function setCountryName($countryName)
-    {
+    public function setCountryName($countryName) {
         $this->countryName = $countryName;
 
         return $this;
@@ -111,8 +104,7 @@ class Iptocountry
      *
      * @return string
      */
-    public function getCountryName()
-    {
+    public function getCountryName() {
         return $this->countryName;
     }
 
@@ -121,8 +113,8 @@ class Iptocountry
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
+
 }

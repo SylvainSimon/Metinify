@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="account.psc")
  * @ORM\Entity
  */
-class Psc
-{
+class Psc {
+
     /**
      * @var string
      *
@@ -56,8 +56,6 @@ class Psc
      */
     private $id;
 
-
-
     /**
      * Set accountId
      *
@@ -65,8 +63,7 @@ class Psc
      *
      * @return Psc
      */
-    public function setAccountId($accountId)
-    {
+    public function setAccountId($accountId) {
         $this->accountId = $accountId;
 
         return $this;
@@ -77,8 +74,7 @@ class Psc
      *
      * @return string
      */
-    public function getAccountId()
-    {
+    public function getAccountId() {
         return $this->accountId;
     }
 
@@ -89,8 +85,7 @@ class Psc
      *
      * @return Psc
      */
-    public function setPsc($psc)
-    {
+    public function setPsc($psc) {
         $this->psc = $psc;
 
         return $this;
@@ -101,8 +96,7 @@ class Psc
      *
      * @return string
      */
-    public function getPsc()
-    {
+    public function getPsc() {
         return $this->psc;
     }
 
@@ -113,8 +107,7 @@ class Psc
      *
      * @return Psc
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -125,8 +118,7 @@ class Psc
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
 
@@ -137,8 +129,7 @@ class Psc
      *
      * @return Psc
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
 
         return $this;
@@ -149,8 +140,7 @@ class Psc
      *
      * @return string
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
@@ -161,8 +151,7 @@ class Psc
      *
      * @return Psc
      */
-    public function setStatus($status)
-    {
+    public function setStatus($status) {
         $this->status = $status;
 
         return $this;
@@ -173,8 +162,7 @@ class Psc
      *
      * @return string
      */
-    public function getStatus()
-    {
+    public function getStatus() {
         return $this->status;
     }
 
@@ -183,8 +171,8 @@ class Psc
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
+
 }

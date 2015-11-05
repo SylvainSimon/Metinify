@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Guild
  *
  * @ORM\Table(name="player.guild")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Player\Repository\GuildRepository")
  */
 class Guild
 {
@@ -66,21 +66,21 @@ class Guild
      *
      * @ORM\Column(name="win", type="integer", nullable=false)
      */
-    private $win = '0';
+    private $victoire = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="draw", type="integer", nullable=false)
      */
-    private $draw = '0';
+    private $egalite = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="loss", type="integer", nullable=false)
      */
-    private $loss = '0';
+    private $defaite = '0';
 
     /**
      * @var integer
@@ -276,75 +276,75 @@ class Guild
     }
 
     /**
-     * Set win
+     * Set victoire
      *
-     * @param integer $win
+     * @param integer $victoire
      *
      * @return Guild
      */
-    public function setWin($win)
+    public function setVictoire($victoire)
     {
-        $this->win = $win;
+        $this->victoire = $victoire;
 
         return $this;
     }
 
     /**
-     * Get win
+     * Get victoire
      *
      * @return integer
      */
-    public function getWin()
+    public function getVictoire()
     {
-        return $this->win;
+        return $this->victoire;
     }
 
     /**
-     * Set draw
+     * Set egalite
      *
-     * @param integer $draw
+     * @param integer $egalite
      *
      * @return Guild
      */
-    public function setDraw($draw)
+    public function setEgalite($egalite)
     {
-        $this->draw = $draw;
+        $this->egalite = $egalite;
 
         return $this;
     }
 
     /**
-     * Get draw
+     * Get egalite
      *
      * @return integer
      */
-    public function getDraw()
+    public function getEgalite()
     {
-        return $this->draw;
+        return $this->egalite;
     }
 
     /**
-     * Set loss
+     * Set defaite
      *
-     * @param integer $loss
+     * @param integer $defaite
      *
      * @return Guild
      */
-    public function setLoss($loss)
+    public function setDefaite($defaite)
     {
-        $this->loss = $loss;
+        $this->defaite = $defaite;
 
         return $this;
     }
 
     /**
-     * Get loss
+     * Get defaite
      *
      * @return integer
      */
-    public function getLoss()
+    public function getDefaite()
     {
-        return $this->loss;
+        return $this->defaite;
     }
 
     /**

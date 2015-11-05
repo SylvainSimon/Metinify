@@ -6,7 +6,6 @@ require __DIR__ . '../../../core/initialize.php';
 
 class Contacts extends \PageHelper {
 
-    public $arrayTemplate = [];
     public $strTemplate = "Contacts.html5.twig";
 
     public function run() {

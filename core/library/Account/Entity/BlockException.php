@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="account.block_exception")
  * @ORM\Entity
  */
-class BlockException
-{
+class BlockException {
+
     /**
      * @var integer
      *
@@ -28,8 +28,6 @@ class BlockException
      */
     private $id;
 
-
-
     /**
      * Set login
      *
@@ -37,8 +35,7 @@ class BlockException
      *
      * @return BlockException
      */
-    public function setLogin($login)
-    {
+    public function setLogin($login) {
         $this->login = $login;
 
         return $this;
@@ -49,8 +46,7 @@ class BlockException
      *
      * @return integer
      */
-    public function getLogin()
-    {
+    public function getLogin() {
         return $this->login;
     }
 
@@ -59,8 +55,8 @@ class BlockException
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
+
 }

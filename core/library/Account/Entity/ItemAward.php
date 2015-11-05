@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="account.item_award", indexes={@ORM\Index(name="pid_idx", columns={"pid"}), @ORM\Index(name="given_time_idx", columns={"given_time"}), @ORM\Index(name="taken_time_idx", columns={"taken_time"})})
  * @ORM\Entity
  */
-class ItemAward
-{
+class ItemAward {
+
     /**
      * @var integer
      *
@@ -105,8 +105,6 @@ class ItemAward
      */
     private $id;
 
-
-
     /**
      * Set pid
      *
@@ -114,8 +112,7 @@ class ItemAward
      *
      * @return ItemAward
      */
-    public function setPid($pid)
-    {
+    public function setPid($pid) {
         $this->pid = $pid;
 
         return $this;
@@ -126,8 +123,7 @@ class ItemAward
      *
      * @return integer
      */
-    public function getPid()
-    {
+    public function getPid() {
         return $this->pid;
     }
 
@@ -138,8 +134,7 @@ class ItemAward
      *
      * @return ItemAward
      */
-    public function setLogin($login)
-    {
+    public function setLogin($login) {
         $this->login = $login;
 
         return $this;
@@ -150,8 +145,7 @@ class ItemAward
      *
      * @return string
      */
-    public function getLogin()
-    {
+    public function getLogin() {
         return $this->login;
     }
 
@@ -162,8 +156,7 @@ class ItemAward
      *
      * @return ItemAward
      */
-    public function setVnum($vnum)
-    {
+    public function setVnum($vnum) {
         $this->vnum = $vnum;
 
         return $this;
@@ -174,8 +167,7 @@ class ItemAward
      *
      * @return integer
      */
-    public function getVnum()
-    {
+    public function getVnum() {
         return $this->vnum;
     }
 
@@ -186,8 +178,7 @@ class ItemAward
      *
      * @return ItemAward
      */
-    public function setCount($count)
-    {
+    public function setCount($count) {
         $this->count = $count;
 
         return $this;
@@ -198,8 +189,7 @@ class ItemAward
      *
      * @return integer
      */
-    public function getCount()
-    {
+    public function getCount() {
         return $this->count;
     }
 
@@ -210,8 +200,7 @@ class ItemAward
      *
      * @return ItemAward
      */
-    public function setGivenTime($givenTime)
-    {
+    public function setGivenTime($givenTime) {
         $this->givenTime = $givenTime;
 
         return $this;
@@ -222,8 +211,7 @@ class ItemAward
      *
      * @return \DateTime
      */
-    public function getGivenTime()
-    {
+    public function getGivenTime() {
         return $this->givenTime;
     }
 
@@ -234,8 +222,7 @@ class ItemAward
      *
      * @return ItemAward
      */
-    public function setTakenTime($takenTime)
-    {
+    public function setTakenTime($takenTime) {
         $this->takenTime = $takenTime;
 
         return $this;
@@ -246,8 +233,7 @@ class ItemAward
      *
      * @return \DateTime
      */
-    public function getTakenTime()
-    {
+    public function getTakenTime() {
         return $this->takenTime;
     }
 
@@ -258,8 +244,7 @@ class ItemAward
      *
      * @return ItemAward
      */
-    public function setItemId($itemId)
-    {
+    public function setItemId($itemId) {
         $this->itemId = $itemId;
 
         return $this;
@@ -270,8 +255,7 @@ class ItemAward
      *
      * @return integer
      */
-    public function getItemId()
-    {
+    public function getItemId() {
         return $this->itemId;
     }
 
@@ -282,8 +266,7 @@ class ItemAward
      *
      * @return ItemAward
      */
-    public function setWhy($why)
-    {
+    public function setWhy($why) {
         $this->why = $why;
 
         return $this;
@@ -294,8 +277,7 @@ class ItemAward
      *
      * @return string
      */
-    public function getWhy()
-    {
+    public function getWhy() {
         return $this->why;
     }
 
@@ -306,8 +288,7 @@ class ItemAward
      *
      * @return ItemAward
      */
-    public function setSocket0($socket0)
-    {
+    public function setSocket0($socket0) {
         $this->socket0 = $socket0;
 
         return $this;
@@ -318,8 +299,7 @@ class ItemAward
      *
      * @return integer
      */
-    public function getSocket0()
-    {
+    public function getSocket0() {
         return $this->socket0;
     }
 
@@ -330,8 +310,7 @@ class ItemAward
      *
      * @return ItemAward
      */
-    public function setSocket1($socket1)
-    {
+    public function setSocket1($socket1) {
         $this->socket1 = $socket1;
 
         return $this;
@@ -342,8 +321,7 @@ class ItemAward
      *
      * @return integer
      */
-    public function getSocket1()
-    {
+    public function getSocket1() {
         return $this->socket1;
     }
 
@@ -354,8 +332,7 @@ class ItemAward
      *
      * @return ItemAward
      */
-    public function setSocket2($socket2)
-    {
+    public function setSocket2($socket2) {
         $this->socket2 = $socket2;
 
         return $this;
@@ -366,8 +343,7 @@ class ItemAward
      *
      * @return integer
      */
-    public function getSocket2()
-    {
+    public function getSocket2() {
         return $this->socket2;
     }
 
@@ -378,8 +354,7 @@ class ItemAward
      *
      * @return ItemAward
      */
-    public function setMall($mall)
-    {
+    public function setMall($mall) {
         $this->mall = $mall;
 
         return $this;
@@ -390,8 +365,7 @@ class ItemAward
      *
      * @return boolean
      */
-    public function getMall()
-    {
+    public function getMall() {
         return $this->mall;
     }
 
@@ -400,8 +374,8 @@ class ItemAward
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
+
 }

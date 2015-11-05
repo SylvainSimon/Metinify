@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="account.monarch")
  * @ORM\Entity
  */
-class Monarch
-{
+class Monarch {
+
     /**
      * @var integer
      *
@@ -49,8 +49,6 @@ class Monarch
      */
     private $empire;
 
-
-
     /**
      * Set pid
      *
@@ -58,8 +56,7 @@ class Monarch
      *
      * @return Monarch
      */
-    public function setPid($pid)
-    {
+    public function setPid($pid) {
         $this->pid = $pid;
 
         return $this;
@@ -70,8 +67,7 @@ class Monarch
      *
      * @return integer
      */
-    public function getPid()
-    {
+    public function getPid() {
         return $this->pid;
     }
 
@@ -82,8 +78,7 @@ class Monarch
      *
      * @return Monarch
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -94,8 +89,7 @@ class Monarch
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -106,8 +100,7 @@ class Monarch
      *
      * @return Monarch
      */
-    public function setWindate($windate)
-    {
+    public function setWindate($windate) {
         $this->windate = $windate;
 
         return $this;
@@ -118,8 +111,7 @@ class Monarch
      *
      * @return \DateTime
      */
-    public function getWindate()
-    {
+    public function getWindate() {
         return $this->windate;
     }
 
@@ -130,8 +122,7 @@ class Monarch
      *
      * @return Monarch
      */
-    public function setMoney($money)
-    {
+    public function setMoney($money) {
         $this->money = $money;
 
         return $this;
@@ -142,8 +133,7 @@ class Monarch
      *
      * @return integer
      */
-    public function getMoney()
-    {
+    public function getMoney() {
         return $this->money;
     }
 
@@ -152,8 +142,8 @@ class Monarch
      *
      * @return integer
      */
-    public function getEmpire()
-    {
+    public function getEmpire() {
         return $this->empire;
     }
+
 }

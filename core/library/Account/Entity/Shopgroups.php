@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="account.shopgroups")
  * @ORM\Entity
  */
-class Shopgroups
-{
+class Shopgroups {
+
     /**
      * @var string
      *
@@ -28,8 +28,6 @@ class Shopgroups
      */
     private $id;
 
-
-
     /**
      * Set name
      *
@@ -37,8 +35,7 @@ class Shopgroups
      *
      * @return Shopgroups
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -49,8 +46,7 @@ class Shopgroups
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -59,8 +55,8 @@ class Shopgroups
      *
      * @return string
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
+
 }

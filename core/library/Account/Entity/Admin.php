@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="account.admin")
  * @ORM\Entity
  */
-class Admin
-{
+class Admin {
+
     /**
      * @var string
      *
@@ -35,8 +35,6 @@ class Admin
      */
     private $id;
 
-
-
     /**
      * Set admin
      *
@@ -44,8 +42,7 @@ class Admin
      *
      * @return Admin
      */
-    public function setAdmin($admin)
-    {
+    public function setAdmin($admin) {
         $this->admin = $admin;
 
         return $this;
@@ -56,8 +53,7 @@ class Admin
      *
      * @return string
      */
-    public function getAdmin()
-    {
+    public function getAdmin() {
         return $this->admin;
     }
 
@@ -68,8 +64,7 @@ class Admin
      *
      * @return Admin
      */
-    public function setPassword($password)
-    {
+    public function setPassword($password) {
         $this->password = $password;
 
         return $this;
@@ -80,8 +75,7 @@ class Admin
      *
      * @return string
      */
-    public function getPassword()
-    {
+    public function getPassword() {
         return $this->password;
     }
 
@@ -90,8 +84,8 @@ class Admin
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
+
 }

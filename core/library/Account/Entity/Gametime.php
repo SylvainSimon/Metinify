@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="account.gametime")
  * @ORM\Entity
  */
-class Gametime
-{
+class Gametime {
+
     /**
      * @var boolean
      *
@@ -49,8 +49,6 @@ class Gametime
      */
     private $userid;
 
-
-
     /**
      * Set paymenttype
      *
@@ -58,8 +56,7 @@ class Gametime
      *
      * @return Gametime
      */
-    public function setPaymenttype($paymenttype)
-    {
+    public function setPaymenttype($paymenttype) {
         $this->paymenttype = $paymenttype;
 
         return $this;
@@ -70,8 +67,7 @@ class Gametime
      *
      * @return boolean
      */
-    public function getPaymenttype()
-    {
+    public function getPaymenttype() {
         return $this->paymenttype;
     }
 
@@ -82,8 +78,7 @@ class Gametime
      *
      * @return Gametime
      */
-    public function setLimittime($limittime)
-    {
+    public function setLimittime($limittime) {
         $this->limittime = $limittime;
 
         return $this;
@@ -94,8 +89,7 @@ class Gametime
      *
      * @return integer
      */
-    public function getLimittime()
-    {
+    public function getLimittime() {
         return $this->limittime;
     }
 
@@ -106,8 +100,7 @@ class Gametime
      *
      * @return Gametime
      */
-    public function setLimitdt($limitdt)
-    {
+    public function setLimitdt($limitdt) {
         $this->limitdt = $limitdt;
 
         return $this;
@@ -118,8 +111,7 @@ class Gametime
      *
      * @return \DateTime
      */
-    public function getLimitdt()
-    {
+    public function getLimitdt() {
         return $this->limitdt;
     }
 
@@ -130,8 +122,7 @@ class Gametime
      *
      * @return Gametime
      */
-    public function setScores($scores)
-    {
+    public function setScores($scores) {
         $this->scores = $scores;
 
         return $this;
@@ -142,8 +133,7 @@ class Gametime
      *
      * @return integer
      */
-    public function getScores()
-    {
+    public function getScores() {
         return $this->scores;
     }
 
@@ -152,8 +142,8 @@ class Gametime
      *
      * @return string
      */
-    public function getUserid()
-    {
+    public function getUserid() {
         return $this->userid;
     }
+
 }

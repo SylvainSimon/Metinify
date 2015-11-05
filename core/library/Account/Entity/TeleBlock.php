@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="account.tele_block")
  * @ORM\Entity
  */
-class TeleBlock
-{
+class TeleBlock {
+
     /**
      * @var \DateTime
      *
@@ -35,8 +35,6 @@ class TeleBlock
      */
     private $accountId;
 
-
-
     /**
      * Set lastlogin
      *
@@ -44,8 +42,7 @@ class TeleBlock
      *
      * @return TeleBlock
      */
-    public function setLastlogin($lastlogin)
-    {
+    public function setLastlogin($lastlogin) {
         $this->lastlogin = $lastlogin;
 
         return $this;
@@ -56,8 +53,7 @@ class TeleBlock
      *
      * @return \DateTime
      */
-    public function getLastlogin()
-    {
+    public function getLastlogin() {
         return $this->lastlogin;
     }
 
@@ -68,8 +64,7 @@ class TeleBlock
      *
      * @return TeleBlock
      */
-    public function setTeleBlock($teleBlock)
-    {
+    public function setTeleBlock($teleBlock) {
         $this->teleBlock = $teleBlock;
 
         return $this;
@@ -80,8 +75,7 @@ class TeleBlock
      *
      * @return string
      */
-    public function getTeleBlock()
-    {
+    public function getTeleBlock() {
         return $this->teleBlock;
     }
 
@@ -90,8 +84,8 @@ class TeleBlock
      *
      * @return integer
      */
-    public function getAccountId()
-    {
+    public function getAccountId() {
         return $this->accountId;
     }
+
 }

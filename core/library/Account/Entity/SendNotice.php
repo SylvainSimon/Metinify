@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="account.send_notice")
  * @ORM\Entity
  */
-class SendNotice
-{
+class SendNotice {
+
     /**
      * @var boolean
      *
@@ -49,8 +49,6 @@ class SendNotice
      */
     private $id;
 
-
-
     /**
      * Set type
      *
@@ -58,8 +56,7 @@ class SendNotice
      *
      * @return SendNotice
      */
-    public function setType($type)
-    {
+    public function setType($type) {
         $this->type = $type;
 
         return $this;
@@ -70,8 +67,7 @@ class SendNotice
      *
      * @return boolean
      */
-    public function getType()
-    {
+    public function getType() {
         return $this->type;
     }
 
@@ -82,8 +78,7 @@ class SendNotice
      *
      * @return SendNotice
      */
-    public function setServer($server)
-    {
+    public function setServer($server) {
         $this->server = $server;
 
         return $this;
@@ -94,8 +89,7 @@ class SendNotice
      *
      * @return string
      */
-    public function getServer()
-    {
+    public function getServer() {
         return $this->server;
     }
 
@@ -106,8 +100,7 @@ class SendNotice
      *
      * @return SendNotice
      */
-    public function setShowCheck($showCheck)
-    {
+    public function setShowCheck($showCheck) {
         $this->showCheck = $showCheck;
 
         return $this;
@@ -118,8 +111,7 @@ class SendNotice
      *
      * @return boolean
      */
-    public function getShowCheck()
-    {
+    public function getShowCheck() {
         return $this->showCheck;
     }
 
@@ -130,8 +122,7 @@ class SendNotice
      *
      * @return SendNotice
      */
-    public function setContent($content)
-    {
+    public function setContent($content) {
         $this->content = $content;
 
         return $this;
@@ -142,8 +133,7 @@ class SendNotice
      *
      * @return string
      */
-    public function getContent()
-    {
+    public function getContent() {
         return $this->content;
     }
 
@@ -152,8 +142,8 @@ class SendNotice
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
+
 }

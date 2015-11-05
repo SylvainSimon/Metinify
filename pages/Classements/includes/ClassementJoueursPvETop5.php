@@ -10,70 +10,47 @@
 
             <thead>
                 <tr>
-                    <th class="">Joueur</th>
+                    <th>Joueur</th>
                     <th class="Align_Right">Score</th>
                 </tr>
             </thead>
 
-            <?php
-            $i = 0;
-
-            /* ------------------------------- Top 5 Joueur ----------------------------- */
-            $Top_5_Joueurs = "SELECT *
-                                         
-                                     FROM player.player
-                                     LEFT JOIN account.account
-                                     ON account.id = player.account_id
-                                         
-                                     WHERE account.status='OK'
-                                     AND ( not (name like '[GM]%' ))
-                                     AND ( not (name like '[TGM]%' ))
-                                     AND ( not (name like '[Admin]%' ))
-                                     AND ( not (name like '[TM]%' ))
-                                     AND ( not (name like '[SGM]%' ))
-                                     AND player.name NOT IN(SELECT mName FROM common.gmlist)
-                                     ORDER BY score_pve DESC, level DESC, exp DESC
-                                     LIMIT 0,6";
-
-            $Parametres_Top_5_Joueurs = $this->objConnection->query($Top_5_Joueurs);
-            $Parametres_Top_5_Joueurs->setFetchMode(\PDO::FETCH_OBJ);
-            /* -------------------------------------------------------------------------- */
-            ?>
+            <?php $arrObjPlayers = Player\PlayerHelper::getPlayerRepository()->findTop("PVE", 6); ?>
+            
             <tbody>
-                <?php while ($Donnees_Top_5_Joueurs = $Parametres_Top_5_Joueurs->fetch()) { ?>
-
-                    <?php $i++; ?>
-
-                    <tr>
-                        <td style="line-height: 10px;">
-                            <?php if ($i == 1) {
-                                ?><i class="material-icons md-icon-star" style="color:#F3EC12;"></i>
-                                <?php
-                            } else if ($i == 2) {
-                                ?><i class="material-icons md-icon-star text-gray"></i>
-                                <?php
-                            } else if ($i == 3) {
-                                ?><i class="material-icons md-icon-star" style="color:#813838;"></i>
-                                <?php
-                            } else if ($i == 4) {
-                                ?><i class="material-icons md-icon-bookmark" style="color:#F3EC12; opacity: 0.5"></i>
-                                <?php
-                            } else if ($i == 5) {
-                                ?><i class="material-icons md-icon-bookmark text-gray" style="opacity: 0.5"></i>
-                                <?php
-                            } else if ($i == 6) {
-                                ?><i class="material-icons md-icon-bookmark" style="color:#813838; opacity: 0.5"></i>
-                                <?php
-                            } else {
-                                echo $i . " eme";
-                            }
-                            ?>
-                            <span style="vertical-align: text-top;"><?php echo $Donnees_Top_5_Joueurs->name; ?></span>
-                        </td>
-                        <td class="Align_Right">
-                            <?php echo $Donnees_Top_5_Joueurs->score_pve; ?>
-                        </td>
-                    </tr>
+                <?php if (count($arrObjPlayers) > 0) { ?>
+                    <?php foreach ($arrObjPlayers AS $key => $objPlayers) { ?>
+                        <tr>
+                            <td style="line-height: 10px;">
+                                <?php if (($key + 1) == 1) {
+                                    ?><i class="material-icons md-icon-star" style="color:#F3EC12;"></i>
+                                    <?php
+                                } else if (($key + 1) == 2) {
+                                    ?><i class="material-icons md-icon-star text-gray"></i>
+                                    <?php
+                                } else if (($key + 1) == 3) {
+                                    ?><i class="material-icons md-icon-star" style="color:#813838;"></i>
+                                    <?php
+                                } else if (($key + 1) == 4) {
+                                    ?><i class="material-icons md-icon-bookmark" style="color:#F3EC12; opacity: 0.5"></i>
+                                    <?php
+                                } else if (($key + 1) == 5) {
+                                    ?><i class="material-icons md-icon-bookmark text-gray" style="opacity: 0.5"></i>
+                                    <?php
+                                } else if (($key + 1) == 6) {
+                                    ?><i class="material-icons md-icon-bookmark" style="color:#813838; opacity: 0.5"></i>
+                                    <?php
+                                } else {
+                                    echo ($key + 1) . " eme";
+                                }
+                                ?>
+                                <span style="vertical-align: text-top;"><?php echo $objPlayers["name"]; ?></span>
+                            </td>
+                            <td class="Align_Right">
+                                <?php echo $objPlayers["scorePve"]; ?>
+                            </td>
+                        </tr>
+                    <?php } ?>
                 <?php } ?>
             </tbody>
         </table>

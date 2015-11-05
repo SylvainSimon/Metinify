@@ -3,7 +3,7 @@
 class PageHelper extends CoreHelper {
 
     public $template;
-    public $arrayTemplate = array();
+    public $arrayTemplate = [];
     public $strTemplate = null;
     public $isPage = true;
 

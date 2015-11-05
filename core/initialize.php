@@ -16,6 +16,7 @@ $loader->addPrefix('', array(
     BASE_ROOT . '/core/class',
     BASE_ROOT . '/core/library/Account',
     BASE_ROOT . '/core/library/Player',
+    BASE_ROOT . '/core/library/Common',
     BASE_ROOT . '/core/library/Shared',
     BASE_ROOT . '/core/library'
 ));
