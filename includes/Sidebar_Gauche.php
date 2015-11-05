@@ -1,8 +1,11 @@
 <?php
-srand();
-$files = array("ClassementJoueursPvETop5.php", "ClassementJoueursPvETop5.php");
-$rand = array_rand($files);
-include ("pages/Classements/includes/".$files[$rand]);
+$typeTop = array("PVE", "PVP");
+$typeResult = array_rand($typeTop);
+$arrObjPlayers = Player\PlayerHelper::getPlayerRepository()->findTop($typeTop[$typeResult], 6);
+
+$templateTop = $this->objTwig->loadTemplate("ClassementJoueurTop" . $typeTop[$typeResult] . ".html5.twig");
+$view = $templateTop->render(["arrObjPlayers" => $arrObjPlayers]);
+echo $view;
 ?>
 
 <script type="text/javascript">
@@ -19,7 +22,7 @@ include ("pages/Classements/includes/".$files[$rand]);
 </script>
 
 <div class="info-box flat box-telechargement-exe" onclick="Ajax('pages/_LegacyPages/Telechargement.php')">
-    
+
     <span class="info-box-icon"><i class="material-icons md-icon-download md-36"></i></span>
 
     <div class="info-box-content">

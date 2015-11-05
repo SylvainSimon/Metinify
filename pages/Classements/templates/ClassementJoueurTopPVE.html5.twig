@@ -1,0 +1,50 @@
+<div class="box box-default flat">
+
+    <div class="box-header">
+        <h3 class="box-title">Classement PVE</h3>
+    </div>
+
+    <div class="box-body no-padding">
+
+        <table class="table table-hover table-condensed table-responsive" style="border-collapse: collapse;">
+
+            <thead>
+                <tr>
+                    <th>Joueur</th>
+                    <th class="Align_Right">Score</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% if arrObjPlayers|length > 0 %}
+                    {% for key, objPlayer in arrObjPlayers %}
+                        <tr>
+                            <td style="line-height: 10px;">
+
+                                {% if loop.index == 1 %}
+                                    <i class="material-icons md-icon-star" style="color:#F3EC12;"></i>
+                                {% elseif loop.index == 2 %}
+                                    <i class="material-icons md-icon-star text-gray"></i>
+                                {% elseif loop.index == 3 %}
+                                    <i class="material-icons md-icon-star" style="color:#813838;"></i>
+                                {% elseif loop.index == 4 %}
+                                    <i class="material-icons md-icon-bookmark" style="color:#F3EC12; opacity: 0.5"></i>
+                                {% elseif loop.index == 5 %}
+                                    <i class="material-icons md-icon-bookmark text-gray" style="opacity: 0.5"></i>
+                                {% elseif loop.index == 6 %}
+                                    <i class="material-icons md-icon-bookmark" style="color:#813838; opacity: 0.5"></i>
+                                {% else %}
+                                    {{ loop.index }}
+                                {% endif %}
+                                <span style="vertical-align: text-top;">{{ objPlayer.name }}</span>
+                            </td>
+                            <td class="Align_Right">
+                                {{ objPlayer.scorePve }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
