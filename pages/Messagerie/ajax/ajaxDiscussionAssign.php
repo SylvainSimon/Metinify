@@ -6,6 +6,9 @@ require __DIR__ . '../../../../core/initialize.php';
 
 class ajaxDiscussionAssign extends \PageHelper {
 
+    public $isProtected = true;
+    public $isAllowForBlock = true;
+    
     public function run() {
 
         $Numero_Discussion = $_POST['Numero_Discussion'];

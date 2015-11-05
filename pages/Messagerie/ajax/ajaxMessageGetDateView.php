@@ -6,6 +6,9 @@ require __DIR__ . '../../../../core/initialize.php';
 
 class ajaxMessageGetDateView extends \PageHelper {
 
+    public $isProtected = true;
+    public $isAllowForBlock = true;
+    
     public function run() {
 
 ?>

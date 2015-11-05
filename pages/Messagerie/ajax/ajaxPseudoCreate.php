@@ -6,6 +6,9 @@ require __DIR__ . '../../../../core/initialize.php';
 
 class ajaxPseudoCreate extends \PageHelper {
 
+    public $isProtected = true;
+    public $isAllowForBlock = true;
+    
     public function run() {
 
         $Definition_Pseudo_Messagerie_Pseudo = $_POST['Pseudo'];

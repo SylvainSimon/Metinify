@@ -6,18 +6,12 @@ require __DIR__ . '../../../core/initialize.php';
 
 class Messagerie_Ticket_Attente extends \PageHelper {
 
+    public $isProtected = true;
+    public $isAllowForBlock = true;
+    
     public function run() {
         ?>
         <?php include '../../pages/Tableaux_Arrays.php'; ?>
-
-
-        <?php
-        if (empty($_SESSION['ID'])) {
-
-            echo "Vous n'êtes pas connecté";
-            exit();
-        }
-        ?>
 
         <?php
         /* ------------------------ Recuperation messages reçus  ---------------------------- */
@@ -38,34 +32,6 @@ class Messagerie_Ticket_Attente extends \PageHelper {
         $Parametres_Pseudo_Messagerie = $this->objConnection->prepare($Pseudo_Messagerie);
         /* ------------------------------------------------------------------------------ */
         ?>
-
-        <script type="text/javascript">
-
-            function Assignation_Ticket(numero_discussion) {
-
-                window.parent.Barre_De_Statut("Assignation et déplacement du ticket...");
-                window.parent.Icone_Chargement(1);
-
-                $.ajax({
-                    type: "POST",
-                    url: "ajax/ajaxDiscussionAssign.php",
-                    data: "Numero_Discussion=" + numero_discussion,
-                    success: function (msg) {
-
-                        if (msg == "NULL") {
-
-                            window.parent.Barre_De_Statut("Le message n'existe plus.");
-                            window.parent.Icone_Chargement(2);
-
-                        } else {
-
-                            Ajax_Ouverture_Ticket(msg);
-                        }
-                    }
-                });
-            }
-
-        </script>
 
         <div class="row">
             <div class="col-lg-3">

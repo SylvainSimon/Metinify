@@ -6,18 +6,13 @@ require __DIR__ . '../../../core/initialize.php';
 
 class Messagerie_Archives extends \PageHelper {
 
+    public $isProtected = true;
+    public $isAllowForBlock = true;
+    
     public function run() {
         ?>
         <?php include '../../pages/Tableaux_Arrays.php'; ?>
 
-
-        <?php
-        if (empty($_SESSION['ID'])) {
-
-            echo "Vous n'êtes pas connecté";
-            exit();
-        }
-        ?>
 
         <?php
         /* ------------------------ Recuperation discussions  ---------------------------- */

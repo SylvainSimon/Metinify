@@ -6,6 +6,9 @@ require __DIR__ . '../../../../core/initialize.php';
 
 class ajaxDiscussionArchivage extends \PageHelper {
 
+    public $isProtected = true;
+    public $isAllowForBlock = true;
+    
     public function run() {
 
         $ID_Message = $_POST['id'];

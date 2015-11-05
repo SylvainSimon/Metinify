@@ -13,11 +13,6 @@ class ItemShop extends \PageHelper {
         $Sauvegarder_ID = $_SESSION['ID'];
         $Sauvegarder_Login = $_SESSION['Utilisateur'];
 
-        if (empty($_SESSION['ID'])) {
-
-            echo "Vous n'êtes pas connecté";
-            exit();
-        }
         ?>
 
         <link rel="stylesheet" href="../../css/Item_Shop.css">

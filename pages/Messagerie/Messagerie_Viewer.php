@@ -6,19 +6,13 @@ require __DIR__ . '../../../core/initialize.php';
 
 class Messagerie_Viewer extends \PageHelper {
 
+    public $isProtected = true;
+    public $isAllowForBlock = true;
+    
     public function run() {
-        ?>
-        <?php include '../../pages/Tableaux_Arrays.php'; ?>
         
-        <?php
-        if (empty($_SESSION['ID'])) {
+        include '../../pages/Tableaux_Arrays.php'; 
 
-            echo "Vous n'êtes pas connecté";
-            exit();
-        }
-        ?>
-
-        <?php
         /* ------------------------ Informations de Base ---------------------------- */
         $Informations_De_Base = "SELECT * FROM site.support_ticket_archives
                                   WHERE id = ?

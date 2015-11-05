@@ -6,16 +6,12 @@ require __DIR__ . '../../../core/initialize.php';
 
 class Messagerie_Creer_Ticket_Support extends \PageHelper {
 
+    public $isProtected = true;
+    public $isAllowForBlock = true;
+    
     public function run() {
 
-        if (empty($_SESSION['ID'])) {
 
-            echo "Vous n'êtes pas connecté";
-            exit();
-        }
-        ?>
-
-        <?php
         /* ---------------------- Ticket En Attente --------------------------- */
         $Ticket_En_Attente = "SELECT numero_discussion
                           FROM site.support_ticket_attente

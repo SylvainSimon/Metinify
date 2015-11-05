@@ -13,6 +13,7 @@ class CoreHelper {
     public $isProtected = false;
     public $isPage = false;
     public $isScript = false;
+    public $isAllowForBlock = false;
 
     public function __construct() {
 
@@ -37,6 +38,7 @@ class CoreHelper {
         $twig = $container["twig"];
         $this->objTwig = $twig;
 
+        /* @var $session \Symfony\Component\HttpFoundation\Session\Session */
         global $session;
         $session = $container["session"];
         $this->objSession = $session;
@@ -47,40 +49,68 @@ class CoreHelper {
 
         $this->response = new Response();
 
+        if ($session->get("ID") !== null) {
+            $objAccount = Account\AccountHelper::getAccountRepository()->find($session->get("ID"));
+            $this->objAccount = $objAccount;
+            $this->ReloadSessionValues();
+        }
 
         if ($this->isProtected) {
-            if ($this->isPage) {
-                if ($session->get("ID") !== null) {
+            $this->ControleConnexion();
+        }
+    }
 
-                    $objAccount = Account\AccountHelper::getAccountRepository()->find($session->get("ID"));
-                    if ($objAccount->getStatus() == "BLOCK") {
+    public function ControleConnexion() {
 
+        global $session;
+
+        if ($this->isPage) {
+            if ($session->get("ID") !== null) {
+                if ($this->objAccount->getStatus() == "BLOCK") {
+
+                    if (!$this->isAllowForBlock) {
                         include '../../pages/Bannissement.php';
                         exit();
                     }
-                } else {
-
-                    include '../../pages/_LegacyPages/Accueil.php';
-                    exit();
                 }
+            } else {
+                include '../../pages/_LegacyPages/Accueil.php';
+                exit();
             }
-            if ($this->isScript) {
-                if ($session->get("ID") !== null) {
-                    $objAccount = Account\AccountHelper::getAccountRepository()->find($session->get("ID"));
-                    if ($objAccount->getStatus() == "BLOCK") {
+        }
+        if ($this->isScript) {
+            if ($session->get("ID") !== null) {
+                if ($this->objAccount->getStatus() == "BLOCK") {
+
+                    if (!$this->isAllowForBlock) {
                         $this->response->setStatusCode(423);
                         $this->response->setContent("");
                         echo $this->response->send();
                         exit();
                     }
-                } else {
-                    $this->response->setStatusCode(418);
-                    $this->response->setContent("");
-                    echo $this->response->send();
-                    exit();
                 }
+            } else {
+                $this->response->setStatusCode(418);
+                $this->response->setContent("");
+                echo $this->response->send();
+                exit();
             }
         }
+    }
+
+    public function ReloadSessionValues() {
+
+        /* @var $session \Symfony\Component\HttpFoundation\Session\Session */
+        global $session;
+        
+        $session->set("ID", $this->objAccount->getId());
+        $session->set("Utilisateur", $this->objAccount->getLogin());
+        $session->set("Email", $this->objAccount->getEmail());
+        $session->set("VamoNaies", $this->objAccount->getCash());
+        $session->set("TanaNaies", $this->objAccount->getMileage());
+        $session->set("Date_de_creation", $this->objAccount->getCreateTime());
+        $session->set("Status", $this->objAccount->getStatus());
+        $session->set("Pseudo_Messagerie", $this->objAccount->getPseudoMessagerie());
     }
 
     public function redirectToSSL() {

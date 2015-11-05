@@ -31,7 +31,6 @@ $(document).ready(function () {
 
                         document.getElementById('Menu_Support2').style.display = 'none';
                         document.getElementById('Menu_Support').style.display = 'inline';
-                        document.getElementById('Lien_Support').href = "pages/Messagerie/Messagerie.php";
                         
                         $("#Lien_Support").attr("onclick", "Ajax('pages/Messagerie/Messagerie.php');");
 

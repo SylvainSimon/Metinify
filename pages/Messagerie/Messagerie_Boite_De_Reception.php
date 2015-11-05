@@ -6,6 +6,9 @@ require __DIR__ . '../../../core/initialize.php';
 
 class Messagerie_Boite_De_Reception extends \PageHelper {
 
+    public $isProtected = true;
+    public $isAllowForBlock = true;
+    
     public function run() {
 
         include '../../pages/Tableaux_Arrays.php';

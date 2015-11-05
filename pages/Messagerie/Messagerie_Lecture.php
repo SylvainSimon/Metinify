@@ -6,17 +6,11 @@ require __DIR__ . '../../../core/initialize.php';
 
 class Messagerie_Lecture extends \PageHelper {
 
+    public $isProtected = true;
+    public $isAllowForBlock = true;
+    
     public function run() {
-        ?>
-        
-        <?php
-        if (empty($_SESSION['ID'])) {
 
-            echo "Vous n'êtes pas connecté";
-            exit();
-        }
-        ?>
-        <?php
         /* ------------------------ Informations de Base ---------------------------- */
         $Informations_De_Base = "SELECT * FROM site.support_ticket_traitement
                                   WHERE id = ?

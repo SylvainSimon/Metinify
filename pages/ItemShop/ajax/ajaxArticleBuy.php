@@ -67,14 +67,6 @@ class ajaxArticleBuy extends \ScriptHelper {
         ?>
 
         <?php
-        if (empty($_SESSION['ID'])) {
-
-            echo "Vous n'êtes pas connecté";
-            exit();
-        }
-        ?>
-
-        <?php
         /* ------------------------ Vérification Données ---------------------------- */
         $Verification_Donnees = "SELECT cash, mileage FROM account.account
                                   WHERE id = ?

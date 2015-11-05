@@ -6,6 +6,9 @@ require __DIR__ . '../../core/initialize.php';
 
 class ajaxMessageVerifyNew extends \PageHelper {
 
+    public $isProtected = true;
+    public $isAllowForBlock = true;
+    
     public function run() {
 
         if (!empty($_SESSION["ID"])) {

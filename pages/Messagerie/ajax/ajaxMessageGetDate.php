@@ -6,11 +6,10 @@ require __DIR__ . '../../../../core/initialize.php';
 
 class ajaxMessageGetDate extends \PageHelper {
 
+    public $isProtected = true;
+    public $isAllowForBlock = true;
+    
     public function run() {
-
-?>
-        
-        <?php
 
         $ID_Message = $_POST['id'];
 
