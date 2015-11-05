@@ -7,7 +7,7 @@ require __DIR__ . '../../../../core/initialize.php';
 class ajaxPersonnageDeleteSendEmail extends \ScriptHelper {
 
     public $isProtected = true;
-    
+
     public function run() {
 
         $Suppression_Perssonage_Envoie_Mail_ID_Compte = $_POST["id_compte"];
@@ -49,27 +49,11 @@ class ajaxPersonnageDeleteSendEmail extends \ScriptHelper {
             );
             /* ------------------------------------------------------------------------------------------------ */
 
-            /* ------------------------ Récupération Email ------------------------------ */
-            $Recuperation_Email = "SELECT account.email,
-                                  account.login
-                           FROM account.account
-                           WHERE id = :id
-                           LIMIT 1";
-            $Parametres_Recuperation_Email = $this->objConnection->prepare($Recuperation_Email);
-            $Parametres_Recuperation_Email->execute(
-                    array(
-                        ':id' => $Suppression_Perssonage_Envoie_Mail_ID_Compte
-                    )
-            );
-            $Parametres_Recuperation_Email->setFetchMode(\PDO::FETCH_OBJ);
-            $Nombre_De_Resultat_Recuperation_Email = $Parametres_Recuperation_Email->rowCount();
-            /* -------------------------------------------------------------------------- */
-            ?>
-            <?php if ($Nombre_De_Resultat_Recuperation_Email != 0) { ?>
 
-                <?php $Donnees_Recuperation_Email = $Parametres_Recuperation_Email->fetch(); ?>
+            $objAccountPersonnage = \Account\AccountHelper::getAccountRepository()->find($Suppression_Perssonage_Envoie_Mail_ID_Compte);
 
-                <?php
+            if ($objAccountPersonnage !== null) {
+
 
                 /* ------------------------ Récupération Nom du Personnage ---------------------- */
                 $Recuperation_Name = "SELECT player.name 
@@ -92,7 +76,7 @@ class ajaxPersonnageDeleteSendEmail extends \ScriptHelper {
 
                     <?php $Donnees_Recuperation_Name = $Parametres_Recuperation_Name->fetch(); ?>
 
-                    <?php $Destinataire = $Donnees_Recuperation_Email->email; ?>
+                    <?php $Destinataire = $objAccountPersonnage->getEmail(); ?>
 
                     <?php
 
@@ -107,7 +91,7 @@ class ajaxPersonnageDeleteSendEmail extends \ScriptHelper {
                     $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
                     $headers .= "\r\n";
 
-                    $msg = 'Bonjour ' . $Donnees_Recuperation_Email->login . '' . "<br/>";
+                    $msg = 'Bonjour ' . $objAccountPersonnage->getLogin() . '' . "<br/>";
                     $msg .= 'Vous avez demandé la suppression de votre personnage ' . $Donnees_Recuperation_Name->name . '.' . "<br/>";
                     $msg .= '' . "<br/>";
                     $msg .= 'Pour valider la demande veuillez indiquez le code suivant sur le site : ' . "<br/>";
@@ -115,11 +99,9 @@ class ajaxPersonnageDeleteSendEmail extends \ScriptHelper {
                     $msg .= '' . "<br/>";
                     $msg .= 'Cordialement, Vamosmt2.' . "<br/>";
                     $msg .= '' . "<br/>";
-                    ?>
 
-                    <?php if (mail($Destinataire, $Sujet, $msg, $headers)) { ?>
+                    if (mail($Destinataire, $Sujet, $msg, $headers)) {
 
-                        <?php
 
                         /* ------------------------------------- Insertion Changement Mail --------------------------------------- */
                         $Insertion_Supression_Personnage = "INSERT site.suppression_personnage 
@@ -137,62 +119,43 @@ class ajaxPersonnageDeleteSendEmail extends \ScriptHelper {
                                 )
                         );
                         /* -------------------------------------------------------------------------------------------------------- */
-                        ?>
-
-                        <?php
 
                         $Tableau_Retour_Json = array(
                             'result' => "WIN"
                         );
-                        ?>
+                    } else {
 
-                    <?php } else { ?>
-                        <?php
 
                         $Tableau_Retour_Json = array(
                             'result' => "FAIL",
                             'reasons' => "Erreur lors de l'envoie du mail."
                         );
-                        ?>
-                    <?php } ?>
+                    }
+                } else {
 
-
-                <?php } else { ?>
-                    <?php
 
                     $Tableau_Retour_Json = array(
                         'result' => "FAIL",
                         'reasons' => "Le personnage ne vous appartient pas."
                     );
-                    ?>
-                <?php } ?>
+                }
+            } else {
 
-            <?php } else { ?>
-
-                <?php
 
                 $Tableau_Retour_Json = array(
                     'result' => "FAIL",
                     'reasons' => "Le compte n'existe pas."
                 );
-                ?>
+            }
+        } else {
 
-            <?php } ?>
-
-        <?php } else { ?>
-            <?php
 
             $Tableau_Retour_Json = array(
                 'result' => "FAIL",
                 'reasons' => "Il y'as déjà une demande en attente."
             );
-            ?>
-        <?php } ?>
-
-        <?php echo json_encode($Tableau_Retour_Json); ?>
-
-        <?php
-
+        }
+        echo json_encode($Tableau_Retour_Json);
     }
 
 }

@@ -13,40 +13,22 @@ class payement extends \PageHelper {
         $Resultat_Paiement = false;
 
         if (@!empty($_GET['RECALL'])) {
-//Vérification du code par allopass
+            
             $RECALL = urlencode($_GET['RECALL']);
 
             $r = @file("http://payment.allopass.com/api/checkcode.apu?code=$RECALL&auth=227909/898935/4188626");
 
-
-//Si le code est validé, on crédite le compte
             if (substr($r[0], 0, 2) == "OK") {
 
                 $Resultat_Paiement = true;
             }
-// Sinon on affiche un essage d'erreur
             else {
 
                 $Resultat_Rechargement = "Raté";
             }
         }
 
-        /* ------------------------ Check dernier numéro ---------------------------- */
-        $Informations_Compte = "SELECT account.email,
-                               account.id,
-                               account.login
-                        FROM account.account
-                        WHERE id = ?
-                        LIMIT 1";
-        $Parametres_Informations_Compte = $this->objConnection->prepare($Informations_Compte);
-        $Parametres_Informations_Compte->execute(array(
-            $_GET['data']
-        ));
-        $Parametres_Informations_Compte->setFetchMode(\PDO::FETCH_OBJ);
-        /* -------------------------------------------------------------------------- */
-
-        $Donnees_Compte = $Parametres_Informations_Compte->fetch();
-
+        $objAccount = \Account\AccountHelper::getAccountRepository()->find($_GET['data']);
 
         /* ------------------------ Check dernier numéro ---------------------------- */
         $Dernier_Numero = "SELECT id FROM site.logs_rechargements ORDER by id DESC LIMIT 1";
@@ -91,9 +73,9 @@ class payement extends \PageHelper {
             $Parametres_Insertion = $this->objConnection->prepare($Insertion_Logs);
             $Parametres_Insertion->execute(array(
                 ':id' => $Dernier_Numero,
-                ':id_compte' => $Donnees_Compte->id,
-                ':compte' => $Donnees_Compte->login,
-                ':email_compte' => $Donnees_Compte->email,
+                ':id_compte' => $objAccount->getId(),
+                ':compte' => $objAccount->getLogin(),
+                ':email_compte' => $objAccount->getEmail(),
                 ':code' => $_GET['RECALL'],
                 ':nombre_vamonaies' => "1350",
                 ':resultat' => $Resultat_Rechargement,
@@ -120,9 +102,9 @@ class payement extends \PageHelper {
             $Parametres_Insertion = $this->objConnection->prepare($Insertion_Logs);
             $Parametres_Insertion->execute(array(
                 ':id' => $Dernier_Numero,
-                ':id_compte' => $Donnees_Compte->id,
-                ':compte' => $Donnees_Compte->login,
-                ':email_compte' => $Donnees_Compte->email,
+                ':id_compte' => $objAccount->getId(),
+                ':compte' => $objAccount->getLogin(),
+                ':email_compte' => $objAccount->getEmail(),
                 ':code' => $_GET['RECALL'],
                 ':resultat' => $Resultat_Rechargement,
                 ':ip' => $Rechargement_Ip));

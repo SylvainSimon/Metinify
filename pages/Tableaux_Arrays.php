@@ -318,4 +318,3 @@ $Array_BonusCompte = array(
     'marriage_fast_expire' => '<img src=\'../images/Bonus/6.png\' width=\'63\' />',
     'money_drop_rate_expire' => '<img src=\'../images/Bonus/7.png\' width=\'63\' />'
 );
-?>

@@ -8,16 +8,6 @@ class Bannissement extends \PageHelper {
 
     public function run() {
 
-        /* ------------------------ Vérification Données ---------------------------- */
-        $Recuperation_Compte = "SELECT * FROM account.account
-                                  WHERE id = ?
-                                  LIMIT 1";
-        $Parametres_Recuperation_Compte = $this->objConnection->prepare($Recuperation_Compte);
-        $Parametres_Recuperation_Compte->execute(array($_SESSION["ID"]));
-        $Parametres_Recuperation_Compte->setFetchMode(\PDO::FETCH_OBJ);
-        $Donnees_Recuperation_Compte = $Parametres_Recuperation_Compte->fetch();
-        /* -------------------------------------------------------------------------- */
-
         /* ------------------------ Recuperation Bannissement ---------------------------- */
         $Recuperation_Bannissement = "SELECT bannissements_actifs.date_debut_bannissement,
                                      bannissements_actifs.date_fin_bannissement,
@@ -43,7 +33,7 @@ class Bannissement extends \PageHelper {
             <?php if ($Nombre_De_Resultat_Recuperation_Bannissement != 0) { ?>
                 <?php while ($Donnees_Recuperation_Bannissement = $Parametres_Recuperation_Bannissement->fetch()) { ?>
                     <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-                        <h1>Votre compte <?= $Donnees_Recuperation_Compte->login; ?> est banni</h1>
+                        <h1>Votre compte <?= $this->objAccount->getLogin(); ?> est banni</h1>
                     </div>
                     <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1">
                         <hr class="Hr_Haut"/>
@@ -120,7 +110,7 @@ class Bannissement extends \PageHelper {
                 <?php } ?>
             <?php } else { ?>
                 <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-                    <h1>Votre compte <?= $Donnees_Recuperation_Compte->login; ?> est suspendue.</h1>
+                    <h1>Votre compte <?= $this->objAccount->getLogin(); ?> est suspendue.</h1>
                 </div>
                 <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1">
                     <hr class="Hr_Haut"/>

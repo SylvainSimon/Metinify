@@ -151,15 +151,6 @@ class FonctionsUtiles {
         return $Recomposition_Date;
     }
 
-    static function Test_Connexion() {
-
-        if (empty($_SESSION['ID'])) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
     static function Raccourcissement_Chaine($Chaine, $Limite) {
 
         $Chaine_Temporaire = substr($Chaine, 0, $Limite);
