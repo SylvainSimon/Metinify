@@ -46,7 +46,7 @@ class IndexWebsite extends PageHelper {
                 <script src="js/Ajax_Classement.js" type="text/javascript"></script>
 
                 <script src="js/jquery.contextMenu.min.js" type='text/javascript'></script>
-                <script src="js/jquery_coutdown.js" type='text/javascript'></script>
+                <script src="js/jquery.countdown.min.js" type='text/javascript'></script>
                 <script src="js/jquery.fancybox.js" type='text/javascript'></script>
 
                 <!--[if lt IE 9]>
@@ -167,9 +167,9 @@ class IndexWebsite extends PageHelper {
         <?php if ($request->query->get("version") !== null) { ?>
                     Ajax('pages/Version.php');
         <?php } elseif ($request->query->get("ok") !== null) { ?>
-                    Ajax('pages/Bienvenue.php');
+                    Ajax('pages/_LegacyPages/AccountActivationTerm.php');
         <?php } elseif ($request->query->get("paypal") !== null) { ?>
-                    Ajax('pages/Paypal.php');
+                    Ajax('pages/_LegacyPages/PaypalTerm.php');
         <?php } else { ?>
                     Ajax('pages/_LegacyPages/Accueil.php');
         <?php } ?>

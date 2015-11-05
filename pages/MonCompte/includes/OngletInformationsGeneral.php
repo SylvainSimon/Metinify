@@ -1,5 +1,4 @@
 <script type="text/javascript">var Clique_Code_Effacement = 0;</script>
-<script type="text/javascript">var Clique_Code_Entrepot = 0;</script>
 
 <div class="tab-pane active" id="Onglet_InformationGeneral">
 
@@ -193,18 +192,16 @@
                         <?php while ($Resultat_Liste_Personnages = $Parametres_Liste_Personnages->fetch()) { ?>
 
                             <?php
-                            $lHeure = floor($Resultat_Liste_Personnages->playtime / 60);
-                            $lesMinutes = (($Resultat_Liste_Personnages->playtime) % 60);
-                            $lJours = floor($lHeure / 24);
-
-                            $lHeure = ($lHeure - ($lJours * 24));
-
-                            if ($lesMinutes < 10) {
-
-                                $lesMinutes = "0" . $lesMinutes;
-                            }
+                            
+                            $dt = \Carbon\Carbon::create(2000, 1, 1, 0, 0, 0)->startOfDay();
+                            $dt2 = $dt->copy()->addMinute($Resultat_Liste_Personnages->playtime);
+                            $var = $dt->diffInMonths($dt2)." mois, ";
+                            $var .= $dt->diffInDays($dt2)." jours et ";
+                            $var .= $dt->diffInHours($dt2)." heures";
+                            
+                            Carbon\CarbonInterval::minutes($Resultat_Liste_Personnages->playtime);   
                             ?>
-                    <tr data-tooltip="Cliquez pour voir le détails du personnage" onclick="Ajax('pages/MonPersonnage/MonPersonnage.php?id=<?php echo $Resultat_Liste_Personnages->id; ?>')" class="Pointer">
+                            <tr data-tooltip="Cliquez pour voir le détails du personnage" onclick="Ajax('pages/MonPersonnage/MonPersonnage.php?id=<?php echo $Resultat_Liste_Personnages->id; ?>')" class="Pointer">
                                 <td class="hidden-md hidden-sm hidden-xs">
                                     <?php if ($Resultat_Liste_Personnages->job == "0") { ?> 
                                         <img class="cadrephotoclassement" src="../images/races/0_mini.png" height="25"/>
@@ -299,7 +296,7 @@
                                 </td>
                                 <td><?php echo $Resultat_Liste_Personnages->level; ?></td>
                                 <td class="hidden-md hidden-sm hidden-xs">
-                                    <?php echo $lJours . " jours et " . $lHeure . "h" . $lesMinutes . "min."; ?>
+                                    <?php echo $var; ?>
                                 </td>
                                 <td><?php echo $Resultat_Liste_Personnages->ip ?></td>
 
@@ -341,14 +338,15 @@
     <div class="row" style="margin-bottom: 10px;">
 
         <?php
-        $Resultat_Appel_Compte->autoloot_expire = strtotime(str_replace("-", "/", $Resultat_Appel_Compte->autoloot_expire));
-        $Resultat_Appel_Compte->gold_expire = strtotime(str_replace("-", "/", $Resultat_Appel_Compte->gold_expire));
-        $Resultat_Appel_Compte->silver_expire = strtotime(str_replace("-", "/", $Resultat_Appel_Compte->silver_expire));
-        $Resultat_Appel_Compte->safebox_expire = strtotime(str_replace("-", "/", $Resultat_Appel_Compte->safebox_expire));
-        $Resultat_Appel_Compte->money_drop_rate_expire = strtotime(str_replace("-", "/", $Resultat_Appel_Compte->money_drop_rate_expire));
-        $Resultat_Appel_Compte->fish_mind_expire = strtotime(str_replace("-", "/", $Resultat_Appel_Compte->fish_mind_expire));
-        $Resultat_Appel_Compte->marriage_fast_expire = strtotime(str_replace("-", "/", $Resultat_Appel_Compte->marriage_fast_expire));
+        $Resultat_Appel_Compte->autoloot_expire = str_replace("-", "/", $Resultat_Appel_Compte->autoloot_expire);
+        $Resultat_Appel_Compte->gold_expire = str_replace("-", "/", $Resultat_Appel_Compte->gold_expire);
+        $Resultat_Appel_Compte->silver_expire = str_replace("-", "/", $Resultat_Appel_Compte->silver_expire);
+        $Resultat_Appel_Compte->safebox_expire = str_replace("-", "/", $Resultat_Appel_Compte->safebox_expire);
+        $Resultat_Appel_Compte->money_drop_rate_expire = str_replace("-", "/", $Resultat_Appel_Compte->money_drop_rate_expire);
+        $Resultat_Appel_Compte->fish_mind_expire = str_replace("-", "/", $Resultat_Appel_Compte->fish_mind_expire);
+        $Resultat_Appel_Compte->marriage_fast_expire = str_replace("-", "/", $Resultat_Appel_Compte->marriage_fast_expire);
         ?>
+        
 
         <div class="col-md-12">
             <div class="col-lg-3"><?php echo $Array_BonusCompte['autoloot_expire'] ?><span id="Compteloot" style="position: relative; left:12px;"></span></div>
@@ -356,7 +354,7 @@
             <div class="col-lg-3"><?php echo $Array_BonusCompte['silver_expire'] ?><span id="Comptesilver" style="position: relative; left:12px;"></span></div>
             <div class="col-lg-3"><?php echo $Array_BonusCompte['marriage_fast_expire'] ?><span id="Comptelove" style="position: relative; left:12px;"></span></div>
         </div>
-        
+
         <div class="col-md-12">
             <div class="col-lg-3"><?php echo $Array_BonusCompte['safebox_expire'] ?><span id="Comptesafebox" style="position: relative; left:12px;"></span></div>
             <div class="col-lg-3"><?php echo $Array_BonusCompte['money_drop_rate_expire'] ?><span id="Comptemonnaie" style="position: relative; left:12px;"></span></div>
@@ -366,205 +364,41 @@
 
     </div>
 
-    <script type="text/JavaScript">
+    <script type="text/javascript">
 
-        var dateStringautoloot = "<?php echo $Resultat_Appel_Compte->autoloot_expire; ?>";  
-        var dateStringgold = "<?php echo $Resultat_Appel_Compte->gold_expire; ?>";  
-        var dateStringsilverexpire = "<?php echo $Resultat_Appel_Compte->silver_expire; ?>";
-        var dateStringsafebox = "<?php echo $Resultat_Appel_Compte->safebox_expire; ?>";
-        var dateStringmonnaie = "<?php echo $Resultat_Appel_Compte->money_drop_rate_expire; ?>";
-        var dateStringpeche = "<?php echo $Resultat_Appel_Compte->fish_mind_expire; ?>";
-        var dateStringlove = "<?php echo $Resultat_Appel_Compte->marriage_fast_expire; ?>";
+        $('#Compteloot').countdown('<?= $Resultat_Appel_Compte->autoloot_expire; ?>', function(event) {
+        $(this).html(event.strftime('%-Y %!Y:an,ans; %-w sem %-d %!d:jour,jours; %-H:%M:%S'));
+        });
 
-        var dateactuel = "<?php echo $Date_Actuel_En_Seconde; ?>";
-        nombreseconde = 0;
-        Nombre_Seconde_Gold = 0;
-        Nombre_Seconde_Silver = 0;
-        Nombre_Seconde_Love = 0;
-        Nombre_Seconde_SafeBox = 0;
-        Nombre_Seconde_Monnaie = 0;
-        Nombre_Seconde_Peche = 0;
+        $('#Comptegold').countdown('<?= $Resultat_Appel_Compte->gold_expire; ?>', function(event) {
+        $(this).html(event.strftime('%-Y %!Y:an,ans; %-w sem %-d %!d:jour,jours; %-H:%M:%S'));
+        });
 
-        function Compte_A_Rebour() {                                                                                                 
+        $('#Comptesilver').countdown('<?= $Resultat_Appel_Compte->silver_expire; ?>', function(event) {
+        $(this).html(event.strftime('%-Y %!Y:an,ans; %-w sem %-d %!d:jour,jours; %-H:%M:%S'));
+        });
 
-        if (dateStringautoloot != "0"){
-        var sec = (dateStringautoloot - dateactuel)-nombreseconde;
-        var n = (24 * 3600);
-        if (sec > 0) {
-        y = Math.floor (sec / (n*365));
-        j2 = Math.floor (sec / n);
-        j = Math.floor ((sec / n)-(y*365));
-        h = Math.floor (((sec - (j2 * n)) / 3600));
-        mn = Math.floor ((sec - ((j2 * n + h * 3600))) / 60);
-        sec = Math.floor (sec - ((j2 * n + h * 3600 + mn * 60)));
-        if(mn<10){
+        $('#Comptelove').countdown('<?= $Resultat_Appel_Compte->marriage_fast_expire; ?>', function(event) {
+        $(this).html(event.strftime('%w weeks %d days %H:%M:%S'));
+        });
 
-        mn = "0"+mn;
-        }
-        nombreseconde++;
-        document.getElementById('Compteloot').innerHTML = ""+ y + " ans, " + j +" jours, "+ h +"H"+ mn +" et "+ sec + "s";
-        }else{
+        $('#Comptemonnaie').countdown('<?= $Resultat_Appel_Compte->money_drop_rate_expire; ?>', function(event) {
+        $(this).html(event.strftime('%-Y %!Y:an,ans; %-w sem %-d %!d:jour,jours; %-H:%M:%S'));
+        });
 
-        document.getElementById('Compteloot').innerHTML = "Vous n'avez pas ce bonus.";
-        }
-        }else{
+        $('#Comptepeche').countdown('<?= $Resultat_Appel_Compte->fish_mind_expire; ?>', function(event) {
+        $(this).html(event.strftime('%-Y %!Y:an,ans; %-w sem %-d %!d:jour,jours; %-H:%M:%S'));
+        });
 
-        document.getElementById('Compteloot').innerHTML = "Vous n'avez pas ce bonus.";
-        }
+        $('#Comptelove').countdown('<?= $Resultat_Appel_Compte->marriage_fast_expire; ?>', function(event) {
+        $(this).html(event.strftime('%-Y %!Y:an,ans; %-w sem %-d %!d:jour,jours; %-H:%M:%S'));
+        });
 
-        if (dateStringgold != "0"){
-        var sec = (dateStringgold - dateactuel)-Nombre_Seconde_Gold;
-        var n = (24 * 3600);
-        if (sec > 0) {
-        y = Math.floor (sec / (n*365));
-        j2 = Math.floor (sec / n);
-        j = Math.floor ((sec / n)-(y*365));
-        h = Math.floor (((sec - (j2 * n)) / 3600));
-        mn = Math.floor ((sec - ((j2 * n + h * 3600))) / 60);
-        sec = Math.floor (sec - ((j2 * n + h * 3600 + mn * 60)));
-        if(mn<10){
+        $('#Comptesafebox').countdown('<?= $Resultat_Appel_Compte->safebox_expire; ?>', function(event) {
+        $(this).html(event.strftime('%-Y %!Y:an,ans; %-w sem %-d %!d:jour,jours; %-H:%M:%S'));
+        });
 
-        mn = "0"+mn;
-        }
-        Nombre_Seconde_Gold++;
-        document.getElementById('Comptegold').innerHTML = ""+ y + " ans, " + j +" jours, "+ h +"H"+ mn +" et "+ sec + "s";
-        }else{
 
-        document.getElementById('Comptegold').innerHTML = "Vous n'avez pas ce bonus.";
-        }
-        }else{
-
-        document.getElementById('Comptegold').innerHTML = "Vous n'avez pas ce bonus.";
-        }
-
-        if (dateStringsilverexpire != "0"){
-        var sec = (dateStringsilverexpire - dateactuel)-Nombre_Seconde_Silver;
-        var n = (24 * 3600);
-        if (sec > 0) {
-        y = Math.floor (sec / (n*365));
-        j2 = Math.floor (sec / n);
-        j = Math.floor ((sec / n)-(y*365));
-        h = Math.floor (((sec - (j2 * n)) / 3600));
-        mn = Math.floor ((sec - ((j2 * n + h * 3600))) / 60);
-        sec = Math.floor (sec - ((j2 * n + h * 3600 + mn * 60)));
-        if(mn<10){
-
-        mn = "0"+mn;
-        }
-        Nombre_Seconde_Silver++;
-        document.getElementById('Comptesilver').innerHTML = ""+ y + " ans, " + j +" jours, "+ h +"H"+ mn +" et "+ sec + "s";
-        }else{
-
-        document.getElementById('Comptesilver').innerHTML = "Vous n'avez pas ce bonus.";
-        }
-        }else{
-
-        document.getElementById('Comptesilver').innerHTML = "Vous n'avez pas ce bonus.";
-        }
-
-        if (dateStringlove != "0"){
-        var sec = (dateStringlove - dateactuel)-Nombre_Seconde_Love;
-        var n = (24 * 3600);
-        if (sec > 0) {
-        y = Math.floor (sec / (n*365));
-        j2 = Math.floor (sec / n);
-        j = Math.floor ((sec / n)-(y*365));
-        h = Math.floor (((sec - (j2 * n)) / 3600));
-        mn = Math.floor ((sec - ((j2 * n + h * 3600))) / 60);
-        sec = Math.floor (sec - ((j2 * n + h * 3600 + mn * 60)));
-        if(mn<10){
-
-        mn = "0"+mn;
-        }
-        Nombre_Seconde_Love++;
-        document.getElementById('Comptelove').innerHTML = ""+ y + " ans, " + j +" jours, "+ h +"H"+ mn +" et "+ sec + "s";
-        }else{
-
-        document.getElementById('Comptelove').innerHTML = "Vous n'avez pas ce bonus.";
-        }
-        }else{
-
-        document.getElementById('Comptelove').innerHTML = "Vous n'avez pas ce bonus.";
-        }
-
-        if (dateStringsafebox != "0"){
-        var sec = (dateStringsafebox - dateactuel)-Nombre_Seconde_SafeBox;
-        var n = (24 * 3600);
-        if (sec > 0) {
-        y = Math.floor (sec / (n*365));
-        j2 = Math.floor (sec / n);
-        j = Math.floor ((sec / n)-(y*365));
-        h = Math.floor (((sec - (j2 * n)) / 3600));
-        mn = Math.floor ((sec - ((j2 * n + h * 3600))) / 60);
-        sec = Math.floor (sec - ((j2 * n + h * 3600 + mn * 60)));
-        if(mn<10){
-
-        mn = "0"+mn;
-        }
-        Nombre_Seconde_SafeBox++;
-        document.getElementById('Comptesafebox').innerHTML = ""+ y + " ans, " + j +" jours, "+ h +"H"+ mn +" et "+ sec + "s";
-        }else{
-
-        document.getElementById('Comptesafebox').innerHTML = "Vous n'avez pas ce bonus.";
-        }
-        }else{
-
-        document.getElementById('Comptesafebox').innerHTML = "Vous n'avez pas ce bonus.";
-        }
-
-        if (dateStringmonnaie != "0"){
-        var sec = (dateStringmonnaie - dateactuel)-Nombre_Seconde_Monnaie;
-        var n = (24 * 3600);
-        if (sec > 0) {
-        y = Math.floor (sec / (n*365));
-        j2 = Math.floor (sec / n);
-        j = Math.floor ((sec / n)-(y*365));
-        h = Math.floor (((sec - (j2 * n)) / 3600));
-        mn = Math.floor ((sec - ((j2 * n + h * 3600))) / 60);
-        sec = Math.floor (sec - ((j2 * n + h * 3600 + mn * 60)));
-        if(mn<10){
-
-        mn = "0"+mn;
-        }
-        Nombre_Seconde_Monnaie++;
-        document.getElementById('Comptemonnaie').innerHTML = ""+ y + " ans, " + j +" jours, "+ h +"H"+ mn +" et "+ sec + "s";
-        }else{
-
-        document.getElementById('Comptemonnaie').innerHTML = "Vous n'avez pas ce bonus.";
-        }
-        }else{
-
-        document.getElementById('Comptemonnaie').innerHTML = "Vous n'avez pas ce bonus.";
-        }
-
-        if (dateStringpeche != "0"){
-        var sec = (dateStringpeche - dateactuel)-Nombre_Seconde_Peche;
-        var n = (24 * 3600);
-        if (sec > 0) {
-        y = Math.floor (sec / (n*365));
-        j2 = Math.floor (sec / n);
-        j = Math.floor ((sec / n)-(y*365));
-        h = Math.floor (((sec - (j2 * n)) / 3600));
-        mn = Math.floor ((sec - ((j2 * n + h * 3600))) / 60);
-        sec = Math.floor (sec - ((j2 * n + h * 3600 + mn * 60)));
-        if(mn<10){
-
-        mn = "0"+mn;
-        }
-        Nombre_Seconde_Peche++;
-        document.getElementById('Comptepeche').innerHTML = ""+ y + " ans, " + j +" jours, "+ h +"H"+ mn +" et "+ sec + "s";
-        }else{
-
-        document.getElementById('Comptepeche').innerHTML = "Vous n'avez pas ce bonus.";
-        }
-        }else{
-
-        document.getElementById('Comptepeche').innerHTML = "Vous n'avez pas ce bonus.";
-        }
-
-        tRebour2 = setTimeout("Compte_A_Rebour();", 1000);
-        }
-        Compte_A_Rebour();
     </script>
 
     <div class="clearfix"></div>

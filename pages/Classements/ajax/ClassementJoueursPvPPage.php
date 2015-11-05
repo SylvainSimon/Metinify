@@ -258,7 +258,7 @@ class ClassementJoueursPvPPage extends \PageHelper {
         <div class="Position_SuivantPrecedent_BasClassement">
             <div class="Position_Bouton_Precedent Bold">
                 <?php if ($Numero_De_Page >= 1) { ?>
-                    <a href="javascript:void(0)" onclick="Ajax_Classement('ajax/Pages_ClassementJoueurs.php?page=<?php echo ($Numero_De_Page - 1); ?>')"><= Précédente</a>
+                    <a href="javascript:void(0)" onclick="Ajax_Classement('pages/Classements/ajax/ClassementJoueursPvPPage.php?page=<?php echo ($Numero_De_Page - 1); ?>')"><= Précédente</a>
                 <?php } else { ?>
                     <= Précédente
                 <?php } ?>
@@ -267,7 +267,7 @@ class ClassementJoueursPvPPage extends \PageHelper {
             <div class="Position_Bouton_Suivant Bold">
                 <?php if ($Numero_De_Page <= $Nombre_De_Page) {
                     ?>
-                    <a href="javascript:void(0)" onclick="Ajax_Classement('ajax/Pages_ClassementJoueurs.php?page=<?php echo ($Numero_De_Page + 1); ?>')">Suivante =></a>
+                    <a href="javascript:void(0)" onclick="Ajax_Classement('pages/Classements/ajax/ClassementJoueursPvPPage.php?page=<?php echo ($Numero_De_Page + 1); ?>')">Suivante =></a>
                 <?php } else { ?>
                     Suivante =>
                 <?php } ?>

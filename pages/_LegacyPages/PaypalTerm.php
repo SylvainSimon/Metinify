@@ -4,10 +4,10 @@ namespace Pages;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class Securite extends \PageHelper {
+class PaypalTerm extends \PageHelper {
 
     public $arrayTemplate = [];
-    public $strTemplate = "Securite.html5.twig";
+    public $strTemplate = "PaypalTerm.html5.twig";
 
     public function run() {
 
@@ -19,5 +19,5 @@ class Securite extends \PageHelper {
 
 }
 
-$class = new Securite();
+$class = new PaypalTerm();
 $class->run();

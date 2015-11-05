@@ -257,7 +257,7 @@ class ClassementJoueursPvEPage extends \PageHelper {
                 <div class="pull-right">
                     <?php if ($Numero_De_Page <= $Nombre_De_Page) {
                         ?>
-                        <a href="javascript:void(0)" onclick="Ajax_Classement('pages/Classements/ajaxClassementJoueursPvEPage.php?page=<?php echo ($Numero_De_Page + 1); ?>')">Page suivante</a>
+                        <a href="javascript:void(0)" onclick="Ajax_Classement('pages/Classements/ajax/ClassementJoueursPvEPage.php?page=<?php echo ($Numero_De_Page + 1); ?>')">Page suivante</a>
                     <?php } ?>
                 </div>
             </div>
