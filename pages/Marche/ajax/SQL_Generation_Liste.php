@@ -174,7 +174,7 @@ class SQL_Generation_Liste extends \ScriptHelper {
                         <?php echo htmlentities($Donnees_Recuperation_Articles->description); ?>
                     </div>
                     <div class="Detail_Article">
-                        <a rel="superbox[iframe][950x500]" href="../Marche_Detail_Personnage.php?id_marche_perso=<?= $Donnees_Recuperation_Articles->id_marche_personnage; ?>"><img title="Voir les informations de l'article" style="display: inline; width: 63px; border-right: 1px solid grey; margin-right: -1px; padding: 0px;"  class="Position_Loupe_Detail" src="../../images/icones/marche_infos.png" width="65" height="43"/></a>
+                        <a rel="superbox[iframe][950x500]" href="pages/Marche/Marche_Detail_Personnage.php?id_marche_perso=<?= $Donnees_Recuperation_Articles->id_marche_personnage; ?>"><img title="Voir les informations de l'article" style="display: inline; width: 63px; border-right: 1px solid grey; margin-right: -1px; padding: 0px;"  class="Position_Loupe_Detail" src="../../images/icones/marche_infos.png" width="65" height="43"/></a>
                         <img title="Acheter cette article" onclick="Ouverture_Dialogue_Achat(<?= $Donnees_Recuperation_Articles->id_marche_personnage; ?>);" style="display: inline; width: 63px; border-left: 1px solid grey; margin-left: -2px; padding: 0px;" class="Position_Loupe_Detail" src="../../images/icones/marche_buy.png" width="65" height="43"/>
                     </div>
                 </div>

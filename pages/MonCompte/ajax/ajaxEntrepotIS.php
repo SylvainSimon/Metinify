@@ -74,28 +74,6 @@ class ajaxEntrepotIS extends \ScriptHelper {
 
                         <?php $Resultat_Chercher_Chemin = $Parametres_Chercher_Chemin->fetch(); ?>
 
-                        <script type="text/javascript">
-
-                            function Chercher_Infos_Item(item) {
-
-                                $.ajax({
-                                    type: "POST",
-                                    url: "./includes/Inventaire_Infos_Item.php",
-                                    data: "id=" + item, // données à transmettre
-                                    success: function (msg) {
-
-                                        $("#Contenue_Milieu_Bonus_EntrepotIS").fadeOut("medium", function () {
-                                            $("#Contenue_Milieu_Bonus_EntrepotIS").html(msg);
-                                            $("#Contenue_Milieu_Bonus_EntrepotIS").fadeIn("medium");
-                                        });
-
-                                    }
-                                });
-                                return false;
-
-                            }
-                        </script>
-
                         <div class="Interieur_Case" data-tooltip="" data-tooltip-track="1" data-tooltip-isItemMetin="1">
                             <img id="cade_id_<?php echo $Donnees_Case->item_id; ?>" src="<?php echo $Resultat_Chercher_Chemin->chemin; ?>" style="position: absolute;" />
                             <?php

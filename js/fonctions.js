@@ -109,7 +109,7 @@ function getInformationItem(idItem) {
 
     $.ajax({
         type: "POST",
-        url: "./includes/Inventaire_Infos_Item.php",
+        url: "ajax/ajaxItemGetInfo.php",
         data: "id=" + idItem,
         success: function (msg) {
 
