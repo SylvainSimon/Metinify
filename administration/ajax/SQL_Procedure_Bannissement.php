@@ -4,8 +4,11 @@ namespace Administration;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class SQL_Procedure_Bannissement extends \PageHelper {
+class SQL_Procedure_Bannissement extends \ScriptHelper {
 
+    public $isProtected = true;
+    public $isAdminProtected = true;
+    
     public function run() {
 
 

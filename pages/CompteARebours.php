@@ -7,7 +7,7 @@
         compteur = setTimeout( function() {patiente(reste-1);}, 1000 );
         if (reste == 0){
             clearTimeout(compteur);
-            Ajax('pages/_LegacyPages/Accueil.php');
+            Ajax('pages/_LegacyPages/News.php');
             return;
         }
     }

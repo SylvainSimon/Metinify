@@ -4,8 +4,11 @@ namespace Administration;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class SQL_Formatage_Date extends \PageHelper {
+class SQL_Formatage_Date extends \ScriptHelper {
 
+    public $isProtected = true;
+    public $isAdminProtected = true;
+    
     public function run() {
         $Array_Mois = array(
             '01' => 'Janvier',

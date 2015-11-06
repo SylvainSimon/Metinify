@@ -1,6 +1,6 @@
 <nav id="mainnav">
     <ul class="sidebar-menu">
-        <li><a href="javascript:void(0)" onclick="Ajax('pages/_LegacyPages/Accueil.php')">Accueil</a></li>
+        <li><a href="javascript:void(0)" onclick="Ajax('pages/_LegacyPages/News.php')">Accueil</a></li>
         <li><a href="javascript:void(0)" onclick="Ajax('pages/_LegacyPages/Presentation.php')">Présentation</a></li>
 
 

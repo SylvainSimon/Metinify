@@ -72,7 +72,7 @@ class InscriptionForm extends \PageHelper {
                         Suite à plusieurs tentatives d'inscriptions ratées et pour des raisons de sécurités,<br/>
                         Vous devez attendre cinq minutes avant de pouvoir de nouveau vous inscrire.
 
-                        <input type="button" class="Bouton_Annuler_Changer_Email_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/_LegacyPages/Accueil.php');" />
+                        <input type="button" class="Bouton_Annuler_Changer_Email_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/_LegacyPages/News.php');" />
                     </div>
                 </div>
                 <?php exit(); ?>

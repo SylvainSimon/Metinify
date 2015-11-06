@@ -81,7 +81,7 @@ class CoreHelper {
                     }
                 }
             } else {
-                include '../../pages/_LegacyPages/Accueil.php';
+                include '../../pages/_LegacyPages/News.php';
                 exit();
             }
         }

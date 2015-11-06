@@ -6,6 +6,7 @@ class IndexWebsite extends PageHelper {
     public function run() {
 
         global $request;
+        global $session;
 
         //$this->objConnection;
         //$this->objConfig;
@@ -80,16 +81,26 @@ class IndexWebsite extends PageHelper {
                         <div class="col-md-12 paddingPrincipal">
 
                             <div class="row">
-                                <nav class="col-lg-2 col-md-3 hidden-sm hidden-xs">
-                                    <?php include_once 'pages/_Home/Sidebar_Gauche.php'; ?>
-                                </nav>
+                                <?php if ($session->get("Administration_PannelAdmin") !== null) { ?>
 
-                                <div id="Contenue_Principal" class="col-lg-8 col-md-6 col-sm-12"></div> 
+                                    <nav class="col-lg-2 col-md-3 hidden-sm hidden-xs">
+                                        <?php
+                                        include 'administration/Sidebar_Gauche_Seconde.php';
+                                        ?>
+                                    </nav>
 
+                                    <div id="Contenue_Principal" class="col-lg-8 col-md-6 col-sm-12"></div> 
 
-                                <nav class="col-lg-2 col-md-3 hidden-sm hidden-xs">
-                                    <?php include_once 'pages/_Home/Sidebar_Droite.php'; ?>
-                                </nav>
+                                    <nav class="col-lg-2 col-md-3 hidden-sm hidden-xs">
+                                        <?php
+                                        include 'administration/Sidebar_Droite_Seconde.php';
+                                        ?>
+                                    </nav>
+
+                                <?php } else { ?>
+                                    <?php include 'pages/_LegacyPages/Accueil.php'; ?>
+                                <?php } ?>
+
                             </div>
                         </div>
 
@@ -165,7 +176,13 @@ class IndexWebsite extends PageHelper {
         <?php } elseif ($request->query->get("paypal") !== null) { ?>
                     Ajax('pages/_LegacyPages/PaypalTerm.php');
         <?php } else { ?>
-                    Ajax('pages/_LegacyPages/Accueil.php');
+            
+            <?php if ($session->get("Administration_PannelAdmin") !== null) { ?>
+                        Ajax('administration/Accueil_Seconde.php');
+            <?php } else { ?>
+                        Ajax('pages/_LegacyPages/News.php');
+            <?php } ?>
+                
         <?php } ?>
             </script>  
 

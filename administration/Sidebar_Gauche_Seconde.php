@@ -6,19 +6,11 @@ require __DIR__ . '../../core/initialize.php';
 
 class Sidebar_Gauche_Seconde extends \PageHelper {
 
-    public function run() {
-        ?>
+    public $isProtected = true;
+    public $isAdminProtected = true;
 
-        <?php if (empty($_SESSION["Administration_PannelAdmin_Jeton"]) || ($_SESSION["Administration_PannelAdmin_Jeton"] != $_POST["numero"])) { ?>
-            <div class="Menu_Sidebar">
-                <div class="Menu_Sidebar_Haut Pointer No_Select" onclick="Slider_Sidebar_Droite_2();">Serveur Classyd</div>
-                <div class="Menu_Sidebar_Milieu" id="Div_Sidebar_Droite_2">
-                    L'accès à cette section vous est interdite.
-                </div>
-            </div>
-            <?php exit(); ?>
-        <?php } ?>
-        <?php
+    public function run() {
+
         /* ------------------------ Vérification Données ---------------------------- */
         $Recuperation_Droits = "SELECT * 
                         FROM site.administration_users
@@ -31,10 +23,13 @@ class Sidebar_Gauche_Seconde extends \PageHelper {
         /* -------------------------------------------------------------------------- */
         ?>
 
-        <div class="Menu_Sidebar">
-            <div class="Menu_Sidebar_Haut Pointer No_Select" onclick="Slider_Sidebar_Gauche_1();">Gestion et recherche</div>
-            <div class="Menu_Sidebar_Milieu" id="Div_Sidebar_Gauche_1">
-                <table class="Table_Menu_Administration">
+        <div class="box box-default flat">
+            <div class="box-header">
+                <h3 class="box-title">Serveur</h3>
+            </div>
+            <div class="box-body no-padding">
+
+                <table class="table table-condensed" style="border-collapse: collapse;">
                     <?php if ($Donnees_Recuperation_Droits->recherche_joueurs == 1) { ?>
                         <tr onclick="Ajax('administration/Recherche_Joueurs.php')"><td>- Recherche de joueurs sgm</td></tr>
                     <?php } ?>

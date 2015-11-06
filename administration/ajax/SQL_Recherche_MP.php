@@ -4,8 +4,11 @@ namespace Administration;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class SQL_Recherche_MP extends \PageHelper {
+class SQL_Recherche_MP extends \ScriptHelper {
 
+    public $isProtected = true;
+    public $isAdminProtected = true;
+    
     public function run() {
         ?>
         

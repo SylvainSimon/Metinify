@@ -6,21 +6,11 @@ require __DIR__ . '../../core/initialize.php';
 
 class Sidebar_Droite_Seconde extends \PageHelper {
 
+    public $isProtected = true;
+    public $isAdminProtected = true;
+
     public function run() {
-        ?>
 
-        <?php if (empty($_SESSION["Administration_PannelAdmin_Jeton"]) || ($_SESSION["Administration_PannelAdmin_Jeton"] != $_POST["numero"])) { ?>
-            <div class="Menu_Sidebar">
-                <div class="Menu_Sidebar_Haut Pointer No_Select" onclick="Slider_Sidebar_Droite_2();">Serveur Classyd</div>
-                <div class="Menu_Sidebar_Milieu" id="Div_Sidebar_Droite_2">
-                    L'accès à cette section vous est interdite.
-                </div>
-            </div>
-            <?php exit(); ?>
-        <?php } ?>
-
-
-        <?php
         /* ------------------------ Vérification Données ---------------------------- */
         $Recuperation_Droits = "SELECT * 
                         FROM site.administration_users
@@ -33,10 +23,13 @@ class Sidebar_Droite_Seconde extends \PageHelper {
         /* -------------------------------------------------------------------------- */
         ?>
 
-        <div class="Menu_Sidebar">
-            <div class="Menu_Sidebar_Haut Pointer No_Select" onclick="Slider_Sidebar_Droite_1();">Module gestion</div>
-            <div class="Menu_Sidebar_Milieu" id="Div_Sidebar_Droite_1">
-                <table class="Table_Menu_Administration">
+        <div class="box box-default flat">
+            <div class="box-header">
+                <h3 class="box-title">Serveur</h3>
+            </div>
+            <div class="box-body no-padding">
+
+                <table class="table table-condensed" style="border-collapse: collapse;">
                     <?php if ($Donnees_Recuperation_Droits->gerer_monnaies == 1) { ?>
                         <tr data-fancybox-type="iframe" class="fancybox_monnaies" href="administration/includes/Gestion_Monnaies.php"><td>- Gestion des monnaies</td></tr>
 
@@ -89,63 +82,9 @@ class Sidebar_Droite_Seconde extends \PageHelper {
             </div>
         </div>
 
-        <div class="Menu_Sidebar">
-            <div class="Menu_Sidebar_Haut Pointer No_Select" onclick="Slider_Sidebar_Droite_2();">Serveur Classyd</div>
-            <div class="Menu_Sidebar_Milieu" id="Div_Sidebar_Droite_2">
 
-                <table class="Table_Status_Serveurs">
-                    <tr><td colspan="3"><div class="barre"></div></td></tr>
-                    <tr class="Pointer" onmouseover="this.style.backgroundColor = '#666666';" onmouseout="this.style.backgroundColor = 'transparent';">
-                        <td>
-                            Status du serveur :
-                        </td>		
-                        <?php
-                        $port = '3306';
-                        $ip = '94.23.6.155';
-
-                        if (!$sock = @fsockopen($ip, $port, $num, $error, 0.5)) {
-                            ?> <td id="ServeurClassyd" class="Align_Right"><img class="Ombre_Grise_2 Deplacement_Bouton_Status" title="Hors-Ligne" src="images/offline.gif" /></td> <?php
-                        } else {
-                            ?> <td id="ServeurClassyd" class="Align_Right"><img class="Ombre_Grise_2 Deplacement_Bouton_Status" title="En Ligne" src="images/online.gif" /></td> <?php
-                                fclose($sock);
-                            }
-                            ?>
-                    </tr>
-                    <tr><td colspan="3"><div class="barre"></div></td></tr>
-
-                    <tr title="A 5 minute près" class="Pointer" onmouseover="this.style.backgroundColor = '#666666';" onmouseout="this.style.backgroundColor = 'transparent';">
-
-                        <td>
-                            Joueurs connectés :
-                        </td>
-
-                        <?php
-                        /* ------------------------------ Vérification connecte ---------------------------------------------- */
-                        $Comptage_Connectes = "SELECT id FROM player.player
-                          WHERE player.last_play >= (NOW() - INTERVAL 90 MINUTE)";
-                        $Parametres_Comptage_Connectes = $this->objConnection->prepare($Comptage_Connectes);
-                        $Parametres_Comptage_Connectes->execute();
-                        $Parametres_Comptage_Connectes->setFetchMode(\PDO::FETCH_OBJ);
-                        $Nombre_De_Resultat = $Parametres_Comptage_Connectes->rowCount();
-                        /* -------------------------------------------------------------------------------------------------- */
-                        ?>
-
-                        <td id="nombreconnecter" class="Align_Right Decalage_Nombre_Co"><?php echo $Nombre_De_Resultat; ?></td>
-                    </tr>
-
-                    <tr><td colspan="3"><div class="barre"></div></td></tr>
-                </table>
-
-                <script type="text/javascript">
-                    setInterval("ServeurClassyd()", "60000");
-                </script>
-                <script type="text/javascript">
-                    setInterval("JoueursConnectes()", "30000");
-                </script>
-
-            </div>
-        </div>
         <?php
+        include 'pages/_Home/includes/StatutServer.php';
     }
 
 }

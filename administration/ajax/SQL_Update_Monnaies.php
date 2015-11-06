@@ -4,8 +4,11 @@ namespace Administration;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class SQL_Update_Monnaies extends \PageHelper {
+class SQL_Update_Monnaies extends \ScriptHelper {
 
+    public $isProtected = true;
+    public $isAdminProtected = true;
+    
     public function run() {
         ?>
         <?php if ($this->isConnected) { ?>

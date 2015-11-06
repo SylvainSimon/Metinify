@@ -94,7 +94,7 @@ $(document).ready(function () {
         error: function (jqXHR, exception) {
 
             if (jqXHR.status === 418) {
-                Ajax("pages/_LegacyPages/Accueil.php");
+                Ajax("pages/_LegacyPages/News.php");
             } else if (jqXHR.status === 423) {
                 Ajax("pages/Bannissement.php");
             }

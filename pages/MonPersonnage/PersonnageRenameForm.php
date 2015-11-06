@@ -84,7 +84,7 @@ class PersonnageRenameForm extends \PageHelper {
 
                 <div class="box-footer">
                     <div class="pull-left">
-                        <input type="button" class="btn btn-danger btn-flat" value="Annuler" onclick="Ajax('pages/_LegacyPages/Accueil.php');" />
+                        <input type="button" class="btn btn-danger btn-flat" value="Annuler" onclick="Ajax('pages/_LegacyPages/News.php');" />
                     </div>
 
                     <div class="pull-right">
@@ -203,7 +203,7 @@ class PersonnageRenameForm extends \PageHelper {
                     Pour revenir à l'accueil, merci de cliquer sur le bouton "Accueil".<br/>
                     <hr class="Hr_Bas">
 
-                    <input type="button" class="Bouton_Annuler_Changer_Email_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/_LegacyPages/Accueil.php');" />
+                    <input type="button" class="Bouton_Annuler_Changer_Email_Accueil Bouton_Normal" value="Accueil" onclick="Ajax('pages/_LegacyPages/News.php');" />
 
                 </div>
 

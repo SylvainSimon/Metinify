@@ -4,8 +4,11 @@ namespace Administration;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class SQL_Recuperer_Recidive extends \PageHelper {
+class SQL_Recuperer_Recidive extends \ScriptHelper {
 
+    public $isProtected = true;
+    public $isAdminProtected = true;
+    
     public function run() {
 
         $Raison = $_POST["raison"];

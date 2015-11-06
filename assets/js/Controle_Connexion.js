@@ -38,13 +38,12 @@ $(document).ready(function () {
                         document.getElementById('Menu_Telechargement_Equipe').style.display = 'inline';
                         
                         $("#Lien_Marche").attr("onclick", "Ajax('pages/Marche/Marche.php');");
-
-                        if (Parse_Json.data != "") {
-
-                            $("#barre_social").append(Parse_Json.data);
+                        
+                        if (Parse_Json.withRefresh) {
+                            location.reload(false);
                         }
                         
-                        Ajax("pages/_LegacyPages/Accueil.php");
+                        Ajax("pages/_LegacyPages/News.php");
 
                     } else if (Parse_Json.result == "2") {
 

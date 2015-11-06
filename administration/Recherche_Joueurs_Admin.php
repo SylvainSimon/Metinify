@@ -6,6 +6,9 @@ require __DIR__ . '../../core/initialize.php';
 
 class Recherche_Joueurs_Admin extends \PageHelper {
 
+    public $isProtected = true;
+    public $isAdminProtected = true;
+    
     public function run() {
         ?>
         

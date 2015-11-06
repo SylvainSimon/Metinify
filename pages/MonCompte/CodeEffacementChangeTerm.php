@@ -27,7 +27,7 @@ class CodeEffacementChangeTerm extends \PageHelper {
             </div>
 
             <div class="box-footer">
-                <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/_LegacyPages/Accueil.php');" />
+                <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/_LegacyPages/News.php');" />
             </div>
         </div>
         <?php

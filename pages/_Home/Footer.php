@@ -31,12 +31,6 @@
         <a data-tooltip-position="top" data-tooltip="Teamspeack" href="ts3server://ts3.vamosmt2.org" style="color:white; margin-left: 5px;">
             <i class="genericon genericon-microphone withOpacity" style="background: #676B77; border-radius: 50%; padding: 6px;"></i>
         </a>
-
-        <?php if (!empty($_SESSION['Administration_PannelAdmin'])) { ?>
-            <?php if ($_SESSION['Administration_PannelAdmin']) { ?>
-                <img title="Panneau d'administration" id="Icone_Administration_Acces" onclick="Ajax('administration/Accueil_Seconde.php')" src="images/icones/administration.png" height="27" />
-            <?php } ?>
-        <?php } ?>
     </div>
 
 </div>

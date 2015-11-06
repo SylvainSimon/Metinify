@@ -82,6 +82,7 @@ class ajaxConnexionSubmit extends \ScriptHelper {
                 $Tableau_Retour_Json = array(
                     'result' => "1",
                     'reasons' => "",
+                    'withRefresh' => 1,
                     'id' => $Donnees_Connexion->id,
                     'data' => '<img title="Panneau d\'administration" id="Icone_Administration_Acces" onclick="Ajax(\'administration/Accueil_Seconde.php\')" src="images/icones/administration.png" height="27" />'
                 );
@@ -90,6 +91,7 @@ class ajaxConnexionSubmit extends \ScriptHelper {
                 $Tableau_Retour_Json = array(
                     'result' => "1",
                     'reasons' => "",
+                    'withRefresh' => 0,
                     'id' => $Donnees_Connexion->id,
                     'data' => ""
                 );

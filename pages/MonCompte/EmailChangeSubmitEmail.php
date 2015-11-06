@@ -37,7 +37,7 @@ class EmailChangeSubmitEmail extends \PageHelper {
                 Si vous êtes là par erreur, vous pouvez toujours annuler la demande.<br/>
                 <hr class="Hr_Bas">
                 <input type="button" class="Bouton_Envoyer_Changer_Email Bouton_Normal" value="Changer" onclick="Changer_Email();" />
-                <input type="button" class="Bouton_Annuler_Changer_Email Bouton_Normal" value="Annuler" onclick="Ajax('pages/_LegacyPages/Accueil.php');" />
+                <input type="button" class="Bouton_Annuler_Changer_Email Bouton_Normal" value="Annuler" onclick="Ajax('pages/_LegacyPages/News.php');" />
 
             </div>
         </div>
