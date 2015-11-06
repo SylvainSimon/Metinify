@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.logs_code_effacement_definition")
  * @ORM\Entity
  */
-class LogsCodeEffacementDefinition
-{
+class LogsCodeEffacementDefinition {
+
     /**
      * @var integer
      *
@@ -56,15 +56,12 @@ class LogsCodeEffacementDefinition
      */
     private $ip;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -75,8 +72,7 @@ class LogsCodeEffacementDefinition
      *
      * @return LogsCodeEffacementDefinition
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -87,8 +83,7 @@ class LogsCodeEffacementDefinition
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -99,8 +94,7 @@ class LogsCodeEffacementDefinition
      *
      * @return LogsCodeEffacementDefinition
      */
-    public function setCompte($compte)
-    {
+    public function setCompte($compte) {
         $this->compte = $compte;
 
         return $this;
@@ -111,8 +105,7 @@ class LogsCodeEffacementDefinition
      *
      * @return string
      */
-    public function getCompte()
-    {
+    public function getCompte() {
         return $this->compte;
     }
 
@@ -123,8 +116,7 @@ class LogsCodeEffacementDefinition
      *
      * @return LogsCodeEffacementDefinition
      */
-    public function setCode($code)
-    {
+    public function setCode($code) {
         $this->code = $code;
 
         return $this;
@@ -135,8 +127,7 @@ class LogsCodeEffacementDefinition
      *
      * @return integer
      */
-    public function getCode()
-    {
+    public function getCode() {
         return $this->code;
     }
 
@@ -147,8 +138,7 @@ class LogsCodeEffacementDefinition
      *
      * @return LogsCodeEffacementDefinition
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -159,8 +149,7 @@ class LogsCodeEffacementDefinition
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -171,8 +160,7 @@ class LogsCodeEffacementDefinition
      *
      * @return LogsCodeEffacementDefinition
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -183,8 +171,8 @@ class LogsCodeEffacementDefinition
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
+
 }

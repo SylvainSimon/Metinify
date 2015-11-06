@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.support_ticket_archives")
  * @ORM\Entity
  */
-class SupportTicketArchives
-{
+class SupportTicketArchives {
+
     /**
      * @var integer
      *
@@ -91,15 +91,12 @@ class SupportTicketArchives
      */
     private $type = 'Support';
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -110,8 +107,7 @@ class SupportTicketArchives
      *
      * @return SupportTicketArchives
      */
-    public function setIdEmmeteur($idEmmeteur)
-    {
+    public function setIdEmmeteur($idEmmeteur) {
         $this->idEmmeteur = $idEmmeteur;
 
         return $this;
@@ -122,8 +118,7 @@ class SupportTicketArchives
      *
      * @return integer
      */
-    public function getIdEmmeteur()
-    {
+    public function getIdEmmeteur() {
         return $this->idEmmeteur;
     }
 
@@ -134,8 +129,7 @@ class SupportTicketArchives
      *
      * @return SupportTicketArchives
      */
-    public function setIdRecepteur($idRecepteur)
-    {
+    public function setIdRecepteur($idRecepteur) {
         $this->idRecepteur = $idRecepteur;
 
         return $this;
@@ -146,8 +140,7 @@ class SupportTicketArchives
      *
      * @return integer
      */
-    public function getIdRecepteur()
-    {
+    public function getIdRecepteur() {
         return $this->idRecepteur;
     }
 
@@ -158,8 +151,7 @@ class SupportTicketArchives
      *
      * @return SupportTicketArchives
      */
-    public function setNumeroDiscussion($numeroDiscussion)
-    {
+    public function setNumeroDiscussion($numeroDiscussion) {
         $this->numeroDiscussion = $numeroDiscussion;
 
         return $this;
@@ -170,8 +162,7 @@ class SupportTicketArchives
      *
      * @return integer
      */
-    public function getNumeroDiscussion()
-    {
+    public function getNumeroDiscussion() {
         return $this->numeroDiscussion;
     }
 
@@ -182,8 +173,7 @@ class SupportTicketArchives
      *
      * @return SupportTicketArchives
      */
-    public function setObjetMessage($objetMessage)
-    {
+    public function setObjetMessage($objetMessage) {
         $this->objetMessage = $objetMessage;
 
         return $this;
@@ -194,8 +184,7 @@ class SupportTicketArchives
      *
      * @return string
      */
-    public function getObjetMessage()
-    {
+    public function getObjetMessage() {
         return $this->objetMessage;
     }
 
@@ -206,8 +195,7 @@ class SupportTicketArchives
      *
      * @return SupportTicketArchives
      */
-    public function setContenueMessage($contenueMessage)
-    {
+    public function setContenueMessage($contenueMessage) {
         $this->contenueMessage = $contenueMessage;
 
         return $this;
@@ -218,8 +206,7 @@ class SupportTicketArchives
      *
      * @return string
      */
-    public function getContenueMessage()
-    {
+    public function getContenueMessage() {
         return $this->contenueMessage;
     }
 
@@ -230,8 +217,7 @@ class SupportTicketArchives
      *
      * @return SupportTicketArchives
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -242,8 +228,7 @@ class SupportTicketArchives
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -254,8 +239,7 @@ class SupportTicketArchives
      *
      * @return SupportTicketArchives
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -266,8 +250,7 @@ class SupportTicketArchives
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
 
@@ -278,8 +261,7 @@ class SupportTicketArchives
      *
      * @return SupportTicketArchives
      */
-    public function setEtat($etat)
-    {
+    public function setEtat($etat) {
         $this->etat = $etat;
 
         return $this;
@@ -290,8 +272,7 @@ class SupportTicketArchives
      *
      * @return string
      */
-    public function getEtat()
-    {
+    public function getEtat() {
         return $this->etat;
     }
 
@@ -302,8 +283,7 @@ class SupportTicketArchives
      *
      * @return SupportTicketArchives
      */
-    public function setDateVue($dateVue)
-    {
+    public function setDateVue($dateVue) {
         $this->dateVue = $dateVue;
 
         return $this;
@@ -314,8 +294,7 @@ class SupportTicketArchives
      *
      * @return \DateTime
      */
-    public function getDateVue()
-    {
+    public function getDateVue() {
         return $this->dateVue;
     }
 
@@ -326,8 +305,7 @@ class SupportTicketArchives
      *
      * @return SupportTicketArchives
      */
-    public function setType($type)
-    {
+    public function setType($type) {
         $this->type = $type;
 
         return $this;
@@ -338,8 +316,8 @@ class SupportTicketArchives
      *
      * @return string
      */
-    public function getType()
-    {
+    public function getType() {
         return $this->type;
     }
+
 }

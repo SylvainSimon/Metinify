@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.support_ticket_attente", uniqueConstraints={@ORM\UniqueConstraint(name="numero_discussion", columns={"numero_discussion"})})
  * @ORM\Entity
  */
-class SupportTicketAttente
-{
+class SupportTicketAttente {
+
     /**
      * @var integer
      *
@@ -56,15 +56,12 @@ class SupportTicketAttente
      */
     private $ip;
 
-
-
     /**
      * Get numeroDiscussion
      *
      * @return integer
      */
-    public function getNumeroDiscussion()
-    {
+    public function getNumeroDiscussion() {
         return $this->numeroDiscussion;
     }
 
@@ -75,8 +72,7 @@ class SupportTicketAttente
      *
      * @return SupportTicketAttente
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -87,8 +83,7 @@ class SupportTicketAttente
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -99,8 +94,7 @@ class SupportTicketAttente
      *
      * @return SupportTicketAttente
      */
-    public function setObjetMessage($objetMessage)
-    {
+    public function setObjetMessage($objetMessage) {
         $this->objetMessage = $objetMessage;
 
         return $this;
@@ -111,8 +105,7 @@ class SupportTicketAttente
      *
      * @return string
      */
-    public function getObjetMessage()
-    {
+    public function getObjetMessage() {
         return $this->objetMessage;
     }
 
@@ -123,8 +116,7 @@ class SupportTicketAttente
      *
      * @return SupportTicketAttente
      */
-    public function setContenueMessage($contenueMessage)
-    {
+    public function setContenueMessage($contenueMessage) {
         $this->contenueMessage = $contenueMessage;
 
         return $this;
@@ -135,8 +127,7 @@ class SupportTicketAttente
      *
      * @return string
      */
-    public function getContenueMessage()
-    {
+    public function getContenueMessage() {
         return $this->contenueMessage;
     }
 
@@ -147,8 +138,7 @@ class SupportTicketAttente
      *
      * @return SupportTicketAttente
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -159,8 +149,7 @@ class SupportTicketAttente
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -171,8 +160,7 @@ class SupportTicketAttente
      *
      * @return SupportTicketAttente
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -183,8 +171,8 @@ class SupportTicketAttente
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
+
 }

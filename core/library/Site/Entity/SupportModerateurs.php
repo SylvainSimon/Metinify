@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.support_moderateurs")
  * @ORM\Entity
  */
-class SupportModerateurs
-{
+class SupportModerateurs {
+
     /**
      * @var integer
      *
@@ -35,15 +35,12 @@ class SupportModerateurs
      */
     private $supportTicket;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -54,8 +51,7 @@ class SupportModerateurs
      *
      * @return SupportModerateurs
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -66,8 +62,7 @@ class SupportModerateurs
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -78,8 +73,7 @@ class SupportModerateurs
      *
      * @return SupportModerateurs
      */
-    public function setSupportTicket($supportTicket)
-    {
+    public function setSupportTicket($supportTicket) {
         $this->supportTicket = $supportTicket;
 
         return $this;
@@ -90,8 +84,8 @@ class SupportModerateurs
      *
      * @return integer
      */
-    public function getSupportTicket()
-    {
+    public function getSupportTicket() {
         return $this->supportTicket;
     }
+
 }

@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.marche_categories")
  * @ORM\Entity
  */
-class MarcheCategories
-{
+class MarcheCategories {
+
     /**
      * @var integer
      *
@@ -28,15 +28,12 @@ class MarcheCategories
      */
     private $nomCategorie;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -47,8 +44,7 @@ class MarcheCategories
      *
      * @return MarcheCategories
      */
-    public function setNomCategorie($nomCategorie)
-    {
+    public function setNomCategorie($nomCategorie) {
         $this->nomCategorie = $nomCategorie;
 
         return $this;
@@ -59,8 +55,8 @@ class MarcheCategories
      *
      * @return string
      */
-    public function getNomCategorie()
-    {
+    public function getNomCategorie() {
         return $this->nomCategorie;
     }
+
 }

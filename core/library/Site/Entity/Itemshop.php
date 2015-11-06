@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.itemshop")
  * @ORM\Entity
  */
-class Itemshop
-{
+class Itemshop {
+
     /**
      * @var integer
      *
@@ -91,15 +91,12 @@ class Itemshop
      */
     private $ordre;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -110,8 +107,7 @@ class Itemshop
      *
      * @return Itemshop
      */
-    public function setIdItem($idItem)
-    {
+    public function setIdItem($idItem) {
         $this->idItem = $idItem;
 
         return $this;
@@ -122,8 +118,7 @@ class Itemshop
      *
      * @return integer
      */
-    public function getIdItem()
-    {
+    public function getIdItem() {
         return $this->idItem;
     }
 
@@ -134,8 +129,7 @@ class Itemshop
      *
      * @return Itemshop
      */
-    public function setNameItem($nameItem)
-    {
+    public function setNameItem($nameItem) {
         $this->nameItem = $nameItem;
 
         return $this;
@@ -146,8 +140,7 @@ class Itemshop
      *
      * @return string
      */
-    public function getNameItem()
-    {
+    public function getNameItem() {
         return $this->nameItem;
     }
 
@@ -158,8 +151,7 @@ class Itemshop
      *
      * @return Itemshop
      */
-    public function setInfoItem($infoItem)
-    {
+    public function setInfoItem($infoItem) {
         $this->infoItem = $infoItem;
 
         return $this;
@@ -170,8 +162,7 @@ class Itemshop
      *
      * @return string
      */
-    public function getInfoItem()
-    {
+    public function getInfoItem() {
         return $this->infoItem;
     }
 
@@ -182,8 +173,7 @@ class Itemshop
      *
      * @return Itemshop
      */
-    public function setFullDescription($fullDescription)
-    {
+    public function setFullDescription($fullDescription) {
         $this->fullDescription = $fullDescription;
 
         return $this;
@@ -194,8 +184,7 @@ class Itemshop
      *
      * @return string
      */
-    public function getFullDescription()
-    {
+    public function getFullDescription() {
         return $this->fullDescription;
     }
 
@@ -206,8 +195,7 @@ class Itemshop
      *
      * @return Itemshop
      */
-    public function setNbItem($nbItem)
-    {
+    public function setNbItem($nbItem) {
         $this->nbItem = $nbItem;
 
         return $this;
@@ -218,8 +206,7 @@ class Itemshop
      *
      * @return integer
      */
-    public function getNbItem()
-    {
+    public function getNbItem() {
         return $this->nbItem;
     }
 
@@ -230,8 +217,7 @@ class Itemshop
      *
      * @return Itemshop
      */
-    public function setPrix($prix)
-    {
+    public function setPrix($prix) {
         $this->prix = $prix;
 
         return $this;
@@ -242,8 +228,7 @@ class Itemshop
      *
      * @return integer
      */
-    public function getPrix()
-    {
+    public function getPrix() {
         return $this->prix;
     }
 
@@ -254,8 +239,7 @@ class Itemshop
      *
      * @return Itemshop
      */
-    public function setType($type)
-    {
+    public function setType($type) {
         $this->type = $type;
 
         return $this;
@@ -266,8 +250,7 @@ class Itemshop
      *
      * @return integer
      */
-    public function getType()
-    {
+    public function getType() {
         return $this->type;
     }
 
@@ -278,8 +261,7 @@ class Itemshop
      *
      * @return Itemshop
      */
-    public function setCat($cat)
-    {
+    public function setCat($cat) {
         $this->cat = $cat;
 
         return $this;
@@ -290,8 +272,7 @@ class Itemshop
      *
      * @return integer
      */
-    public function getCat()
-    {
+    public function getCat() {
         return $this->cat;
     }
 
@@ -302,8 +283,7 @@ class Itemshop
      *
      * @return Itemshop
      */
-    public function setActif($actif)
-    {
+    public function setActif($actif) {
         $this->actif = $actif;
 
         return $this;
@@ -314,8 +294,7 @@ class Itemshop
      *
      * @return boolean
      */
-    public function getActif()
-    {
+    public function getActif() {
         return $this->actif;
     }
 
@@ -326,8 +305,7 @@ class Itemshop
      *
      * @return Itemshop
      */
-    public function setOrdre($ordre)
-    {
+    public function setOrdre($ordre) {
         $this->ordre = $ordre;
 
         return $this;
@@ -338,8 +316,8 @@ class Itemshop
      *
      * @return integer
      */
-    public function getOrdre()
-    {
+    public function getOrdre() {
         return $this->ordre;
     }
+
 }

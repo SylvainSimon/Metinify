@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.logs_blocage_inscription")
  * @ORM\Entity
  */
-class LogsBlocageInscription
-{
+class LogsBlocageInscription {
+
     /**
      * @var integer
      *
@@ -42,15 +42,12 @@ class LogsBlocageInscription
      */
     private $ip;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -61,8 +58,7 @@ class LogsBlocageInscription
      *
      * @return LogsBlocageInscription
      */
-    public function setDateBlocage($dateBlocage)
-    {
+    public function setDateBlocage($dateBlocage) {
         $this->dateBlocage = $dateBlocage;
 
         return $this;
@@ -73,8 +69,7 @@ class LogsBlocageInscription
      *
      * @return string
      */
-    public function getDateBlocage()
-    {
+    public function getDateBlocage() {
         return $this->dateBlocage;
     }
 
@@ -85,8 +80,7 @@ class LogsBlocageInscription
      *
      * @return LogsBlocageInscription
      */
-    public function setDateDeblocage($dateDeblocage)
-    {
+    public function setDateDeblocage($dateDeblocage) {
         $this->dateDeblocage = $dateDeblocage;
 
         return $this;
@@ -97,8 +91,7 @@ class LogsBlocageInscription
      *
      * @return string
      */
-    public function getDateDeblocage()
-    {
+    public function getDateDeblocage() {
         return $this->dateDeblocage;
     }
 
@@ -109,8 +102,7 @@ class LogsBlocageInscription
      *
      * @return LogsBlocageInscription
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -121,8 +113,8 @@ class LogsBlocageInscription
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
+
 }

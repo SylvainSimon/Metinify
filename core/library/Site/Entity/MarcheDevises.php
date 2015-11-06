@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.marche_devises")
  * @ORM\Entity
  */
-class MarcheDevises
-{
+class MarcheDevises {
+
     /**
      * @var integer
      *
@@ -28,15 +28,12 @@ class MarcheDevises
      */
     private $devise;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -47,8 +44,7 @@ class MarcheDevises
      *
      * @return MarcheDevises
      */
-    public function setDevise($devise)
-    {
+    public function setDevise($devise) {
         $this->devise = $devise;
 
         return $this;
@@ -59,8 +55,8 @@ class MarcheDevises
      *
      * @return string
      */
-    public function getDevise()
-    {
+    public function getDevise() {
         return $this->devise;
     }
+
 }

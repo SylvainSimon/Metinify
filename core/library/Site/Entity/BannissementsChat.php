@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.bannissements_chat")
  * @ORM\Entity
  */
-class BannissementsChat
-{
+class BannissementsChat {
+
     /**
      * @var integer
      *
@@ -49,15 +49,12 @@ class BannissementsChat
      */
     private $screen;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -68,8 +65,7 @@ class BannissementsChat
      *
      * @return BannissementsChat
      */
-    public function setPerso($perso)
-    {
+    public function setPerso($perso) {
         $this->perso = $perso;
 
         return $this;
@@ -80,8 +76,7 @@ class BannissementsChat
      *
      * @return string
      */
-    public function getPerso()
-    {
+    public function getPerso() {
         return $this->perso;
     }
 
@@ -92,8 +87,7 @@ class BannissementsChat
      *
      * @return BannissementsChat
      */
-    public function setStaff($staff)
-    {
+    public function setStaff($staff) {
         $this->staff = $staff;
 
         return $this;
@@ -104,8 +98,7 @@ class BannissementsChat
      *
      * @return string
      */
-    public function getStaff()
-    {
+    public function getStaff() {
         return $this->staff;
     }
 
@@ -116,8 +109,7 @@ class BannissementsChat
      *
      * @return BannissementsChat
      */
-    public function setDuree($duree)
-    {
+    public function setDuree($duree) {
         $this->duree = $duree;
 
         return $this;
@@ -128,8 +120,7 @@ class BannissementsChat
      *
      * @return string
      */
-    public function getDuree()
-    {
+    public function getDuree() {
         return $this->duree;
     }
 
@@ -140,8 +131,7 @@ class BannissementsChat
      *
      * @return BannissementsChat
      */
-    public function setScreen($screen)
-    {
+    public function setScreen($screen) {
         $this->screen = $screen;
 
         return $this;
@@ -152,8 +142,8 @@ class BannissementsChat
      *
      * @return string
      */
-    public function getScreen()
-    {
+    public function getScreen() {
         return $this->screen;
     }
+
 }

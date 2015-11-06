@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.bannissements_actifs", uniqueConstraints={@ORM\UniqueConstraint(name="id", columns={"id"})}, indexes={@ORM\Index(name="definitif", columns={"definitif"})})
  * @ORM\Entity
  */
-class BannissementsActifs
-{
+class BannissementsActifs {
+
     /**
      * @var integer
      *
@@ -93,8 +93,6 @@ class BannissementsActifs
      */
     private $debannPar;
 
-
-
     /**
      * Set id
      *
@@ -102,8 +100,7 @@ class BannissementsActifs
      *
      * @return BannissementsActifs
      */
-    public function setId($id)
-    {
+    public function setId($id) {
         $this->id = $id;
 
         return $this;
@@ -114,8 +111,7 @@ class BannissementsActifs
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -126,8 +122,7 @@ class BannissementsActifs
      *
      * @return BannissementsActifs
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -138,8 +133,7 @@ class BannissementsActifs
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -150,8 +144,7 @@ class BannissementsActifs
      *
      * @return BannissementsActifs
      */
-    public function setDateDebutBannissement($dateDebutBannissement)
-    {
+    public function setDateDebutBannissement($dateDebutBannissement) {
         $this->dateDebutBannissement = $dateDebutBannissement;
 
         return $this;
@@ -162,8 +155,7 @@ class BannissementsActifs
      *
      * @return \DateTime
      */
-    public function getDateDebutBannissement()
-    {
+    public function getDateDebutBannissement() {
         return $this->dateDebutBannissement;
     }
 
@@ -174,8 +166,7 @@ class BannissementsActifs
      *
      * @return BannissementsActifs
      */
-    public function setDateFinBannissement($dateFinBannissement)
-    {
+    public function setDateFinBannissement($dateFinBannissement) {
         $this->dateFinBannissement = $dateFinBannissement;
 
         return $this;
@@ -186,8 +177,7 @@ class BannissementsActifs
      *
      * @return \DateTime
      */
-    public function getDateFinBannissement()
-    {
+    public function getDateFinBannissement() {
         return $this->dateFinBannissement;
     }
 
@@ -198,8 +188,7 @@ class BannissementsActifs
      *
      * @return BannissementsActifs
      */
-    public function setRaisonBannissement($raisonBannissement)
-    {
+    public function setRaisonBannissement($raisonBannissement) {
         $this->raisonBannissement = $raisonBannissement;
 
         return $this;
@@ -210,8 +199,7 @@ class BannissementsActifs
      *
      * @return integer
      */
-    public function getRaisonBannissement()
-    {
+    public function getRaisonBannissement() {
         return $this->raisonBannissement;
     }
 
@@ -222,8 +210,7 @@ class BannissementsActifs
      *
      * @return BannissementsActifs
      */
-    public function setCommentaireBannissement($commentaireBannissement)
-    {
+    public function setCommentaireBannissement($commentaireBannissement) {
         $this->commentaireBannissement = $commentaireBannissement;
 
         return $this;
@@ -234,8 +221,7 @@ class BannissementsActifs
      *
      * @return string
      */
-    public function getCommentaireBannissement()
-    {
+    public function getCommentaireBannissement() {
         return $this->commentaireBannissement;
     }
 
@@ -246,8 +232,7 @@ class BannissementsActifs
      *
      * @return BannissementsActifs
      */
-    public function setIdCompteGm($idCompteGm)
-    {
+    public function setIdCompteGm($idCompteGm) {
         $this->idCompteGm = $idCompteGm;
 
         return $this;
@@ -258,8 +243,7 @@ class BannissementsActifs
      *
      * @return integer
      */
-    public function getIdCompteGm()
-    {
+    public function getIdCompteGm() {
         return $this->idCompteGm;
     }
 
@@ -270,8 +254,7 @@ class BannissementsActifs
      *
      * @return BannissementsActifs
      */
-    public function setIpGm($ipGm)
-    {
+    public function setIpGm($ipGm) {
         $this->ipGm = $ipGm;
 
         return $this;
@@ -282,8 +265,7 @@ class BannissementsActifs
      *
      * @return string
      */
-    public function getIpGm()
-    {
+    public function getIpGm() {
         return $this->ipGm;
     }
 
@@ -294,8 +276,7 @@ class BannissementsActifs
      *
      * @return BannissementsActifs
      */
-    public function setDuree($duree)
-    {
+    public function setDuree($duree) {
         $this->duree = $duree;
 
         return $this;
@@ -306,8 +287,7 @@ class BannissementsActifs
      *
      * @return integer
      */
-    public function getDuree()
-    {
+    public function getDuree() {
         return $this->duree;
     }
 
@@ -318,8 +298,7 @@ class BannissementsActifs
      *
      * @return BannissementsActifs
      */
-    public function setDefinitif($definitif)
-    {
+    public function setDefinitif($definitif) {
         $this->definitif = $definitif;
 
         return $this;
@@ -330,8 +309,7 @@ class BannissementsActifs
      *
      * @return integer
      */
-    public function getDefinitif()
-    {
+    public function getDefinitif() {
         return $this->definitif;
     }
 
@@ -342,8 +320,7 @@ class BannissementsActifs
      *
      * @return BannissementsActifs
      */
-    public function setDebannPar($debannPar)
-    {
+    public function setDebannPar($debannPar) {
         $this->debannPar = $debannPar;
 
         return $this;
@@ -354,8 +331,8 @@ class BannissementsActifs
      *
      * @return integer
      */
-    public function getDebannPar()
-    {
+    public function getDebannPar() {
         return $this->debannPar;
     }
+
 }

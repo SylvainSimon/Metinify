@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.votes_logs")
  * @ORM\Entity
  */
-class VotesLogs
-{
+class VotesLogs {
+
     /**
      * @var integer
      *
@@ -49,15 +49,12 @@ class VotesLogs
      */
     private $idSiteVote;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -68,8 +65,7 @@ class VotesLogs
      *
      * @return VotesLogs
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -80,8 +76,7 @@ class VotesLogs
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -92,8 +87,7 @@ class VotesLogs
      *
      * @return VotesLogs
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -104,8 +98,7 @@ class VotesLogs
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -116,8 +109,7 @@ class VotesLogs
      *
      * @return VotesLogs
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -128,8 +120,7 @@ class VotesLogs
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
 
@@ -140,8 +131,7 @@ class VotesLogs
      *
      * @return VotesLogs
      */
-    public function setIdSiteVote($idSiteVote)
-    {
+    public function setIdSiteVote($idSiteVote) {
         $this->idSiteVote = $idSiteVote;
 
         return $this;
@@ -152,8 +142,8 @@ class VotesLogs
      *
      * @return integer
      */
-    public function getIdSiteVote()
-    {
+    public function getIdSiteVote() {
         return $this->idSiteVote;
     }
+
 }

@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.logs_marche_achats")
  * @ORM\Entity
  */
-class LogsMarcheAchats
-{
+class LogsMarcheAchats {
+
     /**
      * @var integer
      *
@@ -70,15 +70,12 @@ class LogsMarcheAchats
      */
     private $ip;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -89,8 +86,7 @@ class LogsMarcheAchats
      *
      * @return LogsMarcheAchats
      */
-    public function setIdVendeur($idVendeur)
-    {
+    public function setIdVendeur($idVendeur) {
         $this->idVendeur = $idVendeur;
 
         return $this;
@@ -101,8 +97,7 @@ class LogsMarcheAchats
      *
      * @return integer
      */
-    public function getIdVendeur()
-    {
+    public function getIdVendeur() {
         return $this->idVendeur;
     }
 
@@ -113,8 +108,7 @@ class LogsMarcheAchats
      *
      * @return LogsMarcheAchats
      */
-    public function setIdAcheteur($idAcheteur)
-    {
+    public function setIdAcheteur($idAcheteur) {
         $this->idAcheteur = $idAcheteur;
 
         return $this;
@@ -125,8 +119,7 @@ class LogsMarcheAchats
      *
      * @return integer
      */
-    public function getIdAcheteur()
-    {
+    public function getIdAcheteur() {
         return $this->idAcheteur;
     }
 
@@ -137,8 +130,7 @@ class LogsMarcheAchats
      *
      * @return LogsMarcheAchats
      */
-    public function setIdPersonnage($idPersonnage)
-    {
+    public function setIdPersonnage($idPersonnage) {
         $this->idPersonnage = $idPersonnage;
 
         return $this;
@@ -149,8 +141,7 @@ class LogsMarcheAchats
      *
      * @return integer
      */
-    public function getIdPersonnage()
-    {
+    public function getIdPersonnage() {
         return $this->idPersonnage;
     }
 
@@ -161,8 +152,7 @@ class LogsMarcheAchats
      *
      * @return LogsMarcheAchats
      */
-    public function setPrix($prix)
-    {
+    public function setPrix($prix) {
         $this->prix = $prix;
 
         return $this;
@@ -173,8 +163,7 @@ class LogsMarcheAchats
      *
      * @return integer
      */
-    public function getPrix()
-    {
+    public function getPrix() {
         return $this->prix;
     }
 
@@ -185,8 +174,7 @@ class LogsMarcheAchats
      *
      * @return LogsMarcheAchats
      */
-    public function setDevise($devise)
-    {
+    public function setDevise($devise) {
         $this->devise = $devise;
 
         return $this;
@@ -197,8 +185,7 @@ class LogsMarcheAchats
      *
      * @return integer
      */
-    public function getDevise()
-    {
+    public function getDevise() {
         return $this->devise;
     }
 
@@ -209,8 +196,7 @@ class LogsMarcheAchats
      *
      * @return LogsMarcheAchats
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -221,8 +207,7 @@ class LogsMarcheAchats
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -233,8 +218,7 @@ class LogsMarcheAchats
      *
      * @return LogsMarcheAchats
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -245,8 +229,8 @@ class LogsMarcheAchats
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
+
 }

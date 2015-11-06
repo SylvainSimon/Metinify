@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.logs_rechargements")
  * @ORM\Entity
  */
-class LogsRechargements
-{
+class LogsRechargements {
+
     /**
      * @var integer
      *
@@ -77,15 +77,12 @@ class LogsRechargements
      */
     private $ip;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -96,8 +93,7 @@ class LogsRechargements
      *
      * @return LogsRechargements
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -108,8 +104,7 @@ class LogsRechargements
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -120,8 +115,7 @@ class LogsRechargements
      *
      * @return LogsRechargements
      */
-    public function setCompte($compte)
-    {
+    public function setCompte($compte) {
         $this->compte = $compte;
 
         return $this;
@@ -132,8 +126,7 @@ class LogsRechargements
      *
      * @return string
      */
-    public function getCompte()
-    {
+    public function getCompte() {
         return $this->compte;
     }
 
@@ -144,8 +137,7 @@ class LogsRechargements
      *
      * @return LogsRechargements
      */
-    public function setEmailCompte($emailCompte)
-    {
+    public function setEmailCompte($emailCompte) {
         $this->emailCompte = $emailCompte;
 
         return $this;
@@ -156,8 +148,7 @@ class LogsRechargements
      *
      * @return string
      */
-    public function getEmailCompte()
-    {
+    public function getEmailCompte() {
         return $this->emailCompte;
     }
 
@@ -168,8 +159,7 @@ class LogsRechargements
      *
      * @return LogsRechargements
      */
-    public function setCode($code)
-    {
+    public function setCode($code) {
         $this->code = $code;
 
         return $this;
@@ -180,8 +170,7 @@ class LogsRechargements
      *
      * @return string
      */
-    public function getCode()
-    {
+    public function getCode() {
         return $this->code;
     }
 
@@ -192,8 +181,7 @@ class LogsRechargements
      *
      * @return LogsRechargements
      */
-    public function setNombreVamonaies($nombreVamonaies)
-    {
+    public function setNombreVamonaies($nombreVamonaies) {
         $this->nombreVamonaies = $nombreVamonaies;
 
         return $this;
@@ -204,8 +192,7 @@ class LogsRechargements
      *
      * @return integer
      */
-    public function getNombreVamonaies()
-    {
+    public function getNombreVamonaies() {
         return $this->nombreVamonaies;
     }
 
@@ -216,8 +203,7 @@ class LogsRechargements
      *
      * @return LogsRechargements
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -228,8 +214,7 @@ class LogsRechargements
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -240,8 +225,7 @@ class LogsRechargements
      *
      * @return LogsRechargements
      */
-    public function setResultat($resultat)
-    {
+    public function setResultat($resultat) {
         $this->resultat = $resultat;
 
         return $this;
@@ -252,8 +236,7 @@ class LogsRechargements
      *
      * @return string
      */
-    public function getResultat()
-    {
+    public function getResultat() {
         return $this->resultat;
     }
 
@@ -264,8 +247,7 @@ class LogsRechargements
      *
      * @return LogsRechargements
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -276,8 +258,8 @@ class LogsRechargements
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
+
 }

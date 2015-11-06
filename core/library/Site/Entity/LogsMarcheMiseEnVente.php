@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.logs_marche_mise_en_vente")
  * @ORM\Entity
  */
-class LogsMarcheMiseEnVente
-{
+class LogsMarcheMiseEnVente {
+
     /**
      * @var integer
      *
@@ -63,15 +63,12 @@ class LogsMarcheMiseEnVente
      */
     private $ip;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -82,8 +79,7 @@ class LogsMarcheMiseEnVente
      *
      * @return LogsMarcheMiseEnVente
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -94,8 +90,7 @@ class LogsMarcheMiseEnVente
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -106,8 +101,7 @@ class LogsMarcheMiseEnVente
      *
      * @return LogsMarcheMiseEnVente
      */
-    public function setIdPersonnage($idPersonnage)
-    {
+    public function setIdPersonnage($idPersonnage) {
         $this->idPersonnage = $idPersonnage;
 
         return $this;
@@ -118,8 +112,7 @@ class LogsMarcheMiseEnVente
      *
      * @return integer
      */
-    public function getIdPersonnage()
-    {
+    public function getIdPersonnage() {
         return $this->idPersonnage;
     }
 
@@ -130,8 +123,7 @@ class LogsMarcheMiseEnVente
      *
      * @return LogsMarcheMiseEnVente
      */
-    public function setPrix($prix)
-    {
+    public function setPrix($prix) {
         $this->prix = $prix;
 
         return $this;
@@ -142,8 +134,7 @@ class LogsMarcheMiseEnVente
      *
      * @return integer
      */
-    public function getPrix()
-    {
+    public function getPrix() {
         return $this->prix;
     }
 
@@ -154,8 +145,7 @@ class LogsMarcheMiseEnVente
      *
      * @return LogsMarcheMiseEnVente
      */
-    public function setDevise($devise)
-    {
+    public function setDevise($devise) {
         $this->devise = $devise;
 
         return $this;
@@ -166,8 +156,7 @@ class LogsMarcheMiseEnVente
      *
      * @return integer
      */
-    public function getDevise()
-    {
+    public function getDevise() {
         return $this->devise;
     }
 
@@ -178,8 +167,7 @@ class LogsMarcheMiseEnVente
      *
      * @return LogsMarcheMiseEnVente
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -190,8 +178,7 @@ class LogsMarcheMiseEnVente
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -202,8 +189,7 @@ class LogsMarcheMiseEnVente
      *
      * @return LogsMarcheMiseEnVente
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -214,8 +200,8 @@ class LogsMarcheMiseEnVente
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
+
 }

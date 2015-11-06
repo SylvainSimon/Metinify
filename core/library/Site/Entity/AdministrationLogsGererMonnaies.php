@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.administration_logs_gerer_monnaies")
  * @ORM\Entity
  */
-class AdministrationLogsGererMonnaies
-{
+class AdministrationLogsGererMonnaies {
+
     /**
      * @var integer
      *
@@ -70,15 +70,12 @@ class AdministrationLogsGererMonnaies
      */
     private $ip;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -89,8 +86,7 @@ class AdministrationLogsGererMonnaies
      *
      * @return AdministrationLogsGererMonnaies
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -101,8 +97,7 @@ class AdministrationLogsGererMonnaies
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -113,8 +108,7 @@ class AdministrationLogsGererMonnaies
      *
      * @return AdministrationLogsGererMonnaies
      */
-    public function setMontant($montant)
-    {
+    public function setMontant($montant) {
         $this->montant = $montant;
 
         return $this;
@@ -125,8 +119,7 @@ class AdministrationLogsGererMonnaies
      *
      * @return integer
      */
-    public function getMontant()
-    {
+    public function getMontant() {
         return $this->montant;
     }
 
@@ -137,8 +130,7 @@ class AdministrationLogsGererMonnaies
      *
      * @return AdministrationLogsGererMonnaies
      */
-    public function setDevise($devise)
-    {
+    public function setDevise($devise) {
         $this->devise = $devise;
 
         return $this;
@@ -149,8 +141,7 @@ class AdministrationLogsGererMonnaies
      *
      * @return integer
      */
-    public function getDevise()
-    {
+    public function getDevise() {
         return $this->devise;
     }
 
@@ -161,8 +152,7 @@ class AdministrationLogsGererMonnaies
      *
      * @return AdministrationLogsGererMonnaies
      */
-    public function setOperation($operation)
-    {
+    public function setOperation($operation) {
         $this->operation = $operation;
 
         return $this;
@@ -173,8 +163,7 @@ class AdministrationLogsGererMonnaies
      *
      * @return integer
      */
-    public function getOperation()
-    {
+    public function getOperation() {
         return $this->operation;
     }
 
@@ -185,8 +174,7 @@ class AdministrationLogsGererMonnaies
      *
      * @return AdministrationLogsGererMonnaies
      */
-    public function setIdGm($idGm)
-    {
+    public function setIdGm($idGm) {
         $this->idGm = $idGm;
 
         return $this;
@@ -197,8 +185,7 @@ class AdministrationLogsGererMonnaies
      *
      * @return integer
      */
-    public function getIdGm()
-    {
+    public function getIdGm() {
         return $this->idGm;
     }
 
@@ -209,8 +196,7 @@ class AdministrationLogsGererMonnaies
      *
      * @return AdministrationLogsGererMonnaies
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -221,8 +207,7 @@ class AdministrationLogsGererMonnaies
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -233,8 +218,7 @@ class AdministrationLogsGererMonnaies
      *
      * @return AdministrationLogsGererMonnaies
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -245,8 +229,8 @@ class AdministrationLogsGererMonnaies
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
+
 }

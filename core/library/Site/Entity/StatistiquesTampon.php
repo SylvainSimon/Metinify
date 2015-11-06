@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.statistiques_tampon")
  * @ORM\Entity
  */
-class StatistiquesTampon
-{
+class StatistiquesTampon {
+
     /**
      * @var integer
      *
@@ -280,15 +280,12 @@ class StatistiquesTampon
      */
     private $paysBe;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -299,8 +296,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setTypeStati($typeStati)
-    {
+    public function setTypeStati($typeStati) {
         $this->typeStati = $typeStati;
 
         return $this;
@@ -311,8 +307,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getTypeStati()
-    {
+    public function getTypeStati() {
         return $this->typeStati;
     }
 
@@ -323,8 +318,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setDateInsertion($dateInsertion)
-    {
+    public function setDateInsertion($dateInsertion) {
         $this->dateInsertion = $dateInsertion;
 
         return $this;
@@ -335,8 +329,7 @@ class StatistiquesTampon
      *
      * @return \DateTime
      */
-    public function getDateInsertion()
-    {
+    public function getDateInsertion() {
         return $this->dateInsertion;
     }
 
@@ -347,8 +340,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setComptes($comptes)
-    {
+    public function setComptes($comptes) {
         $this->comptes = $comptes;
 
         return $this;
@@ -359,8 +351,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getComptes()
-    {
+    public function getComptes() {
         return $this->comptes;
     }
 
@@ -371,8 +362,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setJoueurs($joueurs)
-    {
+    public function setJoueurs($joueurs) {
         $this->joueurs = $joueurs;
 
         return $this;
@@ -383,8 +373,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getJoueurs()
-    {
+    public function getJoueurs() {
         return $this->joueurs;
     }
 
@@ -395,8 +384,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setHommes($hommes)
-    {
+    public function setHommes($hommes) {
         $this->hommes = $hommes;
 
         return $this;
@@ -407,8 +395,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getHommes()
-    {
+    public function getHommes() {
         return $this->hommes;
     }
 
@@ -419,8 +406,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setFemmes($femmes)
-    {
+    public function setFemmes($femmes) {
         $this->femmes = $femmes;
 
         return $this;
@@ -431,8 +417,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getFemmes()
-    {
+    public function getFemmes() {
         return $this->femmes;
     }
 
@@ -443,8 +428,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setShinsoo($shinsoo)
-    {
+    public function setShinsoo($shinsoo) {
         $this->shinsoo = $shinsoo;
 
         return $this;
@@ -455,8 +439,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getShinsoo()
-    {
+    public function getShinsoo() {
         return $this->shinsoo;
     }
 
@@ -467,8 +450,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setChunjo($chunjo)
-    {
+    public function setChunjo($chunjo) {
         $this->chunjo = $chunjo;
 
         return $this;
@@ -479,8 +461,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getChunjo()
-    {
+    public function getChunjo() {
         return $this->chunjo;
     }
 
@@ -491,8 +472,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setJinno($jinno)
-    {
+    public function setJinno($jinno) {
         $this->jinno = $jinno;
 
         return $this;
@@ -503,8 +483,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getJinno()
-    {
+    public function getJinno() {
         return $this->jinno;
     }
 
@@ -515,8 +494,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setGuerriers($guerriers)
-    {
+    public function setGuerriers($guerriers) {
         $this->guerriers = $guerriers;
 
         return $this;
@@ -527,8 +505,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getGuerriers()
-    {
+    public function getGuerriers() {
         return $this->guerriers;
     }
 
@@ -539,8 +516,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setSuras($suras)
-    {
+    public function setSuras($suras) {
         $this->suras = $suras;
 
         return $this;
@@ -551,8 +527,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getSuras()
-    {
+    public function getSuras() {
         return $this->suras;
     }
 
@@ -563,8 +538,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setNinjas($ninjas)
-    {
+    public function setNinjas($ninjas) {
         $this->ninjas = $ninjas;
 
         return $this;
@@ -575,8 +549,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getNinjas()
-    {
+    public function getNinjas() {
         return $this->ninjas;
     }
 
@@ -587,8 +560,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setShamans($shamans)
-    {
+    public function setShamans($shamans) {
         $this->shamans = $shamans;
 
         return $this;
@@ -599,8 +571,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getShamans()
-    {
+    public function getShamans() {
         return $this->shamans;
     }
 
@@ -611,8 +582,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setConnexionSite($connexionSite)
-    {
+    public function setConnexionSite($connexionSite) {
         $this->connexionSite = $connexionSite;
 
         return $this;
@@ -623,8 +593,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getConnexionSite()
-    {
+    public function getConnexionSite() {
         return $this->connexionSite;
     }
 
@@ -635,8 +604,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setConnexionSiteUnique($connexionSiteUnique)
-    {
+    public function setConnexionSiteUnique($connexionSiteUnique) {
         $this->connexionSiteUnique = $connexionSiteUnique;
 
         return $this;
@@ -647,8 +615,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getConnexionSiteUnique()
-    {
+    public function getConnexionSiteUnique() {
         return $this->connexionSiteUnique;
     }
 
@@ -659,8 +626,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setChangementMail($changementMail)
-    {
+    public function setChangementMail($changementMail) {
         $this->changementMail = $changementMail;
 
         return $this;
@@ -671,8 +637,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getChangementMail()
-    {
+    public function getChangementMail() {
         return $this->changementMail;
     }
 
@@ -683,8 +648,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setRecupMdp($recupMdp)
-    {
+    public function setRecupMdp($recupMdp) {
         $this->recupMdp = $recupMdp;
 
         return $this;
@@ -695,8 +659,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getRecupMdp()
-    {
+    public function getRecupMdp() {
         return $this->recupMdp;
     }
 
@@ -707,8 +670,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setChangementMdp($changementMdp)
-    {
+    public function setChangementMdp($changementMdp) {
         $this->changementMdp = $changementMdp;
 
         return $this;
@@ -719,8 +681,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getChangementMdp()
-    {
+    public function getChangementMdp() {
         return $this->changementMdp;
     }
 
@@ -731,8 +692,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setChangementEntrepot($changementEntrepot)
-    {
+    public function setChangementEntrepot($changementEntrepot) {
         $this->changementEntrepot = $changementEntrepot;
 
         return $this;
@@ -743,8 +703,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getChangementEntrepot()
-    {
+    public function getChangementEntrepot() {
         return $this->changementEntrepot;
     }
 
@@ -755,8 +714,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setDeblocageYangs($deblocageYangs)
-    {
+    public function setDeblocageYangs($deblocageYangs) {
         $this->deblocageYangs = $deblocageYangs;
 
         return $this;
@@ -767,8 +725,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getDeblocageYangs()
-    {
+    public function getDeblocageYangs() {
         return $this->deblocageYangs;
     }
 
@@ -779,8 +736,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setTicketsOuvert($ticketsOuvert)
-    {
+    public function setTicketsOuvert($ticketsOuvert) {
         $this->ticketsOuvert = $ticketsOuvert;
 
         return $this;
@@ -791,8 +747,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getTicketsOuvert()
-    {
+    public function getTicketsOuvert() {
         return $this->ticketsOuvert;
     }
 
@@ -803,8 +758,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setMessageEcrits($messageEcrits)
-    {
+    public function setMessageEcrits($messageEcrits) {
         $this->messageEcrits = $messageEcrits;
 
         return $this;
@@ -815,8 +769,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getMessageEcrits()
-    {
+    public function getMessageEcrits() {
         return $this->messageEcrits;
     }
 
@@ -827,8 +780,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setDiscussionArchives($discussionArchives)
-    {
+    public function setDiscussionArchives($discussionArchives) {
         $this->discussionArchives = $discussionArchives;
 
         return $this;
@@ -839,8 +791,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getDiscussionArchives()
-    {
+    public function getDiscussionArchives() {
         return $this->discussionArchives;
     }
 
@@ -851,8 +802,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setPaysFr($paysFr)
-    {
+    public function setPaysFr($paysFr) {
         $this->paysFr = $paysFr;
 
         return $this;
@@ -863,8 +813,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getPaysFr()
-    {
+    public function getPaysFr() {
         return $this->paysFr;
     }
 
@@ -875,8 +824,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setPaysCh($paysCh)
-    {
+    public function setPaysCh($paysCh) {
         $this->paysCh = $paysCh;
 
         return $this;
@@ -887,8 +835,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getPaysCh()
-    {
+    public function getPaysCh() {
         return $this->paysCh;
     }
 
@@ -899,8 +846,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setPaysGb($paysGb)
-    {
+    public function setPaysGb($paysGb) {
         $this->paysGb = $paysGb;
 
         return $this;
@@ -911,8 +857,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getPaysGb()
-    {
+    public function getPaysGb() {
         return $this->paysGb;
     }
 
@@ -923,8 +868,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setPaysDe($paysDe)
-    {
+    public function setPaysDe($paysDe) {
         $this->paysDe = $paysDe;
 
         return $this;
@@ -935,8 +879,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getPaysDe()
-    {
+    public function getPaysDe() {
         return $this->paysDe;
     }
 
@@ -947,8 +890,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setPaysRo($paysRo)
-    {
+    public function setPaysRo($paysRo) {
         $this->paysRo = $paysRo;
 
         return $this;
@@ -959,8 +901,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getPaysRo()
-    {
+    public function getPaysRo() {
         return $this->paysRo;
     }
 
@@ -971,8 +912,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setPaysUs($paysUs)
-    {
+    public function setPaysUs($paysUs) {
         $this->paysUs = $paysUs;
 
         return $this;
@@ -983,8 +923,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getPaysUs()
-    {
+    public function getPaysUs() {
         return $this->paysUs;
     }
 
@@ -995,8 +934,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setPaysIt($paysIt)
-    {
+    public function setPaysIt($paysIt) {
         $this->paysIt = $paysIt;
 
         return $this;
@@ -1007,8 +945,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getPaysIt()
-    {
+    public function getPaysIt() {
         return $this->paysIt;
     }
 
@@ -1019,8 +956,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setPaysEs($paysEs)
-    {
+    public function setPaysEs($paysEs) {
         $this->paysEs = $paysEs;
 
         return $this;
@@ -1031,8 +967,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getPaysEs()
-    {
+    public function getPaysEs() {
         return $this->paysEs;
     }
 
@@ -1043,8 +978,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setPaysPl($paysPl)
-    {
+    public function setPaysPl($paysPl) {
         $this->paysPl = $paysPl;
 
         return $this;
@@ -1055,8 +989,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getPaysPl()
-    {
+    public function getPaysPl() {
         return $this->paysPl;
     }
 
@@ -1067,8 +1000,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setPaysPt($paysPt)
-    {
+    public function setPaysPt($paysPt) {
         $this->paysPt = $paysPt;
 
         return $this;
@@ -1079,8 +1011,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getPaysPt()
-    {
+    public function getPaysPt() {
         return $this->paysPt;
     }
 
@@ -1091,8 +1022,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setPaysTn($paysTn)
-    {
+    public function setPaysTn($paysTn) {
         $this->paysTn = $paysTn;
 
         return $this;
@@ -1103,8 +1033,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getPaysTn()
-    {
+    public function getPaysTn() {
         return $this->paysTn;
     }
 
@@ -1115,8 +1044,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setPaysDz($paysDz)
-    {
+    public function setPaysDz($paysDz) {
         $this->paysDz = $paysDz;
 
         return $this;
@@ -1127,8 +1055,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getPaysDz()
-    {
+    public function getPaysDz() {
         return $this->paysDz;
     }
 
@@ -1139,8 +1066,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setPaysJp($paysJp)
-    {
+    public function setPaysJp($paysJp) {
         $this->paysJp = $paysJp;
 
         return $this;
@@ -1151,8 +1077,7 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getPaysJp()
-    {
+    public function getPaysJp() {
         return $this->paysJp;
     }
 
@@ -1163,8 +1088,7 @@ class StatistiquesTampon
      *
      * @return StatistiquesTampon
      */
-    public function setPaysBe($paysBe)
-    {
+    public function setPaysBe($paysBe) {
         $this->paysBe = $paysBe;
 
         return $this;
@@ -1175,8 +1099,8 @@ class StatistiquesTampon
      *
      * @return integer
      */
-    public function getPaysBe()
-    {
+    public function getPaysBe() {
         return $this->paysBe;
     }
+
 }

@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.marche_articles")
  * @ORM\Entity
  */
-class MarcheArticles
-{
+class MarcheArticles {
+
     /**
      * @var integer
      *
@@ -77,15 +77,12 @@ class MarcheArticles
      */
     private $ip;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -96,8 +93,7 @@ class MarcheArticles
      *
      * @return MarcheArticles
      */
-    public function setDesignation($designation)
-    {
+    public function setDesignation($designation) {
         $this->designation = $designation;
 
         return $this;
@@ -108,8 +104,7 @@ class MarcheArticles
      *
      * @return string
      */
-    public function getDesignation()
-    {
+    public function getDesignation() {
         return $this->designation;
     }
 
@@ -120,8 +115,7 @@ class MarcheArticles
      *
      * @return MarcheArticles
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -132,8 +126,7 @@ class MarcheArticles
      *
      * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -144,8 +137,7 @@ class MarcheArticles
      *
      * @return MarcheArticles
      */
-    public function setCategorie($categorie)
-    {
+    public function setCategorie($categorie) {
         $this->categorie = $categorie;
 
         return $this;
@@ -156,8 +148,7 @@ class MarcheArticles
      *
      * @return integer
      */
-    public function getCategorie()
-    {
+    public function getCategorie() {
         return $this->categorie;
     }
 
@@ -168,8 +159,7 @@ class MarcheArticles
      *
      * @return MarcheArticles
      */
-    public function setIdentifiantArticle($identifiantArticle)
-    {
+    public function setIdentifiantArticle($identifiantArticle) {
         $this->identifiantArticle = $identifiantArticle;
 
         return $this;
@@ -180,8 +170,7 @@ class MarcheArticles
      *
      * @return integer
      */
-    public function getIdentifiantArticle()
-    {
+    public function getIdentifiantArticle() {
         return $this->identifiantArticle;
     }
 
@@ -192,8 +181,7 @@ class MarcheArticles
      *
      * @return MarcheArticles
      */
-    public function setPrix($prix)
-    {
+    public function setPrix($prix) {
         $this->prix = $prix;
 
         return $this;
@@ -204,8 +192,7 @@ class MarcheArticles
      *
      * @return integer
      */
-    public function getPrix()
-    {
+    public function getPrix() {
         return $this->prix;
     }
 
@@ -216,8 +203,7 @@ class MarcheArticles
      *
      * @return MarcheArticles
      */
-    public function setDevise($devise)
-    {
+    public function setDevise($devise) {
         $this->devise = $devise;
 
         return $this;
@@ -228,8 +214,7 @@ class MarcheArticles
      *
      * @return integer
      */
-    public function getDevise()
-    {
+    public function getDevise() {
         return $this->devise;
     }
 
@@ -240,8 +225,7 @@ class MarcheArticles
      *
      * @return MarcheArticles
      */
-    public function setDateAjout($dateAjout)
-    {
+    public function setDateAjout($dateAjout) {
         $this->dateAjout = $dateAjout;
 
         return $this;
@@ -252,8 +236,7 @@ class MarcheArticles
      *
      * @return \DateTime
      */
-    public function getDateAjout()
-    {
+    public function getDateAjout() {
         return $this->dateAjout;
     }
 
@@ -264,8 +247,7 @@ class MarcheArticles
      *
      * @return MarcheArticles
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -276,8 +258,8 @@ class MarcheArticles
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
+
 }

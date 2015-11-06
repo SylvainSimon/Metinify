@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.logs_rename")
  * @ORM\Entity
  */
-class LogsRename
-{
+class LogsRename {
+
     /**
      * @var integer
      *
@@ -56,15 +56,12 @@ class LogsRename
      */
     private $ip;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -75,8 +72,7 @@ class LogsRename
      *
      * @return LogsRename
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -87,8 +83,7 @@ class LogsRename
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -99,8 +94,7 @@ class LogsRename
      *
      * @return LogsRename
      */
-    public function setAncienNom($ancienNom)
-    {
+    public function setAncienNom($ancienNom) {
         $this->ancienNom = $ancienNom;
 
         return $this;
@@ -111,8 +105,7 @@ class LogsRename
      *
      * @return string
      */
-    public function getAncienNom()
-    {
+    public function getAncienNom() {
         return $this->ancienNom;
     }
 
@@ -123,8 +116,7 @@ class LogsRename
      *
      * @return LogsRename
      */
-    public function setNouveauNom($nouveauNom)
-    {
+    public function setNouveauNom($nouveauNom) {
         $this->nouveauNom = $nouveauNom;
 
         return $this;
@@ -135,8 +127,7 @@ class LogsRename
      *
      * @return string
      */
-    public function getNouveauNom()
-    {
+    public function getNouveauNom() {
         return $this->nouveauNom;
     }
 
@@ -147,8 +138,7 @@ class LogsRename
      *
      * @return LogsRename
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -159,8 +149,7 @@ class LogsRename
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -171,8 +160,7 @@ class LogsRename
      *
      * @return LogsRename
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -183,8 +171,8 @@ class LogsRename
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
+
 }

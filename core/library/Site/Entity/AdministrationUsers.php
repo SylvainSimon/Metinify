@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.administration_users")
  * @ORM\Entity
  */
-class AdministrationUsers
-{
+class AdministrationUsers {
+
     /**
      * @var integer
      *
@@ -203,15 +203,12 @@ class AdministrationUsers
      */
     private $mp;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -222,8 +219,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -234,8 +230,7 @@ class AdministrationUsers
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -246,8 +241,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setPannelAdmin($pannelAdmin)
-    {
+    public function setPannelAdmin($pannelAdmin) {
         $this->pannelAdmin = $pannelAdmin;
 
         return $this;
@@ -258,8 +252,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getPannelAdmin()
-    {
+    public function getPannelAdmin() {
         return $this->pannelAdmin;
     }
 
@@ -270,8 +263,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setSupportTicket($supportTicket)
-    {
+    public function setSupportTicket($supportTicket) {
         $this->supportTicket = $supportTicket;
 
         return $this;
@@ -282,8 +274,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getSupportTicket()
-    {
+    public function getSupportTicket() {
         return $this->supportTicket;
     }
 
@@ -294,8 +285,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setRechercheJoueurs($rechercheJoueurs)
-    {
+    public function setRechercheJoueurs($rechercheJoueurs) {
         $this->rechercheJoueurs = $rechercheJoueurs;
 
         return $this;
@@ -306,8 +296,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getRechercheJoueurs()
-    {
+    public function getRechercheJoueurs() {
         return $this->rechercheJoueurs;
     }
 
@@ -318,8 +307,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setRechercheJoueursAdmin($rechercheJoueursAdmin)
-    {
+    public function setRechercheJoueursAdmin($rechercheJoueursAdmin) {
         $this->rechercheJoueursAdmin = $rechercheJoueursAdmin;
 
         return $this;
@@ -330,8 +318,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getRechercheJoueursAdmin()
-    {
+    public function getRechercheJoueursAdmin() {
         return $this->rechercheJoueursAdmin;
     }
 
@@ -342,8 +329,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setRechercheComptes($rechercheComptes)
-    {
+    public function setRechercheComptes($rechercheComptes) {
         $this->rechercheComptes = $rechercheComptes;
 
         return $this;
@@ -354,8 +340,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getRechercheComptes()
-    {
+    public function getRechercheComptes() {
         return $this->rechercheComptes;
     }
 
@@ -366,8 +351,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setRechercheGuildes($rechercheGuildes)
-    {
+    public function setRechercheGuildes($rechercheGuildes) {
         $this->rechercheGuildes = $rechercheGuildes;
 
         return $this;
@@ -378,8 +362,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getRechercheGuildes()
-    {
+    public function getRechercheGuildes() {
         return $this->rechercheGuildes;
     }
 
@@ -390,8 +373,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setRechercheEmails($rechercheEmails)
-    {
+    public function setRechercheEmails($rechercheEmails) {
         $this->rechercheEmails = $rechercheEmails;
 
         return $this;
@@ -402,8 +384,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getRechercheEmails()
-    {
+    public function getRechercheEmails() {
         return $this->rechercheEmails;
     }
 
@@ -414,8 +395,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setRechercheIp($rechercheIp)
-    {
+    public function setRechercheIp($rechercheIp) {
         $this->rechercheIp = $rechercheIp;
 
         return $this;
@@ -426,8 +406,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getRechercheIp()
-    {
+    public function getRechercheIp() {
         return $this->rechercheIp;
     }
 
@@ -438,8 +417,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setRecherchePecheurs($recherchePecheurs)
-    {
+    public function setRecherchePecheurs($recherchePecheurs) {
         $this->recherchePecheurs = $recherchePecheurs;
 
         return $this;
@@ -450,8 +428,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getRecherchePecheurs()
-    {
+    public function getRecherchePecheurs() {
         return $this->recherchePecheurs;
     }
 
@@ -462,8 +439,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setRechercheMaries($rechercheMaries)
-    {
+    public function setRechercheMaries($rechercheMaries) {
         $this->rechercheMaries = $rechercheMaries;
 
         return $this;
@@ -474,8 +450,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getRechercheMaries()
-    {
+    public function getRechercheMaries() {
         return $this->rechercheMaries;
     }
 
@@ -486,8 +461,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setRechercheItems($rechercheItems)
-    {
+    public function setRechercheItems($rechercheItems) {
         $this->rechercheItems = $rechercheItems;
 
         return $this;
@@ -498,8 +472,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getRechercheItems()
-    {
+    public function getRechercheItems() {
         return $this->rechercheItems;
     }
 
@@ -510,8 +483,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setRechercheBannissements($rechercheBannissements)
-    {
+    public function setRechercheBannissements($rechercheBannissements) {
         $this->rechercheBannissements = $rechercheBannissements;
 
         return $this;
@@ -522,8 +494,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getRechercheBannissements()
-    {
+    public function getRechercheBannissements() {
         return $this->rechercheBannissements;
     }
 
@@ -534,8 +505,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setRechercheRenames($rechercheRenames)
-    {
+    public function setRechercheRenames($rechercheRenames) {
         $this->rechercheRenames = $rechercheRenames;
 
         return $this;
@@ -546,8 +516,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getRechercheRenames()
-    {
+    public function getRechercheRenames() {
         return $this->rechercheRenames;
     }
 
@@ -558,8 +527,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setBannissement($bannissement)
-    {
+    public function setBannissement($bannissement) {
         $this->bannissement = $bannissement;
 
         return $this;
@@ -570,8 +538,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getBannissement()
-    {
+    public function getBannissement() {
         return $this->bannissement;
     }
 
@@ -582,8 +549,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setBannissementIp($bannissementIp)
-    {
+    public function setBannissementIp($bannissementIp) {
         $this->bannissementIp = $bannissementIp;
 
         return $this;
@@ -594,8 +560,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getBannissementIp()
-    {
+    public function getBannissementIp() {
         return $this->bannissementIp;
     }
 
@@ -606,8 +571,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setDebannissement($debannissement)
-    {
+    public function setDebannissement($debannissement) {
         $this->debannissement = $debannissement;
 
         return $this;
@@ -618,8 +582,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getDebannissement()
-    {
+    public function getDebannissement() {
         return $this->debannissement;
     }
 
@@ -630,8 +593,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setDebannissementIp($debannissementIp)
-    {
+    public function setDebannissementIp($debannissementIp) {
         $this->debannissementIp = $debannissementIp;
 
         return $this;
@@ -642,8 +604,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getDebannissementIp()
-    {
+    public function getDebannissementIp() {
         return $this->debannissementIp;
     }
 
@@ -654,8 +615,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setVoirPersonnage($voirPersonnage)
-    {
+    public function setVoirPersonnage($voirPersonnage) {
         $this->voirPersonnage = $voirPersonnage;
 
         return $this;
@@ -666,8 +626,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getVoirPersonnage()
-    {
+    public function getVoirPersonnage() {
         return $this->voirPersonnage;
     }
 
@@ -678,8 +637,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setVoirCompte($voirCompte)
-    {
+    public function setVoirCompte($voirCompte) {
         $this->voirCompte = $voirCompte;
 
         return $this;
@@ -690,8 +648,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getVoirCompte()
-    {
+    public function getVoirCompte() {
         return $this->voirCompte;
     }
 
@@ -702,8 +659,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setDescriptionMembre($descriptionMembre)
-    {
+    public function setDescriptionMembre($descriptionMembre) {
         $this->descriptionMembre = $descriptionMembre;
 
         return $this;
@@ -714,8 +670,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getDescriptionMembre()
-    {
+    public function getDescriptionMembre() {
         return $this->descriptionMembre;
     }
 
@@ -726,8 +681,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setGererMonnaies($gererMonnaies)
-    {
+    public function setGererMonnaies($gererMonnaies) {
         $this->gererMonnaies = $gererMonnaies;
 
         return $this;
@@ -738,8 +692,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getGererMonnaies()
-    {
+    public function getGererMonnaies() {
         return $this->gererMonnaies;
     }
 
@@ -750,8 +703,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setGererNews($gererNews)
-    {
+    public function setGererNews($gererNews) {
         $this->gererNews = $gererNews;
 
         return $this;
@@ -762,8 +714,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getGererNews()
-    {
+    public function getGererNews() {
         return $this->gererNews;
     }
 
@@ -774,8 +725,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setEquipe($equipe)
-    {
+    public function setEquipe($equipe) {
         $this->equipe = $equipe;
 
         return $this;
@@ -786,8 +736,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getEquipe()
-    {
+    public function getEquipe() {
         return $this->equipe;
     }
 
@@ -798,8 +747,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setCommandes($commandes)
-    {
+    public function setCommandes($commandes) {
         $this->commandes = $commandes;
 
         return $this;
@@ -810,8 +758,7 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getCommandes()
-    {
+    public function getCommandes() {
         return $this->commandes;
     }
 
@@ -822,8 +769,7 @@ class AdministrationUsers
      *
      * @return AdministrationUsers
      */
-    public function setMp($mp)
-    {
+    public function setMp($mp) {
         $this->mp = $mp;
 
         return $this;
@@ -834,8 +780,8 @@ class AdministrationUsers
      *
      * @return boolean
      */
-    public function getMp()
-    {
+    public function getMp() {
         return $this->mp;
     }
+
 }

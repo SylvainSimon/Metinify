@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.lotterie_participants")
  * @ORM\Entity
  */
-class LotterieParticipants
-{
+class LotterieParticipants {
+
     /**
      * @var integer
      *
@@ -49,15 +49,12 @@ class LotterieParticipants
      */
     private $date;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -68,8 +65,7 @@ class LotterieParticipants
      *
      * @return LotterieParticipants
      */
-    public function setCompte($compte)
-    {
+    public function setCompte($compte) {
         $this->compte = $compte;
 
         return $this;
@@ -80,8 +76,7 @@ class LotterieParticipants
      *
      * @return string
      */
-    public function getCompte()
-    {
+    public function getCompte() {
         return $this->compte;
     }
 
@@ -92,8 +87,7 @@ class LotterieParticipants
      *
      * @return LotterieParticipants
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -104,8 +98,7 @@ class LotterieParticipants
      *
      * @return string
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -116,8 +109,7 @@ class LotterieParticipants
      *
      * @return LotterieParticipants
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -128,8 +120,7 @@ class LotterieParticipants
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
 
@@ -140,8 +131,7 @@ class LotterieParticipants
      *
      * @return LotterieParticipants
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -152,8 +142,8 @@ class LotterieParticipants
      *
      * @return string
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
+
 }

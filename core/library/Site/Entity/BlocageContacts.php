@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.blocage_contacts")
  * @ORM\Entity
  */
-class BlocageContacts
-{
+class BlocageContacts {
+
     /**
      * @var integer
      *
@@ -35,15 +35,12 @@ class BlocageContacts
      */
     private $dateDeBlocage;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -54,8 +51,7 @@ class BlocageContacts
      *
      * @return BlocageContacts
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -66,8 +62,7 @@ class BlocageContacts
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
 
@@ -78,8 +73,7 @@ class BlocageContacts
      *
      * @return BlocageContacts
      */
-    public function setDateDeBlocage($dateDeBlocage)
-    {
+    public function setDateDeBlocage($dateDeBlocage) {
         $this->dateDeBlocage = $dateDeBlocage;
 
         return $this;
@@ -90,8 +84,8 @@ class BlocageContacts
      *
      * @return \DateTime
      */
-    public function getDateDeBlocage()
-    {
+    public function getDateDeBlocage() {
         return $this->dateDeBlocage;
     }
+
 }

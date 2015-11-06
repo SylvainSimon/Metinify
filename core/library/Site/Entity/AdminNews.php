@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.admin_news", uniqueConstraints={@ORM\UniqueConstraint(name="id", columns={"id"})})
  * @ORM\Entity
  */
-class AdminNews
-{
+class AdminNews {
+
     /**
      * @var integer
      *
@@ -56,15 +56,12 @@ class AdminNews
      */
     private $date;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -75,8 +72,7 @@ class AdminNews
      *
      * @return AdminNews
      */
-    public function setAuteur($auteur)
-    {
+    public function setAuteur($auteur) {
         $this->auteur = $auteur;
 
         return $this;
@@ -87,8 +83,7 @@ class AdminNews
      *
      * @return integer
      */
-    public function getAuteur()
-    {
+    public function getAuteur() {
         return $this->auteur;
     }
 
@@ -99,8 +94,7 @@ class AdminNews
      *
      * @return AdminNews
      */
-    public function setTitreMessage($titreMessage)
-    {
+    public function setTitreMessage($titreMessage) {
         $this->titreMessage = $titreMessage;
 
         return $this;
@@ -111,8 +105,7 @@ class AdminNews
      *
      * @return string
      */
-    public function getTitreMessage()
-    {
+    public function getTitreMessage() {
         return $this->titreMessage;
     }
 
@@ -123,8 +116,7 @@ class AdminNews
      *
      * @return AdminNews
      */
-    public function setContenueMessage($contenueMessage)
-    {
+    public function setContenueMessage($contenueMessage) {
         $this->contenueMessage = $contenueMessage;
 
         return $this;
@@ -135,8 +127,7 @@ class AdminNews
      *
      * @return string
      */
-    public function getContenueMessage()
-    {
+    public function getContenueMessage() {
         return $this->contenueMessage;
     }
 
@@ -147,8 +138,7 @@ class AdminNews
      *
      * @return AdminNews
      */
-    public function setLienIllustration($lienIllustration)
-    {
+    public function setLienIllustration($lienIllustration) {
         $this->lienIllustration = $lienIllustration;
 
         return $this;
@@ -159,8 +149,7 @@ class AdminNews
      *
      * @return string
      */
-    public function getLienIllustration()
-    {
+    public function getLienIllustration() {
         return $this->lienIllustration;
     }
 
@@ -171,8 +160,7 @@ class AdminNews
      *
      * @return AdminNews
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -183,8 +171,8 @@ class AdminNews
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
+
 }

@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.suppression_personnage")
  * @ORM\Entity
  */
-class SuppressionPersonnage
-{
+class SuppressionPersonnage {
+
     /**
      * @var integer
      *
@@ -63,15 +63,12 @@ class SuppressionPersonnage
      */
     private $ip;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -82,8 +79,7 @@ class SuppressionPersonnage
      *
      * @return SuppressionPersonnage
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -94,8 +90,7 @@ class SuppressionPersonnage
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -106,8 +101,7 @@ class SuppressionPersonnage
      *
      * @return SuppressionPersonnage
      */
-    public function setIdPersonnage($idPersonnage)
-    {
+    public function setIdPersonnage($idPersonnage) {
         $this->idPersonnage = $idPersonnage;
 
         return $this;
@@ -118,8 +112,7 @@ class SuppressionPersonnage
      *
      * @return integer
      */
-    public function getIdPersonnage()
-    {
+    public function getIdPersonnage() {
         return $this->idPersonnage;
     }
 
@@ -130,8 +123,7 @@ class SuppressionPersonnage
      *
      * @return SuppressionPersonnage
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
 
         return $this;
@@ -142,8 +134,7 @@ class SuppressionPersonnage
      *
      * @return string
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
@@ -154,8 +145,7 @@ class SuppressionPersonnage
      *
      * @return SuppressionPersonnage
      */
-    public function setNumeroVerif($numeroVerif)
-    {
+    public function setNumeroVerif($numeroVerif) {
         $this->numeroVerif = $numeroVerif;
 
         return $this;
@@ -166,8 +156,7 @@ class SuppressionPersonnage
      *
      * @return integer
      */
-    public function getNumeroVerif()
-    {
+    public function getNumeroVerif() {
         return $this->numeroVerif;
     }
 
@@ -178,8 +167,7 @@ class SuppressionPersonnage
      *
      * @return SuppressionPersonnage
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -190,8 +178,7 @@ class SuppressionPersonnage
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -202,8 +189,7 @@ class SuppressionPersonnage
      *
      * @return SuppressionPersonnage
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -214,8 +200,8 @@ class SuppressionPersonnage
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
+
 }

@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.logs_deblocage_persos")
  * @ORM\Entity
  */
-class LogsDeblocagePersos
-{
+class LogsDeblocagePersos {
+
     /**
      * @var integer
      *
@@ -56,15 +56,12 @@ class LogsDeblocagePersos
      */
     private $ip;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -75,8 +72,7 @@ class LogsDeblocagePersos
      *
      * @return LogsDeblocagePersos
      */
-    public function setIdPerso($idPerso)
-    {
+    public function setIdPerso($idPerso) {
         $this->idPerso = $idPerso;
 
         return $this;
@@ -87,8 +83,7 @@ class LogsDeblocagePersos
      *
      * @return integer
      */
-    public function getIdPerso()
-    {
+    public function getIdPerso() {
         return $this->idPerso;
     }
 
@@ -99,8 +94,7 @@ class LogsDeblocagePersos
      *
      * @return LogsDeblocagePersos
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -111,8 +105,7 @@ class LogsDeblocagePersos
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -123,8 +116,7 @@ class LogsDeblocagePersos
      *
      * @return LogsDeblocagePersos
      */
-    public function setMapIndex($mapIndex)
-    {
+    public function setMapIndex($mapIndex) {
         $this->mapIndex = $mapIndex;
 
         return $this;
@@ -135,8 +127,7 @@ class LogsDeblocagePersos
      *
      * @return integer
      */
-    public function getMapIndex()
-    {
+    public function getMapIndex() {
         return $this->mapIndex;
     }
 
@@ -147,8 +138,7 @@ class LogsDeblocagePersos
      *
      * @return LogsDeblocagePersos
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -159,8 +149,7 @@ class LogsDeblocagePersos
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -171,8 +160,7 @@ class LogsDeblocagePersos
      *
      * @return LogsDeblocagePersos
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -183,8 +171,8 @@ class LogsDeblocagePersos
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
+
 }

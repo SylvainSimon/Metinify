@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.equipe_description")
  * @ORM\Entity
  */
-class EquipeDescription
-{
+class EquipeDescription {
+
     /**
      * @var integer
      *
@@ -42,15 +42,12 @@ class EquipeDescription
      */
     private $descriptionProfil;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -61,8 +58,7 @@ class EquipeDescription
      *
      * @return EquipeDescription
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -73,8 +69,7 @@ class EquipeDescription
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -85,8 +80,7 @@ class EquipeDescription
      *
      * @return EquipeDescription
      */
-    public function setImageProfil($imageProfil)
-    {
+    public function setImageProfil($imageProfil) {
         $this->imageProfil = $imageProfil;
 
         return $this;
@@ -97,8 +91,7 @@ class EquipeDescription
      *
      * @return string
      */
-    public function getImageProfil()
-    {
+    public function getImageProfil() {
         return $this->imageProfil;
     }
 
@@ -109,8 +102,7 @@ class EquipeDescription
      *
      * @return EquipeDescription
      */
-    public function setDescriptionProfil($descriptionProfil)
-    {
+    public function setDescriptionProfil($descriptionProfil) {
         $this->descriptionProfil = $descriptionProfil;
 
         return $this;
@@ -121,8 +113,8 @@ class EquipeDescription
      *
      * @return string
      */
-    public function getDescriptionProfil()
-    {
+    public function getDescriptionProfil() {
         return $this->descriptionProfil;
     }
+
 }

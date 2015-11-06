@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.lotterie_admin")
  * @ORM\Entity
  */
-class LotterieAdmin
-{
+class LotterieAdmin {
+
     /**
      * @var integer
      *
@@ -70,15 +70,12 @@ class LotterieAdmin
      */
     private $ip;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -89,8 +86,7 @@ class LotterieAdmin
      *
      * @return LotterieAdmin
      */
-    public function setDateDebut($dateDebut)
-    {
+    public function setDateDebut($dateDebut) {
         $this->dateDebut = $dateDebut;
 
         return $this;
@@ -101,8 +97,7 @@ class LotterieAdmin
      *
      * @return string
      */
-    public function getDateDebut()
-    {
+    public function getDateDebut() {
         return $this->dateDebut;
     }
 
@@ -113,8 +108,7 @@ class LotterieAdmin
      *
      * @return LotterieAdmin
      */
-    public function setDateFin($dateFin)
-    {
+    public function setDateFin($dateFin) {
         $this->dateFin = $dateFin;
 
         return $this;
@@ -125,8 +119,7 @@ class LotterieAdmin
      *
      * @return string
      */
-    public function getDateFin()
-    {
+    public function getDateFin() {
         return $this->dateFin;
     }
 
@@ -137,8 +130,7 @@ class LotterieAdmin
      *
      * @return LotterieAdmin
      */
-    public function setDateDebutcompteur($dateDebutcompteur)
-    {
+    public function setDateDebutcompteur($dateDebutcompteur) {
         $this->dateDebutcompteur = $dateDebutcompteur;
 
         return $this;
@@ -149,8 +141,7 @@ class LotterieAdmin
      *
      * @return string
      */
-    public function getDateDebutcompteur()
-    {
+    public function getDateDebutcompteur() {
         return $this->dateDebutcompteur;
     }
 
@@ -161,8 +152,7 @@ class LotterieAdmin
      *
      * @return LotterieAdmin
      */
-    public function setDatePourCompteur($datePourCompteur)
-    {
+    public function setDatePourCompteur($datePourCompteur) {
         $this->datePourCompteur = $datePourCompteur;
 
         return $this;
@@ -173,8 +163,7 @@ class LotterieAdmin
      *
      * @return string
      */
-    public function getDatePourCompteur()
-    {
+    public function getDatePourCompteur() {
         return $this->datePourCompteur;
     }
 
@@ -185,8 +174,7 @@ class LotterieAdmin
      *
      * @return LotterieAdmin
      */
-    public function setEtat($etat)
-    {
+    public function setEtat($etat) {
         $this->etat = $etat;
 
         return $this;
@@ -197,8 +185,7 @@ class LotterieAdmin
      *
      * @return string
      */
-    public function getEtat()
-    {
+    public function getEtat() {
         return $this->etat;
     }
 
@@ -209,8 +196,7 @@ class LotterieAdmin
      *
      * @return LotterieAdmin
      */
-    public function setAdmin($admin)
-    {
+    public function setAdmin($admin) {
         $this->admin = $admin;
 
         return $this;
@@ -221,8 +207,7 @@ class LotterieAdmin
      *
      * @return string
      */
-    public function getAdmin()
-    {
+    public function getAdmin() {
         return $this->admin;
     }
 
@@ -233,8 +218,7 @@ class LotterieAdmin
      *
      * @return LotterieAdmin
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -245,8 +229,8 @@ class LotterieAdmin
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
+
 }

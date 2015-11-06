@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.votes_liste_sites")
  * @ORM\Entity
  */
-class VotesListeSites
-{
+class VotesListeSites {
+
     /**
      * @var integer
      *
@@ -49,15 +49,12 @@ class VotesListeSites
      */
     private $actif;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -68,8 +65,7 @@ class VotesListeSites
      *
      * @return VotesListeSites
      */
-    public function setIdSiteVote($idSiteVote)
-    {
+    public function setIdSiteVote($idSiteVote) {
         $this->idSiteVote = $idSiteVote;
 
         return $this;
@@ -80,8 +76,7 @@ class VotesListeSites
      *
      * @return integer
      */
-    public function getIdSiteVote()
-    {
+    public function getIdSiteVote() {
         return $this->idSiteVote;
     }
 
@@ -92,8 +87,7 @@ class VotesListeSites
      *
      * @return VotesListeSites
      */
-    public function setNomSiteVote($nomSiteVote)
-    {
+    public function setNomSiteVote($nomSiteVote) {
         $this->nomSiteVote = $nomSiteVote;
 
         return $this;
@@ -104,8 +98,7 @@ class VotesListeSites
      *
      * @return string
      */
-    public function getNomSiteVote()
-    {
+    public function getNomSiteVote() {
         return $this->nomSiteVote;
     }
 
@@ -116,8 +109,7 @@ class VotesListeSites
      *
      * @return VotesListeSites
      */
-    public function setLienSiteVote($lienSiteVote)
-    {
+    public function setLienSiteVote($lienSiteVote) {
         $this->lienSiteVote = $lienSiteVote;
 
         return $this;
@@ -128,8 +120,7 @@ class VotesListeSites
      *
      * @return string
      */
-    public function getLienSiteVote()
-    {
+    public function getLienSiteVote() {
         return $this->lienSiteVote;
     }
 
@@ -140,8 +131,7 @@ class VotesListeSites
      *
      * @return VotesListeSites
      */
-    public function setActif($actif)
-    {
+    public function setActif($actif) {
         $this->actif = $actif;
 
         return $this;
@@ -152,8 +142,8 @@ class VotesListeSites
      *
      * @return integer
      */
-    public function getActif()
-    {
+    public function getActif() {
         return $this->actif;
     }
+
 }

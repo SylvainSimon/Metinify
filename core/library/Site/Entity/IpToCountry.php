@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.ip_to_country")
  * @ORM\Entity
  */
-class IpToCountry
-{
+class IpToCountry {
+
     /**
      * @var integer
      *
@@ -65,8 +65,6 @@ class IpToCountry
      */
     private $country;
 
-
-
     /**
      * Set ipFrom
      *
@@ -74,8 +72,7 @@ class IpToCountry
      *
      * @return IpToCountry
      */
-    public function setIpFrom($ipFrom)
-    {
+    public function setIpFrom($ipFrom) {
         $this->ipFrom = $ipFrom;
 
         return $this;
@@ -86,8 +83,7 @@ class IpToCountry
      *
      * @return integer
      */
-    public function getIpFrom()
-    {
+    public function getIpFrom() {
         return $this->ipFrom;
     }
 
@@ -98,8 +94,7 @@ class IpToCountry
      *
      * @return IpToCountry
      */
-    public function setIpTo($ipTo)
-    {
+    public function setIpTo($ipTo) {
         $this->ipTo = $ipTo;
 
         return $this;
@@ -110,8 +105,7 @@ class IpToCountry
      *
      * @return integer
      */
-    public function getIpTo()
-    {
+    public function getIpTo() {
         return $this->ipTo;
     }
 
@@ -122,8 +116,7 @@ class IpToCountry
      *
      * @return IpToCountry
      */
-    public function setRegistry($registry)
-    {
+    public function setRegistry($registry) {
         $this->registry = $registry;
 
         return $this;
@@ -134,8 +127,7 @@ class IpToCountry
      *
      * @return string
      */
-    public function getRegistry()
-    {
+    public function getRegistry() {
         return $this->registry;
     }
 
@@ -146,8 +138,7 @@ class IpToCountry
      *
      * @return IpToCountry
      */
-    public function setAssigned($assigned)
-    {
+    public function setAssigned($assigned) {
         $this->assigned = $assigned;
 
         return $this;
@@ -158,8 +149,7 @@ class IpToCountry
      *
      * @return integer
      */
-    public function getAssigned()
-    {
+    public function getAssigned() {
         return $this->assigned;
     }
 
@@ -170,8 +160,7 @@ class IpToCountry
      *
      * @return IpToCountry
      */
-    public function setCtry($ctry)
-    {
+    public function setCtry($ctry) {
         $this->ctry = $ctry;
 
         return $this;
@@ -182,8 +171,7 @@ class IpToCountry
      *
      * @return string
      */
-    public function getCtry()
-    {
+    public function getCtry() {
         return $this->ctry;
     }
 
@@ -194,8 +182,7 @@ class IpToCountry
      *
      * @return IpToCountry
      */
-    public function setCntry($cntry)
-    {
+    public function setCntry($cntry) {
         $this->cntry = $cntry;
 
         return $this;
@@ -206,8 +193,7 @@ class IpToCountry
      *
      * @return string
      */
-    public function getCntry()
-    {
+    public function getCntry() {
         return $this->cntry;
     }
 
@@ -218,8 +204,7 @@ class IpToCountry
      *
      * @return IpToCountry
      */
-    public function setCountry($country)
-    {
+    public function setCountry($country) {
         $this->country = $country;
 
         return $this;
@@ -230,8 +215,8 @@ class IpToCountry
      *
      * @return string
      */
-    public function getCountry()
-    {
+    public function getCountry() {
         return $this->country;
     }
+
 }

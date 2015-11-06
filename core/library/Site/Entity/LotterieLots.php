@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.lotterie_lots")
  * @ORM\Entity
  */
-class LotterieLots
-{
+class LotterieLots {
+
     /**
      * @var integer
      *
@@ -49,15 +49,12 @@ class LotterieLots
      */
     private $type;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -68,8 +65,7 @@ class LotterieLots
      *
      * @return LotterieLots
      */
-    public function setNomItem($nomItem)
-    {
+    public function setNomItem($nomItem) {
         $this->nomItem = $nomItem;
 
         return $this;
@@ -80,8 +76,7 @@ class LotterieLots
      *
      * @return string
      */
-    public function getNomItem()
-    {
+    public function getNomItem() {
         return $this->nomItem;
     }
 
@@ -92,8 +87,7 @@ class LotterieLots
      *
      * @return LotterieLots
      */
-    public function setVnum($vnum)
-    {
+    public function setVnum($vnum) {
         $this->vnum = $vnum;
 
         return $this;
@@ -104,8 +98,7 @@ class LotterieLots
      *
      * @return integer
      */
-    public function getVnum()
-    {
+    public function getVnum() {
         return $this->vnum;
     }
 
@@ -116,8 +109,7 @@ class LotterieLots
      *
      * @return LotterieLots
      */
-    public function setCount($count)
-    {
+    public function setCount($count) {
         $this->count = $count;
 
         return $this;
@@ -128,8 +120,7 @@ class LotterieLots
      *
      * @return integer
      */
-    public function getCount()
-    {
+    public function getCount() {
         return $this->count;
     }
 
@@ -140,8 +131,7 @@ class LotterieLots
      *
      * @return LotterieLots
      */
-    public function setType($type)
-    {
+    public function setType($type) {
         $this->type = $type;
 
         return $this;
@@ -152,8 +142,8 @@ class LotterieLots
      *
      * @return integer
      */
-    public function getType()
-    {
+    public function getType() {
         return $this->type;
     }
+
 }

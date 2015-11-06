@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.logs_connexion")
  * @ORM\Entity
  */
-class LogsConnexion
-{
+class LogsConnexion {
+
     /**
      * @var integer
      *
@@ -56,15 +56,12 @@ class LogsConnexion
      */
     private $resultat;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -75,8 +72,7 @@ class LogsConnexion
      *
      * @return LogsConnexion
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -87,8 +83,7 @@ class LogsConnexion
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -99,8 +94,7 @@ class LogsConnexion
      *
      * @return LogsConnexion
      */
-    public function setCompte($compte)
-    {
+    public function setCompte($compte) {
         $this->compte = $compte;
 
         return $this;
@@ -111,8 +105,7 @@ class LogsConnexion
      *
      * @return string
      */
-    public function getCompte()
-    {
+    public function getCompte() {
         return $this->compte;
     }
 
@@ -123,8 +116,7 @@ class LogsConnexion
      *
      * @return LogsConnexion
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -135,8 +127,7 @@ class LogsConnexion
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -147,8 +138,7 @@ class LogsConnexion
      *
      * @return LogsConnexion
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -159,8 +149,7 @@ class LogsConnexion
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
 
@@ -171,8 +160,7 @@ class LogsConnexion
      *
      * @return LogsConnexion
      */
-    public function setResultat($resultat)
-    {
+    public function setResultat($resultat) {
         $this->resultat = $resultat;
 
         return $this;
@@ -183,8 +171,8 @@ class LogsConnexion
      *
      * @return integer
      */
-    public function getResultat()
-    {
+    public function getResultat() {
         return $this->resultat;
     }
+
 }

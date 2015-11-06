@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.lotterie_derniergagnant")
  * @ORM\Entity
  */
-class LotterieDerniergagnant
-{
+class LotterieDerniergagnant {
+
     /**
      * @var integer
      *
@@ -56,15 +56,12 @@ class LotterieDerniergagnant
      */
     private $ipAdmin;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -75,8 +72,7 @@ class LotterieDerniergagnant
      *
      * @return LotterieDerniergagnant
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -87,8 +83,7 @@ class LotterieDerniergagnant
      *
      * @return string
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -99,8 +94,7 @@ class LotterieDerniergagnant
      *
      * @return LotterieDerniergagnant
      */
-    public function setGagnant($gagnant)
-    {
+    public function setGagnant($gagnant) {
         $this->gagnant = $gagnant;
 
         return $this;
@@ -111,8 +105,7 @@ class LotterieDerniergagnant
      *
      * @return string
      */
-    public function getGagnant()
-    {
+    public function getGagnant() {
         return $this->gagnant;
     }
 
@@ -123,8 +116,7 @@ class LotterieDerniergagnant
      *
      * @return LotterieDerniergagnant
      */
-    public function setRecompense($recompense)
-    {
+    public function setRecompense($recompense) {
         $this->recompense = $recompense;
 
         return $this;
@@ -135,8 +127,7 @@ class LotterieDerniergagnant
      *
      * @return string
      */
-    public function getRecompense()
-    {
+    public function getRecompense() {
         return $this->recompense;
     }
 
@@ -147,8 +138,7 @@ class LotterieDerniergagnant
      *
      * @return LotterieDerniergagnant
      */
-    public function setAdmin($admin)
-    {
+    public function setAdmin($admin) {
         $this->admin = $admin;
 
         return $this;
@@ -159,8 +149,7 @@ class LotterieDerniergagnant
      *
      * @return string
      */
-    public function getAdmin()
-    {
+    public function getAdmin() {
         return $this->admin;
     }
 
@@ -171,8 +160,7 @@ class LotterieDerniergagnant
      *
      * @return LotterieDerniergagnant
      */
-    public function setIpAdmin($ipAdmin)
-    {
+    public function setIpAdmin($ipAdmin) {
         $this->ipAdmin = $ipAdmin;
 
         return $this;
@@ -183,8 +171,8 @@ class LotterieDerniergagnant
      *
      * @return string
      */
-    public function getIpAdmin()
-    {
+    public function getIpAdmin() {
         return $this->ipAdmin;
     }
+
 }

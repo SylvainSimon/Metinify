@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.historique_banissements")
  * @ORM\Entity
  */
-class HistoriqueBanissements
-{
+class HistoriqueBanissements {
+
     /**
      * @var integer
      *
@@ -91,15 +91,12 @@ class HistoriqueBanissements
      */
     private $debannPar;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -110,8 +107,7 @@ class HistoriqueBanissements
      *
      * @return HistoriqueBanissements
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -122,8 +118,7 @@ class HistoriqueBanissements
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -134,8 +129,7 @@ class HistoriqueBanissements
      *
      * @return HistoriqueBanissements
      */
-    public function setDateDebutBannissement($dateDebutBannissement)
-    {
+    public function setDateDebutBannissement($dateDebutBannissement) {
         $this->dateDebutBannissement = $dateDebutBannissement;
 
         return $this;
@@ -146,8 +140,7 @@ class HistoriqueBanissements
      *
      * @return \DateTime
      */
-    public function getDateDebutBannissement()
-    {
+    public function getDateDebutBannissement() {
         return $this->dateDebutBannissement;
     }
 
@@ -158,8 +151,7 @@ class HistoriqueBanissements
      *
      * @return HistoriqueBanissements
      */
-    public function setDateFinBannissement($dateFinBannissement)
-    {
+    public function setDateFinBannissement($dateFinBannissement) {
         $this->dateFinBannissement = $dateFinBannissement;
 
         return $this;
@@ -170,8 +162,7 @@ class HistoriqueBanissements
      *
      * @return \DateTime
      */
-    public function getDateFinBannissement()
-    {
+    public function getDateFinBannissement() {
         return $this->dateFinBannissement;
     }
 
@@ -182,8 +173,7 @@ class HistoriqueBanissements
      *
      * @return HistoriqueBanissements
      */
-    public function setRaisonBannissement($raisonBannissement)
-    {
+    public function setRaisonBannissement($raisonBannissement) {
         $this->raisonBannissement = $raisonBannissement;
 
         return $this;
@@ -194,8 +184,7 @@ class HistoriqueBanissements
      *
      * @return integer
      */
-    public function getRaisonBannissement()
-    {
+    public function getRaisonBannissement() {
         return $this->raisonBannissement;
     }
 
@@ -206,8 +195,7 @@ class HistoriqueBanissements
      *
      * @return HistoriqueBanissements
      */
-    public function setCommentaireBannissement($commentaireBannissement)
-    {
+    public function setCommentaireBannissement($commentaireBannissement) {
         $this->commentaireBannissement = $commentaireBannissement;
 
         return $this;
@@ -218,8 +206,7 @@ class HistoriqueBanissements
      *
      * @return string
      */
-    public function getCommentaireBannissement()
-    {
+    public function getCommentaireBannissement() {
         return $this->commentaireBannissement;
     }
 
@@ -230,8 +217,7 @@ class HistoriqueBanissements
      *
      * @return HistoriqueBanissements
      */
-    public function setIdCompteGm($idCompteGm)
-    {
+    public function setIdCompteGm($idCompteGm) {
         $this->idCompteGm = $idCompteGm;
 
         return $this;
@@ -242,8 +228,7 @@ class HistoriqueBanissements
      *
      * @return integer
      */
-    public function getIdCompteGm()
-    {
+    public function getIdCompteGm() {
         return $this->idCompteGm;
     }
 
@@ -254,8 +239,7 @@ class HistoriqueBanissements
      *
      * @return HistoriqueBanissements
      */
-    public function setIpGm($ipGm)
-    {
+    public function setIpGm($ipGm) {
         $this->ipGm = $ipGm;
 
         return $this;
@@ -266,8 +250,7 @@ class HistoriqueBanissements
      *
      * @return string
      */
-    public function getIpGm()
-    {
+    public function getIpGm() {
         return $this->ipGm;
     }
 
@@ -278,8 +261,7 @@ class HistoriqueBanissements
      *
      * @return HistoriqueBanissements
      */
-    public function setDuree($duree)
-    {
+    public function setDuree($duree) {
         $this->duree = $duree;
 
         return $this;
@@ -290,8 +272,7 @@ class HistoriqueBanissements
      *
      * @return integer
      */
-    public function getDuree()
-    {
+    public function getDuree() {
         return $this->duree;
     }
 
@@ -302,8 +283,7 @@ class HistoriqueBanissements
      *
      * @return HistoriqueBanissements
      */
-    public function setDefinitif($definitif)
-    {
+    public function setDefinitif($definitif) {
         $this->definitif = $definitif;
 
         return $this;
@@ -314,8 +294,7 @@ class HistoriqueBanissements
      *
      * @return integer
      */
-    public function getDefinitif()
-    {
+    public function getDefinitif() {
         return $this->definitif;
     }
 
@@ -326,8 +305,7 @@ class HistoriqueBanissements
      *
      * @return HistoriqueBanissements
      */
-    public function setDebannPar($debannPar)
-    {
+    public function setDebannPar($debannPar) {
         $this->debannPar = $debannPar;
 
         return $this;
@@ -338,8 +316,8 @@ class HistoriqueBanissements
      *
      * @return integer
      */
-    public function getDebannPar()
-    {
+    public function getDebannPar() {
         return $this->debannPar;
     }
+
 }

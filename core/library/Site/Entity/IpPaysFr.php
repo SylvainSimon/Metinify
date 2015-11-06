@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.ip_pays_fr", indexes={@ORM\Index(name="COUNTRY_NAME", columns={"country_name"})})
  * @ORM\Entity
  */
-class IpPaysFr
-{
+class IpPaysFr {
+
     /**
      * @var integer
      *
@@ -37,8 +37,6 @@ class IpPaysFr
      */
     private $countryNameFr;
 
-
-
     /**
      * Set id
      *
@@ -46,8 +44,7 @@ class IpPaysFr
      *
      * @return IpPaysFr
      */
-    public function setId($id)
-    {
+    public function setId($id) {
         $this->id = $id;
 
         return $this;
@@ -58,8 +55,7 @@ class IpPaysFr
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -70,8 +66,7 @@ class IpPaysFr
      *
      * @return IpPaysFr
      */
-    public function setCountryName($countryName)
-    {
+    public function setCountryName($countryName) {
         $this->countryName = $countryName;
 
         return $this;
@@ -82,8 +77,7 @@ class IpPaysFr
      *
      * @return string
      */
-    public function getCountryName()
-    {
+    public function getCountryName() {
         return $this->countryName;
     }
 
@@ -94,8 +88,7 @@ class IpPaysFr
      *
      * @return IpPaysFr
      */
-    public function setCountryNameFr($countryNameFr)
-    {
+    public function setCountryNameFr($countryNameFr) {
         $this->countryNameFr = $countryNameFr;
 
         return $this;
@@ -106,8 +99,8 @@ class IpPaysFr
      *
      * @return string
      */
-    public function getCountryNameFr()
-    {
+    public function getCountryNameFr() {
         return $this->countryNameFr;
     }
+
 }

@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.logs_code_entrepot_changement")
  * @ORM\Entity
  */
-class LogsCodeEntrepotChangement
-{
+class LogsCodeEntrepotChangement {
+
     /**
      * @var integer
      *
@@ -63,15 +63,12 @@ class LogsCodeEntrepotChangement
      */
     private $ip;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -82,8 +79,7 @@ class LogsCodeEntrepotChangement
      *
      * @return LogsCodeEntrepotChangement
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -94,8 +90,7 @@ class LogsCodeEntrepotChangement
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -106,8 +101,7 @@ class LogsCodeEntrepotChangement
      *
      * @return LogsCodeEntrepotChangement
      */
-    public function setCompte($compte)
-    {
+    public function setCompte($compte) {
         $this->compte = $compte;
 
         return $this;
@@ -118,8 +112,7 @@ class LogsCodeEntrepotChangement
      *
      * @return string
      */
-    public function getCompte()
-    {
+    public function getCompte() {
         return $this->compte;
     }
 
@@ -130,8 +123,7 @@ class LogsCodeEntrepotChangement
      *
      * @return LogsCodeEntrepotChangement
      */
-    public function setAncienCode($ancienCode)
-    {
+    public function setAncienCode($ancienCode) {
         $this->ancienCode = $ancienCode;
 
         return $this;
@@ -142,8 +134,7 @@ class LogsCodeEntrepotChangement
      *
      * @return string
      */
-    public function getAncienCode()
-    {
+    public function getAncienCode() {
         return $this->ancienCode;
     }
 
@@ -154,8 +145,7 @@ class LogsCodeEntrepotChangement
      *
      * @return LogsCodeEntrepotChangement
      */
-    public function setNouveauCode($nouveauCode)
-    {
+    public function setNouveauCode($nouveauCode) {
         $this->nouveauCode = $nouveauCode;
 
         return $this;
@@ -166,8 +156,7 @@ class LogsCodeEntrepotChangement
      *
      * @return string
      */
-    public function getNouveauCode()
-    {
+    public function getNouveauCode() {
         return $this->nouveauCode;
     }
 
@@ -178,8 +167,7 @@ class LogsCodeEntrepotChangement
      *
      * @return LogsCodeEntrepotChangement
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -190,8 +178,7 @@ class LogsCodeEntrepotChangement
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -202,8 +189,7 @@ class LogsCodeEntrepotChangement
      *
      * @return LogsCodeEntrepotChangement
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -214,8 +200,8 @@ class LogsCodeEntrepotChangement
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
+
 }

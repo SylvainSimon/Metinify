@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.logs_deblocage_yangs")
  * @ORM\Entity
  */
-class LogsDeblocageYangs
-{
+class LogsDeblocageYangs {
+
     /**
      * @var integer
      *
@@ -56,15 +56,12 @@ class LogsDeblocageYangs
      */
     private $logYangs;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -75,8 +72,7 @@ class LogsDeblocageYangs
      *
      * @return LogsDeblocageYangs
      */
-    public function setIdPerso($idPerso)
-    {
+    public function setIdPerso($idPerso) {
         $this->idPerso = $idPerso;
 
         return $this;
@@ -87,8 +83,7 @@ class LogsDeblocageYangs
      *
      * @return string
      */
-    public function getIdPerso()
-    {
+    public function getIdPerso() {
         return $this->idPerso;
     }
 
@@ -99,8 +94,7 @@ class LogsDeblocageYangs
      *
      * @return LogsDeblocageYangs
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -111,8 +105,7 @@ class LogsDeblocageYangs
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -123,8 +116,7 @@ class LogsDeblocageYangs
      *
      * @return LogsDeblocageYangs
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -135,8 +127,7 @@ class LogsDeblocageYangs
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -147,8 +138,7 @@ class LogsDeblocageYangs
      *
      * @return LogsDeblocageYangs
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -159,8 +149,7 @@ class LogsDeblocageYangs
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
 
@@ -171,8 +160,7 @@ class LogsDeblocageYangs
      *
      * @return LogsDeblocageYangs
      */
-    public function setLogYangs($logYangs)
-    {
+    public function setLogYangs($logYangs) {
         $this->logYangs = $logYangs;
 
         return $this;
@@ -183,8 +171,8 @@ class LogsDeblocageYangs
      *
      * @return integer
      */
-    public function getLogYangs()
-    {
+    public function getLogYangs() {
         return $this->logYangs;
     }
+
 }

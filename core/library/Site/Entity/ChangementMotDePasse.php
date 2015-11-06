@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.changement_mot_de_passe")
  * @ORM\Entity
  */
-class ChangementMotDePasse
-{
+class ChangementMotDePasse {
+
     /**
      * @var integer
      *
@@ -63,15 +63,12 @@ class ChangementMotDePasse
      */
     private $ip;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -82,8 +79,7 @@ class ChangementMotDePasse
      *
      * @return ChangementMotDePasse
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -94,8 +90,7 @@ class ChangementMotDePasse
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -106,8 +101,7 @@ class ChangementMotDePasse
      *
      * @return ChangementMotDePasse
      */
-    public function setCompte($compte)
-    {
+    public function setCompte($compte) {
         $this->compte = $compte;
 
         return $this;
@@ -118,8 +112,7 @@ class ChangementMotDePasse
      *
      * @return string
      */
-    public function getCompte()
-    {
+    public function getCompte() {
         return $this->compte;
     }
 
@@ -130,8 +123,7 @@ class ChangementMotDePasse
      *
      * @return ChangementMotDePasse
      */
-    public function setNouveauMotDePasse($nouveauMotDePasse)
-    {
+    public function setNouveauMotDePasse($nouveauMotDePasse) {
         $this->nouveauMotDePasse = $nouveauMotDePasse;
 
         return $this;
@@ -142,8 +134,7 @@ class ChangementMotDePasse
      *
      * @return string
      */
-    public function getNouveauMotDePasse()
-    {
+    public function getNouveauMotDePasse() {
         return $this->nouveauMotDePasse;
     }
 
@@ -154,8 +145,7 @@ class ChangementMotDePasse
      *
      * @return ChangementMotDePasse
      */
-    public function setNumeroVerif($numeroVerif)
-    {
+    public function setNumeroVerif($numeroVerif) {
         $this->numeroVerif = $numeroVerif;
 
         return $this;
@@ -166,8 +156,7 @@ class ChangementMotDePasse
      *
      * @return integer
      */
-    public function getNumeroVerif()
-    {
+    public function getNumeroVerif() {
         return $this->numeroVerif;
     }
 
@@ -178,8 +167,7 @@ class ChangementMotDePasse
      *
      * @return ChangementMotDePasse
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -190,8 +178,7 @@ class ChangementMotDePasse
      *
      * @return string
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -202,8 +189,7 @@ class ChangementMotDePasse
      *
      * @return ChangementMotDePasse
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -214,8 +200,8 @@ class ChangementMotDePasse
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
+
 }

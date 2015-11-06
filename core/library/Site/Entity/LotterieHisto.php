@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.lotterie_histo")
  * @ORM\Entity
  */
-class LotterieHisto
-{
+class LotterieHisto {
+
     /**
      * @var integer
      *
@@ -63,15 +63,12 @@ class LotterieHisto
      */
     private $ipAdmin;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -82,8 +79,7 @@ class LotterieHisto
      *
      * @return LotterieHisto
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -94,8 +90,7 @@ class LotterieHisto
      *
      * @return string
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -106,8 +101,7 @@ class LotterieHisto
      *
      * @return LotterieHisto
      */
-    public function setGagnant($gagnant)
-    {
+    public function setGagnant($gagnant) {
         $this->gagnant = $gagnant;
 
         return $this;
@@ -118,8 +112,7 @@ class LotterieHisto
      *
      * @return string
      */
-    public function getGagnant()
-    {
+    public function getGagnant() {
         return $this->gagnant;
     }
 
@@ -130,8 +123,7 @@ class LotterieHisto
      *
      * @return LotterieHisto
      */
-    public function setRecompense($recompense)
-    {
+    public function setRecompense($recompense) {
         $this->recompense = $recompense;
 
         return $this;
@@ -142,8 +134,7 @@ class LotterieHisto
      *
      * @return string
      */
-    public function getRecompense()
-    {
+    public function getRecompense() {
         return $this->recompense;
     }
 
@@ -154,8 +145,7 @@ class LotterieHisto
      *
      * @return LotterieHisto
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -166,8 +156,7 @@ class LotterieHisto
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
 
@@ -178,8 +167,7 @@ class LotterieHisto
      *
      * @return LotterieHisto
      */
-    public function setAdmin($admin)
-    {
+    public function setAdmin($admin) {
         $this->admin = $admin;
 
         return $this;
@@ -190,8 +178,7 @@ class LotterieHisto
      *
      * @return string
      */
-    public function getAdmin()
-    {
+    public function getAdmin() {
         return $this->admin;
     }
 
@@ -202,8 +189,7 @@ class LotterieHisto
      *
      * @return LotterieHisto
      */
-    public function setIpAdmin($ipAdmin)
-    {
+    public function setIpAdmin($ipAdmin) {
         $this->ipAdmin = $ipAdmin;
 
         return $this;
@@ -214,8 +200,8 @@ class LotterieHisto
      *
      * @return string
      */
-    public function getIpAdmin()
-    {
+    public function getIpAdmin() {
         return $this->ipAdmin;
     }
+
 }

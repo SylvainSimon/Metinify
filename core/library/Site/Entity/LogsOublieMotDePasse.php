@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.logs_oublie_mot_de_passe")
  * @ORM\Entity
  */
-class LogsOublieMotDePasse
-{
+class LogsOublieMotDePasse {
+
     /**
      * @var integer
      *
@@ -56,15 +56,12 @@ class LogsOublieMotDePasse
      */
     private $ip;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -75,8 +72,7 @@ class LogsOublieMotDePasse
      *
      * @return LogsOublieMotDePasse
      */
-    public function setCompteEssaye($compteEssaye)
-    {
+    public function setCompteEssaye($compteEssaye) {
         $this->compteEssaye = $compteEssaye;
 
         return $this;
@@ -87,8 +83,7 @@ class LogsOublieMotDePasse
      *
      * @return string
      */
-    public function getCompteEssaye()
-    {
+    public function getCompteEssaye() {
         return $this->compteEssaye;
     }
 
@@ -99,8 +94,7 @@ class LogsOublieMotDePasse
      *
      * @return LogsOublieMotDePasse
      */
-    public function setEmailEssaye($emailEssaye)
-    {
+    public function setEmailEssaye($emailEssaye) {
         $this->emailEssaye = $emailEssaye;
 
         return $this;
@@ -111,8 +105,7 @@ class LogsOublieMotDePasse
      *
      * @return string
      */
-    public function getEmailEssaye()
-    {
+    public function getEmailEssaye() {
         return $this->emailEssaye;
     }
 
@@ -123,8 +116,7 @@ class LogsOublieMotDePasse
      *
      * @return LogsOublieMotDePasse
      */
-    public function setDateEssai($dateEssai)
-    {
+    public function setDateEssai($dateEssai) {
         $this->dateEssai = $dateEssai;
 
         return $this;
@@ -135,8 +127,7 @@ class LogsOublieMotDePasse
      *
      * @return \DateTime
      */
-    public function getDateEssai()
-    {
+    public function getDateEssai() {
         return $this->dateEssai;
     }
 
@@ -147,8 +138,7 @@ class LogsOublieMotDePasse
      *
      * @return LogsOublieMotDePasse
      */
-    public function setResultatDemande($resultatDemande)
-    {
+    public function setResultatDemande($resultatDemande) {
         $this->resultatDemande = $resultatDemande;
 
         return $this;
@@ -159,8 +149,7 @@ class LogsOublieMotDePasse
      *
      * @return integer
      */
-    public function getResultatDemande()
-    {
+    public function getResultatDemande() {
         return $this->resultatDemande;
     }
 
@@ -171,8 +160,7 @@ class LogsOublieMotDePasse
      *
      * @return LogsOublieMotDePasse
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -183,8 +171,8 @@ class LogsOublieMotDePasse
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
+
 }

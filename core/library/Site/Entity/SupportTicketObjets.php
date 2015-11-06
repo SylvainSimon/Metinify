@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.support_ticket_objets")
  * @ORM\Entity
  */
-class SupportTicketObjets
-{
+class SupportTicketObjets {
+
     /**
      * @var integer
      *
@@ -28,15 +28,12 @@ class SupportTicketObjets
      */
     private $objets;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -47,8 +44,7 @@ class SupportTicketObjets
      *
      * @return SupportTicketObjets
      */
-    public function setObjets($objets)
-    {
+    public function setObjets($objets) {
         $this->objets = $objets;
 
         return $this;
@@ -59,8 +55,8 @@ class SupportTicketObjets
      *
      * @return string
      */
-    public function getObjets()
-    {
+    public function getObjets() {
         return $this->objets;
     }
+
 }

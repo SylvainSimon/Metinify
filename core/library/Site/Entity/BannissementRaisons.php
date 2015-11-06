@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.bannissement_raisons")
  * @ORM\Entity
  */
-class BannissementRaisons
-{
+class BannissementRaisons {
+
     /**
      * @var integer
      *
@@ -49,15 +49,12 @@ class BannissementRaisons
      */
     private $recidive;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -68,8 +65,7 @@ class BannissementRaisons
      *
      * @return BannissementRaisons
      */
-    public function setRaison($raison)
-    {
+    public function setRaison($raison) {
         $this->raison = $raison;
 
         return $this;
@@ -80,8 +76,7 @@ class BannissementRaisons
      *
      * @return string
      */
-    public function getRaison()
-    {
+    public function getRaison() {
         return $this->raison;
     }
 
@@ -92,8 +87,7 @@ class BannissementRaisons
      *
      * @return BannissementRaisons
      */
-    public function setSanction($sanction)
-    {
+    public function setSanction($sanction) {
         $this->sanction = $sanction;
 
         return $this;
@@ -104,8 +98,7 @@ class BannissementRaisons
      *
      * @return integer
      */
-    public function getSanction()
-    {
+    public function getSanction() {
         return $this->sanction;
     }
 
@@ -116,8 +109,7 @@ class BannissementRaisons
      *
      * @return BannissementRaisons
      */
-    public function setType($type)
-    {
+    public function setType($type) {
         $this->type = $type;
 
         return $this;
@@ -128,8 +120,7 @@ class BannissementRaisons
      *
      * @return integer
      */
-    public function getType()
-    {
+    public function getType() {
         return $this->type;
     }
 
@@ -140,8 +131,7 @@ class BannissementRaisons
      *
      * @return BannissementRaisons
      */
-    public function setRecidive($recidive)
-    {
+    public function setRecidive($recidive) {
         $this->recidive = $recidive;
 
         return $this;
@@ -152,8 +142,8 @@ class BannissementRaisons
      *
      * @return integer
      */
-    public function getRecidive()
-    {
+    public function getRecidive() {
         return $this->recidive;
     }
+
 }

@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.marche_personnages")
  * @ORM\Entity
  */
-class MarchePersonnages
-{
+class MarchePersonnages {
+
     /**
      * @var integer
      *
@@ -42,15 +42,12 @@ class MarchePersonnages
      */
     private $pid;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -61,8 +58,7 @@ class MarchePersonnages
      *
      * @return MarchePersonnages
      */
-    public function setIdProprietaire($idProprietaire)
-    {
+    public function setIdProprietaire($idProprietaire) {
         $this->idProprietaire = $idProprietaire;
 
         return $this;
@@ -73,8 +69,7 @@ class MarchePersonnages
      *
      * @return integer
      */
-    public function getIdProprietaire()
-    {
+    public function getIdProprietaire() {
         return $this->idProprietaire;
     }
 
@@ -85,8 +80,7 @@ class MarchePersonnages
      *
      * @return MarchePersonnages
      */
-    public function setIdPersonnage($idPersonnage)
-    {
+    public function setIdPersonnage($idPersonnage) {
         $this->idPersonnage = $idPersonnage;
 
         return $this;
@@ -97,8 +91,7 @@ class MarchePersonnages
      *
      * @return integer
      */
-    public function getIdPersonnage()
-    {
+    public function getIdPersonnage() {
         return $this->idPersonnage;
     }
 
@@ -109,8 +102,7 @@ class MarchePersonnages
      *
      * @return MarchePersonnages
      */
-    public function setPid($pid)
-    {
+    public function setPid($pid) {
         $this->pid = $pid;
 
         return $this;
@@ -121,8 +113,8 @@ class MarchePersonnages
      *
      * @return string
      */
-    public function getPid()
-    {
+    public function getPid() {
         return $this->pid;
     }
+
 }

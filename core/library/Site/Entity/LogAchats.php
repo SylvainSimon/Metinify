@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.log_achats")
  * @ORM\Entity
  */
-class LogAchats
-{
+class LogAchats {
+
     /**
      * @var integer
      *
@@ -91,15 +91,12 @@ class LogAchats
      */
     private $monnaie;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -110,8 +107,7 @@ class LogAchats
      *
      * @return LogAchats
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -122,8 +118,7 @@ class LogAchats
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -134,8 +129,7 @@ class LogAchats
      *
      * @return LogAchats
      */
-    public function setCompte($compte)
-    {
+    public function setCompte($compte) {
         $this->compte = $compte;
 
         return $this;
@@ -146,8 +140,7 @@ class LogAchats
      *
      * @return string
      */
-    public function getCompte()
-    {
+    public function getCompte() {
         return $this->compte;
     }
 
@@ -158,8 +151,7 @@ class LogAchats
      *
      * @return LogAchats
      */
-    public function setVnumItem($vnumItem)
-    {
+    public function setVnumItem($vnumItem) {
         $this->vnumItem = $vnumItem;
 
         return $this;
@@ -170,8 +162,7 @@ class LogAchats
      *
      * @return integer
      */
-    public function getVnumItem()
-    {
+    public function getVnumItem() {
         return $this->vnumItem;
     }
 
@@ -182,8 +173,7 @@ class LogAchats
      *
      * @return LogAchats
      */
-    public function setItem($item)
-    {
+    public function setItem($item) {
         $this->item = $item;
 
         return $this;
@@ -194,8 +184,7 @@ class LogAchats
      *
      * @return string
      */
-    public function getItem()
-    {
+    public function getItem() {
         return $this->item;
     }
 
@@ -206,8 +195,7 @@ class LogAchats
      *
      * @return LogAchats
      */
-    public function setQuantite($quantite)
-    {
+    public function setQuantite($quantite) {
         $this->quantite = $quantite;
 
         return $this;
@@ -218,8 +206,7 @@ class LogAchats
      *
      * @return integer
      */
-    public function getQuantite()
-    {
+    public function getQuantite() {
         return $this->quantite;
     }
 
@@ -230,8 +217,7 @@ class LogAchats
      *
      * @return LogAchats
      */
-    public function setPrix($prix)
-    {
+    public function setPrix($prix) {
         $this->prix = $prix;
 
         return $this;
@@ -242,8 +228,7 @@ class LogAchats
      *
      * @return integer
      */
-    public function getPrix()
-    {
+    public function getPrix() {
         return $this->prix;
     }
 
@@ -254,8 +239,7 @@ class LogAchats
      *
      * @return LogAchats
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -266,8 +250,7 @@ class LogAchats
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -278,8 +261,7 @@ class LogAchats
      *
      * @return LogAchats
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -290,8 +272,7 @@ class LogAchats
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
 
@@ -302,8 +283,7 @@ class LogAchats
      *
      * @return LogAchats
      */
-    public function setResultat($resultat)
-    {
+    public function setResultat($resultat) {
         $this->resultat = $resultat;
 
         return $this;
@@ -314,8 +294,7 @@ class LogAchats
      *
      * @return string
      */
-    public function getResultat()
-    {
+    public function getResultat() {
         return $this->resultat;
     }
 
@@ -326,8 +305,7 @@ class LogAchats
      *
      * @return LogAchats
      */
-    public function setMonnaie($monnaie)
-    {
+    public function setMonnaie($monnaie) {
         $this->monnaie = $monnaie;
 
         return $this;
@@ -338,8 +316,8 @@ class LogAchats
      *
      * @return string
      */
-    public function getMonnaie()
-    {
+    public function getMonnaie() {
         return $this->monnaie;
     }
+
 }

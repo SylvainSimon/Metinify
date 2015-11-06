@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.logs_changement_mot_de_passe")
  * @ORM\Entity
  */
-class LogsChangementMotDePasse
-{
+class LogsChangementMotDePasse {
+
     /**
      * @var integer
      *
@@ -56,15 +56,12 @@ class LogsChangementMotDePasse
      */
     private $ip;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -75,8 +72,7 @@ class LogsChangementMotDePasse
      *
      * @return LogsChangementMotDePasse
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -87,8 +83,7 @@ class LogsChangementMotDePasse
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -99,8 +94,7 @@ class LogsChangementMotDePasse
      *
      * @return LogsChangementMotDePasse
      */
-    public function setCompte($compte)
-    {
+    public function setCompte($compte) {
         $this->compte = $compte;
 
         return $this;
@@ -111,8 +105,7 @@ class LogsChangementMotDePasse
      *
      * @return string
      */
-    public function getCompte()
-    {
+    public function getCompte() {
         return $this->compte;
     }
 
@@ -123,8 +116,7 @@ class LogsChangementMotDePasse
      *
      * @return LogsChangementMotDePasse
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
 
         return $this;
@@ -135,8 +127,7 @@ class LogsChangementMotDePasse
      *
      * @return string
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
@@ -147,8 +138,7 @@ class LogsChangementMotDePasse
      *
      * @return LogsChangementMotDePasse
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -159,8 +149,7 @@ class LogsChangementMotDePasse
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -171,8 +160,7 @@ class LogsChangementMotDePasse
      *
      * @return LogsChangementMotDePasse
      */
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
@@ -183,8 +171,8 @@ class LogsChangementMotDePasse
      *
      * @return string
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
+
 }

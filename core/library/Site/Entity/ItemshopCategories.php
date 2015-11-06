@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.itemshop_categories")
  * @ORM\Entity
  */
-class ItemshopCategories
-{
+class ItemshopCategories {
+
     /**
      * @var integer
      *
@@ -42,15 +42,12 @@ class ItemshopCategories
      */
     private $description;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -61,8 +58,7 @@ class ItemshopCategories
      *
      * @return ItemshopCategories
      */
-    public function setCat($cat)
-    {
+    public function setCat($cat) {
         $this->cat = $cat;
 
         return $this;
@@ -73,8 +69,7 @@ class ItemshopCategories
      *
      * @return integer
      */
-    public function getCat()
-    {
+    public function getCat() {
         return $this->cat;
     }
 
@@ -85,8 +80,7 @@ class ItemshopCategories
      *
      * @return ItemshopCategories
      */
-    public function setNom($nom)
-    {
+    public function setNom($nom) {
         $this->nom = $nom;
 
         return $this;
@@ -97,8 +91,7 @@ class ItemshopCategories
      *
      * @return string
      */
-    public function getNom()
-    {
+    public function getNom() {
         return $this->nom;
     }
 
@@ -109,8 +102,7 @@ class ItemshopCategories
      *
      * @return ItemshopCategories
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -121,8 +113,8 @@ class ItemshopCategories
      *
      * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
+
 }

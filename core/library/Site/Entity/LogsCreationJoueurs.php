@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.logs_creation_joueurs", uniqueConstraints={@ORM\UniqueConstraint(name="id", columns={"id"})})
  * @ORM\Entity
  */
-class LogsCreationJoueurs
-{
+class LogsCreationJoueurs {
+
     /**
      * @var integer
      *
@@ -35,15 +35,12 @@ class LogsCreationJoueurs
      */
     private $date;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -54,8 +51,7 @@ class LogsCreationJoueurs
      *
      * @return LogsCreationJoueurs
      */
-    public function setIdPerso($idPerso)
-    {
+    public function setIdPerso($idPerso) {
         $this->idPerso = $idPerso;
 
         return $this;
@@ -66,8 +62,7 @@ class LogsCreationJoueurs
      *
      * @return integer
      */
-    public function getIdPerso()
-    {
+    public function getIdPerso() {
         return $this->idPerso;
     }
 
@@ -78,8 +73,7 @@ class LogsCreationJoueurs
      *
      * @return LogsCreationJoueurs
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -90,8 +84,8 @@ class LogsCreationJoueurs
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
+
 }
