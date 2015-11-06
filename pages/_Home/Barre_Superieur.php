@@ -4,7 +4,7 @@
     </a>
 </div>
 
-<?php if (empty($_SESSION['Utilisateur'])) { ?>
+<?php if (!$this->isConnected) { ?>
 
     <div id="Barre_Haut">
         <div id="Ajax_Connexion">
@@ -21,4 +21,3 @@
     </div>
 
 <?php } ?>
-</div>

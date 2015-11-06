@@ -9,6 +9,7 @@ class CoreHelper {
     public $objSession;
     public $objTwig;
     public $objAccount = null;
+    public $isConnected = false;
     public $response;
     public $isProtected = false;
     public $isPage = false;
@@ -50,10 +51,16 @@ class CoreHelper {
         $this->response = new Response();
 
         if ($session->get("ID") !== null) {
+            
+            $this->isConnected = true;
+
             $objAccount = Account\AccountHelper::getAccountRepository()->find($session->get("ID"));
             $this->objAccount = $objAccount;
             $this->ReloadSessionValues();
+        } else {
+            $this->isConnected = false;
         }
+
 
         if ($this->isProtected) {
             $this->ControleConnexion();
@@ -65,6 +72,7 @@ class CoreHelper {
         global $session;
         if ($this->isPage) {
             if ($session->get("ID") !== null) {
+
                 if ($this->objAccount->getStatus() == "BLOCK") {
 
                     if (!$this->isAllowForBlock) {
@@ -79,6 +87,7 @@ class CoreHelper {
         }
         if ($this->isScript) {
             if ($session->get("ID") !== null) {
+
                 if ($this->objAccount->getStatus() == "BLOCK") {
 
                     if (!$this->isAllowForBlock) {
@@ -89,6 +98,7 @@ class CoreHelper {
                     }
                 }
             } else {
+
                 $this->response->setStatusCode(418);
                 $this->response->setContent("");
                 echo $this->response->send();
@@ -108,7 +118,7 @@ class CoreHelper {
     }
 
     public function VerifMonJoueur($idParametre = 0) {
-        
+
         global $session;
 
         $objPlayer = \Player\PlayerHelper::getPlayerRepository()->find($idParametre);

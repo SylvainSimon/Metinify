@@ -39,7 +39,7 @@ class IndexWebsite extends PageHelper {
 
                 <script src="assets/js/Jquery_Superbox.js" type="text/javascript"></script>
                 <script src="assets/js/jquery.cookie/js.cookie.min.js" type='text/javascript'></script>
-                <script src="js/fonctions.min.js" type='text/javascript'></script>
+                <script src="assets/js/fonctions.min.js" type='text/javascript'></script>
                 <script src="assets/js/Ajax.js" type='text/javascript'></script>
                 <script src="assets/js/Ajax_Connexion.js" type='text/javascript'></script>
                 <script src="assets/js/Ajax_Classement.js" type="text/javascript"></script>

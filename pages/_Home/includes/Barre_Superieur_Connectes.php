@@ -7,22 +7,6 @@ require __DIR__ . '../../../../core/initialize.php';
 class Barre_Superieur_Connectes extends \PageHelper {
 
     public function run() {
-
-        if (!empty($_SESSION['ID'])) {
-
-            $Verification_Donnees = "SELECT cash, mileage 
-                             FROM account.account
-                             WHERE id = :id
-                             LIMIT 1";
-            $Parametres_Verification_Donnees = $this->objConnection->prepare($Verification_Donnees);
-            $Parametres_Verification_Donnees->execute(array(
-                ":id" => $_SESSION['ID']));
-            $Parametres_Verification_Donnees->setFetchMode(\PDO::FETCH_OBJ);
-            $Donnees_Verification_Donnees = $Parametres_Verification_Donnees->fetch();
-
-            $_SESSION["VamoNaies"] = $Donnees_Verification_Donnees->cash;
-            $_SESSION["TanaNaies"] = $Donnees_Verification_Donnees->mileage;
-        }
         ?>
 
         <div class="col-md-7 col-sm-7 col-xs-7">

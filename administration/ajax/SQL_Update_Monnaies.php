@@ -8,7 +8,7 @@ class SQL_Update_Monnaies extends \PageHelper {
 
     public function run() {
         ?>
-        <?php if (!empty($_SESSION["ID"])) { ?>
+        <?php if ($this->isConnected) { ?>
             <?php
 
             /* ------------------------ Vérification Données ---------------------------- */

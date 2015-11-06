@@ -36,7 +36,7 @@ class ItemShopRechargement extends \PageHelper {
                     <div class="box-body">
 
                         <?php
-                        if (empty($_SESSION["ID"])) {
+                        if (!$this->isConnected) {
                             if (!empty($_POST['idcompte'])) {
 
                                 $Id_Compte = $_POST['idcompte'];

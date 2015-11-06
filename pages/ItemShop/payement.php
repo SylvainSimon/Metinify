@@ -62,7 +62,7 @@ class payement extends \PageHelper {
                 $_GET['data']));
             /* ----------------------------------------------------------------------------- */
 
-            if (!empty($_SESSION['ID'])) {
+            if ($this->isConnected) {
                 $_SESSION['VamoNaies'] = ($_SESSION['VamoNaies'] + 1350);
             }
 
@@ -82,7 +82,7 @@ class payement extends \PageHelper {
                 ':ip' => $Rechargement_Ip));
             /* ---------------------------------------------------------------------------- */
 
-            if (!empty($_SESSION['ID'])) {
+            if ($this->isConnected) {
                 header('Location: ItemShopRechargementTerm.php?Resultat=Reussi&id_compte=' . $_GET['data'] . '&id=' . $Dernier_Numero . '&compteur=oui');
                 exit;
             } else {
