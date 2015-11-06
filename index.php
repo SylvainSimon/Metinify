@@ -142,17 +142,17 @@ class IndexWebsite extends PageHelper {
                             }
                         },
                         items: {
-                            "facebook": {name: " Notre page Facebook ", icon: "facebook"},
-                            "twitter": {name: " Notre page Twitter ", icon: "twitter"},
-                            "youtube": {name: " Notre chaîne Youtube ", icon: "youtube"},
-                            "teamspeack": {name: " Se connecter au TeamSpeak ", icon: "teamspeack"},
+                            "facebook": {name: "Page Facebook"},
+                            "twitter": {name: "Page Twitter", icon: "twitter"},
+                            "youtube": {name: "Chaîne Youtube", icon: "youtube"},
+                            "teamspeack": {name: "TeamSpeak", icon: "teamspeack"},
                             "sep1": "---------",
-                            "calen": {name: " Calendrier des events ", icon: "calen"},
-                            "stati": {name: " Statistiques ", icon: "stati"},
-                            "pilori": {name: " Pilori ", icon: "pilori"},
-                            "securite": {name: " Conseils de s&eacute;curit&eacute; ", icon: "equipe"},
+                            "calen": {name: "Calendrier", icon: "calen"},
+                            "stati": {name: "Statistiques", icon: "stati"},
+                            "pilori": {name: "Pilori", icon: "pilori"},
+                            "securite": {name: "Conseils de sécurité", icon: "equipe"},
                             "sep2": "---------",
-                            "apropos": {name: " A propos de VamosMt2... ", icon: "apropo"}
+                            "apropos": {name: "A propos de VamosMt2...", icon: "apropo"}
                         }
                     });
 

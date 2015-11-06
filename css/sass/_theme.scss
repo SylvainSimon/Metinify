@@ -1251,24 +1251,7 @@ li.current {
     top:4px;
 }
 
-.context-menu {
-    background-color: #F2F2F2;
-    border: 1px solid #999999;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-.context-menu a {
-    color: #333333;
-    display: block;
-    padding: 3px;
-    text-decoration: none;
-}
-.context-menu a:hover {
-    background-color: #666666;
-    color: white;
-    text-decoration: none;
-}
+
 
 .massive { font-size: 72px; line-height: 10px; padding: 0; letter-spacing: -6px; color: #93d700; }
 #demo_wrapper { width: 600px; margin: 30px auto 0 auto; }

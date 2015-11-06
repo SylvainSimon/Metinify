@@ -1,55 +1,113 @@
-/*!
- * jQuery contextMenu - Plugin for simple contextMenu handling
- *
- * Version: 1.6.5
- *
- * Authors: Rodney Rehm, Addy Osmani (patches for FF)
- * Web: http://medialize.github.com/jQuery-contextMenu/
- *
- * Licensed under
- *   MIT License http://www.opensource.org/licenses/mit-license
- *   GPL v3 http://opensource.org/licenses/GPL-3.0
- *
-*/
+@charset "UTF-8";
+
+.context-menu-icon-add:before, .context-menu-icon-copy:before, .context-menu-icon-cut:before, .context-menu-icon-delete:before, .context-menu-icon-edit:before, .context-menu-icon-paste:before, .context-menu-icon-quit:before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 28px; 
+    font-family: "context-menu-icons";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    color: #2980b9;
+    text-align: center;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.context-menu-icon-add:before {
+    content: "";
+}
+
+.context-menu-icon-add.context-menu-hover:before {
+    color: #fff;
+}
+
+.context-menu-icon-copy:before {
+    content: "";
+}
+
+.context-menu-icon-copy.context-menu-hover:before {
+    color: #fff;
+}
+
+.context-menu-icon-cut:before {
+    content: "";
+}
+
+.context-menu-icon-cut.context-menu-hover:before {
+    color: #fff;
+}
+
+.context-menu-icon-delete:before {
+    content: "";
+}
+
+.context-menu-icon-delete.context-menu-hover:before {
+    color: #fff;
+}
+
+.context-menu-icon-edit:before {
+    content: "";
+}
+
+.context-menu-icon-edit.context-menu-hover:before {
+    color: #fff;
+}
+
+.context-menu-icon-paste:before {
+    content: "";
+}
+
+.context-menu-icon-paste.context-menu-hover:before {
+    color: #fff;
+}
+
+.context-menu-icon-quit:before {
+    content: "";
+}
+
+.context-menu-icon-quit.context-menu-hover:before {
+    color: #fff;
+}
 
 .context-menu-list {
-    margin:0; 
-    padding:0;
-
-    min-width: 120px;
-    max-width: 250px;
+    position: absolute; 
     display: inline-block;
-    position: absolute;
+    min-width: 200px;
+    max-width: 360px;
+    padding: 0px 0;
+    margin: 5px;
+    font-family: inherit;
+    font-size: inherit;
     list-style-type: none;
-
-    border: 1px solid #AAAAAA;
-    background:url('../../images/bg_fonction.png') #AAAAAA;
-
-    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    -ms-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    -o-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-
-    font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: 11px;
-    z-index: 999999;
+    background: #212121;
+    border: 1px solid #4C4C4C;
+    border-radius: 0px;
 }
 
 .context-menu-item {
-    padding: 0px 2px 0px 24px;
-    background:url('../../images/bg_fonction.png');
     position: relative;
-    color: #cfcfcf;
+    padding: 2px 10px;
+   background: #212121;
+    position: relative;
+    color: #D2D2D2;
     -webkit-user-select: none;
-    -moz-user-select: -moz-none;
+    -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
+    user-select: none; 
 }
 
 .context-menu-separator {
-    padding-bottom:0;
-    border-bottom: 2px groove grey;
+    padding: 0; 
+    margin: 2px 0;
+    border-bottom: 1px solid #e6e6e6;
 }
 
 .context-menu-item > label > input,
@@ -60,62 +118,57 @@
     user-select: text;
 }
 
-.context-menu-item.hover {
+.context-menu-item.context-menu-hover {
+    color: #fff;
     cursor: pointer;
-    background-color: #555555;
+    background-color: #3F3F3F;
 }
 
-.context-menu-item.disabled {
-    color: #666;
+.context-menu-item.context-menu-disabled {
+    color: #626262; 
+    background-color: #fff;
 }
 
-.context-menu-input.hover,
-.context-menu-item.disabled.hover {
-    cursor: default;
-    background-color: #EEE;
+.context-menu-input.context-menu-hover,
+.context-menu-item.context-menu-disabled.context-menu-hover {
+    cursor: default; 
+    background-color: #eee;
 }
 
 .context-menu-submenu:after {
-    content: ">";
-    color: #666;
     position: absolute;
-    top: 0;
-    right: 3px;
-    z-index: 1;
+    top: 50%;
+    right: 8px;
+    z-index: 1; 
+    width: 0;
+    height: 0;
+    content: '';
+    border-color: transparent transparent transparent #2f2f2f;
+    border-style: solid;
+    border-width: 4px 0 4px 4px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
-/* icons
-    #protip:
-    In case you want to use sprites for icons (which I would suggest you do) have a look at
-    http://css-tricks.com/13224-pseudo-spriting/ to get an idea of how to implement 
-    .context-menu-item.icon:before {}
-*/
-
-
-.context-menu-item.icon { height: 21px; background-repeat: no-repeat;}
-.context-menu-item.icon-apropo { background-image: url("../../images/contextmenu/apropo.png"); }
-.context-menu-item.icon-stati { background-image: url("../../images/contextmenu/stati.png"); }
-.context-menu-item.icon-calen { background-image: url("../../images/contextmenu/calen.png"); }
-.context-menu-item.icon-teamspeack { background-image: url("../../images/contextmenu/teamspeack.png"); }
-.context-menu-item.icon-youtube { background-image: url("../../images/contextmenu/youtube.png"); }
-.context-menu-item.icon-twitter { background-image: url("../../images/contextmenu/twitter.png"); }
-.context-menu-item.icon-facebook { background-image: url("../../images/contextmenu/facebook.png"); }
-.context-menu-item.icon-pilori { background-image: url("../../images/contextmenu/pilori.png"); }
-.context-menu-item.icon-equipe { background-image: url("../../images/contextmenu/equipe.png"); }
-
-
-
+/**
+ * Inputs
+ */
+.context-menu-item.context-menu-input {
+    padding: 5px 10px;
+}
 
 /* vertically align inside labels */
-.context-menu-input > label > * { vertical-align: top; }
+.context-menu-input > label > * {
+    vertical-align: top;
+}
 
 /* position checkboxes and radios as icons */
 .context-menu-input > label > input[type="checkbox"],
 .context-menu-input > label > input[type="radio"] {
-    margin-left: -17px;
-}
-.context-menu-input > label > span {
-    margin-left: 5px;
+    position: relative;
+    top: 3px;
 }
 
 .context-menu-input > label,
@@ -123,92 +176,27 @@
 .context-menu-input > label > textarea,
 .context-menu-input > label > select {
     display: block;
-    width: 100%;
-
+    width: 100%; 
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    -o-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 .context-menu-input > label > textarea {
     height: 100px;
 }
+
 .context-menu-item > .context-menu-list {
-    display: none;
+    top: 5px; 
     /* re-positioned by js */
     right: -5px;
-    top: 5px;
+    display: none;
 }
 
-.context-menu-list{
-
-    width: 210px !important;
-}
-
-.context-menu-list span{
-    position: relative;
-    top:3px;
-    left:4px;
-}
-
-.context-menu-item.hover > .context-menu-list {
+.context-menu-item.context-menu-visible > .context-menu-list {
     display: block;
 }
 
 .context-menu-accesskey {
     text-decoration: underline;
-}
-/* Pretty printing styles. Used with prettify.js. */
-/* Vim sunburst theme by David Leibovic */
-
-pre .str, code .str { color: #65B042; } /* string    - green */
-pre .kwd, code .kwd { color: #E28964; } /* keyword - dark pink */
-pre .com, code .com { color: #AEAEAE; font-style: italic; } /* comment - gray */
-pre .typ, code .typ { color: #89bdff; } /* type - light blue */
-pre .lit, code .lit { color: #3387CC; } /* literal - blue */
-pre .pun, code .pun { color: #fff; } /* punctuation - white */
-pre .pln, code .pln { color: #fff; } /* plaintext - white */
-pre .tag, code .tag { color: #89bdff; } /* html/xml tag        - light blue */
-pre .atn, code .atn { color: #bdb76b; } /* html/xml attribute name    - khaki */
-pre .atv, code .atv { color: #65B042; } /* html/xml attribute value - green */
-pre .dec, code .dec { color: #3387CC; } /* decimal - blue */
-
-pre.prettyprint, code.prettyprint {
-    background-color: #000;
-
-    -webkit-border-radius: 8px;
-    -khtml-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -ms-border-radius: 8px;
-    -o-border-radius: 8px;
-    border-radius: 8px;
-}
-
-pre.prettyprint {
-    width: 95%;
-    margin: 1em auto;
-    padding: 1em;
-    white-space: pre-wrap;
-}
-
-
-/* Specify class=linenums on a pre to get line numbering */
-ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE; } /* IE indents via margin-left */
-li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8 { list-style-type: none }
-/* Alternate shading for lines */
-li.L1,li.L3,li.L5,li.L7,li.L9 { }
-
-@media print {
-    pre .str, code .str { color: #060; }
-    pre .kwd, code .kwd { color: #006; font-weight: bold; }
-    pre .com, code .com { color: #600; font-style: italic; }
-    pre .typ, code .typ { color: #404; font-weight: bold; }
-    pre .lit, code .lit { color: #044; }
-    pre .pun, code .pun { color: #440; }
-    pre .pln, code .pln { color: #000; }
-    pre .tag, code .tag { color: #006; font-weight: bold; }
-    pre .atn, code .atn { color: #404; }
-    pre .atv, code .atv { color: #060; }
 }
