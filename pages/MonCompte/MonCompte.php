@@ -7,17 +7,14 @@ require __DIR__ . '../../../core/initialize.php';
 class MonCompte extends \PageHelper {
 
     public $isProtected = true;
-    
+
     public function run() {
 
-        if ($_SESSION['ID'] != $_GET['id']) {
-
-            include 'Onglet_Mauvais_Compte.php';
-            exit();
-        }
-        ?>
-
-        <?php
+        global $request;
+        parent::VerifMonCompte($request->query->get("id"));
+        
+        \Debug::log("fghdfghdfgh");
+        
         include __DIR__ . '../../../pages/Tableaux_Arrays.php';
 
         $date = Date("d/m/Y H:i:s");

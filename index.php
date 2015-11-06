@@ -1,5 +1,4 @@
 <?php
-
 require __DIR__ . '/core/initialize.php';
 
 class IndexWebsite extends PageHelper {

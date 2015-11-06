@@ -8,18 +8,19 @@ class MonPersonnage extends \PageHelper {
 
     public $isProtected = true;
     
+    public function __construct() {
+        parent::__construct();
+
+        global $request;
+        parent::VerifMonJoueur($request->query->get("id"));
+    }
+    
     public function run() {
-        ?>
+
+        global $request;
         
-        <?php
-        if (empty($_SESSION['Utilisateur'])) {
-
-            include 'Onglet_Non_Connecter.php';
-            exit();
-        }
         include __DIR__ . '../../../pages/Tableaux_Arrays.php';
-
-        $Id_Personnage = $_GET['id'];
+        $idPlayer = $request->query->get("id");
 
         /* ------------------------------ Vérification connecte ---------------------------------------------- */
         $Verification_Connecte = "SELECT id FROM player.player
@@ -68,7 +69,7 @@ class MonPersonnage extends \PageHelper {
                         ON player.id = guild_member.pid
                         LEFT JOIN player.guild
                         ON guild_member.guild_id = guild.id
-                        WHERE player.id = '" . $Id_Personnage . "'
+                        WHERE player.id = '" . $idPlayer . "'
                         LIMIT 1";
 
         $Parametres_Appel_Joueur_Page = $this->objConnection->query($Appel_Joueur_Page);
@@ -76,12 +77,6 @@ class MonPersonnage extends \PageHelper {
         /* --------------------------------------------------------------------------- */
 
         $Donnees_Appel_Joueurs_Page = $Parametres_Appel_Joueur_Page->fetch();
-
-        if ($_SESSION['ID'] != $Donnees_Appel_Joueurs_Page->account_id) {
-
-            include 'Onglet_Mauvais_Compte.php';
-            exit();
-        }
         ?>
 
         <div class="box box-default flat">

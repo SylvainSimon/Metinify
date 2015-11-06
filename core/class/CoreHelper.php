@@ -63,7 +63,6 @@ class CoreHelper {
     public function ControleConnexion() {
 
         global $session;
-
         if ($this->isPage) {
             if ($session->get("ID") !== null) {
                 if ($this->objAccount->getStatus() == "BLOCK") {
@@ -98,11 +97,36 @@ class CoreHelper {
         }
     }
 
+    public function VerifMonCompte($idParametre = 0) {
+
+        global $session;
+
+        if ($idParametre != $session->get("ID")) {
+            include '../../pages/MagicWord.php';
+            exit();
+        }
+    }
+
+    public function VerifMonJoueur($idParametre = 0) {
+        
+        global $session;
+
+        $objPlayer = \Player\PlayerHelper::getPlayerRepository()->find($idParametre);
+
+        if ($objPlayer !== null) {
+
+            if ($objPlayer->getIdAccount() != $session->get("ID")) {
+                include '../../pages/MagicWord.php';
+                exit();
+            }
+        }
+    }
+
     public function ReloadSessionValues() {
 
         /* @var $session \Symfony\Component\HttpFoundation\Session\Session */
         global $session;
-        
+
         $session->set("ID", $this->objAccount->getId());
         $session->set("Utilisateur", $this->objAccount->getLogin());
         $session->set("Email", $this->objAccount->getEmail());

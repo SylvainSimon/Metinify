@@ -12,6 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Player
 {
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=12)
+     */
+    private $name;
+    
     /**
      * @var integer
      *
@@ -20,23 +28,23 @@ class Player
     private $idAccount = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="job", type="boolean", nullable=false)
+     * @ORM\Column(name="job", type="integer", nullable=false)
      */
     private $job = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="voice", type="boolean", nullable=false)
+     * @ORM\Column(name="voice", type="integer", nullable=false)
      */
     private $voice = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="dir", type="boolean", nullable=false)
+     * @ORM\Column(name="dir", type="integer", nullable=false)
      */
     private $dir = '0';
 
@@ -139,14 +147,14 @@ class Player
     private $playtime = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
      * @ORM\Column(name="level", type="integer", nullable=false)
      */
     private $level = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
      * @ORM\Column(name="level_step", type="integer", nullable=false)
      */
@@ -230,9 +238,9 @@ class Player
     private $partMain = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="part_base", type="boolean", nullable=false)
+     * @ORM\Column(name="part_base", type="integer", nullable=false)
      */
     private $partBase = '0';
 
@@ -244,9 +252,9 @@ class Player
     private $partHair = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="skill_group", type="boolean", nullable=false)
+     * @ORM\Column(name="skill_group", type="integer", nullable=false)
      */
     private $skillGroup = '0';
 
@@ -272,9 +280,9 @@ class Player
     private $lastPlay = '0000-00-00 00:00:00';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="change_name", type="boolean", nullable=false)
+     * @ORM\Column(name="change_name", type="integer", nullable=false)
      */
     private $changeName = '0';
 
@@ -293,9 +301,9 @@ class Player
     private $subSkillPoint = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="stat_reset_count", type="boolean", nullable=false)
+     * @ORM\Column(name="stat_reset_count", type="integer", nullable=false)
      */
     private $statResetCount = '0';
 
@@ -314,9 +322,9 @@ class Player
     private $horseStamina = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="horse_level", type="boolean", nullable=false)
+     * @ORM\Column(name="horse_level", type="integer", nullable=false)
      */
     private $horseLevel = '0';
 
@@ -328,9 +336,9 @@ class Player
     private $horseHpDroptime = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="horse_riding", type="boolean", nullable=false)
+     * @ORM\Column(name="horse_riding", type="integer", nullable=false)
      */
     private $horseRiding = '0';
 
@@ -353,19 +361,9 @@ class Player
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=12)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     */
-    private $name;
-
 
 
     /**
@@ -395,7 +393,7 @@ class Player
     /**
      * Set job
      *
-     * @param boolean $job
+     * @param integer $job
      *
      * @return Player
      */
@@ -409,7 +407,7 @@ class Player
     /**
      * Get job
      *
-     * @return boolean
+     * @return integer
      */
     public function getJob()
     {
@@ -419,7 +417,7 @@ class Player
     /**
      * Set voice
      *
-     * @param boolean $voice
+     * @param integer $voice
      *
      * @return Player
      */
@@ -433,7 +431,7 @@ class Player
     /**
      * Get voice
      *
-     * @return boolean
+     * @return integer
      */
     public function getVoice()
     {
@@ -443,7 +441,7 @@ class Player
     /**
      * Set dir
      *
-     * @param boolean $dir
+     * @param integer $dir
      *
      * @return Player
      */
@@ -457,7 +455,7 @@ class Player
     /**
      * Get dir
      *
-     * @return boolean
+     * @return integer
      */
     public function getDir()
     {
@@ -803,7 +801,7 @@ class Player
     /**
      * Set level
      *
-     * @param boolean $level
+     * @param integer $level
      *
      * @return Player
      */
@@ -817,7 +815,7 @@ class Player
     /**
      * Get level
      *
-     * @return boolean
+     * @return integer
      */
     public function getLevel()
     {
@@ -827,7 +825,7 @@ class Player
     /**
      * Set levelStep
      *
-     * @param boolean $levelStep
+     * @param integer $levelStep
      *
      * @return Player
      */
@@ -841,7 +839,7 @@ class Player
     /**
      * Get levelStep
      *
-     * @return boolean
+     * @return integer
      */
     public function getLevelStep()
     {
@@ -1115,7 +1113,7 @@ class Player
     /**
      * Set partBase
      *
-     * @param boolean $partBase
+     * @param integer $partBase
      *
      * @return Player
      */
@@ -1129,7 +1127,7 @@ class Player
     /**
      * Get partBase
      *
-     * @return boolean
+     * @return integer
      */
     public function getPartBase()
     {
@@ -1163,7 +1161,7 @@ class Player
     /**
      * Set skillGroup
      *
-     * @param boolean $skillGroup
+     * @param integer $skillGroup
      *
      * @return Player
      */
@@ -1177,7 +1175,7 @@ class Player
     /**
      * Get skillGroup
      *
-     * @return boolean
+     * @return integer
      */
     public function getSkillGroup()
     {
@@ -1259,7 +1257,7 @@ class Player
     /**
      * Set changeName
      *
-     * @param boolean $changeName
+     * @param integer $changeName
      *
      * @return Player
      */
@@ -1273,7 +1271,7 @@ class Player
     /**
      * Get changeName
      *
-     * @return boolean
+     * @return integer
      */
     public function getChangeName()
     {
@@ -1331,7 +1329,7 @@ class Player
     /**
      * Set statResetCount
      *
-     * @param boolean $statResetCount
+     * @param integer $statResetCount
      *
      * @return Player
      */
@@ -1345,7 +1343,7 @@ class Player
     /**
      * Get statResetCount
      *
-     * @return boolean
+     * @return integer
      */
     public function getStatResetCount()
     {
@@ -1403,7 +1401,7 @@ class Player
     /**
      * Set horseLevel
      *
-     * @param boolean $horseLevel
+     * @param integer $horseLevel
      *
      * @return Player
      */
@@ -1417,7 +1415,7 @@ class Player
     /**
      * Get horseLevel
      *
-     * @return boolean
+     * @return integer
      */
     public function getHorseLevel()
     {
@@ -1451,7 +1449,7 @@ class Player
     /**
      * Set horseRiding
      *
-     * @param boolean $horseRiding
+     * @param integer $horseRiding
      *
      * @return Player
      */
@@ -1465,7 +1463,7 @@ class Player
     /**
      * Get horseRiding
      *
-     * @return boolean
+     * @return integer
      */
     public function getHorseRiding()
     {
