@@ -2,15 +2,15 @@
 
 namespace Includes;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
 class Marche_Detail_Personnage extends \PageHelper {
 
     public $isProtected = true;
-    
+
     public function run() {
         ?>
-        
+
         <?php
         /* -------------------- Recuperation_Marche_Personnage ---------------------- */
         $Recuperation_Marche_Personnage = "SELECT id_personnage
@@ -46,9 +46,13 @@ class Marche_Detail_Personnage extends \PageHelper {
             <html>
                 <head>
                     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-                    <link rel="stylesheet" href="../css/jquery-ui-1.8.23.custom.css">
-                <script src='../components/jquery/jquery.min.js' type='text/javascript'></script>
-                <script src='../components/jquery-ui/jquery-ui.min.js' type='text/javascript'></script>
+                    <script src='../../components/jquery/jquery.min.js' type='text/javascript'></script>
+                    <script src='../../components/jquery-ui/jquery-ui.min.js' type='text/javascript'></script>
+                    
+                                    <link href="../../css/css/Bootstrap.css" rel="stylesheet" type="text/css" />
+                <link href="../../css/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+                <link href="../../css/css/styles.css" rel="stylesheet" type="text/css" />
+
                 </head>
                 <body>
 
@@ -119,7 +123,7 @@ class Marche_Detail_Personnage extends \PageHelper {
 
                             $.ajax({
                                 type: "POST",
-                                url: "pages/MonPersonnage/ajax/ajaxInventairePage" + page + ".php",
+                                url: "../../pages/MonPersonnage/ajax/ajaxInventairePage" + page + ".php",
                                 data: "id=<?php echo $Donnees_Recuperation_Marche_Personnage->id_personnage; ?>", // données à transmettre
                                 success: function (msg) {
 
@@ -156,7 +160,7 @@ class Marche_Detail_Personnage extends \PageHelper {
                     <div id="Bas_Bonus"></div>
                 </div>
 
-                <?php include '../../../pages/MonPersonnage/ajax/ajaxEquipement.php'; ?>
+                <?php include __DIR__ . '../../../pages/MonPersonnage/ajax/ajaxEquipement.php'; ?>
 
                 <?php
                 /* -------------------------- Preparation des Requetes ------------------------------- */
