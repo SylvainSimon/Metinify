@@ -33,20 +33,20 @@ class IndexWebsite extends PageHelper {
                 <script src='./components/jquery-ui/jquery-ui.min.js' type='text/javascript'></script>
                 <script src='./components/bootstrap/js/tab.js' type='text/javascript'></script>
 
-                <script src='./js/jquery.browser.min.js' type='text/javascript'></script>
+                <script src='assets/js/jquery.browser.min.js' type='text/javascript'></script>
                 <script src='./vendor/almasaeed2010/adminlte/plugins/slimScroll/jquery.slimscroll.min.js' type='text/javascript'></script>
                 <script src='./vendor/almasaeed2010/adminlte/dist/js/app.min.js' type='text/javascript'></script>
 
-                <script src="js/Jquery_Superbox.js" type="text/javascript"></script>
-                <script src="js/jquery.cookie/js.cookie.min.js" type='text/javascript'></script>
+                <script src="assets/js/Jquery_Superbox.js" type="text/javascript"></script>
+                <script src="assets/js/jquery.cookie/js.cookie.min.js" type='text/javascript'></script>
                 <script src="js/fonctions.min.js" type='text/javascript'></script>
-                <script src="js/Ajax.js" type='text/javascript'></script>
-                <script src="js/Ajax_Connexion.js" type='text/javascript'></script>
-                <script src="js/Ajax_Classement.js" type="text/javascript"></script>
+                <script src="assets/js/Ajax.js" type='text/javascript'></script>
+                <script src="assets/js/Ajax_Connexion.js" type='text/javascript'></script>
+                <script src="assets/js/Ajax_Classement.js" type="text/javascript"></script>
 
-                <script src="js/jquery.contextMenu/jquery.contextMenu.min.js" type='text/javascript'></script>
-                <script src="js/jquery.countdown.min.js" type='text/javascript'></script>
-                <script src="js/jquery.fancybox.js" type='text/javascript'></script>
+                <script src="assets/js/jquery.contextMenu/jquery.contextMenu.min.js" type='text/javascript'></script>
+                <script src="assets/js/jquery.countdown.min.js" type='text/javascript'></script>
+                <script src="assets/js/jquery.fancybox.js" type='text/javascript'></script>
 
                 <!--[if lt IE 9]>
                 <script src="./vendor/afarkas/html5shiv/dist/html5shiv.min.js"></script>
@@ -59,13 +59,13 @@ class IndexWebsite extends PageHelper {
 
                 <div class="wrapper">
 
-                    <?php include_once 'includes/Barre_Superieur.php'; ?>
+                    <?php include_once 'pages/_Home/Barre_Superieur.php'; ?>
 
                     <div class="clear"></div>
 
                     <aside class="main-sidebar" style="background: #131313; border-right: 1px solid #3E3E3E;">
                         <section class="sidebar">
-                            <?php include_once 'includes/Menu_Primaire.php'; ?>
+                            <?php include_once 'pages/_Home/includes/Menu_Primaire.php'; ?>
 
                         </section>
                     </aside>
@@ -81,14 +81,14 @@ class IndexWebsite extends PageHelper {
 
                             <div class="row">
                                 <nav class="col-lg-2 col-md-3 hidden-sm hidden-xs">
-                                    <?php include_once 'includes/Sidebar_Gauche.php'; ?>
+                                    <?php include_once 'pages/_Home/Sidebar_Gauche.php'; ?>
                                 </nav>
 
                                 <div id="Contenue_Principal" class="col-lg-8 col-md-6 col-sm-12"></div> 
 
 
                                 <nav class="col-lg-2 col-md-3 hidden-sm hidden-xs">
-                                    <?php include_once 'includes/Sidebar_Droite.php'; ?>
+                                    <?php include_once 'pages/_Home/Sidebar_Droite.php'; ?>
                                 </nav>
                             </div>
                         </div>
@@ -97,13 +97,12 @@ class IndexWebsite extends PageHelper {
 
                     <footer>
                         <div class="col-md-12">
-                            <?php include_once 'includes/Footer.php'; ?> 
+                            <?php include_once 'pages/_Home/Footer.php'; ?> 
                             <div class="clearfix"></div>
                         </div>
                     </footer>
                 </div>
 
-                <div class="clearfix"></div>
             </body>
 
             <a style="display: none;" id="Lien_Statistiques" href="pages/Statistiques/Statistiques.php" class="fancybox_Statistiques" data-fancybox-type="iframe"></a>

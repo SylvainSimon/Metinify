@@ -18,7 +18,7 @@ $(document).ready(function () {
                         Barre_De_Statut("Connexion réussi.");
                         Icone_Chargement(0);
 
-                        Ajax_Connexion('includes/Barre_Superieur_Connectes.php');
+                        Ajax_Connexion('pages/_Home/includes/Barre_Superieur_Connectes.php');
 
                         document.getElementById('Menu_Inscription_MonCompte').style.display = 'inline';
                         document.getElementById('Menu_Inscription_MonCompte2').style.display = 'none';

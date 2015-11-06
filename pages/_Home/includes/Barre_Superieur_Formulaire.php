@@ -1,4 +1,4 @@
-<script type="text/javascript" src="js/Controle_Connexion.js"></script>
+<script type="text/javascript" src="assets/js/Controle_Connexion.js"></script>
 
 <div class="col-md-8 col-sm-6" style="padding-left: 40px;">
     <span>Bienvenue <span class="Bold">Visiteur</span> (<?php echo $_SERVER["REMOTE_ADDR"]; ?>) <a href="javascript:void(0);" onclick="Ajax('pages/MonCompte/PasswordForgottenForm.php')">Mot de passe oublié ?</a></span>

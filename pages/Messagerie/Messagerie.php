@@ -32,7 +32,7 @@ class Messagerie extends \PageHelper {
             $Moderateur_Tickets = false;
         }
         ?>            
-        <script type="text/javascript" src="../../js/jquery.inview/jquery.inview.min.js"></script>
+        <script type="text/javascript" src="../../assets/js/jquery.inview/jquery.inview.min.js"></script>
 
 
         <div class="box box-default flat">

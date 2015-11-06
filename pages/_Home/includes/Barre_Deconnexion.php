@@ -1,5 +1,8 @@
 <?php
-require __DIR__ . '../../core/initialize.php';
+
+namespace Home;
+
+require __DIR__ . '../../../../core/initialize.php';
 
 if (!empty($_SESSION['Administration_PannelAdmin'])) {
 
@@ -29,7 +32,7 @@ if (!empty($_SESSION['Administration_PannelAdmin'])) {
     </script>
 <?php } ?>
 
-<?php SessionHelper::destroySession(); ?>
+<?php \SessionHelper::destroySession(); ?>
 
 <script type="text/javascript">
 
@@ -48,5 +51,5 @@ if (!empty($_SESSION['Administration_PannelAdmin'])) {
 </script>
 
 <script type="text/javascript">
-    Ajax_Connexion('includes/Barre_Superieur_Formulaire.php');
+    Ajax_Connexion('pages/_Home/includes/Barre_Superieur_Formulaire.php');
 </script>

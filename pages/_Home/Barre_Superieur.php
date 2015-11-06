@@ -8,7 +8,7 @@
 
     <div id="Barre_Haut">
         <div id="Ajax_Connexion">
-            <?php include 'Barre_Superieur_Formulaire.php'; ?>
+            <?php include 'includes/Barre_Superieur_Formulaire.php'; ?>
         </div>
     </div>
 
@@ -16,7 +16,7 @@
 
     <div id="Barre_Haut">
         <div id="Ajax_Connexion">
-            <?php include 'Barre_Superieur_Connectes.php'; ?>
+            <?php include 'includes/Barre_Superieur_Connectes.php'; ?>
         </div>
     </div>
 

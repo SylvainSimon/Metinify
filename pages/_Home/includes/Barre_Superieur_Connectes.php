@@ -1,8 +1,8 @@
 <?php
 
-namespace Includes;
+namespace Home;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
 class Barre_Superieur_Connectes extends \PageHelper {
 
@@ -63,7 +63,7 @@ class Barre_Superieur_Connectes extends \PageHelper {
                 </script>
 
 
-                <a data-tooltip="Déconnexion" data-tooltip-position='left' class="pull-right" style="cursor: pointer; margin-left: 7px;" onclick="Ajax_Connexion('includes/Barre_Deconnexion.php')">
+                <a data-tooltip="Déconnexion" data-tooltip-position='left' class="pull-right" style="cursor: pointer; margin-left: 7px;" onclick="Ajax_Connexion('pages/_Home/includes/Barre_Deconnexion.php')">
                     <i style="top: 7px; position: relative;" class="material-icons md-icon-power md-24 text-red"></i>
                 </a>
             </div>
