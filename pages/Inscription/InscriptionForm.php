@@ -89,7 +89,7 @@ class InscriptionForm extends \PageHelper {
                 <h3 class="box-title">Création de compte</h3>
             </div>
 
-            <script type="text/javascript" src="js/Controle_Inscription.js"></script>
+            <script type="text/javascript" src="pages/Inscription/js/InscriptionControleForm.min.js"></script>
             <form action="javascript:void(0)" id="FormInscription" name="FormInscription" method="POST">
 
                 <div class="box-body">

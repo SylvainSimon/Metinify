@@ -20,20 +20,6 @@ function Ajax(url) {
                 isMine: true
             }, "titre", "");
 
-            var scripts = nav.getElementsByTagName('script');
-            //S//
-            for (var i = 0; i < scripts.length; i++)
-            {
-                if (window.execScript)
-                {
-                    window.execScript(scripts[i].text.replace('<!--', ''));
-                }
-                else
-                {
-                    window.eval(scripts[i].text);
-                }
-            }
-
         },
         error: function () {
 
@@ -51,25 +37,21 @@ function Barre_De_Statut(statut) {
 function Icone_Chargement(etat) {
 
     if (etat == 1) {
-
         $('#Icone_Chargement').attr("class", "fa fa-spin material-icons md-icon-spin");
         $('#Icone_Chargement').show();
     }
 
     if (etat == 2) {
-
         $('#Icone_Chargement').attr("class", "material-icons md-icon-close text-red");
         $('#Icone_Chargement').show();
     }
 
     if (etat == 0) {
-
         $('#Icone_Chargement').attr("class", "material-icons md-icon-done text-success");
         $('#Icone_Chargement').show();
     }
 
     if (etat == 99) {
-
         $('#Icone_Chargement').attr("class", "material-icons md-icon-tv");
         $('#Icone_Chargement').show();
     }
@@ -269,40 +251,32 @@ function Actualisation_Messages() {
     return false;
 }
 
-function setCookie(sName, sValue) {
-    var today = new Date(), expires = new Date();
-    expires.setTime(today.getTime() + (365 * 24 * 60 * 60 * 1000));
-    document.cookie = sName + "=" + encodeURIComponent(sValue) + ";expires=" + expires.toGMTString();
-}
+function SoundNotificationToggle(init) {
 
-function getCookie(sName) {
-    var oRegex = new RegExp("(?:; )?" + sName + "=([^;]*);?");
-
-    if (oRegex.test(document.cookie)) {
-        return decodeURIComponent(RegExp["$1"]);
-    } else {
-        return null;
-    }
-}
-
-function Clique_Bouton_Sons() {
-
-    if (getCookie("cookieAudio") != null) {
-
-        if (getCookie("cookieAudio") == "On") {
-
-            setCookie("cookieAudio", "Off");
-            $("#Icone_Sons").attr("class", "material-icons md-icon-volume-off md-24 text-red");
-
-        } else if (getCookie("cookieAudio") == "Off") {
-
-            setCookie("cookieAudio", "On");
+    if (init == 1) {
+        if (Cookies.get('cookieAudio') !== undefined) {
+            if (Cookies.get('cookieAudio') == "On") {
+                $("#Icone_Sons").attr("class", "material-icons md-icon-volume-up md-24 text-blue");
+            } else if (Cookies.get('cookieAudio') == "Off") {
+                $("#Icone_Sons").attr("class", "material-icons md-icon-volume-off md-24 text-red");
+            }
+        } else {
+            Cookies.set('cookieAudio', 'On');
             $("#Icone_Sons").attr("class", "material-icons md-icon-volume-up md-24 text-blue");
-
         }
     } else {
 
-        setCookie("cookieAudio", "Off");
-        $("#Icone_Sons").attr("class", "material-icons md-icon-volume-off md-24 text-red");
+        if (Cookies.get('cookieAudio') !== undefined) {
+            if (Cookies.get('cookieAudio') == "On") {
+                Cookies.set('cookieAudio', 'Off');
+                $("#Icone_Sons").attr("class", "material-icons md-icon-volume-off md-24 text-red");
+            } else if (Cookies.get('cookieAudio') == "Off") {
+                Cookies.set('cookieAudio', 'On');
+                $("#Icone_Sons").attr("class", "material-icons md-icon-volume-up md-24 text-blue");
+            }
+        } else {
+            Cookies.set('cookieAudio', 'Off');
+            $("#Icone_Sons").attr("class", "material-icons md-icon-volume-off md-24 text-red");
+        }
     }
 }

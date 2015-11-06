@@ -48,7 +48,7 @@ class ItemShopDetails extends \PageHelper {
                     <h3 class="box-title">Magasin d'items - Détails</h3>
 
                     <div class="box-tools">
-                        <a href="pages/ItemShop/ItemShopRechargement.php?idcompte=<?php echo $Sauvegarder_ID; ?>&nomCompte=<?php echo $Sauvegarder_Login; ?>" class="fancybox_Rechargement btn btn-sm btn-primary btn-flat" data-fancybox-type="iframe">Recharger</a>
+                        <a href="pages/ItemShop/ItemShopRechargement.php?idcompte=<?php echo $Sauvegarder_ID; ?>&nomCompte=<?php echo $Sauvegarder_Login; ?>" class="btn btn-sm btn-primary btn-flat" data-fancybox-type="iframe">Recharger</a>
                     </div>
                 </div>
 

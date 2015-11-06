@@ -1,10 +1,10 @@
 <?php
 
-namespace Includes;
+namespace Pages\MonCompte;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
-class Entrepot_Oublie extends \PageHelper {
+class CodeEntrepotForgottenEmail extends \PageHelper {
 
     public $isProtected = true;
     
@@ -84,5 +84,5 @@ class Entrepot_Oublie extends \PageHelper {
 
 }
 
-$class = new Entrepot_Oublie();
+$class = new CodeEntrepotForgottenEmail();
 $class->run();

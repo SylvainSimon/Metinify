@@ -86,8 +86,7 @@
                         <td>
                             ●●●●●●●●●●●●
 
-                            <i data-tooltip="Modifier mon mot de passe" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/PasswordChangeForm.php');
-                                    window.parent.$.fancybox.close();" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
+                            <i data-tooltip="Modifier mon mot de passe" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/PasswordChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
 
                         </td>
 
@@ -139,7 +138,7 @@
 
                                 <i style="margin-left: 5px;"  data-tooltip="Modifier mon code" onclick="Ajax('pages/MonCompte/CodeEntrepotChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
 
-                                <i data-tooltip="Récupérer le code entrepôt" onclick="Ajax('includes/Entrepot_Oublie.php');" class="pull-right Pointer material-icons md-icon-settings_backup_restore text-blue"></i>
+                                <i data-tooltip="Récupérer le code entrepôt" onclick="Ajax('pages/MonCompte/CodeEntrepotForgottenEmail.php');" class="pull-right Pointer material-icons md-icon-settings_backup_restore text-blue"></i>
 
                             </td>
                         </tr>

@@ -53,25 +53,10 @@ class Barre_Superieur_Connectes extends \PageHelper {
 
                 <?php include BASE_ROOT . '/pages/Messagerie/includes/Messagerie_Notifications.php'; ?>
 
-                <i data-tooltip="Activer/Désactiver le son" data-tooltip-position='left' style="top: 7px; position: relative; margin-left: 7px;" id="Icone_Sons" class="" onclick="Clique_Bouton_Sons()"></i>
+                <i data-tooltip="Activer/Désactiver le son" data-tooltip-position='left' style="top: 7px; position: relative; margin-left: 7px;" id="Icone_Sons" class="" onclick="SoundNotificationToggle(0)"></i>
                 <script type="text/javascript">
 
-                    if (getCookie("cookieAudio") != null) {
-
-                        if (getCookie("cookieAudio") == "On") {
-
-                            $("#Icone_Sons").attr("class", "material-icons md-icon-volume-up md-24 text-blue");
-
-                        } else if (getCookie("cookieAudio") == "Off") {
-
-                            $("#Icone_Sons").attr("class", "material-icons md-icon-volume-off md-24 text-red");
-
-                        }
-                    } else {
-
-                        setCookie("cookieAudio", "On");
-                        $("#Icone_Sons").attr("class", "material-icons md-icon-volume-up md-24 text-blue");
-                    }
+                    SoundNotificationToggle(1);
 
                     setTimeout("Actualisation_Messages()", 20000);
 

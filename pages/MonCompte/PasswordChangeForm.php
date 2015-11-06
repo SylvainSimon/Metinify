@@ -16,7 +16,7 @@ class PasswordChangeForm extends \PageHelper {
                 <h3 class="box-title">Changement mot de passe</h3>
             </div>
 
-            <script type="text/javascript" src="./js/Controle_Changer_Mot_De_Passe.js"></script>
+            <script type="text/javascript" src="pages/MonCompte/js/PasswordChangeFormControl.js"></script>
             <form action="javascript:void(0)" method="POST">
 
                 <div class="box-body">

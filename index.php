@@ -38,14 +38,14 @@ class IndexWebsite extends PageHelper {
                 <script src='./vendor/almasaeed2010/adminlte/plugins/slimScroll/jquery.slimscroll.min.js' type='text/javascript'></script>
                 <script src='./vendor/almasaeed2010/adminlte/dist/js/app.min.js' type='text/javascript'></script>
 
-                <script src="js/Jquery_Sliders.js" type='text/javascript'></script>
                 <script src="js/Jquery_Superbox.js" type="text/javascript"></script>
+                <script src="js/jquery.cookie/js.cookie.min.js" type='text/javascript'></script>
                 <script src="js/fonctions.min.js" type='text/javascript'></script>
                 <script src="js/Ajax.js" type='text/javascript'></script>
                 <script src="js/Ajax_Connexion.js" type='text/javascript'></script>
                 <script src="js/Ajax_Classement.js" type="text/javascript"></script>
 
-                <script src="js/jquery.contextMenu.min.js" type='text/javascript'></script>
+                <script src="js/jquery.contextMenu/jquery.contextMenu.min.js" type='text/javascript'></script>
                 <script src="js/jquery.countdown.min.js" type='text/javascript'></script>
                 <script src="js/jquery.fancybox.js" type='text/javascript'></script>
 
@@ -111,10 +111,6 @@ class IndexWebsite extends PageHelper {
 
             <script type="text/javascript" >
                 $(function () {
-
-                    if (getCookie("cookieAudio") == null) {
-                        setCookie("cookieAudio", "On");
-                    }
 
                     $.contextMenu({
                         selector: 'body',

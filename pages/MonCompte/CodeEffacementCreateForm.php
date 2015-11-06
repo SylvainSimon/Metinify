@@ -17,7 +17,7 @@ class CodeEffacementCreateForm extends \PageHelper {
             </div>
             <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1">
                 <hr class="Hr_Haut"/>
-                <script type="text/javascript" src="./js/Controle_Code_Effacement_Creation.js"></script>
+                <script type="text/javascript" src="pages/MonCompte/js/CodeEffacementCreateFormControl.js"></script>
 
                 Entre ici le code qui servira à effacé l'un de vos personnage dans le jeux.
 

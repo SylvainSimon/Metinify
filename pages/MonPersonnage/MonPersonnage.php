@@ -84,8 +84,6 @@ class MonPersonnage extends \PageHelper {
         }
         ?>
 
-        <link rel="stylesheet" href="../css/demos.css">
-
         <div class="box box-default flat">
 
             <div class="box-header">

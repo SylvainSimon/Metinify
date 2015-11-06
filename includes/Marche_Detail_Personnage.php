@@ -46,7 +46,6 @@ class Marche_Detail_Personnage extends \PageHelper {
             <html>
                 <head>
                     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-                    <link rel="stylesheet" href="../css/demos.css">
                     <link rel="stylesheet" href="../css/jquery-ui-1.8.23.custom.css">
                 <script src='../components/jquery/jquery.min.js' type='text/javascript'></script>
                 <script src='../components/jquery-ui/jquery-ui.min.js' type='text/javascript'></script>

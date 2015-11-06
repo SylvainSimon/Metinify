@@ -18,7 +18,7 @@ class CodeEntrepotChangeForm extends \PageHelper {
             </div>
 
             <form action="javascript:void(0)" method="POST">
-                <script type="text/javascript" src="./js/Controle_Code_Entrepot_Changement.js"></script>
+                <script type="text/javascript" src="pages/MonCompte/js/CodeEntrepotFormControl.js"></script>
 
                 <div class="box-body">
 

@@ -1708,3 +1708,307 @@ label{
     
     font-size: 13px;
 }
+
+
+.Pointer{cursor: pointer;}
+
+/*-----------INVENTAIRE-------------------*/
+#Inventaire{
+
+    width: 169px;
+    height: 327px;
+    background: url('../../images/inventaire.png') no-repeat;
+}
+
+#Conteneur_Inventaire{
+
+    position: relative;
+    width: 160px;
+    height: 288px;
+
+    top: 32px;
+    left:5px;
+    overflow: hidden;
+
+    font-size: 1px; 
+    letter-spacing: -1px;
+    word-spacing: -1px;
+
+}
+
+.Case_Inventaire{
+
+    display: inline-table;
+    height: 32px;
+    width: 32px;
+    max-width: 32px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    color: white;
+    vertical-align: bottom;
+
+    font-size: 10px; 
+
+}
+
+.Interieur_Case{
+
+    width: 32px;
+    height: 32px;
+
+}
+.Bouton_Inventaire_1{
+
+    position: absolute;
+    top: 18px;
+    left: 33px;
+    height: 18px;
+    width: 35px;
+    border: 1px solid grey;
+    background: url("../../images/Bouton_Inventaire.png") no-repeat;
+    text-align: center;
+    color: white;
+    font-size: 11px;
+    line-height: 18px;
+
+}
+
+.Bouton_Inventaire_2{
+
+    position: absolute;
+    top: 18px;
+    left:72px;
+    height: 18px;
+    width: 35px;
+    border: 1px solid grey;
+    background: url("../../images/Bouton_Inventaire.png") no-repeat;
+    text-align: center;
+    color: white;
+    font-size: 11px;
+    line-height: 18px;
+}
+
+.Bouton_Inventaire_3{
+
+    position: absolute;
+    top: 18px;
+    left:111px;
+    height: 18px;
+    width: 35px;
+    border: 1px solid grey;
+    background: url("../../images/Bouton_Inventaire.png") no-repeat;
+    text-align: center;
+    color: white;
+    font-size: 11px;
+    line-height: 18px;
+}
+
+.Bouton_Inventaire_4{
+
+    position: absolute;
+    top: 18px;
+    left:150px;
+    height: 18px;
+    width: 35px;
+    border: 1px solid grey;
+    background: url("../../images/Bouton_Inventaire.png") no-repeat;
+    text-align: center;
+    color: white;
+    font-size: 11px;
+    line-height: 18px;
+}
+
+
+
+/*--------------------------ENTREPOT---------------------------*/
+#Entrepot{
+    width: 169px;
+    height: 357px;
+    background: url('../../images/entrepot.png') no-repeat;
+    border-radius: 8px;
+}
+
+#Conteneur_Entrepot{
+
+    position: relative;
+    width: 160px;
+    height: 288px;
+
+    top: 30px;
+    left:5px;
+    overflow: hidden;
+
+    font-size: 0px; 
+    letter-spacing: 0px;
+    word-spacing: -1px;
+
+}
+
+.Bouton_Entrepot_1{
+
+    position: absolute;
+    top: 339px;
+    left: 33px;
+    height: 18px;
+    width: 50px;
+    border: 1px solid grey;
+    background: url("../../images/Bouton_Entrepot.png") no-repeat;
+    text-align: center;
+    color: white;
+    font-size: 11px;
+    line-height: 18px;
+
+}
+
+.Bouton_Entrepot_2{
+
+    position: absolute;
+    top: 339px;
+    left: 85px;
+    height: 18px;
+    width: 50px;
+    border: 1px solid grey;
+    background: url("../../images/Bouton_Entrepot.png") no-repeat;
+    text-align: center;
+    color: white;
+    font-size: 11px;
+    line-height: 18px;
+
+}
+
+.Bouton_Entrepot_3{
+
+    position: absolute;
+    top: 339px;
+    left: 137px;
+    height: 18px;
+    width: 50px;
+    border: 1px solid grey;
+    background: url("../../images/Bouton_Entrepot.png") no-repeat;
+    text-align: center;
+    color: white;
+    font-size: 11px;
+    line-height: 18px;
+
+}
+
+/* ----------------- Entrepot IS ------------------- */
+
+#Entrepot_IS{
+
+    width: 169px;
+    height: 327px;
+    background: url('../../images/entrepot_IS.png') no-repeat;
+    border-radius: 8px;
+
+}
+
+#Conteneur_Entrepot_IS{
+
+    position: relative;
+    width: 160px;
+    height: 288px;
+    top: 31px;
+    left: 5px;
+    overflow: hidden;
+    font-size: 1px;
+    letter-spacing: -1px;
+    word-spacing: 0px;
+
+}
+
+.Couleur_Level_Item{
+
+    color:#EFF1EE;
+    font-family: serif;
+    font-size: 13px;
+    text-shadow: 0px 2px 1px black;
+}
+
+.Zone_Tableau_Amis{
+
+    max-height: 450px;
+    overflow-y:auto;
+}
+
+/*-----------EQUIPEMENT-------------------*/
+#Equipement{
+
+    width: 160px;
+    height: 192px;
+    background: url('../../images/equipement.png') no-repeat;
+    overflow: hidden;
+}
+
+.Case_Equipement{
+
+    display: inline-table;
+    height: 32px;
+    min-width: 32px;
+    max-width: 32px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    color: white;
+    font-size: 10px; 
+
+}
+
+.Case_Arme{position: absolute;top: 19px;left: 32px;}
+.Case_Armure{position: absolute;top: 52px;left: 68px;}
+.Case_Casque{position: absolute;top: 17px;left: 68px;}
+.Case_Bouclier{position: absolute;top: 51px;left: 106px;}
+.Case_Bracelet{position: absolute;top: 82px;left: 106px;}
+.Case_Boucles{position: absolute;top: 67px;left: 144px;}
+.Case_Collier{position: absolute;top: 100px;left: 145px;}
+.Case_Chaussure{position: absolute;top: 159px;left: 69px;}
+.Case_Fleche{position: absolute;top: 17px;left: 145px;}
+.Case_Special1{position: absolute;top: 128px;left: 33px;}
+.Case_Special2{position: absolute;top: 128px;left: 107px;}
+
+
+.Icone_Chef_Guilde{
+
+    position: absolute;
+    z-index: 9999;
+    width: 20px;
+    height: 20px;
+    left:348px;
+    top:26px;
+}
+
+.cadrephotoclassement{
+
+    background: #444444;
+    border: 1px solid grey;
+    margin: 0px;
+    position: relative;
+    left:-1px;
+}
+
+
+.Tableau_Informations_Temps_de_Jeux_Vente{
+    position: absolute;
+    top:215px;
+    left:20px;
+    width: 187px;
+    border: 1px solid #303030;
+    text-align: left;
+    text-indent: 7px;
+    line-height: 20px;
+    font-size: 13px;
+    border-collapse: collapse;
+    border-radius:3px;
+    margin-right: 20px;
+    color: #cccccc;
+    background: url('../../images/motif_th.png');
+}
+
+
+.Images_Recherches{
+    position: relative;
+    height: 20px;
+    background: #303030;
+    border: 1px solid grey;
+}

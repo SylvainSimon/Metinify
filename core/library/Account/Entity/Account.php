@@ -31,7 +31,7 @@ class Account {
      *
      * @ORM\Column(name="social_id", type="string", length=7, nullable=false)
      */
-    private $codeEntrepot = '';
+    private $codeEffacement = '';
 
     /**
      * @var string
@@ -241,25 +241,25 @@ class Account {
     }
 
     /**
-     * Set codeEntrepot
+     * Set codeEffacement
      *
-     * @param string $codeEntrepot
+     * @param string $codeEffacement
      *
      * @return Account
      */
-    public function setCodeEntrepot($codeEntrepot) {
-        $this->codeEntrepot = $codeEntrepot;
+    public function setCodeEffacement($codeEffacement) {
+        $this->codeEffacement = $codeEffacement;
 
         return $this;
     }
 
     /**
-     * Get codeEntrepot
+     * Get codeEffacement
      *
      * @return string
      */
-    public function getCodeEntrepot() {
-        return $this->codeEntrepot;
+    public function getCodeEffacement() {
+        return $this->codeEffacement;
     }
 
     /**
