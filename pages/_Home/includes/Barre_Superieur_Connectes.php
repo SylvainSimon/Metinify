@@ -31,9 +31,11 @@ class Barre_Superieur_Connectes extends \PageHelper {
             </div>
         </div>
 
-        <div class="col-md-5 col-sm-5 col-xs-5">
+        <div class="" style="margin-right: 10px;">
 
             <div class="pull-right">
+
+                <span class="iconStatutServer visible-xs-inline visible-sm-inline" style="top: 7px; position: relative; margin-left: 7px;"></span>
 
                 <?php include BASE_ROOT . '/pages/Messagerie/includes/Messagerie_Notifications.php'; ?>
 

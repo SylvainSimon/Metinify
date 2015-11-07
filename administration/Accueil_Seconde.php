@@ -1,30 +1,13 @@
-<?php
+<nav class="col-lg-2 col-md-3">
+    <?php
+    include 'administration/Sidebar_Gauche_Seconde.php';
+    ?>
+</nav>
 
-namespace Administration;
+<div id="Contenue_Principal" class="col-lg-8 col-md-6 col-sm-12"></div> 
 
-require __DIR__ . '../../core/initialize.php';
-
-class Accueil_Seconde extends \PageHelper {
-
-    public $isProtected = true;
-    public $isAdminProtected = true;
-
-    public function run() {
-        ?>
-        <div class="box box-default flat">
-
-            <div class="box-header">
-                <h3 class="box-title">Administration du serveur</h3>
-            </div>
-
-            <div class="box-body">
-                Bienvenue sur le panneau d'administration.
-            </div>
-        </div>
-        <?php
-    }
-
-}
-
-$class = new Accueil_Seconde();
-$class->run();
+<nav class="col-lg-2 col-md-3">
+    <?php
+    include 'administration/Sidebar_Droite_Seconde.php';
+    ?>
+</nav>

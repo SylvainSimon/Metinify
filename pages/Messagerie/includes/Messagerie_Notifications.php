@@ -1,5 +1,4 @@
 
-        <div class="inline">
             <?php
             /* ------------------------ Vérification Données ---------------------------- */
             $Recuperation_Droits = "SELECT * 
@@ -59,10 +58,10 @@
                 }
 
                 if ($Nombre_De_Resultat_Message_Traitement == 0 and $Nombre_De_Resultat_Discussion_Attente == 0) {
-                    echo "<i onclick='Ajax(\"pages/Messagerie/Messagerie.php\")' data-tooltip='Aucun nouveau message' data-tooltip-position='left' style='cursor:pointer; top: 7px; position: relative;' class='material-icons md-icon-chat md-24'></i>";
+                    echo "<i onclick='Ajax(\"pages/Messagerie/Messagerie.php\")' data-tooltip='Aucun nouveau message' data-tooltip-position='left' style='cursor:pointer; top: 7px; margin-left: 7px; position: relative;' class='material-icons md-icon-chat md-24'></i>";
                 } else {
 
-                    echo "<i onclick='Ajax(\"pages/Messagerie/Messagerie.php\")' data-tooltip='" . $Nombre_De_Resultat_Message_Traitement . " message non-lu.<br/>".$Nombre_De_Resultat_Discussion_Attente." ticket(s) en attente.' " . $Message . "' style='cursor:pointer; top: 7px; position: relative;' class='material-icons text-green md-icon-chat md-22'></i>";
+                    echo "<i onclick='Ajax(\"pages/Messagerie/Messagerie.php\")' data-tooltip='" . $Nombre_De_Resultat_Message_Traitement . " message non-lu.<br/>".$Nombre_De_Resultat_Discussion_Attente." ticket(s) en attente.' " . $Message . "' style='cursor:pointer; top: 7px; margin-left: 7px; position: relative;' class='material-icons text-green md-icon-chat md-22'></i>";
                 }
                 
                 ?>
@@ -119,10 +118,10 @@
                 }
 
                 if ($Nombre_De_Resultat_Message_Traitement == 0) {
-                    echo "<i onclick='Ajax(\"pages/Messagerie/Messagerie.php\")' data-tooltip='Aucun nouveau message' data-tooltip-position='left' style='cursor:pointer; top: 7px; position: relative;' class='material-icons md-icon-chat md-24'></i>";
+                    echo "<i onclick='Ajax(\"pages/Messagerie/Messagerie.php\")' data-tooltip='Aucun nouveau message' data-tooltip-position='left' style='cursor:pointer; top: 7px; position: relative; margin-left: 7px;' class='material-icons md-icon-chat md-24'></i>";
                 } else {
 
-                    echo "<i onclick='Ajax(\"pages/Messagerie/Messagerie.php\")' data-tooltip='" . $Nombre_De_Resultat_Message_Traitement . " message non-lu' data-tooltip-position='left' " . $Message . "' style='cursor:pointer; top: 7px; position: relative;' class='material-icons text-green md-icon-chat md-22'></i>";
+                    echo "<i onclick='Ajax(\"pages/Messagerie/Messagerie.php\")' data-tooltip='" . $Nombre_De_Resultat_Message_Traitement . " message non-lu' data-tooltip-position='left' " . $Message . "' style='cursor:pointer; top: 7px;  margin-left: 7px; position: relative;' class='material-icons text-green md-icon-chat md-22'></i>";
                 }
                 ?>
 
@@ -139,5 +138,3 @@
                 </script>
 
             <?php } ?>
-
-        </div>

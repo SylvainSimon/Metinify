@@ -1,4 +1,4 @@
-<div class="box box-default flat">
+<div class="box box-default flat  hidden-sm hidden-xs">
     <div class="box-header">
         <h3 class="box-title">Serveur</h3>
 
@@ -9,9 +9,9 @@
 
 
             if (!$sock = @fsockopen($ip, $port, $num, $error, 0.5)) {
-                ?> <span id="ServeurClassyd"><i class="text-red material-icons md-icon-public md-22" data-tooltip="Hors-Ligne" data-tooltip-position="left"></i></span> <?php
+                ?> <span class="iconStatutServer"></span> <?php
             } else {
-                ?> <span id="ServeurClassyd"><i class="text-green material-icons md-icon-public md-22" data-tooltip="En ligne" data-tooltip-position="left"></i></span> <?php
+                ?> <span class="iconStatutServer"></span> <?php
                     fclose($sock);
                 }
                 ?>
@@ -48,9 +48,11 @@
         <?php } ?>
 
         <script type="text/javascript">
+            ServeurClassyd();
             setInterval("ServeurClassyd()", "60000");
         </script>
         <script type="text/javascript">
+            JoueursConnectes();
             setInterval("JoueursConnectes()", "30000");
         </script>
 

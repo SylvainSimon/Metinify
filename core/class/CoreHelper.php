@@ -8,10 +8,13 @@ class CoreHelper {
     public $objConfig;
     public $objSession;
     public $objTwig;
+    public $isAdmin = false;
+    public $arrAdminRights = [];
     public $objAccount = null;
     public $isConnected = false;
     public $response;
     public $isProtected = false;
+    public $isAdminProtected = false;
     public $isPage = false;
     public $isScript = false;
     public $isAllowForBlock = false;
@@ -51,16 +54,20 @@ class CoreHelper {
         $this->response = new Response();
 
         if ($session->get("ID") !== null) {
-            
             $this->isConnected = true;
-
             $objAccount = Account\AccountHelper::getAccountRepository()->find($session->get("ID"));
             $this->objAccount = $objAccount;
             $this->ReloadSessionValues();
+
+            if ($this->isAdminProtected) {
+                if (!$this->LoadAdminSessionValues()) {
+                    include '../../pages/_LegacyPages/News.php';
+                    exit();
+                }
+            }
         } else {
             $this->isConnected = false;
         }
-
 
         if ($this->isProtected) {
             $this->ControleConnexion();
@@ -74,7 +81,6 @@ class CoreHelper {
             if ($session->get("ID") !== null) {
 
                 if ($this->objAccount->getStatus() == "BLOCK") {
-
                     if (!$this->isAllowForBlock) {
                         include '../../pages/Bannissement.php';
                         exit();
@@ -145,6 +151,55 @@ class CoreHelper {
         $session->set("Date_de_creation", $this->objAccount->getCreateTime());
         $session->set("Status", $this->objAccount->getStatus());
         $session->set("Pseudo_Messagerie", $this->objAccount->getPseudoMessagerie());
+    }
+
+    public function LoadAdminSessionValues() {
+
+        $objAdministrationUser = Site\SiteHelper::getAdministrationUsersRepository()->findAdministrationUser($this->objAccount->getId());
+
+        if ($objAdministrationUser !== null) {
+            $this->isAdmin = $objAdministrationUser->getPannelAdmin();
+            $this->arrAdminRights["supportTicket"] = $objAdministrationUser->getSupportTicket();
+            $this->arrAdminRights["rechercheJoueurs"] = $objAdministrationUser->getRechercheJoueurs();
+            $this->arrAdminRights["rechercheJoueursAdmin"] = $objAdministrationUser->getRechercheJoueursAdmin();
+            $this->arrAdminRights["rechercheComptes"] = $objAdministrationUser->getRechercheComptes();
+            $this->arrAdminRights["rechercheGuildes"] = $objAdministrationUser->getRechercheGuildes();
+            $this->arrAdminRights["rechercheEmails"] = $objAdministrationUser->getRechercheEmails();
+            $this->arrAdminRights["rechercheIps"] = $objAdministrationUser->getRechercheIp();
+            $this->arrAdminRights["recherchePecheurs"] = $objAdministrationUser->getRecherchePecheurs();
+            $this->arrAdminRights["rechercheMaries"] = $objAdministrationUser->getRechercheMaries();
+            $this->arrAdminRights["rechercheItems"] = $objAdministrationUser->getRechercheItems();
+            $this->arrAdminRights["rechercheBanissements"] = $objAdministrationUser->getRechercheBannissements();
+            $this->arrAdminRights["rechercheRename"] = $objAdministrationUser->getRechercheRenames();
+            $this->arrAdminRights["banissement"] = $objAdministrationUser->getBannissement();
+            $this->arrAdminRights["banissementIp"] = $objAdministrationUser->getBannissementIp();
+            $this->arrAdminRights["debanissement"] = $objAdministrationUser->getDebannissement();
+            $this->arrAdminRights["debanissementIp"] = $objAdministrationUser->getDebannissementIp();
+            $this->arrAdminRights["voirPersonnage"] = $objAdministrationUser->getVoirPersonnage();
+            $this->arrAdminRights["voirCompte"] = $objAdministrationUser->getVoirCompte();
+            $this->arrAdminRights["voirDescriptionMembre"] = $objAdministrationUser->getDescriptionMembre();
+            $this->arrAdminRights["gererMonnaies"] = $objAdministrationUser->getGererMonnaies();
+            $this->arrAdminRights["gererNews"] = $objAdministrationUser->getGererNews();
+            $this->arrAdminRights["gererEquipe"] = $objAdministrationUser->getEquipe();
+            $this->arrAdminRights["historiqueCommandes"] = $objAdministrationUser->getCommandes();
+            $this->arrAdminRights["historiqueMp"] = $objAdministrationUser->getMp();
+
+            \Debug::log($this->arrAdminRights);
+            
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function VerifyTheRight($nameRight = "") {
+
+        if ($this->arrAdminRights[$nameRight]) {
+            return true;
+        } else {
+            include '../pages/MagicWord.php';
+            exit();
+        }
     }
 
     public function redirectToSSL() {

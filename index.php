@@ -3,6 +3,17 @@ require __DIR__ . '/core/initialize.php';
 
 class IndexWebsite extends PageHelper {
 
+    public function __construct() {
+
+        parent::__construct();
+        
+        global $session;
+        
+        if ($session->get("Administration_PannelAdmin") !== null) {
+            parent::LoadAdminSessionValues();
+        }
+    }
+
     public function run() {
 
         global $request;
@@ -82,21 +93,7 @@ class IndexWebsite extends PageHelper {
 
                             <div class="row">
                                 <?php if ($session->get("Administration_PannelAdmin") !== null) { ?>
-
-                                    <nav class="col-lg-2 col-md-3 hidden-sm hidden-xs">
-                                        <?php
-                                        include 'administration/Sidebar_Gauche_Seconde.php';
-                                        ?>
-                                    </nav>
-
-                                    <div id="Contenue_Principal" class="col-lg-8 col-md-6 col-sm-12"></div> 
-
-                                    <nav class="col-lg-2 col-md-3 hidden-sm hidden-xs">
-                                        <?php
-                                        include 'administration/Sidebar_Droite_Seconde.php';
-                                        ?>
-                                    </nav>
-
+                                    <?php include './administration/Accueil_Seconde.php'; ?>
                                 <?php } else { ?>
                                     <?php include 'pages/_LegacyPages/Accueil.php'; ?>
                                 <?php } ?>
@@ -176,13 +173,13 @@ class IndexWebsite extends PageHelper {
         <?php } elseif ($request->query->get("paypal") !== null) { ?>
                     Ajax('pages/_LegacyPages/PaypalTerm.php');
         <?php } else { ?>
-            
+
             <?php if ($session->get("Administration_PannelAdmin") !== null) { ?>
-                        Ajax('administration/Accueil_Seconde.php');
+                        Ajax('administration/Bienvenu.php');
             <?php } else { ?>
                         Ajax('pages/_LegacyPages/News.php');
             <?php } ?>
-                
+
         <?php } ?>
             </script>  
 

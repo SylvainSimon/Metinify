@@ -129,6 +129,7 @@ function ServeurClassyd() {
         url: "ajax/ajaxStatutServeur.php",
         success: function (msg) {
             $("#ServeurClassyd").html(msg);
+            $(".iconStatutServer").html(msg);
             redraw();
         }
     });

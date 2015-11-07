@@ -8,10 +8,16 @@ class Recherche_Joueurs extends \PageHelper {
 
     public $isProtected = true;
     public $isAdminProtected = true;
-    
+
+    public function __construct() {
+        parent::__construct();
+        
+        $this->VerifyTheRight("rechercheJoueurs");
+    }
+
     public function run() {
         ?>
-        
+
 
         <?php if (!empty($_SESSION["Administration_PannelAdmin_Jeton"])) { ?>
 
