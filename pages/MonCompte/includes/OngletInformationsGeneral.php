@@ -108,13 +108,13 @@
 
                                 <i style="margin-left: 5px;" data-tooltip="Modifier mon code" onclick="Ajax('pages/MonCompte/CodeEffacementChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
                                 <i data-tooltip="Voir le code" onclick="if (Clique_Code_Effacement == 0) {
-                                                document.getElementById('Code_Effacement').innerHTML = '<?php echo $Resultat_Appel_Compte->social_id; ?>';
-                                                Clique_Code_Effacement = 1;
-                                            } else {
-                                                document.getElementById('Code_Effacement').innerHTML = '●●●●●●●';
-                                                Clique_Code_Effacement = 0;
-                                            }
-                                            ;" class="pull-right Pointer material-icons md-icon-visible"></i>
+                                            document.getElementById('Code_Effacement').innerHTML = '<?php echo $Resultat_Appel_Compte->social_id; ?>';
+                                            Clique_Code_Effacement = 1;
+                                        } else {
+                                            document.getElementById('Code_Effacement').innerHTML = '●●●●●●●';
+                                            Clique_Code_Effacement = 0;
+                                        }
+                                        ;" class="pull-right Pointer material-icons md-icon-visible"></i>
 
                             </td>
                         </tr>
@@ -191,14 +191,13 @@
                         <?php while ($Resultat_Liste_Personnages = $Parametres_Liste_Personnages->fetch()) { ?>
 
                             <?php
-                            
                             $dt = \Carbon\Carbon::create(2000, 1, 1, 0, 0, 0)->startOfDay();
                             $dt2 = $dt->copy()->addMinute($Resultat_Liste_Personnages->playtime);
-                            $var = $dt->diffInMonths($dt2)." mois, ";
-                            $var .= $dt->diffInDays($dt2)." jours et ";
-                            $var .= $dt->diffInHours($dt2)." heures";
-                            
-                            Carbon\CarbonInterval::minutes($Resultat_Liste_Personnages->playtime);   
+                            $var = $dt->diffInMonths($dt2) . " mois, ";
+                            $var .= $dt->diffInDays($dt2) . " jours et ";
+                            $var .= $dt->diffInHours($dt2) . " heures";
+
+                            Carbon\CarbonInterval::minutes($Resultat_Liste_Personnages->playtime);
                             ?>
                             <tr data-tooltip="Cliquez pour voir le détails du personnage" onclick="Ajax('pages/MonPersonnage/MonPersonnage.php?id=<?php echo $Resultat_Liste_Personnages->id; ?>')" class="Pointer">
                                 <td class="hidden-md hidden-sm hidden-xs">
@@ -336,69 +335,82 @@
 
     <div class="row" style="margin-bottom: 10px;">
 
-        <?php
-        $Resultat_Appel_Compte->autoloot_expire = str_replace("-", "/", $Resultat_Appel_Compte->autoloot_expire);
-        $Resultat_Appel_Compte->gold_expire = str_replace("-", "/", $Resultat_Appel_Compte->gold_expire);
-        $Resultat_Appel_Compte->silver_expire = str_replace("-", "/", $Resultat_Appel_Compte->silver_expire);
-        $Resultat_Appel_Compte->safebox_expire = str_replace("-", "/", $Resultat_Appel_Compte->safebox_expire);
-        $Resultat_Appel_Compte->money_drop_rate_expire = str_replace("-", "/", $Resultat_Appel_Compte->money_drop_rate_expire);
-        $Resultat_Appel_Compte->fish_mind_expire = str_replace("-", "/", $Resultat_Appel_Compte->fish_mind_expire);
-        $Resultat_Appel_Compte->marriage_fast_expire = str_replace("-", "/", $Resultat_Appel_Compte->marriage_fast_expire);
-        ?>
-        
 
         <div class="col-md-12">
-            <div class="col-lg-3"><?php echo $Array_BonusCompte['autoloot_expire'] ?><span id="Compteloot" style="position: relative; left:12px;"></span></div>
-            <div class="col-lg-3"><?php echo $Array_BonusCompte['gold_expire'] ?><span id="Comptegold" style="position: relative; left:12px;"></span></div>
-            <div class="col-lg-3"><?php echo $Array_BonusCompte['silver_expire'] ?><span id="Comptesilver" style="position: relative; left:12px;"></span></div>
-            <div class="col-lg-3"><?php echo $Array_BonusCompte['marriage_fast_expire'] ?><span id="Comptelove" style="position: relative; left:12px;"></span></div>
-        </div>
 
-        <div class="col-md-12">
-            <div class="col-lg-3"><?php echo $Array_BonusCompte['safebox_expire'] ?><span id="Comptesafebox" style="position: relative; left:12px;"></span></div>
-            <div class="col-lg-3"><?php echo $Array_BonusCompte['money_drop_rate_expire'] ?><span id="Comptemonnaie" style="position: relative; left:12px;"></span></div>
-            <div class="col-lg-3"><?php echo $Array_BonusCompte['fish_mind_expire'] ?><span id="Comptepeche" style="position: relative; left:12px;"></span></div>
-            <div class="col-lg-3"></div>
+            <?php if ($Resultat_Appel_Compte->autoloot_expire != "0000-00-00 00:00:00") { ?>
+                <?php $Resultat_Appel_Compte->autoloot_expire = str_replace("-", "/", $Resultat_Appel_Compte->autoloot_expire); ?>
+            <div class="col-lg-4" style="margin-top: 10px;"><?php echo $Array_BonusCompte['autoloot_expire'] ?><span id="Compteloot" style="position: relative; left:12px;"></span></div>
+                <script>
+                    $('#Compteloot').countdown('<?= $Resultat_Appel_Compte->autoloot_expire; ?>', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+                </script>
+            <?php } ?>
+                
+            <?php if ($Resultat_Appel_Compte->gold_expire != "0000-00-00 00:00:00") { ?>
+                <?php $Resultat_Appel_Compte->gold_expire = str_replace("-", "/", $Resultat_Appel_Compte->gold_expire); ?>
+                <div class="col-lg-4" style="margin-top: 10px;"><?php echo $Array_BonusCompte['gold_expire'] ?><span id="Comptegold" style="position: relative; left:12px;"></span></div>
+                <script>
+                    $('#Comptegold').countdown('<?= $Resultat_Appel_Compte->gold_expire; ?>', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+                </script>
+            <?php } ?>
+                
+            <?php if ($Resultat_Appel_Compte->silver_expire != "0000-00-00 00:00:00") { ?>
+                <?php $Resultat_Appel_Compte->silver_expire = str_replace("-", "/", $Resultat_Appel_Compte->silver_expire); ?>
+                <div class="col-lg-4" style="margin-top: 10px;"><?php echo $Array_BonusCompte['silver_expire'] ?><span id="Comptesilver" style="position: relative; left:12px;"></span></div>
+                <script>
+                    $('#Comptesilver').countdown('<?= $Resultat_Appel_Compte->silver_expire; ?>', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+                </script>
+            <?php } ?>
+                
+            <?php if ($Resultat_Appel_Compte->marriage_fast_expire != "0000-00-00 00:00:00") { ?>
+                <?php $Resultat_Appel_Compte->marriage_fast_expire = str_replace("-", "/", $Resultat_Appel_Compte->marriage_fast_expire); ?>
+                <div class="col-lg-4" style="margin-top: 10px;"><?php echo $Array_BonusCompte['marriage_fast_expire'] ?><span id="Comptelove" style="position: relative; left:12px;"></span></div>
+                <script>
+                    $('#Comptelove').countdown('<?= $Resultat_Appel_Compte->marriage_fast_expire; ?>', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+                </script>
+            <?php } ?>
+                
+            <?php if ($Resultat_Appel_Compte->safebox_expire != "0000-00-00 00:00:00") { ?>
+                <?php $Resultat_Appel_Compte->safebox_expire = str_replace("-", "/", $Resultat_Appel_Compte->safebox_expire); ?>
+                <div class="col-lg-4" style="margin-top: 10px;"><?php echo $Array_BonusCompte['safebox_expire'] ?><span id="Comptesafebox" style="position: relative; left:12px;"></span></div>
+                <script>
+                    $('#Comptesafebox').countdown('<?= $Resultat_Appel_Compte->safebox_expire; ?>', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+                </script>
+            <?php } ?>
+                
+            <?php if ($Resultat_Appel_Compte->money_drop_rate_expire != "0000-00-00 00:00:00") { ?>
+                <?php $Resultat_Appel_Compte->money_drop_rate_expire = str_replace("-", "/", $Resultat_Appel_Compte->money_drop_rate_expire); ?>
+                <div class="col-lg-4" style="margin-top: 10px;"><?php echo $Array_BonusCompte['money_drop_rate_expire'] ?><span id="Comptemonnaie" style="position: relative; left:12px;"></span></div>
+                <script>
+                    $('#Comptemonnaie').countdown('<?= $Resultat_Appel_Compte->money_drop_rate_expire; ?>', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+                </script>
+            <?php } ?>
+                
+            <?php if ($Resultat_Appel_Compte->fish_mind_expire != "0000-00-00 00:00:00") { ?>
+                <?php $Resultat_Appel_Compte->fish_mind_expire = str_replace("-", "/", $Resultat_Appel_Compte->fish_mind_expire); ?>
+                <div class="col-lg-4" style="margin-top: 10px;"><?php echo $Array_BonusCompte['fish_mind_expire'] ?><span id="Comptepeche" style="position: relative; left:12px;"></span></div>
+                <script>
+                    $('#Comptepeche').countdown('<?= $Resultat_Appel_Compte->fish_mind_expire; ?>', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+                </script>
+            <?php } ?>
+
         </div>
 
     </div>
-
-    <script type="text/javascript">
-
-        $('#Compteloot').countdown('<?= $Resultat_Appel_Compte->autoloot_expire; ?>', function(event) {
-        $(this).html(event.strftime('%-Y %!Y:an,ans; %-w sem %-d %!d:jour,jours; %-H:%M:%S'));
-        });
-
-        $('#Comptegold').countdown('<?= $Resultat_Appel_Compte->gold_expire; ?>', function(event) {
-        $(this).html(event.strftime('%-Y %!Y:an,ans; %-w sem %-d %!d:jour,jours; %-H:%M:%S'));
-        });
-
-        $('#Comptesilver').countdown('<?= $Resultat_Appel_Compte->silver_expire; ?>', function(event) {
-        $(this).html(event.strftime('%-Y %!Y:an,ans; %-w sem %-d %!d:jour,jours; %-H:%M:%S'));
-        });
-
-        $('#Comptelove').countdown('<?= $Resultat_Appel_Compte->marriage_fast_expire; ?>', function(event) {
-        $(this).html(event.strftime('%w weeks %d days %H:%M:%S'));
-        });
-
-        $('#Comptemonnaie').countdown('<?= $Resultat_Appel_Compte->money_drop_rate_expire; ?>', function(event) {
-        $(this).html(event.strftime('%-Y %!Y:an,ans; %-w sem %-d %!d:jour,jours; %-H:%M:%S'));
-        });
-
-        $('#Comptepeche').countdown('<?= $Resultat_Appel_Compte->fish_mind_expire; ?>', function(event) {
-        $(this).html(event.strftime('%-Y %!Y:an,ans; %-w sem %-d %!d:jour,jours; %-H:%M:%S'));
-        });
-
-        $('#Comptelove').countdown('<?= $Resultat_Appel_Compte->marriage_fast_expire; ?>', function(event) {
-        $(this).html(event.strftime('%-Y %!Y:an,ans; %-w sem %-d %!d:jour,jours; %-H:%M:%S'));
-        });
-
-        $('#Comptesafebox').countdown('<?= $Resultat_Appel_Compte->safebox_expire; ?>', function(event) {
-        $(this).html(event.strftime('%-Y %!Y:an,ans; %-w sem %-d %!d:jour,jours; %-H:%M:%S'));
-        });
-
-
-    </script>
 
     <div class="clearfix"></div>
 </div>
