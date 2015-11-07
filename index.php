@@ -177,7 +177,7 @@ class IndexWebsite extends PageHelper {
         <?php } else { ?>
 
             <?php if ($session->get("Administration_PannelAdmin") !== null) { ?>
-                        Ajax('administration/Bienvenu.php');
+                        Ajax('pages/Admin/Bienvenu.php');
             <?php } else { ?>
                         Ajax('pages/_LegacyPages/News.php');
             <?php } ?>
