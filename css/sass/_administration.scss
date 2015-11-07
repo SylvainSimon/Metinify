@@ -1,7 +1,3 @@
-*{
-    outline: none;
-}
-
 .Liste_Menu_Administration{
     list-style-type: none;
 }
@@ -133,3 +129,59 @@
     background: #303030;
     border: 1px solid grey;
 }
+
+.Administration_Header{position: relative; z-index: 5; height: 60px;color: white;font: bold 25px Arial, Helvetica, sans-serif;background: url('../../images/fond_admin_head.png');box-shadow:0 0 2px 1px #333333;border-bottom :1px solid grey;padding-left: 25px;margin-top: 0px;line-height: 60px;}
+
+/* ------------------------------ Bannissement/Debannissement  --------------------------------- */
+.Conteneur_Tableau_Historiques_Bannissement{position: relative; max-height: 185px; top: 30px;width: 97%;margin: 0 auto 0 auto;overflow-y: auto;border-bottom: 1px solid grey;}
+.Tableau_Historiques_Bannissements{width: 100%; background: url('../../images/motif_th.png'); border: 1px solid grey; color: #cccccc; border-collapse:collapse; }
+.Tableau_Historiques_Bannissements th, #Tableau_Personnages td {padding:3px 3px; font-size: 13px;}
+.Tableau_Historiques_Bannissements th { border:1px solid grey;  background-color:#0085cc;  color:#DDDDDD; text-align:left; text-indent: 2px; font-weight:bold; background:url('../../images/motif.png');}
+.Tableau_Historiques_Bannissements td {text-indent: 3px; border:1px solid #666666; font-size: 13px; height: 22px;}
+.Tableau_Historiques_Bannissements tr.bg td {background-color:#e8f6ff;}
+.Information_Bannissement{position: relative;top:10px;width: 97%;margin: 0 auto 0 auto;height: 250px;border: 1px solid grey;}
+.Tableau_Rappel{position: absolute;top:20px;left:20px;width: 360px;border: 1px solid #303030;text-align: left;text-indent: 7px;line-height: 20px;font-size: 13px;border-collapse: collapse;border-radius:3px;margin-right: 20px;color: #cccccc;background: url('../../images/motif_th.png');}
+.Tableau_Rappel td{border: 1px solid grey;}
+.Tableau_Rappel th{height: 23px;font-size: 14px;border: 1px solid grey;}
+.Tableau_Rappel .Colonne_Gauche{width: 40%;background:url('../../images/motif.png');border: 1px solid grey;color: #DDDDDD;text-align: left;font-variant: small-caps;font-weight: bold;font-size: 15px;}
+.Tableau_Rappel_Personnages{position: absolute;top:115px;left:20px;width: 360px; border: 1px solid #303030; text-align: left;text-indent: 7px;line-height: 20px;font-size: 13px;border-collapse: collapse;border-radius:3px; margin-right: 20px;color: #cccccc;background: url('../../images/motif_th.png');}
+.Tableau_Rappel_Personnages td{border: 1px solid grey;}
+.Tableau_Rappel_Personnages th{height: 23px;font-size: 14px;border: 1px solid grey;}
+.Tableau_Rappel_Personnages .Colonne_Gauche{width: 218px;background:url('../../images/motif.png');border: 1px solid grey;color: #DDDDDD;text-align: left;font-variant: small-caps;font-weight: bold;font-size: 15px;}
+.Tableau_Formulaire_Bannissement{position: relative;top:10px;left:10px;width: 330px;border: 1px solid #303030;text-align: left;text-indent: 7px;line-height: 20px;font-size: 13px;border-collapse: collapse;border-radius:3px;margin-right: 20px;color: #cccccc;background: url('../../images/motif_th.png');}
+.Tableau_Formulaire_Bannissement td{border: 1px solid grey;}.Tableau_Formulaire_Bannissement th{height: 23px;font-size: 14px;border: 1px solid grey;}.Tableau_Formulaire_Bannissement .Colonne_Gauche{width: 118px;background:url('../../images/motif.png');border: 1px solid grey;color: #DDDDDD;text-align: left;font-variant: small-caps;font-weight: bold;font-size: 15px;}
+.Administration_Survol_TD:hover{background: #444444;cursor: pointer;}
+.Formulaire_Bannissement{position: absolute;top:20px;right: 20px;width: 350px;height: 209px;border: 1px solid grey;background: url('../../images/motif_th.png');}
+.Selecteur_Bannissement{background: #333333;border: 1px solid grey;width: 205px;margin-right: -7px;position: relative;left:-7px;color: #EFEFEF;}
+.Zone_Commentaire{position: relative;width: 205px;border: 1px solid grey;background: #333333;color: #EFEFEF;left:-7px;margin-right: -7px;text-indent: 3px;}
+.Bouton_Valider_Le_Bannissement{position:relative;top:18px;left:10px; width: 330px; margin: 0 auto 0 auto;height: 21px;line-height: 9px;color: #EFEFEF;background:url('../../images/motif.png');border: 1px solid grey;opacity: .9;}
+.Bouton_Valider_Le_Bannissement:hover{opacity: 1;cursor: pointer;}
+.Bouton_Valider_Le_Bannissement:active{opacity: .8;}
+.Bannissement_Piece_Monnaie{position: relative;top:3px;left:-1px;}
+.Texte_Monnaie_Bannissement{position: relative;top:-1px;}
+
+/* ------------------------------------- Gerer Monnaies ------------------------------------------ */
+.Div_Saisie_Login_Gestion_Monnaie{position: absolute;height: 30px;border-bottom: 1px solid grey;border-top: 1px solid grey;width: 100%;top:60px;background:url('../../images/motif.png');z-index: 1;color: white;font-size: 13px;line-height: 30px;text-indent: 9px;}
+.Conteneur_Tableau_Historiques_Monnaies{position: absolute;top: 340px;width: 100%;margin: 0 auto 0 auto;border-top: 1px solid grey;padding-top: 10px;}
+.Defilement_Tableau_Historiques_Monnaies{position: relative;width: 97%;max-height: 174px;border-bottom: 1px solid grey;margin: 0 auto 0 auto;overflow-y: auto;}
+.Zone_Gerer_Monnaies{position: absolute;top:92px;width: 400px;height: 249px;border-right: 1px solid grey;}
+.Input_Nom_Joueur_Monnaie{position: relative;width: 205px; height: 22px; border: 1px solid grey;background: #222222; top: 1px; left:2px; color: #EFEFEF;text-indent: 3px;}
+.Tableau_Historiques_Monnaies{width: 100%; background: url('../../images/motif_th.png'); border: 1px solid grey; position: relative; color: #cccccc; border-collapse:collapse; }
+.Tableau_Historiques_Monnaies th, #Tableau_Personnages td {padding:3px 3px; font-size: 13px;}
+.Tableau_Historiques_Monnaies th { border:1px solid grey;  background-color:#0085cc;  color:#DDDDDD; text-align:left; text-indent: 2px; font-weight:bold; background:url('../../images/motif.png');}
+.Tableau_Historiques_Monnaies td {text-indent: 3px; border:1px solid #666666; font-size: 13px; height: 22px;}
+.Tableau_Historiques_Monnaies tr.bg td {background-color:#e8f6ff;}
+.Bouton_Monnaies_Raccourcies{background:url('../../images/bg_fonction.png');width: 175px;height: 30px; text-align: center;right: 100px;border: 1px solid grey;font-size: 14px;color: #DDDDDD;font-weight: bold;box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;padding: 6px; text-decoration: none;}
+.Bouton_Monnaies_Raccourcies:hover{box-shadow: none;cursor: pointer;}
+.Bouton_Monnaies_Raccourcies:active{box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;}
+.Bouton_Monnaie_500{position: absolute;top:107px;right: 208px;}
+.Bouton_Monnaie_1000{position: absolute;top:148px;right: 208px;}
+.Bouton_Monnaie_5000{position: absolute;top:107px;right: 15px;}
+.Bouton_Monnaie_20000{position: absolute;top:148px;right: 15px;}
+.Bouton_Monnaie_50000{position: absolute;top:190px;right: 15px;}
+.Tableau_Option_Monnaies{position: absolute;top:20px;left:20px;width: 360px;border: 1px solid #303030;text-align: left;text-indent: 7px;line-height: 20px;font-size: 13px;border-collapse: collapse;border-radius:3px;margin-right: 20px;color: #cccccc;background: url('../../images/motif_th.png');}
+.Tableau_Option_Monnaies td{border: 1px solid grey;}
+.Tableau_Option_Monnaies th{height: 23px;font-size: 14px;border: 1px solid grey;}
+.Tableau_Option_Monnaies .Colonne_Gauche{width: 170px;background:url('../../images/motif.png');border: 1px solid grey;color: #DDDDDD;text-align: left;font-variant: small-caps;font-weight: bold;font-size: 15px;}
+.Selecteur_Option_Monnaies{background: #333333;border: 1px solid grey;width: 183px;margin-right: -7px;position: relative;left:-7px;color: #EFEFEF;}
+/* ----------------------------------------------------------------------------------------------- */

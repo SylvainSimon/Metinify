@@ -195,7 +195,7 @@ class CoreHelper {
         if ($this->arrAdminRights[$nameRight]) {
             return true;
         } else {
-            include '../pages/MagicWord.php';
+            include '../../pages/MagicWord.php';
             exit();
         }
     }
