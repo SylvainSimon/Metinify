@@ -140,22 +140,6 @@ class Gestion_Monnaies extends \PageHelper {
                     <div class="col-lg-12">
 
                         <?php
-                        $Pseudo_Messagerie = "SELECT account.pseudo_messagerie
-                                                  FROM account.account
-                                                  WHERE account.id = :id_compte
-                                                  LIMIT 1";
-                        $Parametres_Pseudo_Messagerie = $this->objConnection->prepare($Pseudo_Messagerie);
-                        ?>
-
-                        <?php
-                        $Login = "SELECT account.login
-                                                  FROM account.account
-                                                  WHERE account.id = :id_compte
-                                                  LIMIT 1";
-                        $Parametres_Login = $this->objConnection->prepare($Login);
-                        ?>
-
-                        <?php
                         /* ------------------------ Historique Monnaies ---------------------------- */
                         $Historique_Gerer_Monnaies = "SELECT *
                                                           FROM site.administration_logs_gerer_monnaies
@@ -182,33 +166,20 @@ class Gestion_Monnaies extends \PageHelper {
                                 <?php if ($Nombre_De_Resultat_Historique_Gerer_Monnaies != 0) { ?>
                                     <?php while ($Donnees_Historique_Gerer_Monnaies = $Parametres_Historique_Gerer_Monnaies->fetch()) { ?>
                                         <?php
-                                        /* ------------------------ Vérification Données ---------------------------- */
-                                        $Parametres_Pseudo_Messagerie->execute(array(':id_compte' => $Donnees_Historique_Gerer_Monnaies->id_gm));
-                                        $Parametres_Pseudo_Messagerie->setFetchMode(\PDO::FETCH_OBJ);
-                                        $Donnees_Pseudo_Messagerie = $Parametres_Pseudo_Messagerie->fetch()
-                                        /* -------------------------------------------------------------------------- */
+                                        $objAccountDonateur = \Account\AccountHelper::getAccountRepository()->find($Donnees_Historique_Gerer_Monnaies->id_gm);
                                         ?>
                                         <tr>
                                             <?php if ($Donnees_Historique_Gerer_Monnaies->id_compte != 0) { ?>
-                                                <?php
-                                                /* ------------------------ Vérification Données ---------------------------- */
-                                                $Parametres_Login->execute(array(':id_compte' => $Donnees_Historique_Gerer_Monnaies->id_compte));
-                                                $Parametres_Login->setFetchMode(\PDO::FETCH_OBJ);
-                                                $Donnees_Login = $Parametres_Login->fetch()
-                                                /* -------------------------------------------------------------------------- */
-                                                ?>
-                                                <td><?= $Donnees_Login->login; ?></td>
+                                                <?php $objAccountReceveur = \Account\AccountHelper::getAccountRepository()->find($Donnees_Historique_Gerer_Monnaies->id_compte); ?>
+                                                <td><?= $objAccountReceveur->getLogin(); ?></td>
                                             <?php } else { ?>
                                                 <td>Tout le monde</td>
                                             <?php } ?>
 
                                             <?php
-                                            $Phrase_Action = "";
-                                            if ($Donnees_Historique_Gerer_Monnaies->devise == "1") {
-                                                $Devise = "Vamonaies";
-                                            } else if ($Donnees_Historique_Gerer_Monnaies->devise == "2") {
-                                                $Devise = "Tananaies";
-                                            }
+                                            
+                                            $Devise = \DeviseHelper::getLibelle($Donnees_Historique_Gerer_Monnaies->devise);
+                                            
                                             if ($Donnees_Historique_Gerer_Monnaies->operation == "1") {
                                                 $Operation = "a gagné";
                                             } else if ($Donnees_Historique_Gerer_Monnaies->operation == "2") {
@@ -218,7 +189,7 @@ class Gestion_Monnaies extends \PageHelper {
                                             $Phrase_Action = "" . $Operation . " " . $Donnees_Historique_Gerer_Monnaies->montant . " " . $Devise . ".";
                                             ?>
                                             <td><?= $Phrase_Action; ?></td>
-                                            <td><?= $Donnees_Pseudo_Messagerie->pseudo_messagerie; ?></td>
+                                            <td><?= $objAccountDonateur->getPseudoMessagerie(); ?></td>
                                             <td><?= \FonctionsUtiles::Formatage_Date($Donnees_Historique_Gerer_Monnaies->date); ?></td>
                                         </tr>
                                     <?php } ?>

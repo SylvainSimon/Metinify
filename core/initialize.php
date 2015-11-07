@@ -14,6 +14,7 @@ $loader = new ClassLoader();
 
 $loader->addPrefix('', array(
     BASE_ROOT . '/core/class',
+    BASE_ROOT . '/core/helpers',
     BASE_ROOT . '/core/library/Account',
     BASE_ROOT . '/core/library/Player',
     BASE_ROOT . '/core/library/Common',
