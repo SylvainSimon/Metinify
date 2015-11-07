@@ -13,7 +13,6 @@ class ItemShopRechargement extends \PageHelper {
         <link href="../../css/css/Bootstrap.css" rel="stylesheet" type="text/css" />
         <link href="../../css/css/AdminLTE.css" rel="stylesheet" type="text/css" />
         <link href="../../css/css/styles.css" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="../../css/Item_Shop.css">
 
         <style>
             html{

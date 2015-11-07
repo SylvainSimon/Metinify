@@ -183,8 +183,6 @@ class CoreHelper {
             $this->arrAdminRights["gererEquipe"] = $objAdministrationUser->getEquipe();
             $this->arrAdminRights["historiqueCommandes"] = $objAdministrationUser->getCommandes();
             $this->arrAdminRights["historiqueMp"] = $objAdministrationUser->getMp();
-
-            \Debug::log($this->arrAdminRights);
             
             return true;
         } else {

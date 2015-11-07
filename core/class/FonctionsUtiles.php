@@ -293,6 +293,21 @@ class FonctionsUtiles {
         return $Lien_Image;
     }
 
+    static function FindIconeEmpire($idEmpire) {
+
+        if ($idEmpire == 1) {
+            $icone = "<i data-tooltip='Empire Shinsoo' class='text-red material-icons md-icon-map md-20'></i>";
+        } else if ($idEmpire == 2) {
+            $icone = "<i data-tooltip='Empire Chunjo' class='text-yellow material-icons md-icon-map md-20'></i>";
+        } else if ($idEmpire == 3) {
+            $icone = "<i data-tooltip='Empire Jinno' class='text-blue material-icons md-icon-map md-20'></i>";
+        }else{
+            $icone = "<i data-tooltip='Royaume inconnu' class='material-icons md-icon-map md-20'></i>";
+        }
+
+        return $icone;
+    }
+
     static function Find_Name_Empire($Empire) {
 
         $Nom_Empire = "Empire inconnu";

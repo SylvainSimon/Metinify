@@ -15,8 +15,6 @@ class ItemShop extends \PageHelper {
 
         ?>
 
-        <link rel="stylesheet" href="../../css/Item_Shop.css">
-
         <div class="box box-default flat">
 
             <div class="box-header">

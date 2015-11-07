@@ -44,6 +44,7 @@ class IndexWebsite extends PageHelper {
                 <script src='./components/jquery/jquery.min.js' type='text/javascript'></script>
                 <script src='./components/jquery-ui/jquery-ui.min.js' type='text/javascript'></script>
                 <script src='./components/bootstrap/js/tab.js' type='text/javascript'></script>
+                <script src='./components/bootstrap/js/modal.js' type='text/javascript'></script>
 
                 <script src='assets/js/jquery.browser.min.js' type='text/javascript'></script>
                 <script src='./vendor/almasaeed2010/adminlte/plugins/slimScroll/jquery.slimscroll.min.js' type='text/javascript'></script>
@@ -59,6 +60,7 @@ class IndexWebsite extends PageHelper {
                 <script src="assets/js/jquery.contextMenu/jquery.contextMenu.min.js" type='text/javascript'></script>
                 <script src="assets/js/jquery.countdown.min.js" type='text/javascript'></script>
                 <script src="assets/js/jquery.fancybox.js" type='text/javascript'></script>
+                <script src="assets/js/bootbox/bootbox.min.js" type='text/javascript'></script>
 
                 <!--[if lt IE 9]>
                 <script src="./vendor/afarkas/html5shiv/dist/html5shiv.min.js"></script>
@@ -93,7 +95,7 @@ class IndexWebsite extends PageHelper {
 
                             <div class="row">
                                 <?php if ($session->get("Administration_PannelAdmin") !== null) { ?>
-                                    <?php include './administration/Accueil_Seconde.php'; ?>
+                                    <?php include 'pages/Admin/Accueil_Seconde.php'; ?>
                                 <?php } else { ?>
                                     <?php include 'pages/_LegacyPages/Accueil.php'; ?>
                                 <?php } ?>

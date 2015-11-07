@@ -35,8 +35,6 @@ class ItemShopDetails extends \PageHelper {
         $Resultat_Detail_Articles = $Parametres_Detail_Articles->fetch();
         ?>
 
-        <link rel="stylesheet" href="../../css/Item_Shop.css">
-
         <div class="box box-default flat">
 
             <div class="box-header">
@@ -123,60 +121,84 @@ class ItemShopDetails extends \PageHelper {
 
             function Valider_Mon_Achat(id_item, nombre_item) {
 
-                window.parent.Barre_De_Statut("Transaction en cours...");
-                window.parent.Icone_Chargement(1);
+                bootbox.dialog({
+                    message: "Confirmez-vous l'achat de cette objet ?",
+                    animate: false,
+                    className: "myBootBox",
+                    title: 'Confirmation de la demande',
+                    buttons: {
+                        danger: {
+                            label: "Annuler",
+                            className: "btn-danger",
+                            callback: function () {
 
-                $.ajax({
-                    type: "POST",
-                    url: "pages/ItemShop/ajax/ajaxArticleBuy.php",
-                    data: "id_item=" + id_item + "&nombre_item=" + nombre_item,
-                    success: function (msg) {
+                            }
+                        },
+                        success: {
+                            label: "Confirmer",
+                            className: "btn-primary",
+                            callback: function () {
 
-                        if (msg == 5) {
+                                window.parent.Barre_De_Statut("Transaction en cours...");
+                                window.parent.Icone_Chargement(1);
 
-                            window.parent.Barre_De_Statut("Entrepôt plein ou inexistant.");
-                            window.parent.Icone_Chargement(2);
 
-                            alert("Votre entrepot n'a plus de place ou n'existe pas.");
+                                $.ajax({
+                                    type: "POST",
+                                    url: "pages/ItemShop/ajax/ajaxArticleBuy.php",
+                                    data: "id_item=" + id_item + "&nombre_item=" + nombre_item,
+                                    success: function (msg) {
 
-                        } else if (msg == 6) {
+                                        if (msg == 5) {
 
-                            window.parent.Barre_De_Statut("Vous n'avez pas asser de Tananaies.");
-                            window.parent.Icone_Chargement(2);
+                                            window.parent.Barre_De_Statut("Entrepôt plein ou inexistant.");
+                                            window.parent.Icone_Chargement(2);
 
-                            alert("Vous n'avez pas assez de TanaNaies.")
+                                            alert("Votre entrepot n'a plus de place ou n'existe pas.");
 
-                        } else if (msg == 4) {
+                                        } else if (msg == 6) {
 
-                            window.parent.Barre_De_Statut("L'item choisie n'est pas valide.");
-                            window.parent.Icone_Chargement(2);
-                            alert("L'item n'est pas valide.")
+                                            window.parent.Barre_De_Statut("Vous n'avez pas asser de Tananaies.");
+                                            window.parent.Icone_Chargement(2);
 
-                        } else if (msg == 3) {
+                                            alert("Vous n'avez pas assez de TanaNaies.")
 
-                            window.parent.Barre_De_Statut("Vous n'avez pas asser de Vamonaies.");
-                            window.parent.Icone_Chargement(2);
+                                        } else if (msg == 4) {
 
-                            alert("Vous n'avez pas assez de Vamonaies.")
+                                            window.parent.Barre_De_Statut("L'item choisie n'est pas valide.");
+                                            window.parent.Icone_Chargement(2);
+                                            alert("L'item n'est pas valide.")
 
-                        } else if (msg == "Vous n'êtes pas connecté") {
+                                        } else if (msg == 3) {
 
-                            window.parent.Barre_De_Statut("Vous n'êtes pas/plus connecté.");
-                            window.parent.Icone_Chargement(2);
+                                            window.parent.Barre_De_Statut("Vous n'avez pas asser de Vamonaies.");
+                                            window.parent.Icone_Chargement(2);
 
-                            alert(msg);
+                                            alert("Vous n'avez pas assez de Vamonaies.")
 
-                        } else {
+                                        } else if (msg == "Vous n'êtes pas connecté") {
 
-                            window.parent.Barre_De_Statut("Achat effectué avec succès.");
-                            window.parent.Icone_Chargement(0);
+                                            window.parent.Barre_De_Statut("Vous n'êtes pas/plus connecté.");
+                                            window.parent.Icone_Chargement(2);
 
-                            $("#ContenantAchat").html(msg);
+                                            alert(msg);
 
+                                        } else {
+
+                                            window.parent.Barre_De_Statut("Achat effectué avec succès.");
+                                            window.parent.Icone_Chargement(0);
+
+                                            $("#ContenantAchat").html(msg);
+
+                                        }
+
+                                    }
+                                });
+                            }
                         }
-
                     }
                 });
+
             }
 
         </script>

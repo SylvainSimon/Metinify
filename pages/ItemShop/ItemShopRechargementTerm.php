@@ -7,7 +7,7 @@ require __DIR__ . '../../../core/initialize.php';
 class ItemShopRechargementTerm extends \PageHelper {
 
     public $isProtected = true;
-    
+
     public function run() {
         ?>
         <html>
@@ -15,8 +15,7 @@ class ItemShopRechargementTerm extends \PageHelper {
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
                 <script src='../../components/jquery/jquery.min.js' type='text/javascript'></script>
                 <script src='../../components/jquery-ui/jquery-ui.min.js' type='text/javascript'></script>
-
-                <link rel="stylesheet" href="../../css/Item_Shop.css">
+                <link href="../../css/css/styles.css" rel="stylesheet" type="text/css" />
 
             </head>
             <body>

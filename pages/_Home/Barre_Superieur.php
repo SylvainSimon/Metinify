@@ -1,4 +1,4 @@
-<div style="position: fixed; top: 11px; left:8px; z-index: 9999999;">
+<div style="position: fixed; top: 11px; left:8px; z-index: 999990;">
     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <i class="material-icons md-icon-menu md-24"></i>
     </a>
