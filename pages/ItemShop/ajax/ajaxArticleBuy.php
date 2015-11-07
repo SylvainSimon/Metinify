@@ -558,7 +558,7 @@ class ajaxArticleBuy extends \ScriptHelper {
             </div>
 
             <div class="box-footer">
-                <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/_LegacyPages/News.php');" />
+                <input type="button" class="btn btn-primary btn-flat" value="Retourner à l'Item-Shop" onclick="Ajax('pages/ItemShop/ItemShop.php');" />
             </div>
 
             <?php

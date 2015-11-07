@@ -16,10 +16,6 @@ function Ajax(url) {
 
             redraw();
 
-            history.pushState({
-                isMine: true
-            }, "titre", "");
-
         },
         error: function () {
 

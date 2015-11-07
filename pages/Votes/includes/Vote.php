@@ -9,28 +9,7 @@ $Nombre_De_Resultat_Recuperation_Site_De_Vote = $Parametres_Recuperation_Site_De
 ?>
 <?php if ($Nombre_De_Resultat_Recuperation_Site_De_Vote != 0) { ?>
 
-    <div id="dialog_Avertissement_Vote" title="Erreur lors du vote">Il semble que vous ayez voté il y à moins de 2 heures.<br/>Pour recevoir de nouveau des Vamonaies, il faut patienter.<br/><br/>Désirez-vous aller sur les sites de votes tout de même ?</div>
-    <div id="dialog_Avertissement_Connection" title="Information intéressante">Vous n'êtes pas/plus connecté sur VamosMT2.<br/>En vous reconnectant, vous pouvez bénificier de 20 Vamonaies pour votre vote.<br/><br/>Voulez-vous vraiment continuer?</div>
-    <input style="display: none;" id="Id_Tempo_id_site" value="" />
     <script type="text/javascript">
-
-        function Distribuer_Monnaies() {
-
-            $.ajax({
-                type: "POST",
-                url: "ajax/Update_Vamonaies.php",
-                success: function (msg) {
-
-                    if (msg != "") {
-                        Fonction_Reteneuse_Vamonaies(msg);
-                        Barre_De_Statut("Monnaies recu avec succès.");
-                        Icone_Chargement(0);
-                    }
-                }
-            });
-            return false;
-
-        }
 
         function Verification_Connection_Vote(id_site_vote) {
 
@@ -55,16 +34,44 @@ $Nombre_De_Resultat_Recuperation_Site_De_Vote = $Parametres_Recuperation_Site_De
                                     setTimeout(Distribuer_Monnaies, 15000);
                                 }
                                 else {
-                                    $("#dialog_Avertissement_Vote").dialog("open");
-                                    $("#Id_Tempo_id_site").val(id_site_vote);
+                                    bootbox.dialog({
+                                        message: "Votre vote ne vous a pas rapporté de Vamonaies.<br/><br/>Il semble que vous ayez voté il y à moins de 2 heures.<br/>Pour recevoir de nouveau des Vamonaies, il faut patienter.",
+                                        animate: false,
+                                        className: "myBootBox",
+                                        title: 'Information',
+                                        buttons: {
+                                            success: {
+                                                label: "J'ai compris",
+                                                className: "btn-primary",
+                                                callback: function () {
+
+                                                }
+                                            }
+                                        }
+                                    });
                                 }
                             }
                         });
 
                     }
                     else if (msg == 0) {
-                        $("#dialog_Avertissement_Connection").dialog("open");
-                        $("#Id_Tempo_id_site").val(id_site_vote);
+
+                        bootbox.dialog({
+                            message: "Vous n'êtes pas/plus connecté sur VamosMT2.<br/>En vous reconnectant, vous pourrez bénificier de 20 Vamonaies pour votre vote.",
+                            animate: false,
+                            className: "myBootBox",
+                            title: 'Information',
+                            buttons: {
+                                success: {
+                                    label: "J'ai compris",
+                                    className: "btn-primary",
+                                    callback: function () {
+
+                                    }
+                                }
+                            }
+                        });
+
                     }
                 }
             });
@@ -100,35 +107,6 @@ $Nombre_De_Resultat_Recuperation_Site_De_Vote = $Parametres_Recuperation_Site_De
 
         });
 
-        $(function () {
-            $("#dialog_Avertissement_Connection").dialog({
-                resizable: false,
-                autoOpen: false,
-                height: 240,
-                width: 400,
-                buttons: {
-                    "Continuer": function () {
-                        $(this).dialog("close");
-
-                        $.ajax({
-                            type: "POST",
-                            url: "pages/Votes/ajax/ajaxGetUrlSite.php",
-                            data: "id_site=" + $("#Id_Tempo_id_site").val(),
-                            success: function (msg) {
-                                $("#Lien_Popup").attr("href", msg);
-                                $("#Lien_Popup").click();
-                            }
-                        });
-                        return false;
-
-                    },
-                    "Annuler l'action": function () {
-                        $(this).dialog("close");
-                    }
-                }
-            });
-
-        });
     </script>
 
     <div class="box box-default flat">
@@ -139,7 +117,7 @@ $Nombre_De_Resultat_Recuperation_Site_De_Vote = $Parametres_Recuperation_Site_De
         <div class="box-body">
             <?php while ($Donnees_Recuperation_Site_De_Vote = $Parametres_Recuperation_Site_De_Vote->fetch()) { ?>
                 <input data-tooltip="Voter et gagner 20 Vamonaies" data-tooltip-position="left" class="btn btn-default btn-flat btn-pile" style="width: 100%;" type="button" onclick=" Verification_Connection_Vote(<?php echo $Donnees_Recuperation_Site_De_Vote->id_site_vote ?>);
-                                window.open('<?php echo $Donnees_Recuperation_Site_De_Vote->lien_site_vote; ?>');" value="<?php echo $Donnees_Recuperation_Site_De_Vote->nom_site_vote; ?> " />
+                        window.open('<?php echo $Donnees_Recuperation_Site_De_Vote->lien_site_vote; ?>');" value="<?php echo $Donnees_Recuperation_Site_De_Vote->nom_site_vote; ?> " />
                    <?php } ?>
         </div>
     </div>

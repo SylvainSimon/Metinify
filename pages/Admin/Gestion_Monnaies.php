@@ -28,14 +28,14 @@ class Gestion_Monnaies extends \PageHelper {
                     <div class="col-lg-12">
 
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="Selecteur_Option_Monnaie_Transaction">
                                         Action
                                     </label>
 
                                     <div class="input-group col-xs-12">
-                                        <select class="form-control input-sm" id="Selecteur_Option_Monnaie_Transaction">
+                                        <select class="select2" id="Selecteur_Option_Monnaie_Transaction">
                                             <option value="1" selected>En ajouter</option>
                                             <option value="2">En enlever</option>
                                         </select>
@@ -43,21 +43,32 @@ class Gestion_Monnaies extends \PageHelper {
                                 </div>
 
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="Input_NombreMonnaie">
+                                        Nombre
+                                    </label>
+
+                                    <div class="input-group col-xs-12">
+                                        <input class="form-control input-sm" id="Input_NombreMonnaie" type="text" placeholder="Nombre..." />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="Selecteur_Option_Monnaie_Devise">
                                         Type
                                     </label>
 
                                     <div class="input-group col-xs-12">
-                                        <select class="form-control input-sm" id="Selecteur_Option_Monnaie_Devise">
+                                        <select class="select2" id="Selecteur_Option_Monnaie_Devise">
                                             <option value="1" selected>Vamonaies</option>
                                             <option value="2">Tananaies</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="Input_Nom_Joueur_Monnaie">
                                         Compte
@@ -71,27 +82,19 @@ class Gestion_Monnaies extends \PageHelper {
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <button type="button" class="btn btn-flat btn-success btn-sm" onclick="Update_Monnaie(500)">
-                            500 monnaies
+
+                        <button type="button" class="pull-right btn btn-flat btn-primary btn-sm" onclick="Update_Monnaie()">
+                            Valider la transaction
                         </button>
-                        <button type="button" class="btn btn-flat btn-success btn-sm" onclick="Update_Monnaie(1000)">
-                            1 000 monnaies
-                        </button>
-                        <button type="button" class="btn btn-flat btn-success btn-sm" onclick="Update_Monnaie(5000)">
-                            5 000 monnaies
-                        </button>
-                        <button type="button" class="btn btn-flat btn-success btn-sm" onclick="Update_Monnaie(20000)">
-                            20 000 monnaies
-                        </button>
-                        <button type="button" class="btn btn-flat btn-success btn-sm" onclick="Update_Monnaie(50000)">
-                            50 000 monnaies
-                        </button>
+
                     </div>
 
 
                     <script type="text/javascript">
 
                         function Update_Monnaie(nombre_monnaies) {
+
+                            nombre_monnaies = $('#Input_NombreMonnaie').val();
 
                             if ($("#Input_Nom_Joueur_Monnaie").val() == "") {
 
@@ -177,9 +180,8 @@ class Gestion_Monnaies extends \PageHelper {
                                             <?php } ?>
 
                                             <?php
-                                            
                                             $Devise = \DeviseHelper::getLibelle($Donnees_Historique_Gerer_Monnaies->devise);
-                                            
+
                                             if ($Donnees_Historique_Gerer_Monnaies->operation == "1") {
                                                 $Operation = "a gagné";
                                             } else if ($Donnees_Historique_Gerer_Monnaies->operation == "2") {

@@ -84,8 +84,46 @@ function createTooltip() {
     });
 }
 
+$.fn.select2.defaults.set("theme", "bootstrap");
+
+function redrawSelect2() {
+    $("select.select2").each(function (i, obj) {
+
+        if (!$(obj).data('select2')) {
+            var defaultId = "";
+            var placeholder = "-";
+
+            if ($(obj).attr("data-default") !== undefined) {
+                defaultId = $(obj).attr("data-default");
+            }
+
+            if ($(obj).attr("data-placeholder") !== undefined) {
+                placeholder = $(obj).attr("data-placeholder");
+            }
+
+            if (!$(obj).parents("div.form-hidden").length) {
+                $(obj).select2({
+                    tags: "true",
+                    minimumResultsForSearch: 10,
+                    allowClear: true,
+                    placeholder: {
+                        id: defaultId,
+                        text: placeholder,
+                        minimumResultsForSearch: 10
+                    }
+                }).on("change", function (e) {
+                    $("span.select2-selection__rendered").removeAttr("title");
+                });
+            }
+        }
+    });
+}
+
 function redraw() {
     createTooltip();
+    redrawSelect2();
+
+    $("span.select2-selection__rendered").removeAttr("title");
 }
 
 $(document).ready(function () {
@@ -147,4 +185,70 @@ function JoueursConnectes() {
         }
     });
     return false;
+}
+
+function Fonction_Reteneuse_Tananaies(Nombre_Objectif_Tananaies) {
+
+    Nombre_Transmis_Tananaies = Nombre_Objectif_Tananaies;
+    Definition_Compteurs_Tananaies(Nombre_Transmis_Tananaies);
+}
+
+
+function Definition_Compteurs_Tananaies(Nombre_Tananaies) {
+
+    if (parseInt($("#Nombre_De_Tananaies").html()) != Nombre_Tananaies) {
+
+        if (parseInt($("#Nombre_De_Tananaies").html()) < Nombre_Tananaies) {
+            document.getElementById("Nombre_De_Tananaies").innerHTML = (parseInt($("#Nombre_De_Tananaies").html()) + 1);
+
+        } else if (parseInt($("#Nombre_De_Tananaies").html()) > Nombre_Tananaies) {
+            document.getElementById("Nombre_De_Tananaies").innerHTML = (parseInt($("#Nombre_De_Tananaies").html()) - 1);
+        }
+    }
+
+    if (parseInt($("#Nombre_De_Tananaies").html()) != Nombre_Tananaies) {
+        setTimeout("Definition_Compteurs_Tananaies(Nombre_Transmis_Tananaies)", 1);
+    }
+}
+
+function Fonction_Reteneuse_Vamonaies(Nombre_Objectif_Vamonaie) {
+
+    Nombre_Transmis_Vamonaies = Nombre_Objectif_Vamonaie;
+    Definition_Compteurs_VamoNaies(Nombre_Transmis_Vamonaies);
+}
+
+
+function Definition_Compteurs_VamoNaies(Nombre_Vamonaies) {
+
+    if (parseInt($("#Nombre_De_Vamonaies").html()) != Nombre_Vamonaies)
+    {
+        if (parseInt($("#Nombre_De_Vamonaies").html()) < Nombre_Vamonaies) {
+            document.getElementById("Nombre_De_Vamonaies").innerHTML = (parseInt($("#Nombre_De_Vamonaies").html()) + 1);
+
+        } else if (parseInt(document.getElementById('Nombre_De_Vamonaies').innerHTML) > Nombre_Vamonaies) {
+            document.getElementById("Nombre_De_Vamonaies").innerHTML = (parseInt($("#Nombre_De_Vamonaies").html()) - 1);
+        }
+
+    }
+
+    if (parseInt($("#Nombre_De_Vamonaies").html()) != Nombre_Vamonaies) {
+        setTimeout("Definition_Compteurs_VamoNaies(Nombre_Transmis_Vamonaies)", 2);
+    }
+}
+
+function Distribuer_Monnaies() {
+
+    $.ajax({
+        type: "POST",
+        url: "ajax/Update_Vamonaies.php",
+        success: function (msg) {
+            if (msg != "") {
+                Fonction_Reteneuse_Vamonaies(msg);
+                Barre_De_Statut("Monnaies recu avec succès.");
+                Icone_Chargement(0);
+            }
+        }
+    });
+    return false;
+
 }
