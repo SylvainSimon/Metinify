@@ -60,11 +60,13 @@ class Recherche_IP extends \PageHelper {
                     $Nombre_De_Resultat_Listage_Joueur = $Parametres_Listage_Joueur->rowCount();
                     ?>
 
-                    <div class="Cadre_Principal">
-                        <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal(1);">                  
-                            <h1>Recherche par IP</h1>
+                    <div class="box box-default flat">
+
+                        <div class="box-header">
+                            <h3 class="box-title">Recherche d'IP</h3>
                         </div>
-                        <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1"> 
+
+                        <div class="box-body no-padding">
                             <form action="javascript:void(0);" name="Recherche_Joueurs" onsubmit="Declenchement_Recherche('player.name');" id="Form_Rechercher_Joueurs" class="Form_Recherche_Joueurs">
                                 <input type="text" placeholder="Nom de compte..." id="Input_Rechercher_Joueurs" class="Input_Rechercher_Joueurs" autofocus />
                                 <input type="submit" valu="Rechercher" id="Bouton_Rechercher_Joueurs" class="Bouton_Rechercher_Joueurs" />
@@ -77,15 +79,15 @@ class Recherche_IP extends \PageHelper {
                                 </div>
                             </form>
 
-                            <table id="Table_Recherche_Joueurs" class="Table_Recherche_Joueurs Table_Recherches">
+                            <table class="table table-condensed" style="border-collapse: collapse;">
                                 <thead>
                                     <tr>
-                                        <th onclick="Declenchement_Recherche('account.login')" title="Trier par le nom de compte" class="Pointer Cellule_Pseudonyme">Compte</th>
-                                        <th onclick="Declenchement_Recherche('account.email')" title="Trier par email du compte" class="Pointer Cellule_Compte">Email</th>
-                                        <th onclick="Declenchement_Recherche('player.name')" title="Trier par pseudo du compte" class="Pointer Cellule_Level">Pseudo</th>
-                                        <th onclick="Declenchement_Recherche('player_index.empire')" title="Trier par empire du joueur" class="Pointer Cellule_Empire">Emp.</th>
-                                        <th onclick="Declenchement_Recherche('player.ip')" title="Trier par IP du joueur" class="Pointer Cellule_IP">Date</th>
-                                        <th onclick="Declenchement_Recherche('account.status')" title="Trier par status du compte du joueur" class="Pointer Cellule_Status">Sta.</th>
+                                        <th onclick="Declenchement_Recherche('account.login')" data-tooltip="Trier par le nom de compte" class="Pointer Cellule_Pseudonyme">Compte</th>
+                                        <th onclick="Declenchement_Recherche('account.email')" data-tooltip="Trier par email du compte" class="Pointer Cellule_Compte">Email</th>
+                                        <th onclick="Declenchement_Recherche('player.name')" data-tooltip="Trier par pseudo du compte" class="Pointer Cellule_Level">Pseudo</th>
+                                        <th onclick="Declenchement_Recherche('player_index.empire')" data-tooltip="Trier par empire du joueur" class="Pointer Cellule_Empire">Emp.</th>
+                                        <th onclick="Declenchement_Recherche('player.ip')" data-tooltip="Trier par IP du joueur" class="Pointer Cellule_IP">Date</th>
+                                        <th onclick="Declenchement_Recherche('account.status')" data-tooltip="Trier par status du compte du joueur" class="Pointer Cellule_Status">Sta.</th>
                                     </tr>
                                 </thead>
                                 <tbody id="Tbody_Recherches">
@@ -96,28 +98,28 @@ class Recherche_IP extends \PageHelper {
                                                 <td><?= $Donnees_Listage_Joueur->email; ?></td>
                                                 <td><?= $Donnees_Listage_Joueur->name; ?></td>
                                                 <td>
-                                                    <img class="Images_Recherches" title="<?= \FonctionsUtiles::Find_Name_Empire($Donnees_Listage_Joueur->empire); ?>" src="<?= \FonctionsUtiles::Find_Image_Empire($Donnees_Listage_Joueur->empire); ?>" height="20" />
+                                                    <?php echo \FonctionsUtiles::FindIconeEmpire($Donnees_Listage_Joueur->empire); ?>
                                                 </td>
                                                 <td><?= $Donnees_Listage_Joueur->last_play; ?></td>
 
                                                 <?php if ($Donnees_Listage_Joueur->status == "OK") { ?>
                                                     <?php if ($Donnees_Recuperation_Droits->bannissement == 1) { ?>
                                                         <td id="Personnage_ID_<?php echo $Donnees_Listage_Joueur->id; ?>" class="fancybox" data-fancybox-type="iframe" href="pages/Admin/includes/Bannissement.php?player_id=<?= $Donnees_Listage_Joueur->id; ?>">
-                                                            <img class="Images_Recherches Pointer" title="<?= \FonctionsUtiles::Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= \FonctionsUtiles::Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
+                                                            <img class="Images_Recherches Pointer" data-tooltip="<?= \FonctionsUtiles::Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= \FonctionsUtiles::Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
                                                         </td>
                                                     <?php } else { ?>
                                                         <td>
-                                                            <img class="Images_Recherches" title="<?= \FonctionsUtiles::Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= \FonctionsUtiles::Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
+                                                            <img class="Images_Recherches" data-tooltip="<?= \FonctionsUtiles::Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= \FonctionsUtiles::Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
                                                         </td>
                                                     <?php } ?>
                                                 <?php } else if ($Donnees_Listage_Joueur->status == "BLOCK") { ?>
                                                     <?php if ($Donnees_Recuperation_Droits->debannissement == 1) { ?>
                                                         <td id="Personnage_ID_<?php echo $Donnees_Listage_Joueur->id; ?>" class="fancybox" data-fancybox-type="iframe" href="pages/Admin/includes/Debannissement.php?player_id=<?= $Donnees_Listage_Joueur->id; ?>">
-                                                            <img class="Images_Recherches Pointer" title="<?= \FonctionsUtiles::Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= \FonctionsUtiles::Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
+                                                            <img class="Images_Recherches Pointer" data-tooltip="<?= \FonctionsUtiles::Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= \FonctionsUtiles::Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
                                                         </td>
                                                     <?php } else { ?>
                                                         <td>
-                                                            <img class="Images_Recherches" title="<?= \FonctionsUtiles::Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= \FonctionsUtiles::Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
+                                                            <img class="Images_Recherches" data-tooltip="<?= \FonctionsUtiles::Find_Title_Status($Donnees_Listage_Joueur->status) ?>" src="<?= \FonctionsUtiles::Find_Image_Status($Donnees_Listage_Joueur->status) ?>" height="20" />
                                                         </td>
                                                     <?php } ?>
                                                 <?php } ?>

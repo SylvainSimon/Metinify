@@ -43,7 +43,7 @@ class SQL_Recherche_MP extends \ScriptHelper {
                         if (in_array($Param_Grandeur, $Tableau_Grandeurs)) {
 
                             $Listage_Joueur = "SELECT *
-							   FROM $BDD_Log.messages_prives
+							   FROM log.messages_prives
                                WHERE messages_prives.de LIKE ? '%'
                                ORDER by $Param_Recherche $Param_Grandeur
 							   ";

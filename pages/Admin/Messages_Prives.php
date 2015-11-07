@@ -10,10 +10,8 @@ class Messages_Prives extends \PageHelper {
     public $isAdminProtected = true;
     
     public function run() {
-        ?>
         
-
-        <?php if (!empty($_SESSION["Administration_PannelAdmin_Jeton"])) { ?>
+        if (!empty($_SESSION["Administration_PannelAdmin_Jeton"])) { ?>
 
             <?php
             /* ------------------------ Vérification Données ---------------------------- */
@@ -36,7 +34,7 @@ class Messages_Prives extends \PageHelper {
                     <?php
                     //Requète qui recupère les joueurs du jeu
                     $Listage_Joueur = "SELECT *
-                           FROM $BDD_Log.messages_prives
+                           FROM log.messages_prives
 						   ORDER BY date DESC
                            LIMIT 0, 200";
                     $Parametres_Listage_Joueur = $this->objConnection->prepare($Listage_Joueur);
@@ -45,13 +43,15 @@ class Messages_Prives extends \PageHelper {
                     $Nombre_De_Resultat_Listage_Joueur = $Parametres_Listage_Joueur->rowCount();
                     ?>
 
-                    <div class="Cadre_Principal">
-                        <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal(1);">                  
-                            <h1>Historique des messages privés</h1>
-                        </div>
-                        <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1"> 
+                    <div class="box box-default flat">
 
-                            <table id="Table_Recherche_Joueurs" class="Table_Recherche_Joueurs Table_Recherches">
+                        <div class="box-header">
+                            <h3 class="box-title">Historique des messages privés</h3>
+                        </div>
+
+                        <div class="box-body no-padding">
+
+                            <table class="table table-condensed" style="border-collapse: collapse;">
                                 <thead>
                                     <tr>
                                         <th onclick="Declenchement_Recherche('messages_prives.de')" title="Trier par le nom de compte" class="Pointer Cellule_Pseudonyme">De</th>

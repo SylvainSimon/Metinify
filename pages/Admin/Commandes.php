@@ -36,7 +36,7 @@ class Commandes extends \PageHelper {
                     <?php
                     //Requète qui recupère les joueurs du jeu
                     $Listate_Commandes = "SELECT *
-                           FROM $BDD_Log.commandes_gm
+                           FROM log.commandes_gm
 						   WHERE ( not (username like '[Admin]%' ))
 						   AND ( not (username like '[Dev]%' ))
 						   AND ( not (username like '[TM]Faylinn' ))
@@ -57,13 +57,15 @@ class Commandes extends \PageHelper {
                     $Nombre_De_Resultat_Listate_Commandes = $Parametres_Listate_Commandes->rowCount();
                     ?>
 
-                    <div class="Cadre_Principal">
-                        <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal(1);">                  
-                            <h1>Historique des commandes de l'équipe</h1>
-                        </div>
-                        <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1"> 
+                    <div class="box box-default flat">
 
-                            <table id="Table_Recherche_Joueurs" class="Table_Recherche_Joueurs Table_Recherches">
+                        <div class="box-header">
+                            <h3 class="box-title">Historique des commandes</h3>
+                        </div>
+
+                        <div class="box-body no-padding">
+
+                            <table class="table table-condensed" style="border-collapse: collapse;">
                                 <thead>
                                     <tr>
                                         <th onclick="Declenchement_Recherche('player.name')" title="Trier par pseudonyme du joueur" class="Pointer Cellule_Pseudonyme">Pseudonyme</th>
