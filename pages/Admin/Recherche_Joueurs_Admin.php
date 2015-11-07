@@ -8,10 +8,10 @@ class Recherche_Joueurs_Admin extends \PageHelper {
 
     public $isProtected = true;
     public $isAdminProtected = true;
-    
+
     public function run() {
         ?>
-        
+
 
         <?php if (!empty($_SESSION["Administration_PannelAdmin_Jeton"])) { ?>
 
@@ -57,11 +57,13 @@ class Recherche_Joueurs_Admin extends \PageHelper {
                     $Nombre_De_Resultat_Listage_Joueur = $Parametres_Listage_Joueur->rowCount();
                     ?>
 
-                    <div class="Cadre_Principal">
-                        <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal(1);">                  
-                            <h1>Recherche de joueurs</h1>
+                    <div class="box box-default flat">
+
+                        <div class="box-header">
+                            <h3 class="box-title">Recherche de joueurs</h3>
                         </div>
-                        <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1"> 
+
+                        <div class="box-body no-padding">
                             <form action="javascript:void(0);" name="Recherche_Joueurs" onsubmit="Declenchement_Recherche('player.name');" id="Form_Rechercher_Joueurs" class="Form_Recherche_Joueurs">
                                 <input type="text" placeholder="Pseudo du joueur..." id="Input_Rechercher_Joueurs" class="Input_Rechercher_Joueurs" autofocus />
                                 <input type="submit" valu="Rechercher" id="Bouton_Rechercher_Joueurs" class="Bouton_Rechercher_Joueurs" />
@@ -74,7 +76,7 @@ class Recherche_Joueurs_Admin extends \PageHelper {
                                 </div>
                             </form>
 
-                            <table id="Table_Recherche_Joueurs" class="Table_Recherche_Joueurs Table_Recherches">
+                            <table id="Table_Recherche_Joueurs" class="table table-condensed" style="border-collapse: collapse;">
                                 <thead>
                                     <tr>
                                         <th onclick="Declenchement_Recherche('player.name')" title="Trier par pseudonyme du joueur" class="Pointer Cellule_Pseudonyme">Pseudonyme</th>
@@ -99,7 +101,7 @@ class Recherche_Joueurs_Admin extends \PageHelper {
                                                     <img class="Images_Recherches" title="<?= \FonctionsUtiles::Find_Name_Race($Donnees_Listage_Joueur->job); ?>" src="<?= \FonctionsUtiles::Find_Image_Race($Donnees_Listage_Joueur->job); ?>" height="20" />
                                                 </td>
                                                 <td>
-                                                    <img class="Images_Recherches" title="<?= \FonctionsUtiles::Find_Name_Empire($Donnees_Listage_Joueur->empire); ?>" src="<?= \FonctionsUtiles::Find_Image_Empire($Donnees_Listage_Joueur->empire); ?>" height="20" />
+                                                    <?php echo \FonctionsUtiles::FindIconeEmpire($Donnees_Listage_Joueur->empire); ?>
                                                 </td>
                                                 <td><?= $Donnees_Listage_Joueur->ip; ?></td>
 

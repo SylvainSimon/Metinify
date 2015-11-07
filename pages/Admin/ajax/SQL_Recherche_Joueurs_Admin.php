@@ -90,7 +90,7 @@ class SQL_Recherche_Joueurs_Admin extends \ScriptHelper {
                                     <img class="Images_Recherches" title="<?= \FonctionsUtiles::Find_Name_Race($Donnees_Listage_Joueur->job); ?>" src="<?= \FonctionsUtiles::Find_Image_Race($Donnees_Listage_Joueur->job); ?>" height="20" />
                                 </td>
                                 <td>
-                                    <img class="Images_Recherches" title="<?= \FonctionsUtiles::Find_Name_Empire($Donnees_Listage_Joueur->empire); ?>" src="<?= \FonctionsUtiles::Find_Image_Empire($Donnees_Listage_Joueur->empire); ?>" height="20" />
+                                    <?php echo \FonctionsUtiles::FindIconeEmpire($Donnees_Listage_Joueur->empire); ?>
                                 </td>
                                 <td><?= $Donnees_Listage_Joueur->ip; ?></td>
                                 <?php if ($Donnees_Listage_Joueur->status == "OK") { ?>
