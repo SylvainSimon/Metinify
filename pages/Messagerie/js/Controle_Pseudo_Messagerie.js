@@ -1,7 +1,7 @@
 var UtilisateurSyntax = 1;
 var UtilisateurDispo = 1;
 
-function verifPseudo(){
+function verifPseudo() {
     pseudo = document.getElementById("SaisiePseudo").value;
 
     for (i = 0; i < pseudo.length; i++) {
@@ -14,8 +14,7 @@ function verifPseudo(){
                 (pseudo.charCodeAt(i) > 122) && (pseudo.charCodeAt(i) < 128) ||
                 (pseudo.charCodeAt(i) > 144) && (pseudo.charCodeAt(i) < 147)) {
 
-            document.getElementById('ReponseDuTestPseudo').innerHTML = "<font color=\"#FD130B\">Caractère(s) non-autorisé(s).</font>";
-            document.getElementById("SaisiePseudo").className = "Zone_Definition_Pseudo_Rouge";
+            document.getElementById('ReponseDuTestPseudo').innerHTML = "<span class='text-red'>Caractère(s) non-autorisé(s)</span>";
 
             UtilisateurSyntax = 1;
 
@@ -27,8 +26,7 @@ function verifPseudo(){
     }
     if (pseudo.length < 2) {
 
-        document.getElementById('ReponseDuTestPseudo').innerHTML = "<font color=\"#FD130B\">Nom d\'utilisateur trop court.</font>";
-        document.getElementById("SaisiePseudo").className = "Zone_Definition_Pseudo_Rouge";
+        document.getElementById('ReponseDuTestPseudo').innerHTML = "<span class='text-red'>Nom d\'utilisateur trop court</span>";
 
         UtilisateurSyntax = 1;
     }
@@ -36,15 +34,13 @@ function verifPseudo(){
     else if (texte = RequeteAJAX('pages/Messagerie/ajax/ajaxVerificationPseudo.php?pseudo=' + escape(pseudo)))
     {
         if (texte == 1) {
-            document.getElementById('ReponseDuTestPseudo').innerHTML = "<font color=\"#FD130B\">Nom d'utilisateur déjà utilisé.</font>";
-            document.getElementById("SaisiePseudo").className = "Zone_Definition_Pseudo_Rouge";
+            document.getElementById('ReponseDuTestPseudo').innerHTML = "<span class='text-red'>Nom d'utilisateur déjà utilisé</span>";
 
             UtilisateurDispo = 1;
         }
         else if (texte == 2) {
 
-            document.getElementById('ReponseDuTestPseudo').innerHTML = "<font color=\"#6FCB8A\">Nom d'utilisateur libre</font>";
-            document.getElementById("SaisiePseudo").className = "Zone_Definition_Pseudo_Vert";
+            document.getElementById('ReponseDuTestPseudo').innerHTML = "<span class='text-green'>Nom d'utilisateur libre</span>";
 
             UtilisateurDispo = 0;
 
@@ -58,8 +54,8 @@ function verifPseudo(){
     }
 }
 
-function RequeteAJAX(fichier){
-    
+function RequeteAJAX(fichier) {
+
     if (window.XMLHttpRequest) // FIREFOX
         xhr_object = new XMLHttpRequest();
     else if (window.ActiveXObject) // IE
@@ -84,8 +80,7 @@ function VerificationFormulairePseudo() {
             data: "Pseudo=" + $("#SaisiePseudo").val(),
             success: function (msg) {
                 if (msg == 1) {
-
-                    location.reload(true);
+                    Ajax("pages/Messagerie/Messagerie.php");
                 }
             }
         });

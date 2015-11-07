@@ -39,6 +39,8 @@ if ($session->get("Administration_PannelAdmin")) {
 <script type="text/javascript">
 
 <?php if ($etaitAdmin !== null) { ?>
+        $("#overlayMt2").html('<div style="position: relative;top: 45%;width: 431px; margin: 0 auto 0 auto;"><h2>Sortie de l\'administration...</h2></div>');
+        $("#overlayMt2").css('display', "inline");
         location.reload(false);
 <?php } else { ?>
         document.getElementById('Menu_Inscription_MonCompte').style.display = 'none';

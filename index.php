@@ -113,7 +113,7 @@ class IndexWebsite extends PageHelper {
                         </div>
                     </footer>
                 </div>
-
+                <div id="overlayMt2"></div>
             </body>
 
             <a style="display: none;" id="Lien_Statistiques" href="pages/Statistiques/Statistiques.php" class="fancybox_Statistiques" data-fancybox-type="iframe"></a>

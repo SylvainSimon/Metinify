@@ -13,7 +13,6 @@
 
 
 html { 
-
     -ms-overflow-style: scrollbar;
     background: url("../../images/fond.jpg") fixed no-repeat top center #252219;
     -webkit-background-size: cover; /* pour anciens Chrome et Safari */
@@ -46,6 +45,17 @@ body {
     overflow-y: auto;
     font-size:13px;
     color:white;
+}
+
+#overlayMt2{
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999999;
+  background-color: rgba(0,0,0,0.5); /*dim the background*/
 }
 
 form { margin:0; padding:0; }
@@ -1626,7 +1636,7 @@ label{
     top: -10px;
     left: 50%;
     border-color: #666 transparent;
-    
+
     border-width: 0 10px 10px;
 }
 
@@ -1646,7 +1656,7 @@ label{
 .nav-tabs-custom>.nav-tabs{
     border-bottom-color: #525252;
     border-top-right-radius: 0px; 
-     border-top-left-radius: 0px;
+    border-top-left-radius: 0px;
 }
 
 
@@ -1688,7 +1698,7 @@ label{
 }
 
 .sidebar-menu .treeview-menu>li>a{
-    
+
     font-size: 13px;
 }
 

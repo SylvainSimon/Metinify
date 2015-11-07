@@ -31,18 +31,22 @@ $(document).ready(function () {
 
                         document.getElementById('Menu_Support2').style.display = 'none';
                         document.getElementById('Menu_Support').style.display = 'inline';
-                        
+
                         $("#Lien_Support").attr("onclick", "Ajax('pages/Messagerie/Messagerie.php');");
 
                         document.getElementById('Menu_Telechargement_Equipe2').style.display = 'none';
                         document.getElementById('Menu_Telechargement_Equipe').style.display = 'inline';
-                        
+
                         $("#Lien_Marche").attr("onclick", "Ajax('pages/Marche/Marche.php');");
-                        
+
                         if (Parse_Json.withRefresh) {
+
+                            $("#overlayMt2").html(Parse_Json.data);
+                            $("#overlayMt2").css('display', "inline");
+
                             location.reload(false);
                         }
-                        
+
                         Ajax("pages/_LegacyPages/News.php");
 
                     } else if (Parse_Json.result == "2") {

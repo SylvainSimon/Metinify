@@ -84,7 +84,7 @@ class ajaxConnexionSubmit extends \ScriptHelper {
                     'reasons' => "",
                     'withRefresh' => 1,
                     'id' => $Donnees_Connexion->id,
-                    'data' => '<img title="Panneau d\'administration" id="Icone_Administration_Acces" onclick="Ajax(\'administration/Accueil_Seconde.php\')" src="images/icones/administration.png" height="27" />'
+                    'data' => '<div style="position: relative;top: 45%;width: 431px; margin: 0 auto 0 auto;"><h2>Chargement de l\'administration...</h2></div>'
                 );
             } else {
 
