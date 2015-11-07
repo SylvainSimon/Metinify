@@ -44,9 +44,8 @@ class ajaxCategorieGetArticles extends \ScriptHelper {
                     <?php } ?>
                 </div>
 
-                <?php $Size_Image = @getimagesize("../../images/items/" . $Resultat_Liste_Article->id_item . ".png"); ?>
+                <?php $Size_Image = @getimagesize("../../../images/items/" . $Resultat_Liste_Article->id_item . ".png"); ?>
                 <?php if ($Size_Image[1] > $Size_Image[0]) { ?>
-
                     <?php if ($Size_Image[1] > 64) { ?>
                         <img class="Position_Icone_Article_1Case_TresGrande" src="../../images/items/<?php echo $Resultat_Liste_Article->id_item; ?>.png" width="32" />
                     <?php } else { ?>
