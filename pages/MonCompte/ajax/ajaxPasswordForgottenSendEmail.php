@@ -5,7 +5,7 @@ namespace Pages\MonCompte\Ajax;
 require __DIR__ . '../../../../core/initialize.php';
 
 class ajaxPasswordForgottenSendEmail extends \ScriptHelper {
-    
+
     public function run() {
 
         $Mot_De_Passe_Oublie_Compte = $_POST['Mot_De_Passe_Oublie_Compte'];
@@ -41,25 +41,11 @@ class ajaxPasswordForgottenSendEmail extends \ScriptHelper {
                 $Mot_De_Passe_Generer .= $Chaine_De_Caracteres[$Position_Aleatoire];
             }
 
-            $to = $Mot_De_Passe_Oublie_Email;
+            $template = $this->objTwig->loadTemplate("PasswordForgottenEmail.html5.twig");
+            $result = $template->render(["newMDP" => $Mot_De_Passe_Generer]);
 
-            $subject = 'VamosMt2 - Nouveau Mot de Passe';
-
-            $headers = "From: \"VamosMT2\" <noreply@vamosmt2.org>" . "\n";
-            $headers .= "Reply-to: \"VamosMT2\" <noreply@vamosmt2.org>" . "\r\n";
-            $headers .= 'Mime-Version: 1.0' . "\r\n";
-            $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-            $headers .= "\r\n";
-
-            $msg = 'Vous avez demandé une nouveau mot de passe sur VamosMT2.' . "<br/>";
-            $msg .= 'Vous le trouverez ci-joint, générer aléatoirement.' . "<br/>";
-            $msg .= '' . "<br/>";
-            $msg .= 'Nouveau Mot de passe : ' . $Mot_De_Passe_Generer . '' . "<br/>";
-            $msg .= '' . "<br/>";
-            $msg .= 'Bon jeu sur VamosMT2 !' . "<br/>";
-            $msg .= '' . "<br/>";
-
-            mail($to, $subject, $msg, $headers);
+            $subject = 'VamosMt2 - Nouveau mot de passe';
+            \EmailHelper::sendEmail($Mot_De_Passe_Oublie_Email, $subject, $result);
 
 
             /* ----------------- Update mot de passe --------------------- */

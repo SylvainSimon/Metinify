@@ -19,14 +19,12 @@ class IndexWebsite extends PageHelper {
         global $request;
         global $config;
         global $session;
-
-        
-        EmailHelper::sendEmail("sylvain.simon@live.fr", "Objet spéciiiiiiiiiiiiial", "Je suis du contenu !!!!!!!!")
-        
+       
         //$this->objConnection;
         //$this->objConfig;
         //var_dump($this->objSession->get("ID"));
         //$this->objConnection;
+        
         ?>
 
         <!DOCTYPE html>

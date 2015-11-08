@@ -54,7 +54,7 @@ class EmailHelper {
         $message->setFrom($config->smtpSender);
         $message->setTo($receiver);
 
-        $message->setBody($view, 'text/html', "UTF-8");
+        $message->setBody($view, 'text/html');
 
         if ($urlFile !== "") {
             $message->attach(Swift_Attachment::fromPath($urlFile)->setFilename($nameFile));
