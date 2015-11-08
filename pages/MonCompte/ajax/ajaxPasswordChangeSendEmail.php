@@ -7,7 +7,7 @@ require __DIR__ . '../../../../core/initialize.php';
 class ajaxPasswordChangeSendEmail extends \ScriptHelper {
 
     public $isProtected = true;
-    
+
     public function run() {
 
 
@@ -65,26 +65,14 @@ class ajaxPasswordChangeSendEmail extends \ScriptHelper {
                 ':ip' => $Changer_Mot_De_Passe_Envoie_Mail_Ip));
             /* -------------------------------------------------------------------------------------------------------- */
 
-            $to = $Changer_Mot_De_Passe_Envoie_Mail_Email;
+            $template = $this->objTwig->loadTemplate("PasswordChangeEmail.html5.twig");
+            $result = $template->render([
+                "account" => $Changer_Mot_De_Passe_Envoie_Mail_Utilisateur,
+                "key" => $Nombre_Unique,
+            ]);
 
-            $subject = 'VamosMT2 - Changement de mot de passe de ' . $Changer_Mot_De_Passe_Envoie_Mail_Utilisateur . '';
-
-            $headers = "From: \"VamosMt2\" <contact@vamosmt2.org>" . "\n";
-            $headers .= "Reply-to: \"VamosMt2\" <contact@vamosmt2.org>" . "\r\n";
-            $headers .= 'Mime-Version: 1.0' . "\r\n";
-            $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-            $headers .= "\r\n";
-
-            $msg = 'Bonjour ' . $Changer_Mot_De_Passe_Envoie_Mail_Utilisateur . '' . "<br/>";
-            $msg .= 'Vous avez demandé à changer de mot de passe sur votre compte.' . "<br/>";
-            $msg .= '' . "<br/>";
-            $msg .= 'Pour valider la demande veuillez indiquer le code suivant sur le site : ' . "<br/>";
-            $msg .= '' . $Nombre_Unique . '' . "<br/>";
-            $msg .= '' . "<br/>";
-            $msg .= 'Cordialement, VamosMT2.' . "<br/>";
-            $msg .= '' . "<br/>";
-
-            mail($to, $subject, $msg, $headers);
+            $subject = 'VamosMT2 - Changement de mot de passe';
+            \EmailHelper::sendEmail($Changer_Mot_De_Passe_Envoie_Mail_Email, $subject, $result);
 
             echo '1';
         } else {

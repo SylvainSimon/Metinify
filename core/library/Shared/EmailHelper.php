@@ -52,6 +52,7 @@ class EmailHelper {
 
         $message->setSubject($obj);
         $message->setFrom($config->smtpSender);
+        $message->setReplyTo($config->smtpReplyTo);
         $message->setTo($receiver);
 
         $message->setBody($view, 'text/html');

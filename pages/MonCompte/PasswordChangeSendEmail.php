@@ -20,8 +20,9 @@ class PasswordChangeSendEmail extends \PageHelper {
 
                 <div class="box-body">
 
-                    Un mail vien de vous être envoyé, merci de noter, ci-après, le code unique.<br/>
-
+                    Un mail vient de vous être envoyé, merci de noter, ci-après, le code qu'il y'a a l'intérieur.
+                    <br/>
+                    <br/>
 
                     <div class="row">
                         <div class="col-lg-6">
@@ -37,6 +38,7 @@ class PasswordChangeSendEmail extends \PageHelper {
                             </div>
                         </div>
                     </div>
+
 
                 </div>
 

@@ -44,7 +44,7 @@ class ajaxPasswordForgottenSendEmail extends \ScriptHelper {
             $template = $this->objTwig->loadTemplate("PasswordForgottenEmail.html5.twig");
             $result = $template->render(["newMDP" => $Mot_De_Passe_Generer]);
 
-            $subject = 'VamosMt2 - Nouveau mot de passe';
+            $subject = 'VamosMT2 - Nouveau mot de passe';
             \EmailHelper::sendEmail($Mot_De_Passe_Oublie_Email, $subject, $result);
 
 
