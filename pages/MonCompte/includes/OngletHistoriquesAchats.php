@@ -61,54 +61,56 @@
 
         </div>
         <div class="col-lg-8">
+            <div style="max-height: 380px; overflow-y: auto;">
 
-            <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;">
-                <thead>
-                    <tr>
-                        <th width="40">ID</th>
-                        <th width="35">Icone</th>
-                        <th>Article</th>
-                        <th width="40">Nbre.</th>
-                        <th>Prix</th>
-                        <th width="200">Date d'achat</th>
-                        <th width="50">Ip</th>
+                <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;">
+                    <thead>
+                        <tr>
+                            <th width="40">ID</th>
+                            <th width="35">Icone</th>
+                            <th>Article</th>
+                            <th width="40">Nbre.</th>
+                            <th>Prix</th>
+                            <th width="200">Date d'achat</th>
+                            <th width="50">Ip</th>
 
-                    </tr>
-                </thead>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    <?php if ($Nombre_De_Resultat_Liste_Achats > 0) { ?>
+                    <tbody>
+                        <?php if ($Nombre_De_Resultat_Liste_Achats > 0) { ?>
 
-                        <?php while ($Resultat_Liste_Achats = $Parametres_Liste_Achats->fetch()) { ?>
-                            <tr class="Pointer" onmouseover="this.style.backgroundColor = '#333333';" onmouseout="this.style.backgroundColor = 'transparent';">
-                                <td>
-                                    <span class="Align_center"><?= $Resultat_Liste_Achats->id; ?></span>
-                                </td>
-                                <td align="center">
-                                    <span ><?= "<img width='25' src=\"../images/items/" . $Resultat_Liste_Achats->vnum_item . ".png\">"; ?></span>
-                                </td>
-                                <td><?= $Resultat_Liste_Achats->item; ?></td>
-                                <td><?= $Resultat_Liste_Achats->quantite; ?></td>
-                                <td>
-                                    &nbsp;
-                                    <?= $Resultat_Liste_Achats->prix; ?>
-                                    &nbsp;
-                                    <?php if ($Resultat_Liste_Achats->monnaie == "1") { ?>
-                                        <img src="../images/rectopiece.png" style="width: 16px; position: relative; top: 3px;" height="16" />
-                                    <?php } else { ?>
-                                        <img src="../images/versopiece.png" style="width: 16px; position: relative; top: 3px;" height="16" />
-                                    <?php } ?>
-                                </td>
-                                <td><?= \FonctionsUtiles::Formatage_Date($Resultat_Liste_Achats->date); ?></td>
-                                <td><?= $Resultat_Liste_Achats->ip; ?></td>
-                            </tr>
+                            <?php while ($Resultat_Liste_Achats = $Parametres_Liste_Achats->fetch()) { ?>
+                                <tr class="Pointer" onmouseover="this.style.backgroundColor = '#333333';" onmouseout="this.style.backgroundColor = 'transparent';">
+                                    <td>
+                                        <span class="Align_center"><?= $Resultat_Liste_Achats->id; ?></span>
+                                    </td>
+                                    <td align="center">
+                                        <span ><?= "<img width='25' src=\"../images/items/" . $Resultat_Liste_Achats->vnum_item . ".png\">"; ?></span>
+                                    </td>
+                                    <td><?= $Resultat_Liste_Achats->item; ?></td>
+                                    <td><?= $Resultat_Liste_Achats->quantite; ?></td>
+                                    <td>
+                                        &nbsp;
+                                        <?= $Resultat_Liste_Achats->prix; ?>
+                                        &nbsp;
+                                        <?php if ($Resultat_Liste_Achats->monnaie == "1") { ?>
+                                            <img src="../images/rectopiece.png" style="width: 16px; position: relative; top: 3px;" height="16" />
+                                        <?php } else { ?>
+                                            <img src="../images/versopiece.png" style="width: 16px; position: relative; top: 3px;" height="16" />
+                                        <?php } ?>
+                                    </td>
+                                    <td><?= \FonctionsUtiles::Formatage_Date($Resultat_Liste_Achats->date); ?></td>
+                                    <td><?= $Resultat_Liste_Achats->ip; ?></td>
+                                </tr>
+                            <?php } ?>
+                        <?php } else { ?>
+                            <tr><td colspan="7">Vous n'avez jamais acheter d'article.</td></tr>
                         <?php } ?>
-                    <?php } else { ?>
-                        <tr><td colspan="7">Vous n'avez jamais acheter d'article.</td></tr>
-                    <?php } ?>
-                </tbody>
+                    </tbody>
 
-            </table>
+                </table>
+            </div>
         </div>
     </div>
 </div>

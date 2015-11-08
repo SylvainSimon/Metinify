@@ -57,7 +57,7 @@ class ClassementJoueursPvEPage extends \PageHelper {
         $Nombre_De_Joueurs = $Parametres_Comptage_Joueurs->rowCount();
         /* --------------------------------------------------------------------------------- */
 
-        $Nombre_De_Page = abs(($Nombre_De_Joueurs / 20) - 1);
+        $Nombre_De_Page = abs(($Nombre_De_Joueurs / 10) - 1);
         $i = $Limite_Basse + 1;
         ?>
 
@@ -125,7 +125,7 @@ class ClassementJoueursPvEPage extends \PageHelper {
                             <?php } ?>
                         </td>
 
-                        <td style="text-indent: 5px;">
+                        <td>
                             <?php echo $Donnees_Classement_Joueurs_Page->name; ?>
                         </td>
                         <td>

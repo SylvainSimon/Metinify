@@ -60,7 +60,7 @@
         </div>
         <div class="col-lg-8">
 
-            <div class="Zone_Tableau_Rechargements">
+            <div style="max-height: 380px; overflow-y: auto;">
 
                 <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;">
                     <thead>

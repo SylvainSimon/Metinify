@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="col-lg-8">
-            <div id="Detail_Liste_Inventaire">
+            <div style="max-height: 380px; overflow-y: auto;">
 
                 <?php
                 /* ----------------------------------------------- Liste Inventaire -------------------------------------------- */

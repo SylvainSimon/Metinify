@@ -236,98 +236,98 @@ class Statistiques extends \PageHelper {
                                     <tr>
                                         <td style="line-height: 10px;" >
                                             <img class="Icone_Drapeaux" src="../../images/drapeaux/fr.png" height="14"/>&nbsp;
-                                            <span style="vertical-align: super;" data-tooltip="Comptes français">France</span>
+                                            <span style="vertical-align: super;">France</span>
                                         </td>
                                         <td id="Contenue_Pays_FR"></td>
                                     </tr>
                                     <tr>
                                         <td style="line-height: 10px;" >
                                             <img class="Icone_Drapeaux" src="../../images/drapeaux/be.png" height="14"/>&nbsp;
-                                            <span style="vertical-align: super;" data-tooltip="Comptes belges">Belgique</span>
+                                            <span style="vertical-align: super;">Belgique</span>
                                         </td>
                                         <td id="Contenue_Pays_BE"></td>
                                     </tr>
                                     <tr>
                                         <td style="line-height: 10px;" >
                                             <img class="Icone_Drapeaux" src="../../images/drapeaux/ch.png" height="14"/>&nbsp;
-                                            <span style="vertical-align: super;" data-tooltip="Comptes suisses">Suisse</span>
+                                            <span style="vertical-align: super;">Suisse</span>
                                         </td>
                                         <td id="Contenue_Pays_CH"></td>
                                     </tr>
                                     <tr>
                                         <td style="line-height: 10px;" >
                                             <img class="Icone_Drapeaux" src="../../images/drapeaux/gb.png" height="14"/>&nbsp;
-                                            <span style="vertical-align: super;" data-tooltip="Comptes anglais">Angleterre</span>
+                                            <span style="vertical-align: super;">Angleterre</span>
                                         </td>
                                         <td id="Contenue_Pays_GB"></td>
                                     </tr>
                                     <tr>
                                         <td style="line-height: 10px;" >
                                             <img class="Icone_Drapeaux" src="../../images/drapeaux/de.png" height="14"/>&nbsp;
-                                            <span style="vertical-align: super;" data-tooltip="Comptes allemands">Allemagne</span>
+                                            <span style="vertical-align: super;">Allemagne</span>
                                         </td>
                                         <td id="Contenue_Pays_DE"></td>
                                     </tr>
                                     <tr>
                                         <td style="line-height: 10px;" >
                                             <img class="Icone_Drapeaux" src="../../images/drapeaux/ro.png" height="14"/>&nbsp;
-                                            <span style="vertical-align: super;" data-tooltip="Comptes roumains">Roumanie</span>
+                                            <span style="vertical-align: super;">Roumanie</span>
                                         </td>
                                         <td id="Contenue_Pays_RO"></td>
                                     </tr>
                                     <tr>
                                         <td style="line-height: 10px;" >
                                             <img class="Icone_Drapeaux" src="../../images/drapeaux/us.png" height="14"/>&nbsp;
-                                            <span style="vertical-align: super;" data-tooltip="Comptes états-uniens">USA</span>
+                                            <span style="vertical-align: super;">USA</span>
                                         </td>
                                         <td id="Contenue_Pays_US"></td>
                                     </tr>
                                     <tr>
                                         <td style="line-height: 10px;" >
                                             <img class="Icone_Drapeaux" src="../../images/drapeaux/it.png" height="14"/>&nbsp;
-                                            <span style="vertical-align: super;" data-tooltip="Comptes italiens">Italie</span>
+                                            <span style="vertical-align: super;">Italie</span>
                                         </td>
                                         <td id="Contenue_Pays_IT"></td>
                                     </tr>
                                     <tr>
                                         <td style="line-height: 10px;" >
                                             <img class="Icone_Drapeaux" src="../../images/drapeaux/es.png" height="14"/>&nbsp;
-                                            <span style="vertical-align: super;" data-tooltip="Comptes espagnols">Espagne</span>
+                                            <span style="vertical-align: super;">Espagne</span>
                                         </td>
                                         <td id="Contenue_Pays_ES"></td>
                                     </tr>
                                     <tr>
                                         <td style="line-height: 10px;" >
                                             <img class="Icone_Drapeaux" src="../../images/drapeaux/pl.png" height="14"/>&nbsp;
-                                            <span style="vertical-align: super;" data-tooltip="Comptes polonais">Pologne</span>
+                                            <span style="vertical-align: super;">Pologne</span>
                                         </td>
                                         <td id="Contenue_Pays_PL"></td>
                                     </tr>
                                     <tr>
                                         <td style="line-height: 10px;" >
                                             <img class="Icone_Drapeaux" src="../../images/drapeaux/pt.png" height="14"/>&nbsp;
-                                            <span style="vertical-align: super;" data-tooltip="Comptes portugais">Portugal</span>
+                                            <span style="vertical-align: super;">Portugal</span>
                                         </td>
                                         <td id="Contenue_Pays_PT"></td>
                                     </tr>
                                     <tr>
                                         <td style="line-height: 10px;" >
                                             <img class="Icone_Drapeaux" src="../../images/drapeaux/tn.png" height="14"/>&nbsp;
-                                            <span style="vertical-align: super;" data-tooltip="Comptes tunisiens">Tunisie</span>
+                                            <span style="vertical-align: super;">Tunisie</span>
                                         </td>
                                         <td id="Contenue_Pays_TN"></td>
                                     </tr>
                                     <tr>
                                         <td style="line-height: 10px;" >
                                             <img class="Icone_Drapeaux" src="../../images/drapeaux/dz.png" height="14"/>&nbsp;
-                                            <span style="vertical-align: super;" data-tooltip="Comptes algériens">Algérie</span>
+                                            <span style="vertical-align: super;">Algérie</span>
                                         </td>
                                         <td id="Contenue_Pays_DZ"></td>
                                     </tr>
                                     <tr>
                                         <td style="line-height: 10px;" >
                                             <img class="Icone_Drapeaux" src="../../images/drapeaux/jp.png" height="14"/>&nbsp;
-                                            <span style="vertical-align: super;" data-tooltip="Comptes japonais">Japon</span>
+                                            <span style="vertical-align: super;">Japon</span>
                                         </td>
                                         <td id="Contenue_Pays_JP"></td>
                                     </tr>
