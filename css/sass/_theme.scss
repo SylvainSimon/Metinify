@@ -580,185 +580,14 @@ footer {
     width : 530px; 
     height : 150px; 
     padding-right : 10px; 
-} 
-.pagination { 
-    list-style : none; 
-    height : 25px; 
-    margin-top : 1px; 
-    position : relative; 
-    top : -15px; 
-    left : 11px; 
-} 
-.pagination li { 
-    float : left; 
-    cursor : pointer; 
-    padding : 0 3px; 
-    background : #fff; 
-    border : 1px solid #6c778b; 
-    margin : 0 1px 0 0; 
-    text-align : center; 
-    font : bold 8px Arial, Helvetica, sans-serif; 
-    color : #6c778b;
-} 
-.pagination li:hover { 
-    background : #9ff; 
-    border : 1px solid #6c778b; 
-    color : #168be4; 
+
 } 
 li.current { 
     border : 1px solid #168be4; 
     color : #168be4; 
     font-weight : bold; 
 }
-* { 
-    margin : 0; 
-    padding : 0; 
-}
 
-#Table_Inscription{
-    width: 680px;
-    margin: 10px auto 10px auto;
-    position: relative;
-    border-collapse: collapse;
-    border: 1px solid grey;
-    background:url('../../images/menusecondaire_bg.png');
-    padding-left: 3px;
-    padding-right: 3px;
-}
-#Table_Inscription td{
-    border-bottom: 1px solid grey;
-    padding-bottom: 1px;
-    padding-top: 1px;
-    height: 30px;
-    text-indent: 5px;
-}
-
-.Input_Formulaire_Contact{
-
-    position: relative; 
-    width: 180px; 
-    height: 20px; 
-    text-indent: 4px; 
-    background:url('../../images/inputrecherche.png'); 
-    border: none; 
-    box-shadow: 0px 0px 3px 1px grey;
-    margin:0; 
-    font: 9px Verdana, Arial, Helvetica, sans-serif; 
-    color: #999999; 
-}
-.Textarea_Formulaire_Contact{
-
-    width: 423px;
-    height: 159px;
-    resize: none;
-    background:url('../../images/inputrecherche.png');
-    font: 9px Verdana, Arial, Helvetica, sans-serif; 
-    color: #999999;
-    margin: 4px 0 4px 0;
-    box-shadow: 0px 0px 3px 1px grey;
-    border: none; 
-    padding-top: 4px;
-    padding-left: 3px;
-    padding-bottom: 4px;
-    padding-right: 3px;
-}
-
-.Table_Formulaire_Contacts{
-
-    width: 680px;
-    margin: 10px auto 10px auto;
-}
-
-.Zone_Saisie_Inscription {
-    position: relative; 
-    width: 180px; 
-    height: 20px; 
-    text-indent: 4px; 
-    background:url('../../images/inputrecherche.png'); 
-    border: none; 
-    box-shadow: 0px 0px 3px 1px grey;
-    margin:0; 
-    font: 9px Verdana, Arial, Helvetica, sans-serif; 
-    color: #999999; 
-}
-
-.Zone_Saisie_Inscription_Rouge {
-    position: relative; 
-    width: 180px; 
-    height: 20px; 
-    text-indent: 4px; 
-    background:url('../../images/inputrecherche.png'); 
-    border: none; 
-    box-shadow: 0px 0px 3px 2px red;
-    margin:0; 
-    font: 9px Verdana, Arial, Helvetica, sans-serif; 
-    color: #999999; 
-}
-
-.Zone_Saisie_Inscription_Vert {
-    position: relative; 
-    width: 180px; 
-    height: 20px; 
-    text-indent: 4px; 
-    background:url('../../images/inputrecherche.png'); 
-    border: none; 
-    box-shadow: 0px 0px 3px 2px green;
-    margin:0; 
-    font: 9px Verdana, Arial, Helvetica, sans-serif; 
-    color: #999999; 
-}
-
-.Bouton_Formulaire_Inscription{
-
-    position: relative;
-    height: 22px;
-    width: 75px;
-    margin: 10px auto 0px auto;
-    left:245px;
-    font-size: 13px;
-}
-
-#Zone_Centrale{
-
-    position: absolute;
-    width: 400px;
-    margin: 2px 0px 0px 300px;
-
-    font: 11px Verdana, Arial, Helvetica, sans-serif; 
-    color: #cccccc;
-
-}
-
-.Separateur_Vertical{
-
-    position: absolute;
-    background: grey;
-
-}
-
-.Separateur_Vertical_1{
-
-    position: absolute;
-    width: 2px;
-    height: 29px;
-    left:303px;
-}
-
-.Separateur_Vertical_2{
-
-    position: absolute;
-    width: 2px;
-    height: 29px;
-    left:510px;
-}
-
-.Separateur_Vertical_3{
-
-    position: absolute;
-    width: 2px;
-    height: 29px;
-    left:407px;
-}
 
 .Piece_Recto{
 
@@ -826,100 +655,12 @@ li.current {
     opacity: 1;
 }
 
-.Table_Classement_Joueur{
-    position: relative;
-    width: 98%;
-    margin: 10px auto 10px auto;
-    border-collapse: collapse;
-    border: 1px solid grey;
-    background:url('../../images/bg_fonction.png');
-    padding-left: 3px;
-    padding-right: 3px;
-}
-.Table_Classement_Joueur td{
-    border-bottom: 1px solid grey;
-    padding-bottom: 1px;
-    padding-top: 1px;
-}
-.Table_Classement_Joueur thead{
-    background: #454545;
-    border-bottom: 1px solid grey;
-}
-
-.Colonne_Numero_Classement{
-    background: #454545;
-    border-right: 1px solid grey;
-}
-
-.Table_Classement_Joueur th{
-    height: 20px;
-    line-height: 20px;
-}
-
-
-.Formulaire_Recherche_Joueur{position: relative;width: 270px;margin: 0 auto 0 auto;}
-
-.Zone_Saisie_Recherche_Joueur{
-    position: relative;
-    width: 130px; 
-    height: 24px; 
-    text-indent: 4px; 
-    background:url('../../images/inputrecherche.png'); 
-    border: 1px solid grey; 
-    top:0px;
-    font: 9px Verdana, Arial, Helvetica, sans-serif; 
-    color: #999999; 
-}
-
-.Bouton_Formulaire_Recherche_Joueur{
-    position: relative;
-    height: 26px;
-    width: 90px;
-    top:1px;
-
-}
-
-.Table_Classement_Guilde{
-    position: relative;
-    width: 98%;
-    margin: 10px auto 10px auto;
-    border-collapse: collapse;
-    border: 1px solid grey;
-    background:url('../../images/bg_fonction.png');
-    padding-left: 3px;
-    padding-right: 3px;
-}
-.Table_Classement_Guilde td{
-    border-bottom: 1px solid grey;
-    padding-bottom: 1px;
-    padding-top: 1px;
-}
-.Table_Classement_Guilde thead{
-    background: #454545;
-    border-bottom: 1px solid grey;
-}
-
-.Table_Classement_Guilde th{
-    height: 20px;
-    line-height: 20px;
-}
-
-.Formulaire_Recherche_Guilde{position: relative;width: 270px;margin: 5px auto 5px auto;}
-.Zone_Saisie_Recherche_Guilde{position: relative; width: 120px; height: 20px; text-indent: 4px; background:url('../../images/inputrecherche.png'); border: none; box-shadow: 0px 0px 3px 1px grey;top:-6px;font: 9px Verdana, Arial, Helvetica, sans-serif; color: #999999; }
-.Bouton_Formulaire_Recherche_Guilde{position: relative;height: 18px;width: 70px;background:url('../../images/Bouton_Valider.png') no-repeat; box-shadow: 0px 0px 3px 1px grey;border: 1px solid transparent;color: transparent;}
-.Bouton_Formulaire_Recherche_Guilde:active{ border: 1px groove black;}
-
 .Dimension_Image_Classement{
     position: relative;
     height: 21px;
     background: #303030;
     border: 1px solid #4E4E4E;
 }
-.Deplacement_Drapeau{position: relative; top:1px;}
-.Deplacement_Status{position: relative; top:1px; left:15px;}
-
-.Position_Bouton_Suivant{position: relative; top: 2px; right: -500px;}
-.Position_Bouton_Precedent{position: relative; top: 2px; float: left;}
 
 .Ombre_Grise{
     position: relative; 
@@ -1027,7 +768,6 @@ li.current {
 
 .Bouton_Normal{
 
-    background:url('../../images/bg_fonction.png');
     text-align: center;
     border: 1px solid grey;
     color: #DDDDDD;
@@ -1039,233 +779,8 @@ li.current {
 .Bouton_Normal:hover{box-shadow: none;cursor: pointer;}
 .Bouton_Normal:active{box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;}
 
-.Bouton_Annuler_Changer_Email{position: relative;height: 22px;width: 75px;margin: 10px auto 0px auto;left:265px;font-size: 13px;}
-.Bouton_Annuler_Changer_Email_Accueil{position: relative;height: 22px;width: 75px;margin: 10px auto 0px auto;left:295px;font-size: 13px;}
-.Bouton_Accueil{position: relative;height: 22px;width: 75px;margin: 10px auto 0px auto;left:295px;font-size: 13px;}
-
-.Zone_Saisie_Code_Confidentielle{position: relative; width: 180px; height: 20px; text-indent: 4px; background:url('../../images/inputrecherche.png'); border: none; box-shadow: 0px 0px 3px 1px grey;margin:0; font: 9px Verdana, Arial, Helvetica, sans-serif; color: #999999;}
-.Table_Saisie_Code_Confidentielle{width: 95%; font: 11px Verdana, Arial, Helvetica, sans-serif; color: #cccccc;margin: 0 auto 0 auto;}
-.Table_Saisie_Code_Confidentielle td{width: 23%;}
-
-.Input_Saisie_Validation_Suppression{
-
-    position: relative;
-    top:6px;
-    width: 200px;
-    height: 20px;
-    background:url('../../images/bg_fonction.png');
-    text-indent: 3px;
-    border: 1px solid grey;
-    color: #DDDDDD;
-    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
-}
-
-
-.Zone_Saisie_Nouvelle_Email{position: relative; width: 180px; height: 20px; text-indent: 4px; background:url('../../images/inputrecherche.png'); border: none; box-shadow: 0px 0px 3px 1px grey;margin:0; font: 9px Verdana, Arial, Helvetica, sans-serif; color: #999999;}
-.Table_Saisie_Nouvelle_Email{width: 95%; font: 11px Verdana, Arial, Helvetica, sans-serif; color: #cccccc;margin: 0 auto 0 auto;}
-.Table_Saisie_Nouvelle_Email td{width: 23%;}
-
-.Bouton_Changer_Changer_Email{
-
-    position: relative;
-    height: 18px;
-    width: 70px;
-    margin: 13px auto 0px auto;
-    background:url('../../images/Bouton_Changer.png') no-repeat; 
-    box-shadow: 0px 0px 3px 1px grey;
-    border: 1px solid transparent;
-    color: transparent;
-    left:265px;
-}
-
-.Bouton_Annuler_Changer_Email:active{ border: 1px solid black;}
-
-.Bouton_Formulaire_Mot_De_Passe_Oublie:active{ border: 1px groove black;}
-
-.Table_Changer_Mot_De_Passe{
-
-    width: 95%;
-    font: 11px Verdana, Arial, Helvetica, sans-serif; 
-    color: #cccccc;
-    margin: 0 auto 0 auto;
-}
-
-.Table_Changer_Mot_De_Passe td{
-
-    width: 28%;
-}
-
-.Bouton_Formulaire_Changer_Mot_De_Passe{
-
-    position: relative;
-    height: 18px;
-    width: 70px;
-    margin: 13px auto 0px auto;
-    background:url('../../images/Bouton_Continuer.png') no-repeat; 
-    box-shadow: 0px 0px 3px 1px grey;
-    border: 1px solid transparent;
-    color: transparent;
-    left:275px;
-}
-
 .Bouton_Formulaire_Changer_Mot_De_Passe:active{ border: 1px groove black;}
 
-.Zone_Saisie_Changer_Mot_De_Passe {
-    position: relative; 
-    width: 180px; 
-    height: 20px; 
-    text-indent: 4px; 
-    background:url('../../images/inputrecherche.png'); 
-    border: none; 
-    box-shadow: 0px 0px 3px 1px grey;
-    margin:0; 
-    font: 9px Verdana, Arial, Helvetica, sans-serif; 
-    color: #999999; 
-}
-
-.Zone_Saisie_Changer_Mot_De_Passe_Rouge {
-    position: relative; 
-    width: 180px; 
-    height: 20px; 
-    text-indent: 4px; 
-    background:url('../../images/inputrecherche.png'); 
-    border: none; 
-    box-shadow: 0px 0px 3px 2px red;
-    margin:0; 
-    font: 9px Verdana, Arial, Helvetica, sans-serif; 
-    color: #999999; 
-}
-
-.Zone_Saisie_Changer_Mot_De_Passe_Vert {
-    position: relative; 
-    width: 180px; 
-    height: 20px; 
-    text-indent: 4px; 
-    background:url('../../images/inputrecherche.png'); 
-    border: none; 
-    box-shadow: 0px 0px 3px 2px green;
-    margin:0; 
-    font: 9px Verdana, Arial, Helvetica, sans-serif; 
-    color: #999999; 
-}
-
-
-.Table_Creation_Code_Effacement{width: 95%;font: 11px Verdana, Arial, Helvetica, sans-serif; color: #cccccc;margin: 0 auto 0 auto;}
-.Table_Creation_Code_Effacement td{width: 28%;}
-.Zone_Saisie_Creation_Code_Effacement {position: relative; width: 180px; height: 20px; text-indent: 4px; background:url('../../images/inputrecherche.png'); border: none; box-shadow: 0px 0px 3px 1px grey;margin:0; font: 9px Verdana, Arial, Helvetica, sans-serif; color: #999999; }
-.Zone_Saisie_Creation_Code_Effacement_Rouge {position: relative; width: 180px; height: 20px; text-indent: 4px; background:url('../../images/inputrecherche.png'); border: none; box-shadow: 0px 0px 3px 1px red;margin:0; font: 9px Verdana, Arial, Helvetica, sans-serif; color: #999999; }
-.Zone_Saisie_Creation_Code_Effacement_Vert {position: relative; width: 180px; height: 20px; text-indent: 4px; background:url('../../images/inputrecherche.png'); border: none; box-shadow: 0px 0px 3px 1px green;margin:0; font: 9px Verdana, Arial, Helvetica, sans-serif; color: #999999; }
-.Bouton_Formulaire_Creation_Code_Effacement{position: relative;height: 18px;width: 70px;margin: 13px auto 0px auto;background:url('../../images/Bouton_Valider.png') no-repeat; box-shadow: 0px 0px 3px 1px grey;border: 1px solid transparent;color: transparent;left:285px;}
-
-
-.Table_Changement_Code_Effacement{width: 95%;font: 11px Verdana, Arial, Helvetica, sans-serif; color: #cccccc;margin: 0 auto 0 auto;}
-.Table_Changement_Code_Effacement td{width: 28%;}
-.Zone_Saisie_Changement_Code_Effacement {position: relative; width: 180px; height: 20px; text-indent: 4px; background:url('../../images/inputrecherche.png'); border: none; box-shadow: 0px 0px 3px 1px grey;margin:0; font: 9px Verdana, Arial, Helvetica, sans-serif; color: #999999; }
-.Zone_Saisie_Changement_Code_Effacement_Rouge {position: relative; width: 180px; height: 20px; text-indent: 4px; background:url('../../images/inputrecherche.png'); border: none; box-shadow: 0px 0px 3px 1px red;margin:0; font: 9px Verdana, Arial, Helvetica, sans-serif; color: #999999; }
-.Zone_Saisie_Changement_Code_Effacement_Vert {position: relative; width: 180px; height: 20px; text-indent: 4px; background:url('../../images/inputrecherche.png'); border: none; box-shadow: 0px 0px 3px 1px green;margin:0; font: 9px Verdana, Arial, Helvetica, sans-serif; color: #999999; }
-.Bouton_Formulaire_Changement_Code_Effacement{position: relative;height: 18px;width: 70px;margin: 13px auto 0px auto;background:url('../../images/Bouton_Changer.png') no-repeat; box-shadow: 0px 0px 3px 1px grey;border: 1px solid transparent;color: transparent;left:285px;}
-
-.Table_Changement_Code_Entrepot{width: 95%;font: 11px Verdana, Arial, Helvetica, sans-serif; color: #cccccc;margin: 0 auto 0 auto;}
-.Table_Changement_Code_Entrepot td{width: 28%;}
-.Zone_Saisie_Changement_Code_Entrepot {position: relative; width: 180px; height: 20px; text-indent: 4px; background:url('../../images/inputrecherche.png'); border: none; box-shadow: 0px 0px 3px 1px grey;margin:0; font: 9px Verdana, Arial, Helvetica, sans-serif; color: #999999; }
-.Zone_Saisie_Changement_Code_Entrepot_Rouge {position: relative; width: 180px; height: 20px; text-indent: 4px; background:url('../../images/inputrecherche.png'); border: none; box-shadow: 0px 0px 3px 1px red;margin:0; font: 9px Verdana, Arial, Helvetica, sans-serif; color: #999999; }
-.Zone_Saisie_Changement_Code_Entrepot_Vert {position: relative; width: 180px; height: 20px; text-indent: 4px; background:url('../../images/inputrecherche.png'); border: none; box-shadow: 0px 0px 3px 1px green;margin:0; font: 9px Verdana, Arial, Helvetica, sans-serif; color: #999999; }
-.Bouton_Formulaire_Changement_Code_Entrepot{position: relative;height: 18px;width: 70px;margin: 13px auto 0px auto;background:url('../../images/Bouton_Changer.png') no-repeat; box-shadow: 0px 0px 3px 1px grey;border: 1px solid transparent;color: transparent;left:285px;}
-
-.Tableau_Configuration_Requise{
-
-    width: 100%;
-    border: 1px solid #303030;
-    text-align: left;
-    text-indent: 7px;
-    line-height: 15px;
-    border-collapse: collapse;
-    border-radius:3px;
-    margin-right: 20px;
-    color: #cccccc;
-
-}
-
-.Fieldset_Configuration_Requise{
-
-    position: relative;
-    float: right;
-    display: inline-block;
-    width: 46%;
-    padding: 5px 10px 10px 10px;
-    border: 1px solid #cccccc;
-    margin-top: 90px;
-}
-
-.Fieldset_Configuration_Recommande{
-
-    position: relative;
-    display: inline-block;
-    width: 46%;
-    padding: 5px 10px 10px 10px;
-    border: 1px solid #cccccc;
-    margin-top: 90px;
-}
-
-.box_shadows{
-
-    -webkit-box-shadow: 0px 0px 8px 1px black;
-    -moz-box-shadow: 0px 0px 8px 1px black;
-    -o-box-shadow: 0px 0px 8px 1px black;
-    box-shadow: 0px 0px 8px 1px black;
-
-    background: url('../../images/motif_th.png');
-}
-
-.Tableau_Configuration_Requise td{
-
-    border: 1px solid grey;
-}
-
-.TD_Blanc{
-
-    width: 50%;
-    background:url('../../images/motif.png');
-    border: 1px solid grey;
-    color: CFCFCF;
-    padding: 5px;
-    text-align: left;
-    font-variant: small-caps;
-    font-weight: bold;
-}
-
-.Bouton_Telecharger{
-
-    width: 260px;
-    height: 70px;
-    position: absolute;
-    background: url('../../images/telecharger.png') no-repeat;
-    border-radius: 5px;
-    box-shadow: inset 0px 0px 8px 1px black;
-    overflow: hidden;
-    top:60px;
-    left:200px;
-    opacity: .8;
-}
-
-.Bouton_Telecharger:hover{box-shadow: 0px 0px 8px 1px grey;opacity: 1;}
-.Bouton_Telecharger:active{box-shadow: inset 0px 0px 8px 1px black;}
-
-.Bouton_Telecharger_Accueil{
-
-    position: relative;
-    top: 3px;
-    width: 198px;
-    margin: 0 auto 0 auto;
-    border-radius: 5px;
-    left:1px;
-    box-shadow: inset 0px 0px 8px 1px black;
-    overflow: hidden;
-    opacity: .9;
-}
-
-.Bouton_Telecharger_Accueil:hover{box-shadow: 0px 0px 8px 1px grey;opacity: 1;}
-.Bouton_Telecharger_Accueil:active{box-shadow: inset 0px 0px 8px 1px black;}
 
 .Position_Widget_Facebook{
 
@@ -1296,13 +811,6 @@ li.current {
 /* Tooltip style */
 #tinytip { position: absolute; display: block; top: 0; left: 0; max-width: 450px; color: #ffffff; font-size: 11px; display: block; z-index: 999999; background: rgba(0, 0, 0, 0.8); border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 5px 8px 5px 8px; line-height: 14px; }
 .arrow { border: solid; display: block; position: absolute; z-index: 999999; }
-
-
-.Tableau_Logs_Connexions{position: relative;width: 98%;margin: 10px auto 10px auto;border-collapse: collapse;border: 1px solid grey;background:url('../../images/slashit.png');padding-left: 3px;padding-right: 3px;}
-.Tableau_Logs_Connexions tbody tr:hover{background: #555555;}
-.Tableau_Logs_Connexions td{border-bottom: 1px solid grey;border-right: 1px solid grey;padding-bottom: 1px;padding-top: 1px;text-indent: 3px;min-height: 18px;line-height: 18px;}
-.Tableau_Logs_Connexions thead{background: url("../../images/slashit2.png");border-bottom: 1px solid grey;}
-.Tableau_Logs_Connexions th{height: 20px;border-right: 1px solid grey;line-height: 20px;text-indent: 3px;text-align: left;}
 
 
 #countdown_dashboard {
@@ -1348,7 +856,6 @@ li.current {
 
 .seconds_dash {
     background: transparent url('../../images/compte_a_rebours/dark_seconds_dash.png') 0 0 no-repeat;
-
 }
 
 .digit {
@@ -1392,115 +899,7 @@ li.current {
     margin-bottom: 0px;
 }
 
-.Bouton_De_Vote{
 
-    position: relative;
-    margin: 5px auto 5px auto;
-    left:7px;
-    background:url('../../images/bg_fonction.png');
-    width: 185px;
-    height: 30px;
-    text-align: center;
-    border: 1px solid grey;
-    font-size: 14px;
-    color: #DDDDDD;
-    font-weight: bold;
-    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
-
-    padding: 6px; 
-    text-decoration: none;
-}
-
-.Bouton_De_Vote:hover{
-
-    box-shadow: none;
-    cursor: pointer;
-}
-
-.Bouton_De_Vote:active{
-
-    box-shadow: 0px 0px 5px 1px black, inset 0px 0px 5px 1px black;
-}
-
-/* ---------------------------------- Modèle ---------------------------------*/
-
-.Table_Modele{
-    width: 680px;
-    margin: 10px auto 10px auto;
-    position: relative;
-    border-collapse: collapse;
-    border: 1px solid grey;
-    background:url('../../images/menusecondaire_bg.png');
-    padding-left: 3px;
-    padding-right: 3px;
-}
-.Table_Modele td{
-    border-bottom: 1px solid grey;
-    padding-bottom: 1px;
-    padding-top: 1px;
-    height: 30px;
-    text-indent: 5px;
-}
-
-.Colonne_Droite_Formulaire{
-    border-left: 1px solid grey;
-}
-
-.Colonne_Gauche_Formulaire{
-    background: url("../../images/hexabump.png");
-    border-right: 1px solid grey;
-}
-
-.Zone_Saisie_Modele {
-    position: relative; 
-    width: 180px; 
-    height: 20px; 
-    text-indent: 4px; 
-    background:url('../../images/inputrecherche.png'); 
-    border: none; 
-    box-shadow: 0px 0px 3px 1px grey;
-    margin:0; 
-    font: 9px Verdana, Arial, Helvetica, sans-serif; 
-    color: #999999; 
-}
-
-.Bouton_Envoyer_Modele{
-
-    position: relative;
-    height: 22px;
-    width: 75px;
-    margin: 10px auto 0px auto;
-    left:240px;
-    font-size: 13px;
-}
-
-.Bouton_Annuler_Modele{position: relative;height: 22px;width: 75px;margin: 10px auto 0px auto;left:265px;font-size: 13px;}
-
-
-.Table_Classement_Modele{
-    position: relative;
-    width: 100%;
-    margin: 10px auto 10px auto;
-    border-collapse: collapse;
-    border: 1px solid grey;
-    background:url('../../images/bg_fonction.png');
-    padding-left: 3px;
-    padding-right: 3px;
-}
-.Table_Classement_Modele td{
-    border-bottom: 1px solid grey;
-    padding-bottom: 1px;
-    padding-top: 1px;
-}
-.Table_Classement_Modele thead{
-    background: #454545;
-    border-bottom: 1px solid grey;
-}
-
-.Table_Classement_Modele th{
-    height: 20px;
-    line-height: 20px;
-}
 /* ---------------------------------------------------------------------------*/
 
 .Image_News{
@@ -1573,7 +972,6 @@ label{
     position: relative;
     top:5px;
     padding: 3px;
-    background: url('../../images/motif_th.png');
     width: 98%;
     min-height: 35px;
     border: 1px solid grey;
@@ -2022,7 +1420,6 @@ label{
     border-radius:3px;
     margin-right: 20px;
     color: #cccccc;
-    background: url('../../images/motif_th.png');
 }
 
 

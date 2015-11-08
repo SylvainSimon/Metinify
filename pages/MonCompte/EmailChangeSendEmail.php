@@ -22,13 +22,13 @@ class EmailChangeSendEmail extends \PageHelper {
                 <form action="javascript:void(0)" id="Formulaire_Verif_Changer_Mail" name="FormInscription" method="POST">
                     <table class="Table_Modele">
                         <tr> 
-                            <td class="Colonne_Gauche_Formulaire">
+                            <td>
                                 Code confidentielle :
                             </td>  
                             <td>
                                 <input type="text" class="Zone_Saisie_Inscription" id="Code_Confidentiel" placeholder="Code confidentiel" name="Code_Confidentiel">
                             </td>
-                            <td class="Colonne_Droite_Formulaire"> 
+                            <td> 
                                 Indiquez le code reçu par E-mail.
                             </td>
                         </tr>

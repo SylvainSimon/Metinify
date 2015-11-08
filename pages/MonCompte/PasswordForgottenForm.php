@@ -5,8 +5,6 @@ namespace Pages;
 require __DIR__ . '../../../core/initialize.php';
 
 class PasswordForgottenForm extends \PageHelper {
-
-    public $isProtected = true;
     
     public function run() {
         ?>
