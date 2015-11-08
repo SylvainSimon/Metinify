@@ -7,10 +7,9 @@ require __DIR__ . '../../../core/initialize.php';
 class CodeEntrepotForgottenEmail extends \PageHelper {
 
     public $isProtected = true;
-    
+
     public function run() {
         ?>
-
 
         <div class="box box-default flat">
 
@@ -37,49 +36,26 @@ class CodeEntrepotForgottenEmail extends \PageHelper {
         $Parametres_Entrepot_Password->setFetchMode(\PDO::FETCH_OBJ);
         $Nombre_De_Resultat = $Parametres_Entrepot_Password->rowCount();
         /* -------------------------------------------------------------------------- */
+
+        $template = $this->objTwig->loadTemplate("CodeEntrepotForgottenEmail.html5.twig");
+
         if ($Nombre_De_Resultat > 0) {
 
             $Donnes_Password = $Parametres_Entrepot_Password->fetch();
-
-            $to = $_SESSION['Email'];
-
-            $subject = 'VamosMt2 - Mot de passe entrepot';
-
-            $headers = "From: \"VamosMt2\" <noreplay@vamosmt2.org>" . "\n";
-            $headers .= "Reply-to: \"VamosMt2\" <noreplay@vamosmt2.org>" . "\r\n";
-            $headers .= 'Mime-Version: 1.0' . "\r\n";
-            $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-            $headers .= "\r\n";
-
-            $msg = 'Bonjour, vous recevez cet E-Mail suite à votre demande de mot de passe entrepot' . "<br/>";
-            $msg .= '' . "<br/>";
-            $msg .= 'Mot de passe entrepot : ' . $Donnes_Password->password . '' . "<br/>";
-            $msg .= '' . "<br/>";
-            $msg .= 'Bon jeu ! ' . "<br/>";
-            $msg .= '' . "<br/>";
-
-            mail($to, $subject, $msg, $headers);
+            $result = $template->render([
+                "password" => $Donnes_Password->password,
+            ]);
+            
         } else {
 
-            $to = $_SESSION['Email'];
-
-            $subject = 'VamosMt2 - Mot de passe entrepot';
-
-            $headers = "From: \"VamosMt2\" <noreplay@vamosmt2.org>" . "\n";
-            $headers .= "Reply-to: \"VamosMt2\" <noreplay@vamosmt2.org>" . "\r\n";
-            $headers .= 'Mime-Version: 1.0' . "\r\n";
-            $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-            $headers .= "\r\n";
-
-            $msg = 'Bonjour, vous recevez cet E-Mail suite à votre demande de mot de passe entrepot' . "<br/>";
-            $msg .= '' . "<br/>";
-            $msg .= 'Mot de passe entrepot : 000000 ' . "<br/>";
-            $msg .= '' . "<br/>";
-            $msg .= 'Pensez à en mettre un plus sécurisé, bon jeu ! ' . "<br/>";
-            $msg .= '' . "<br/>";
-
-            mail($to, $subject, $msg, $headers);
+            $result = $template->render([
+                "password" => "000000",
+            ]);
+            
         }
+
+        $subject = 'VamosMt2 - Mot de passe entrepot';
+        \EmailHelper::sendEmail($_SESSION['Email'], $subject, $result);
     }
 
 }

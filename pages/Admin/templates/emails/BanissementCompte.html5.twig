@@ -1,0 +1,20 @@
+<p>
+    Bonjour {{ compte }}
+    <br/>
+    <br/>
+    Votre compte a été banni de nos serveurs.
+    <br/>
+    <br/>
+    La raison est : {{ raison }}
+    <br/>
+    {% if definitif == "1" %}
+        Ce bannissement est définitif.
+    {% else %}
+        Ce bannissement n'est pas définif et nous vous invitons a vous rendre sur VamosMt2 afin d'en connaitre les détails.
+    {% endif %}
+    <br/>
+    Pour toute réclamation, veuillez vous adressez à l'équipe via le formulaire sur le site.
+    <br/>
+    <br/>
+    Cordialement, Vamosmt2.
+</p>

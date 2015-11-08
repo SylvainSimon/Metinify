@@ -44,6 +44,8 @@ class ServicesHelper {
             $config = $container['config'];
 
             $arrayOfFileSystem = [
+                BASE_ROOT . '/pages/Admin/templates/',
+                BASE_ROOT . '/pages/Admin/templates/emails',
                 BASE_ROOT . '/pages/Classements/templates/',
                 BASE_ROOT . '/pages/Inscription/templates/',
                 BASE_ROOT . '/pages/Inscription/templates/emails',

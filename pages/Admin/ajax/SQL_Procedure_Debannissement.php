@@ -8,9 +8,8 @@ class SQL_Procedure_Debannissement extends \ScriptHelper {
 
     public $isProtected = true;
     public $isAdminProtected = true;
-    
-    public function run() {
 
+    public function run() {
 
         $Id_Compte_Debannissement = $_POST['id_compte'];
 
@@ -56,27 +55,13 @@ class SQL_Procedure_Debannissement extends \ScriptHelper {
                 $Donnees_Recuperation_Email = $Parametres_Recuperation_Email->fetch();
                 /* -------------------------------------------------------------------------- */
 
-
-                $to = $Donnees_Recuperation_Email->email;
-
+                
+                $template = $this->objTwig->loadTemplate("Debannissement.html5.twig");
+                $result = $template->render([
+                    "compte" => $Donnees_Recuperation_Email->login,
+                ]);
                 $subject = 'VamosMt2 - Levé du bannissement de ' . $Donnees_Recuperation_Email->login . '';
-
-                $headers = "From: \"VamosMt2\" <contact@vamosmt2.fr>" . "\n";
-                $headers .= "Reply-to: \"VamosMt2\" <contact@vamosmt2.fr>" . "\r\n";
-                $headers .= 'Mime-Version: 1.0' . "\r\n";
-                $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-                $headers .= "\r\n";
-
-                $msg = 'Bonjour ' . $Donnees_Recuperation_Email->login . '' . "<br/>";
-                $msg .= '' . "<br/>";
-                $msg .= 'Votre compte vien d\'être débloqué de nos serveurs.' . "<br/>";
-                $msg .= '' . "<br/>";
-                $msg .= 'Pour toute réclamation, veuillez vous adressez à l\'équipe via le formulaire sur le site.' . "<br/>";
-                $msg .= '' . "<br/>";
-                $msg .= 'Cordialement, Vamosmt2.' . "<br/>";
-                $msg .= '' . "<br/>";
-
-                mail($to, $subject, $msg, $headers);
+                \EmailHelper::sendEmail($Donnees_Recuperation_Email->email, $subject, $result);
 
                 /* ------------------------------------- Insertion Player Deleted --------------------------------------- */
                 $Insertion_Player_Deleted = "INSERT INTO site.historique_bannissements 

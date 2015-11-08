@@ -8,15 +8,16 @@ class SQL_Procedure_Bannissement extends \ScriptHelper {
 
     public $isProtected = true;
     public $isAdminProtected = true;
-    
+
     public function run() {
 
-
-        $raison = $_POST["raison"];
-        $id_raison = $_POST["id_raison"];
-        $id_compte = $_POST["id_compte"];
-        $commentaire = $_POST["commentaire"];
-        $this->objConnection_Ip = $_SERVER['REMOTE_ADDR'];
+        global $request;
+        
+        $raison = $request->request->get("raison");
+        $id_raison = $request->request->get("id_raison");
+        $id_compte = $request->request->get("id_compte");
+        $commentaire = $request->request->get("commentaire");
+        $this->objConnection_Ip = $request->server->get("REMOTE_ADDR");
 
         /* ------------------------ $Recuperation_Raison ---- ---------------------------- */
         $Recuperation_Raison = "SELECT *
@@ -71,35 +72,16 @@ class SQL_Procedure_Bannissement extends \ScriptHelper {
             $Donnees_Recuperation_Email = $Parametres_Recuperation_Email->fetch();
             /* -------------------------------------------------------------------------- */
 
-            $to = $Donnees_Recuperation_Email->email;
+
+            $template = $this->objTwig->loadTemplate("BanissementCompte.html5.twig");
+            $result = $template->render([
+                "compte" => $Donnees_Recuperation_Email->login,
+                "definitif" => $Definitif,
+                "raison" => $Donnees_Recuperation_Raison->raison
+            ]);
 
             $subject = 'VamosMt2 - Bannissement de ' . $Donnees_Recuperation_Email->login . '';
-
-            $headers = "From: \"VamosMt2\" <contact@vamosmt2.fr>" . "\n";
-            $headers .= "Reply-to: \"VamosMt2\" <contact@vamosmt2.fr>" . "\r\n";
-            $headers .= 'Mime-Version: 1.0' . "\r\n";
-            $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-            $headers .= "\r\n";
-
-            $msg = 'Bonjour ' . $Donnees_Recuperation_Email->login . '' . "<br/>";
-            $msg .= '' . "<br/>";
-            $msg .= 'Votre compte a été banni de nos serveurs.' . "<br/>";
-            $msg .= '' . "<br/>";
-            $msg .= 'La raison est : ' . $Donnees_Recuperation_Raison->raison . ' ' . "<br/>";
-            if ($Definitif == 1) {
-                $msg .= 'Ce bannissement est définitif.' . "<br/>";
-            } else {
-                $msg .= 'Ce bannissement n\'est pas définif et nous vous invitons a vous rendre sur VamosMt2 afin d\'en connaitre les détails.' . "<br/>";
-            }
-            $msg .= '' . "<br/>";
-            $msg .= 'Pour toute réclamation, veuillez vous adressez à l\'équipe via le formulaire sur le site.' . "<br/>";
-            $msg .= '' . "<br/>";
-            $msg .= 'Cordialement, Vamosmt2.' . "<br/>";
-            $msg .= '' . "<br/>";
-
-            mail($to, $subject, $msg, $headers);
-
-
+            \EmailHelper::sendEmail($Donnees_Recuperation_Email->email, $subject, $result);
 
             $Insertion_Logs = "INSERT INTO site.bannissements_actifs (id_compte, date_debut_bannissement, date_fin_bannissement, raison_bannissement, commentaire_bannissement, id_compte_gm, ip_gm, duree, definitif) 
                           VALUES (:id_compte, NOW(), (NOW() + INTERVAL $Donnees_Recuperation_Raison->sanction DAY), :raison_bannissement, :commentaire_bannissement, :id_compte_gm, :ip_gm, :duree, :definitif)";
