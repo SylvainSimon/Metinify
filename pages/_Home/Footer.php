@@ -8,7 +8,7 @@
 
 <div class="col-md-6 col-sm-5" style="line-height: 40px; text-align: center;">
     
-    <div id="Copyright"><a href="https://vamosmt2.org/">© VamosMT2</a> V<?= $config->gameVersion; ?> | Coded by <a href="skype:sylvanusproduction?add" target="_blank">Sylvanus</a></div>
+    <div id="Copyright">Website by <a href="skype:sylvanusproduction?add" target="_blank">Sylvanus</a> | <a href="https://vamosmt2.org/">© VamosMT2</a> v<?= $config->gameVersion; ?>  </div>
     
 </div>
 
