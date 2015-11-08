@@ -7,95 +7,49 @@ require __DIR__ . '../../../../core/initialize.php';
 class ajaxEmailChangeExecute extends \ScriptHelper {
 
     public $isProtected = true;
-    
+
     public function run() {
 
+        global $request;
+        $em = \Shared\DoctrineHelper::getEntityManager();
+        
+        $AccountLogin = $this->objAccount->getLogin();
+        $AccountEmailOld = $this->objAccount->getEmail();
+        $AccountId = $this->objAccount->getId();
+        $AccountEmailNew = $request->request->get("emailapres");
+        $IP = $request->server->get("REMOTE_ADDR");
 
-        $Changement_Mail_Utilisateur = $_SESSION['Utilisateur'];
-        $Changement_Mail_Ancien_Mail = $_SESSION['Email'];
-        $Changement_Mail_Ancien_ID = $_SESSION['ID'];
-        $Changement_Mail_Nouveau_Mail = $_POST['emailapres'];
-        $Changement_Mail_Ip = $_SERVER["REMOTE_ADDR"];
+        //Application de la modification
+        $this->objAccount->setEmail($AccountEmailNew);
+        $em->persist($this->objAccount);
+        $em->flush();
+        
+        //Suppression de l'entrée de vérification
+        \Site\SiteHelper::getChangementMailRepository()->deleteByAccountId($AccountId);
 
-        /* ------------------------------------- Insertion Logs Changement Mail --------------------------------------- */
-        $Insertion_Logs_Changement_Mail = "INSERT INTO site.logs_changement_mail (id_compte, compte, ancien_mail, nouveau_mail, date, ip) 
-                                          VALUES (:id_compte, :compte, :ancien_mail,:nouveau_mail, NOW(), :ip)";
+        //On insère dans les logs
+        $objLogChangementEmail = new \Site\Entity\LogsChangementMail();
+        $objLogChangementEmail->setIdCompte($AccountId);
+        $objLogChangementEmail->setCompte($AccountLogin);
+        $objLogChangementEmail->setAncienMail($AccountEmailOld);
+        $objLogChangementEmail->setNouveauMail($AccountEmailNew);
+        $objLogChangementEmail->setIp($IP);
+        $objLogChangementEmail->setDate(date("Y-m-d H:i:s"));
+        $em->persist($objLogChangementEmail);
 
-        $Parametres_Insertion_Logs_Changement_Mail = $this->objConnection->prepare($Insertion_Logs_Changement_Mail);
-        $Parametres_Insertion_Logs_Changement_Mail->execute(array(
-            ':id_compte' => $Changement_Mail_Ancien_ID,
-            ':compte' => $Changement_Mail_Utilisateur,
-            ':ancien_mail' => $Changement_Mail_Ancien_Mail,
-            ':nouveau_mail' => $Changement_Mail_Nouveau_Mail,
-            ':ip' => $Changement_Mail_Ip));
-        /* ------------------------------------------------------------------------------------------------------------ */
+        //Envoi sur l'ancienne adresse
+        $templateOld = $this->objTwig->loadTemplate("EmailChangeEmailOld.html5.twig");
+        $resultOld = $templateOld->render(["compte" => $AccountLogin]);
+        $subject = 'VamosMt2 - Changement de mail de ' . $AccountLogin . '';
+        \EmailHelper::sendEmail($AccountEmailNew, $subject, $resultOld);
 
-        /* ----------------- Update Email --------------------- */
-        $Update_Mail = "UPDATE account.account 
-                SET email = ? 
-                WHERE login = ?
-                LIMIT 1";
-
-        $Parametres_Update_Email = $this->objConnection->prepare($Update_Mail);
-        $Parametres_Update_Email->execute(array(
-            $Changement_Mail_Nouveau_Mail,
-            $Changement_Mail_Utilisateur));
-        /* ----------------------------------------------------------- */
-
-        /* ---------------- Delete Changement Mail ------------------- */
-        $Delete_Changement_Mail = "DELETE FROM site.changement_mail
-                                  WHERE compte = ?";
-
-        $Parametres_Delete_Changement_Mail = $this->objConnection->prepare($Delete_Changement_Mail);
-        $Parametres_Delete_Changement_Mail->execute(array(
-            $Changement_Mail_Utilisateur));
-        /* ----------------------------------------------------------- */
-
-        $to = $Changement_Mail_Nouveau_Mail;
-
-        $subject = 'VamosMt2 - Changement de mail de ' . $Changement_Mail_Utilisateur . '';
-
-        $headers = "From: \"VamosMt2\" <contact@vamosmt2.fr>" . "\n";
-        $headers .= "Reply-to: \"VamosMt2\" <contact@vamosmt2.fr>" . "\r\n";
-        $headers .= 'Mime-Version: 1.0' . "\r\n";
-        $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-        $headers .= "\r\n";
-
-        $msg = 'Bonjour ' . $Changement_Mail_Utilisateur . '' . "<br/>";
-        $msg .= '' . "<br/>";
-        $msg .= 'Votre nouvelle e-mail est a présent effectif' . "<br/>";
-        $msg .= '' . "<br/>";
-        $msg .= 'Cordialement, Vamosmt2.' . "<br/>";
-        $msg .= '' . "<br/>";
-
-        mail($to, $subject, $msg, $headers);
-
-        $to = $Changement_Mail_Ancien_Mail;
-
-        $subject = 'VamosMt2 - Changement de mail de ' . $Changement_Mail_Utilisateur . '';
-
-        $headers = "From: \"VamosMt2\" <contact@vamosmt2.fr>" . "\n";
-        $headers .= "Reply-to: \"VamosMt2\" <contact@vamosmt2.fr>" . "\r\n";
-        $headers .= 'Mime-Version: 1.0' . "\r\n";
-        $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-        $headers .= "\r\n";
-
-        $msg = 'Bonjour ' . $Changement_Mail_Utilisateur . '' . "<br/>";
-        $msg .= '' . "<br/>";
-        $msg .= 'Votre nouvelle e-mail ' . $_POST['emailapres'] . ' est a présent effective' . "<br/>";
-        $msg .= 'Vous ne recevrez plus de mail sur ' . $Changement_Mail_Ancien_Mail . '.' . "<br/>";
-        $msg .= '' . "<br/>";
-        $msg .= 'Cordialement, Vamosmt2.' . "<br/>";
-        $msg .= '' . "<br/>";
-
-        mail($to, $subject, $msg, $headers);
-
-        $_SESSION['Email'] = $Changement_Mail_Nouveau_Mail;
+        //Envoi sur la nouvelle adresse
+        $templateNew = $this->objTwig->loadTemplate("EmailChangeEmailNew.html5.twig");
+        $resultNew = $templateNew->render(["compte" => $AccountLogin, "new" => $AccountEmailNew, "old" => $AccountEmailOld]);
+        $subject = 'VamosMt2 - Changement de mail de ' . $AccountLogin . '';
+        \EmailHelper::sendEmail($AccountEmailOld, $subject, $resultNew);
 
         echo '1';
-?>
-        <?php
-
     }
 
 }

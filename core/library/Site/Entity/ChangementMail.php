@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ChangementMail
  *
  * @ORM\Table(name="site.changement_mail")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\Repository\ChangementMailRepository")
  */
 class ChangementMail {
 
