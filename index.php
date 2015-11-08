@@ -118,8 +118,6 @@ class IndexWebsite extends PageHelper {
                 <div id="overlayMt2"></div>
             </body>
 
-            <a style="display: none;" id="Lien_Statistiques" href="pages/Statistiques/Statistiques.php" class="fancybox_Statistiques" data-fancybox-type="iframe"></a>
-
             <script type="text/javascript" >
                 $(function () {
 
@@ -143,9 +141,7 @@ class IndexWebsite extends PageHelper {
                             } else if (key == "pilori") {
                                 Ajax('pages/_LegacyPages/Pilori.php');
                             } else if (key == "stati") {
-                                $("#Lien_Statistiques").click();
-                                Barre_De_Statut("Ouverture des statistiques...");
-                                Icone_Chargement(1);
+                                Ajax("pages/Statistiques/Statistiques.php");
                             } else if (key == "calen") {
                                 Ajax("pages/_LegacyPages/Calendrier.php");
                             } else if (key == "securite") {

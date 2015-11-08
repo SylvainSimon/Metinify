@@ -12,9 +12,7 @@ class MonCompte extends \PageHelper {
 
         global $request;
         parent::VerifMonCompte($request->query->get("id"));
-        
-        \Debug::log("fghdfghdfgh");
-        
+                
         include __DIR__ . '../../../pages/Tableaux_Arrays.php';
 
         $date = Date("d/m/Y H:i:s");
