@@ -11,7 +11,6 @@ function Ajax_Connexion(url) {
         success: function (msg) {
 
             $("#Ajax_Connexion").html(msg);
-
             redraw();
         }
     });

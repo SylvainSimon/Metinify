@@ -11,7 +11,6 @@ class PageHelper extends CoreHelper {
 
         parent::__construct();
         
-        //Chargement du template//
         if ($this->strTemplate !== null) {
             $this->template = $this->objTwig->loadTemplate($this->strTemplate);
         }

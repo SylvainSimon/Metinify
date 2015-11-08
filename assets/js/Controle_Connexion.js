@@ -22,16 +22,13 @@ $(document).ready(function () {
 
                         document.getElementById('Menu_Inscription_MonCompte').style.display = 'inline';
                         document.getElementById('Menu_Inscription_MonCompte2').style.display = 'none';
-
                         $("#Lien_Mon_Compte").attr("onclick", "Ajax('pages/MonCompte/MonCompte.php?id=" + Parse_Json.id + "');");
 
                         document.getElementById('Menu_Telechargement_ItemShop').style.display = 'inline';
-
                         $("#Lien_Item_Shop").attr("onclick", "Ajax('pages/ItemShop/ItemShop.php?type=Item_Shop');");
 
                         document.getElementById('Menu_Support2').style.display = 'none';
                         document.getElementById('Menu_Support').style.display = 'inline';
-
                         $("#Lien_Support").attr("onclick", "Ajax('pages/Messagerie/Messagerie.php');");
 
                         document.getElementById('Menu_Telechargement_Equipe2').style.display = 'none';
@@ -57,15 +54,6 @@ $(document).ready(function () {
                         Barre_De_Statut(Parse_Json.reasons);
                         Icone_Chargement(2);
 
-                    } else if (Parse_Json.result == "3") {
-
-                        document.getElementById("login").value = "";
-                        document.getElementById("password").value = "";
-
-                        Ajax("pages/Bannissement.php?id=" + Parse_Json.id);
-
-                        Barre_De_Statut(Parse_Json.reasons);
-                        Icone_Chargement(2);
                     }
 
                 } catch (e) {
