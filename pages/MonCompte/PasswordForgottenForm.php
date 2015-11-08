@@ -5,44 +5,59 @@ namespace Pages;
 require __DIR__ . '../../../core/initialize.php';
 
 class PasswordForgottenForm extends \PageHelper {
-    
+
     public function run() {
         ?>
-        <div class="Cadre_Principal">
 
-            <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-                <h1>Mot de passe oublié</h1>
+        <div class="box box-default flat">
+
+            <div class="box-header">
+                <h3 class="box-title">Mot de passe oublié</h3>
+
             </div>
-            <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1">
-                <hr class="Hr_Haut"/>
-                Indiquez les informations relatives à votre compte afin de faire une demande de nouveau mot de passe.
+            <form action="#" id="Formulaire_Mot_de_Passe" method="POST">
 
-                <form action="#" id="Formulaire_Mot_de_Passe" method="POST">
-                    <table id="Table_Oublie_Mot_De_Passe">
+                <div class="box-body">
 
-                        <tr>
-                            <td>Nom de compte : </td>
-                            <td><input id="SaisieCompte" class="Zone_Saisie_Mot_De_Passe_Oublie" type="text" autofocus="autofocus" placeholder="Utilisateur" /></td>
-                            <td>Indiquez un compte existant</td>
-                        </tr>
-                        <tr>
-                            <td>E-mail : </td>
-                            <td><input id="SaisieEmailOublie" class="Zone_Saisie_Mot_De_Passe_Oublie" type="text" placeholder="truc@machine.com"/></td>
-                            <td>Indiquez l'email du compte</td>
-                        </tr>
+                    Indiquez les informations relatives à votre compte afin de faire une demande de nouveau mot de passe.
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group ">
+                                <label for="SaisieCompte">
+                                    Nom de compte
+                                </label>
 
-                    </table>
+                                <div class="input-group col-xs-12">
+                                    <input id="SaisieCompte" class="form-control input-sm text" type="text" autofocus="autofocus" placeholder="Utilisateur" />
+                                </div>
+                            </div>
 
-                    Pour recevoir ce mail, cliquez sur le bouton "Envoyer".<br/>
-                    Si vous êtes là par erreur, vous pouvez toujours annuler la demande.<br/>
-                    <hr class="Hr_Bas">
-                    <input type="button" class="Bouton_Envoyer_Changer_Email Bouton_Normal" value="Envoyer" onclick="Envoyer_Formulaire_Oublie_MDP()"/>
-                    <input type="button" class="Bouton_Annuler_Changer_Email Bouton_Normal" value="Annuler" onclick="Ajax('pages/_LegacyPages/News.php');" />
+                            <div class="form-group ">
+                                <label for="SaisieEmailOublie">
+                                    E-mail
+                                </label>
 
-                </form>
+                                <div class="input-group col-xs-12">
+                                    <input id="SaisieEmailOublie" class="form-control input-sm text" type="text" placeholder="truc@machine.com"/>
+                                </div>
+                            </div>
 
-                <br/>
-            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <div class="pull-left">
+                        <input type="button" class="btn btn-danger btn-flat" value="Annuler" onclick="Ajax('pages/_LegacyPages/News.php');" />
+                    </div>
+
+                    <div class="pull-right">
+                        <input type="button" class="btn btn-success btn-flat" value="Envoyer" onclick="Envoyer_Formulaire_Oublie_MDP();" />
+                    </div>        
+                </div>  
+            </form>
+
         </div>
 
         <script type="text/javascript">
