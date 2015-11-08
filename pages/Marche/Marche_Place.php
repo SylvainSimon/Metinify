@@ -17,9 +17,8 @@ class Marche_Place extends \PageHelper {
             <div class="col-lg-3">
                 <table class="table table-condensed" style="border-collapse: collapse;">
                     <tr>
-                        <td style="border-top: 0px;">Race : </td>
                         <td style="border-top: 0px;">
-                            <select id="Selecteur_Filtre_Ventes_Race" class="form-control input-sm" onchange="Ajax_Appel_Liste()">
+                            <select id="Selecteur_Filtre_Ventes_Race" class="select2" onchange="Ajax_Appel_Liste()">
                                 <option value="*">Toutes races</option>
                                 <option value="gu">Guerriers</option>
                                 <option value="ni">Ninjas</option>
@@ -29,9 +28,8 @@ class Marche_Place extends \PageHelper {
                         </td>
                     </tr>
                     <tr>
-                        <td>Sexe : </td>
-                        <td>
-                            <select id="Selecteur_Filtre_Ventes_Sexe" class="form-control input-sm" onchange="Ajax_Appel_Liste()">
+                        <td style="border-top: 0px;">
+                            <select id="Selecteur_Filtre_Ventes_Sexe" class="select2" onchange="Ajax_Appel_Liste()">
                                 <option value="*">Tous sexe</option>
                                 <option value="1">Hommes</option>
                                 <option value="0">Femmes</option>
@@ -39,9 +37,8 @@ class Marche_Place extends \PageHelper {
                         </td>
                     </tr>
                     <tr>
-                        <td>Niveau : </td>
-                        <td>
-                            <select id="Selecteur_Filtre_Ventes_Level" class="form-control input-sm" onchange="Ajax_Appel_Liste()">
+                        <td style="border-top: 0px;">
+                            <select id="Selecteur_Filtre_Ventes_Level" class="select2" onchange="Ajax_Appel_Liste()">
                                 <option value="*">De 100 à 270</option>
                                 <option value="1">De 1 à 100</option>
                                 <option value="2">De 101 à 200</option>
@@ -50,9 +47,8 @@ class Marche_Place extends \PageHelper {
                         </td>
                     </tr>
                     <tr>
-                        <td>Prix : </td>
-                        <td>
-                            <select id="Selecteur_Filtre_Ventes_Ordre" class="form-control input-sm" onchange="Ajax_Appel_Liste()">
+                        <td style="border-top: 0px;">
+                            <select id="Selecteur_Filtre_Ventes_Ordre" class="select2" onchange="Ajax_Appel_Liste()">
                                 <option value="*">Aléatoire</option>
                                 <option value="1">Croissant</option>
                                 <option value="2">Décroissant</option>
@@ -60,9 +56,8 @@ class Marche_Place extends \PageHelper {
                         </td>
                     </tr>
                     <tr>
-                        <td>Monnaie : </td>
-                        <td>
-                            <select id="Selecteur_Filtre_Ventes_Monnaie" class="form-control input-sm" onchange="Ajax_Appel_Liste()">
+                        <td style="border-top: 0px;">
+                            <select id="Selecteur_Filtre_Ventes_Monnaie" class="select2" onchange="Ajax_Appel_Liste()">
                                 <option value="*">Peu importe</option>
                                 <option value="1">Vamonaies</option>
                                 <option value="2">Tananaies</option>
@@ -70,21 +65,20 @@ class Marche_Place extends \PageHelper {
                         </td>
                     </tr>
                     <tr>
-                        <td>Date annonces : </td>
-                        <td>
-                            <select id="Selecteur_Filtre_Ventes_Date" class="form-control input-sm" onchange="Ajax_Appel_Liste()">
-                                <option value="*">Aléatoires</option>
-                                <option value="1">Récentes</option>
-                                <option value="2">Anciennes</option>
+                        <td style="border-top: 0px;">
+                            <select id="Selecteur_Filtre_Ventes_Date" class="select2" onchange="Ajax_Appel_Liste()">
+                                <option value="*">Ordre aléatoires</option>
+                                <option value="1">Plus récentes</option>
+                                <option value="2">Plus anciennes</option>
                             </select>
                         </td>
                     </tr>
                 </table>
             </div>
             <div class="col-lg-9" style="">
-                <table id="Tableau_Liste_Article" class="table">
+                <div id="Tableau_Liste_Article" style="padding: 10px;">
 
-                </table>
+                </div>
             </div>
         </div>
         <script type="text/javascript">
@@ -108,6 +102,8 @@ class Marche_Place extends \PageHelper {
                         $("#Tableau_Liste_Article").html(msg);
                         window.parent.Barre_De_Statut("Liste d'articles généré.");
                         window.parent.Icone_Chargement(0);
+                        
+                        redraw();
 
                     }
                 });

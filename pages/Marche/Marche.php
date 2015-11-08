@@ -22,9 +22,9 @@ class Marche extends \PageHelper {
 
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="javascript:void(0)" onclick="Ajax_Appel_Marche('pages/Marche/Marche_Place.php', this)">Place du marché</a></li>
-                        <li><a href="javascript:void(0)" onclick="Ajax_Appel_Marche('pages/Marche/Marche_Vendre_Personnage.php', this)">Vendre un personnage</a></li>
-                        <li><a href="javascript:void(0)" onclick="Ajax_Appel_Marche('pages/Marche/Marche_Mes_Ventes.php', this)">Mes ventes en cours</a></li>
+                        <li class="active"><a href="javascript:void(0)" onclick="Ajax_Appel_Marche('pages/Marche/Marche_Place.php', this)">Acheter</a></li>
+                        <li><a href="javascript:void(0)" onclick="Ajax_Appel_Marche('pages/Marche/Marche_Vendre_Personnage.php', this)">Vendre</a></li>
+                        <li><a href="javascript:void(0)" onclick="Ajax_Appel_Marche('pages/Marche/Marche_Mes_Ventes.php', this)">Mes ventes</a></li>
                     </ul>
                     <div id="Contenue_Cadre_Marche" class="tab-content"></div>
                 </div>
@@ -53,6 +53,8 @@ class Marche extends \PageHelper {
                             $(".nav-tabs-custom li").attr("class", "");
                             $(objet).parent("li").attr("class", "active");
                         }
+                        
+                        redraw();
 
                     }
                 });
