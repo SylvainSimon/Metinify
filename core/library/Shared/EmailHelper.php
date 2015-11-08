@@ -8,9 +8,9 @@ class EmailHelper {
 
         global $config;
 
-        $transport = Swift_SmtpTransport::newInstance($config->objInstance->smtpHost, $config->objInstance->smtpPort);
-        $transport->setUsername($config->objInstance->smtpUser);
-        $transport->setPassword($config->objInstance->smtpPassword);
+        $transport = Swift_SmtpTransport::newInstance($config->smtpHost, $config->smtpPort);
+        $transport->setUsername($config->smtpUser);
+        $transport->setPassword($config->smtpPassword);
 
         return $transport;
     }
@@ -27,7 +27,7 @@ class EmailHelper {
         $message = Swift_Message::newInstance();
 
         $message->setSubject($obj);
-        $message->setFrom($config->objInstance->smtpSender);
+        $message->setFrom($config->smtpSender);
         $message->setTo($receiver);
 
         $message->setBody($content);

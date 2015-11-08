@@ -30,12 +30,12 @@ class ServicesHelper {
 
         $container['config'] = function ($container) {
             $config = new ConfigHelper();
-            return $config;
+            return $config->objInstance;
         };
 
         $container['pdo'] = function ($container) {
             $config = $container['config'];
-            $connexion = new \PDO('' . $config->objInstance->driverbdd . ':host=' . $config->objInstance->hostbdd . ';charset=utf8', $config->objInstance->userbdd, $config->objInstance->passwordbdd);
+            $connexion = new \PDO('' . $config->driverbdd . ':host=' . $config->hostbdd . ';charset=utf8', $config->userbdd, $config->passwordbdd);
             return $connexion;
         };
 
@@ -55,8 +55,8 @@ class ServicesHelper {
                 BASE_ROOT . '/pages/_LegacyPages/templates/',
             ];
 
-            if ($config->objInstance->twigCache) {
-                $urlCache = BASE_ROOT . $config->objInstance->twigCacheUrl;
+            if ($config->twigCache) {
+                $urlCache = BASE_ROOT . $config->twigCacheUrl;
             } else {
                 $urlCache = false;
             }
@@ -84,19 +84,19 @@ class ServicesHelper {
             // build connection parameters
             $connectionParameters = array(
                 'dbname' => "site",
-                'user' => $param->objInstance->userbdd,
-                'password' => $param->objInstance->passwordbdd,
-                'host' => $param->objInstance->hostbdd,
-                'port' => $param->objInstance->portbdd,
+                'user' => $param->userbdd,
+                'password' => $param->passwordbdd,
+                'host' => $param->hostbdd,
+                'port' => $param->portbdd,
             );
 
-            switch (strtolower($param->objInstance->driverbdd)) {
+            switch (strtolower($param->driverbdd)) {
                 case 'mysql':
                     $connectionParameters['driver'] = 'pdo_mysql';
-                    $connectionParameters['charset'] = strtolower($param->objInstance->charsetbdd);
+                    $connectionParameters['charset'] = strtolower($param->charsetbdd);
                     break;
                 default:
-                    throw new RuntimeException('Database driver ' . $param->objInstance->driverbdd . ' not known by doctrine.');
+                    throw new RuntimeException('Database driver ' . $param->driverbdd . ' not known by doctrine.');
             }
 
             /* if (!empty($GLOBALS['TL_CONFIG']['dbPdoDriverOptions'])) {
@@ -174,7 +174,7 @@ class ServicesHelper {
             $config->setProxyDir($proxiesCacheDir);
             $config->setProxyNamespace('entities\proxies');
             
-            switch ($param->objInstance->cacheBdd) {
+            switch ($param->cacheBdd) {
                 case 'apc':
                     $cache = new \Doctrine\Common\Cache\ApcCache();
                     break;

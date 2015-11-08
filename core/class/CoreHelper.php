@@ -26,7 +26,7 @@ class CoreHelper {
 
         global $config;
         $config = $container["config"];
-        $this->objConfig = $config->objInstance;
+        $this->objConfig = $config;
 
         if (!$this->objConfig->requiredSSL) {
             $this->redirectToSSL();

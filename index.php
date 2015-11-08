@@ -17,6 +17,7 @@ class IndexWebsite extends PageHelper {
     public function run() {
 
         global $request;
+        global $config;
         global $session;
 
         //$this->objConnection;

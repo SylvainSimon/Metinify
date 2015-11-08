@@ -9,22 +9,21 @@ class Version extends \PageHelper {
     public function run() {
         ?>
 
-        <div class="Cadre_Principal">
+        <div class="box box-default flat">
 
-            <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-                <h1>Version actuelle du jeu</h1>
+            <div class="box-header">
+                <h3 class="box-title">Version du jeu</h3>
             </div>
-            <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1">
-                <hr class="Hr_Haut"/>
-                <p>
-                    La version actuelle de VamosMT2 est la version: 5.1.9
-                </p>
-                <hr class="Hr_Bas"/>
+
+            <div class="box-body">
+                La version actuelle de VamosMT2 est la version <span class="text-green">5.1.9</span>
+
             </div>
         </div>
 
         <?php
     }
+
 }
 
 $class = new Version();
