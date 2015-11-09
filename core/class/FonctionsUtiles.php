@@ -40,6 +40,19 @@ class FonctionsUtiles {
         }
         return sprintf($format . ' %s', $b, $translatedUnits[$e]);
     }
+    
+    static function GenerateString($Nombre_De_Caracteres) {
+
+        $Chaine_De_Puisement = 'abcdefghijklmnopqrstuvwxyz';
+        $Chaine_De_Puisement .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $Chaine_De_Puisement .= '1234567890';
+        $Chaine_Retourne = '';
+
+        for ($i = 0; $i < $Nombre_De_Caracteres; $i++) {
+            $Chaine_Retourne .= substr($Chaine_De_Puisement, rand() % (strlen($Chaine_De_Puisement)), 1);
+        }
+        return $Chaine_Retourne;
+    }
 
     static function Formatage_Date($Donnees_Brute, $simplifie = false) {
 

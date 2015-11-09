@@ -174,6 +174,8 @@ class ServicesHelper {
             // Configuration
             $config = new Doctrine\ORM\Configuration();
 
+            $config->addCustomStringFunction('PASSWORD', '\DoctrinePasswordExtension');
+            
             // Proxy Configuration
             $proxiesCacheDir = $container['doctrine.orm.proxiesCacheDir'];
             $config->setProxyDir($proxiesCacheDir);
