@@ -8,10 +8,10 @@ class Messagerie_Viewer extends \PageHelper {
 
     public $isProtected = true;
     public $isAllowForBlock = true;
-    
+
     public function run() {
-        
-        include '../../pages/Tableaux_Arrays.php'; 
+
+        include '../../pages/Tableaux_Arrays.php';
 
         /* ------------------------ Informations de Base ---------------------------- */
         $Informations_De_Base = "SELECT * FROM site.support_ticket_archives
@@ -76,78 +76,104 @@ class Messagerie_Viewer extends \PageHelper {
             ?>
 
             <div id="Cadre_Fil_Informations">
-                <table id="Table_Fil_Information">
-                    <tr>
-                        <td width="140">Premier Message : </td>
-                        <td><?php echo \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Premier_Message->date); ?></td>
-                    </tr>
-                    <tr>
-                        <td width="140">Dernier Message :</td> 
-                        <td><?php echo \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Dernier_Message->date); ?></td>
-                    </tr>
-                </table>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <table class="table table-condensed" style="margin-bottom: 0px; border-collapse: collapse;">
+                            <tr>
+                                <td style="border-top: 0px;">Premier</td>
+                                <td style="border-top: 0px;"><?php echo \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Premier_Message->date); ?></td>
+                            </tr>
+                            <tr>
+                                <td>Dernier</td> 
+                                <td><?php echo \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Dernier_Message->date); ?></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-lg-4">
+                        <table class="table table-condensed" style="margin-bottom: 0px; border-collapse: collapse;">
+                            <tr>
+                                <td style="border-top: 0px;">Nombre</td> 
+                                <td style="border-top: 0px;" id="Nombre_De_Message"><?php echo $Nombre_De_Resultat_Recuperation_Fil; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Objet</td>
+                                <td><?php echo $Donnees_Recuperation_Premier_Message->objet_message; ?></td>
+                            </tr>
+                        </table>
 
-                <table id="Table_Fil_Information2">
-                    <tr>
-                        <td width="140">Nombre de message :</td> 
-                        <td id="Nombre_De_Message"><?php echo $Nombre_De_Resultat_Recuperation_Fil; ?></td>
-                    </tr>
-                    <tr>
-                        <td width="140">Objet : </td>
-                        <td><?php echo $Donnees_Recuperation_Premier_Message->objet_message; ?></td>
-                    </tr>
-                </table>
-
-            </div>
-
-            <div id="Cadre_Fil_Discussion_Viewer">
-
-                <?php while ($Donnees_Recuperation_Fil = $Parametres_Recuperation_Fil->fetch()) { ?>
-
-                    <?php if ($Donnees_Recuperation_Fil->id_emmeteur == $_SESSION["ID"]) { ?>
-
-                        <div id="Message_<?php echo $Donnees_Recuperation_Fil->id; ?>" class="Message_Droite">
-                            <span><?php echo $_SESSION["Pseudo_Messagerie"] ?></span> : <?php echo nl2br(htmlentities($Donnees_Recuperation_Fil->contenue_message)); ?>
-                            <br/>
-                            <hr/>
-                            <div class="Date_Du_Message"><?php echo \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Fil->date); ?></div>
-                            <?php if ($Donnees_Recuperation_Fil->etat == "Lu") { ?>
-                                <div class="Etat_de_Visionnage"><?php echo \FonctionsUtiles::Formatage_Date_Vue($Donnees_Recuperation_Fil->date_vue); ?></div>
-                            <?php } else { ?>
-                                <div class="Etat_de_Visionnage">Non-Lu</div>
-                            <?php } ?>
-                        </div>
-
-                    <?php } else { ?>
-
-                        <?php if ($Donnees_Recuperation_Fil->etat == "Lu") { ?>
-                            <div id="Message_<?php echo $Donnees_Recuperation_Fil->id; ?>" class="Message_Gauche Vue">
-                            <?php } else { ?>
-                                <div id="Message_<?php echo $Donnees_Recuperation_Fil->id; ?>" class="Message_Gauche NonVue">
-                                <?php } ?>
-
-                                <span><?php echo $Donnees_Pseudo_Messagerie->pseudo_messagerie; ?></span> : <?php echo nl2br(htmlentities($Donnees_Recuperation_Fil->contenue_message)); ?>
-                                <br/>
-                                <hr/>
-                                <div class="Date_Du_Message"><?php echo \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Fil->date); ?></div>
-                                <?php if ($Donnees_Recuperation_Fil->etat == "Lu") { ?>
-                                    <div class="Etat_de_Visionnage"><?php echo \FonctionsUtiles::Formatage_Date_Vue($Donnees_Recuperation_Fil->date_vue); ?></div>
-                                <?php } else { ?>
-                                    <div class="Etat_de_Visionnage">Non-Lu</div>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
-                    <?php } ?>
-                    <a style="display: none;" id="Lien_Cache" href="#Message_<?php echo $_POST["id"]; ?>" title="Vers élément contact">lien vers l'élément contact</a>
+                    </div>
                 </div>
             </div>
+
+            <div class="box box-warning direct-chat direct-chat-danger" style="margin-bottom: 0px;">
+
+                <div class="box-body" style="min-height: 400px;">
+                    <div class="direct-chat-messages" id="Cadre_Fil_Discussion_Viewer" style="min-height: 400px;">
+
+                        <?php while ($Donnees_Recuperation_Fil = $Parametres_Recuperation_Fil->fetch()) { ?>
+
+                            <?php if ($Donnees_Recuperation_Fil->id_emmeteur == $_SESSION["ID"]) { ?>
+
+                                <div class="direct-chat-msg right" id="Message_<?php echo $Donnees_Recuperation_Fil->id; ?>" style="margin-bottom: 18px;">
+                                    <div class="direct-chat-info clearfix">
+                                        <span class="direct-chat-name pull-right"><?php echo $_SESSION["Pseudo_Messagerie"] ?></span>
+                                        <span class="direct-chat-timestamp pull-left"><?php echo \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Fil->date); ?></span>
+                                    </div>
+                                    <i class="material-icons md-icon-person md-48 pull-right"></i>
+                                    <div class="direct-chat-text bg-blue">
+                                        <?php echo nl2br(htmlentities($Donnees_Recuperation_Fil->contenue_message)); ?>
+                                        <?php if ($Donnees_Recuperation_Fil->etat == "Lu") { ?>
+                                            <div class="Etat_de_Visionnage"><?php echo \FonctionsUtiles::Formatage_Date_Vue($Donnees_Recuperation_Fil->date_vue); ?></div>
+                                        <?php } else { ?>
+                                            <div class="Etat_de_Visionnage">Non-Lu</div>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+
+                            <?php } else { ?>
+
+                                <div class="direct-chat-msg" id="Message_<?php echo $Donnees_Recuperation_Fil->id; ?>" style="margin-bottom: 18px;">
+
+                                    <div class="direct-chat-info clearfix">
+                                        <span class="direct-chat-name pull-left"><?php echo $Donnees_Pseudo_Messagerie->pseudo_messagerie; ?></span>
+                                        <span class="direct-chat-timestamp pull-right"><?php echo \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Fil->date); ?></span>
+
+                                        <?php if ($Donnees_Recuperation_Fil->etat == "Lu") { ?>
+                                            <div id="Message_<?php echo $Donnees_Recuperation_Fil->id; ?>" style="padding-top: 18px;">
+                                            </div>
+
+                                        <?php } else { ?>
+                                            <div id="Message_<?php echo $Donnees_Recuperation_Fil->id; ?>">
+                                            </div>
+                                        <?php } ?>
+
+                                        <i class="material-icons md-icon-person md-48 pull-left"></i>
+                                        <div class="direct-chat-text">
+                                            <?php echo nl2br(htmlentities($Donnees_Recuperation_Fil->contenue_message)); ?>
+                                            <?php if ($Donnees_Recuperation_Fil->etat == "Lu") { ?>
+                                                <div class="Etat_de_Visionnage"><?php echo \FonctionsUtiles::Formatage_Date_Vue($Donnees_Recuperation_Fil->date_vue); ?></div>
+                                            <?php } else { ?>
+                                                <div class="Etat_de_Visionnage">Non-Lu</div>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <?php } ?>
+                        <?php } ?>
+
+                    </div>
+                </div>
+
+                <a style="display: none;" id="Lien_Cache" href="#Message_<?php echo $_POST["id"]; ?>" title="Vers élément contact">lien vers l'élément contact</a>
+            </div>    
 
             <script type="text/javascript">
                 function Defilement(lien) {
 
                     id = $(lien).attr("href");
                     offset = $(id).offset().top
-                    $('#Cadre_Fil_Discussion_Viewer').animate({scrollTop: offset - 166}, 'slow');
+                    $('#Cadre_Fil_Discussion_Viewer').animate({scrollTop: offset - 166}, 'fast');
                 }
                 setTimeout(function () {
                     Defilement("#Lien_Cache")

@@ -94,7 +94,7 @@ class Messagerie extends \PageHelper {
 
                             $.ajax({
                                 type: "POST",
-                                url: "Messagerie_Lecture.php",
+                                url: "pages/Messagerie/Messagerie_Lecture.php",
                                 data: "id_ticket=" + id_ticket,
                                 success: function (msg) {
 

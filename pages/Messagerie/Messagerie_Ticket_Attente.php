@@ -33,6 +33,9 @@ class Messagerie_Ticket_Attente extends \PageHelper {
         /* ------------------------------------------------------------------------------ */
         ?>
 
+        <script src='pages/Messagerie/js/Controle_Nouveau_Ticket.js' type='text/javascript'></script>
+
+
         <div class="row">
             <div class="col-lg-3">
                 <table class="table table-condensed" style="border-collapse: collapse;">

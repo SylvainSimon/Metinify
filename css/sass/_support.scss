@@ -173,49 +173,6 @@
     padding:3px 3px;
 }
 
-#Cadre_Fil_Informations{
-
-    width: 97%;
-    height: 45px;
-    margin: 0 auto 0 auto;
-    border-collapse:collapse;
-    color: #cccccc;
-    border:1px solid grey;
-    font-size: 15px;
-    padding:3px 3px;
-    margin-bottom: 20px;
-}
-
-#Cadre_Fil_Discussion{
-
-    width: 97%;
-    height: 280px;
-    margin: 0 auto 0 auto;
-    border-collapse:collapse;
-    color: #cccccc;
-    border:1px solid grey;
-    font-size: 15px;
-    margin-bottom: 20px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding-top: 5px;
-}
-
-#Cadre_Fil_Discussion_Viewer{
-
-    width: 97%;
-    height: 375px;
-    margin: 0 auto 0 auto;
-    border-collapse:collapse;
-    border-radius:8px;
-    color: #cccccc;
-    border:1px solid grey;
-    font-size: 15px;
-    margin-bottom: 20px;
-    overflow-y: scroll;
-    padding-top: 5px;
-}
-
 .Message_Droite{
     width: 54%;
     min-height: 30px;
@@ -231,42 +188,6 @@
     padding-top: 3px;
     border-radius:7px 0 0 7px;
     opacity: .9;
-}
-
-.Message_Gauche{
-
-    width: 54%;
-    min-height: 30px;
-    background: #D6D6D6;
-    color: black;
-    float: left;
-    margin-top: 5px;
-    margin-bottom: 5px;
-
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-bottom: 3px;
-    padding-top: 3px;
-    border-radius:0 7px 7px 0;
-
-    opacity: .9;
-}
-
-.Message_Gauche:hover, .Message_Droite:hover{
-    opacity: 1;
-}
-
-.Date_Du_Message{
-    display: inline;
-    clear: both;
-    font-size: 11px;
-}
-
-.Etat_de_Visionnage{
-    float: right;
-    display: inline;
-    clear: both;
-    font-size: 11px;
 }
 
 #Table_Fil_Information{
@@ -343,3 +264,9 @@
 }
 
 .Logo_Croix_Suppression_Message:hover{opacity: 1;}
+
+.Etat_de_Visionnage{
+    float: right;
+    display: inline;
+    font-size: 11px;
+}
