@@ -190,7 +190,7 @@ class InscriptionForm extends \PageHelper {
 
                     <div class="pull-right">
                         En cliquant, j'accepte les <a style="cursor: pointer;" onclick="Ajax('pages/_LegacyPages/CGU.php');" >CGU</a> ainsi que le <a style="cursor: pointer;" onclick="Ajax('pages/regles.php');" >règlement de jeu</a>.
-                        <input type="button" class="btn btn-success btn-flat" onclick="VerificationFormulaire();" src="images/Bouton_Valider.png" value="Envoyer" />
+                        <input type="button" class="btn btn-success btn-flat" onclick="VerificationFormulaire();" value="Envoyer" />
                     </div>
                 </div>
             </form>

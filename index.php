@@ -95,7 +95,7 @@ class IndexWebsite extends PageHelper {
                         </div>
 
 
-                        <div class="col-md-12 paddingPrincipal">
+                        <div class="col-md-12" style="padding-bottom: 60px;">
 
                             <div class="row">
                                 <?php if ($session->get("Administration_PannelAdmin") !== null) { ?>

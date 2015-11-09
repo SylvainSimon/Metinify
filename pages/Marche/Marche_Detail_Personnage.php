@@ -96,7 +96,7 @@ class Marche_Detail_Personnage extends \PageHelper {
                     }
                     ?>
 
-                    <table class="Tableau_Informations_Temps_de_Jeux_Vente">
+                    <table>
                         <tr>
                             <th colspan="2" class="Colonne_Gauche">Temps de jeu : </th>
                         </tr>
