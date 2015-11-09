@@ -44,6 +44,30 @@ class PlayerRepository extends EntityRepository {
             return null;
         }
     }
+    
+    /**
+     * Retourne un joueur d'un compte
+     * @param integer $idAccount
+     * @return array of object
+     */
+    public function findPlayerByIdPlayerAndIdAccount($idPlayer = 0, $idAccount = 0) {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("PlayerEntity");
+        $qb->from("\Player\Entity\Player", "PlayerEntity");
+        $qb->where("PlayerEntity.id = :idPlayer");
+        $qb->where("PlayerEntity.idAccount = :idAccount");
+        $qb->setParameter("idPlayer", $idPlayer);
+        $qb->setParameter("idAccount", $idAccount);
+        $qb->setMaxResults(1);
+
+        try {
+            return $qb->getQuery()->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
 
     /**
      * Retourne les x joueurs du top choisi
