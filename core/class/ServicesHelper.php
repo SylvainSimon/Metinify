@@ -51,7 +51,7 @@ class ServicesHelper {
                 BASE_ROOT . '/pages/Inscription/templates/emails',
                 BASE_ROOT . '/pages/ItemShop/templates/',
                 BASE_ROOT . '/pages/Messagerie/templates/',
-                BASE_ROOT . '/pages/MonCompte/templates/',
+                BASE_ROOT . '/pages/MonCompte/templates/modules',
                 BASE_ROOT . '/pages/MonCompte/templates/emails',
                 BASE_ROOT . '/pages/MonPersonnage/templates/',
                 BASE_ROOT . '/pages/Statistiques/templates/',

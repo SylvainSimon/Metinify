@@ -13,27 +13,7 @@
                     <tr>
                         <td>Création :</td>
                         <?php
-                        $Explosion_DateEntiere = explode(" ", $Resultat_Appel_Compte->create_time);
-
-                        $Explosion_Date = explode("-", $Explosion_DateEntiere[0]);
-                        $Explosion_Heure = explode(":", $Explosion_DateEntiere[1]);
-
-                        if ($Explosion_DateEntiere[0] != '0000-00-00') {
-
-                            $Date_Jours = $Explosion_Date[2];
-                            $Date_Mois = $Array_Mois[$Explosion_Date[1]];
-                            $Date_Annee = $Explosion_Date[0];
-                        }
-
-                        $Date_Heure = $Explosion_Heure[0];
-                        $Date_Minute = $Explosion_Heure[1];
-                        $Date_Seconde = $Explosion_Heure[2];
-
-                        if ($Explosion_DateEntiere[0] != '0000-00-00') {
-                            $Recomposition_Date = "Le " . $Date_Jours . " " . $Date_Mois . " " . $Date_Annee . " à " . $Date_Heure . "h" . $Date_Minute . "m" . $Date_Seconde . "s";
-                        } else {
-                            $Recomposition_Date = "La date n'a pas été définie.";
-                        }
+                        $Recomposition_Date = DateTimeHelper::stringToFormatedString($Resultat_Appel_Compte->create_time);
                         ?>
                         <td><span style="font-size: 12px; font-weight: bold;"><?php echo $Recomposition_Date; ?></span></td>
                     </tr>
@@ -94,7 +74,7 @@
 
                     <?php if ($Resultat_Appel_Compte->social_id == "") { ?>
                         <tr>
-                            <td>Sécurité :</td>
+                            <td>Code d'effacement :</td>
                             <td>
                                 Aucun code définie
                                 <i data-tooltip="Définir mon code d'effacement" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/CodeEffacementCreateForm.php');" class="pull-right Pointer material-icons md-icon-add"></i>
@@ -102,7 +82,7 @@
                         </tr>
                     <?php } else { ?>
                         <tr>
-                            <td>Sécurité :</td>
+                            <td>Code d'effacement :</td>
                             <td>
                                 <span id="Code_Effacement">●●●●●●●</span>
 
