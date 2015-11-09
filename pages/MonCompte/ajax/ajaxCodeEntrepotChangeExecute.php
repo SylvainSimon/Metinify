@@ -10,61 +10,36 @@ class ajaxCodeEntrepotChangeExecute extends \ScriptHelper {
 
     public function run() {
 
-        $Code_Entrepot_Changer_Code_Avant = $_POST['Code_Avant'];
-        $Code_Entrepot_Changer_Code = $_POST['Code_Entrepot'];
-        $Code_Entrepot_Changer_ID = $_SESSION['ID'];
-        $Code_Entrepot_Changer_Utilisateur = $_SESSION['Utilisateur'];
-        $Code_Entrepot_Changer_Ip = $_SERVER["REMOTE_ADDR"];
+        global $request;
+        $em = \Shared\DoctrineHelper::getEntityManager();
 
-        /* ------------------------ Vérification Données ---------------------------- */
-        $Verification_Code = "SELECT size FROM player.safebox
-                                   WHERE (password = ?
-                                   OR password = ?)
-                                   AND account_id = ?
-                                   LIMIT 1";
-        $Parametres_Verification_Code = $this->objConnection->prepare($Verification_Code);
-        $Parametres_Verification_Code->execute(array(
-            $Code_Entrepot_Changer_Code_Avant,
-            "",
-            $Code_Entrepot_Changer_ID));
-        $Parametres_Verification_Code->setFetchMode(\PDO::FETCH_OBJ);
-        $Nombre_De_Resultat = $Parametres_Verification_Code->rowCount();
-        /* -------------------------------------------------------------------------- */
+        $passwordSafeboxOld = $request->request->get("Code_Avant");
+        $passwordSafeboxNew = $request->request->get("Code_Entrepot");
 
-        if ($Nombre_De_Resultat != 0) {
-            /* ----------------------------- Changer Code Entrepot ------------------------------- */
-            $Changer_Code_Entrepot = "UPDATE player.safebox 
-                            SET password = ? 
-                            WHERE account_id = ?
-                            LIMIT 1";
+        //On recherche l'entrepot du compte
+        $objSafebox = \Player\PlayerHelper::getSafeboxRepository()->findByIdCompte($this->objAccount->getId());
 
-            $Parametres_Changer_Code_Entrepot = $this->objConnection->prepare($Changer_Code_Entrepot);
-            $Parametres_Changer_Code_Entrepot->execute(array(
-                $Code_Entrepot_Changer_Code,
-                $Code_Entrepot_Changer_ID));
-            /* ------------------------------------------------------------------------------------- */
+        if ($objSafebox !== null) {
 
-            /* ------------------------------------- Insertion Logs Changement Entrepot --------------------------------------- */
-            $Insertion_Logs_Changement_Entrepot = "INSERT INTO site.logs_code_entrepot_changement (id_compte, compte, ancien_code, nouveau_code, date, ip) 
-                                          VALUES (:id_compte, :compte, :ancien_code, :nouveau_code, NOW(), :ip)";
+            $objSafebox->setPassword($passwordSafeboxNew);
+            $em->persist($objSafebox);
 
-            $Parametres_Insertion_Logs_Changement_Entrepot = $this->objConnection->prepare($Insertion_Logs_Changement_Entrepot);
-            $Parametres_Insertion_Logs_Changement_Entrepot->execute(array(
-                ':id_compte' => $Code_Entrepot_Changer_ID,
-                ':compte' => $Code_Entrepot_Changer_Utilisateur,
-                ':ancien_code' => $Code_Entrepot_Changer_Code_Avant,
-                ':nouveau_code' => $Code_Entrepot_Changer_Code,
-                ':ip' => $Code_Entrepot_Changer_Ip));
-            /* ----------------------------------------------------------------------------------------------------------------- */
+            $objLogsCodeEntrepotChangement = new \Site\Entity\LogsCodeEntrepotChangement();
+            $objLogsCodeEntrepotChangement->setIdCompte($this->objAccount->getId());
+            $objLogsCodeEntrepotChangement->setCompte($this->objAccount->getLogin());
+            $objLogsCodeEntrepotChangement->setAncienCode($passwordSafeboxOld);
+            $objLogsCodeEntrepotChangement->setNouveauCode($passwordSafeboxNew);
+            $objLogsCodeEntrepotChangement->setDate(new \DateTime(date("Y-m-d H:i:s")));
+            $objLogsCodeEntrepotChangement->setIp($this->ipAdresse);
+            $em->persist($objLogsCodeEntrepotChangement);
+
+            $em->flush();
 
             echo '1';
         } else {
 
             echo '2';
         }
-?>
-        <?php
-
     }
 
 }

@@ -19,5 +19,12 @@ class PlayerHelper {
     public static function getGuildRepository() {
         return DoctrineHelper::getRepository('\Player\Entity\Guild');
     }
+    
+    /**
+     * @return \Player\Repository\SafeboxRepository
+     */
+    public static function getSafeboxRepository() {
+        return DoctrineHelper::getRepository('\Player\Entity\Safebox');
+    }
 
 }

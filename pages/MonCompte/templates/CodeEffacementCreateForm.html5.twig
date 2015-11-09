@@ -1,0 +1,44 @@
+<script type="text/javascript" src="pages/MonCompte/js/CodeEffacementCreateFormControl.js"></script>
+
+<div class="box box-default flat">
+
+    <div class="box-header">
+        <h3 class="box-title">Création du code d'effacement</h3>
+    </div>
+
+    <form action="javascript:void(0)" method="POST">
+
+        <div class="box-body">
+
+            Entre ici le code qui servira à effacé l'un de vos personnage dans le jeux.
+            <br/>
+            <br/>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group ">
+                        <label for="ChampsSaisieSecu">
+                            Code d'effacement
+                        </label>
+
+                        <div class="input-group col-xs-12">
+                            <input type="text" maxlength="7" placeholder="●●●●●●●" autofocus id="ChampsSaisieSecu" class="form-control input-sm text" onkeyup="verifchiffre(this.value);"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="box-footer">
+            <div class="pull-left">
+                <input type="button" class="btn btn-danger btn-flat" value="Annuler" onclick="Ajax('pages/_LegacyPages/News.php');" />
+            </div>
+
+            <div class="pull-right">
+                <input type="button" class="btn btn-success btn-flat" value="Créer" onclick="VerificationSecu();" />
+            </div>        
+        </div>
+
+    </form>
+</div>

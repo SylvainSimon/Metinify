@@ -7,43 +7,29 @@ require __DIR__ . '../../../../core/initialize.php';
 class ajaxCodeEffacementCreateExecute extends \ScriptHelper {
 
     public $isProtected = true;
-    
+
     public function run() {
 
+        global $request;
+        $em = \Shared\DoctrineHelper::getEntityManager();
 
-        $Code_Effacement_Definir_Code = $_POST['Code_Effacement'];
-        $Code_Effacement_Definir_ID = $_SESSION['ID'];
-        $Code_Effacement_Definir_Utilisateur = $_SESSION['Utilisateur'];
-        $Code_Effacement_Definir_Ip = $_SERVER["REMOTE_ADDR"];
+        $codeEffacementNew = $request->request->get("Code_Effacement");
 
-        /* ----------------------------- Definir Code Effacement ------------------------------- */
-        $Definir_Code_Effacement = "UPDATE account.account 
-                            SET social_id = ? 
-                            WHERE id = ?
-                            LIMIT 1";
+        $this->objAccount->setCodeEffacement($codeEffacementNew);
+        $em->persist($this->objAccount);
 
-        $Parametres_Definir_Code_Effacement = $this->objConnection->prepare($Definir_Code_Effacement);
-        $Parametres_Definir_Code_Effacement->execute(array(
-            $Code_Effacement_Definir_Code,
-            $Code_Effacement_Definir_ID));
-        /* ------------------------------------------------------------------------------------- */
+        $objLogsCodeEffacementDefinition = new \Site\Entity\LogsCodeEffacementDefinition();
+        $objLogsCodeEffacementDefinition->setIdCompte($this->objAccount->getId());
+        $objLogsCodeEffacementDefinition->setCompte($this->objAccount->getLogin());
+        $objLogsCodeEffacementDefinition->setCode($codeEffacementNew);
+        $objLogsCodeEffacementDefinition->setDate(new \DateTime(date("Y-m-d H:i:s")));
+        $objLogsCodeEffacementDefinition->setIp($this->ipAdresse);
 
-        /* ------------------------------------- Insertion Logs Definition Effacement --------------------------------------- */
-        $Insertion_Logs_Definition_Effacement = "INSERT INTO site.logs_code_effacement_definition (id_compte, compte, code, date, ip) 
-                                          VALUES (:id_compte, :compte, :code, NOW(), :ip)";
+        $em->persist($objLogsCodeEffacementDefinition);
 
-        $Parametres_Insertion_Logs_Definition_Effacement = $this->objConnection->prepare($Insertion_Logs_Definition_Effacement);
-        $Parametres_Insertion_Logs_Definition_Effacement->execute(array(
-            ':id_compte' => $Code_Effacement_Definir_ID,
-            ':compte' => $Code_Effacement_Definir_Utilisateur,
-            ':code' => $Code_Effacement_Definir_Code,
-            ':ip' => $Code_Effacement_Definir_Ip));
-        /* ----------------------------------------------------------------------------------------------------------------- */
+        $em->flush();
 
         echo '1';
-?>
-        <?php
-
     }
 
 }

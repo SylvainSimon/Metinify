@@ -4,24 +4,24 @@ function verifchiffre(value){
             
     if (value.length < 7){
                 
-        document.getElementById('ChampsSaisieSecu').className = "Zone_Saisie_Creation_Code_Effacement_Rouge";
+        document.getElementById('ChampsSaisieSecu').className = "form-control input-sm text";
         Verification_Longueur = 1;
                     
     }else{
                 
-        document.getElementById('ChampsSaisieSecu').className = "Zone_Saisie_Creation_Code_Effacement_Vert";
+        document.getElementById('ChampsSaisieSecu').className = "form-control input-sm text";
         Verification_Longueur = 0;
                     
         var RE = /^-{0,1}\d*\.{0,1}\d+$/;
                     
         if (!RE.test(value)){
                         
-            document.getElementById('ChampsSaisieSecu').className = "Zone_Saisie_Creation_Code_Effacement_Rouge";
+            document.getElementById('ChampsSaisieSecu').className = "form-control input-sm text";
             Verification_Longueur = 1;
                         
         }else{
                         
-            document.getElementById('ChampsSaisieSecu').className = "Zone_Saisie_Creation_Code_Effacement_Vert";
+            document.getElementById('ChampsSaisieSecu').className = "form-control input-sm text";
             Verification_Longueur = 0;
         }
     }      
