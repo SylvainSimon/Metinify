@@ -7,32 +7,19 @@ require __DIR__ . '../../../../core/initialize.php';
 class ajaxEmailChangeVerify extends \ScriptHelper {
 
     public $isProtected = true;
-    
+
     public function run() {
 
-        $Changer_Mail_Verification_Ip = $_SERVER["REMOTE_ADDR"];
-        $Changer_Mail_Verification_Code_Verification = $_POST['code'];
+        global $request;
+        $numeroVerif = $request->request->get("code");
+        
+        $objChangementMail = \Site\SiteHelper::getChangementMailRepository()->findByIdCompteAndNumeroVerif($this->objAccount->getId(), $numeroVerif);
 
-        /* ------------------------ Vérification Données ---------------------------- */
-        $Verification_Code = "SELECT * FROM site.changement_mail
-                                   WHERE numero_verif = ?
-                                   AND ip = ?
-                                   LIMIT 1";
-        $Parametres_Verification_Code = $this->objConnection->prepare($Verification_Code);
-        $Parametres_Verification_Code->execute(array(
-            $Changer_Mail_Verification_Code_Verification,
-            $Changer_Mail_Verification_Ip));
-        $Parametres_Verification_Code->setFetchMode(\PDO::FETCH_BOTH);
-        $Nombre_De_Resultat = $Parametres_Verification_Code->rowCount();
-        /* -------------------------------------------------------------------------- */
-
-        if ($Nombre_De_Resultat == 1) {
+        if ($objChangementMail !== null) {
             echo "1";
         } else {
-
             echo "2";
         }
-
     }
 
 }
