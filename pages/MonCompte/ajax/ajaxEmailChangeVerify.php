@@ -27,14 +27,11 @@ class ajaxEmailChangeVerify extends \ScriptHelper {
         /* -------------------------------------------------------------------------- */
 
         if ($Nombre_De_Resultat == 1) {
-
             echo "1";
         } else {
 
             echo "2";
         }
-?>
-        <?php
 
     }
 

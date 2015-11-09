@@ -10,11 +10,9 @@ class ajaxEmailChangeSendEmail extends \ScriptHelper {
     
     public function run() {
         
-        global $request;
         $em = \Shared\DoctrineHelper::getEntityManager();
 
-        mt_srand((float) microtime() * 1000000);
-        $Nombre_Unique = mt_rand(0, 100000000000);
+        $Nombre_Unique = \FonctionsUtiles::GenerateString(8, "INT");
 
         //Suppression des autres entrées de vérification
         \Site\SiteHelper::getChangementMailRepository()->deleteByAccountId($this->objAccount->getId());

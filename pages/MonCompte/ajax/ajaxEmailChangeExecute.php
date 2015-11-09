@@ -42,13 +42,13 @@ class ajaxEmailChangeExecute extends \ScriptHelper {
         $templateOld = $this->objTwig->loadTemplate("EmailChangeEmailOld.html5.twig");
         $resultOld = $templateOld->render(["compte" => $AccountLogin]);
         $subject = 'VamosMt2 - Changement de mail de ' . $AccountLogin . '';
-        \EmailHelper::sendEmail($AccountEmailNew, $subject, $resultOld);
+        \EmailHelper::sendEmail($AccountEmailOld, $subject, $resultOld);
 
         //Envoi sur la nouvelle adresse
         $templateNew = $this->objTwig->loadTemplate("EmailChangeEmailNew.html5.twig");
         $resultNew = $templateNew->render(["compte" => $AccountLogin, "new" => $AccountEmailNew, "old" => $AccountEmailOld]);
         $subject = 'VamosMt2 - Changement de mail de ' . $AccountLogin . '';
-        \EmailHelper::sendEmail($AccountEmailOld, $subject, $resultNew);
+        \EmailHelper::sendEmail($AccountEmailNew, $subject, $resultNew);
 
         echo '1';
     }

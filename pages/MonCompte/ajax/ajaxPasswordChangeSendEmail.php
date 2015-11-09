@@ -16,7 +16,7 @@ class ajaxPasswordChangeSendEmail extends \ScriptHelper {
         $passwordOld = $request->request->get("Ancien_Mot_De_Passe");
         $passwordNew = $request->request->get("Nouveau_Mot_De_Passe");
 
-        $objAccount = \Account\AccountHelper::getAccountRepository()->findAccountByLoginAndPassword($objAccount->getLogin(), $passwordOld);
+        $objAccount = \Account\AccountHelper::getAccountRepository()->findAccountByLoginAndPassword($this->objAccount->getLogin(), $passwordOld);
 
         if ($objAccount !== null) {
 
@@ -30,11 +30,11 @@ class ajaxPasswordChangeSendEmail extends \ScriptHelper {
             $objChangementMotDePasse->setCompte($objAccount->getLogin());
             $objChangementMotDePasse->setNouveauMotDePasse($passwordNew);
             $objChangementMotDePasse->setNumeroVerif($Nombre_Unique);
-            $objChangementMotDePasse->setDate(new \DateTime(date("Y-m-d H:i:s")));
-            $objChangementMotDePasse->setIp($this->ipAdress);
+            $objChangementMotDePasse->setIp($this->ipAdresse);
 
             $em->persist($objChangementMotDePasse);
-
+            $em->flush();
+            
             $template = $this->objTwig->loadTemplate("PasswordChangeEmail.html5.twig");
             $result = $template->render([
                 "account" => $objAccount->getLogin(),
@@ -48,7 +48,6 @@ class ajaxPasswordChangeSendEmail extends \ScriptHelper {
         } else {
             echo '2';
         }
-
     }
 
 }
