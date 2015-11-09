@@ -6,6 +6,25 @@ use \Shared\EntityRepository;
 
 class AccountRepository extends EntityRepository {
 
+    public function findAccountByLoginAndPassword($login = "", $password = "") {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("AccountEntity");
+        $qb->from("\Account\Entity\Account", "AccountEntity");
+        $qb->where("AccountEntity.login = :login");
+        $qb->andWhere("AccountEntity.password = PASSWORD(:password)");
+        $qb->setParameter("login", $login);
+        $qb->setParameter("password", $password);
+        $qb->setMaxResults(1);
+
+        try {
+            return $qb->getQuery()->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+    
     public function findAccountByEmailAndLogin($email = "", $login = "") {
 
         $qb = $this->_em->createQueryBuilder();

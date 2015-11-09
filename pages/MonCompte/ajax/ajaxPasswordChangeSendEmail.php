@@ -10,77 +10,44 @@ class ajaxPasswordChangeSendEmail extends \ScriptHelper {
 
     public function run() {
 
+        global $request;
+        $em = \Shared\DoctrineHelper::getEntityManager();
 
-        $Mot_De_Passe_Ancien = $_POST['Ancien_Mot_De_Passe'];
-        $Mot_De_Passe_Nouveau = $_POST["Nouveau_Mot_De_Passe"];
+        $passwordOld = $request->request->get("Ancien_Mot_De_Passe");
+        $passwordNew = $request->request->get("Nouveau_Mot_De_Passe");
 
-        $Changer_Mot_De_Passe_Envoie_Mail_Utilisateur = $_SESSION['Utilisateur'];
-        $Changer_Mot_De_Passe_Envoie_Mail_ID = $_SESSION['ID'];
-        $Changer_Mot_De_Passe_Envoie_Mail_Ip = $_SERVER["REMOTE_ADDR"];
-        $Changer_Mot_De_Passe_Envoie_Mail_Email = $_SESSION['Email'];
+        $objAccount = \Account\AccountHelper::getAccountRepository()->findAccountByLoginAndPassword($objAccount->getLogin(), $passwordOld);
 
+        if ($objAccount !== null) {
 
-        /* ------------------------ Vérification Données ---------------------------- */
-        $Verification_Donnees = "SELECT id FROM account.account
-                                   WHERE login = ?
-                                   AND password = password(?)
-                                   LIMIT 1";
-        $Parametres_Verification_Donnees = $this->objConnection->prepare($Verification_Donnees);
-        $Parametres_Verification_Donnees->execute(array(
-            $Changer_Mot_De_Passe_Envoie_Mail_Utilisateur,
-            $Mot_De_Passe_Ancien));
-        $Parametres_Verification_Donnees->setFetchMode(\PDO::FETCH_OBJ);
-        $Nombre_De_Resultat = $Parametres_Verification_Donnees->rowCount();
-        /* -------------------------------------------------------------------------- */
+            //Suppression des autres demandes
+            \Site\SiteHelper::getChangementMotDePasseRepository()->deleteByAccountId($objAccount->getId());
 
-        if ($Nombre_De_Resultat == 1) {
+            $Nombre_Unique = \FonctionsUtiles::GenerateString(8, "INT");
 
-            /* -------------- Suppression autres demande ----------------------------------------------------- */
-            $Delete_Demande_Changements = "DELETE 
-                               FROM site.changement_mot_de_passe
-                               WHERE id_compte = :id_compte";
+            $objChangementMotDePasse = new \Site\Entity\ChangementMotDePasse();
+            $objChangementMotDePasse->setIdCompte($objAccount->getId());
+            $objChangementMotDePasse->setCompte($objAccount->getLogin());
+            $objChangementMotDePasse->setNouveauMotDePasse($passwordNew);
+            $objChangementMotDePasse->setNumeroVerif($Nombre_Unique);
+            $objChangementMotDePasse->setDate(new \DateTime(date("Y-m-d H:i:s")));
+            $objChangementMotDePasse->setIp($this->ipAdress);
 
-            $Parametres_Delete_Demande_Changements = $this->objConnection->prepare($Delete_Demande_Changements);
-            $Parametres_Delete_Demande_Changements->execute(
-                    array(
-                        ':id_compte' => $Changer_Mot_De_Passe_Envoie_Mail_ID
-                    )
-            );
-            /* ------------------------------------------------------------------------------------------------ */
-
-
-            mt_srand((float) microtime() * 1000000);
-            $Nombre_Unique = mt_rand(0, 100000000000);
-
-            /* ------------------------------------- Insertion Changement Mail --------------------------------------- */
-            $Insertion_Changement_Mail = "INSERT site.changement_mot_de_passe (id_compte, compte, nouveau_mot_de_passe, numero_verif, date, ip) 
-                                          VALUES (:id_compte, :compte, password(:nouveau_mot_de_passe), :numero_verif, NOW(), :ip)";
-
-            $Parametres_Insertion_Changement_Mail = $this->objConnection->prepare($Insertion_Changement_Mail);
-            $Parametres_Insertion_Changement_Mail->execute(array(
-                ':id_compte' => $Changer_Mot_De_Passe_Envoie_Mail_ID,
-                ':compte' => $Changer_Mot_De_Passe_Envoie_Mail_Utilisateur,
-                ':nouveau_mot_de_passe' => $Mot_De_Passe_Nouveau,
-                ':numero_verif' => $Nombre_Unique,
-                ':ip' => $Changer_Mot_De_Passe_Envoie_Mail_Ip));
-            /* -------------------------------------------------------------------------------------------------------- */
+            $em->persist($objChangementMotDePasse);
 
             $template = $this->objTwig->loadTemplate("PasswordChangeEmail.html5.twig");
             $result = $template->render([
-                "account" => $Changer_Mot_De_Passe_Envoie_Mail_Utilisateur,
+                "account" => $objAccount->getLogin(),
                 "key" => $Nombre_Unique,
             ]);
 
             $subject = 'VamosMT2 - Changement de mot de passe';
-            \EmailHelper::sendEmail($Changer_Mot_De_Passe_Envoie_Mail_Email, $subject, $result);
+            \EmailHelper::sendEmail($objAccount->getEmail(), $subject, $result);
 
             echo '1';
         } else {
-
             echo '2';
         }
-?>
-        <?php
 
     }
 

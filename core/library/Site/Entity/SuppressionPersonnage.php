@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * SuppressionPersonnage
  *
  * @ORM\Table(name="site.suppression_personnage")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\Repository\SuppressionPersonnageRepository")
  */
 class SuppressionPersonnage {
 

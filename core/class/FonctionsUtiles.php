@@ -40,12 +40,24 @@ class FonctionsUtiles {
         }
         return sprintf($format . ' %s', $b, $translatedUnits[$e]);
     }
-    
-    static function GenerateString($Nombre_De_Caracteres) {
 
-        $Chaine_De_Puisement = 'abcdefghijklmnopqrstuvwxyz';
-        $Chaine_De_Puisement .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $Chaine_De_Puisement .= '1234567890';
+    static function GenerateString($Nombre_De_Caracteres, $type = "ALL") {
+
+        $Chaine_De_Puisement = "";
+
+        switch ($type) {
+            case "ALL":
+                $Chaine_De_Puisement .= 'abcdefghijklmnopqrstuvwxyz';
+                $Chaine_De_Puisement .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                $Chaine_De_Puisement .= '1234567890';
+                break;
+            case "STRING":
+                $Chaine_De_Puisement .= 'abcdefghijklmnopqrstuvwxyz';
+                $Chaine_De_Puisement .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            case "INT":
+                $Chaine_De_Puisement .= '1234567890';
+        }
+
         $Chaine_Retourne = '';
 
         for ($i = 0; $i < $Nombre_De_Caracteres; $i++) {
@@ -314,7 +326,7 @@ class FonctionsUtiles {
             $icone = "<i data-tooltip='Empire Chunjo' class='text-yellow material-icons md-icon-map md-20'></i>";
         } else if ($idEmpire == 3) {
             $icone = "<i data-tooltip='Empire Jinno' class='text-blue material-icons md-icon-map md-20'></i>";
-        }else{
+        } else {
             $icone = "<i data-tooltip='Royaume inconnu' class='material-icons md-icon-map md-20'></i>";
         }
 
