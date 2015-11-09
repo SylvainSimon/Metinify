@@ -11,8 +11,6 @@ class HistoryConnexion extends \PageHelper {
     public function run() {
         
     ?>
-
-
         <div class="box box-default flat">
 
             <div class="box-header">
