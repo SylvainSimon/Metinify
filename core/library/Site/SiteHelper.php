@@ -34,4 +34,11 @@ class SiteHelper {
         return DoctrineHelper::getRepository('\Site\Entity\SuppressionPersonnage');
     }
     
+    /**
+     * @return \Site\Repository\VotesListeSitesRepository
+     */
+    public static function getVotesListeSitesRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\VotesListeSites');
+    }
+    
 }
