@@ -18,6 +18,7 @@ class CoreHelper {
     public $isPage = false;
     public $isScript = false;
     public $isAllowForBlock = false;
+    public $ipAdresse = "";
 
     public function __construct() {
 
@@ -52,6 +53,8 @@ class CoreHelper {
         $this->objRequest = $request;
 
         $this->response = new Response();
+        
+        $this->ipAdresse = $request->server->get("REMOTE_ADDR");
 
         if ($session->get("ID") !== null) {
             $this->isConnected = true;

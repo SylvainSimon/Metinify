@@ -22,7 +22,6 @@ class ajaxEmailChangeExecute extends \ScriptHelper {
         //Application de la modification
         $this->objAccount->setEmail($AccountEmailNew);
         $em->persist($this->objAccount);
-        $em->flush();
         
         //Suppression de l'entrée de vérification
         \Site\SiteHelper::getChangementMailRepository()->deleteByAccountId($AccountId);
@@ -34,9 +33,11 @@ class ajaxEmailChangeExecute extends \ScriptHelper {
         $objLogChangementEmail->setAncienMail($AccountEmailOld);
         $objLogChangementEmail->setNouveauMail($AccountEmailNew);
         $objLogChangementEmail->setIp($IP);
-        $objLogChangementEmail->setDate(date("Y-m-d H:i:s"));
+        $objLogChangementEmail->setDate(new \DateTime(date("Y-m-d H:i:s")));
         $em->persist($objLogChangementEmail);
 
+        $em->flush();
+        
         //Envoi sur l'ancienne adresse
         $templateOld = $this->objTwig->loadTemplate("EmailChangeEmailOld.html5.twig");
         $resultOld = $templateOld->render(["compte" => $AccountLogin]);
