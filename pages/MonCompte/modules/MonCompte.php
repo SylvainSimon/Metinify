@@ -2,7 +2,7 @@
 
 namespace Pages\MonCompte;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
 class MonCompte extends \PageHelper {
 
@@ -13,7 +13,7 @@ class MonCompte extends \PageHelper {
         global $request;
         parent::VerifMonCompte($request->query->get("id"));
                 
-        include __DIR__ . '../../../pages/Tableaux_Arrays.php';
+        include __DIR__ . '../../../../pages/Tableaux_Arrays.php';
 
         $date = Date("d/m/Y H:i:s");
         $Date_Actuel_En_Seconde = time();
@@ -94,11 +94,11 @@ class MonCompte extends \PageHelper {
                     </ul>
                     <div class="tab-content">
 
-                        <?php include '../../pages/MonCompte/includes/OngletInformationsGeneral.php'; ?>
-                        <?php include '../../pages/MonCompte/includes/OngletEntrepot.php'; ?>
-                        <?php include '../../pages/MonCompte/includes/OngletEntrepotIS.php'; ?>
-                        <?php include '../../pages/MonCompte/includes/OngletHistoriquesPaiements.php'; ?>
-                        <?php include '../../pages/MonCompte/includes/OngletHistoriquesAchats.php'; ?>
+                        <?php include '../../../pages/MonCompte/includes/OngletInformationsGeneral.php'; ?>
+                        <?php include '../../../pages/MonCompte/includes/OngletEntrepot.php'; ?>
+                        <?php include '../../../pages/MonCompte/includes/OngletEntrepotIS.php'; ?>
+                        <?php include '../../../pages/MonCompte/includes/OngletHistoriquesPaiements.php'; ?>
+                        <?php include '../../../pages/MonCompte/includes/OngletHistoriquesAchats.php'; ?>
 
                         <div class="clearfix"></div>
                     </div>

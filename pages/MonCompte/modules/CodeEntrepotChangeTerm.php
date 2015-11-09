@@ -2,12 +2,12 @@
 
 namespace Pages\MonCompte;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class PasswordChangeForm extends \PageHelper {
+class CodeEntrepotChangeTerm extends \PageHelper {
 
     public $isProtected = true;
-    public $strTemplate = "PasswordChangeForm.html5.twig";
+    public $strTemplate = "CodeEntrepotChangeTerm.html5.twig";
 
     public function run() {
 
@@ -19,5 +19,5 @@ class PasswordChangeForm extends \PageHelper {
 
 }
 
-$class = new PasswordChangeForm();
+$class = new CodeEntrepotChangeTerm();
 $class->run();

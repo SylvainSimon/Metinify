@@ -129,7 +129,7 @@
                 <tr>
                     <td style="border-top: 0px;">Compte</td>
                     <td style="border-top: 0px;">
-                        <a title="Aller sur la page du compte" href="javascript:void(0)" onclick="Ajax('pages/MonCompte/MonCompte.php?id=<?php echo $Donnees_Appel_Joueurs_Page->account_id; ?>')" rel="superbox[iframe]">
+                        <a title="Aller sur la page du compte" href="javascript:void(0)" onclick="Ajax('pages/MonCompte/modules/MonCompte.php?id=<?php echo $Donnees_Appel_Joueurs_Page->account_id; ?>')" rel="superbox[iframe]">
                             <?php echo $Donnees_Appel_Joueurs_Page->account_login; ?>
                         </a>
                     </td>

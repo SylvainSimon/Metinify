@@ -2,12 +2,12 @@
 
 namespace Pages\MonCompte;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class EmailChangeSubmitEmail extends \PageHelper {
+class CodeEffacementCreateTerm extends \PageHelper {
 
     public $isProtected = true;
-    public $strTemplate = "EmailChangeSubmitEmail.html5.twig";
+    public $strTemplate = "CodeEffacementCreateTerm.html5.twig";
 
     public function run() {
 
@@ -19,5 +19,5 @@ class EmailChangeSubmitEmail extends \PageHelper {
 
 }
 
-$class = new EmailChangeSubmitEmail();
+$class = new CodeEffacementCreateTerm();
 $class->run();

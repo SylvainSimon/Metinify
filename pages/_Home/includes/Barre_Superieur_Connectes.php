@@ -17,7 +17,7 @@ class Barre_Superieur_Connectes extends \PageHelper {
             <div class="row">
 
                 <div class="col-lg-3 col-md-4 col-sm-5" style="padding-left: 40px;">
-                    Bienvenue <span onclick="Ajax('pages/MonCompte/HistoryConnexion.php')" data-tooltip="Historique des connexions" class="Bold Pointer"><?php echo $session->get("Utilisateur") ?></span>
+                    Bienvenue <span onclick="Ajax('pages/MonCompte/modules/HistoryConnexion.php')" data-tooltip="Historique des connexions" class="Bold Pointer"><?php echo $session->get("Utilisateur") ?></span>
                 </div>
 
                 <div style="position: relative; left:-4px; top: -1px;"  class="col-lg-5 col-md-6 col-sm-6">

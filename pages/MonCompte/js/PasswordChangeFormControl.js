@@ -47,7 +47,7 @@ function VerificationNewMDP() {
             data: "Ancien_Mot_De_Passe="+$("#Saisie_Ancien_Mot_De_Passe").val()+"&Nouveau_Mot_De_Passe="+$("#Saisie_Nouveau_Mot_De_Passe").val(),
             success: function(msg){
                 if(msg==1){
-                    Ajax('pages/MonCompte/PasswordChangeSendEmail.php');
+                    Ajax('pages/MonCompte/modules/PasswordChangeSendEmail.php');
                 }else {
                     alert("Le mot de passe actuel est incorrect.");
                 }

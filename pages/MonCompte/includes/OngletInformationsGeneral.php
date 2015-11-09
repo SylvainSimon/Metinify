@@ -56,7 +56,7 @@
                             <?php echo $chaineCoupe; ?>
 
 
-                            <i data-tooltip="Modifier mon E-mail" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/EmailChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
+                            <i data-tooltip="Modifier mon E-mail" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/modules/EmailChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
 
                         </td>
 
@@ -66,7 +66,7 @@
                         <td>
                             ●●●●●●●●●●●●
 
-                            <i data-tooltip="Modifier mon mot de passe" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/PasswordChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
+                            <i data-tooltip="Modifier mon mot de passe" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/modules/PasswordChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
 
                         </td>
 
@@ -77,7 +77,7 @@
                             <td>Code d'effacement :</td>
                             <td>
                                 Aucun code définie
-                                <i data-tooltip="Définir mon code d'effacement" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/CodeEffacementCreateForm.php');" class="pull-right Pointer material-icons md-icon-add"></i>
+                                <i data-tooltip="Définir mon code d'effacement" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/modules/CodeEffacementCreateForm.php');" class="pull-right Pointer material-icons md-icon-add"></i>
                             </td>
                         </tr>
                     <?php } else { ?>
@@ -86,7 +86,7 @@
                             <td>
                                 <span id="Code_Effacement">●●●●●●●</span>
 
-                                <i style="margin-left: 5px;" data-tooltip="Modifier mon code" onclick="Ajax('pages/MonCompte/CodeEffacementChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
+                                <i style="margin-left: 5px;" data-tooltip="Modifier mon code" onclick="Ajax('pages/MonCompte/modules/CodeEffacementChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
                                 <i data-tooltip="Voir le code" onclick="if (Clique_Code_Effacement == 0) {
                                             document.getElementById('Code_Effacement').innerHTML = '<?php echo $Resultat_Appel_Compte->social_id; ?>';
                                             Clique_Code_Effacement = 1;
@@ -116,9 +116,9 @@
                             <td id="Code_Entrepot">
                                 ●●●●●●
 
-                                <i style="margin-left: 5px;"  data-tooltip="Modifier mon code" onclick="Ajax('pages/MonCompte/CodeEntrepotChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
+                                <i style="margin-left: 5px;"  data-tooltip="Modifier mon code" onclick="Ajax('pages/MonCompte/modules/CodeEntrepotChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
 
-                                <i data-tooltip="Récupérer le code entrepôt" onclick="Ajax('pages/MonCompte/CodeEntrepotForgottenEmail.php');" class="pull-right Pointer material-icons md-icon-settings_backup_restore text-blue"></i>
+                                <i data-tooltip="Récupérer le code entrepôt" onclick="Ajax('pages/MonCompte/modules/CodeEntrepotForgottenEmail.php');" class="pull-right Pointer material-icons md-icon-settings_backup_restore text-blue"></i>
 
                             </td>
                         </tr>

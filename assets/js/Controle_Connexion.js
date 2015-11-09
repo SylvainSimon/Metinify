@@ -22,7 +22,7 @@ $(document).ready(function () {
 
                         document.getElementById('Menu_Inscription_MonCompte').style.display = 'inline';
                         document.getElementById('Menu_Inscription_MonCompte2').style.display = 'none';
-                        $("#Lien_Mon_Compte").attr("onclick", "Ajax('pages/MonCompte/MonCompte.php?id=" + Parse_Json.id + "');");
+                        $("#Lien_Mon_Compte").attr("onclick", "Ajax('pages/MonCompte/modules/MonCompte.php?id=" + Parse_Json.id + "');");
 
                         document.getElementById('Menu_Telechargement_ItemShop').style.display = 'inline';
                         $("#Lien_Item_Shop").attr("onclick", "Ajax('pages/ItemShop/ItemShop.php?type=Item_Shop');");

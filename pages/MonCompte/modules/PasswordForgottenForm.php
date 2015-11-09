@@ -2,11 +2,11 @@
 
 namespace Pages;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class PasswordForgottenTerm extends \PageHelper {
+class PasswordForgottenForm extends \PageHelper {
 
-    public $strTemplate = "PasswordForgottenTerm.html5.twig";
+    public $strTemplate = "PasswordForgottenForm.html5.twig";
 
     public function run() {
 
@@ -18,5 +18,5 @@ class PasswordForgottenTerm extends \PageHelper {
 
 }
 
-$class = new PasswordForgottenTerm();
+$class = new PasswordForgottenForm();
 $class->run();

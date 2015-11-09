@@ -2,12 +2,12 @@
 
 namespace Pages\MonCompte;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
-class EmailChangeSendEmail extends \PageHelper {
+class EmailChangeSubmitEmail extends \PageHelper {
 
     public $isProtected = true;
-    public $strTemplate = "EmailChangeSendEmail.html5.twig";
+    public $strTemplate = "EmailChangeSubmitEmail.html5.twig";
 
     public function run() {
 
@@ -19,5 +19,5 @@ class EmailChangeSendEmail extends \PageHelper {
 
 }
 
-$class = new EmailChangeSendEmail();
+$class = new EmailChangeSubmitEmail();
 $class->run();
