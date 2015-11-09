@@ -37,7 +37,6 @@ class ajaxCodeEntrepotChangeExecute extends \ScriptHelper {
 
             echo '1';
         } else {
-
             echo '2';
         }
     }
