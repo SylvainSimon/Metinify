@@ -120,7 +120,7 @@ class Messagerie_Viewer extends \PageHelper {
                                         <span class="direct-chat-timestamp pull-left"><?php echo \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Fil->date); ?></span>
                                     </div>
                                     <i class="material-icons md-icon-person md-48 pull-right"></i>
-                                    <div class="direct-chat-text bg-blue">
+                                    <div class="direct-chat-text">
                                         <?php echo nl2br(htmlentities($Donnees_Recuperation_Fil->contenue_message)); ?>
                                         <?php if ($Donnees_Recuperation_Fil->etat == "Lu") { ?>
                                             <div class="Etat_de_Visionnage"><?php echo \FonctionsUtiles::Formatage_Date_Vue($Donnees_Recuperation_Fil->date_vue); ?></div>

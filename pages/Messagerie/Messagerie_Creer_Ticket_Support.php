@@ -127,7 +127,7 @@ class Messagerie_Creer_Ticket_Support extends \PageHelper {
                                             Objet
                                         </label>
                                         <div class="input-group col-xs-12">
-                                            <select class="form-control input-sm" onchange="Objet_selectionner();" id="Selecteur_Objet_Ticket" name="Selecteur_Objet_Ticket">
+                                            <select class="select2" onchange="Objet_selectionner();" id="Selecteur_Objet_Ticket" name="Selecteur_Objet_Ticket">
                                                 <option selected="selected" value="--"> -- </option>
                                                 <?php
                                                 /* ------------------------ Liste_Objets ------------------------------ */

@@ -7,9 +7,21 @@ class DateTimeHelper {
         return $dateConverted;
     }
 
-    public static function dateTimeToFormatedString($dateTime = null, $format = "%A %d %B %Y \\à H:i:s") {
-        $dateConverted = Carbon\Carbon::instance($dateTime)->formatLocalized($format);
-        return $dateConverted;
+    public static function dateTimeToFormatedString($dateTime, $format = null) {
+
+        if (!is_a($dateTime, 'DateTime')) {
+            return '';
+        }
+
+        $testYear = $dateTime->format('Y');
+
+        if ($testYear === '0000' or $testYear === '-0001') {
+            return '';
+        }
+
+        $srtFormat = ($format) ? $format : "d/m/Y H:i:s";
+
+        return $dateTime->format($srtFormat);
     }
 
 }

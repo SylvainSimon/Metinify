@@ -76,6 +76,8 @@ class Messagerie extends \PageHelper {
                                     $("#Contenue_Cadre_Messagerie").html(msg);
                                     window.parent.Barre_De_Statut("Chargement terminé.");
                                     window.parent.Icone_Chargement(0);
+                                    
+                                    redraw();
 
                                     if (objet !== false) {
                                         $(".nav-tabs-custom li").attr("class", "");

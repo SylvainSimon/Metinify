@@ -41,4 +41,25 @@ class SiteHelper {
         return DoctrineHelper::getRepository('\Site\Entity\VotesListeSites');
     }
     
+    /**
+     * @return \Site\Repository\SupportDiscussionsRepository
+     */
+    public static function getSupportDiscussionsRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\SupportDiscussions');
+    }
+    
+    /**
+     * @return \Site\Repository\SupportMessagesRepository
+     */
+    public static function getSupportMessagesRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\SupportMessages');
+    }
+    
+    /**
+     * @return \Site\Repository\SupportObjetsRepository
+     */
+    public static function getSupportObjetsRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\SupportObjets');
+    }
+    
 }

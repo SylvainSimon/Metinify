@@ -10,53 +10,15 @@ class Messagerie_Lecture extends \PageHelper {
     public $isAllowForBlock = true;
 
     public function run() {
+        
+        global $request;
 
-        /* ------------------------ Informations de Base ---------------------------- */
-        $Informations_De_Base = "SELECT * FROM site.support_ticket_traitement
-                                  WHERE id = ?
-                                  LIMIT 1";
-        $Parametres_Informations_De_Base = $this->objConnection->prepare($Informations_De_Base);
-        $Parametres_Informations_De_Base->execute(array(
-            $_POST["id_ticket"]));
-        $Parametres_Informations_De_Base->setFetchMode(\PDO::FETCH_OBJ);
-        $Nombre_De_Resultat_Informations_De_Base = $Parametres_Informations_De_Base->rowCount();
-        /* -------------------------------------------------------------------------- */
-        ?>
-        <?php if ($Nombre_De_Resultat_Informations_De_Base != 0) { ?>
+        $objSupportDiscussion = \Site\SiteHelper::getSupportDiscussionsRepository()->find($request->request->get("id_ticket"));
+        $objAccount = \Account\AccountHelper::getAccountRepository()->find($objSupportDiscussion->getIdAdmin());
+        $objSupportObjet = \Site\SiteHelper::getSupportObjetsRepository()->find($objSupportDiscussion->getIdObjet());
+        $arrObjSupportMessages = \Site\SiteHelper::getSupportMessagesRepository()->findMessages($this->objAccount->getId(), $request->request->get("id_ticket"));
 
-            <?php $Donnees_Informations_De_Base = $Parametres_Informations_De_Base->fetch(); ?>
-            <?php
-            /* ------------------------ Recuperation pseudo chat  --------------------------- */
-            $Pseudo_Messagerie = "SELECT pseudo_messagerie 
-                          FROM account.account
-                          WHERE id = ?
-                          LIMIT 1";
-            $Parametres_Pseudo_Messagerie = $this->objConnection->prepare($Pseudo_Messagerie);
-            $Parametres_Pseudo_Messagerie->execute(array(
-                $Donnees_Informations_De_Base->id_emmeteur));
-            $Parametres_Pseudo_Messagerie->setFetchMode(\PDO::FETCH_OBJ);
-            $Donnees_Pseudo_Messagerie = $Parametres_Pseudo_Messagerie->fetch();
-            /* ------------------------------------------------------------------------------ */
-
-            /* ----------------------------- Recuperation Fil  ------------------------------ */
-            $Recuperation_Fil = "SELECT * 
-                              FROM site.support_ticket_traitement
-                              WHERE numero_discussion = ?
-                              ORDER BY date ASC";
-            /* ----------------------------- Recuperation Fil ------------------------------- */
-            $Parametres_Recuperation_Fil = $this->objConnection->prepare($Recuperation_Fil);
-            $Parametres_Recuperation_Fil->execute(array(
-                $Donnees_Informations_De_Base->numero_discussion));
-            $Parametres_Recuperation_Fil->setFetchMode(\PDO::FETCH_OBJ);
-            $Nombre_De_Resultat_Recuperation_Fil = $Parametres_Recuperation_Fil->rowCount();
-            /* ------------------------------------------------------------------------------ */
-            /* ----------------------------- Recuperation premier message ------------------- */
-            $Parametres_Recuperation_Premier_Message = $this->objConnection->prepare($Recuperation_Fil);
-            $Parametres_Recuperation_Premier_Message->execute(array(
-                $Donnees_Informations_De_Base->numero_discussion));
-            $Parametres_Recuperation_Premier_Message->setFetchMode(\PDO::FETCH_OBJ);
-            $Donnees_Recuperation_Premier_Message = $Parametres_Recuperation_Premier_Message->fetch();
-            /* ------------------------------------------------------------------------------ */
+        if (count($arrObjSupportMessages) > 0) {
             ?>
 
             <div id="Cadre_Fil_Informations">
@@ -64,12 +26,12 @@ class Messagerie_Lecture extends \PageHelper {
                     <div class="col-lg-8">
                         <table class="table table-condensed" style="margin-bottom: 0px; border-collapse: collapse;">
                             <tr>
-                                <td style="border-top: 0px;">Vous discutez avec</td>
-                                <td style="border-top: 0px;"><?php echo $Donnees_Pseudo_Messagerie->pseudo_messagerie; ?></td>
+                                <td style="border-top: 0px;">Ticket gérer par </td>
+                                <td style="border-top: 0px;"><?php echo $objAccount->getPseudoMessagerie(); ?></td>
                             </tr>
                             <tr>
                                 <td>Début du ticket </td> 
-                                <td><?php echo \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Premier_Message->date); ?></td>
+                                <td><?php echo \DateTimeHelper::dateTimeToFormatedString($objSupportDiscussion->getDate()); ?></td>
                             </tr>
                         </table>
                     </div>
@@ -77,11 +39,11 @@ class Messagerie_Lecture extends \PageHelper {
                         <table class="table table-condensed" style="margin-bottom: 0px; border-collapse: collapse;">
                             <tr>
                                 <td style="border-top: 0px;">Nombre</td> 
-                                <td style="border-top: 0px;" id="Nombre_De_Message"><?php echo $Nombre_De_Resultat_Recuperation_Fil; ?></td>
+                                <td style="border-top: 0px;" id="Nombre_De_Message"><?php echo count($arrObjSupportMessages); ?></td>
                             </tr>
                             <tr>
                                 <td>Objet</td>
-                                <td><?php echo $Donnees_Recuperation_Premier_Message->objet_message; ?></td>
+                                <td><?php echo $objSupportObjet->getObjet(); ?></td>
                             </tr>
                         </table>
 
@@ -94,20 +56,22 @@ class Messagerie_Lecture extends \PageHelper {
                 <div class="box-body" style="min-height: 400px;">
                     <div class="direct-chat-messages" id="Cadre_Fil_Discussion" style="min-height: 400px;">
 
-                        <?php while ($Donnees_Recuperation_Fil = $Parametres_Recuperation_Fil->fetch()) { ?>
+                        <?php foreach ($arrObjSupportMessages AS $objSupportMessages) { ?>
 
-                            <?php if ($Donnees_Recuperation_Fil->id_emmeteur == $_SESSION["ID"]) { ?>
+                            <?php if ($objSupportMessages->getIdCompte() == $this->objAccount->getId()) { ?>
 
-                                <div class="direct-chat-msg right" id="Message_<?php echo $Donnees_Recuperation_Fil->id; ?>" style="margin-bottom: 18px;">
+                                <div class="direct-chat-msg right" id="Message_<?php echo $objSupportMessages->getId(); ?>" style="margin-bottom: 18px;">
                                     <div class="direct-chat-info clearfix">
-                                        <span class="direct-chat-name pull-right"><?php echo $_SESSION["Pseudo_Messagerie"] ?></span>
-                                        <span class="direct-chat-timestamp pull-left"><?php echo \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Fil->date); ?></span>
+                                        <span class="direct-chat-name pull-right"><?php echo $this->objAccount->getPseudoMessagerie() ?></span>
+                                        <span class="direct-chat-timestamp pull-left"><?php echo \DateTimeHelper::dateTimeToFormatedString($objSupportMessages->getDate()); ?></span>
                                     </div>
                                     <i class="material-icons md-icon-person md-48 pull-right"></i>
                                     <div class="direct-chat-text  bg-red">
-                                        <?php echo nl2br(htmlentities($Donnees_Recuperation_Fil->contenue_message)); ?>
-                                        <?php if ($Donnees_Recuperation_Fil->etat == "Lu") { ?>
-                                            <div class="Etat_de_Visionnage"><?php echo \FonctionsUtiles::Formatage_Date_Vue($Donnees_Recuperation_Fil->date_vue); ?></div>
+
+                                        <?php echo nl2br($objSupportMessages->getMessage()); ?>
+
+                                        <?php if ($objSupportMessages->getEtat() == \Site\SupportEtatMessageHelper::LU) { ?>
+                                            <div class="Etat_de_Visionnage"><?php echo \DateTimeHelper::dateTimeToFormatedString($objSupportMessages->getDatechangementEtat()); ?></div>
                                         <?php } else { ?>
                                             <div class="Etat_de_Visionnage">Non-Lu</div>
                                         <?php } ?>
@@ -116,26 +80,27 @@ class Messagerie_Lecture extends \PageHelper {
 
                             <?php } else { ?>
 
-                                <div class="direct-chat-msg" id="Message_<?php echo $Donnees_Recuperation_Fil->id; ?>" style="margin-bottom: 18px;">
+                                <div class="direct-chat-msg" id="Message_<?php echo $objSupportMessages->getId(); ?>" style="margin-bottom: 18px;">
 
                                     <div class="direct-chat-info clearfix">
-                                        <span class="direct-chat-name pull-left"><?php echo $Donnees_Pseudo_Messagerie->pseudo_messagerie; ?></span>
-                                        <span class="direct-chat-timestamp pull-right"><?php echo \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Fil->date); ?></span>
+                                        <span class="direct-chat-name pull-left"><?php echo $this->objAccount->getPseudoMessagerie(); ?></span>
+                                        <span class="direct-chat-timestamp pull-right"><?php echo \DateTimeHelper::dateTimeToFormatedString($objSupportMessages->getDate()); ?></span>
 
-                                        <?php if ($Donnees_Recuperation_Fil->etat == "Lu") { ?>
-                                            <div id="Message_<?php echo $Donnees_Recuperation_Fil->id; ?>" style="padding-top: 18px;">
+                                        <?php if ($objSupportMessages->getEtat() == \Site\SupportEtatMessageHelper::LU) { ?>
+                                            <div id="Message_<?php echo $objSupportMessages->getId(); ?>" style="padding-top: 18px;">
                                             </div>
                                         <?php } else { ?>
-                                            <div id="Message_<?php echo $Donnees_Recuperation_Fil->id; ?>" style="padding-top: 18px;">
+                                            <div id="Message_<?php echo $objSupportMessages->getId(); ?>" style="padding-top: 18px;">
                                             </div>
                                         <?php } ?>
 
 
                                         <i class="material-icons md-icon-person md-48 pull-left"></i>
                                         <div class="direct-chat-text bg-blue">
-                                            <?php echo nl2br(htmlentities($Donnees_Recuperation_Fil->contenue_message)); ?>
-                                            <?php if ($Donnees_Recuperation_Fil->etat == "Lu") { ?>
-                                                <div class="Etat_de_Visionnage"><?php echo \FonctionsUtiles::Formatage_Date_Vue($Donnees_Recuperation_Fil->date_vue); ?></div>
+
+                                            <?php echo nl2br($objSupportMessages->getMessage()); ?>
+                                            <?php if ($objSupportMessages->getEtat() == \Site\SupportEtatMessageHelper::LU) { ?>
+                                                <div class="Etat_de_Visionnage"><?php echo \DateTimeHelper::dateTimeToFormatedString($objSupportMessages->getDatechangementEtat()); ?></div>
                                             <?php } else { ?>
                                                 <div class="Etat_de_Visionnage">Non-Lu</div>
                                             <?php } ?>
@@ -146,9 +111,9 @@ class Messagerie_Lecture extends \PageHelper {
 
                             <script type="text/javascript">
 
-                                $('#Message_<?php echo $Donnees_Recuperation_Fil->id; ?>').bind('inview', function (event, isVisible) {
+                                $('#Message_<?php echo $objSupportMessages->getId(); ?>').bind('inview', function (event, isVisible) {
 
-                                    if (hasClassName(this, "NonVue")) {
+                                    if ($(this).hasClass("NonVue"))) {
 
                                         if (isVisible) {
                                             $.ajax({
@@ -160,10 +125,10 @@ class Messagerie_Lecture extends \PageHelper {
                                                     $.ajax({
                                                         type: "POST",
                                                         url: "ajax/ajaxMessageGetDateView.php",
-                                                        data: "id=<?php echo $Donnees_Recuperation_Fil->id; ?>",
+                                                        data: "id=<?php echo $objSupportMessages->getId(); ?>",
                                                         success: function (date) {
 
-                                                            $("#Message_<?php echo $Donnees_Recuperation_Fil->id; ?> .Etat_de_Visionnage").html("" + date);
+                                                            $("#Message_<?php echo $objSupportMessages->getId(); ?> .Etat_de_Visionnage").html("" + date);
                                                         }
                                                     });
 
@@ -186,9 +151,9 @@ class Messagerie_Lecture extends \PageHelper {
                 <div class="box-footer">
                     <form action="#" method="post">
                         <div class="input-group">
-                            <input id="Contenue_Reponse_Ticket" type="text" name="message" placeholder="Type Message ..." class="form-control">
+                            <textarea id="Contenue_Reponse_Ticket" type="text" name="message" placeholder="Message ..." class="form-control"></textarea>
                             <span class="input-group-btn">
-                                <button type="button" onclick="Envoyer_Message_Ticket()" class="btn btn-primary btn-flat">Send</button>
+                                <button type="button" onclick="addMessage()" class="btn btn-primary btn-flat">Send</button>
                             </span>
                         </div>
                     </form>
@@ -215,8 +180,8 @@ class Messagerie_Lecture extends \PageHelper {
                             },
                             "Annuler": function () {
                                 $(this).dialog("close");
-                                window.parent.Barre_De_Statut("Suppression annulé.");
-                                window.parent.Icone_Chargement(0);
+                                Barre_De_Statut("Suppression annulé.");
+                                Icone_Chargement(0);
                             }
                         }
                     });
@@ -236,8 +201,8 @@ class Messagerie_Lecture extends \PageHelper {
                             },
                             "Annuler": function () {
                                 $(this).dialog("close");
-                                window.parent.Barre_De_Statut("Suppression annulé.");
-                                window.parent.Icone_Chargement(0);
+                                Barre_De_Statut("Suppression annulé.");
+                                Icone_Chargement(0);
                             }
                         }
                     });
@@ -246,8 +211,8 @@ class Messagerie_Lecture extends \PageHelper {
 
                 function Ouverture_Dialogue(id_message) {
 
-                    window.parent.Barre_De_Statut("En attente de la confirmation...");
-                    window.parent.Icone_Chargement(1);
+                    Barre_De_Statut("En attente de la confirmation...");
+                    Icone_Chargement(1);
 
                     $("#Id_Tempo_Message").val(id_message);
                     $("#dialog_Confirmation_Suppression_Message").dialog("open");
@@ -255,8 +220,8 @@ class Messagerie_Lecture extends \PageHelper {
 
                 function Ouverture_Dialogue_Archivage(id_message) {
 
-                    window.parent.Barre_De_Statut("En attente de la confirmation...");
-                    window.parent.Icone_Chargement(1);
+                    Barre_De_Statut("En attente de la confirmation...");
+                    Icone_Chargement(1);
 
                     $("#Id_Tempo_Message2").val(id_message);
                     $("#dialog_Confirmation_Archivage_Fil").dialog("open");
@@ -264,25 +229,25 @@ class Messagerie_Lecture extends \PageHelper {
 
                 function Suppression_Message_Fil() {
 
-                    window.parent.Barre_De_Statut("Suppression du message en cours...");
-                    window.parent.Icone_Chargement(1);
+                    Barre_De_Statut("Suppression du message en cours...");
+                    Icone_Chargement(1);
 
                     $.ajax({
                         type: "POST",
-                        url: "ajax/ajaxMessageDelete.php",
+                        url: "pages/Messagerie/ajax/ajaxMessageDelete.php",
                         data: "id_message=" + $("#Id_Tempo_Message").val(),
                         success: function (msg) {
 
                             if (msg == "NON") {
 
-                                window.parent.Barre_De_Statut("Ce message ne vous appartient pas.");
-                                window.parent.Icone_Chargement(2);
+                                Barre_De_Statut("Ce message ne vous appartient pas.");
+                                Icone_Chargement(2);
 
                             } else {
                                 $("#Message_" + msg).fadeOut("slow", function () {
                                     $("#Message_" + msg).remove();
-                                    window.parent.Barre_De_Statut("Suppression du message réussi.");
-                                    window.parent.Icone_Chargement(0);
+                                    Barre_De_Statut("Suppression du message réussi.");
+                                    Icone_Chargement(0);
                                 });
 
                                 var nombre_tempo = parseInt($("#Nombre_De_Message").html());
@@ -295,23 +260,23 @@ class Messagerie_Lecture extends \PageHelper {
 
                 function Archivage_Fil() {
 
-                    window.parent.Barre_De_Statut("Archivage en cours...");
-                    window.parent.Icone_Chargement(1);
+                    Barre_De_Statut("Archivage en cours...");
+                    Icone_Chargement(1);
 
                     $.ajax({
                         type: "POST",
-                        url: "ajax/ajaxDiscussionArchivage.php",
+                        url: "pages/Messagerie/ajax/ajaxDiscussionArchivage.php",
                         data: "id=" + $("#Id_Tempo_Message2").val(),
                         success: function (msg) {
 
                             if (msg == "NON") {
 
-                                window.parent.Barre_De_Statut("Cette discussion ne vous appartient pas.");
-                                window.parent.Icone_Chargement(2);
+                                Barre_De_Statut("Cette discussion ne vous appartient pas.");
+                                Icone_Chargement(2);
 
                             } else {
-                                window.parent.Barre_De_Statut("Discussion archivé.");
-                                window.parent.Icone_Chargement(0);
+                                Barre_De_Statut("Discussion archivé.");
+                                Icone_Chargement(0);
 
                                 Ajax_Appel_Messagerie("pages/Messagerie/Messagerie_Boite_De_Reception.php");
                             }
@@ -319,95 +284,54 @@ class Messagerie_Lecture extends \PageHelper {
                     });
                 }
 
-                function hasClassName(elmt, className)
-                {
-                    if (typeof elmt == "string")
-                        elmt = document.getElementById(elmt);
-                    var regex = new RegExp("\\b" + className + "\\b");
-                    return regex.test(elmt.className);
-                }
-
             </script>
 
             <script type="text/javascript">
 
-                function nl2br(str, is_xhtml) {
-                    var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
-                    return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
-                }
+                var idCompte = "<?php echo $this->objAccount->getId(); ?>";
+                var idDiscussion = "<?php echo $objSupportDiscussion->getId(); ?>";
 
-                var ID_Emmeteur = "<?php echo $_SESSION["ID"]; ?>";
-                var ID_Recepteur = "<?php echo $Donnees_Informations_De_Base->id_emmeteur; ?>";
-                var Num_Discussion = "<?php echo $Donnees_Informations_De_Base->numero_discussion; ?>";
-                var Objet_Message = "<?php echo $Donnees_Informations_De_Base->objet_message; ?>";
-                var Type_message = "<?php echo $Donnees_Informations_De_Base->type; ?>";
+                function addMessage() {
 
-                function Apparition_Option_Message(id_img) {
-
-                    $(id_img).css("display", "inline-block");
-                }
-
-                function Disparition_Option_Message(id_img) {
-
-                    $(id_img).css("display", "none");
-                }
-
-                function Envoyer_Message_Ticket() {
-
-                    window.parent.Barre_De_Statut("Envoie du message...");
-                    window.parent.Icone_Chargement(1);
+                    Barre_De_Statut("Envoie du message...");
+                    Icone_Chargement(1);
 
                     if ($("#Contenue_Reponse_Ticket").val() != "") {
-
                         $.ajax({
                             type: "POST",
                             url: "pages/Messagerie/ajax/ajaxMessageAdd.php",
-                            data: "ID_Emmeteur=" + ID_Emmeteur + "&ID_Recepteur=" + ID_Recepteur + "&Num_Discussion=" + Num_Discussion + "&Objet_Message=" + Objet_Message + "&Type_message=" + Type_message + "&Contenue_message=" + $("#Contenue_Reponse_Ticket").val(),
+                            data: "idCompte=" + idCompte + "&idDiscussion=" + idDiscussion + "&message=" + $("#Contenue_Reponse_Ticket").val(),
                             success: function (msg) {
 
+                                var json = JSON.parse(msg);
 
-                                $("#Cadre_Fil_Discussion").append('<div class="direct-chat-msg right" id="Message_' + msg + '" style="margin-bottom: 18px;"><div class="direct-chat-info clearfix"><span class="direct-chat-name pull-right"><?php echo $_SESSION["Pseudo_Messagerie"] ?></span></div><i class="material-icons md-icon-person md-48 pull-right"></i><div class="direct-chat-text  bg-red">' + nl2br($("#Contenue_Reponse_Ticket").val()) + '</div><div class="Etat_de_Visionnage">Non-Lu</div></div>');
+                                $("#Cadre_Fil_Discussion").append('<div class="direct-chat-msg right" id="Message_' + json.id + '" style="margin-bottom: 18px;"><div class="direct-chat-info clearfix"><span class="direct-chat-name pull-right"><?php echo $_SESSION["Pseudo_Messagerie"] ?></span><span class="direct-chat-timestamp pull-left">' + json.date + '</span></div><i class="material-icons md-icon-person md-48 pull-right"></i><div class="direct-chat-text bg-red">' + json.message + '<div class="Etat_de_Visionnage">Non-Lu</div></div></div>');
 
                                 $("#Contenue_Reponse_Ticket").val("");
-
                                 $("#Cadre_Fil_Discussion").animate({scrollTop: $("#Cadre_Fil_Discussion")[0].scrollHeight}, 300);
 
                                 var nombre_tempo = parseInt($("#Nombre_De_Message").html());
                                 nombre_tempo++;
                                 $("#Nombre_De_Message").html(nombre_tempo);
 
-                                $.ajax({
-                                    type: "POST",
-                                    url: "ajax/ajaxMessageGetDate.php",
-                                    data: "id=" + msg,
-                                    success: function (date) {
+                                $("#Cadre_Fil_Discussion").animate({scrollTop: $("#Cadre_Fil_Discussion")[0].scrollHeight}, 1);
 
-                                        window.parent.Barre_De_Statut("Message envoyé.");
-                                        window.parent.Icone_Chargement(0);
-
-                                        $("#Message_" + msg + " .Date_Du_Message").html("" + date);
-                                        $("#Cadre_Fil_Discussion").animate({scrollTop: $("#Cadre_Fil_Discussion")[0].scrollHeight}, 1);
-                                    }
-                                });
+                                Barre_De_Statut("Message envoyé");
+                                Icone_Chargement(0);
 
                             }
                         });
-
                     } else {
-
-                        window.parent.Barre_De_Statut("Message vide.");
-                        window.parent.Icone_Chargement(2);
-
+                        Barre_De_Statut("Message vide.");
+                        Icone_Chargement(2);
                         return false;
                     }
-
                 }
             </script>
         <?php } else { ?>
             Le message n'existe plus.
-        <?php } ?>
-
         <?php
+        }
     }
 
 }
