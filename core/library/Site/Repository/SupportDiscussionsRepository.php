@@ -42,6 +42,36 @@ class SupportDiscussionsRepository extends EntityRepository {
             return 0;
         }
     }
+    
+    public function findDiscussionsEnAttente($limit = "") {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select(""
+                . "SupportDiscussionsEntity.id, "
+                . "SupportObjetsEntity.objet, "
+                . "SupportDiscussionsEntity.message, "
+                . "SupportDiscussionsEntity.date, "
+                . "SupportDiscussionsEntity.ip, "
+                . "AccountEntityUser.pseudoMessagerie AS user ");
+
+        $qb->from("\Site\Entity\SupportDiscussions", "SupportDiscussionsEntity");
+        $qb->innerJoin("\Site\Entity\SupportObjets", "SupportObjetsEntity", "WITH", "SupportObjetsEntity.id = SupportDiscussionsEntity.idObjet");
+        $qb->leftJoin("\Account\Entity\Account", "AccountEntityUser", "WITH", "AccountEntityUser.id = SupportDiscussionsEntity.idCompte");
+        $qb->where("SupportDiscussionsEntity.idAdmin = 0");
+        
+        $qb->orderBy("SupportDiscussionsEntity.date", "DESC");
+
+        if ($limit !== "") {
+            $qb->setMaxResults($limit);
+        }
+
+        try {
+            return $qb->getQuery()->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return 0;
+        }
+    }
 
     public function countDiscussionActiveByIdAccount($idAccount = 0) {
 

@@ -13,14 +13,13 @@ class Messagerie_Creer_Ticket_Support extends \PageHelper {
 
         global $session;
 
-
         $nombreDiscussionOuverte = \Site\SiteHelper::getSupportDiscussionsRepository()->countDiscussionActiveByIdAccount($this->objAccount->getId());
         ?>
 
         <div class="row">
             <div class="col-lg-8">
 
-                <input id="Input_Id_Expediteur_Message" style="display: none;" type="text" value="<?php echo $_SESSION['ID']; ?>">
+                <input id="Input_Id_Expediteur_Message" style="display: none;" type="text" value="<?php echo $this->objAccount->getId(); ?>">
 
                 <?php if ($nombreDiscussionOuverte >= 3) { ?>
 
@@ -75,7 +74,8 @@ class Messagerie_Creer_Ticket_Support extends \PageHelper {
                                             Expéditeur
                                         </label>
                                         <div class="input-group col-xs-12">
-                                            <input class="form-control input-sm" id="Input_Pseudo_Expediteur_Message" name="Input_Expediteur_Message" type="text" disabled="disabled" value="<?php echo $_SESSION['Pseudo_Messagerie']; ?>">                            </div>
+                                            <input class="form-control input-sm" id="Input_Pseudo_Expediteur_Message" name="Input_Expediteur_Message" type="text" disabled="disabled" value="<?php echo $session->get("Pseudo_Messagerie"); ?>">                           
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -132,7 +132,7 @@ class Messagerie_Creer_Ticket_Support extends \PageHelper {
                             Adresse Ip
                         </td>
                         <td style="border-top: 0px;">
-                            <?php echo $_SERVER["REMOTE_ADDR"]; ?>
+                            <?php echo $this->ipAdresse ?>
                         </td>
                     </tr>
                     <tr>
