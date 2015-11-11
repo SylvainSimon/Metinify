@@ -1,5 +1,5 @@
 <?php
-$countMessageNonLu = \Site\SiteHelper::getSupportMessagesRepository()->countMessages($this->objAccount->getId(), 0, false, \Site\SupportEtatMessageHelper::NON_LU);
+$countMessageNonLu = \Site\SiteHelper::getSupportMessagesRepository()->countMessagesNonLu($this->objAccount->getId());
 
 $Message = " message";
 if ($countMessageNonLu > 1) {

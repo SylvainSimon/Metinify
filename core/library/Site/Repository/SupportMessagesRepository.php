@@ -58,4 +58,28 @@ class SupportMessagesRepository extends EntityRepository {
         }
     }
 
+    public function countMessagesNonLu($idAccount = 0) {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("count(SupportMessagesEntity)");
+        $qb->from("\Site\Entity\SupportMessages", "SupportMessagesEntity");
+        $qb->innerJoin("\Site\Entity\SupportDiscussions", "SupportDiscussionsEntity");
+        $qb->where("SupportDiscussionsEntity.idCompte = :idAccount");
+        $qb->andWhere("SupportMessagesEntity.idCompte != :idAccount");
+        $qb->andWhere("SupportDiscussionsEntity.idAdmin != 0");
+        $qb->setParameter("idAccount", $idAccount);
+
+        $qb->andWhere("SupportMessagesEntity.etat = :etat");
+        $qb->setParameter("etat", \Site\SupportEtatMessageHelper::NON_LU);
+        $qb->andWhere("SupportDiscussionsEntity.estArchive = :estArchive");
+        $qb->setParameter("estArchive", false);
+
+        try {
+            return $qb->getQuery()->getSingleScalarResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return 0;
+        }
+    }
+
 }

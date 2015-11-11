@@ -12,7 +12,7 @@ class Messagerie_Boite_De_Reception extends \PageHelper {
     public function run() {
 
         $arrObjSupportDiscussions = \Site\SiteHelper::getSupportDiscussionsRepository()->findDiscussions($this->objAccount->getId(), false, 20);
-        $countMessageNonLu = \Site\SiteHelper::getSupportMessagesRepository()->countMessages($this->objAccount->getId(), 0, false, \Site\SupportEtatMessageHelper::NON_LU)
+        $countMessageNonLu = \Site\SiteHelper::getSupportMessagesRepository()->countMessagesNonLu($this->objAccount->getId());
         ?>
 
         <div class="row">

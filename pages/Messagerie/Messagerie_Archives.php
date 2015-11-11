@@ -11,7 +11,7 @@ class Messagerie_Archives extends \PageHelper {
 
     public function run() {
 
-        $arrObjSupportDiscussions = \Site\SiteHelper::getSupportDiscussionsRepository()->findDiscussions($this->objAccount->getId(), true, 20);
+        $arrObjSupportDiscussions = \Site\SiteHelper::getSupportDiscussionsRepository()->findDiscussions($this->objAccount->getId(), true, 50);
         ?>
 
         <div class="row">
@@ -25,7 +25,7 @@ class Messagerie_Archives extends \PageHelper {
             </div>
 
             <div class="col-lg-9">
-                <table class="table table-condensed table-hover" style="border-collapse: collapse;">
+                <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;">
 
                     <thead>
                         <tr>

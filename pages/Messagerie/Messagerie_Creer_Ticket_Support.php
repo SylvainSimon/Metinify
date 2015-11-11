@@ -82,20 +82,17 @@ class Messagerie_Creer_Ticket_Support extends \PageHelper {
 
                             <div class="row">
                                 <div class="col-lg-12">
-
-                                    <div class="form-group ">
-                                        <label for="Input_Pseudo_Expediteur_Message">
-                                            Objet
-                                        </label>
-                                        <div class="input-group col-xs-12">
-                                            <?php $arrObjSupportObjets = \Site\SiteHelper::getSupportObjetsRepository()->findAll(); ?>
-                                            <select class="select2" onchange="Objet_selectionner();" id="Selecteur_Objet_Ticket" name="Selecteur_Objet_Ticket">
-                                                <option selected="selected" value="0"> -- </option>
-                                                <?php foreach ($arrObjSupportObjets AS $objSupportObjets) { ?>
-                                                    <option value="<?php echo $objSupportObjets->getId(); ?>"><?php echo $objSupportObjets->getObjet(); ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
+                                    <label for="Selecteur_Objet_Ticket">
+                                        Objet
+                                    </label>
+                                    <div class="input-group col-xs-12">
+                                        <?php $arrObjSupportObjets = \Site\SiteHelper::getSupportObjetsRepository()->findAll(); ?>
+                                        <select class="select2" onchange="Objet_selectionner();" id="Selecteur_Objet_Ticket" name="Selecteur_Objet_Ticket">
+                                            <option selected="selected" value="0"> -- </option>
+                                            <?php foreach ($arrObjSupportObjets AS $objSupportObjets) { ?>
+                                                <option value="<?php echo $objSupportObjets->getId(); ?>"><?php echo $objSupportObjets->getObjet(); ?></option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
