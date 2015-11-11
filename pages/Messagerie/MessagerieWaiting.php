@@ -13,7 +13,6 @@ class MessagerieWaiting extends \PageHelper {
     public function run() {
 
         $arrObjSupportDiscussions = \Site\SiteHelper::getSupportDiscussionsRepository()->findDiscussionsEnAttente(20);
-
         $this->arrayTemplate["arrObjSupportDiscussions"] = $arrObjSupportDiscussions;
         
         $view = $this->template->render($this->arrayTemplate);

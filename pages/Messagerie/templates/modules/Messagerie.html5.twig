@@ -1,0 +1,75 @@
+<script type="text/javascript" src="pages/Messagerie/js/fonctions.min.js"></script>
+<script type="text/javascript" src="../../assets/js/jquery.inview/jquery.inview.min.js"></script>
+
+<div class="box box-default flat">
+
+    <div class="box-header">
+        <h3 class="box-title">Support</h3>
+    </div>
+
+    {{ dump(session) }}
+    
+    {% if session.get('Pseudo_Messagerie') %}
+
+        <div class="box-body no-padding">
+
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+
+                    <li class="active"><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieInbox.php', this)">Boîte de réception</a></li>
+                    <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieArchive.php', this)">Discussions archivés</a></li>
+                    <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieCreate.php', this)">Créer un ticket</a></li>
+
+                    {% if isModerateurTicket %}
+                        <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieWaiting.php', this)">Tickets en attentes</a></li>
+                        {% endif %}
+                </ul>
+
+                <div id="Contenue_Cadre_Messagerie"></div>
+
+            </div>
+
+
+            <script type="text/javascript">
+                Ajax_Appel_Messagerie("pages/Messagerie/MessagerieInbox.php", false);
+            </script>
+
+            <div class="clear"></div>
+        </div>
+    {% else %}
+
+        <script type="text/javascript" src="pages/Messagerie/js/Controle_Pseudo_Messagerie.js"></script>
+        <form action="javascript:void(0)" id="FormInscription" name="FormPseudoMessagerie" method="POST">
+
+            <div class="box-body">
+
+                <div class="row">
+                    <div class="col-lg-6">
+
+                        <div class="form-group" style="margin-bottom: 0px;">
+                            <label for="SaisiePseudo">
+                                Pseudo
+                            </label>
+
+                            <div class="input-group col-xs-12">
+                                <input maxlength="16" placeholder="Pseudo de messagerie.." id="SaisiePseudo" class="form-control input-sm" type="text" name="user" onBlur="verifPseudo(this.value)"/>
+                            </div>
+
+                            <span class="help-block">    
+                                <ul class="list-unstyled">
+                                    <li id="ReponseDuTestPseudo"></li>
+                                </ul>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-success btn-flat" onclick="VerificationFormulairePseudo();">
+                    Choisir ce pseudo
+                </button>
+            </div>
+        </form>
+    {% endif %}
+</div>

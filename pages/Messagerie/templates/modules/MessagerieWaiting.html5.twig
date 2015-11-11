@@ -33,7 +33,6 @@
                         <tr onclick="Assignation_Ticket({{ objSupportDiscussion.id }});" class="pointer">
                             <td>{{ objSupportDiscussion.objet }}</td>
                             <td>{{ truncateString(objSupportDiscussion.message, 50) }}</td>
-
                             <td>{{ objSupportDiscussion.user }}</td>
                             <td>{{ getFormatedDateTime(objSupportDiscussion.date) }}</td>
                             <td>{{ long2ip(objSupportDiscussion.ip) }}</td>
