@@ -45,12 +45,14 @@ class Messagerie_Lecture extends \PageHelper {
                         </tr>
                     </table>
 
-
-                    <div style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px;">
-                        <button type="button" class="btn btn-sm btn-flat btn-warning" onclick="DiscussionArchivage(<?= $objSupportDiscussion->getId(); ?>);">
-                            Archiver
-                        </button>
-                    </div>
+                    <?php if (!$objSupportDiscussion->getEstArchive()) { ?>
+                        <div style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px;">
+                            <button type="button" class="btn btn-sm btn-flat btn-warning" onclick="DiscussionArchivage(<?= $objSupportDiscussion->getId(); ?>);">
+                                Archiver
+                            </button>
+                        </div>
+                    <?php } ?>
+                    
                 </div>
                 <div class="col-lg-9">
                     <div class="box box-warning direct-chat direct-chat-danger" style="margin-bottom: 0px; border-top: 0px; border-bottom: 0px; border-collapse: collapse;">
@@ -113,20 +115,22 @@ class Messagerie_Lecture extends \PageHelper {
                             </div>
                         </div>
 
-                        <div class="box-footer">
-                            <form action="#" method="post">
-                                <div class="row">
-                                    <div class="col-lg-10 col-md-9 col-xs-8">
-                                        <textarea id="Contenue_Reponse_Ticket" type="text" name="message" placeholder="Message..." class="form-control input-sm"></textarea>
+                        <?php if (!$objSupportDiscussion->getEstArchive()) { ?>
+                            <div class="box-footer">
+                                <form action="#" method="post">
+                                    <div class="row">
+                                        <div class="col-lg-10 col-md-9 col-xs-8">
+                                            <textarea id="Contenue_Reponse_Ticket" type="text" name="message" placeholder="Message..." class="form-control input-sm"></textarea>
+                                        </div>
+                                        <div class="col-lg-2 col-md-3 col-xs-4">
+                                            <button type="button" onclick="addMessage()" class="btn btn-primary btn-flat btn-sm" style="width: 100%">
+                                                Envoyer
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-2 col-md-3 col-xs-4">
-                                        <button type="button" onclick="addMessage()" class="btn btn-primary btn-flat btn-sm" style="width: 100%">
-                                            Envoyer
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                                </form>
+                            </div>
+                        <?php } ?> 
 
                     </div>
                 </div>

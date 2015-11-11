@@ -15,11 +15,13 @@ class SupportDiscussionsRepository extends EntityRepository {
                 . "SupportObjetsEntity.objet, "
                 . "SupportDiscussionsEntity.message, "
                 . "SupportDiscussionsEntity.date, "
-                . "AccountEntity.pseudoMessagerie AS admin ");
+                . "AccountEntityAdmin.pseudoMessagerie AS admin, "
+                . "AccountEntityUser.pseudoMessagerie AS user ");
 
         $qb->from("\Site\Entity\SupportDiscussions", "SupportDiscussionsEntity");
         $qb->innerJoin("\Site\Entity\SupportObjets", "SupportObjetsEntity", "WITH", "SupportObjetsEntity.id = SupportDiscussionsEntity.idObjet");
-        $qb->innerJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = SupportDiscussionsEntity.idAdmin");
+        $qb->innerJoin("\Account\Entity\Account", "AccountEntityAdmin", "WITH", "AccountEntityAdmin.id = SupportDiscussionsEntity.idAdmin");
+        $qb->leftJoin("\Account\Entity\Account", "AccountEntityUser", "WITH", "AccountEntityUser.id = SupportDiscussionsEntity.idCompte");
         $qb->where("SupportDiscussionsEntity.idCompte = :idAccount OR SupportDiscussionsEntity.idAdmin = :idAccount");
         $qb->setParameter("idAccount", $idAccount);
 
