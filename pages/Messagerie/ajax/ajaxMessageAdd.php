@@ -14,9 +14,9 @@ class ajaxMessageAdd extends \PageHelper {
         global $request;
         $em = \Shared\DoctrineHelper::getEntityManager();
 
-        $idCompte = $request->request("idCompte");
-        $idDiscussion = $request->request("idDiscussion");
-        $message = $request->request("message");
+        $idCompte = $request->request->get("idCompte");
+        $idDiscussion = $request->request->get("idDiscussion");
+        $message = $request->request->get("message");
 
         $objSupportMessage = new \Site\Entity\SupportMessages();
         $objSupportMessage->setIdCompte($idCompte);

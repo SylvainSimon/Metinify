@@ -34,7 +34,6 @@ class Messagerie extends \PageHelper {
         ?>            
         <script type="text/javascript" src="../../assets/js/jquery.inview/jquery.inview.min.js"></script>
 
-
         <div class="box box-default flat">
 
             <div class="box-header">
