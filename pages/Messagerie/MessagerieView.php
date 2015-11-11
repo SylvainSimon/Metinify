@@ -22,6 +22,8 @@ class MessagerieView extends \PageHelper {
         if (count($arrObjSupportMessages) > 0 || $objSupportDiscussion !== null) {
             ?>
 
+            <script type="text/javascript" src="../../assets/js/jquery.inview/jquery.inview.min.js"></script>
+
             <div class="row">
                 <div class="col-lg-3">
 

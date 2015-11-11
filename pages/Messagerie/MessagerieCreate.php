@@ -62,7 +62,10 @@ class MessagerieCreate extends \PageHelper {
                     $session->set("Tableau_Mots_Bannis", $Tableau_Mots_Bannis);
                     ?>
 
-                    <script type="text/javascript" src="pages/Messagerie/js/Controle_Nouveau_Ticket.js"></script>
+                    <script type="text/javascript">
+                        var Objet_Selectionner = 1;
+                        var Longueur_Minimal = 1;
+                    </script>
 
                     <form type="POST" action="javascript:void(0)" id="Formulaire_Nouveau_Ticket">
                         <div class="col-lg-12" style="margin-top: 15px; margin-bottom: 15px;">

@@ -1,5 +1,4 @@
 <script type="text/javascript" src="pages/Messagerie/js/fonctions.min.js"></script>
-<script type="text/javascript" src="../../assets/js/jquery.inview/jquery.inview.min.js"></script>
 
 <div class="box box-default flat">
 
@@ -8,7 +7,7 @@
     </div>
 
     {{ dump(session) }}
-    
+
     {% if session.get('Pseudo_Messagerie') %}
 
         <div class="box-body no-padding">
@@ -16,12 +15,15 @@
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
 
-                    <li class="active"><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieInbox.php', this)">Boîte de réception</a></li>
-                    <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieArchive.php', this)">Discussions archivés</a></li>
-                    <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieCreate.php', this)">Créer un ticket</a></li>
+                    <li class="active"><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieInbox.php', this);">Boîte de réception</a></li>
+                    <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieArchive.php', this);">Discussions archivés</a></li>
+
+                    {% if isModerateurTicket == false %}
+                        <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieCreate.php', this);">Créer un ticket</a></li>
+                        {% endif %}
 
                     {% if isModerateurTicket %}
-                        <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieWaiting.php', this)">Tickets en attentes</a></li>
+                        <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieWaiting.php', this);">Tickets en attentes</a></li>
                         {% endif %}
                 </ul>
 
@@ -38,7 +40,11 @@
         </div>
     {% else %}
 
-        <script type="text/javascript" src="pages/Messagerie/js/Controle_Pseudo_Messagerie.js"></script>
+        <script type="text/javascript">
+            var UtilisateurSyntax = 1;
+            var UtilisateurDispo = 1;
+        </script>
+
         <form action="javascript:void(0)" id="FormInscription" name="FormPseudoMessagerie" method="POST">
 
             <div class="box-body">
