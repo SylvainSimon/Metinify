@@ -43,4 +43,22 @@ class SupportDiscussionsRepository extends EntityRepository {
         }
     }
 
+    public function countDiscussionActiveByIdAccount($idAccount = 0) {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("count(SupportDiscussionsEntity)");
+        $qb->from("\Site\Entity\SupportDiscussions", "SupportDiscussionsEntity");
+        $qb->where("SupportDiscussionsEntity.idCompte = :idAccount");
+        $qb->setParameter("idAccount", $idAccount);
+        $qb->andWhere("SupportDiscussionsEntity.estArchive = :estArchive");
+        $qb->setParameter("estArchive", 0);
+
+        try {
+            return $qb->getQuery()->getSingleScalarResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return 0;
+        }
+    }
+
 }

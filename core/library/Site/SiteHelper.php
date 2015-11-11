@@ -49,6 +49,13 @@ class SiteHelper {
     }
     
     /**
+     * @return \Site\Repository\SupportModerateursRepository
+     */
+    public static function getSupportModerateursRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\SupportModerateurs');
+    }
+    
+    /**
      * @return \Site\Repository\SupportMessagesRepository
      */
     public static function getSupportMessagesRepository() {

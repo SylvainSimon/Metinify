@@ -89,7 +89,7 @@ class SupportDiscussions
      *
      * @return SupportDiscussions
      */
-    public function setIdcompte($idCompte)
+    public function setIdCompte($idCompte)
     {
         $this->idCompte = $idCompte;
 
@@ -113,7 +113,7 @@ class SupportDiscussions
      *
      * @return SupportDiscussions
      */
-    public function setIdadmin($idAdmin)
+    public function setIdAdmin($idAdmin)
     {
         $this->idAdmin = $idAdmin;
 
@@ -125,7 +125,7 @@ class SupportDiscussions
      *
      * @return integer
      */
-    public function getIdadmin()
+    public function getIdAdmin()
     {
         return $this->idAdmin;
     }

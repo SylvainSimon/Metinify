@@ -7,6 +7,13 @@ use \Shared\DoctrineHelper;
 class PlayerHelper {
 
     /**
+     * @return \Player\Repository\BanwordRepository
+     */
+    public static function getBanwordRepository() {
+        return DoctrineHelper::getRepository('\Player\Entity\Banword');
+    }
+    
+    /**
      * @return \Player\Repository\PlayerRepository
      */
     public static function getPlayerRepository() {

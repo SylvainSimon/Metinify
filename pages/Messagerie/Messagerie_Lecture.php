@@ -19,7 +19,7 @@ class Messagerie_Lecture extends \PageHelper {
         $objSupportObjet = \Site\SiteHelper::getSupportObjetsRepository()->find($objSupportDiscussion->getIdObjet());
         $arrObjSupportMessages = \Site\SiteHelper::getSupportMessagesRepository()->findMessages($this->objAccount->getId(), $request->request->get("id_ticket"));
 
-        if (count($arrObjSupportMessages) > 0) {
+        if (count($arrObjSupportMessages) > 0 || $objSupportDiscussion !== null) {
             ?>
 
             <div class="row">
@@ -37,7 +37,7 @@ class Messagerie_Lecture extends \PageHelper {
                         </tr>
                         <tr>
                             <td>Message</td> 
-                            <td id="Nombre_De_Message"><?php echo count($arrObjSupportMessages); ?></td>
+                            <td id="Nombre_De_Message"><?php echo (count($arrObjSupportMessages) + 1); ?></td>
                         </tr>
                         <tr>
                             <td>Objet</td>
@@ -52,13 +52,53 @@ class Messagerie_Lecture extends \PageHelper {
                             </button>
                         </div>
                     <?php } ?>
-                    
+
                 </div>
                 <div class="col-lg-9">
                     <div class="box box-warning direct-chat direct-chat-danger" style="margin-bottom: 0px; border-top: 0px; border-bottom: 0px; border-collapse: collapse;">
 
                         <div class="box-body" style="min-height: 400px;">
                             <div class="direct-chat-messages" id="Cadre_Fil_Discussion" style="min-height: 400px;">
+
+                                <?php if ($objAccount->getId() == $this->objAccount->getId()) { ?>
+                                    <div class="direct-chat-msg right"style="margin-bottom: 18px;">
+                                        <div class="direct-chat-info clearfix">
+
+                                            <?php if ($objAccount->getId() == $this->objAccount->getId()) { ?>
+                                                <span class="direct-chat-name pull-right"><?php echo $this->objAccount->getPseudoMessagerie() ?></span>
+                                            <?php } else { ?>
+                                                <span class="direct-chat-name pull-right"><?php echo $objAccount->getPseudoMessagerie(); ?></span>
+                                            <?php } ?>
+
+                                            <span class="direct-chat-timestamp pull-left">
+                                                <?php echo \DateTimeHelper::dateTimeToFormatedString($objSupportDiscussion->getDate()); ?>
+                                            </span>
+                                        </div>
+                                        <i class="material-icons md-icon-person md-38 pull-right"></i>
+                                        <div class="direct-chat-text bg-red">
+                                            <?php echo nl2br($objSupportDiscussion->getMessage()); ?>
+                                        </div>
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="direct-chat-msg"style="margin-bottom: 18px;">
+                                        <div class="direct-chat-info clearfix">
+
+                                            <?php if ($objAccount->getId() == $this->objAccount->getId()) { ?>
+                                                <span class="direct-chat-name pull-left"><?php echo $objAccountAdmin->getPseudoMessagerie(); ?></span>
+                                            <?php } else { ?>
+                                                <span class="direct-chat-name pull-left"><?php echo $objAccount->getPseudoMessagerie(); ?></span>
+                                            <?php } ?>
+
+                                            <span class="direct-chat-timestamp pull-right">
+                                                <?php echo \DateTimeHelper::dateTimeToFormatedString($objSupportDiscussion->getDate()); ?>
+                                            </span>
+                                        </div>
+                                        <i class="material-icons md-icon-person md-38 pull-left"></i>
+                                        <div class="direct-chat-text bg-blue">
+                                            <?php echo nl2br($objSupportDiscussion->getMessage()); ?>
+                                        </div>
+                                    </div>
+                                <?php } ?>
 
                                 <?php foreach ($arrObjSupportMessages AS $objSupportMessages) { ?>
 
@@ -76,7 +116,7 @@ class Messagerie_Lecture extends \PageHelper {
                                                     <?php } ?>
                                                 </span>
                                             </div>
-                                            <i class="material-icons md-icon-person md-48 pull-right"></i>
+                                            <i class="material-icons md-icon-person md-38 pull-right"></i>
                                             <div class="direct-chat-text  bg-red">
                                                 <?php echo nl2br($objSupportMessages->getMessage()); ?>
                                             </div>
@@ -104,7 +144,7 @@ class Messagerie_Lecture extends \PageHelper {
                                                 </span>
                                             </div>
 
-                                            <i class="material-icons md-icon-person md-48 pull-left"></i>
+                                            <i class="material-icons md-icon-person md-38 pull-left"></i>
                                             <div class="direct-chat-text bg-blue">
                                                 <?php echo nl2br($objSupportMessages->getMessage()); ?>
                                             </div>
@@ -232,7 +272,7 @@ class Messagerie_Lecture extends \PageHelper {
 
                                 var json = JSON.parse(msg);
 
-                                $("#Cadre_Fil_Discussion").append('<div class="direct-chat-msg right" id="Message_' + json.id + '" style="margin-bottom: 18px;"><div class="direct-chat-info clearfix"><span class="direct-chat-name pull-right"><?php echo $_SESSION["Pseudo_Messagerie"] ?></span><span class="direct-chat-timestamp pull-left">' + json.date + '</span></div><i class="material-icons md-icon-person md-48 pull-right"></i><div class="direct-chat-text bg-red">' + json.message + '</div></div>');
+                                $("#Cadre_Fil_Discussion").append('<div class="direct-chat-msg right" id="Message_' + json.id + '" style="margin-bottom: 18px;"><div class="direct-chat-info clearfix"><span class="direct-chat-name pull-right"><?php echo $_SESSION["Pseudo_Messagerie"] ?></span><span class="direct-chat-timestamp pull-left">' + json.date + '</span></div><i class="material-icons md-icon-person md-38 pull-right"></i><div class="direct-chat-text bg-red">' + json.message + '</div></div>');
 
                                 $("#Contenue_Reponse_Ticket").val("");
                                 $("#Cadre_Fil_Discussion").animate({scrollTop: $("#Cadre_Fil_Discussion")[0].scrollHeight}, 300);

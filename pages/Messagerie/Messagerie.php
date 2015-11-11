@@ -11,24 +11,12 @@ class Messagerie extends \PageHelper {
 
     public function run() {
 
-        /* ------------------------ Vérification Compte ---------------------------- */
-        $Verification_Compte = "SELECT id 
-                        FROM site.support_moderateurs
-                        WHERE id_compte = ?
-                        AND support_ticket = 1
-                        LIMIT 1";
-        $Parametres_Verification_Compte = $this->objConnection->prepare($Verification_Compte);
-        $Parametres_Verification_Compte->execute(array(
-            $_SESSION['ID']));
-        $Parametres_Verification_Compte->setFetchMode(\PDO::FETCH_OBJ);
-        $Nombre_De_Resultat_Verification_Compte = $Parametres_Verification_Compte->rowCount();
-        /* -------------------------------------------------------------------------- */
+        global $session;
 
-        if ($Nombre_De_Resultat_Verification_Compte == 1) {
-
+        $countModerateur = \Site\SiteHelper::getSupportModerateursRepository()->countByIdAccount($this->objAccount->getId());
+        if ($countModerateur > 0) {
             $Moderateur_Tickets = true;
         } else {
-
             $Moderateur_Tickets = false;
         }
         ?>            
@@ -40,7 +28,7 @@ class Messagerie extends \PageHelper {
                 <h3 class="box-title">Support</h3>
             </div>
 
-            <?php if ($_SESSION['Pseudo_Messagerie'] != "") { ?>
+            <?php if ($session->get("Pseudo_Messagerie") != "") { ?>
 
                 <div class="box-body no-padding">
 
@@ -75,7 +63,7 @@ class Messagerie extends \PageHelper {
                                     $("#Contenue_Cadre_Messagerie").html(msg);
                                     window.parent.Barre_De_Statut("Chargement terminé.");
                                     window.parent.Icone_Chargement(0);
-                                    
+
                                     redraw();
 
                                     if (objet !== false) {
@@ -148,12 +136,8 @@ class Messagerie extends \PageHelper {
                             Choisir ce pseudo
                         </button>
                     </div>
-
                 </form>
-
             <?php } ?>
-
-
         </div>
         <?php
     }

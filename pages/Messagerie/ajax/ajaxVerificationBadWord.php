@@ -10,7 +10,11 @@ class ajaxVerificationBadWord extends \PageHelper {
     public $isAllowForBlock = true;
     
     public function run() {
-        echo str_ireplace($_SESSION['Tableau_Mots_Bannis'], "/* Expression interdite */", $_POST['Message_Texte']);
+        
+        global $session;
+        global $request;
+        
+        echo str_ireplace($session->get("Tableau_Mots_Bannis"), "/* Expression interdite */", $request->request->get("Message_Texte"));
     }
 
 }

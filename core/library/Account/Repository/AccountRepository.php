@@ -43,6 +43,22 @@ class AccountRepository extends EntityRepository {
             return null;
         }
     }
+    
+    public function countByPseudoMessagerie($pseudoMessagerie = "") {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("COUNT(AccountEntity)");
+        $qb->from("\Account\Entity\Account", "AccountEntity");
+        $qb->where("AccountEntity.pseudoMessagerie = :pseudoMessagerie");
+        $qb->setParameter("pseudoMessagerie", $pseudoMessagerie);
+
+        try {
+            return $qb->getQuery()->getSingleScalarResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
 
     public function updateAccountPassword($idAccount = 0, $password = "") {
 

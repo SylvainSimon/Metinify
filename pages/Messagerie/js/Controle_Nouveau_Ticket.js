@@ -1,9 +1,7 @@
 var Objet_Selectionner = 1;
 var Longueur_Minimal = 1;
 
-
 function Longueur_minimal(){
-    
     if(document.getElementById('Textarea_Nouveau_Ticket').value.length < 50){
         
         Longueur_Minimal = 1;
@@ -11,8 +9,6 @@ function Longueur_minimal(){
         
         Longueur_Minimal = 0;
     }
-    
-    
 }
 
 
@@ -55,6 +51,8 @@ function Objet_selectionner(){
 
 function Valider_Formulaire_Nouveau_Ticket(){
     
+    Longueur_minimal();
+    
     window.parent.Barre_De_Statut("Envoie du nouveau ticket...");
     window.parent.Icone_Chargement(1);
     
@@ -65,6 +63,9 @@ function Valider_Formulaire_Nouveau_Ticket(){
             url: "pages/Messagerie/ajax/ajaxDiscussionCreate.php",
             data: "Nouveau_Ticket_Objet="+$("#Selecteur_Objet_Ticket").val()+"&Nouveau_Ticket_Message="+$("#Textarea_Nouveau_Ticket").val(),
             success: function(msg){
+                
+                console.log(msg); 
+                
                 if(msg==1){
                     
                     window.parent.Barre_De_Statut("Message envoyé avec succès.");

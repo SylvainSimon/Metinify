@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * SupportModerateurs
  *
  * @ORM\Table(name="site.support_moderateurs")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\Repository\SupportModerateursRepository")
  */
 class SupportModerateurs {
 

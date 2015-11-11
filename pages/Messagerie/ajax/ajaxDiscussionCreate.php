@@ -11,22 +11,22 @@ class ajaxDiscussionCreate extends \PageHelper {
     
     public function run() {
 
-        mt_srand((float) microtime() * 1000000);
-        $Nombre_Unique = mt_rand(0, 100000000000);
+        global $request;
+        $em = \Shared\DoctrineHelper::getEntityManager();
 
-        /* ------------------------------------------------ Inscription ---------------------------------------------------------------------- */
-        $Insertion_Logs = "INSERT INTO site.support_ticket_attente (numero_discussion, id_compte, objet_message, contenue_message, date, ip) 
-                          VALUES (:numero_discussion, :id_compte, :objet_message, :contenue_message, NOW(), :ip)";
-
-        $Paremetres_Insertion = $this->objConnection->prepare($Insertion_Logs);
-        $Paremetres_Insertion->execute(array(
-            ':numero_discussion' => $Nombre_Unique,
-            ':id_compte' => $_SESSION['ID'],
-            ':objet_message' => $_POST['Nouveau_Ticket_Objet'],
-            ':contenue_message' => $_POST['Nouveau_Ticket_Message'],
-            ':ip' => $_SERVER['REMOTE_ADDR']));
-        /* ----------------------------------------------------------------------------------------------------------------------------------- */
-
+        $idObjet = $request->request->get("Nouveau_Ticket_Objet");
+        $message = $request->request->get("Nouveau_Ticket_Message");
+        
+        $objSupportDiscussion = new \Site\Entity\SupportDiscussions();
+        $objSupportDiscussion->setIdCompte($this->objAccount->getId());
+        $objSupportDiscussion->setIdObjet($idObjet);
+        $objSupportDiscussion->setMessage($message);
+        $objSupportDiscussion->setDate(new \DateTime(date("Y-m-d H:i:s")));
+        $objSupportDiscussion->setIp($this->ipAdresse);
+        
+        $em->persist($objSupportDiscussion);
+        $em->flush();
+        
         echo "1";
     }
 
