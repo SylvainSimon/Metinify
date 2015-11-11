@@ -65,23 +65,21 @@ class Messagerie_Creer_Ticket_Support extends \PageHelper {
                     <script type="text/javascript" src="pages/Messagerie/js/Controle_Nouveau_Ticket.js"></script>
 
                     <form type="POST" action="javascript:void(0)" id="Formulaire_Nouveau_Ticket">
-                        <div class="col-lg-12" style="margin-top: 10px; margin-bottom: 10px;">
+                        <div class="col-lg-12" style="margin-top: 15px; margin-bottom: 15px;">
                             <div class="row">
                                 <div class="col-lg-6">
 
                                     <div class="form-group ">
                                         <label for="Input_Pseudo_Expediteur_Message">
-                                            Expéditeur
+                                            Demandeur
                                         </label>
                                         <div class="input-group col-xs-12">
                                             <input class="form-control input-sm" id="Input_Pseudo_Expediteur_Message" name="Input_Expediteur_Message" type="text" disabled="disabled" value="<?php echo $session->get("Pseudo_Messagerie"); ?>">                           
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <label for="Selecteur_Objet_Ticket">
                                         Objet
                                     </label>
@@ -114,7 +112,7 @@ class Messagerie_Creer_Ticket_Support extends \PageHelper {
 
 
                             <button class="btn btn-success btn-flat pull-right" type="button" onclick="Valider_Formulaire_Nouveau_Ticket();">
-                                Envoyer la demande
+                                Envoyer
                             </button>
                         </div>
                     </form>
