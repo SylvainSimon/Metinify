@@ -206,25 +206,49 @@ class Messagerie_Lecture extends \PageHelper {
 
                 function DiscussionArchivage(idDiscussion) {
 
-                    Barre_De_Statut("Archivage en cours...");
-                    Icone_Chargement(1);
+                    bootbox.dialog({
+                        message: "Êtes vous sûr de vouloir archiver la discussion ?<br/>Le traitement de votre demande sera considéré comme terminé.",
+                        animate: false,
+                        className: "myBootBox",
+                        title: "Confirmation de l'archivage",
+                        buttons: {
+                            danger: {
+                                label: "Annuler",
+                                className: "btn-danger",
+                                callback: function () {
 
-                    $.ajax({
-                        type: "POST",
-                        url: "pages/Messagerie/ajax/ajaxDiscussionArchivage.php",
-                        data: "idDiscussion=" + idDiscussion,
-                        success: function (msg) {
+                                }
+                            },
+                            success: {
+                                label: "Confirmer",
+                                className: "btn-primary",
+                                callback: function () {
 
-                            if (msg == "NON") {
+                                    Barre_De_Statut("Archivage en cours...");
+                                    Icone_Chargement(1);
 
-                                Barre_De_Statut("Cette discussion ne vous appartient pas.");
-                                Icone_Chargement(2);
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "pages/Messagerie/ajax/ajaxDiscussionArchivage.php",
+                                        data: "idDiscussion=" + idDiscussion,
+                                        success: function (msg) {
 
-                            } else {
-                                Ajax_Appel_Messagerie("pages/Messagerie/Messagerie_Boite_De_Reception.php");
+                                            if (msg == "NON") {
+
+                                                Barre_De_Statut("Cette discussion ne vous appartient pas.");
+                                                Icone_Chargement(2);
+
+                                            } else {
+                                                Ajax_Appel_Messagerie("pages/Messagerie/Messagerie_Boite_De_Reception.php");
+                                            }
+                                        }
+                                    });
+
+                                }
                             }
                         }
                     });
+
                 }
 
                 function Suppression_Message_Fil() {
