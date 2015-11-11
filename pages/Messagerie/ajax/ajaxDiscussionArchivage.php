@@ -19,7 +19,7 @@ class ajaxDiscussionArchivage extends \PageHelper {
 
         if ($objDiscussion !== null) {
 
-            if ($objDiscussion->getIdCompte == $this->objAccount->getId() OR $objDiscussion->getIdAdmin() == $this->objAccount->getId()) {
+            if ($objDiscussion->getIdCompte() == $this->objAccount->getId() OR $objDiscussion->getIdAdmin() == $this->objAccount->getId()) {
 
                 $objDiscussion->setEstArchive(1);
                 $em->persist($objDiscussion);

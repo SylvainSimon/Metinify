@@ -26,7 +26,7 @@ class SupportMessagesRepository extends EntityRepository {
             return 0;
         }
     }
-    
+
     public function countMessages($idAccount = 0, $idDiscussion = 0, $estArchive = "", $etat = "") {
         $qb = $this->_em->createQueryBuilder();
 
@@ -40,7 +40,7 @@ class SupportMessagesRepository extends EntityRepository {
             $qb->andWhere("SupportMessagesEntity.etat = :etat");
             $qb->setParameter("etat", $etat);
         }
-        
+
         if ($idDiscussion != 0) {
             $qb->andWhere("SupportDiscussionsEntity.id = :idDiscussion");
             $qb->setParameter("idDiscussion", $idDiscussion);

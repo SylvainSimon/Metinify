@@ -22,114 +22,114 @@ class Messagerie_Lecture extends \PageHelper {
         if (count($arrObjSupportMessages) > 0) {
             ?>
 
-            <div id="Cadre_Fil_Informations">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <table class="table table-condensed" style="margin-bottom: 0px; border-collapse: collapse;">
-                            <tr>
-                                <td style="border-top: 0px;">Ticket gérer par </td>
-                                <td style="border-top: 0px;"><?php echo $objAccountAdmin->getPseudoMessagerie(); ?></td>
-                            </tr>
-                            <tr>
-                                <td>Début du ticket </td> 
-                                <td><?php echo \DateTimeHelper::dateTimeToFormatedString($objSupportDiscussion->getDate()); ?></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="col-lg-4">
-                        <table class="table table-condensed" style="margin-bottom: 0px; border-collapse: collapse;">
-                            <tr>
-                                <td style="border-top: 0px;">Nombre</td> 
-                                <td style="border-top: 0px;" id="Nombre_De_Message"><?php echo count($arrObjSupportMessages); ?></td>
-                            </tr>
-                            <tr>
-                                <td>Objet</td>
-                                <td><?php echo $objSupportObjet->getObjet(); ?></td>
-                            </tr>
-                        </table>
+            <div class="row">
+                <div class="col-lg-3">
 
-                    </div>
-                    <div class="col-lg-4">
 
+                    <table class="table table-condensed" style="margin-bottom: 0px; border-collapse: collapse;">
+                        <tr>
+                            <td style="border-top: 0px;">Gérant</td>
+                            <td style="border-top: 0px;"><?php echo $objAccountAdmin->getPseudoMessagerie(); ?></td>
+                        </tr>
+                        <tr>
+                            <td>Début</td> 
+                            <td><?php echo \DateTimeHelper::dateTimeToFormatedString($objSupportDiscussion->getDate()); ?></td>
+                        </tr>
+                        <tr>
+                            <td>Message</td> 
+                            <td id="Nombre_De_Message"><?php echo count($arrObjSupportMessages); ?></td>
+                        </tr>
+                        <tr>
+                            <td>Objet</td>
+                            <td><?php echo $objSupportObjet->getObjet(); ?></td>
+                        </tr>
+                    </table>
+
+
+                    <div style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px;">
                         <button type="button" class="btn btn-sm btn-flat btn-warning" onclick="DiscussionArchivage(<?= $objSupportDiscussion->getId(); ?>);">
-                            Archiver la discussion
+                            Archiver
                         </button>
-
                     </div>
                 </div>
-            </div>
+                <div class="col-lg-9">
+                    <div class="box box-warning direct-chat direct-chat-danger" style="margin-bottom: 0px; border-top: 0px; border-bottom: 0px; border-collapse: collapse;">
 
-            <div class="box box-warning direct-chat direct-chat-danger" style="margin-bottom: 0px;">
+                        <div class="box-body" style="min-height: 400px;">
+                            <div class="direct-chat-messages" id="Cadre_Fil_Discussion" style="min-height: 400px;">
 
-                <div class="box-body" style="min-height: 400px;">
-                    <div class="direct-chat-messages" id="Cadre_Fil_Discussion" style="min-height: 400px;">
+                                <?php foreach ($arrObjSupportMessages AS $objSupportMessages) { ?>
 
-                        <?php foreach ($arrObjSupportMessages AS $objSupportMessages) { ?>
+                                    <?php if ($objSupportMessages->getIdCompte() == $this->objAccount->getId()) { ?>
 
-                            <?php if ($objSupportMessages->getIdCompte() == $this->objAccount->getId()) { ?>
+                                        <div class="direct-chat-msg right" id="Message_<?php echo $objSupportMessages->getId(); ?>" style="margin-bottom: 18px;">
+                                            <div class="direct-chat-info clearfix">
+                                                <span class="direct-chat-name pull-right"><?php echo $this->objAccount->getPseudoMessagerie() ?></span>
+                                                <span class="direct-chat-timestamp pull-left">
+                                                    <?php echo \DateTimeHelper::dateTimeToFormatedString($objSupportMessages->getDate()); ?>
+                                                    <?php if ($objSupportMessages->getEtat() == \Site\SupportEtatMessageHelper::LU) { ?>
+                                                        <div class="dateEtatChange" style="display: inline;"><i data-tooltip="Vu <?php echo \DateTimeHelper::dateTimeToFormatedString($objSupportMessages->getDatechangementEtat()); ?>" class="material-icons md-icon-done text-green"></i></div>
+                                                    <?php } else { ?>
+                                                        <div class="dateEtatChange" style="display: inline;"></div>
+                                                    <?php } ?>
+                                                </span>
+                                            </div>
+                                            <i class="material-icons md-icon-person md-48 pull-right"></i>
+                                            <div class="direct-chat-text  bg-red">
+                                                <?php echo nl2br($objSupportMessages->getMessage()); ?>
+                                            </div>
+                                        </div>
 
-                                <div class="direct-chat-msg right" id="Message_<?php echo $objSupportMessages->getId(); ?>" style="margin-bottom: 18px;">
-                                    <div class="direct-chat-info clearfix">
-                                        <span class="direct-chat-name pull-right"><?php echo $this->objAccount->getPseudoMessagerie() ?></span>
-                                        <span class="direct-chat-timestamp pull-left">
-                                            <?php echo \DateTimeHelper::dateTimeToFormatedString($objSupportMessages->getDate()); ?>
-                                            <?php if ($objSupportMessages->getEtat() == \Site\SupportEtatMessageHelper::LU) { ?>
-                                                <div class="dateEtatChange" style="display: inline;"><i data-tooltip="<?php echo \DateTimeHelper::dateTimeToFormatedString($objSupportMessages->getDatechangementEtat()); ?>" class="material-icons md-icon-done text-green"></i></div>
-                                            <?php } else { ?>
-                                                <div class="dateEtatChange" style="display: inline;"></div>
-                                            <?php } ?>
-                                        </span>
-                                    </div>
-                                    <i class="material-icons md-icon-person md-48 pull-right"></i>
-                                    <div class="direct-chat-text  bg-red">
-                                        <?php echo nl2br($objSupportMessages->getMessage()); ?>
-                                    </div>
-                                </div>
+                                    <?php } else { ?>
 
-                            <?php } else { ?>
+                                        <div class="direct-chat-msg" id="Message_<?php echo $objSupportMessages->getId(); ?>" style="margin-bottom: 18px;">
 
-                                <div class="direct-chat-msg" id="Message_<?php echo $objSupportMessages->getId(); ?>" style="margin-bottom: 18px;">
+                                            <div class="direct-chat-info clearfix">
 
-                                    <div class="direct-chat-info clearfix">
+                                                <?php if ($objAccount->getId() == $this->objAccount->getId()) { ?>
+                                                    <span class="direct-chat-name pull-left"><?php echo $objAccountAdmin->getPseudoMessagerie(); ?></span>
+                                                <?php } else { ?>
+                                                    <span class="direct-chat-name pull-left"><?php echo $objAccount->getPseudoMessagerie(); ?></span>
+                                                <?php } ?>
 
-                                        <?php if ($objAccount->getId() == $this->objAccount->getId()) { ?>
-                                            <span class="direct-chat-name pull-left"><?php echo $objAccountAdmin->getPseudoMessagerie(); ?></span>
-                                        <?php } else { ?>
-                                            <span class="direct-chat-name pull-left"><?php echo $objAccount->getPseudoMessagerie(); ?></span>
-                                        <?php } ?>
+                                                <span class="direct-chat-timestamp pull-right">
+                                                    <?php echo \DateTimeHelper::dateTimeToFormatedString($objSupportMessages->getDate()); ?>
+                                                    <?php if ($objSupportMessages->getEtat() == \Site\SupportEtatMessageHelper::LU) { ?>
+                                                        <div class="dateEtatChange" style="display: inline;"><i data-tooltip="Vu <?php echo \DateTimeHelper::dateTimeToFormatedString($objSupportMessages->getDatechangementEtat()); ?>" class="material-icons md-icon-done text-green"></i></div>
+                                                    <?php } else { ?>
+                                                        <div class="dateEtatChange NonLu" style="display: inline;"></div>
+                                                    <?php } ?>
+                                                </span>
+                                            </div>
 
-                                        <span class="direct-chat-timestamp pull-right">
-                                            <?php echo \DateTimeHelper::dateTimeToFormatedString($objSupportMessages->getDate()); ?>
-                                            <?php if ($objSupportMessages->getEtat() == \Site\SupportEtatMessageHelper::LU) { ?>
-                                                <div class="dateEtatChange" style="display: inline;"><i data-tooltip="<?php echo \DateTimeHelper::dateTimeToFormatedString($objSupportMessages->getDatechangementEtat()); ?>" class="material-icons md-icon-done text-green"></i></div>
-                                            <?php } else { ?>
-                                                <div class="dateEtatChange NonLu" style="display: inline;"></div>
-                                            <?php } ?>
-                                        </span>
-                                    </div>
+                                            <i class="material-icons md-icon-person md-48 pull-left"></i>
+                                            <div class="direct-chat-text bg-blue">
+                                                <?php echo nl2br($objSupportMessages->getMessage()); ?>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                <?php } ?>
 
-                                    <i class="material-icons md-icon-person md-48 pull-left"></i>
-                                    <div class="direct-chat-text bg-blue">
-                                        <?php echo nl2br($objSupportMessages->getMessage()); ?>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                        <?php } ?>
-
-                    </div>
-                </div>
-
-                <div class="box-footer">
-                    <form action="#" method="post">
-                        <div class="input-group">
-                            <textarea id="Contenue_Reponse_Ticket" type="text" name="message" placeholder="Message ..." class="form-control"></textarea>
-                            <span class="input-group-btn">
-                                <button type="button" onclick="addMessage()" class="btn btn-primary btn-flat">Send</button>
-                            </span>
+                            </div>
                         </div>
-                    </form>
-                </div>
 
+                        <div class="box-footer">
+                            <form action="#" method="post">
+                                <div class="row">
+                                    <div class="col-lg-10 col-md-9 col-xs-8">
+                                        <textarea id="Contenue_Reponse_Ticket" type="text" name="message" placeholder="Message..." class="form-control input-sm"></textarea>
+                                    </div>
+                                    <div class="col-lg-2 col-md-3 col-xs-4">
+                                        <button type="button" onclick="addMessage()" class="btn btn-primary btn-flat btn-sm" style="width: 100%">
+                                            Envoyer
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
             </div>
 
             <script type="text/javascript">
