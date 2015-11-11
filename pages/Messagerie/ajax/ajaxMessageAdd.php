@@ -16,6 +16,7 @@ class ajaxMessageAdd extends \PageHelper {
 
         $idCompte = $request->request->get("idCompte");
         $idDiscussion = $request->request->get("idDiscussion");
+
         $message = $request->request->get("message");
 
         $objSupportMessage = new \Site\Entity\SupportMessages();
@@ -27,14 +28,32 @@ class ajaxMessageAdd extends \PageHelper {
         $objSupportMessage->setDatechangementEtat(new \DateTime(date("Y-m-d H:i:s")));
         $objSupportMessage->setIp($this->ipAdresse);
 
-        $em->persist($objSupportMessage);
-        $em->flush();
+        try {
+            $em->persist($objSupportMessage);
+            $em->flush();
 
-        echo json_encode([
-            "id" => $objSupportMessage->getId(),
-            "date" => \DateTimeHelper::dateTimeToFormatedString($objSupportMessage->getDate()),
-            "message" => nl2br($objSupportMessage->getMessage())
-        ]);
+            $objSupportDiscussion = \Site\SiteHelper::getSupportDiscussionsRepository()->find($idDiscussion);
+
+            if ($idCompte == $objSupportDiscussion->getIdAdmin()) {
+                $objSupportObjet = \Site\SiteHelper::getSupportObjetsRepository()->find($objSupportDiscussion->getIdObjet());
+                $objAccountJoueur = \Account\AccountHelper::getAccountRepository()->find($objSupportDiscussion->getIdCompte());
+
+                if ($objAccountJoueur !== null) {
+                    $template = $this->objTwig->loadTemplate("MessagerieMessageAdd.html5.twig");
+                    $result = $template->render(["compte" => $objAccountJoueur->getLogin(), "objet" => $objSupportObjet->getObjet()]);
+                    $subject = 'VamosMT2 - Réponse à votre ticket';
+                    \EmailHelper::sendEmail($objAccountJoueur->getEmail(), $subject, $result);
+                }
+            }
+
+            echo json_encode([
+                "id" => $objSupportMessage->getId(),
+                "date" => \DateTimeHelper::dateTimeToFormatedString($objSupportMessage->getDate()),
+                "message" => nl2br($objSupportMessage->getMessage())
+            ]);
+        } catch (Exception $ex) {
+            
+        }
     }
 
 }
