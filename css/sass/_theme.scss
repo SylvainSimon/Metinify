@@ -114,6 +114,15 @@ body {
     background-color: #53852A !important; 
 }
 
+.box .overlay, .overlay-wrapper .overlay{
+    background: rgba(28, 28, 28, 0.7);
+    
+}
+
+.box .overlay>.fa, .overlay-wrapper .overlay>.fa{
+    color:white;
+    font-size: 45px;
+}
 
 /* ------------ Zone menu/drapeau/recherche -------------------  */
 

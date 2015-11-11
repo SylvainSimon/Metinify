@@ -2,6 +2,7 @@ function Ajax(url) {
 
     Barre_De_Statut("Appel de la page...");
     Icone_Chargement(1);
+    displayLoading();
 
     $.ajax({
         type: "POST",
@@ -15,6 +16,7 @@ function Ajax(url) {
             Icone_Chargement(0);
 
             redraw();
+            hideLoading();
 
         },
         error: function () {

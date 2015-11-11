@@ -29,14 +29,18 @@ class Bannissement extends \PageHelper {
         $Nombre_De_Resultat_Recuperation_Bannissement = $Parametres_Recuperation_Bannissement->rowCount();
         /* -------------------------------------------------------------------------------- */
         ?>
-        <div class="Cadre_Principal">
+
+        <div class="box box-default flat">
+
             <?php if ($Nombre_De_Resultat_Recuperation_Bannissement != 0) { ?>
                 <?php while ($Donnees_Recuperation_Bannissement = $Parametres_Recuperation_Bannissement->fetch()) { ?>
-                    <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-                        <h1>Votre compte <?= $this->objAccount->getLogin(); ?> est banni</h1>
+
+                    <div class="box-header">
+                        <h3 class="box-title">Votre compte <?= $this->objAccount->getLogin(); ?> est banni</h3>
                     </div>
-                    <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1">
-                        <hr class="Hr_Haut"/>
+
+                    <div class="box-body">
+
                         En effet, le membre de l'équipe <b><?= $Donnees_Recuperation_Bannissement->pseudo_messagerie; ?></b> a procédé à une sanction envers votre compte.<br/><br/>
                         Cette sanction a été appliqué <b><?= \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Bannissement->date_debut_bannissement); ?></b> pour : <b><?= $Donnees_Recuperation_Bannissement->raison; ?></b>
                         <br/><br/>
@@ -50,11 +54,9 @@ class Bannissement extends \PageHelper {
                         <?php if ($Donnees_Recuperation_Bannissement->definitif == "1") { ?>
                             La suspension de ce compte et de tout ses personnage est définitive.<br/><br />
                             Si vous souhaitez contester, vous pouvez nous contacter via la page de <span onclick="Ajax('pages/Contact.php')" class="Pointer">contact</span> de VamosMt2.
-                            <hr class="Hr_Bas">
                         <?php } else { ?>
 
                             Votre compte sera débloqué <?= \FonctionsUtiles::Formatage_Date($Donnees_Recuperation_Bannissement->date_fin_bannissement); ?>.<br/>
-                            <hr class="Hr_Bas">
                             <br/>
                             Temps restant : <br/><br/>
                             <div id="countdown_dashboard">
@@ -109,22 +111,24 @@ class Bannissement extends \PageHelper {
                     </div>
                 <?php } ?>
             <?php } else { ?>
-                <div class="Cadre_Principal_Haut Pointer No_Select" onclick="Slider_Cadre_Principal_1();">                  
-                    <h1>Votre compte <?= $this->objAccount->getLogin(); ?> est suspendue.</h1>
-                </div>
-                <div class="Cadre_Principal_Milieu" id="Div_Cadre_Principal_1">
-                    <hr class="Hr_Haut"/>
+            
+                    <div class="box-header">
+                        <h3 class="box-title">Votre compte <?= $this->objAccount->getLogin(); ?> est suspendue.</h3>
+                    </div>
+
+                    <div class="box-body">
+
                     En effet, un membre de l'équipe a procédé à une sanction envers votre compte.<br/><br/>
                     La suspension de ce compte et de tout ses personnage est définitive.<br/><br />
                     Si vous souhaitez contester, vous pouvez nous contacter via la page de <span onclick="Ajax('pages/Contact.php')" class="Pointer">contact</span> de VamosMt2.
-                    <hr class="Hr_Bas">
+
                 </div>
             <?php } ?>
-        </div>
-        <?php
+            <?php
+        }
+
     }
 
-}
-
-$class = new Bannissement();
-$class->run();
+    $class = new Bannissement();
+    $class->run();
+    

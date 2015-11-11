@@ -53,7 +53,7 @@ class CoreHelper {
         $this->objRequest = $request;
 
         $this->response = new Response();
-        
+
         $this->ipAdresse = $request->server->get("REMOTE_ADDR");
 
         if ($session->get("ID") !== null) {
@@ -85,7 +85,7 @@ class CoreHelper {
 
                 if ($this->objAccount->getStatus() == "BLOCK") {
                     if (!$this->isAllowForBlock) {
-                        include '../../pages/Bannissement.php';
+                        include BASE_ROOT . '/pages/Bannissement.php';
                         exit();
                     }
                 }
@@ -186,7 +186,7 @@ class CoreHelper {
             $this->arrAdminRights["gererEquipe"] = $objAdministrationUser->getEquipe();
             $this->arrAdminRights["historiqueCommandes"] = $objAdministrationUser->getCommandes();
             $this->arrAdminRights["historiqueMp"] = $objAdministrationUser->getMp();
-            
+
             return true;
         } else {
             return false;

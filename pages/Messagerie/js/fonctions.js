@@ -24,6 +24,13 @@ function Ajax_Appel_Messagerie(url, objet) {
 
 }
 
+function displayLoadingChat() {
+    $(".box.direct-chat").append('<div class="overlay"><i class="fa fa-spin material-icons md-icon-spin"></i></div>');
+}
+function hideLoadingChat() {
+    $(".box.direct-chat .overlay").remove();
+}
+
 function Ajax_Ouverture_Ticket(id_ticket) {
 
     window.parent.Barre_De_Statut("Ouverture de la discussion...");

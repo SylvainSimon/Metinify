@@ -172,8 +172,7 @@ class MessagerieView extends \PageHelper {
                                     </div>
                                 </form>
                             </div>
-                        <?php } ?> 
-
+                        <?php } ?>                         
                     </div>
                 </div>
             </div>
@@ -257,8 +256,10 @@ class MessagerieView extends \PageHelper {
 
                     Barre_De_Statut("Envoie du message...");
                     Icone_Chargement(1);
-
                     if ($("#Contenue_Reponse_Ticket").val() != "") {
+
+                        displayLoadingChat();
+
                         $.ajax({
                             type: "POST",
                             url: "pages/Messagerie/ajax/ajaxMessageAdd.php",
@@ -280,6 +281,7 @@ class MessagerieView extends \PageHelper {
 
                                 Barre_De_Statut("Message envoyé");
                                 Icone_Chargement(0);
+                                hideLoadingChat();
 
                             }
                         });
