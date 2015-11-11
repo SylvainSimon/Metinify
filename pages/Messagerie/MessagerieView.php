@@ -4,7 +4,7 @@ namespace pages\Messagerie;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class Messagerie_Lecture extends \PageHelper {
+class MessagerieView extends \PageHelper {
 
     public $isProtected = true;
     public $isAllowForBlock = true;
@@ -239,7 +239,7 @@ class Messagerie_Lecture extends \PageHelper {
                                                 Icone_Chargement(2);
 
                                             } else {
-                                                Ajax_Appel_Messagerie("pages/Messagerie/Messagerie_Boite_De_Reception.php");
+                                                Ajax_Appel_Messagerie("pages/Messagerie/MessagerieInbox.php");
                                             }
                                         }
                                     });
@@ -327,5 +327,5 @@ class Messagerie_Lecture extends \PageHelper {
 
 }
 
-$class = new Messagerie_Lecture();
+$class = new MessagerieView();
 $class->run();

@@ -50,7 +50,8 @@ class ServicesHelper {
                 BASE_ROOT . '/pages/Inscription/templates/',
                 BASE_ROOT . '/pages/Inscription/templates/emails',
                 BASE_ROOT . '/pages/ItemShop/templates/',
-                BASE_ROOT . '/pages/Messagerie/templates/',
+                BASE_ROOT . '/pages/Messagerie/templates/modules',
+                BASE_ROOT . '/pages/Messagerie/templates/emails',
                 BASE_ROOT . '/pages/MonCompte/templates/modules',
                 BASE_ROOT . '/pages/MonCompte/templates/emails',
                 BASE_ROOT . '/pages/MonPersonnage/templates/',
@@ -67,9 +68,13 @@ class ServicesHelper {
             }
 
             $loader = new Twig_Loader_Filesystem($arrayOfFileSystem);
+
             $twig = new Twig_Environment($loader, array(
                 'cache' => $urlCache,
             ));
+
+            $twig->addExtension(new StringFunctionExtension());
+            $twig->addExtension(new DateFunctionExtension());
 
             return $twig;
         };
@@ -175,12 +180,12 @@ class ServicesHelper {
             $config = new Doctrine\ORM\Configuration();
 
             $config->addCustomStringFunction('PASSWORD', '\DoctrinePasswordExtension');
-            
+
             // Proxy Configuration
             $proxiesCacheDir = $container['doctrine.orm.proxiesCacheDir'];
             $config->setProxyDir($proxiesCacheDir);
             $config->setProxyNamespace('entities\proxies');
-            
+
             switch ($param->cacheBdd) {
                 case 'apc':
                     $cache = new \Doctrine\Common\Cache\ApcCache();

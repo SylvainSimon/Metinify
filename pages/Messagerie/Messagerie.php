@@ -35,11 +35,11 @@ class Messagerie extends \PageHelper {
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
 
-                            <li class="active"><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/Messagerie_Boite_De_Reception.php', this)">Boîte de réception</a></li>
-                            <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/Messagerie_Archives.php', this)">Discussions archivés</a></li>
-                            <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/Messagerie_Creer_Ticket_Support.php', this)">Créer un ticket</a></li>
+                            <li class="active"><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieInbox.php', this)">Boîte de réception</a></li>
+                            <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieArchive.php', this)">Discussions archivés</a></li>
+                            <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieCreate.php', this)">Créer un ticket</a></li>
                             <?php if ($Moderateur_Tickets) { ?>
-                                <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/Messagerie_Ticket_Attente.php', this)">Tickets en attentes</a></li>
+                                <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieWaiting.php', this)">Tickets en attentes</a></li>
                             <?php } ?>
                         </ul>
 
@@ -83,7 +83,7 @@ class Messagerie extends \PageHelper {
 
                             $.ajax({
                                 type: "POST",
-                                url: "pages/Messagerie/Messagerie_Lecture.php",
+                                url: "pages/Messagerie/MessagerieView.php",
                                 data: "id_ticket=" + id_ticket,
                                 success: function (msg) {
 
@@ -97,7 +97,7 @@ class Messagerie extends \PageHelper {
 
                         }
 
-                        Ajax_Appel_Messagerie("pages/Messagerie/Messagerie_Boite_De_Reception.php", false);
+                        Ajax_Appel_Messagerie("pages/Messagerie/MessagerieInbox.php", false);
 
                     </script>
                     <div class="clear"></div>

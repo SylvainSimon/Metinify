@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="site.support_discussions")
  * @ORM\Entity(repositoryClass="Site\Repository\SupportDiscussionsRepository")
  */
-class SupportDiscussions
-{
+class SupportDiscussions {
+
     /**
      * @var integer
      *
@@ -70,15 +70,12 @@ class SupportDiscussions
      */
     private $ip = '0';
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -89,8 +86,7 @@ class SupportDiscussions
      *
      * @return SupportDiscussions
      */
-    public function setIdCompte($idCompte)
-    {
+    public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
 
         return $this;
@@ -101,8 +97,7 @@ class SupportDiscussions
      *
      * @return integer
      */
-    public function getIdCompte()
-    {
+    public function getIdCompte() {
         return $this->idCompte;
     }
 
@@ -113,8 +108,7 @@ class SupportDiscussions
      *
      * @return SupportDiscussions
      */
-    public function setIdAdmin($idAdmin)
-    {
+    public function setIdAdmin($idAdmin) {
         $this->idAdmin = $idAdmin;
 
         return $this;
@@ -125,8 +119,7 @@ class SupportDiscussions
      *
      * @return integer
      */
-    public function getIdAdmin()
-    {
+    public function getIdAdmin() {
         return $this->idAdmin;
     }
 
@@ -137,8 +130,7 @@ class SupportDiscussions
      *
      * @return SupportDiscussions
      */
-    public function setIdObjet($idObjet)
-    {
+    public function setIdObjet($idObjet) {
         $this->idObjet = $idObjet;
 
         return $this;
@@ -149,8 +141,7 @@ class SupportDiscussions
      *
      * @return integer
      */
-    public function getIdObjet()
-    {
+    public function getIdObjet() {
         return $this->idObjet;
     }
 
@@ -161,8 +152,7 @@ class SupportDiscussions
      *
      * @return SupportDiscussions
      */
-    public function setMessage($message)
-    {
+    public function setMessage($message) {
         $this->message = $message;
 
         return $this;
@@ -173,8 +163,7 @@ class SupportDiscussions
      *
      * @return string
      */
-    public function getMessage()
-    {
+    public function getMessage() {
         return $this->message;
     }
 
@@ -185,8 +174,7 @@ class SupportDiscussions
      *
      * @return SupportDiscussions
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -197,8 +185,7 @@ class SupportDiscussions
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -209,8 +196,7 @@ class SupportDiscussions
      *
      * @return SupportDiscussions
      */
-    public function setEstArchive($estArchive)
-    {
+    public function setEstArchive($estArchive) {
         $this->estArchive = $estArchive;
 
         return $this;
@@ -221,8 +207,7 @@ class SupportDiscussions
      *
      * @return boolean
      */
-    public function getEstArchive()
-    {
+    public function getEstArchive() {
         return $this->estArchive;
     }
 
@@ -233,10 +218,8 @@ class SupportDiscussions
      *
      * @return SupportDiscussions
      */
-    public function setIp($ip)
-    {
-        $this->ip = $ip;
-
+    public function setIp($ip) {
+        $this->ip = ip2long($ip);
         return $this;
     }
 
@@ -245,8 +228,8 @@ class SupportDiscussions
      *
      * @return integer
      */
-    public function getIp()
-    {
-        return $this->ip;
+    public function getIp() {
+        return long2ip($this->ip);
     }
+
 }

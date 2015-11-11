@@ -4,7 +4,7 @@ namespace pages\Messagerie;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class Messagerie_Archives extends \PageHelper {
+class MessagerieArchive extends \PageHelper {
 
     public $isProtected = true;
     public $isAllowForBlock = true;
@@ -59,5 +59,5 @@ class Messagerie_Archives extends \PageHelper {
 
 }
 
-$class = new Messagerie_Archives();
+$class = new MessagerieArchive();
 $class->run();

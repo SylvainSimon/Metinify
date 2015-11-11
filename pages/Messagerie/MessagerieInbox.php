@@ -4,7 +4,7 @@ namespace pages\Messagerie;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class Messagerie_Boite_De_Reception extends \PageHelper {
+class MessagerieInbox extends \PageHelper {
 
     public $isProtected = true;
     public $isAllowForBlock = true;
@@ -69,5 +69,5 @@ class Messagerie_Boite_De_Reception extends \PageHelper {
 
 }
 
-$class = new Messagerie_Boite_De_Reception();
+$class = new MessagerieInbox();
 $class->run();

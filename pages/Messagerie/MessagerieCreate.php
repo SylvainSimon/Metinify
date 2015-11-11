@@ -4,7 +4,7 @@ namespace pages\Messagerie;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class Messagerie_Creer_Ticket_Support extends \PageHelper {
+class MessagerieCreate extends \PageHelper {
 
     public $isProtected = true;
     public $isAllowForBlock = true;
@@ -147,6 +147,6 @@ class Messagerie_Creer_Ticket_Support extends \PageHelper {
 
     }
 
-    $class = new Messagerie_Creer_Ticket_Support();
+    $class = new MessagerieCreate();
     $class->run();
     
