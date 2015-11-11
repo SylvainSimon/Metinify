@@ -60,92 +60,48 @@ function Actualisation_Messages_Sans_Boucle() {
         url: "pages/Messagerie/ajax/ajaxMessageVerifyNew.php",
         success: function (msg) {
 
-
             var mon_title = "VamosMt2 :: Site Officiel";
 
             try {
 
                 Parse_Json = JSON.parse(msg);
 
-                if (Parse_Json.result == "WIN") {
-
-                    if (Parse_Json.nombre_attente != "NON") {
-
-                        if (Parse_Json.nombre_recu > 0) {
-                            mon_title = "(" + Parse_Json.nombre_recu + ") VamosMt2 :: Site Officiel";
-                        }
-
-                        if (Parse_Json.nombre_attente > 0) {
-                            mon_title = "(" + Parse_Json.nombre_attente + ") VamosMt2 :: Site Officiel";
-                        }
-
-                        if ((Parse_Json.nombre_recu > 0) && (Parse_Json.nombre_attente > 0)) {
-                            mon_title = "(" + Parse_Json.nombre_recu + ") (" + Parse_Json.nombre_attente + ") VamosMt2 :: Site Officiel";
-                        }
-
-                        if ((Parse_Json.nombre_recu == 0) && (Parse_Json.nombre_attente == 0)) {
-
-                            mon_title = "VamosMt2 :: Site Officiel";
-                        }
-
-                        chiffre_message_avant = parseInt($("#Nombre_Message_Non_Lu").html());
-                        chiffre_message_apres = parseInt(Parse_Json.nombre_recu);
-
-                        if (chiffre_message_apres > chiffre_message_avant) {
-                            if (getCookie("cookieAudio") == null) {
-
-                            } else if (getCookie("cookieAudio") == "On") {
-
-                                document.getElementById('Mp3Audio').play();
-
-                            } else if (getCookie("cookieAudio") == "Off") {
-
-                            }
-                        }
-
-                        document.title = mon_title;
-
-                    } else {
-                        if (Parse_Json.nombre_recu > 0) {
-                            mon_title = "(" + Parse_Json.nombre_attente + ") VamosMt2 :: Site Officiel"
-                        }
-                        if (Parse_Json.nombre_recu == 0) {
-                            mon_title = "VamosMt2 :: Site Officiel"
-                        }
-
-                        chiffre_message_avant = parseInt($("#Nombre_Message_Non_Lu").val());
-                        chiffre_message_apres = parseInt(Parse_Json.nombre_recu);
-
-                        if (chiffre_message_apres > chiffre_message_avant) {
-
-                            if (getCookie("cookieAudio") == null) {
-
-                            } else if (getCookie("cookieAudio") == "On") {
-
-                                document.getElementById('Mp3Audio').play();
-
-                            } else if (getCookie("cookieAudio") == "Off") {
-
-                            }
-                        }
-
-                        document.title = mon_title;
-                    }
-
-                    $("#Messagerie_Notification").html(Parse_Json.reasons);
-
-                } else if (Parse_Json.result == "FAIL") {
-
-                    $("#Messagerie_Notification").html(Parse_Json.reasons);
+                if (Parse_Json.nombre_recu > 0) {
+                    mon_title = "(" + Parse_Json.nombre_recu + ") VamosMt2 :: Site Officiel";
                 }
+
+                if (Parse_Json.nombre_attente > 0) {
+                    mon_title = "(" + Parse_Json.nombre_attente + ") VamosMt2 :: Site Officiel";
+                }
+
+                if ((Parse_Json.nombre_recu > 0) && (Parse_Json.nombre_attente > 0)) {
+                    mon_title = "(" + Parse_Json.nombre_recu + ") (" + Parse_Json.nombre_attente + ") VamosMt2 :: Site Officiel";
+                }
+
+                chiffre_message_avant = parseInt($("#Nombre_Message_Non_Lu").val());
+                chiffre_message_apres = parseInt(Parse_Json.nombre_recu);
+
+                document.title = mon_title;
+
+                $("#Nombre_Message_Non_Lu").val(chiffre_message_apres);
+                $("#Messagerie_Notification").html(Parse_Json.reasons);
+
+                if (chiffre_message_apres > chiffre_message_avant) {
+                    if (Cookies.get("cookieAudio") == "On") {
+                        var snd = new Audio("assets/sounds/notification.wav");
+                        snd.play();
+                    } else if (Cookies.get("cookieAudio") == "Off") {
+                    }
+                }
+
+                createTooltip();
 
             } catch (e) {
 
-                $("#Messagerie_Notification").html("Erreur de connection au serveur.");
+                $("#Messagerie_Notification").html("Erreur de connection au serveur." + e);
             }
         }
     });
-    return false;
 }
 
 
@@ -157,93 +113,49 @@ function Actualisation_Messages() {
         url: "pages/Messagerie/ajax/ajaxMessageVerifyNew.php",
         success: function (msg) {
 
-
             var mon_title = "VamosMt2 :: Site Officiel";
 
             try {
 
                 Parse_Json = JSON.parse(msg);
 
-                if (Parse_Json.result == "WIN") {
-
-                    if (Parse_Json.nombre_attente != "NON") {
-
-                        if (Parse_Json.nombre_recu > 0) {
-                            mon_title = "(" + Parse_Json.nombre_recu + ") VamosMt2 :: Site Officiel";
-                        }
-
-                        if (Parse_Json.nombre_attente > 0) {
-                            mon_title = "(" + Parse_Json.nombre_attente + ") VamosMt2 :: Site Officiel";
-                        }
-
-                        if ((Parse_Json.nombre_recu > 0) && (Parse_Json.nombre_attente > 0)) {
-                            mon_title = "(" + Parse_Json.nombre_recu + ") (" + Parse_Json.nombre_attente + ") VamosMt2 :: Site Officiel";
-                        }
-
-                        if ((Parse_Json.nombre_recu == 0) && (Parse_Json.nombre_attente == 0)) {
-
-                            mon_title = "VamosMt2 :: Site Officiel";
-                        }
-
-                        chiffre_message_avant = parseInt($("#Nombre_Message_Non_Lu").html());
-                        chiffre_message_apres = parseInt(Parse_Json.nombre_recu);
-
-                        if (chiffre_message_apres > chiffre_message_avant) {
-                            if (getCookie("cookieAudio") == null) {
-
-                            } else if (getCookie("cookieAudio") == "On") {
-
-                                document.getElementById('Mp3Audio').play();
-
-                            } else if (getCookie("cookieAudio") == "Off") {
-
-                            }
-                        }
-
-                        document.title = mon_title;
-
-                    } else {
-                        if (Parse_Json.nombre_recu > 0) {
-                            mon_title = "(" + Parse_Json.nombre_attente + ") VamosMt2 :: Site Officiel"
-                        }
-                        if (Parse_Json.nombre_recu == 0) {
-                            mon_title = "VamosMt2 :: Site Officiel"
-                        }
-
-                        chiffre_message_avant = parseInt($("#Nombre_Message_Non_Lu").val());
-                        chiffre_message_apres = parseInt(Parse_Json.nombre_recu);
-
-                        if (chiffre_message_apres > chiffre_message_avant) {
-
-                            if (getCookie("cookieAudio") == null) {
-
-                            } else if (getCookie("cookieAudio") == "On") {
-
-                                document.getElementById('Mp3Audio').play();
-
-                            } else if (getCookie("cookieAudio") == "Off") {
-
-                            }
-                        }
-
-                        document.title = mon_title;
-                    }
-
-                    $("#Messagerie_Notification").html(Parse_Json.reasons);
-
-                } else if (Parse_Json.result == "FAIL") {
-
-                    $("#Messagerie_Notification").html(Parse_Json.reasons);
+                if (Parse_Json.nombre_recu > 0) {
+                    mon_title = "(" + Parse_Json.nombre_recu + ") VamosMt2 :: Site Officiel";
                 }
 
-            } catch (e) {
+                if (Parse_Json.nombre_attente > 0) {
+                    mon_title = "(" + Parse_Json.nombre_attente + ") VamosMt2 :: Site Officiel";
+                }
 
-                $("#Messagerie_Notification").html("Erreur de connection au serveur.");
+                if ((Parse_Json.nombre_recu > 0) && (Parse_Json.nombre_attente > 0)) {
+                    mon_title = "(" + Parse_Json.nombre_recu + ") (" + Parse_Json.nombre_attente + ") VamosMt2 :: Site Officiel";
+                }
+
+                chiffre_message_avant = parseInt($("#Nombre_Message_Non_Lu").val());
+                chiffre_message_apres = parseInt(Parse_Json.nombre_recu);
+                document.title = mon_title;
+
+                $("#Nombre_Message_Non_Lu").val(chiffre_message_apres);
+                $("#Messagerie_Notification").html(Parse_Json.reasons);
+
+                if (chiffre_message_apres > chiffre_message_avant) {
+                    if (Cookies.get("cookieAudio") == "On") {
+                        var snd = new Audio("assets/sounds/notification.wav");
+                        snd.play();
+                    } else if (Cookies.get("cookieAudio") == "Off") {
+                    }
+                }
+                
+                createTooltip();
+
+            } catch (e) {
+                $("#Messagerie_Notification").html("Erreur de connection au serveur." + e);
             }
 
             setTimeout("Actualisation_Messages()", 20000);
         }
     });
+
     return false;
 }
 

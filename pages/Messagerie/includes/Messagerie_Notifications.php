@@ -7,12 +7,14 @@ if ($countMessageNonLu > 1) {
 }
 
 if ($countMessageNonLu == 0) {
-    echo "<i onclick='Ajax(\"pages/Messagerie/Messagerie.php\")' data-tooltip='Aucun nouveau message' data-tooltip-position='left' style='cursor:pointer; top: 7px; position: relative; margin-left: 7px;' class='material-icons md-icon-chat md-24'></i>";
+    echo "<span id='Messagerie_Notification'><i onclick='Ajax(\"pages/Messagerie/Messagerie.php\")' data-tooltip='Aucun nouveau message' data-tooltip-position='left' style='cursor:pointer; top: 7px; position: relative; margin-left: 7px;' class='material-icons md-icon-chat md-24'></i></span>";
 } else {
 
-    echo "<i onclick='Ajax(\"pages/Messagerie/Messagerie.php\")' data-tooltip='" . $countMessageNonLu . $Message. " non-lu' data-tooltip-position='left' style='cursor:pointer; top: 7px;  margin-left: 7px; position: relative;' class='material-icons text-green md-icon-chat md-22'></i>";
+    echo "<span id='Messagerie_Notification'><i onclick='Ajax(\"pages/Messagerie/Messagerie.php\")' data-tooltip='" . $countMessageNonLu . $Message. " non-lu' data-tooltip-position='left' style='cursor:pointer; top: 7px;  margin-left: 7px; position: relative;' class='material-icons text-green md-icon-chat md-22'></i></span>";
 }
 ?>
+
+<input type="hidden" id="Nombre_Message_Non_Lu" value="<?php echo $countMessageNonLu ?>" />
 
 <script type="text/javascript">
 <?php if ($countMessageNonLu > 0) { ?>

@@ -47,7 +47,7 @@ class Messagerie_Lecture extends \PageHelper {
 
                     <?php if (!$objSupportDiscussion->getEstArchive()) { ?>
                         <div style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px;">
-                            <button type="button" class="btn btn-sm btn-flat btn-warning" onclick="DiscussionArchivage(<?= $objSupportDiscussion->getId(); ?>);">
+                            <button type="button" class="btn btn-sm btn-flat btn-danger" style="width: 100%" onclick="DiscussionArchivage(<?= $objSupportDiscussion->getId(); ?>);">
                                 Archiver
                             </button>
                         </div>
