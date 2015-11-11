@@ -45,6 +45,27 @@ function Ajax_Ouverture_Ticket(id_ticket) {
 
 }
 
+function Fonction_Remplacement(montexte) {
+
+    window.parent.Barre_De_Statut("Vérification des mots utilisés...");
+    window.parent.Icone_Chargement(1);
+
+    $.ajax({
+        type: "POST",
+        url: "pages/Messagerie/ajax/ajaxVerificationBadWord.php",
+        data: "Message_Texte=" + montexte,
+        success: function (msg) {
+
+            window.parent.Barre_De_Statut("Chargement terminé.");
+            window.parent.Icone_Chargement(0);
+
+            $("#Textarea_Nouveau_Ticket").val == "";
+            $("#Textarea_Nouveau_Ticket").val(msg);
+        }
+    });
+
+}
+
 function Longueur_minimal() {
     if (document.getElementById('Textarea_Nouveau_Ticket').value.length < 50) {
         Longueur_Minimal = 1;

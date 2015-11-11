@@ -253,37 +253,6 @@ class MessagerieView extends \PageHelper {
 
                 }
 
-                function Suppression_Message_Fil() {
-
-                    Barre_De_Statut("Suppression du message en cours...");
-                    Icone_Chargement(1);
-
-                    $.ajax({
-                        type: "POST",
-                        url: "pages/Messagerie/ajax/ajaxMessageDelete.php",
-                        data: "id_message=" + $("#Id_Tempo_Message").val(),
-                        success: function (msg) {
-
-                            if (msg == "NON") {
-
-                                Barre_De_Statut("Ce message ne vous appartient pas.");
-                                Icone_Chargement(2);
-
-                            } else {
-                                $("#Message_" + msg).fadeOut("slow", function () {
-                                    $("#Message_" + msg).remove();
-                                    Barre_De_Statut("Suppression du message réussi.");
-                                    Icone_Chargement(0);
-                                });
-
-                                var nombre_tempo = parseInt($("#Nombre_De_Message").html());
-                                nombre_tempo--;
-                                $("#Nombre_De_Message").html(nombre_tempo);
-                            }
-                        }
-                    });
-                }
-
                 function addMessage() {
 
                     Barre_De_Statut("Envoie du message...");

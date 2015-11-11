@@ -12,8 +12,6 @@ class Messagerie extends \PageHelper {
 
     public function run() {
 
-        global $session;
-
         $countModerateur = \Site\SiteHelper::getSupportModerateursRepository()->countByIdAccount($this->objAccount->getId());
         if ($countModerateur > 0) {
             $this->arrayTemplate["isModerateurTicket"] = true;

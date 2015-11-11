@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col-lg-12">
+
+        <input id="Input_Id_Expediteur_Message" style="display: none;" type="text" value="<?php echo $this->objAccount->getId(); ?>">
+
+        {% if nombreDiscussionOuverte >= 3 %}
+            <div style="padding: 10px;">
+                Il semble que possédiez trop de ticket en attente ou en cours de traitement.
+                <br/>
+                Veuillez modérer le nombre de vos tickets.
+                <br/><br/>
+                Cordialement, l'équipe VamosMt2.
+            </div>
+        {% else %}
+            
+            <script type="text/javascript">
+                var Objet_Selectionner = 1;
+                var Longueur_Minimal = 1;
+            </script>
+
+            <form type="POST" action="javascript:void(0)" id="Formulaire_Nouveau_Ticket">
+
+                <div class="col-lg-12" style="margin-top: 15px; margin-bottom: 15px;">
+                    <div class="row">
+                        <div class="col-lg-6">
+
+                            <div class="form-group ">
+                                <label for="Input_Pseudo_Expediteur_Message">
+                                    Demandeur
+                                </label>
+                                <div class="input-group col-xs-12">
+                                    <input class="form-control input-sm" id="Input_Pseudo_Expediteur_Message" name="Input_Expediteur_Message" type="text" disabled="disabled" value="{{ session.get("Pseudo_Messagerie") }}">                           
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label for="Selecteur_Objet_Ticket">
+                                Objet
+                            </label>
+                            <div class="input-group col-xs-12">
+                                <select class="select2" onchange="Objet_selectionner();" id="Selecteur_Objet_Ticket" name="Selecteur_Objet_Ticket">
+                                    <option selected="selected" value="0"> -- </option>
+                                    {% for objSupportObjets in arrObjSupportObjets %}
+                                        <option value="<?php echo $objSupportObjets->getId(); ?>">{{ objSupportObjets.getObjet }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="form-group ">
+                                <label for="Textarea_Nouveau_Ticket">
+                                    Message
+                                </label>
+                                <div class="input-group col-xs-12">
+                                    <textarea maxlength="1024" style="min-height: 170px; resize: none;" id="Textarea_Nouveau_Ticket" class="form-control input-sm" onblur="Fonction_Remplacement(this.value);" onkeyup="document.getElementById('Nombre_Caracteres_Nouveau_Ticket').innerHTML = (this.value.length + this.value.replace(/[^\n]+/g, '').length);"></textarea>
+                                    <span id="Nombre_Caracteres_Nouveau_Ticket">0</span>/1024
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-success btn-flat pull-right" type="button" onclick="Valider_Formulaire_Nouveau_Ticket();">
+                        Envoyer
+                    </button>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+</div>
