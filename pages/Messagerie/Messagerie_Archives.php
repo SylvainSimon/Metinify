@@ -15,16 +15,9 @@ class Messagerie_Archives extends \PageHelper {
         ?>
 
         <div class="row">
-            <div class="col-lg-3">
-                <table class="table table-condensed" style="border-collapse: collapse;">
-                    <tr>
-                        <td style="border-top: 0px;"  data-tooltip="Nombre de discussion ouverte">Discussions</td>
-                        <td style="border-top: 0px;"><?= count($arrObjSupportDiscussions); ?></td>
-                    </tr>
-                </table>
-            </div>
 
-            <div class="col-lg-9">
+
+            <div class="col-lg-12">
                 <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;">
 
                     <thead>

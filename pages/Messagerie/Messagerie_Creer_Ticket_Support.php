@@ -17,7 +17,7 @@ class Messagerie_Creer_Ticket_Support extends \PageHelper {
         ?>
 
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
 
                 <input id="Input_Id_Expediteur_Message" style="display: none;" type="text" value="<?php echo $this->objAccount->getId(); ?>">
 
@@ -105,7 +105,8 @@ class Messagerie_Creer_Ticket_Support extends \PageHelper {
                                             Message
                                         </label>
                                         <div class="input-group col-xs-12">
-                                            <textarea maxlength="1024" style="min-height: 170px;" id="Textarea_Nouveau_Ticket" class="form-control input-sm" onblur="Fonction_Remplacement(this.value);" onkeyup="document.getElementById('Nombre_Caracteres_Nouveau_Ticket').innerHTML = (this.value.length + this.value.replace(/[^\n]+/g, '').length);"></textarea>
+                                            <textarea maxlength="1024" style="min-height: 170px; resize: none;" id="Textarea_Nouveau_Ticket" class="form-control input-sm" onblur="Fonction_Remplacement(this.value);" onkeyup="document.getElementById('Nombre_Caracteres_Nouveau_Ticket').innerHTML = (this.value.length + this.value.replace(/[^\n]+/g, '').length);"></textarea>
+                                            <span id="Nombre_Caracteres_Nouveau_Ticket">0</span>/1024
                                         </div>
                                     </div>
                                 </div>
@@ -115,35 +116,10 @@ class Messagerie_Creer_Ticket_Support extends \PageHelper {
                             <button class="btn btn-success btn-flat pull-right" type="button" onclick="Valider_Formulaire_Nouveau_Ticket();">
                                 Envoyer la demande
                             </button>
-
                         </div>
                     </form>
 
                 <?php } ?>
-            </div>
-            <div class="col-lg-4">
-
-                <table class="table table-condensed" style="border-collapse: collapse;">
-                    <tr>
-                        <td style="border-top: 0px;">
-                            Adresse Ip
-                        </td>
-                        <td style="border-top: 0px;">
-                            <?php echo $this->ipAdresse ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Tickets actifs
-                        </td>
-                        <td>
-                            <?php echo $nombreDiscussionOuverte; ?>
-                        </td>
-                    </tr>
-                </table>
-
-
-                <span id="Nombre_Caracteres_Nouveau_Ticket">0</span>/1024 caractères.
             </div>
             <script type="text/javascript">
                 function Fonction_Remplacement(montexte) {

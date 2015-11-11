@@ -37,7 +37,7 @@ class Messagerie extends \PageHelper {
 
                             <li class="active"><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/Messagerie_Boite_De_Reception.php', this)">Boîte de réception</a></li>
                             <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/Messagerie_Archives.php', this)">Discussions archivés</a></li>
-                            <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/Messagerie_Creer_Ticket_Support.php', this)">Créer un ticket support</a></li>
+                            <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/Messagerie_Creer_Ticket_Support.php', this)">Créer un ticket</a></li>
                             <?php if ($Moderateur_Tickets) { ?>
                                 <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/Messagerie_Ticket_Attente.php', this)">Tickets en attentes</a></li>
                             <?php } ?>
