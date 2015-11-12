@@ -31,7 +31,7 @@ class HistoryConnexion extends \PageHelper {
                 $Parametres_Listage_Connexions = $this->objConnection->prepare($Listage_Connexions);
                 $Parametres_Listage_Connexions->execute(array(
                     $this->objAccount->getId(),
-                    $_SESSION["Utilisateur"]));
+                    $this->objAccount->getLogin()));
                 $Parametres_Listage_Connexions->setFetchMode(\PDO::FETCH_OBJ);
                 $Nombre_De_Resultat_Listage_Connexions = $Parametres_Listage_Connexions->rowCount();
                 /* -------------------------------------------------------------------------- */
