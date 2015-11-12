@@ -1,0 +1,277 @@
+{% if arrObjSupportMessages|length > 0 and objSupportDiscussion != null %}
+
+    <script type="text/javascript" src="../../assets/js/jquery.inview/jquery.inview.min.js"></script>
+
+    <div class="row">
+        <div class="col-lg-3">
+
+
+            <table class="table table-condensed" style="margin-bottom: 0px; border-collapse: collapse;">
+                <tr>
+                    <td style="border-top: 0px;">Gérant</td>
+                    <td style="border-top: 0px;">{{ objAccountAdmin.getPseudoMessagerie }}</td>
+                </tr>
+                <tr>
+                    <td>Début</td> 
+                    <td>{{ getFormatedDateTime(objSupportDiscussion.getDate) }}</td> 
+                </tr>
+                <tr>
+                    <td>Message</td> 
+                    <td id="Nombre_De_Message">{{ (arrObjSupportMessages|length +1) }}</td>
+                </tr>
+                <tr>
+                    <td>Objet</td>
+                    <td>{{ objSupportObjet.getObjet }}</td>
+                </tr>
+            </table>
+
+            {% if objSupportDiscussion.getEstArchive != true %}
+                <div style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px;">
+                    <button type="button" class="btn btn-sm btn-flat btn-danger" style="width: 100%" onclick="DiscussionArchivage({{ objSupportDiscussion.getId }});">
+                        Archiver
+                    </button>
+                </div>
+            {% endif %}
+
+        </div>
+        <div class="col-lg-9">
+            <div class="box box-warning direct-chat direct-chat-danger" style="margin-bottom: 0px; border-top: 0px; border-bottom: 0px; border-collapse: collapse;">
+
+                <div class="box-body" style="min-height: 400px;">
+                    <div class="direct-chat-messages" id="Cadre_Fil_Discussion" style="min-height: 400px;">
+
+                        {% if objAccount.getId == currentAccount.getId %}
+                            <div class="direct-chat-msg right"style="margin-bottom: 18px;">
+                                <div class="direct-chat-info clearfix">
+
+                                    {% if objAccount.getId == currentAccount.getId %}
+                                        <span class="direct-chat-name pull-right">{{ objAccountAdmin.getPseudoMessagerie }}</span>
+                                    {% else %}
+                                        <span class="direct-chat-name pull-right">{{ objAccount.getPseudoMessagerie }}</span>
+                                    {% endif %}
+
+                                    <span class="direct-chat-timestamp pull-left">
+                                        {{ getFormatedDateTime(objSupportDiscussion.getDate) }}
+                                    </span>
+                                </div>
+                                <i class="material-icons md-icon-person md-38 pull-right"></i>
+                                <div class="direct-chat-text bg-red">
+                                    {{ objSupportDiscussion.getMessage|nl2br }}
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="direct-chat-msg"style="margin-bottom: 18px;">
+                                <div class="direct-chat-info clearfix">
+
+                                    {% if objAccount.getId == currentAccount.getId %}
+                                        <span class="direct-chat-name pull-left">{{ objAccountAdmin.getPseudoMessagerie }}</span>
+                                    {% else %}
+                                        <span class="direct-chat-name pull-left">{{ objAccount.getPseudoMessagerie }}</span>
+                                    {% endif %}
+
+                                    <span class="direct-chat-timestamp pull-right">
+                                        {{ getFormatedDateTime(objSupportDiscussion.getDate) }}
+                                    </span>
+                                </div>
+                                <i class="material-icons md-icon-person md-38 pull-left"></i>
+                                <div class="direct-chat-text bg-blue">
+                                    {{ objSupportDiscussion.getMessage|nl2br }}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% for objSupportMessages in arrObjSupportMessages %}
+
+                            {% if objSupportMessages.getIdCompte == currentAccount.getId %}
+
+                                <div class="direct-chat-msg right" id="Message_{{ objSupportMessages.getId }}" style="margin-bottom: 18px;">
+                                    <div class="direct-chat-info clearfix">
+                                        <span class="direct-chat-name pull-right">{{ currentAccount.getPseudoMessagerie }}</span>
+                                        <span class="direct-chat-timestamp pull-left">
+                                            {{ getFormatedDateTime(objSupportMessages.getDate) }}
+
+                                            {% if objSupportMessages.getEtat == etatLu %}
+                                                <div class="dateEtatChange" style="display: inline;"><i data-tooltip="Vu {{ getFormatedDateTime(objSupportMessages.getDatechangementEtat) }}" class="material-icons md-icon-done text-green"></i>
+                                                </div>
+                                            {% else %}
+                                                <div class="dateEtatChange" style="display: inline;">
+                                                </div>
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                    <i class="material-icons md-icon-person md-38 pull-right"></i>
+                                    <div class="direct-chat-text  bg-red">
+                                        {{ objSupportMessages.getMessage|nl2br }}
+                                    </div>
+                                </div>
+                            {% else %}
+
+                                <div class="direct-chat-msg" id="Message_{{ objSupportMessages.getId }}" style="margin-bottom: 18px;">
+
+                                    <div class="direct-chat-info clearfix">
+
+                                        {% if objAccount.getId == currentAccount.getId %}
+                                            <span class="direct-chat-name pull-left">{{ objAccountAdmin.getPseudoMessagerie }}</span>
+                                        {% else %}
+                                            <span class="direct-chat-name pull-left">{{ objAccount.getPseudoMessagerie }}</span>
+                                        {% endif %}
+
+                                        <span class="direct-chat-timestamp pull-right">
+                                            {{ getFormatedDateTime(objSupportMessages.getDate) }}
+
+                                            {% if objSupportMessages.getEtat == etatLu %}
+                                                <div class="dateEtatChange" style="display: inline;"><i data-tooltip="Vu {{ getFormatedDateTime(objSupportMessages.getDatechangementEtat) }}" class="material-icons md-icon-done text-green"></i>
+                                                </div>
+                                            {% else %}
+                                                <div class="dateEtatChange NonLu" style="display: inline;">
+                                                </div>
+                                            {% endif %}
+                                        </span>
+                                    </div>
+
+                                    <i class="material-icons md-icon-person md-38 pull-left"></i>
+                                    <div class="direct-chat-text bg-blue">
+                                        {{ objSupportMessages.getMessage|nl2br }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {% if objSupportDiscussion.getEstArchive != true %}
+                    <div class="box-footer">
+                        <form action="#" method="post">
+                            <div class="row">
+                                <div class="col-lg-10 col-md-9 col-xs-8">
+                                    <textarea id="Contenue_Reponse_Ticket" type="text" name="message" placeholder="Message..." class="form-control input-sm"></textarea>
+                                </div>
+                                <div class="col-lg-2 col-md-3 col-xs-4">
+                                    <button type="button" onclick="addMessage()" class="btn btn-primary btn-flat btn-sm" style="width: 100%">
+                                        Envoyer
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                {% endif %}                         
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var idCompte = "{{ objAccount.getId }}";
+        var idDiscussion = "{{ objSupportDiscussion.getId }}";
+
+        var objDiv = document.getElementById("Cadre_Fil_Discussion");
+        objDiv.scrollTop = objDiv.scrollHeight;
+
+
+        $('.dateEtatChange').bind('inview', function (event, isVisible) {
+
+            if ($(this).hasClass("NonLu")) {
+
+                if (isVisible) {
+                    $.ajax({
+                        type: "POST",
+                        url: "pages/Messagerie/ajax/ajaxMessageIsView.php",
+                        data: "idMessage=" + $(this).parent(".direct-chat-timestamp").parent(".direct-chat-info").parent(".direct-chat-msg").attr("id"),
+                        success: function (etat) {
+
+                            Actualisation_Messages_Sans_Boucle();
+                            $(this).removeClass("NonLu");
+
+                        }
+                    });
+                }
+            }
+        });
+
+        function DiscussionArchivage(idDiscussion) {
+
+            bootbox.dialog({
+                message: "Êtes vous sûr de vouloir archiver la discussion ?<br/>Le traitement de votre demande sera considéré comme terminé.",
+                animate: false,
+                className: "myBootBox",
+                title: "Confirmation de l'archivage",
+                buttons: {
+                    danger: {
+                        label: "Annuler",
+                        className: "btn-danger",
+                        callback: function () {
+
+                        }
+                    },
+                    success: {
+                        label: "Confirmer",
+                        className: "btn-primary",
+                        callback: function () {
+
+                            Barre_De_Statut("Archivage en cours...");
+                            Icone_Chargement(1);
+
+                            $.ajax({
+                                type: "POST",
+                                url: "pages/Messagerie/ajax/ajaxDiscussionArchivage.php",
+                                data: "idDiscussion=" + idDiscussion,
+                                success: function (msg) {
+
+                                    if (msg == "NON") {
+
+                                        Barre_De_Statut("Cette discussion ne vous appartient pas.");
+                                        Icone_Chargement(2);
+
+                                    } else {
+                                        Ajax_Appel_Messagerie("pages/Messagerie/MessagerieInbox.php");
+                                    }
+                                }
+                            });
+
+                        }
+                    }
+                }
+            });
+
+        }
+
+        function addMessage() {
+
+            Barre_De_Statut("Envoie du message...");
+            Icone_Chargement(1);
+            if ($("#Contenue_Reponse_Ticket").val() != "") {
+
+                displayLoadingChat();
+
+                $.ajax({
+                    type: "POST",
+                    url: "pages/Messagerie/ajax/ajaxMessageAdd.php",
+                    data: "idCompte=" + idCompte + "&idDiscussion=" + idDiscussion + "&message=" + $("#Contenue_Reponse_Ticket").val(),
+                    success: function (msg) {
+
+                        var json = JSON.parse(msg);
+
+                        $("#Cadre_Fil_Discussion").append('<div class="direct-chat-msg right" id="Message_' + json.id + '" style="margin-bottom: 18px;"><div class="direct-chat-info clearfix"><span class="direct-chat-name pull-right">{{ currentAccount.getPseudoMessagerie }}</span><span class="direct-chat-timestamp pull-left">' + json.date + '</span></div><i class="material-icons md-icon-person md-38 pull-right"></i><div class="direct-chat-text bg-red">' + json.message + '</div></div>');
+
+                        $("#Contenue_Reponse_Ticket").val("");
+                        $("#Cadre_Fil_Discussion").animate({scrollTop: $("#Cadre_Fil_Discussion")[0].scrollHeight}, 300);
+
+                        var nombre_tempo = parseInt($("#Nombre_De_Message").html());
+                        nombre_tempo++;
+                        $("#Nombre_De_Message").html(nombre_tempo);
+
+                        $("#Cadre_Fil_Discussion").animate({scrollTop: $("#Cadre_Fil_Discussion")[0].scrollHeight}, 1);
+
+                        Barre_De_Statut("Message envoyé");
+                        Icone_Chargement(0);
+                        hideLoadingChat();
+
+                    }
+                });
+            } else {
+                Barre_De_Statut("Message vide.");
+                Icone_Chargement(2);
+                return false;
+            }
+        }
+    </script>
+{% endif %}
