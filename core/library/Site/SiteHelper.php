@@ -21,6 +21,13 @@ class SiteHelper {
     }
     
     /**
+     * @return \Site\Repository\ItemshopCategoriesRepository
+     */
+    public static function getItemshopCategoriesRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\ItemshopCategories');
+    }
+    
+    /**
      * @return \Site\Repository\ChangementMotDePasseRepository
      */
     public static function getChangementMotDePasseRepository() {
