@@ -27,7 +27,7 @@
 
             {% if objSupportDiscussion.getEstArchive != true %}
                 <div style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px;">
-                    <button type="button" class="btn btn-sm btn-flat btn-danger" style="width: 100%" onclick="DiscussionArchivage({{ objSupportDiscussion.getId }});">
+                    <button type="button" class="btn btn-sm btn-flat btn-danger" style="width: 100%" onclick="DiscussionArchivage('{{ encryptForUrl(objSupportDiscussion.getId) }}');">
                         Archiver
                     </button>
                 </div>
@@ -161,118 +161,118 @@
 
     <script type="text/javascript">
 
-            var idCompte = "{{ currentAccount.getId }}";
-            var idDiscussion = "{{ objSupportDiscussion.getId }}";
+        var idCompte = "{{ currentAccount.getId }}";
+        var idDiscussion = "{{ objSupportDiscussion.getId }}";
 
-            var objDiv = document.getElementById("Cadre_Fil_Discussion");
-            objDiv.scrollTop = objDiv.scrollHeight;
+        var objDiv = document.getElementById("Cadre_Fil_Discussion");
+        objDiv.scrollTop = objDiv.scrollHeight;
 
 
-            $('.dateEtatChange').bind('inview', function (event, isVisible) {
+        $('.dateEtatChange').bind('inview', function (event, isVisible) {
 
-                if ($(this).hasClass("NonLu")) {
+            if ($(this).hasClass("NonLu")) {
 
-                    if (isVisible) {
-                        $.ajax({
-                            type: "POST",
-                            url: "pages/Messagerie/ajax/ajaxMessageIsView.php",
-                            data: "idMessage=" + $(this).parent(".direct-chat-timestamp").parent(".direct-chat-info").parent(".direct-chat-msg").attr("id"),
-                            success: function (etat) {
+                if (isVisible) {
+                    $.ajax({
+                        type: "POST",
+                        url: "pages/Messagerie/ajax/ajaxMessageIsView.php",
+                        data: "idMessage=" + $(this).parent(".direct-chat-timestamp").parent(".direct-chat-info").parent(".direct-chat-msg").attr("id"),
+                        success: function (etat) {
 
-                                Actualisation_Messages_Sans_Boucle();
-                                $(this).removeClass("NonLu");
+                            Actualisation_Messages_Sans_Boucle();
+                            $(this).removeClass("NonLu");
 
-                            }
-                        });
+                        }
+                    });
+                }
+            }
+        });
+
+        function DiscussionArchivage(idDiscussion) {
+
+            bootbox.dialog({
+                message: "Êtes vous sûr de vouloir archiver la discussion ?<br/>Le traitement de votre demande sera considéré comme terminé.",
+                animate: false,
+                className: "myBootBox",
+                title: "Confirmation de l'archivage",
+                buttons: {
+                    danger: {
+                        label: "Annuler",
+                        className: "btn-danger",
+                        callback: function () {
+
+                        }
+                    },
+                    success: {
+                        label: "Confirmer",
+                        className: "btn-primary",
+                        callback: function () {
+
+                            Barre_De_Statut("Archivage en cours...");
+                            Icone_Chargement(1);
+
+                            $.ajax({
+                                type: "POST",
+                                url: "pages/Messagerie/ajax/ajaxDiscussionArchivage.php",
+                                data: {"idDiscussion": idDiscussion},
+                                success: function (msg) {
+
+                                    if (msg == "NON") {
+
+                                        Barre_De_Statut("Cette discussion ne vous appartient pas.");
+                                        Icone_Chargement(2);
+
+                                    } else {
+                                        Ajax_Appel_Messagerie("pages/Messagerie/MessagerieInbox.php");
+                                    }
+                                }
+                            });
+
+                        }
                     }
                 }
             });
 
-            function DiscussionArchivage(idDiscussion) {
+        }
 
-                bootbox.dialog({
-                    message: "Êtes vous sûr de vouloir archiver la discussion ?<br/>Le traitement de votre demande sera considéré comme terminé.",
-                    animate: false,
-                    className: "myBootBox",
-                    title: "Confirmation de l'archivage",
-                    buttons: {
-                        danger: {
-                            label: "Annuler",
-                            className: "btn-danger",
-                            callback: function () {
+        function addMessage() {
 
-                            }
-                        },
-                        success: {
-                            label: "Confirmer",
-                            className: "btn-primary",
-                            callback: function () {
+            Barre_De_Statut("Envoie du message...");
+            Icone_Chargement(1);
+            if ($("#Contenue_Reponse_Ticket").val() != "") {
 
-                                Barre_De_Statut("Archivage en cours...");
-                                Icone_Chargement(1);
+                displayLoadingChat();
 
-                                $.ajax({
-                                    type: "POST",
-                                    url: "pages/Messagerie/ajax/ajaxDiscussionArchivage.php",
-                                    data: "idDiscussion=" + idDiscussion,
-                                    success: function (msg) {
+                $.ajax({
+                    type: "POST",
+                    url: "pages/Messagerie/ajax/ajaxMessageAdd.php",
+                    data: "idCompte=" + idCompte + "&idDiscussion=" + idDiscussion + "&message=" + $("#Contenue_Reponse_Ticket").val(),
+                    success: function (msg) {
 
-                                        if (msg == "NON") {
+                        var json = JSON.parse(msg);
 
-                                            Barre_De_Statut("Cette discussion ne vous appartient pas.");
-                                            Icone_Chargement(2);
+                        $("#Cadre_Fil_Discussion").append('<div class="direct-chat-msg right" id="Message_' + json.id + '" style="margin-bottom: 18px;"><div class="direct-chat-info clearfix"><span class="direct-chat-name pull-right">{{ currentAccount.getPseudoMessagerie }}</span><span class="direct-chat-timestamp pull-left">' + json.date + '</span></div><i class="material-icons md-icon-person md-38 pull-right"></i><div class="direct-chat-text bg-red">' + json.message + '</div></div>');
 
-                                        } else {
-                                            Ajax_Appel_Messagerie("pages/Messagerie/MessagerieInbox.php");
-                                        }
-                                    }
-                                });
+                        $("#Contenue_Reponse_Ticket").val("");
+                        $("#Cadre_Fil_Discussion").animate({scrollTop: $("#Cadre_Fil_Discussion")[0].scrollHeight}, 300);
 
-                            }
-                        }
+                        var nombre_tempo = parseInt($("#Nombre_De_Message").html());
+                        nombre_tempo++;
+                        $("#Nombre_De_Message").html(nombre_tempo);
+
+                        $("#Cadre_Fil_Discussion").animate({scrollTop: $("#Cadre_Fil_Discussion")[0].scrollHeight}, 1);
+
+                        Barre_De_Statut("Message envoyé");
+                        Icone_Chargement(0);
+                        hideLoadingChat();
+
                     }
                 });
-
+            } else {
+                Barre_De_Statut("Message vide.");
+                Icone_Chargement(2);
+                return false;
             }
-
-            function addMessage() {
-
-                Barre_De_Statut("Envoie du message...");
-                Icone_Chargement(1);
-                if ($("#Contenue_Reponse_Ticket").val() != "") {
-
-                    displayLoadingChat();
-
-                    $.ajax({
-                        type: "POST",
-                        url: "pages/Messagerie/ajax/ajaxMessageAdd.php",
-                        data: "idCompte=" + idCompte + "&idDiscussion=" + idDiscussion + "&message=" + $("#Contenue_Reponse_Ticket").val(),
-                        success: function (msg) {
-
-                            var json = JSON.parse(msg);
-
-                            $("#Cadre_Fil_Discussion").append('<div class="direct-chat-msg right" id="Message_' + json.id + '" style="margin-bottom: 18px;"><div class="direct-chat-info clearfix"><span class="direct-chat-name pull-right">{{ currentAccount.getPseudoMessagerie }}</span><span class="direct-chat-timestamp pull-left">' + json.date + '</span></div><i class="material-icons md-icon-person md-38 pull-right"></i><div class="direct-chat-text bg-red">' + json.message + '</div></div>');
-
-                            $("#Contenue_Reponse_Ticket").val("");
-                            $("#Cadre_Fil_Discussion").animate({scrollTop: $("#Cadre_Fil_Discussion")[0].scrollHeight}, 300);
-
-                            var nombre_tempo = parseInt($("#Nombre_De_Message").html());
-                            nombre_tempo++;
-                            $("#Nombre_De_Message").html(nombre_tempo);
-
-                            $("#Cadre_Fil_Discussion").animate({scrollTop: $("#Cadre_Fil_Discussion")[0].scrollHeight}, 1);
-
-                            Barre_De_Statut("Message envoyé");
-                            Icone_Chargement(0);
-                            hideLoadingChat();
-
-                        }
-                    });
-                } else {
-                    Barre_De_Statut("Message vide.");
-                    Icone_Chargement(2);
-                    return false;
-                }
-            }
+        }
     </script>
 {% endif %}

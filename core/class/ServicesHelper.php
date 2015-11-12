@@ -77,6 +77,7 @@ class ServicesHelper {
             $twig->addExtension(new StringFunctionExtension());
             $twig->addExtension(new DateFunctionExtension());
             $twig->addExtension(new Twig_Extension_Debug());
+            $twig->addExtension(new EncryptExtension());
             
             $twig->addGlobal('session', $container['session']);
             $twig->addGlobal('request', $container['request']);
