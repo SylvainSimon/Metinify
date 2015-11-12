@@ -20,7 +20,7 @@ class SQL_Retirer_Vente extends \ScriptHelper {
                              LIMIT 1";
         $Parametres_Verification_Donnees = $this->objConnection->prepare($Verification_Donnees);
         $Parametres_Verification_Donnees->execute(array(
-            $_SESSION["ID"],
+            $this->objAccount->getId(),
             $ID_Marche_Personnage));
         $Parametres_Verification_Donnees->setFetchMode(\PDO::FETCH_OBJ);
         $Nombre_De_Resultat = $Parametres_Verification_Donnees->rowCount();
@@ -41,7 +41,7 @@ class SQL_Retirer_Vente extends \ScriptHelper {
                                  AND id = ?
                                  LIMIT 1";
             $Parametres_Verification_Emplacement = $this->objConnection->prepare($Verification_Emplacement);
-            $Parametres_Verification_Emplacement->execute(array($_SESSION["ID"]));
+            $Parametres_Verification_Emplacement->execute(array($this->objAccount->getId()));
             $Parametres_Verification_Emplacement->setFetchMode(\PDO::FETCH_OBJ);
             $Nombre_De_Resultat_Verification_Emplacement = $Parametres_Verification_Emplacement->rowCount();
             /* -------------------------------------------------------------------------- */
@@ -73,7 +73,7 @@ class SQL_Retirer_Vente extends \ScriptHelper {
                     $Parametres_Update_Player_Index = $this->objConnection->prepare($Update_Player_Index);
                     $Parametres_Update_Player_Index->execute(array(
                         $ID_Personnage,
-                        $_SESSION["ID"]
+                        $this->objAccount->getId()
                     ));
                     /* ----------------------------------------------------------- */
 
@@ -85,7 +85,7 @@ class SQL_Retirer_Vente extends \ScriptHelper {
 
                     $Parametres_Update_Player = $this->objConnection->prepare($Update_Player);
                     $Parametres_Update_Player->execute(array(
-                        $_SESSION["ID"],
+                        $this->objAccount->getId(),
                         $ID_Personnage
                     ));
                     /* ----------------------------------------------------------- */

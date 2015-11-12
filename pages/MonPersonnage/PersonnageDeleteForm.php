@@ -23,7 +23,7 @@ class PersonnageDeleteForm extends \PageHelper {
         $Parametres_Vérification_Doublon = $this->objConnection->prepare($Vérification_Doublon);
         $Parametres_Vérification_Doublon->execute(
                 array(
-                    ':id_compte' => $_SESSION["ID"],
+                    ':id_compte' => $this->objAccount->getId(),
                     ':id_personnage' => $_GET["id_perso"],
                     ':ip' => $Ip
                 )
@@ -44,7 +44,7 @@ class PersonnageDeleteForm extends \PageHelper {
             $Parametres_Verification_Proprietaire = $this->objConnection->prepare($Verification_Proprietaire);
             $Parametres_Verification_Proprietaire->execute(array(
                 $_GET["id_perso"],
-                $_SESSION["ID"]));
+                $this->objAccount->getId()));
             $Parametres_Verification_Proprietaire->setFetchMode(\PDO::FETCH_OBJ);
             $Nombre_De_Resultat_Verification_Proprietaire = $Parametres_Verification_Proprietaire->rowCount();
             /* ---------------------------------------------------------------------------------------------- */
@@ -111,7 +111,7 @@ class PersonnageDeleteForm extends \PageHelper {
                         $.ajax({
                             type: "POST",
                             url: "pages/MonPersonnage/ajax/ajaxPersonnageDeleteSendEmail.php",
-                            data: "id_compte=<?= $_SESSION["ID"]; ?>&id_personnage=<?= $_GET["id_perso"]; ?>",
+                            data: "id_compte=<?= $this->objAccount->getId(); ?>&id_personnage=<?= $_GET["id_perso"]; ?>",
                             success: function (msg) {
 
                                 try {

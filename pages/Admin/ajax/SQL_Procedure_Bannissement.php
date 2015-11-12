@@ -91,7 +91,7 @@ class SQL_Procedure_Bannissement extends \ScriptHelper {
                 ':id_compte' => $id_compte,
                 ':raison_bannissement' => $id_raison,
                 ':commentaire_bannissement' => $commentaire,
-                ':id_compte_gm' => $_SESSION["ID"],
+                ':id_compte_gm' => $this->objAccount->getId(),
                 ':ip_gm' => $this->objConnection_Ip,
                 ':duree' => $Donnees_Recuperation_Raison->sanction,
                 ':definitif' => $Definitif,

@@ -13,7 +13,7 @@ class ajaxVerification extends \PageHelper {
 
                 $Ip = $_SERVER['REMOTE_ADDR'];
                 $Id_Site = $_POST['id_site'];
-                $Id_Compte = $_SESSION['ID'];
+                $Id_Compte = $this->objAccount->getId();
 
                 $Verification_Vote = "SELECT id AS nombre
                       FROM site.votes_logs
@@ -52,7 +52,7 @@ class ajaxVerification extends \PageHelper {
 
                     $Parametres_Insertion = $this->objConnection->prepare($Insertion_Logs);
                     $Parametres_Insertion->execute(array(
-                        ':id_compte' => $_SESSION["ID"],
+                        ':id_compte' => $this->objAccount->getId(),
                         ':ip' => $Ip,
                         ':id_site_vote' => $Id_Site));
                     /* -------------------------------------------------------------------------------------- */
@@ -65,7 +65,7 @@ class ajaxVerification extends \PageHelper {
 
                     $Parametres_Update_Monnaies = $this->objConnection->prepare($Update_Monnaies);
                     $Parametres_Update_Monnaies->execute(array(
-                        $_SESSION["ID"]));
+                        $this->objAccount->getId()));
                     /* ----------------------------------------------------------------------------- */
 
                     $_SESSION['VamoNaies'] = ($_SESSION['VamoNaies'] + 20);

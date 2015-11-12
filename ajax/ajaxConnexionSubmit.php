@@ -8,97 +8,47 @@ class ajaxConnexionSubmit extends \ScriptHelper {
 
     public function run() {
 
-        $this->objConnection_Utilisateur = $_POST['Utilisateur'];
-        $this->objConnection_Mot_De_Passe = $_POST['Mot_De_Passe'];
-        $this->objConnection_Resultat = "";
-        $this->objConnection_Ip = $_SERVER['REMOTE_ADDR'];
+        global $session;
+        global $request;
+        $em = \Shared\DoctrineHelper::getEntityManager();
 
-        /* ------------------------ Vérification Données ---------------------------- */
-        $Verification_Donnees = "SELECT * FROM account.account
-                                  WHERE login = ?
-                                  AND password = password(?)
-                                  LIMIT 1";
-        $Parametres_Verification_Donnees = $this->objConnection->prepare($Verification_Donnees);
-        $Parametres_Verification_Donnees->execute(array(
-            $this->objConnection_Utilisateur,
-            $this->objConnection_Mot_De_Passe));
-        $Parametres_Verification_Donnees->setFetchMode(\PDO::FETCH_OBJ);
-        $Nombre_De_Resultat = $Parametres_Verification_Donnees->rowCount();
-        /* -------------------------------------------------------------------------- */
+        $login = $request->request->get("Utilisateur");
+        $password = $request->request->get("Mot_De_Passe");
 
-        if ($Nombre_De_Resultat != 0) {
+        $objAccount = \Account\AccountHelper::getAccountRepository()->findAccountByLoginAndPassword($login, $password);
 
-            $Donnees_Connexion = $Parametres_Verification_Donnees->fetch();
+        if ($objAccount !== null) {
 
-            /* ------------------------ Vérification Données ---------------------------- */
-            $Verification_Droits = "SELECT * 
-                            FROM site.administration_users
-                            WHERE id_compte = ?
-                            AND pannel_admin = 1
-                            LIMIT 1";
-            $Parametres_Verification_Droits = $this->objConnection->prepare($Verification_Droits);
-            $Parametres_Verification_Droits->execute(
-                    array(
-                        $Donnees_Connexion->id
-                    )
-            );
-            $Parametres_Verification_Droits->setFetchMode(\PDO::FETCH_OBJ);
-            $Nombre_De_Resultat_Verification_Droits = $Parametres_Verification_Droits->rowCount();
-            /* -------------------------------------------------------------------------- */
+            $session->set("ID", $objAccount->getId());
+            $session->set("Utilisateur", $objAccount->getLogin());
+            $session->set("Email", $objAccount->getEmail());
+            $session->set("VamoNaies", $objAccount->getCash());
+            $session->set("TanaNaies", $objAccount->getMileage());
+            $session->set("Pseudo_Messagerie", $objAccount->getPseudoMessagerie());
 
-            session_write_close();
-            session_start();
+            $objAdministrationUser = \Site\SiteHelper::getAdministrationUsersRepository()->findAdministrationUser($objAccount->getId());
 
-            $_SESSION['ID'] = $Donnees_Connexion->id;
-            $_SESSION['Utilisateur'] = $Donnees_Connexion->login;
-            $_SESSION['Email'] = $Donnees_Connexion->email;
-            $_SESSION['VamoNaies'] = $Donnees_Connexion->cash;
-            $_SESSION['TanaNaies'] = $Donnees_Connexion->mileage;
-            $_SESSION['Date_de_creation'] = $Donnees_Connexion->create_time;
-            $_SESSION['Status'] = $Donnees_Connexion->status;
-            $_SESSION['Pseudo_Messagerie'] = $Donnees_Connexion->pseudo_messagerie;
+            if ($objAdministrationUser !== null) {
 
-            $this->objConnection_Resultat = "1";
-
-            if ($Nombre_De_Resultat_Verification_Droits != 0) {
-
-                mt_srand((float) microtime() * 1000000);
-                $Nombre_Unique = mt_rand(0, 100000000000);
-
-                $_SESSION['Administration_PannelAdmin'] = true;
-                $_SESSION['Administration_PannelAdmin_Jeton'] = $Nombre_Unique;
-
-                /* ------------------------------------- Insertion Jetons Verif --------------------------------------- */
-                $Insertion_Jetons_Verif = "INSERT INTO site.administration_pannel_jetons (id_compte, jeton, date, ip) 
-                                               VALUES (:id_compte, :jeton, NOW(), :ip)";
-
-                $Parametres_Insertion_Jetons_Verif = $this->objConnection->prepare($Insertion_Jetons_Verif);
-                $Parametres_Insertion_Jetons_Verif->execute(array(
-                    ':id_compte' => $Donnees_Connexion->id,
-                    ':jeton' => $Nombre_Unique,
-                    ':ip' => $this->objConnection_Ip));
-                /* ---------------------------------------------------------------------------------------------------- */
+                $session->set("Administration_PannelAdmin", true);
 
                 $Tableau_Retour_Json = array(
                     'result' => "1",
                     'reasons' => "",
                     'withRefresh' => 1,
-                    'id' => $Donnees_Connexion->id,
+                    'id' => $objAccount->getId(),
                     'data' => '<div style="position: relative;top: 45%;width: 431px; margin: 0 auto 0 auto;"><h2>Chargement de l\'administration...</h2></div>'
                 );
             } else {
-
                 $Tableau_Retour_Json = array(
                     'result' => "1",
                     'reasons' => "",
                     'withRefresh' => 0,
-                    'id' => $Donnees_Connexion->id,
+                    'id' => $objAccount->getId(),
                     'data' => ""
                 );
             }
         } else {
-
-            $this->objConnection_Resultat = "0";
 
             $Tableau_Retour_Json = array(
                 'result' => "2",
@@ -106,35 +56,23 @@ class ajaxConnexionSubmit extends \ScriptHelper {
             );
         }
 
-        if ($this->objConnection_Resultat == "1") {
-            /* -------------------------------------------- Insertion logs ----------------- */
-            $Insertion_Logs = "INSERT INTO site.logs_connexion (id_compte, compte, ip, date, resultat) 
-                          VALUES (:id_compte, :compte, :ip, NOW(), :resultat)";
 
-            $Parametres_Insertion = $this->objConnection->prepare($Insertion_Logs);
-            $Parametres_Insertion->execute(array(
-                ':id_compte' => $_SESSION['ID'],
-                ':compte' => $this->objConnection_Utilisateur,
-                ':ip' => $this->objConnection_Ip,
-                ':resultat' => $this->objConnection_Resultat));
-            /* ----------------------------------------------------------------------------- */
+        $objLogConnexion = new \Site\Entity\LogsConnexion();
+        $objLogConnexion->setCompte($login);
+        $objLogConnexion->setIp($this->ipAdresse);
+        $objLogConnexion->setDate(new \DateTime(date("Y-m-d H:i:s")));
+
+        if ($session->get("ID") !== null) {
+            $objLogConnexion->setResultat(1);
+            $objLogConnexion->setIdCompte($session->get("ID"));
         } else {
-
-            /* -------------------------------------------- Insertion logs ----------------- */
-            $Insertion_Logs = "INSERT INTO site.logs_connexion (compte, ip, date, resultat) 
-                          VALUES (:compte, :ip, NOW(), :resultat)";
-
-            $Parametres_Insertion = $this->objConnection->prepare($Insertion_Logs);
-            $Parametres_Insertion->execute(array(
-                ':compte' => $this->objConnection_Utilisateur,
-                ':ip' => $this->objConnection_Ip,
-                ':resultat' => $this->objConnection_Resultat));
-            /* ----------------------------------------------------------------------------- */
+            $objLogConnexion->setResultat(0);
         }
-?>
-        <?php echo json_encode($Tableau_Retour_Json); ?>
-        <?php
+        
+        $em->persist($objLogConnexion);
+        $em->flush();
 
+        echo json_encode($Tableau_Retour_Json);
     }
 
 }

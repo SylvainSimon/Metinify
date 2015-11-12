@@ -24,7 +24,7 @@ class Bannissement extends \PageHelper {
                               WHERE bannissements_actifs.id_compte = ?
                               LIMIT 1";
         $Parametres_Recuperation_Bannissement = $this->objConnection->prepare($Recuperation_Bannissement);
-        $Parametres_Recuperation_Bannissement->execute(array($_SESSION["ID"]));
+        $Parametres_Recuperation_Bannissement->execute(array($this->objAccount->getId()));
         $Parametres_Recuperation_Bannissement->setFetchMode(\PDO::FETCH_OBJ);
         $Nombre_De_Resultat_Recuperation_Bannissement = $Parametres_Recuperation_Bannissement->rowCount();
         /* -------------------------------------------------------------------------------- */

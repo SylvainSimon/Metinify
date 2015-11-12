@@ -10,8 +10,8 @@ class ItemShopDetails extends \PageHelper {
 
     public function run() {
         ?>
-        <?php $Sauvegarder_ID = $_SESSION['ID']; ?>
-        <?php $Sauvegarder_Login = $_SESSION['Utilisateur']; ?>
+        <?php $Sauvegarder_ID = $this->objAccount->getId(); ?>
+        <?php $Sauvegarder_Login = $this->objAccount->getLogin(); ?>
 
 
         <?php

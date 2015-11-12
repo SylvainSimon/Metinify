@@ -40,7 +40,7 @@ class SQL_Procedure_Achat_Personnage extends \ScriptHelper {
                                   LIMIT 1";
             $Parametres_Recuperation_Monnaies = $this->objConnection->prepare($Recuperation_Monnaies);
             $Parametres_Recuperation_Monnaies->execute(array(
-                $_SESSION["ID"]));
+                $this->objAccount->getId()));
             $Parametres_Recuperation_Monnaies->setFetchMode(\PDO::FETCH_OBJ);
             $Donnees_Recuperation_Monnaies = $Parametres_Recuperation_Monnaies->fetch();
             /* -------------------------------------------------------------------------- */
@@ -97,7 +97,7 @@ class SQL_Procedure_Achat_Personnage extends \ScriptHelper {
                                              WHERE id = ?
                                              LIMIT 1";
                     $Parametres_Verification_Emplacement = $this->objConnection->prepare($Verification_Emplacement);
-                    $Parametres_Verification_Emplacement->execute(array($_SESSION["ID"]));
+                    $Parametres_Verification_Emplacement->execute(array($this->objAccount->getId()));
                     $Parametres_Verification_Emplacement->setFetchMode(\PDO::FETCH_OBJ);
                     $Nombre_De_Resultat_Verification_Emplacement = $Parametres_Verification_Emplacement->rowCount();
 
@@ -155,7 +155,7 @@ class SQL_Procedure_Achat_Personnage extends \ScriptHelper {
 
                                     $Parametres_Update_Monnaies_Acheteur = $this->objConnection->prepare($Update_Monnaies_Acheteur);
                                     $Parametres_Update_Monnaies_Acheteur->execute(array(
-                                        $_SESSION["ID"]
+                                        $this->objAccount->getId()
                                     ));
                                     /* ----------------------------------------------------------- */
                                 } else if ($Devise_Prix == 2) {
@@ -181,7 +181,7 @@ class SQL_Procedure_Achat_Personnage extends \ScriptHelper {
 
                                     $Parametres_Update_Monnaies_Acheteur = $this->objConnection->prepare($Update_Monnaies_Acheteur);
                                     $Parametres_Update_Monnaies_Acheteur->execute(array(
-                                        $_SESSION["ID"]
+                                        $this->objAccount->getId()
                                     ));
                                     /* ----------------------------------------------------------- */
                                 }
@@ -199,8 +199,8 @@ class SQL_Procedure_Achat_Personnage extends \ScriptHelper {
 
                                 $Parametres_Insertion = $this->objConnection->prepare($Insertion_Logs);
                                 $Parametres_Insertion->execute(array(
-                                    ':id_compte' => $_SESSION['ID'],
-                                    ':compte' => $_SESSION['Utilisateur'],
+                                    ':id_compte' => $this->objAccount->getId(),
+                                    ':compte' => $this->objAccount->getLogin(),
                                     ':vnum_item' => '999999999',
                                     ':item' => 'Personnage',
                                     ':quantite' => '1',
@@ -217,7 +217,7 @@ class SQL_Procedure_Achat_Personnage extends \ScriptHelper {
                                 $Parametres_Insertion_Logs_Marche = $this->objConnection->prepare($Insertion_Logs_Marche);
                                 $Parametres_Insertion_Logs_Marche->execute(array(
                                     ':id_vendeur' => $ID_Proprietaire,
-                                    ':id_acheteur' => $_SESSION["ID"],
+                                    ':id_acheteur' => $this->objAccount->getId(),
                                     ':id_personnage' => $ID_Personnage,
                                     ':prix' => $Prix_Article,
                                     ':devise' => $Devise_Prix,
@@ -234,7 +234,7 @@ class SQL_Procedure_Achat_Personnage extends \ScriptHelper {
                                 $Parametres_Update_Player_Index_Acheteur = $this->objConnection->prepare($Update_Player_Index_Acheteur);
                                 $Parametres_Update_Player_Index_Acheteur->execute(array(
                                     $ID_Personnage,
-                                    $_SESSION["ID"]
+                                    $this->objAccount->getId()
                                 ));
                                 /* ----------------------------------------------------------- */
 
@@ -258,7 +258,7 @@ class SQL_Procedure_Achat_Personnage extends \ScriptHelper {
 
                                 $Parametres_Update_Player = $this->objConnection->prepare($Update_Player);
                                 $Parametres_Update_Player->execute(array(
-                                    $_SESSION["ID"],
+                                    $this->objAccount->getId(),
                                     $ID_Personnage
                                 ));
                                 /* ----------------------------------------------------------- */

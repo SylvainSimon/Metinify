@@ -23,7 +23,7 @@ class ajaxRepairePosition extends \ScriptHelper {
         $Parametres_Verification_Donnees = $this->objConnection->prepare($Verification_Donnees);
         $Parametres_Verification_Donnees->execute(array(
             $Id_Personnage,
-            $_SESSION["ID"]));
+            $this->objAccount->getId()));
         $Parametres_Verification_Donnees->setFetchMode(\PDO::FETCH_OBJ);
         $Nombre_De_Resultat = $Parametres_Verification_Donnees->rowCount();
         /* -------------------------------------------------------------------------- */
@@ -36,7 +36,7 @@ class ajaxRepairePosition extends \ScriptHelper {
                      LIMIT 1";
             $Parametres_Selection_Empire = $this->objConnection->prepare($Selection_Empire);
             $Parametres_Selection_Empire->execute(array(
-                $_SESSION["ID"]));
+                $this->objAccount->getId()));
             $Parametres_Selection_Empire->setFetchMode(\PDO::FETCH_OBJ);
             $Nombre_De_Resultat_Selection_Empire = $Parametres_Selection_Empire->rowCount();
 
@@ -86,7 +86,7 @@ class ajaxRepairePosition extends \ScriptHelper {
                 $Parametres_Insertion = $this->objConnection->prepare($Insertion_Logs);
                 $Parametres_Insertion->execute(array(
                     ':id_perso' => $Id_Personnage,
-                    ':id_compte' => $_SESSION["ID"],
+                    ':id_compte' => $this->objAccount->getId(),
                     ':map_index' => $map,
                     ':ip' => $Ip));
                 /* ----------------------------------------------------------------------------- */

@@ -25,7 +25,7 @@ class Marche_Vendre_Personnage extends \PageHelper {
                           ORDER by level DESC
                           LIMIT 4";
         $Parametres_Liste_Personnages = $this->objConnection->prepare($Liste_Personnages);
-        $Parametres_Liste_Personnages->execute(array($_SESSION["ID"]));
+        $Parametres_Liste_Personnages->execute(array($this->objAccount->getId()));
         $Parametres_Liste_Personnages->setFetchMode(\PDO::FETCH_OBJ);
         $Nombre_De_Resultat = $Parametres_Liste_Personnages->rowCount();
 

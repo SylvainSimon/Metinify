@@ -21,7 +21,7 @@ class PersonnageRenameForm extends \PageHelper {
         $Parametres_Verification_Proprietaire = $this->objConnection->prepare($Verification_Proprietaire);
         $Parametres_Verification_Proprietaire->execute(array(
             $_GET["id_perso"],
-            $_SESSION["ID"]));
+            $this->objAccount->getId()));
         $Parametres_Verification_Proprietaire->setFetchMode(\PDO::FETCH_OBJ);
         $Nombre_De_Resultat_Verification_Proprietaire = $Parametres_Verification_Proprietaire->rowCount();
         /* ---------------------------------------------------------------------------------------------- */

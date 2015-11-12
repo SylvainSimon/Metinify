@@ -30,7 +30,7 @@ class SQL_Mettre_En_Vente extends \ScriptHelper {
             $Parametres_Verification_Donnees = $this->objConnection->prepare($Verification_Donnees);
             $Parametres_Verification_Donnees->execute(array(
                 $ID_Personnage,
-                $_SESSION["ID"]));
+                $this->objAccount->getId()));
             $Parametres_Verification_Donnees->setFetchMode(\PDO::FETCH_OBJ);
             $Nombre_De_Resultat = $Parametres_Verification_Donnees->rowCount();
             /* -------------------------------------------------------------------------- */
@@ -44,7 +44,7 @@ class SQL_Mettre_En_Vente extends \ScriptHelper {
                             LIMIT 1";
                 $Parametres_Selection_Index = $this->objConnection->prepare($Selection_Index);
                 $Parametres_Selection_Index->execute(array(
-                    $_SESSION["ID"]));
+                    $this->objAccount->getId()));
                 $Parametres_Selection_Index->setFetchMode(\PDO::FETCH_OBJ);
                 $Donnees_Selection_Index = $Parametres_Selection_Index->fetch();
                 /* -------------------------------------------------------------------------- */
@@ -68,7 +68,7 @@ class SQL_Mettre_En_Vente extends \ScriptHelper {
 
                     $Parametres_Insertion_Marche_Personnage = $this->objConnection->prepare($Insertion_Marche_Personnage);
                     $Parametres_Insertion_Marche_Personnage->execute(array(
-                        ':id_proprietaire' => $_SESSION["ID"],
+                        ':id_proprietaire' => $this->objAccount->getId(),
                         ':id_personnage' => $ID_Personnage,
                         ':pid' => $PID));
                     /* ------------------------------------------------------------------------------------------------------------ */
@@ -82,7 +82,7 @@ class SQL_Mettre_En_Vente extends \ScriptHelper {
                 LIMIT 1";
 
                     $Parametres_Detachement_Personnage = $this->objConnection->prepare($Detachement_Personnage);
-                    $Parametres_Detachement_Personnage->execute(array($_SESSION["ID"]));
+                    $Parametres_Detachement_Personnage->execute(array($this->objAccount->getId()));
                     /* ----------------------------------------------------------- */
 
                     /* ----------------- Update Email --------------------- */
@@ -117,7 +117,7 @@ class SQL_Mettre_En_Vente extends \ScriptHelper {
 
                     $Parametres_Insertion_Logs_Marche = $this->objConnection->prepare($Insertion_Logs_Marche);
                     $Parametres_Insertion_Logs_Marche->execute(array(
-                        ':id_compte' => $_SESSION["ID"],
+                        ':id_compte' => $this->objAccount->getId(),
                         ':id_personnage' => $ID_Personnage,
                         ':prix' => $Prix_Article,
                         ':devise' => $Id_Devise,

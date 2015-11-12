@@ -148,7 +148,7 @@ class SQL_Generation_Liste extends \ScriptHelper {
                         
                         <?php echo htmlentities($Donnees_Recuperation_Articles->designation); ?>
                         
-                        <?php if ($Donnees_Recuperation_Articles->id_proprietaire == $_SESSION["ID"]) { ?>
+                        <?php if ($Donnees_Recuperation_Articles->id_proprietaire == $this->objAccount->getId()) { ?>
                             <img data-tooltip="Annuler la vente de <?= $Donnees_Recuperation_Articles->name; ?>" onclick="Retirer_De_La_Vente(<?= $Donnees_Recuperation_Articles->id_marche_personnage; ?>)" class="Bouton_Supprimer_Vente" src="../../images/invalid.gif" width="12" />
                         <?php } ?>
                         <div class="Level_Personnage">Niveau <?= $Donnees_Recuperation_Articles->level; ?></div>

@@ -19,7 +19,7 @@ class IndexWebsite extends PageHelper {
         global $request;
         global $config;
         global $session;
-       
+               
         //$this->objConnection;
         //$this->objConfig;
         //var_dump($this->objSession->get("ID"));

@@ -20,7 +20,7 @@ class Messages_Prives extends \PageHelper {
                             WHERE id_compte = :id_compte
                             LIMIT 1";
             $Parametres_Recuperation_Droits = $this->objConnection->prepare($Recuperation_Droits);
-            $Parametres_Recuperation_Droits->execute(array(':id_compte' => $_SESSION["ID"]));
+            $Parametres_Recuperation_Droits->execute(array(':id_compte' => $this->objAccount->getId()));
             $Parametres_Recuperation_Droits->setFetchMode(\PDO::FETCH_OBJ);
             $Nombre_De_Resultat_Recuperation_Droits = $Parametres_Recuperation_Droits->rowCount();
             /* -------------------------------------------------------------------------- */

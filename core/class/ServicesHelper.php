@@ -18,7 +18,6 @@ class ServicesHelper {
             $session = new Session();
             if (session_id() == '') {
                 $session->start();
-                $session->replace($_SESSION);
             }
             return $session;
         };

@@ -23,7 +23,7 @@ class ajaxPersonnageRenameExecute extends \ScriptHelper {
         $Parametres_Verification_Donnees = $this->objConnection->prepare($Verification_Donnees);
         $Parametres_Verification_Donnees->execute(array(
             $Suppression_Perssonage_Procedure_ID_Personnage,
-            $_SESSION["ID"]));
+            $this->objAccount->getId()));
         $Parametres_Verification_Donnees->setFetchMode(\PDO::FETCH_OBJ);
         $Nombre_De_Resultat = $Parametres_Verification_Donnees->rowCount();
         /* -------------------------------------------------------------------------- */
@@ -65,7 +65,7 @@ class ajaxPersonnageRenameExecute extends \ScriptHelper {
 
                     $Parametres_Insertion_Changement_Mot_De_Passe = $this->objConnection->prepare($Insertion_Changement_Mot_De_Passe);
                     $Parametres_Insertion_Changement_Mot_De_Passe->execute(array(
-                        ':id_compte' => $_SESSION['ID'],
+                        ':id_compte' => $this->objAccount->getId(),
                         ':ancien_nom' => $Donnees_Verification_Donnees->name,
                         ':nouveau_nom' => $Suppression_Perssonage_Procedure_Nouveau_Nom,
                         ':ip' => $this->objConnection_Ip));
@@ -80,7 +80,7 @@ class ajaxPersonnageRenameExecute extends \ScriptHelper {
 
                     $Parametres_Update_Monnaie = $this->objConnection->prepare($Update_Monnaie);
                     $Parametres_Update_Monnaie->execute(array(
-                        $_SESSION["ID"]));
+                        $this->objAccount->getId()));
                     /* ----------------------------------------------------------- */
 
                     $_SESSION['VamoNaies'] = ($_SESSION['VamoNaies'] - 1500);

@@ -20,7 +20,7 @@ class SQL_Update_Monnaies extends \ScriptHelper {
                             WHERE id_compte = :id_compte
                             LIMIT 1";
             $Parametres_Recuperation_Droits = $this->objConnection->prepare($Recuperation_Droits);
-            $Parametres_Recuperation_Droits->execute(array(':id_compte' => $_SESSION["ID"]));
+            $Parametres_Recuperation_Droits->execute(array(':id_compte' => $this->objAccount->getId()));
             $Parametres_Recuperation_Droits->setFetchMode(\PDO::FETCH_OBJ);
             $Nombre_De_Resultat_Recuperation_Droits = $Parametres_Recuperation_Droits->rowCount();
             /* -------------------------------------------------------------------------- */
@@ -85,7 +85,7 @@ class SQL_Update_Monnaies extends \ScriptHelper {
                                 ':montant' => $Nombre_De_Monnaies,
                                 ':devise' => $Devise,
                                 ':operation' => $Transaction,
-                                ':id_gm' => $_SESSION["ID"],
+                                ':id_gm' => $this->objAccount->getId(),
                                 ':ip' => $this->objConnection_Ip));
                             /* ---------------------------------------------------------------------------- */
                             ?>
@@ -183,7 +183,7 @@ class SQL_Update_Monnaies extends \ScriptHelper {
                                     ':montant' => $Nombre_De_Monnaies,
                                     ':devise' => $Devise,
                                     ':operation' => $Transaction,
-                                    ':id_gm' => $_SESSION["ID"],
+                                    ':id_gm' => $this->objAccount->getId(),
                                     ':ip' => $this->objConnection_Ip));
                                 /* ---------------------------------------------------------------------------- */
                                 ?>

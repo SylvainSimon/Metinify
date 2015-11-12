@@ -13,7 +13,7 @@ class SQL_Generation_Liste_Mes_Ventes extends \ScriptHelper {
         
         <?php
         /* ----------------------- Recuperation Date ------------------------------- */
-        $Compte = $_SESSION['ID'];
+        $Compte = $this->objAccount->getId();
         $Recuperation_Articles = "SELECT marche_articles.designation, marche_articles.description, marche_articles.devise AS id_devise, marche_articles.prix, marche_categories.nom_categorie, marche_devises.devise, marche_personnages.id_proprietaire, marche_personnages.id AS id_marche_personnage, player.level, player.name, player.job
                           FROM site.marche_articles
                           LEFT JOIN site.marche_categories
@@ -43,7 +43,7 @@ class SQL_Generation_Liste_Mes_Ventes extends \ScriptHelper {
                         <div class="Type_Article"><?= $Donnees_Recuperation_Articles->nom_categorie; ?></div>
 
                         <?php echo htmlentities($Donnees_Recuperation_Articles->designation); ?>
-                        <?php if ($Donnees_Recuperation_Articles->id_proprietaire == $_SESSION["ID"]) { ?>
+                        <?php if ($Donnees_Recuperation_Articles->id_proprietaire == $this->objAccount->getId()) { ?>
                             <img title="Annuler la vente de <?= $Donnees_Recuperation_Articles->name; ?>" onclick="Ouverture_Dialogue(<?= $Donnees_Recuperation_Articles->id_marche_personnage; ?>)" class="Bouton_Supprimer_Vente" src="../../images/invalid.gif" width="12" />
                         <?php } ?>
                         <div class="Level_Personnage">Niveau <?= $Donnees_Recuperation_Articles->level; ?></div>

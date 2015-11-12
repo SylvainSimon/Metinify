@@ -19,7 +19,7 @@ if ($session->get("Administration_PannelAdmin")) {
     $Parametres_Delete_Jetons = $connexion->prepare($Delete_Jetons);
     $Parametres_Delete_Jetons->execute(
             array(
-                ':id_compte' => $_SESSION["ID"],
+                ':id_compte' => $session->get("ID"),
                 ':jeton' => $_SESSION["Administration_PannelAdmin_Jeton"]
             )
     );

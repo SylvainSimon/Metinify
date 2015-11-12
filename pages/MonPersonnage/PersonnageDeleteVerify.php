@@ -96,7 +96,7 @@ class PersonnageDeleteVerify extends \PageHelper {
                         $.ajax({
                             type: "POST",
                             url: "pages/MonPersonnage/ajax/ajaxPersonnageDeleteExecute.php",
-                            data: "id_compte=<?= $_SESSION["ID"]; ?>&id_personnage=<?= $Id_Personnage; ?>&numero_verif=" + $("#Input_Saisie_Validation_Suppression").val(),
+                            data: "id_compte=<?= $this->objAccount->getId(); ?>&id_personnage=<?= $Id_Personnage; ?>&numero_verif=" + $("#Input_Saisie_Validation_Suppression").val(),
                             success: function (msg) {
 
                                 try {

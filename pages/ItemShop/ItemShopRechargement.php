@@ -46,7 +46,7 @@ class ItemShopRechargement extends \PageHelper {
                                 exit();
                             }
                         } else {
-                            $Id_Compte = $_SESSION["ID"];
+                            $Id_Compte = $this->objAccount->getId();
                             $Login_Utilisateur = $_SESSION["Utilisateur"];
                         }
                         ?>
