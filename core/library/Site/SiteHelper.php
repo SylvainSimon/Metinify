@@ -21,6 +21,13 @@ class SiteHelper {
     }
     
     /**
+     * @return \Site\Repository\ItemshopRepository
+     */
+    public static function getItemshopRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\Itemshop');
+    }
+    
+    /**
      * @return \Site\Repository\ItemshopCategoriesRepository
      */
     public static function getItemshopCategoriesRepository() {

@@ -96,7 +96,7 @@ class ItemShopDetails extends \PageHelper {
 
                         <div class="pull-left">
 
-                            <select id="Selecteur_Nombre" class="form-control" onchange="document.getElementById('Prix').innerHTML = (this.value *<?php echo $Resultat_Detail_Articles->prix; ?>)">
+                            <select id="Selecteur_Nombre" class="form-control" onchange="$('#Prix').html(this.value *<?php echo $Resultat_Detail_Articles->prix; ?>)">
                                 <option value="1" selected="selected">x1</option>
                                 <option value="2">x2</option>
                                 <option value="5">x5</option>

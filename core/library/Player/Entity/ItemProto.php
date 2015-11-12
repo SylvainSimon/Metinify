@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ItemProto
  *
  * @ORM\Table(name="player.item_proto")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Player\Repository\ItemProtoRepository")
  */
 class ItemProto
 {

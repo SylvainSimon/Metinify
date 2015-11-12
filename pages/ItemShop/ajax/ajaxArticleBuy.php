@@ -10,22 +10,11 @@ class ajaxArticleBuy extends \ScriptHelper {
 
     public function Verification_Place_Inventaire_IS($Verification_Place_Account_Id, $lol, $Procedure_Achat_Item_Nombre = 1) {
 
+        $countSafebox = \Player\PlayerHelper::getSafeboxRepository()->findByIdCompte($this->objAccount->getId());
 
-        /* ------------------------ Vérification Item ID ---------------------------- */
-        $Verification_Existance_Entrepot = "SELECT size FROM player.safebox 
-                                                    WHERE account_id = ? 
-                                                    LIMIT 1";
-        $Parametres_Verification_Existance_Entrepot = $this->objConnection->prepare($Verification_Existance_Entrepot);
-        $Parametres_Verification_Existance_Entrepot->execute(array(
-            $Verification_Place_Account_Id));
-        $Parametres_Verification_Existance_Entrepot->setFetchMode(\PDO::FETCH_OBJ);
-        $Nombre_De_Resultat_Verification_Existance_Entrepot = $Parametres_Verification_Existance_Entrepot->rowCount();
-        /* -------------------------------------------------------------------------- */
+        if ($countSafebox !== null) {
 
-        /* -------------- Si le compte possède bien un entrepot ----------- */
-        if ($Nombre_De_Resultat_Verification_Existance_Entrepot == 1) {
-
-            $Index_Position = 0;
+            $nextFreePosition = 0;
             $Variable_De_Sortie = false;
 
             /* ------------------------ Chercher Position ---------------------------- */
@@ -40,466 +29,282 @@ class ajaxArticleBuy extends \ScriptHelper {
 
                 $Parametres_Chercher_Position->execute(array(
                     $Verification_Place_Account_Id,
-                    $Index_Position));
+                    $nextFreePosition));
                 $Parametres_Chercher_Position->setFetchMode(\PDO::FETCH_OBJ);
                 $Nombre_De_Resultat_Chercher_Position = $Parametres_Chercher_Position->rowCount();
 
                 if ($Nombre_De_Resultat_Chercher_Position >= 1) {
-                    $Index_Position++;
+                    $nextFreePosition++;
                 } else {
                     $Variable_De_Sortie = true;
                 }
             }
 
             // Si l'entrepot est plein
-            if ($Index_Position > (44 - $Procedure_Achat_Item_Nombre)) {
+            if ($nextFreePosition > (44 - $Procedure_Achat_Item_Nombre)) {
                 return false;
             } else {
-                return $Index_Position;
+                return $nextFreePosition;
             } // On renvoi le numéro de la position libre
         } else {
-            /* --- N'as pas d'entrepot --- */
             return false;
         }
     }
 
     public function run() {
-        ?>
 
-        <?php
-        /* ------------------------ Vérification Données ---------------------------- */
-        $Verification_Donnees = "SELECT cash, mileage FROM account.account
-                                  WHERE id = ?
-                                  LIMIT 1";
-        $Parametres_Verification_Donnees = $this->objConnection->prepare($Verification_Donnees);
-        $Parametres_Verification_Donnees->execute(array(
-            $_SESSION['ID']));
-        $Parametres_Verification_Donnees->setFetchMode(\PDO::FETCH_OBJ);
-        /* -------------------------------------------------------------------------- */
+        global $session;
+        global $request;
+        $em = \Shared\DoctrineHelper::getEntityManager();
 
-        $Donnees_Verification_Donnees = $Parametres_Verification_Donnees->fetch();
-
-        $_SESSION['VamoNaies'] = $Donnees_Verification_Donnees->cash;
-        $_SESSION['TanaNaies'] = $Donnees_Verification_Donnees->mileage;
-        $Achat_Ip = $_SERVER['REMOTE_ADDR'];
-        ?>
-
-        <?php
-        $Procedure_Achat_User_ID = $_SESSION['ID'];
         $Tableau_Erreurs = '';
 
-        $Array_Bonus_Compte = array(
-            '1' => 'gold_expire',
-            '2' => 'silver_expire',
-            '3' => 'safebox_expire',
-            '4' => 'autoloot_expire',
-            '5' => 'fish_mind_expire',
-            '6' => 'marriage_fast_expire',
-            '7' => 'money_drop_rate_expire');
+        $idItem = $request->request->get("id_item");
+        $nombreItem = $request->request->get("nombre_item");
 
-
-
-        $Procedure_Achat_Parametres_Item_ID = $_POST['id_item'];
-        $Procedure_Achat_Parametres_Item_Nombre = $_POST['nombre_item'];
-
-        /* ------------------------ Vérification Item ID ---------------------------- */
-        $Verification_Item_ID = "SELECT id FROM site.itemshop 
-                                   WHERE id = ? 
-                                   AND actif = ?
-                                   LIMIT 1";
-        $Parametres_Verification_Item_ID = $this->objConnection->prepare($Verification_Item_ID);
-        $Parametres_Verification_Item_ID->execute(array(
-            $Procedure_Achat_Parametres_Item_ID,
-            "1"));
-        $Parametres_Verification_Item_ID->setFetchMode(\PDO::FETCH_OBJ);
-        $Nombre_De_Resultat_Verification_Item_ID = $Parametres_Verification_Item_ID->rowCount();
-        /* -------------------------------------------------------------------------- */
+        $objItemshop = \Site\SiteHelper::getItemshopRepository()->findItem($idItem, true);
 
         /* ------- Si l'ID item est bien dans la table Itemshop -------- */
-        if ($Nombre_De_Resultat_Verification_Item_ID == 1) {
-
-            /* ---------------- Récuperation des informations sur l'item ------------ */
-            $Recuperation_Information = "SELECT * FROM site.itemshop 
-                                   WHERE id = ? 
-                                   AND actif = ?
-                                   LIMIT 1";
-            $Parametres_Recuperation_Information = $this->objConnection->prepare($Recuperation_Information);
-            $Parametres_Recuperation_Information->execute(array(
-                $Procedure_Achat_Parametres_Item_ID,
-                "1"));
-            $Parametres_Recuperation_Information->setFetchMode(\PDO::FETCH_OBJ);
-            /* ------------------------------------------------------------------------- */
-
-            $Donnees_Recuperation_Information = $Parametres_Recuperation_Information->fetch();
-
-            $Procedure_Achat_Item_Prix = $Donnees_Recuperation_Information->prix;
-            $Procedure_Achat_Item_Nombre = $Donnees_Recuperation_Information->nb_item;
-            $Procedure_Achat_Item_Vnum = $Donnees_Recuperation_Information->id_item;
-            $Procedure_Achat_Item_Nom = $Donnees_Recuperation_Information->name_item;
-
+        if ($objItemshop !== null) {
 
             /* ------- Si l'item est de type Simple 1 -------- */
-            if ($Donnees_Recuperation_Information->type == 1) {
+            if ($objItemshop->getType() == 1) {
 
                 //Si le Membre a assez de Vamonaies
-                if ($_SESSION['VamoNaies'] >= ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre)) {
+                if ($session->get("VamoNaies") >= ($objItemshop->getPrix() * $nombreItem)) {
 
-                    /* ---------------- Récuperation des informations sur l'item ------------ */
-                    $Recuperation_Flag = "SELECT flag FROM player.item_proto 
-                                              WHERE vnum = ?
-                                              LIMIT 1";
-                    $Parametres_Recuperation_Flag = $this->objConnection->prepare($Recuperation_Flag);
-                    $Parametres_Recuperation_Flag->execute(array(
-                        $Procedure_Achat_Item_Vnum));
-                    $Parametres_Recuperation_Flag->setFetchMode(\PDO::FETCH_OBJ);
-                    /* ------------------------------------------------------------------------- */
+                    $flagItem = \Player\PlayerHelper::getItemProtoRepository()->findFlagByVnum($objItemshop->getIdItem());
 
-                    $Donnees_Recuperation_Flag = $Parametres_Recuperation_Flag->fetch();
-
-                    $Procedure_Achat_Item_Flac = $Donnees_Recuperation_Flag->flag;
-
-
-                    /* ------------ Si l'item est empilable --------------- */
-                    if ($Procedure_Achat_Item_Flac == 4 ||
-                            $Procedure_Achat_Item_Flac == 20 ||
-                            $Procedure_Achat_Item_Flac == 132 ||
-                            $Procedure_Achat_Item_Flac == 2052 ||
-                            $Procedure_Achat_Item_Flac == 8212) {
+                    //Si empilable
+                    if ($flagItem == 4 || $flagItem == 20 || $flagItem == 132 || $flagItem == 2052 || $flagItem == 8212) {
 
                         //Si l'entrepot n'est pas plein
-                        if (is_numeric($this->Verification_Place_Inventaire_IS($Procedure_Achat_User_ID, $this->objConnection))) {
+                        if (is_numeric($this->Verification_Place_Inventaire_IS($this->objAccount->getId(), $this->objConnection))) {
 
-                            $Index_Position = $this->Verification_Place_Inventaire_IS($Procedure_Achat_User_ID, $this->objConnection);
+                            $nextFreePosition = $this->Verification_Place_Inventaire_IS($this->objAccount->getId(), $this->objConnection);
 
-                            /* -------------------------- Insertion de l'item ----------------- */
-                            $Insertion_Logs = "INSERT INTO player.item (owner_id, window, pos, count, vnum) 
-                                              VALUES (:owner_id, :window, :pos, :count, :vnum)";
+                            $objItem = new \Player\Entity\Item();
+                            $objItem->setOwnerId($this->objAccount->getId());
+                            $objItem->setWindow("MALL");
+                            $objItem->setPos($nextFreePosition);
+                            $objItem->setCount($nombreItem);
+                            $objItem->setVnum($objItemshop->getIdItem());
+                            $em->persist($objItem);
 
-                            $Parametres_Insertion = $this->objConnection->prepare($Insertion_Logs);
-                            $Parametres_Insertion->execute(array(
-                                ':owner_id' => $Procedure_Achat_User_ID,
-                                ':window' => "MALL",
-                                ':pos' => $Index_Position,
-                                ':count' => $Procedure_Achat_Parametres_Item_Nombre,
-                                ':vnum' => $Procedure_Achat_Item_Vnum));
-                            /* ----------------------------------------------------------------------------- */
+                            $prixTotal = ($objItemshop->getPrix() * $nombreItem);
 
-                            /* -------------------------- Debit des VamoNaies ----------------- */
-                            $Update_Monnaies = "UPDATE account.account 
-                                               SET cash = cash - ?, 
-                                                   mileage = mileage + ?  
-                                               WHERE id = ?
-                                               LIMIT 1";
+                            $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
+                            $this->objAccount->setMileage($this->objAccount->getMileage() + $prixTotal);
+                            $em->persist($this->objAccount);
 
-                            $Parametres_Update_Monnaies = $this->objConnection->prepare($Update_Monnaies);
-                            $Parametres_Update_Monnaies->execute(array(
-                                ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre),
-                                ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre),
-                                $Procedure_Achat_User_ID));
-                            /* ----------------------------------------------------------------------------- */
-                            ?>
-                            <?php $_SESSION['VamoNaies'] = ($_SESSION['VamoNaies'] - ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre)); ?> 
-                            <?php $_SESSION['TanaNaies'] = ($_SESSION['TanaNaies'] + ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre)); ?> 
-                            <?php
+                            $em->flush();
+
+                            $session->set("VamoNaies", $this->objAccount->getCash());
+                            $session->set("TanaNaies", $this->objAccount->getMileage());
                         } else {
                             //5: Entrepot plein.
                             $Tableau_Erreurs = 5;
                             $Resultat_Achat = "Entrepot Plein ou Inexistant";
                         }
-                    }
-
-                    //Sinon on distribue les items dans des cases différentes
-                    else {
+                    } else {
                         //Si l'entrepot n'est pas plein
-                        if (is_numeric($this->Verification_Place_Inventaire_IS($Procedure_Achat_User_ID, $this->objConnection))) {
+                        if (is_numeric($this->Verification_Place_Inventaire_IS($this->objAccount->getId(), $this->objConnection))) {
 
-                            /* --------------------------- Insertion de l'item ---------------------------- */
-                            $Insertion_Logs = "INSERT INTO player.item (owner_id, window, pos, count, vnum, socket0, socket1, socket2) 
-                                              VALUES (:owner_id, :window, :pos, :count, :vnum, :socket0, :socket1, :socket2)";
+                            for ($i = 1; $i <= $nombreItem; $i++) {
+                                $nextFreePosition = $this->Verification_Place_Inventaire_IS($this->objAccount->getId(), $this->objConnection);
 
-                            $Parametres_Insertion = $this->objConnection->prepare($Insertion_Logs);
-                            /* ---------------------------------------------------------------------------- */
-
-                            for ($i = 1; $i <= $Procedure_Achat_Parametres_Item_Nombre; $i++) {
-
-                                $Index_Position = $this->Verification_Place_Inventaire_IS($Procedure_Achat_User_ID, $this->objConnection);
-
-                                $Parametres_Insertion->execute(array(
-                                    ':owner_id' => $Procedure_Achat_User_ID,
-                                    ':window' => "MALL",
-                                    ':pos' => $Index_Position,
-                                    ':count' => "1",
-                                    ':vnum' => $Procedure_Achat_Item_Vnum,
-                                    ':socket0' => "1",
-                                    ':socket1' => "1",
-                                    ':socket2' => "1"));
+                                $objItem = new \Player\Entity\Item();
+                                $objItem->setOwnerId($this->objAccount->getId());
+                                $objItem->setWindow("MALL");
+                                $objItem->setPos($nextFreePosition);
+                                $objItem->setCount("1");
+                                $objItem->setVnum($objItemshop->getIdItem());
+                                $objItem->setSocket0("1");
+                                $objItem->setSocket1("1");
+                                $objItem->setSocket2("1");
+                                $em->persist($objItem);
                             }
 
-                            if (($Procedure_Achat_Item_Vnum == "2613") || ($Procedure_Achat_Item_Vnum == "2614")) {
-                                /* -------------------------- Debit des VamoNaies ----------------- */
-                                $Update_Monnaies = "UPDATE account.account 
-                                               SET cash = cash - ? 
-                                               WHERE id = ?
-                                               LIMIT 1";
-
-                                $Parametres_Update_Monnaies = $this->objConnection->prepare($Update_Monnaies);
-                                $Parametres_Update_Monnaies->execute(array(
-                                    ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre),
-                                    $Procedure_Achat_User_ID));
-                                /* ----------------------------------------------------------------------------- */
+                            $prixTotal = ($objItemshop->getPrix() * $nombreItem);
+                            if (($objItemshop->getIdItem() == "2613") || ($objItemshop->getIdItem() == "2614")) {
+                                $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
                             } else {
-                                /* -------------------------- Debit des VamoNaies ----------------- */
-                                $Update_Monnaies = "UPDATE account.account 
-                                               SET cash = cash - ?, 
-                                                   mileage = mileage + ?  
-                                               WHERE id = ?
-                                               LIMIT 1";
-
-                                $Parametres_Update_Monnaies = $this->objConnection->prepare($Update_Monnaies);
-                                $Parametres_Update_Monnaies->execute(array(
-                                    ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre),
-                                    ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre),
-                                    $Procedure_Achat_User_ID));
-                                /* ----------------------------------------------------------------------------- */
+                                $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
+                                $this->objAccount->setMileage($this->objAccount->getMileage() + $prixTotal);
                             }
+
+                            $em->persist($this->objAccount);
+                            $em->flush();
+
+                            $session->set("VamoNaies", $this->objAccount->getCash());
+                            $session->set("TanaNaies", $this->objAccount->getMileage());
                             ?>
-
-                            <?php
-                            if (($Procedure_Achat_Item_Vnum == "2613") || ($Procedure_Achat_Item_Vnum == "2614")) {
-                                ?>
-                                <?php $_SESSION['VamoNaies'] = ($_SESSION['VamoNaies'] - ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre)); ?> 
-
-                                <script type="text/javascript">
-                                    window.parent.Fonction_Reteneuse_Vamonaies(<?php echo $_SESSION['VamoNaies']; ?>);
-                                </script>
-                            <?php } else { ?>
-                                <?php $_SESSION['VamoNaies'] = ($_SESSION['VamoNaies'] - ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre)); ?> 
-                                <?php $_SESSION['TanaNaies'] = ($_SESSION['TanaNaies'] + ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre)); ?> 
-
-                                <script type="text/javascript">
-                                    window.parent.Fonction_Reteneuse_Vamonaies(<?php echo $_SESSION['VamoNaies']; ?>);
-                                    window.parent.Fonction_Reteneuse_Tananaies(<?php echo $_SESSION['TanaNaies']; ?>);
-                                </script>
-                            <?php } ?>
+                            <script type="text/javascript">
+                                Fonction_Reteneuse_Vamonaies(<?php echo $session->get("VamoNaies"); ?>);
+                                Fonction_Reteneuse_Tananaies(<?php echo $session->get("TanaNaies"); ?>);
+                            </script>
                             <?php
                         } else {
                             $Tableau_Erreurs = 5;
                             $Resultat_Achat = "Entrepot Plein ou Inexistant";
-                        }//5: Entrepot plein.
+                        }
                     }
                 } else {
                     $Tableau_Erreurs = 3;
                     $Resultat_Achat = "Pas assez de VamoNaies";
-                }//3: Pas assez de cash.
+                }
 
                 /* ----------- Si l'item est de type durée ------------ */
-            } elseif ($Donnees_Recuperation_Information->type == 2) {
+            } elseif ($objItemshop->getType() == 2) {
+
                 //Si le membre a assez de cash
-                if ($_SESSION['VamoNaies'] >= $Procedure_Achat_Item_Prix) {
+                if ($_SESSION['VamoNaies'] >= $objItemshop->getPrix()) {
 
-                    $bonus = $Array_Bonus_Compte[$Procedure_Achat_Item_Vnum];
+                    $anneeRestantMysql = (2037 - date("Y"));
+                    $dateActuel = \Carbon\Carbon::now();
 
-                    $AnneeActuel = date("Y");
-                    $Nombre_Annee = (2037 - $AnneeActuel);
+                    switch ($objItemshop->getIdItem()) {
+                        case 1:
+                            $dateBonusActuel = \Carbon\Carbon::createFromTimestamp($this->objAccount->getGoldExpire()->getTimestamp());
+                            break;
+                        case 2:
+                            $dateBonusActuel = \Carbon\Carbon::createFromTimestamp($this->objAccount->getSilverExpire()->getTimestamp());
+                            break;
+                        case 3:
+                            $dateBonusActuel = \Carbon\Carbon::createFromTimestamp($this->objAccount->getSafeboxExpire()->getTimestamp());
+                            break;
+                        case 4:
+                            $dateBonusActuel = \Carbon\Carbon::createFromTimestamp($this->objAccount->getAutolootExpire()->getTimestamp());
+                            break;
+                        case 5:
+                            $dateBonusActuel = \Carbon\Carbon::createFromTimestamp($this->objAccount->getFishMindExpire()->getTimestamp());
+                            break;
+                        case 6:
+                            $dateBonusActuel = \Carbon\Carbon::createFromTimestamp($this->objAccount->getMarriageFastExpire()->getTimestamp());
+                            break;
+                        case 7:
+                            $dateBonusActuel = \Carbon\Carbon::createFromTimestamp($this->objAccount->getMoneyDropRateExpire()->getTimestamp());
+                            break;
+                    }
 
-                    if ($Procedure_Achat_Item_Nombre == 9999) {
-
-                        /* ----------------------------- Update Temps de Bonus ------------------------- */
-                        $Update_Monnaies = "UPDATE account.account 
-                                               SET $bonus = (NOW() + INTERVAL $Nombre_Annee YEAR)
-                                               WHERE id = ?
-                                               LIMIT 1";
-
-                        $Parametres_Update_Monnaies = $this->objConnection->prepare($Update_Monnaies);
-                        $Parametres_Update_Monnaies->execute(array(
-                            $Procedure_Achat_User_ID));
-                        /* ----------------------------------------------------------------------------- */
+                    if ($objItemshop->getNbItem() == 9999) {
+                        $dateBonusNew = $dateActuel->addYear($anneeRestantMysql);
                     } else {
-
-                        /* ------------------------ Vérification Item ID ---------------------------- */
-                        $Recuperation_Bonus = "SELECT $bonus 
-                                                FROM account.account 
-                                                WHERE id = ?
-                                                AND $bonus > NOW()
-                                                LIMIT 1";
-                        $Parametres_Recuperation_Bonus = $this->objConnection->prepare($Recuperation_Bonus);
-                        $Parametres_Recuperation_Bonus->execute(array(
-                            $Procedure_Achat_User_ID));
-                        $Parametres_Recuperation_Bonus->setFetchMode(\PDO::FETCH_OBJ);
-                        /* -------------------------------------------------------------------------- */
-                        $Nombre_De_Resultat_Bonus = $Parametres_Recuperation_Bonus->rowCount();
-
-                        if ($Nombre_De_Resultat_Bonus == 1) {
-
-                            $Donnees_Bonus = $Parametres_Recuperation_Bonus->fetch();
-
-                            /* ----------------------------- Update Temps de Bonus ------------------------- */
-                            $Update_Monnaies = "UPDATE account.account 
-                                               SET $bonus = ($bonus + INTERVAL $Procedure_Achat_Item_Nombre DAY)
-                                               WHERE id = ?
-                                               LIMIT 1";
-
-                            $Parametres_Update_Monnaies = $this->objConnection->prepare($Update_Monnaies);
-                            $Parametres_Update_Monnaies->execute(array(
-                                $Procedure_Achat_User_ID));
-                            /* ----------------------------------------------------------------------------- */
-                        } else if ($Nombre_De_Resultat_Bonus == 0) {
-
-                            /* ----------------------------- Update Temps de Bonus ------------------------- */
-                            $Update_Monnaies = "UPDATE account.account 
-                                               SET $bonus = (NOW() + INTERVAL $Procedure_Achat_Item_Nombre DAY)
-                                               WHERE id = ?
-                                               LIMIT 1";
-
-                            $Parametres_Update_Monnaies = $this->objConnection->prepare($Update_Monnaies);
-                            $Parametres_Update_Monnaies->execute(array(
-                                $Procedure_Achat_User_ID));
-                            /* ----------------------------------------------------------------------------- */
+                        if ($dateBonusActuel->gt($dateActuel)) {
+                            $dateBonusNew = $dateBonusActuel->addDay($objItemshop->getNbItem());
+                        } else {
+                            $dateBonusNew = $dateActuel->addDay($objItemshop->getNbItem());
                         }
                     }
 
-                    /* -------------------------- Debit des VamoNaies ----------------- */
-                    $Update_Monnaies = "UPDATE account.account 
-                                               SET cash = cash - ?, 
-                                                   mileage = mileage + ?  
-                                               WHERE id = ?
-                                               LIMIT 1";
+                    switch ($objItemshop->getIdItem()) {
+                        case 1 : $this->objAccount->setGoldExpire($dateBonusNew);
+                            break;
+                        case 2 : $this->objAccount->setSilverExpire($dateBonusNew);
+                            break;
+                        case 3 : $this->objAccount->setSafeboxExpire($dateBonusNew);
+                            break;
+                        case 4 : $this->objAccount->setAutolootExpire($dateBonusNew);
+                            break;
+                        case 5 : $this->objAccount->setFishMindExpire($dateBonusNew);
+                            break;
+                        case 6 : $this->objAccount->setMarriageFastExpire($dateBonusNew);
+                            break;
+                        case 7 : $this->objAccount->setMoneyDropRateExpire($dateBonusNew);
+                            break;
+                    }
 
-                    $Parametres_Update_Monnaies = $this->objConnection->prepare($Update_Monnaies);
-                    $Parametres_Update_Monnaies->execute(array(
-                        ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre),
-                        ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre),
-                        $Procedure_Achat_User_ID));
-                    /* ----------------------------------------------------------------------------- */
-                    ?>
-                    <?php $_SESSION['VamoNaies'] = ($_SESSION['VamoNaies'] - ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre)); ?> 
-                    <?php $_SESSION['TanaNaies'] = ($_SESSION['TanaNaies'] + ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre)); ?> 
+                    $prixTotal = ($objItemshop->getPrix() * $nombreItem);
+                    $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
+                    $this->objAccount->setMileage($this->objAccount->getMileage() + $prixTotal);
+                    $em->persist($this->objAccount);
+
+                    $em->flush();
+
+                    $session->set("VamoNaies", $this->objAccount->getCash());
+                    $session->set("TanaNaies", $this->objAccount->getMileage());
+                    ?> 
 
                     <script type="text/javascript">
-                        window.parent.Fonction_Reteneuse_Vamonaies(<?php echo $_SESSION['VamoNaies']; ?>);
-                        window.parent.Fonction_Reteneuse_Tananaies(<?php echo $_SESSION['TanaNaies']; ?>);
-                    </script>            
+                        Fonction_Reteneuse_Vamonaies(<?php echo $session->get("VamoNaies"); ?>);
+                        Fonction_Reteneuse_Tananaies(<?php echo $session->get("TanaNaies"); ?>);
+                    </script>         
                     <?php
                 } else {
                     $Tableau_Erreurs = 3;
                     $Resultat_Achat = "Pas assez de Vamonaies";
-                }//3: Pas assez de cash.
+                }
 
                 /* -------------- Si l'item est de type TanaNaies -------------- */
-            } elseif ($Donnees_Recuperation_Information->type == 3) {
+            } elseif ($objItemshop->getType() == 3) {
                 //Si le membre a assez de marques
-                if ($_SESSION['TanaNaies'] >= ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre)) {
-                    //Si l'entrepot n'est pas plein
-                    /* ---------------- Récuperation des informations sur l'item ------------ */
-                    $Recuperation_Flag = "SELECT flag FROM player.item_proto 
-                                              WHERE vnum = ?
-                                              LIMIT 1";
-                    $Parametres_Recuperation_Flag = $this->objConnection->prepare($Recuperation_Flag);
-                    $Parametres_Recuperation_Flag->execute(array(
-                        $Procedure_Achat_Item_Vnum));
-                    $Parametres_Recuperation_Flag->setFetchMode(\PDO::FETCH_OBJ);
-                    /* ------------------------------------------------------------------------- */
+                if ($_SESSION['TanaNaies'] >= ($objItemshop->getPrix() * $nombreItem)) {
 
-                    $Donnees_Recuperation_Flag = $Parametres_Recuperation_Flag->fetch();
+                    $flagItem = \Player\PlayerHelper::getItemProtoRepository()->findFlagByVnum($objItemshop->getIdItem());
 
-                    $Procedure_Achat_Item_Flac = $Donnees_Recuperation_Flag->flag;
-
-
-                    /* ------------ Si l'item est empilable --------------- */
-                    if ($Procedure_Achat_Item_Flac == 4 ||
-                            $Procedure_Achat_Item_Flac == 20 ||
-                            $Procedure_Achat_Item_Flac == 132 ||
-                            $Procedure_Achat_Item_Flac == 2052 ||
-                            $Procedure_Achat_Item_Flac == 8212) {
+                    //Si empilable
+                    if ($flagItem == 4 || $flagItem == 20 || $flagItem == 132 || $flagItem == 2052 || $flagItem == 8212) {
 
                         //Si l'entrepot n'est pas plein
-                        if (is_numeric($this->Verification_Place_Inventaire_IS($Procedure_Achat_User_ID, $this->objConnection))) {
+                        if (is_numeric($this->Verification_Place_Inventaire_IS($this->objAccount->getId(), $this->objConnection))) {
 
-                            $Index_Position = $this->Verification_Place_Inventaire_IS($Procedure_Achat_User_ID, $this->objConnection);
+                            $nextFreePosition = $this->Verification_Place_Inventaire_IS($this->objAccount->getId(), $this->objConnection);
 
-                            /* -------------------------- Insertion de l'item ----------------- */
-                            $Insertion_Logs = "INSERT INTO player.item (owner_id, window, pos, count, vnum) 
-                                              VALUES (:owner_id, :window, :pos, :count, :vnum)";
+                            $objItem = new \Player\Entity\Item();
+                            $objItem->setOwnerId($this->objAccount->getId());
+                            $objItem->setWindow("MALL");
+                            $objItem->setPos($nextFreePosition);
+                            $objItem->setCount($nombreItem);
+                            $objItem->setVnum($objItemshop->getIdItem());
+                            $em->persist($objItem);
 
-                            $Parametres_Insertion = $this->objConnection->prepare($Insertion_Logs);
-                            $Parametres_Insertion->execute(array(
-                                ':owner_id' => $Procedure_Achat_User_ID,
-                                ':window' => "MALL",
-                                ':pos' => $Index_Position,
-                                ':count' => $Procedure_Achat_Parametres_Item_Nombre,
-                                ':vnum' => $Procedure_Achat_Item_Vnum));
-                            /* ----------------------------------------------------------------------------- */
+                            $prixTotal = ($objItemshop->getPrix() * $nombreItem);
 
-                            /* -------------------------- Debit des VamoNaies ----------------- */
-                            $Update_Monnaies = "UPDATE account.account 
-                                               SET mileage = mileage - ?  
-                                               WHERE id = ?
-                                               LIMIT 1";
+                            $this->objAccount->setMileage($this->objAccount->getMileage() - $prixTotal);
+                            $em->persist($this->objAccount);
 
-                            $Parametres_Update_Monnaies = $this->objConnection->prepare($Update_Monnaies);
-                            $Parametres_Update_Monnaies->execute(array(
-                                ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre),
-                                $Procedure_Achat_User_ID));
-                            /* ----------------------------------------------------------------------------- */
+                            $em->flush();
+
+                            $session->set("TanaNaies", $this->objAccount->getMileage());
                             ?>
-                            <?php $_SESSION['TanaNaies'] = ($_SESSION['TanaNaies'] - ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre)); ?> 
-
                             <script type="text/javascript">
-                                window.parent.Fonction_Reteneuse_Tananaies(<?php echo $_SESSION['TanaNaies']; ?>);
+                                Fonction_Reteneuse_Tananaies(<?php echo $session->get("TanaNaies"); ?>);
                             </script>
                             <?php
                         } else {
-                            //5: Entrepot plein.
                             $Tableau_Erreurs = 5;
                             $Resultat_Achat = "Entrepot Plein ou Inexistant";
                         }
-                    }
-
-                    //Sinon on empile les items
-                    else {
+                    } else {
                         //Si l'entrepot n'est pas plein
-                        if (is_numeric($this->Verification_Place_Inventaire_IS($Procedure_Achat_User_ID, $this->objConnection))) {
+                        if (is_numeric($this->Verification_Place_Inventaire_IS($this->objAccount->getId(), $this->objConnection))) {
 
-                            /* --------------------------- Insertion de l'item ---------------------------- */
-                            $Insertion_Logs = "INSERT INTO player.item (owner_id, window, pos, count, vnum, socket0, socket1, socket2) 
-                                              VALUES (:owner_id, :window, :pos, :count, :vnum, :socket0, :socket1, :socket2)";
+                            for ($i = 1; $i <= $nombreItem; $i++) {
+                                $nextFreePosition = $this->Verification_Place_Inventaire_IS($this->objAccount->getId(), $this->objConnection);
 
-                            $Parametres_Insertion = $this->objConnection->prepare($Insertion_Logs);
-                            /* ---------------------------------------------------------------------------- */
-
-                            for ($i = 1; $i <= $Procedure_Achat_Parametres_Item_Nombre; $i++) {
-
-                                $Index_Position = $this->Verification_Place_Inventaire_IS($Procedure_Achat_User_ID, $this->objConnection);
-
-                                $Parametres_Insertion->execute(array(
-                                    ':owner_id' => $Procedure_Achat_User_ID,
-                                    ':window' => "MALL",
-                                    ':pos' => $Index_Position,
-                                    ':count' => "1",
-                                    ':vnum' => $Procedure_Achat_Item_Vnum,
-                                    ':socket0' => "1",
-                                    ':socket1' => "1",
-                                    ':socket2' => "1"));
+                                $objItem = new \Player\Entity\Item();
+                                $objItem->setOwnerId($this->objAccount->getId());
+                                $objItem->setWindow("MALL");
+                                $objItem->setPos($nextFreePosition);
+                                $objItem->setCount("1");
+                                $objItem->setVnum($objItemshop->getIdItem());
+                                $objItem->setSocket0("1");
+                                $objItem->setSocket1("1");
+                                $objItem->setSocket2("1");
+                                $em->persist($objItem);
                             }
 
-                            /* -------------------------- Debit des VamoNaies ----------------- */
-                            $Update_Monnaies = "UPDATE account.account 
-                                               SET mileage = mileage - ?  
-                                               WHERE id = ?
-                                               LIMIT 1";
+                            $prixTotal = ($objItemshop->getPrix() * $nombreItem);
+                            $this->objAccount->setMileage($this->objAccount->getMileage() - $prixTotal);
+                            $em->persist($this->objAccount);
 
-                            $Parametres_Update_Monnaies = $this->objConnection->prepare($Update_Monnaies);
-                            $Parametres_Update_Monnaies->execute(array(
-                                ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre),
-                                $Procedure_Achat_User_ID));
-                            /* ----------------------------------------------------------------------------- */
+                            $em->flush();
+
+                            $session->set("TanaNaies", $this->objAccount->getMileage());
                             ?>
-                            <?php $_SESSION['TanaNaies'] = ($_SESSION['TanaNaies'] - ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre)); ?> 
-
                             <script type="text/javascript">
-                                window.parent.Fonction_Reteneuse_Tananaies(<?php echo $_SESSION['TanaNaies']; ?>);
+                                Fonction_Reteneuse_Tananaies(<?php echo $session->get("TanaNaies"); ?>);
                             </script>
-
                             <?php
                         } else {
                             $Tableau_Erreurs = 5;
@@ -515,44 +320,48 @@ class ajaxArticleBuy extends \ScriptHelper {
                 $Resultat_Achat = "Type de l'item non valide";
             }//4: Type de l'item non-valide.
         }
-        ?>
-        <?php
-        /* ------------------------ Check dernier numéro ---------------------------- */
-        $Dernier_Numero = "SELECT id FROM site.log_achats ORDER by id DESC LIMIT 1";
-        $Parametres_Dernier_Numero = $this->objConnection->prepare($Dernier_Numero);
-        $Parametres_Dernier_Numero->execute();
-        $Parametres_Dernier_Numero->setFetchMode(\PDO::FETCH_OBJ);
-        $Nombre_De_Resultat_Dernier_Numero = $Parametres_Dernier_Numero->rowCount();
-        /* -------------------------------------------------------------------------- */
 
-        $Donnees_Dernier_Numero = $Parametres_Dernier_Numero->fetch();
-        ?>
-        <?php
-        if ($Nombre_De_Resultat_Dernier_Numero == 0) {
-
-            $Dernier_Numero = "1";
-        } else {
-
-            $Dernier_Numero = ($Donnees_Dernier_Numero->id + 1);
+        if ($objItemshop->getType() == 1) {
+            $ID_Monnaie = "1";
+        } else if ($objItemshop->getType() == 3) {
+            $ID_Monnaie = "2";
+        } else if ($objItemshop->getType() == 2) {
+            $ID_Monnaie = "1";
         }
-        ?>
 
-        <?php
         if ($Tableau_Erreurs != '') {
+            $Resultat_Achat = "Erreur";
+        } else {
+            $Resultat_Achat = "Réussi";
+        }
 
+        $objLogAchats = new \Site\Entity\LogAchats();
+        $objLogAchats->setIdCompte($this->objAccount->getId());
+        $objLogAchats->setCompte($this->objAccount->getLogin());
+        $objLogAchats->setVnumItem($objItemshop->getIdItem());
+        $objLogAchats->setItem($objItemshop->getNameItem());
+        $objLogAchats->setQuantite($nombreItem);
+        $objLogAchats->setPrix($objItemshop->getPrix() * $nombreItem);
+        $objLogAchats->setMonnaie($ID_Monnaie);
+        $objLogAchats->setIp($this->ipAdresse);
+        $objLogAchats->setDate(\Carbon\Carbon::now());
+        $objLogAchats->setResultat($Resultat_Achat);
+
+        $em->persist($objLogAchats);
+        $em->flush();
+
+
+        if ($Tableau_Erreurs != '') {
             echo $Tableau_Erreurs;
         } else {
-
-            $Resultat_Achat = "Réussi";
             ?>
-
             <div class="box-body">
                 <span class="text-green">Achat terminé avec succée.</span>
                 <br/>
                 <br/>
 
                 L'article a été placé dans votre entrepôt item-shop.<br/><br/>
-                <span class="text-yellow">Le numéro de transaction est le : <?php echo $Dernier_Numero; ?></span><br/>
+                <span class="text-yellow">Le numéro de transaction est le : <?php echo $objLogAchats->getId(); ?></span><br/>
                 Gardez le précieusement, il vous sera utile en cas de réclamation.<br/><br/>
                 En cas de problème n'hésitez pas à contacter le support de VamosMt2.<br/>
             </div>
@@ -563,35 +372,6 @@ class ajaxArticleBuy extends \ScriptHelper {
 
             <?php
         }
-        ?>
-        <?php
-        if ($Donnees_Recuperation_Information->type == 1) {
-            $ID_Monnaie = "1";
-        } else if ($Donnees_Recuperation_Information->type == 3) {
-            $ID_Monnaie = "2";
-        } else if ($Donnees_Recuperation_Information->type == 2) {
-            $ID_Monnaie = "1";
-        }
-
-        /* --------------------------- Insertion de l'item ---------------------------- */
-        $Insertion_Logs = "INSERT INTO site.log_achats (id, id_compte, compte, vnum_item, item, quantite, prix, monnaie, date, ip, resultat) 
-                              VALUES (:id, :id_compte, :compte, :vnum_item, :item, :quantite, :prix, :monnaie, NOW(), :ip, :resultat)";
-
-        $Parametres_Insertion = $this->objConnection->prepare($Insertion_Logs);
-        $Parametres_Insertion->execute(array(
-            ':id' => $Dernier_Numero,
-            ':id_compte' => $Procedure_Achat_User_ID,
-            ':compte' => $_SESSION['Utilisateur'],
-            ':vnum_item' => $Procedure_Achat_Item_Vnum,
-            ':item' => $Procedure_Achat_Item_Nom,
-            ':quantite' => $Procedure_Achat_Parametres_Item_Nombre,
-            ':prix' => ($Procedure_Achat_Item_Prix * $Procedure_Achat_Parametres_Item_Nombre),
-            ':monnaie' => $ID_Monnaie,
-            ':ip' => $Achat_Ip,
-            ':resultat' => $Resultat_Achat));
-        /* ---------------------------------------------------------------------------- */
-        ?>
-        <?php
     }
 
 }
