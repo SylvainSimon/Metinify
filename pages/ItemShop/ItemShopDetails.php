@@ -149,49 +149,42 @@ class ItemShopDetails extends \PageHelper {
                                     data: "id_item=" + id_item + "&nombre_item=" + nombre_item,
                                     success: function (msg) {
 
-                                        if (msg == 5) {
+                                        var data = JSON.parse(msg);
 
-                                            window.parent.Barre_De_Statut("Entrepôt plein ou inexistant.");
-                                            window.parent.Icone_Chargement(2);
+                                        if (data.result === 1) {
 
-                                            alert("Votre entrepot n'a plus de place ou n'existe pas.");
-
-                                        } else if (msg == 6) {
-
-                                            window.parent.Barre_De_Statut("Vous n'avez pas asser de Tananaies.");
-                                            window.parent.Icone_Chargement(2);
-
-                                            alert("Vous n'avez pas assez de TanaNaies.")
-
-                                        } else if (msg == 4) {
-
-                                            window.parent.Barre_De_Statut("L'item choisie n'est pas valide.");
-                                            window.parent.Icone_Chargement(2);
-                                            alert("L'item n'est pas valide.")
-
-                                        } else if (msg == 3) {
-
-                                            window.parent.Barre_De_Statut("Vous n'avez pas asser de Vamonaies.");
-                                            window.parent.Icone_Chargement(2);
-
-                                            alert("Vous n'avez pas assez de Vamonaies.")
-
-                                        } else if (msg == "Vous n'êtes pas connecté") {
-
-                                            window.parent.Barre_De_Statut("Vous n'êtes pas/plus connecté.");
-                                            window.parent.Icone_Chargement(2);
-
-                                            alert(msg);
+                                            Ajax("pages/ItemShop/ItemShopAchatTerm.php?idTransaction=" + data.idTransaction);
 
                                         } else {
 
-                                            window.parent.Barre_De_Statut("Achat effectué avec succès.");
-                                            window.parent.Icone_Chargement(0);
+                                            if (data.code == 5) {
 
-                                            $("#ContenantAchat").html(msg);
+                                                window.parent.Barre_De_Statut("Entrepôt plein ou inexistant.");
+                                                window.parent.Icone_Chargement(2);
 
+                                                alert("Votre entrepot n'a plus de place ou n'existe pas.");
+
+                                            } else if (data.code == 6) {
+
+                                                window.parent.Barre_De_Statut("Vous n'avez pas asser de Tananaies.");
+                                                window.parent.Icone_Chargement(2);
+
+                                                alert("Vous n'avez pas assez de TanaNaies.")
+
+                                            } else if (data.code == 4) {
+
+                                                window.parent.Barre_De_Statut("L'item choisie n'est pas valide.");
+                                                window.parent.Icone_Chargement(2);
+                                                alert("L'item n'est pas valide.")
+
+                                            } else if (data.code == 3) {
+
+                                                window.parent.Barre_De_Statut("Vous n'avez pas asser de Vamonaies.");
+                                                window.parent.Icone_Chargement(2);
+
+                                                alert("Vous n'avez pas assez de Vamonaies.")
+                                            }
                                         }
-
                                     }
                                 });
                             }

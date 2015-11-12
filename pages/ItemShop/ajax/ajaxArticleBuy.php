@@ -13,12 +13,9 @@ class ajaxArticleBuy extends \ScriptHelper {
         $countSafebox = \Player\PlayerHelper::getSafeboxRepository()->findByIdCompte($this->objAccount->getId());
 
         if ($countSafebox !== null) {
-
             $nextFreePosition = 0;
             $out = false;
-
             while ($out == false) {
-
                 $objItem = \Player\PlayerHelper::getItemRepository()->countByOwnerIdPosAndWindow($Verification_Place_Account_Id, $nextFreePosition, "MALL");
                 if ($objItem > 0) {
                     $nextFreePosition++;
@@ -26,7 +23,6 @@ class ajaxArticleBuy extends \ScriptHelper {
                     $out = true;
                 }
             }
-
             if ($nextFreePosition > (44 - $nombreItem)) {
                 return false;
             } else {
@@ -43,14 +39,12 @@ class ajaxArticleBuy extends \ScriptHelper {
         global $request;
         $em = \Shared\DoctrineHelper::getEntityManager();
 
-        $Tableau_Erreurs = '';
-
+        $arrResult["result"] = 1;
+        
         $idItem = $request->request->get("id_item");
         $nombreItem = $request->request->get("nombre_item");
-
         $objItemshop = \Site\SiteHelper::getItemshopRepository()->findItem($idItem, true);
 
-        /* ------- Si l'ID item est bien dans la table Itemshop -------- */
         if ($objItemshop !== null) {
 
             /* ------- Si l'item est de type Simple 1 -------- */
@@ -88,9 +82,7 @@ class ajaxArticleBuy extends \ScriptHelper {
                             $session->set("VamoNaies", $this->objAccount->getCash());
                             $session->set("TanaNaies", $this->objAccount->getMileage());
                         } else {
-                            //5: Entrepot plein.
-                            $Tableau_Erreurs = 5;
-                            $Resultat_Achat = "Entrepot Plein ou Inexistant";
+                            $arrResult = ["result" => 0, "code" => 5];
                         }
                     } else {
                         //Si l'entrepot n'est pas plein
@@ -124,20 +116,12 @@ class ajaxArticleBuy extends \ScriptHelper {
 
                             $session->set("VamoNaies", $this->objAccount->getCash());
                             $session->set("TanaNaies", $this->objAccount->getMileage());
-                            ?>
-                            <script type="text/javascript">
-                                Fonction_Reteneuse_Vamonaies(<?php echo $session->get("VamoNaies"); ?>);
-                                Fonction_Reteneuse_Tananaies(<?php echo $session->get("TanaNaies"); ?>);
-                            </script>
-                            <?php
                         } else {
-                            $Tableau_Erreurs = 5;
-                            $Resultat_Achat = "Entrepot Plein ou Inexistant";
+                            $arrResult = ["result" => 0, "code" => 5];
                         }
                     }
                 } else {
-                    $Tableau_Erreurs = 3;
-                    $Resultat_Achat = "Pas assez de VamoNaies";
+                    $arrResult = ["result" => 0, "code" => 3];
                 }
 
                 /* ----------- Si l'item est de type durée ------------ */
@@ -209,16 +193,8 @@ class ajaxArticleBuy extends \ScriptHelper {
 
                     $session->set("VamoNaies", $this->objAccount->getCash());
                     $session->set("TanaNaies", $this->objAccount->getMileage());
-                    ?> 
-
-                    <script type="text/javascript">
-                        Fonction_Reteneuse_Vamonaies(<?php echo $session->get("VamoNaies"); ?>);
-                        Fonction_Reteneuse_Tananaies(<?php echo $session->get("TanaNaies"); ?>);
-                    </script>         
-                    <?php
                 } else {
-                    $Tableau_Erreurs = 3;
-                    $Resultat_Achat = "Pas assez de Vamonaies";
+                    $arrResult = ["result" => 0, "code" => 3];
                 }
 
                 /* -------------- Si l'item est de type TanaNaies -------------- */
@@ -252,14 +228,8 @@ class ajaxArticleBuy extends \ScriptHelper {
                             $em->flush();
 
                             $session->set("TanaNaies", $this->objAccount->getMileage());
-                            ?>
-                            <script type="text/javascript">
-                                Fonction_Reteneuse_Tananaies(<?php echo $session->get("TanaNaies"); ?>);
-                            </script>
-                            <?php
                         } else {
-                            $Tableau_Erreurs = 5;
-                            $Resultat_Achat = "Entrepot Plein ou Inexistant";
+                            $arrResult = ["result" => 0, "code" => 5];
                         }
                     } else {
                         //Si l'entrepot n'est pas plein
@@ -287,24 +257,16 @@ class ajaxArticleBuy extends \ScriptHelper {
                             $em->flush();
 
                             $session->set("TanaNaies", $this->objAccount->getMileage());
-                            ?>
-                            <script type="text/javascript">
-                                Fonction_Reteneuse_Tananaies(<?php echo $session->get("TanaNaies"); ?>);
-                            </script>
-                            <?php
                         } else {
-                            $Tableau_Erreurs = 5;
-                            $Resultat_Achat = "Entrepot Plein ou Inexistant";
-                        }//5: Entrepot plein.
+                            $arrResult = ["result" => 0, "code" => 5];
+                        }
                     }
                 } else {
-                    $Tableau_Erreurs = 6;
-                    $Resultat_Achat = "Pas assez de TanaNaies";
-                }//3: Pas assez de Marques.
+                    $arrResult = ["result" => 0, "code" => 6];
+                }
             } else {
-                $Tableau_Erreurs = 4;
-                $Resultat_Achat = "Type de l'item non valide";
-            }//4: Type de l'item non-valide.
+                $arrResult = ["result" => 0, "code" => 4];
+            }
         }
 
         if ($objItemshop->getType() == 1) {
@@ -314,11 +276,11 @@ class ajaxArticleBuy extends \ScriptHelper {
         } else if ($objItemshop->getType() == 2) {
             $ID_Monnaie = "1";
         }
-
-        if ($Tableau_Erreurs != '') {
-            $Resultat_Achat = "Erreur";
-        } else {
+        
+        if ($arrResult["result"] == 1) {
             $Resultat_Achat = "Réussi";
+        } else {
+            $Resultat_Achat = "Erreur";
         }
 
         $objLogAchats = new \Site\Entity\LogAchats();
@@ -336,28 +298,8 @@ class ajaxArticleBuy extends \ScriptHelper {
         $em->persist($objLogAchats);
         $em->flush();
 
-
-        if ($Tableau_Erreurs != '') {
-            echo $Tableau_Erreurs;
-        } else {
-            ?>
-            <div class="box-body">
-                <span class="text-green">Achat terminé avec succée.</span>
-                <br/>
-                <br/>
-
-                L'article a été placé dans votre entrepôt item-shop.<br/><br/>
-                <span class="text-yellow">Le numéro de transaction est le : <?php echo $objLogAchats->getId(); ?></span><br/>
-                Gardez le précieusement, il vous sera utile en cas de réclamation.<br/><br/>
-                En cas de problème n'hésitez pas à contacter le support de VamosMt2.<br/>
-            </div>
-
-            <div class="box-footer">
-                <input type="button" class="btn btn-primary btn-flat" value="Retourner à l'Item-Shop" onclick="Ajax('pages/ItemShop/ItemShop.php');" />
-            </div>
-
-            <?php
-        }
+        $arrResult["idTransaction"] = $objLogAchats->getId();
+        echo json_encode($arrResult);
     }
 
 }
