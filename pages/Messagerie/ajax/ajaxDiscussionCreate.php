@@ -22,6 +22,7 @@ class ajaxDiscussionCreate extends \PageHelper {
         $objSupportDiscussion->setIdObjet($idObjet);
         $objSupportDiscussion->setMessage($message);
         $objSupportDiscussion->setDate(new \DateTime(date("Y-m-d H:i:s")));
+        $objSupportDiscussion->setDateDernierMessage(new \DateTime(date("Y-m-d H:i:s")));
         $objSupportDiscussion->setIp($this->ipAdresse);
         
         $em->persist($objSupportDiscussion);

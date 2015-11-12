@@ -14,7 +14,7 @@ class SupportDiscussionsRepository extends EntityRepository {
                 . "SupportDiscussionsEntity.id, "
                 . "SupportObjetsEntity.objet, "
                 . "SupportDiscussionsEntity.message, "
-                . "SupportDiscussionsEntity.date, "
+                . "SupportDiscussionsEntity.dateDernierMessage, "
                 . "AccountEntityAdmin.pseudoMessagerie AS admin, "
                 . "AccountEntityUser.pseudoMessagerie AS user ");
 
@@ -30,7 +30,7 @@ class SupportDiscussionsRepository extends EntityRepository {
             $qb->setParameter("estArchive", $estArchive);
         }
 
-        $qb->orderBy("SupportDiscussionsEntity.date", "DESC");
+        $qb->orderBy("SupportDiscussionsEntity.dateDernierMessage", "DESC");
 
         if ($limit !== "") {
             $qb->setMaxResults($limit);

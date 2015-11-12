@@ -90,6 +90,7 @@ function Assignation_Ticket(numero_discussion) {
 
     Barre_De_Statut("Assignation et déplacement du ticket...");
     Icone_Chargement(1);
+    displayLoading();
 
     $.ajax({
         type: "POST",
@@ -101,9 +102,10 @@ function Assignation_Ticket(numero_discussion) {
 
                 Barre_De_Statut("Le message n'existe plus.");
                 Icone_Chargement(2);
+                hideLoading();
 
             } else {
-
+                hideLoading();
                 Ajax_Ouverture_Ticket(msg);
             }
         }
@@ -128,12 +130,15 @@ function Valider_Formulaire_Nouveau_Ticket() {
 
     if (Longueur_Minimal + Objet_Selectionner == 0) {
 
+        displayLoading();
+        
         $.ajax({
             type: "POST",
             url: "pages/Messagerie/ajax/ajaxDiscussionCreate.php",
             data: "Nouveau_Ticket_Objet=" + $("#Selecteur_Objet_Ticket").val() + "&Nouveau_Ticket_Message=" + $("#Textarea_Nouveau_Ticket").val(),
             success: function (msg) {
 
+                hideLoading();
                 console.log(msg);
 
                 if (msg == 1) {

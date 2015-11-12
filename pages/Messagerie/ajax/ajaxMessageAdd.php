@@ -29,10 +29,14 @@ class ajaxMessageAdd extends \PageHelper {
         $objSupportMessage->setIp($this->ipAdresse);
 
         try {
+
+            $objSupportDiscussion = \Site\SiteHelper::getSupportDiscussionsRepository()->find($idDiscussion);
+            $objSupportDiscussion->setDateDernierMessage(new \DateTime(date("Y-m-d H:i:s")));
+            $em->persist($objSupportDiscussion);
+
             $em->persist($objSupportMessage);
             $em->flush();
 
-            $objSupportDiscussion = \Site\SiteHelper::getSupportDiscussionsRepository()->find($idDiscussion);
 
             if ($idCompte == $objSupportDiscussion->getIdAdmin()) {
                 $objSupportObjet = \Site\SiteHelper::getSupportObjetsRepository()->find($objSupportDiscussion->getIdObjet());

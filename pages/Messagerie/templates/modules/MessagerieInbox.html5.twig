@@ -20,7 +20,7 @@
                     <th width="140">Gérer par</th>
                     <th>Objet</th>
                     <th>Contenue</th>
-                    <th width="240">Date</th>
+                    <th width="240">Dernier message</th>
                 </tr>
             </thead>
 
@@ -32,7 +32,7 @@
                             <td>{{ objSupportDiscussion.admin }}</td>
                             <td>{{ objSupportDiscussion.objet }}</td>
                             <td>{{ truncateString(objSupportDiscussion.message, 20) }}</td>
-                            <td>{{ getFormatedDateTime(objSupportDiscussion.date) }}</td>
+                            <td>{{ getFormatedDateTime(objSupportDiscussion.dateDernierMessage) }}</td>
                         </tr>
                     {% endfor %}
 

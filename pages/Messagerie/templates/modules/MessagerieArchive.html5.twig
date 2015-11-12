@@ -8,7 +8,7 @@
                     <th width="120" data-tooltip="Expediteur du premier message de la discussion">Expediteur</th>
                     <th width="120" data-tooltip="Destinataire du premier message de la discussion">Destinataire</th>
                     <th data-tooltip="Objet de la discussion">Objet</th>
-                    <th width="240" data-tooltip="Date du début de la discussion">Date</th>
+                    <th width="240" data-tooltip="Date du début de la discussion">Dernier message</th>
                 </tr>
             </thead>
 
@@ -20,7 +20,7 @@
                             <td>{{ objSupportDiscussion.user }}</td>
                             <td>{{ objSupportDiscussion.admin }}</td>
                             <td>{{ objSupportDiscussion.objet }}</td>
-                            <td>{{ getFormatedDateTime(objSupportDiscussion.date) }}</td>
+                            <td>{{ getFormatedDateTime(objSupportDiscussion.dateDernierMessage) }}</td>
                         </tr>
                     {% endfor %}
 

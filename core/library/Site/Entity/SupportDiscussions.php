@@ -57,6 +57,13 @@ class SupportDiscussions {
     private $date = '0000-00-00 00:00:00';
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateDernierMessage", type="datetime", nullable=false)
+     */
+    private $dateDernierMessage = '0000-00-00 00:00:00';
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="estArchive", type="boolean", nullable=false)
@@ -187,6 +194,28 @@ class SupportDiscussions {
      */
     public function getDate() {
         return $this->date;
+    }
+
+    /**
+     * Set dateDernierMessage
+     *
+     * @param \DateTime $dateDernierMessage
+     *
+     * @return SupportDiscussions
+     */
+    public function setDateDernierMessage($dateDernierMessage) {
+        $this->dateDernierMessage = $dateDernierMessage;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDernierMessage
+     *
+     * @return \DateTime
+     */
+    public function getDateDernierMessage() {
+        return $this->dateDernierMessage;
     }
 
     /**
