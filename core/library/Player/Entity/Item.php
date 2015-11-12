@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Item
  *
  * @ORM\Table(name="player.item", indexes={@ORM\Index(name="owner_id_idx", columns={"owner_id"}), @ORM\Index(name="item_vnum_index", columns={"vnum"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Player\Repository\ItemRepository")
  */
 class Item
 {

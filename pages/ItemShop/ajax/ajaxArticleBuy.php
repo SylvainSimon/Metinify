@@ -8,44 +8,30 @@ class ajaxArticleBuy extends \ScriptHelper {
 
     public $isProtected = true;
 
-    public function Verification_Place_Inventaire_IS($Verification_Place_Account_Id, $lol, $Procedure_Achat_Item_Nombre = 1) {
+    public function Verification_Place_Inventaire_IS($Verification_Place_Account_Id, $nombreItem = 1) {
 
         $countSafebox = \Player\PlayerHelper::getSafeboxRepository()->findByIdCompte($this->objAccount->getId());
 
         if ($countSafebox !== null) {
 
             $nextFreePosition = 0;
-            $Variable_De_Sortie = false;
+            $out = false;
 
-            /* ------------------------ Chercher Position ---------------------------- */
-            $Chercher_Position = "SELECT id FROM player.item 
-                                        WHERE owner_id = ?
-                                        AND pos = ?
-                                        AND window = 'MALL'";
-            $Parametres_Chercher_Position = $this->objConnection->prepare($Chercher_Position);
-            /* -------------------------------------------------------------------------- */
+            while ($out == false) {
 
-            while ($Variable_De_Sortie == false) {
-
-                $Parametres_Chercher_Position->execute(array(
-                    $Verification_Place_Account_Id,
-                    $nextFreePosition));
-                $Parametres_Chercher_Position->setFetchMode(\PDO::FETCH_OBJ);
-                $Nombre_De_Resultat_Chercher_Position = $Parametres_Chercher_Position->rowCount();
-
-                if ($Nombre_De_Resultat_Chercher_Position >= 1) {
+                $objItem = \Player\PlayerHelper::getItemRepository()->countByOwnerIdPosAndWindow($Verification_Place_Account_Id, $nextFreePosition, "MALL");
+                if ($objItem > 0) {
                     $nextFreePosition++;
                 } else {
-                    $Variable_De_Sortie = true;
+                    $out = true;
                 }
             }
 
-            // Si l'entrepot est plein
-            if ($nextFreePosition > (44 - $Procedure_Achat_Item_Nombre)) {
+            if ($nextFreePosition > (44 - $nombreItem)) {
                 return false;
             } else {
                 return $nextFreePosition;
-            } // On renvoi le numéro de la position libre
+            }
         } else {
             return false;
         }
@@ -79,9 +65,9 @@ class ajaxArticleBuy extends \ScriptHelper {
                     if ($flagItem == 4 || $flagItem == 20 || $flagItem == 132 || $flagItem == 2052 || $flagItem == 8212) {
 
                         //Si l'entrepot n'est pas plein
-                        if (is_numeric($this->Verification_Place_Inventaire_IS($this->objAccount->getId(), $this->objConnection))) {
+                        if ($this->Verification_Place_Inventaire_IS($this->objAccount->getId()) !== false) {
 
-                            $nextFreePosition = $this->Verification_Place_Inventaire_IS($this->objAccount->getId(), $this->objConnection);
+                            $nextFreePosition = $this->Verification_Place_Inventaire_IS($this->objAccount->getId());
 
                             $objItem = new \Player\Entity\Item();
                             $objItem->setOwnerId($this->objAccount->getId());
@@ -108,10 +94,10 @@ class ajaxArticleBuy extends \ScriptHelper {
                         }
                     } else {
                         //Si l'entrepot n'est pas plein
-                        if (is_numeric($this->Verification_Place_Inventaire_IS($this->objAccount->getId(), $this->objConnection))) {
+                        if ($this->Verification_Place_Inventaire_IS($this->objAccount->getId()) !== false) {
 
                             for ($i = 1; $i <= $nombreItem; $i++) {
-                                $nextFreePosition = $this->Verification_Place_Inventaire_IS($this->objAccount->getId(), $this->objConnection);
+                                $nextFreePosition = $this->Verification_Place_Inventaire_IS($this->objAccount->getId());
 
                                 $objItem = new \Player\Entity\Item();
                                 $objItem->setOwnerId($this->objAccount->getId());
@@ -246,9 +232,9 @@ class ajaxArticleBuy extends \ScriptHelper {
                     if ($flagItem == 4 || $flagItem == 20 || $flagItem == 132 || $flagItem == 2052 || $flagItem == 8212) {
 
                         //Si l'entrepot n'est pas plein
-                        if (is_numeric($this->Verification_Place_Inventaire_IS($this->objAccount->getId(), $this->objConnection))) {
+                        if ($this->Verification_Place_Inventaire_IS($this->objAccount->getId()) !== false) {
 
-                            $nextFreePosition = $this->Verification_Place_Inventaire_IS($this->objAccount->getId(), $this->objConnection);
+                            $nextFreePosition = $this->Verification_Place_Inventaire_IS($this->objAccount->getId());
 
                             $objItem = new \Player\Entity\Item();
                             $objItem->setOwnerId($this->objAccount->getId());
@@ -277,10 +263,10 @@ class ajaxArticleBuy extends \ScriptHelper {
                         }
                     } else {
                         //Si l'entrepot n'est pas plein
-                        if (is_numeric($this->Verification_Place_Inventaire_IS($this->objAccount->getId(), $this->objConnection))) {
+                        if ($this->Verification_Place_Inventaire_IS($this->objAccount->getId()) !== false) {
 
                             for ($i = 1; $i <= $nombreItem; $i++) {
-                                $nextFreePosition = $this->Verification_Place_Inventaire_IS($this->objAccount->getId(), $this->objConnection);
+                                $nextFreePosition = $this->Verification_Place_Inventaire_IS($this->objAccount->getId());
 
                                 $objItem = new \Player\Entity\Item();
                                 $objItem->setOwnerId($this->objAccount->getId());

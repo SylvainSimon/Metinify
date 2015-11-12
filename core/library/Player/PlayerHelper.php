@@ -14,6 +14,13 @@ class PlayerHelper {
     }
     
     /**
+     * @return \Player\Repository\ItemRepository
+     */
+    public static function getItemRepository() {
+        return DoctrineHelper::getRepository('\Player\Entity\Item');
+    }
+    
+    /**
      * @return \Player\Repository\ItemProtoRepository
      */
     public static function getItemProtoRepository() {
