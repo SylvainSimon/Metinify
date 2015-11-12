@@ -144,10 +144,10 @@ $(document).ready(function () {
 });
 
 function displayLoading() {
-    $("#Contenue_Principal .box").append('<div class="overlay"><i class="fa fa-spin material-icons md-icon-spin"></i></div>');
+    $("#Contenue_Principal > .box").append('<div class="overlay"><i class="fa fa-spin material-icons md-icon-spin"></i></div>');
 }
 function hideLoading() {
-    $("#Contenue_Principal .box .overlay").remove();
+    $("#Contenue_Principal > .box .overlay").remove();
 }
 
 function getInformationItem(idItem) {

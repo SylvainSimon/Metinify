@@ -1,7 +1,8 @@
 function Ajax_Appel_Messagerie(url, objet) {
 
-    window.parent.Barre_De_Statut("Appel de l'onglet...");
-    window.parent.Icone_Chargement(1);
+    Barre_De_Statut("Appel de l'onglet...");
+    Icone_Chargement(1);
+    displayLoading();
 
     $.ajax({
         type: "POST",
@@ -9,9 +10,10 @@ function Ajax_Appel_Messagerie(url, objet) {
         success: function (msg) {
 
             $("#Contenue_Cadre_Messagerie").html(msg);
-            window.parent.Barre_De_Statut("Chargement terminé.");
-            window.parent.Icone_Chargement(0);
+            Barre_De_Statut("Chargement terminé.");
+            Icone_Chargement(0);
 
+            hideLoading();
             redraw();
 
             if (objet !== false) {
@@ -33,8 +35,9 @@ function hideLoadingChat() {
 
 function Ajax_Ouverture_Ticket(id_ticket) {
 
-    window.parent.Barre_De_Statut("Ouverture de la discussion...");
-    window.parent.Icone_Chargement(1);
+    Barre_De_Statut("Ouverture de la discussion...");
+    Icone_Chargement(1);
+    displayLoading();
 
     $.ajax({
         type: "POST",
@@ -43,9 +46,10 @@ function Ajax_Ouverture_Ticket(id_ticket) {
         success: function (msg) {
 
             $("#Contenue_Cadre_Messagerie").html(msg);
-            window.parent.Barre_De_Statut("Chargement terminé.");
-            window.parent.Icone_Chargement(0);
-
+            Barre_De_Statut("Chargement terminé.");
+            Icone_Chargement(0);
+            hideLoading();
+            redraw();
         }
     });
     return false;
@@ -54,8 +58,8 @@ function Ajax_Ouverture_Ticket(id_ticket) {
 
 function Fonction_Remplacement(montexte) {
 
-    window.parent.Barre_De_Statut("Vérification des mots utilisés...");
-    window.parent.Icone_Chargement(1);
+    Barre_De_Statut("Vérification des mots utilisés...");
+    Icone_Chargement(1);
 
     $.ajax({
         type: "POST",
@@ -63,8 +67,8 @@ function Fonction_Remplacement(montexte) {
         data: "Message_Texte=" + montexte,
         success: function (msg) {
 
-            window.parent.Barre_De_Statut("Chargement terminé.");
-            window.parent.Icone_Chargement(0);
+            Barre_De_Statut("Chargement terminé.");
+            Icone_Chargement(0);
 
             $("#Textarea_Nouveau_Ticket").val == "";
             $("#Textarea_Nouveau_Ticket").val(msg);
@@ -84,8 +88,8 @@ function Longueur_minimal() {
 
 function Assignation_Ticket(numero_discussion) {
 
-    window.parent.Barre_De_Statut("Assignation et déplacement du ticket...");
-    window.parent.Icone_Chargement(1);
+    Barre_De_Statut("Assignation et déplacement du ticket...");
+    Icone_Chargement(1);
 
     $.ajax({
         type: "POST",
@@ -95,8 +99,8 @@ function Assignation_Ticket(numero_discussion) {
 
             if (msg == "NULL") {
 
-                window.parent.Barre_De_Statut("Le message n'existe plus.");
-                window.parent.Icone_Chargement(2);
+                Barre_De_Statut("Le message n'existe plus.");
+                Icone_Chargement(2);
 
             } else {
 
@@ -119,8 +123,8 @@ function Valider_Formulaire_Nouveau_Ticket() {
 
     Longueur_minimal();
 
-    window.parent.Barre_De_Statut("Envoie du nouveau ticket...");
-    window.parent.Icone_Chargement(1);
+    Barre_De_Statut("Envoie du nouveau ticket...");
+    Icone_Chargement(1);
 
     if (Longueur_Minimal + Objet_Selectionner == 0) {
 
@@ -134,15 +138,15 @@ function Valider_Formulaire_Nouveau_Ticket() {
 
                 if (msg == 1) {
 
-                    window.parent.Barre_De_Statut("Message envoyé avec succès.");
-                    window.parent.Icone_Chargement(0);
+                    Barre_De_Statut("Message envoyé avec succès.");
+                    Icone_Chargement(0);
 
                     Ajax_Appel_Messagerie("pages/Messagerie/MessagerieInbox.php");
                 }
                 else {
 
-                    window.parent.Barre_De_Statut("Envoie du ticket échoué.");
-                    window.parent.Icone_Chargement(2);
+                    Barre_De_Statut("Envoie du ticket échoué.");
+                    Icone_Chargement(2);
                 }
             }
         });
@@ -163,8 +167,8 @@ function Valider_Formulaire_Nouveau_Ticket() {
 
         alert(Message_Erreur);
 
-        window.parent.Barre_De_Statut("Envoie annulé.");
-        window.parent.Icone_Chargement(2);
+        Barre_De_Statut("Envoie annulé.");
+        Icone_Chargement(2);
 
         return false;
     }
