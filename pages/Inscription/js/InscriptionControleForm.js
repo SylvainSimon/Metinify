@@ -4,8 +4,8 @@ var MotdePasse = 1;
 var MotdePasseVerif = 1;
 var MailSyntax = 1;
 
-function verifNomDutilisateur()
-{
+function verifNomDutilisateur() {
+
     pseudo = document.getElementById("SaisieUtilisateur").value;
 
     for (i = 0; i < pseudo.length; i++) {
@@ -136,13 +136,13 @@ function RequeteAJAX(fichier)
 
 function VerificationFormulaire() {
 
+    displayLoading();
+
     $.ajax({
         type: "POST",
         url: "pages/Inscription/ajax/reCaptchaVerify.php",
         data: {"reCaptchaVerify": $("[name=g-recaptcha-response]").val()},
         success: function (msg) {
-
-            console.log(msg);
             var json = JSON.parse(msg);
 
             if (json.granted) {
@@ -150,7 +150,6 @@ function VerificationFormulaire() {
 
                     Barre_De_Statut("Inscription en cours...");
                     Icone_Chargement(1);
-                    displayLoading();
 
                     $.ajax({
                         type: "POST",
@@ -198,18 +197,19 @@ function VerificationFormulaire() {
                         VerifSyntaxEmail();
                     }
 
-                    if (messagederreur !== "") {
+                    if (messagederreur != "") {
                         popBootbox(messagederreur, "Erreurs de saisies");
+                        grecaptcha.reset();
                     }
-
                     messagederreur = "";
-
-                    return;
                 }
             } else {
                 popBootbox(json.error, "Erreurs de saisies");
+                grecaptcha.reset();
             }
 
+            hideLoading();
         }
+
     });
 }

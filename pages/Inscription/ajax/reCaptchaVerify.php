@@ -29,6 +29,9 @@ class reCaptchaVerify {
                         case "missing-input-response":
                             $return["error"] .= "La vérification anti-robot n'a pas été faite.<br/>";
                             break;
+                        default :
+                            $return["error"] .= "Une erreur s'est produite lors de la validation du captcha.<br/>";
+                            break;
                     }
                 }
             }
