@@ -84,6 +84,39 @@ function createTooltip() {
     });
 }
 
+function popBootbox(message, title, withReload) {
+
+    if (typeof withReload === undefined) {
+        withReload = false;
+    }
+
+    var vartitle = "Information";
+
+    if (typeof title !== "undefined") {
+        vartitle = title;
+    }
+
+    bootbox.dialog({
+        message: message,
+        title: vartitle,
+        animate: false,
+        className: "myBootBox",
+        buttons: {
+            main: {
+                label: "Fermer la fenêtre",
+                className: "btn-primary",
+                callback: function () {
+
+                    if (withReload) {
+                        location.reload();
+                    }
+
+                }
+            }
+        }
+    });
+}
+
 $.fn.select2.defaults.set("theme", "bootstrap");
 
 function redrawSelect2() {

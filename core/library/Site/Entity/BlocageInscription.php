@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * BlocageInscription
  *
  * @ORM\Table(name="site.blocage_inscription")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\Repository\BlocageInscriptionRepository")
  */
 class BlocageInscription {
 

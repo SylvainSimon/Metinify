@@ -14,6 +14,13 @@ class SiteHelper {
     }
     
     /**
+     * @return \Site\Repository\BlocageInscriptionRepository
+     */
+    public static function getBlocageInscriptionRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\BlocageInscription');
+    }
+    
+    /**
      * @return \Site\Repository\ChangementMailRepository
      */
     public static function getChangementMailRepository() {
