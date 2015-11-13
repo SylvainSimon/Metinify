@@ -9,7 +9,7 @@ class Activation extends \PageHelper {
         global $request;
         $em = \Shared\DoctrineHelper::getEntityManager();
 
-        $idAccount = \Encryption::decryptForUrl($request->query->get("id"));
+        $idAccount = \Encryption::decrypt($request->query->get("id"));
 
         if ($idAccount !== null) {
 

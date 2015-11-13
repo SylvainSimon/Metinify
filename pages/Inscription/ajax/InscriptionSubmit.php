@@ -58,7 +58,7 @@ class InscriptionSubmit extends \PageHelper {
             $template = $this->objTwig->loadTemplate("InscriptionSubmitVerif.html5.twig");
             $result = $template->render([
                 "account" => $objAccount->getLogin(),
-                "accountId" => \Encryption::encryptForUrl($objAccount->getId())
+                "accountId" => $objAccount->getId()
             ]);
             $subject = 'VamosMT2 - Activation de votre compte ' . $objAccount->getLogin();
             \EmailHelper::sendEmail($objAccount->getEmail(), $subject, $result);
