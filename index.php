@@ -6,7 +6,6 @@ class IndexWebsite extends PageHelper {
     public function __construct() {
 
         parent::__construct();
-
         global $session;
 
         if ($session->get("Administration_PannelAdmin") !== null) {
@@ -76,14 +75,31 @@ class IndexWebsite extends PageHelper {
 
                 <div class="wrapper">
 
-                    <?php include_once 'pages/_Home/includes/headbar.php'; ?>
+                    <div style="position: fixed; top: 11px; left:8px; z-index: 999990;">
+                        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                            <i class="material-icons md-icon-menu md-24"></i>
+                        </a>
+                    </div>
 
+                    <div id="Barre_Haut">
+                        <div id="Ajax_Connexion">
+                            <?php if (!$this->isConnected) {
+                                $templateHeadbar = $this->objTwig->loadTemplate("headbarForm.html5.twig");
+                            } else {
+                                $templateHeadbar = $this->objTwig->loadTemplate("headbarConnected.html5.twig");
+                            }
+
+                            $view = $templateHeadbar->render([]);
+                            echo $view;
+                            ?>
+                        </div>
+                    </div>
+                    
                     <div class="clear"></div>
 
                     <aside class="main-sidebar" style="background: #131313; border-right: 1px solid #3E3E3E;">
                         <section class="sidebar">
                             <?php include_once 'pages/_Home/includes/Menu_Primaire.php'; ?>
-
                         </section>
                     </aside>
 
@@ -122,7 +138,7 @@ class IndexWebsite extends PageHelper {
         <?php if ($this->isConnected) { ?>
                     Actualisation_Messages_Sans_Boucle();
         <?php } ?>
-            
+
                 $(function () {
 
                     $.contextMenu({
