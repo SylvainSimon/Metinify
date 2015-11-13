@@ -11,7 +11,7 @@
                                log_achats.vnum_item,
                                log_achats.item
                         FROM site.log_achats
-                        WHERE id_compte = '" . $Resultat_Appel_Compte->id . "'
+                        WHERE id_compte = '" . $this->objAccount->getId() . "'
                         ORDER by date DESC";
 
     $Parametres_Liste_Achats = $this->objConnection->query($Liste_Achats);
@@ -22,7 +22,7 @@
     /* -------------------------- Somme VamoNaies ------------------------------ */
     $Somme_Depenses = "SELECT SUM(log_achats.prix) AS nombre
                         FROM site.log_achats
-                        WHERE id_compte = '" . $Resultat_Appel_Compte->id . "'
+                        WHERE id_compte = '" . $this->objAccount->getId() . "'
                         AND monnaie = 1";
 
     $Parametres_Somme_Depenses = $this->objConnection->query($Somme_Depenses);
@@ -33,7 +33,7 @@
     /* -------------------------- Somme VamoNaies ------------------------------ */
     $Somme_Depenses_Tan = "SELECT SUM(log_achats.prix) AS nombre
                         FROM site.log_achats
-                        WHERE id_compte = '" . $Resultat_Appel_Compte->id . "'
+                        WHERE id_compte = '" . $this->objAccount->getId() . "'
                         AND monnaie = 2";
 
     $Parametres_Somme_Depenses_Tan = $this->objConnection->query($Somme_Depenses_Tan);

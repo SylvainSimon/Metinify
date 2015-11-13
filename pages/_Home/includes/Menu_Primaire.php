@@ -9,7 +9,7 @@
             <li id="Menu_Inscription_MonCompte2" class="pointer"><a onclick="Ajax('pages/Inscription/InscriptionForm.php')">Inscription</a></li>
             <li id="Menu_Inscription_MonCompte" class="pointer" style="display: none;"><a id="Lien_Mon_Compte" onclick="">Mon compte</a></li>
         <?php } else { ?>
-            <li id="Menu_Inscription_MonCompte" class="pointer"><a id="Lien_Mon_Compte" onclick="Ajax('pages/MonCompte/modules/MonCompte.php?id=<?php echo $this->objAccount->getId(); ?>')">Mon compte</a></li>
+            <li id="Menu_Inscription_MonCompte" class="pointer"><a id="Lien_Mon_Compte" onclick="Ajax('pages/MonCompte/modules/MonCompte.php?id=<?php echo \Encryption::encryptForUrl($this->objAccount->getId()); ?>')">Mon compte</a></li>
             <li id="Menu_Inscription_MonCompte2" class="pointer" style="display: none;"><a onclick="Ajax('pages/Inscription/InscriptionForm.php')">Inscription</a></li>
         <?php } ?>
 
@@ -31,7 +31,7 @@
             <li id="Menu_Telechargement_ItemShop2" class="pointer" style="display: inline;"><a onclick="Ajax('pages/_LegacyPages/Telechargement.php')">Téléchargement</a></li>
             <li id="Menu_Telechargement_ItemShop" class="pointer" style="display: none;"><a id="Lien_Item_Shop" onclick="" >Item-Shop</a></li>
         <?php } else { ?>
-            <li id="Menu_Telechargement_ItemShop" class="pointer" style="display: inline;"><a id="Lien_Item_Shop" onclick="Ajax('pages/ItemShop/ItemShop.php?id=<?php echo $this->objAccount->getId(); ?>')">Item-Shop</a></li>
+            <li id="Menu_Telechargement_ItemShop" class="pointer" style="display: inline;"><a id="Lien_Item_Shop" onclick="Ajax('pages/ItemShop/ItemShop.php')">Item-Shop</a></li>
             <li id="Menu_Telechargement_ItemShop2" class="pointer"><a onclick="Ajax('pages/_LegacyPages/Telechargement.php')">Téléchargement</a></li>
         <?php } ?>
 

@@ -36,7 +36,6 @@ class ajaxConnexionSubmit extends \ScriptHelper {
                     'result' => "1",
                     'reasons' => "",
                     'withRefresh' => 1,
-                    'id' => $objAccount->getId(),
                     'data' => '<div style="position: relative;top: 45%;width: 431px; margin: 0 auto 0 auto;"><h2>Chargement de l\'administration...</h2></div>'
                 );
             } else {
@@ -44,7 +43,7 @@ class ajaxConnexionSubmit extends \ScriptHelper {
                     'result' => "1",
                     'reasons' => "",
                     'withRefresh' => 0,
-                    'id' => $objAccount->getId(),
+                    'id' => \Encryption::encryptForUrl($objAccount->getId()),
                     'data' => ""
                 );
             }

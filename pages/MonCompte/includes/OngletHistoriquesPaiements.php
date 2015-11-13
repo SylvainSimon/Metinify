@@ -8,7 +8,7 @@
                                logs_rechargements.email_compte,
                                logs_rechargements.nombre_vamonaies
                         FROM site.logs_rechargements
-                        WHERE id_compte = '" . $Resultat_Appel_Compte->id . "'
+                        WHERE id_compte = '" . $this->objAccount->getId() . "'
                         AND compte != ''
                         ORDER by date DESC";
 
@@ -20,7 +20,7 @@
     /* -------------------------- Somme VamoNaies ------------------------------ */
     $Somme_VamoNaies = "SELECT SUM(nombre_vamonaies) AS nombre
                         FROM site.logs_rechargements
-                        WHERE id_compte = '" . $Resultat_Appel_Compte->id . "'
+                        WHERE id_compte = '" . $this->objAccount->getId() . "'
                         AND compte != ''";
 
     $Parametres_Somme_VamoNaies = $this->objConnection->query($Somme_VamoNaies);

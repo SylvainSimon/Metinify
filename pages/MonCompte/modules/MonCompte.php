@@ -11,14 +11,9 @@ class MonCompte extends \PageHelper {
     public function run() {
 
         global $request;
-        parent::VerifMonCompte($request->query->get("id"));
+        parent::VerifMonCompte(\Encryption::decryptForUrl($request->query->get("id")));
                 
         include __DIR__ . '../../../../pages/Tableaux_Arrays.php';
-
-        $date = Date("d/m/Y H:i:s");
-        $Date_Actuel_En_Seconde = time();
-
-        $Appel_Compte_Id = $_GET['id'];
 
         /* ------------------------------ Vérification connecte ---------------------------------------------- */
         $Verification_Connecte = "SELECT id FROM player.player
@@ -55,24 +50,9 @@ class MonCompte extends \PageHelper {
                         LIMIT 1";
         $Parametres_Appel_Compte = $this->objConnection->prepare($Appel_Compte);
         $Parametres_Appel_Compte->execute(array(
-            $Appel_Compte_Id));
+            $this->objAccount->getId()));
         $Parametres_Appel_Compte->setFetchMode(\PDO::FETCH_OBJ);
-        /* -------------------------------------------------------------------------- */
-
         $Resultat_Appel_Compte = $Parametres_Appel_Compte->fetch();
-
-        /* ------------------------ Recuperation transaction ----------------------------- */
-        $Nombre_Transaction = "SELECT id
-                          FROM site.logs_rechargements
-                          WHERE ip = ?
-                          AND compte = ''";
-        $Parametres_Nombre_Transaction = $this->objConnection->prepare($Nombre_Transaction);
-        $Parametres_Nombre_Transaction->execute(array(
-            $_SERVER['REMOTE_ADDR']));
-        $Parametres_Nombre_Transaction->setFetchMode(\PDO::FETCH_OBJ);
-        $Nombre_De_Transaction = $Parametres_Nombre_Transaction->rowCount();
-
-        /* -------------------------------------------------------------------------- */
         ?>
 
         <div class="box box-default flat">

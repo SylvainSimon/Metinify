@@ -8,7 +8,7 @@
                 <tbody>
                     <tr>
                         <td style="border-top: 0px;">Compte :</td>
-                        <td style="border-top: 0px;"><?php echo $Resultat_Appel_Compte->login; ?></td>
+                        <td style="border-top: 0px;"><?php echo $this->objAccount->getLogin(); ?></td>
                     </tr>
                     <tr>
                         <td>Création :</td>
@@ -19,11 +19,11 @@
                     </tr>
                     <tr>
                         <td>Ip du compte :</td></td>
-                        <?php if ($Resultat_Appel_Compte->ip_creation == '') { ?>
+                        <?php if ($this->objAccount->getIpCreation() == '') { ?>
                             <td>Non-définie</td>
 
                         <?php } else { ?>
-                            <td><?php echo $Resultat_Appel_Compte->ip_creation; ?></td>
+                            <td><?php echo $this->objAccount->getIpCreation(); ?></td>
                         <?php } ?>
                     </tr>
                     <tr>
@@ -145,7 +145,7 @@
                           ORDER by level DESC
                           LIMIT 4";
             $Parametres_Liste_Personnages = $this->objConnection->prepare($Liste_Personnages);
-            $Parametres_Liste_Personnages->execute(array($Appel_Compte_Id));
+            $Parametres_Liste_Personnages->execute(array($this->objAccount->getId()));
             $Parametres_Liste_Personnages->setFetchMode(\PDO::FETCH_OBJ);
             $Nombre_De_Resultat = $Parametres_Liste_Personnages->rowCount();
 

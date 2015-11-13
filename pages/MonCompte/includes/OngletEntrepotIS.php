@@ -12,7 +12,7 @@
                         $.ajax({
                             type: "POST",
                             url: "pages/MonCompte/ajax/ajaxEntrepotIS.php",
-                            data: "id=<?php echo $Resultat_Appel_Compte->id; ?>", // données à transmettre
+                            data: "id=<?php echo $this->objAccount->getId(); ?>", // données à transmettre
                             success: function (msg) {
 
                                 $("#Conteneur_Entrepot_IS").fadeOut("slow", function () {
@@ -45,7 +45,7 @@
                                      FROM player.item
                                      LEFT JOIN player.item_proto
                                      ON item_proto.vnum = item.vnum
-                                     WHERE owner_id = '" . $Resultat_Appel_Compte->id . "'
+                                     WHERE owner_id = '" . $this->objAccount->getId() . "'
                                      AND window = 'MALL'
                                      ORDER by item_proto.locale_name ASC";
 
