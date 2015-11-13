@@ -259,3 +259,41 @@ function Distribuer_Monnaies() {
     return false;
 
 }
+
+$(document).ready(function () {
+    $(".fancybox_Rechargement").fancybox({
+        padding: 0,
+        closeBtn: false,
+        autoSize: false,
+        scrolling: 'no',
+        scrollOutside: false,
+        fitToView: true,
+        autoWidth: true,
+        height: 450,
+        closeClick: false,
+        topRatio: 0.5,
+        openEffect: 'elastic',
+        closeEffect: 'elastic',
+        openSpeed: 400,
+        closeSpeed: 200
+    });
+});
+
+$(document).ready(function () {
+    $(".fancybox_Trailer").fancybox({
+        minWidth: 1200,
+        minHeight: 521,
+        maxHeight: 521,
+        padding: 0,
+        closeBtn: false,
+        scrolling: 'no',
+        scrollOutside: false,
+        fitToView: true,
+        autoSize: false,
+        closeClick: false,
+        openEffect: 'elastic',
+        closeEffect: 'elastic',
+        openSpeed: 400,
+        closeSpeed: 200
+    });
+});

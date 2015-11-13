@@ -89,8 +89,7 @@ class IndexWebsite extends PageHelper {
                                 $templateHeadbar = $this->objTwig->loadTemplate("headbarConnected.html5.twig");
                             }
 
-                            $view = $templateHeadbar->render([]);
-                            echo $view;
+                            echo $templateHeadbar->render([]);
                             ?>
                         </div>
                     </div>
@@ -99,7 +98,10 @@ class IndexWebsite extends PageHelper {
 
                     <aside class="main-sidebar" style="background: #131313; border-right: 1px solid #3E3E3E;">
                         <section class="sidebar">
-                            <?php include_once 'pages/_Home/includes/Menu_Primaire.php'; ?>
+                            <?php 
+                            $templateMenu = $this->objTwig->loadTemplate("leftMenu.html5.twig");
+                            echo $templateMenu->render(["isConnected" => $this->isConnected]);
+                            ?>
                         </section>
                     </aside>
 
