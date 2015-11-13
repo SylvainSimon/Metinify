@@ -5,11 +5,11 @@
         <li class="pointer"><a onclick="Ajax('pages/_LegacyPages/Presentation.php')">Présentation</a></li>
 
 
-        <?php if ($session->get("ID") === null) { ?>
+        <?php if (!$this->isConnected) { ?>
             <li id="Menu_Inscription_MonCompte2" class="pointer"><a onclick="Ajax('pages/Inscription/InscriptionForm.php')">Inscription</a></li>
             <li id="Menu_Inscription_MonCompte" class="pointer" style="display: none;"><a id="Lien_Mon_Compte" onclick="">Mon compte</a></li>
         <?php } else { ?>
-            <li id="Menu_Inscription_MonCompte" class="pointer"><a id="Lien_Mon_Compte" onclick="Ajax('pages/MonCompte/modules/MonCompte.php?id=<?php echo \Encryption::encryptForUrl($this->objAccount->getId()); ?>')">Mon compte</a></li>
+            <li id="Menu_Inscription_MonCompte" class="pointer"><a id="Lien_Mon_Compte" onclick="Ajax('pages/MonCompte/modules/MonCompte.php')">Mon compte</a></li>
             <li id="Menu_Inscription_MonCompte2" class="pointer" style="display: none;"><a onclick="Ajax('pages/Inscription/InscriptionForm.php')">Inscription</a></li>
         <?php } ?>
 
@@ -27,7 +27,7 @@
             </ul>
         </li>
 
-        <?php if ($session->get("ID") === null) { ?>
+        <?php if (!$this->isConnected) { ?>
             <li id="Menu_Telechargement_ItemShop2" class="pointer" style="display: inline;"><a onclick="Ajax('pages/_LegacyPages/Telechargement.php')">Téléchargement</a></li>
             <li id="Menu_Telechargement_ItemShop" class="pointer" style="display: none;"><a id="Lien_Item_Shop" onclick="" >Item-Shop</a></li>
         <?php } else { ?>
@@ -35,7 +35,7 @@
             <li id="Menu_Telechargement_ItemShop2" class="pointer"><a onclick="Ajax('pages/_LegacyPages/Telechargement.php')">Téléchargement</a></li>
         <?php } ?>
 
-        <?php if ($session->get("ID") === null) { ?>
+        <?php if (!$this->isConnected) { ?>
             <li id="Menu_Telechargement_Equipe2" class="pointer" style="display: inline;"><a onclick="Ajax('pages/_LegacyPages/Calendrier.php')">Calendrier des events</a></li>
             <li id="Menu_Telechargement_Equipe" class="pointer" style="display: none;"><a id="Lien_Marche" onclick="" >Marché des personnages</a></li>
         <?php } else { ?>
@@ -45,7 +45,7 @@
 
         <li><a onclick="window.open('http://forum.vamosmt2.org/forum/')">Notre forum</a></li>
 
-        <?php if ($session->get("ID") === null) { ?>
+        <?php if (!$this->isConnected) { ?>
             <li id="Menu_Support2" class="pointer"><a onclick="Ajax('pages/_LegacyPages/Contacts.php')">Support</a></li>
             <li id="Menu_Support" class="pointer" style="display: none;"><a id="Lien_Support" onclick="">Support</a></li>
         <?php } else { ?>

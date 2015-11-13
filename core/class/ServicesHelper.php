@@ -58,6 +58,7 @@ class ServicesHelper {
                 BASE_ROOT . '/pages/Statistiques/templates/',
                 BASE_ROOT . '/pages/Votes/templates/',
                 BASE_ROOT . '/pages/_LegacyPages/templates/',
+                BASE_ROOT . '/pages/_Home/templates/modules/',
                 BASE_ROOT . '/core/templates/',
             ];
 

@@ -77,7 +77,7 @@ class IndexWebsite extends PageHelper {
 
                 <div class="wrapper">
 
-                    <?php include_once 'pages/_Home/Barre_Superieur.php'; ?>
+                    <?php include_once 'pages/_Home/includes/headbar.php'; ?>
 
                     <div class="clear"></div>
 

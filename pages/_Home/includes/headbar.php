@@ -8,7 +8,11 @@
 
     <div id="Barre_Haut">
         <div id="Ajax_Connexion">
-            <?php include 'includes/Barre_Superieur_Formulaire.php'; ?>
+            <?php
+            $templateHeadbar = $this->objTwig->loadTemplate("headbarForm.html5.twig");
+            $view = $templateHeadbar->render([]);
+            echo $view;
+            ?>
         </div>
     </div>
 
@@ -16,7 +20,11 @@
 
     <div id="Barre_Haut">
         <div id="Ajax_Connexion">
-            <?php include 'includes/Barre_Superieur_Connectes.php'; ?>
+            <?php
+            $templateHeadbar = $this->objTwig->loadTemplate("headbarConnected.html5.twig");
+            $view = $templateHeadbar->render([]);
+            echo $view;
+            ?>
         </div>
     </div>
 

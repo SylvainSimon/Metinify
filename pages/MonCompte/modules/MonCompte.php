@@ -9,9 +9,6 @@ class MonCompte extends \PageHelper {
     public $isProtected = true;
 
     public function run() {
-
-        global $request;
-        parent::VerifMonCompte(\Encryption::decryptForUrl($request->query->get("id")));
                 
         include __DIR__ . '../../../../pages/Tableaux_Arrays.php';
 

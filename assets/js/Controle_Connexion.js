@@ -18,11 +18,11 @@ $(document).ready(function () {
                         Barre_De_Statut("Connexion réussi.");
                         Icone_Chargement(0);
 
-                        Ajax_Connexion('pages/_Home/includes/Barre_Superieur_Connectes.php');
+                        Ajax_Connexion('pages/_Home/includes/headbarConnected.php');
 
                         document.getElementById('Menu_Inscription_MonCompte').style.display = 'inline';
                         document.getElementById('Menu_Inscription_MonCompte2').style.display = 'none';
-                        $("#Lien_Mon_Compte").attr("onclick", "Ajax('pages/MonCompte/modules/MonCompte.php?id=" + Parse_Json.id + "');");
+                        $("#Lien_Mon_Compte").attr("onclick", "Ajax('pages/MonCompte/modules/MonCompte.php');");
 
                         document.getElementById('Menu_Telechargement_ItemShop').style.display = 'inline';
                         $("#Lien_Item_Shop").attr("onclick", "Ajax('pages/ItemShop/ItemShop.php?type=Item_Shop');");
