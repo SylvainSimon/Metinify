@@ -45,6 +45,22 @@ class PlayerRepository extends EntityRepository {
         }
     }
     
+    public function countPlayerByName($name = "") {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("COUNT(PlayerEntity)");
+        $qb->from("\Player\Entity\Player", "PlayerEntity");
+        $qb->where("PlayerEntity.name = :name");
+        $qb->setParameter("name", $name);
+
+        try {
+            return $qb->getQuery()->getSingleScalarResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return 0;
+        }
+    }
+    
     /**
      * Retourne un joueur d'un compte
      * @param integer $idAccount

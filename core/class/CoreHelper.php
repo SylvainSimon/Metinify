@@ -137,6 +137,8 @@ class CoreHelper {
             if ($objPlayer->getIdAccount() != $session->get("ID")) {
                 include '../../pages/MagicWord.php';
                 exit();
+            }else{
+                return $objPlayer;
             }
         }
     }
