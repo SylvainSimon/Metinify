@@ -83,7 +83,8 @@ class IndexWebsite extends PageHelper {
 
                     <div id="Barre_Haut">
                         <div id="Ajax_Connexion">
-                            <?php if (!$this->isConnected) {
+                            <?php
+                            if (!$this->isConnected) {
                                 $templateHeadbar = $this->objTwig->loadTemplate("headbarForm.html5.twig");
                             } else {
                                 $templateHeadbar = $this->objTwig->loadTemplate("headbarConnected.html5.twig");
@@ -93,12 +94,12 @@ class IndexWebsite extends PageHelper {
                             ?>
                         </div>
                     </div>
-                    
+
                     <div class="clear"></div>
 
                     <aside class="main-sidebar" style="background: #131313; border-right: 1px solid #3E3E3E;">
                         <section class="sidebar">
-                            <?php 
+                            <?php
                             $templateMenu = $this->objTwig->loadTemplate("leftMenu.html5.twig");
                             echo $templateMenu->render(["isConnected" => $this->isConnected]);
                             ?>
@@ -135,63 +136,9 @@ class IndexWebsite extends PageHelper {
                 <div id="overlayMt2"></div>
             </body>
 
-            <script type="text/javascript" >
-
-        <?php if ($this->isConnected) { ?>
-                    Actualisation_Messages_Sans_Boucle();
-        <?php } ?>
-
-                $(function () {
-
-                    $.contextMenu({
-                        selector: 'body',
-                        zIndex: 99999,
-                        duration: 500, show: "slideDown", hide: "slideUp",
-                        callback: function (key, options) {
-                            if (key == "apropos") {
-                                Ajax('pages/_LegacyPages/Presentation.php');
-                            } else if (key == "facebook") {
-                                window.open("https://www.facebook.com/groups/vamosmt2", "_blank");
-                            } else if (key == "twitter") {
-                                window.open("https://twitter.com/VamosMT2", "_blank");
-                            } else if (key == "youtube") {
-                                window.open("https://www.youtube.com/VamosMt2", "_blank");
-                            } else if (key == "teamspeack") {
-                                window.open("ts3server://ts3.vamosmt2.org", "_top");
-                            } else if (key == "equipe") {
-                                Ajax('pages/Equipe.php');
-                            } else if (key == "pilori") {
-                                Ajax('pages/_LegacyPages/Pilori.php');
-                            } else if (key == "stati") {
-                                Ajax("pages/Statistiques/Statistiques.php");
-                            } else if (key == "calen") {
-                                Ajax("pages/_LegacyPages/Calendrier.php");
-                            } else if (key == "securite") {
-                                Ajax("pages/_LegacyPages/Securite.php");
-                            }
-                        },
-                        items: {
-                            "facebook": {name: "Page Facebook"},
-                            "twitter": {name: "Page Twitter", icon: "twitter"},
-                            "youtube": {name: "Chaîne Youtube", icon: "youtube"},
-                            "teamspeack": {name: "TeamSpeak", icon: "teamspeack"},
-                            "sep1": "---------",
-                            "calen": {name: "Calendrier", icon: "calen"},
-                            "stati": {name: "Statistiques", icon: "stati"},
-                            "pilori": {name: "Pilori", icon: "pilori"},
-                            "securite": {name: "Conseils de sécurité", icon: "equipe"},
-                            "sep2": "---------",
-                            "apropos": {name: "A propos de VamosMt2...", icon: "apropo"}
-                        }
-                    });
-
-                });
-            </script>
-
             <script type="text/javascript">
-        <?php if ($request->query->get("version") !== null) { ?>
-                    Ajax('pages/Version.php');
-        <?php } elseif ($request->query->get("ok") !== null) { ?>
+
+        <?php if ($request->query->get("ok") !== null) { ?>
                     Ajax('pages/_LegacyPages/AccountActivationTerm.php');
         <?php } elseif ($request->query->get("paypal") !== null) { ?>
                     Ajax('pages/_LegacyPages/PaypalTerm.php');
@@ -205,6 +152,10 @@ class IndexWebsite extends PageHelper {
 
         <?php } ?>
             </script>  
+
+            <?php if ($this->isConnected) { ?>
+                <script type="text/javascript">Actualisation_Messages_Sans_Boucle();</script> 
+            <?php } ?>
 
         </html>
         <?php

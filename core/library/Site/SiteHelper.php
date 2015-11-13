@@ -21,6 +21,13 @@ class SiteHelper {
     }
     
     /**
+     * @return \Site\Repository\IpToCountryRepository
+     */
+    public static function getIpToCountryRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\IpToCountry');
+    }
+    
+    /**
      * @return \Site\Repository\ItemshopRepository
      */
     public static function getItemshopRepository() {

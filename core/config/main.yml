@@ -1,5 +1,10 @@
+baseURL: https://vamosmt2.local/
 gameVersion: 5.1.9
 requiredSSL: true
+
+manualActivation: true
+defaultCash: 0
+defaultMileage: 0
 
 twigCache: false
 twigCacheUrl: /cache/twig

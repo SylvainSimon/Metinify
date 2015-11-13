@@ -41,6 +41,12 @@ class FonctionsUtiles {
         return sprintf($format . ' %s', $b, $translatedUnits[$e]);
     }
 
+    static function myPasswordToDoubleSha1($input, $hex = true) {
+        $sha1_stage1 = sha1($input, true);
+        $output = sha1($sha1_stage1, !$hex);
+        return "*" . strtoupper($output);
+    }
+
     static function GenerateString($Nombre_De_Caracteres, $type = "ALL") {
 
         $Chaine_De_Puisement = "";
@@ -182,17 +188,6 @@ class FonctionsUtiles {
         $Chaine_Final = $Chaine_Temporaire . "...";
 
         return $Chaine_Final;
-    }
-
-    static function ipAdressNumber($dotted) {
-
-        error_reporting(0);
-
-        $dotted = preg_split("/[.]+/", $dotted);
-        $ip = (double) ($dotted[0] * 16777216) + ($dotted[1] * 65536) + ($dotted[2] * 256) + ($dotted[3]);
-        // IP Number = A x (256*256*256) + B x (256*256) + C x 256 + D
-
-        return $ip;
     }
 
     static function Obtenir_Annee_Date($Donnees_Brute) {

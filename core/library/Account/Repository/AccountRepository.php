@@ -5,7 +5,7 @@ namespace Account\Repository;
 use \Shared\EntityRepository;
 
 class AccountRepository extends EntityRepository {
-
+    
     public function findAccountByLoginAndPassword($login = "", $password = "") {
 
         $qb = $this->_em->createQueryBuilder();

@@ -170,6 +170,7 @@ function VerificationFormulaire() {
         
         Barre_De_Statut("Inscription en cours...");
         Icone_Chargement(1);
+        displayLoading();
         						 
         $.ajax({
             type: "POST",
@@ -177,7 +178,6 @@ function VerificationFormulaire() {
             data: "Utilisateur="+$("#SaisieUtilisateur").val()+"&Mot_De_Passe="+$("#SaisieMDP").val()+"&Email="+$("#SaisieMail").val(),
             success: function(msg){
                 if(msg==1){
-                    
                     Ajax("pages/Inscription/InscriptionTerm.php?Resultat=oui");
                 }
                 else{

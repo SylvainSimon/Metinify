@@ -18,7 +18,7 @@ class SQL_Inscription2 extends \PageHelper {
         $Inscription_Ip = $_SERVER['REMOTE_ADDR'];
         $Status = ".";
 
-        $ip_formate = \FonctionsUtiles::ipAdressNumber($Inscription_Ip);
+        $ip_formate = ip2long($Inscription_Ip);
 
         /* ------------------------ Recherche Pays ---------------------------- */
         $Recherche_Pays = "SELECT * 

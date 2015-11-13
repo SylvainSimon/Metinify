@@ -6,51 +6,32 @@ class Activation extends \PageHelper {
 
     public function run() {
 
-        if (isset($_GET['id'])) {
+        global $request;
+        $em = \Shared\DoctrineHelper::getEntityManager();
 
-            /* ------------------------ Recherche Pays ---------------------------- */
-            $Recherche_Pays = "SELECT id 
-					   FROM account.account 
-					   WHERE account.id = :id
-					   AND account.status = '.'
-					   AND account.email != 'ketur-du-67sang@hotmail.fr'
-					   AND account.email != 'anonyma42@outlook.fr'
-					   AND account.email != 'marc93izi@live.fr'
-					   AND ( not (email like '%yopmail.com' ))
-					   ";
-            $Parametres_Recherche_Pays = $this->objConnection->prepare($Recherche_Pays);
-            $Parametres_Recherche_Pays->execute(array(
-                ":id" => $_GET['id']));
-            $Parametres_Recherche_Pays->setFetchMode(\PDO::FETCH_OBJ);
-            $Nombre_De_Resultat_Recherche_Pays = $Parametres_Recherche_Pays->rowCount();
-            /* -------------------------------------------------------------------------- */
-            if ($Nombre_De_Resultat_Recherche_Pays != 0) {
+        $idAccount = \Encryption::decryptForUrl($request->query->get("id"));
 
+        if ($idAccount !== null) {
 
-                /* ----------------- Update Name --------------------- */
-                $Update_Name = "UPDATE account.account 
-                            SET account.status = ? 
-                            WHERE account.id = ?
-                            LIMIT 1";
+            $objAccount = Account\AccountHelper::getAccountRepository()->find($idAccount);
 
-                $Parametres_Update_Name = $this->objConnection->prepare($Update_Name);
-                $Parametres_Update_Name->execute(array(
-                    "OK",
-                    $_GET['id']));
-                /* ----------------------------------------------------------- */
+            if ($objAccount !== null) {
 
-                if ($Parametres_Update_Name->rowCount() == "1") {
+                if ($objAccount->getStatus() != "BLOCK") {
+                    $objAccount->setStatus("OK");
+                    $em->persist($objAccount);
 
+                    $em->flush();
                     header("LOCATION: index.php?ok");
                 } else {
-                    echo "Echec de l'activation, ressayez via le lien de L'E-Mail.";
+                    echo "Ahah ! Niqué gros !";
                 }
+                
             } else {
-                echo "Votre compte semble d&eacute;j&agrave; activ&eacute;";
+                echo "Nous n'avons pas trouvé votre compte sur nos serveurs.";
             }
         }
     }
-
 }
 
 $class = new Activation();

@@ -7,55 +7,64 @@ require __DIR__ . '../../../../core/initialize.php';
 class InscriptionSubmit extends \PageHelper {
 
     public function run() {
-        
 
-        $Inscription_Utilisateur = $_POST["Utilisateur"];
-        $Inscription_Utilisateur_Trim = trim($Inscription_Utilisateur);
-        $Inscription_Mot_De_Passe = $_POST["Mot_De_Passe"];
-        $Inscription_Email = $_POST["Email"];
-        $Inscription_Cash = "0";
-        $Inscription_Mileage = "0";
-        $Inscription_Droits = "1";
-        $Inscription_Ip = $_SERVER['REMOTE_ADDR'];
-        $Status = "OK";
+        global $request;
+        global $session;
+        global $config;
 
-        $ip_formate = \FonctionsUtiles::ipAdressNumber($Inscription_Ip);
+        $em = \Shared\DoctrineHelper::getEntityManager();
 
-        /* ------------------------ Recherche Pays ---------------------------- */
-        $Recherche_Pays = "SELECT * 
-                   FROM site.ip_to_country 
-                   WHERE ? BETWEEN IP_FROM AND IP_TO";
-        $Parametres_Recherche_Pays = $this->objConnection->prepare($Recherche_Pays);
-        $Parametres_Recherche_Pays->execute(array(
-            $ip_formate));
-        $Parametres_Recherche_Pays->setFetchMode(\PDO::FETCH_OBJ);
-        $Nombre_De_Resultat_Recherche_Pays = $Parametres_Recherche_Pays->rowCount();
-        /* -------------------------------------------------------------------------- */
-        if ($Nombre_De_Resultat_Recherche_Pays != 0) {
-            $Donnees_Recherche_Pays = $Parametres_Recherche_Pays->fetch();
-            $Langue = $Donnees_Recherche_Pays->CNTRY;
+        $login = $request->request->get("Utilisateur");
+        $password = $request->request->get("Mot_De_Passe");
+        $email = $request->request->get("Email");
+
+        $objIpToCountry = \Site\SiteHelper::getIpToCountryRepository()->findCountryBetween(ip2long($this->ipAdresse));
+        if ($objIpToCountry !== null) {
+            $Langue = $objIpToCountry->getCntry();
         } else {
             $Langue = "Inconnu";
         }
 
-        /* ------------------------------------------------ Inscription ---------------------------------------------------------------------- */
-        $Insertion_Logs = "INSERT INTO account.account (login, password, email, create_time, mileage, cash, ip_creation, langue, status) 
-                          VALUES (:login, password(:password), :email, NOW(), :mileage, :cash, :ip_creation, :langue, :status)";
+        $passwordEncrypted = \FonctionsUtiles::myPasswordToDoubleSha1($password);
 
-        $Paremetres_Insertion = $this->objConnection->prepare($Insertion_Logs);
-        $Paremetres_Insertion->execute(array(
-            ':login' => $Inscription_Utilisateur_Trim,
-            ':password' => $Inscription_Mot_De_Passe,
-            ':email' => $Inscription_Email,
-            ':mileage' => $Inscription_Mileage,
-            ':cash' => $Inscription_Cash,
-            ':ip_creation' => $Inscription_Ip,
-            ':langue' => $Langue,
-            ':status' => $Status));
-        /* ----------------------------------------------------------------------------------------------------------------------------------- */
+        $objAccount = new \Account\Entity\Account();
+        $objAccount->setLogin(trim($login));
+        $objAccount->setPassword($passwordEncrypted);
+        $objAccount->setEmail($email);
+        $objAccount->setCash($config->defaultCash);
+        $objAccount->setMileage($config->defaultMileage);
+        $objAccount->setIpCreation($this->ipAdresse);
+        $objAccount->setLangue($Langue);
+        $objAccount->setCreateTime(new \DateTime(date("Y-m-d H:i:s")));
+        
+        $objAccount->setMarriageFastExpire(new \DateTime(date("Y-m-d H:i:s")));
+        $objAccount->setMoneyDropRateExpire(new \DateTime(date("Y-m-d H:i:s")));
+        $objAccount->setGoldExpire(new \DateTime(date("Y-m-d H:i:s")));
+        $objAccount->setSilverExpire(new \DateTime(date("Y-m-d H:i:s")));
+        $objAccount->setAutolootExpire(new \DateTime(date("Y-m-d H:i:s")));
+        $objAccount->setFishMindExpire(new \DateTime(date("Y-m-d H:i:s")));
+        $objAccount->setSafeboxExpire(new \DateTime(date("Y-m-d H:i:s")));
 
-        $_SESSION['NomTemporaire'] = $Inscription_Utilisateur_Trim;
+        if ($config->manualActivation) {
+            $objAccount->setStatus(".");
+        } else {
+            $objAccount->setStatus("OK");
+        }
+        
+        $em->persist($objAccount);
+        $em->flush();
 
+        if ($config->manualActivation) {
+            $template = $this->objTwig->loadTemplate("InscriptionSubmitVerif.html5.twig");
+            $result = $template->render([
+                "account" => $objAccount->getLogin(),
+                "accountId" => \Encryption::encryptForUrl($objAccount->getId())
+            ]);
+            $subject = 'VamosMT2 - Activation de votre compte ' . $objAccount->getLogin();
+            \EmailHelper::sendEmail($objAccount->getEmail(), $subject, $result);
+        }
+
+        $session->set("NomTemporaire", trim($login));
         echo "1";
     }
 

@@ -80,7 +80,7 @@ class HistoryConnexion extends \PageHelper {
                                         <?= $Donnees_Listage_Connexions->ip; ?>
                                         <?php if ($Donnees_Listage_Connexions->ip != "") { ?>
 
-                                            <?php $ip_formate = \FonctionsUtiles::ipAdressNumber($Donnees_Listage_Connexions->ip); ?>
+                                            <?php $ip_formate = ip2long($Donnees_Listage_Connexions->ip); ?>
 
                                             <?php
                                             $Parametres_Recherche_Pays->execute(array(

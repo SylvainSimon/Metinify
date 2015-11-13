@@ -46,7 +46,7 @@ class ServicesHelper {
                 BASE_ROOT . '/pages/Admin/templates/',
                 BASE_ROOT . '/pages/Admin/templates/emails',
                 BASE_ROOT . '/pages/Classements/templates/',
-                BASE_ROOT . '/pages/Inscription/templates/',
+                BASE_ROOT . '/pages/Inscription/templates/modules',
                 BASE_ROOT . '/pages/Inscription/templates/emails',
                 BASE_ROOT . '/pages/ItemShop/templates/modules',
                 BASE_ROOT . '/pages/ItemShop/templates/emails',
@@ -81,6 +81,7 @@ class ServicesHelper {
             
             $twig->addGlobal('session', $container['session']);
             $twig->addGlobal('request', $container['request']);
+            $twig->addGlobal('config', $container['config']);
             
             return $twig;
         };

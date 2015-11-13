@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * IpToCountry
  *
  * @ORM\Table(name="site.ip_to_country")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\Repository\IpToCountryRepository")
  */
 class IpToCountry {
 

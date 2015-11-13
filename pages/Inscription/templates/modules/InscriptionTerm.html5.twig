@@ -12,6 +12,13 @@
             <br/>
             <br/>
 
+            {% if config.manualActivation %}
+                Vous avez recu un e-mail à l'adresse indiqué afin d'activer votre compte.<br/>
+                Il sera impossible de jouer tant que vous n'aurez pas validé cette étape.
+                <br/>
+                <br/>
+            {% endif %}
+
             Vous avez reçu une troisième main gratuite définitive dans les bonus de votre compte.<br/>
             Ne donnez JAMAIS vos identifiants de comptes à qui que ce soit.<br/>
             Ne prêtez jamais vos stuffs à ceux qui disent "jte fais ci-ca" c'est du fake !<br/>
@@ -36,12 +43,12 @@
         </div>
 
         <div class="box-body">
-            
+
             Votre inscription sur les serveurs VamosMt2 a été annulée.<br/><br/>
             Une erreur de nature inconnue a été détectée et nous vous invitons a recommencer ultérieurement.<br/><br/>
 
             Si vous pensez qu'il s'agit d'une erreur, nous vous prions de contacter le support de VamosMt2.
-            
+
         </div>
         <div class="box-footer">
             <button type="button" class="btn btn-flat btn-success btn-sm" onclick="Ajax('pages/_LegacyPages/News.php');">
