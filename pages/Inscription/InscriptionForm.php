@@ -39,41 +39,44 @@ class InscriptionForm extends \PageHelper {
                                 </span>
                             </div>
 
-                            <div class="form-group ">
-                                <label for="SaisieMDP">
-                                    Mot de passe
-                                </label>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group ">
+                                        <label for="SaisieMDP">
+                                            Mot de passe
+                                        </label>
 
-                                <div class="input-group col-xs-12">
-                                    <input type="password" name="password" onKeyUp="verifMDP()" id="SaisieMDP" class="form-control input-sm text" value="" required>
+                                        <div class="input-group col-xs-12">
+                                            <input type="password" name="password" onKeyUp="verifMDP()" id="SaisieMDP" class="form-control input-sm text" value="" required>
+                                        </div>
+
+                                        <span class="help-block">    
+                                            <ul class="list-unstyled">
+                                                <li id="ReponseDuTestMotDePasse"></li>
+                                            </ul>
+                                        </span>
+                                    </div>
                                 </div>
+                                <div class="col-lg-6">
 
-                                <span class="help-block">    
-                                    <ul class="list-unstyled">
-                                        <li id="ReponseDuTestMotDePasse"></li>
-                                    </ul>
-                                </span>
+                                    <div class="form-group" style="margin-bottom: 0px;">
+                                        <label for="SaisieMDP">
+                                            Répétez mot de passe
+                                        </label>
+
+                                        <div class="input-group col-xs-12">
+                                            <input type="password" name="password2" onKeyUp="verifRepeterMDP()" id="SaisieRepeterMDP" class="form-control input-sm text" value="" required>
+                                        </div>
+
+                                        <span class="help-block">    
+                                            <ul class="list-unstyled">
+                                                <li id="ReponseDuTestRepeterMotDePasse"></li>
+                                            </ul>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="form-group" style="margin-bottom: 0px;">
-                                <label for="SaisieMDP">
-                                    Répétez mot de passe
-                                </label>
-
-                                <div class="input-group col-xs-12">
-                                    <input type="password" name="password2" onKeyUp="verifRepeterMDP()" id="SaisieRepeterMDP" class="form-control input-sm text" value="" required>
-                                </div>
-
-                                <span class="help-block">    
-                                    <ul class="list-unstyled">
-                                        <li id="ReponseDuTestRepeterMotDePasse"></li>
-                                    </ul>
-                                </span>
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-6">
 
                             <div class="form-group ">
                                 <label for="SaisieMDP">
@@ -81,7 +84,7 @@ class InscriptionForm extends \PageHelper {
                                 </label>
 
                                 <div class="input-group col-xs-12">
-                                    <input type="text" name="email" onBlur="VerifSyntaxEmail()" onKeyUP="VerifSyntaxEmail()" id="SaisieMail" class="form-control input-sm text" value="" required>
+                                    <input type="email" name="email" onBlur="VerifSyntaxEmail()" onKeyUP="VerifSyntaxEmail()" id="SaisieMail" class="form-control input-sm text" value="" required>
                                 </div>
 
                                 <span class="help-block">    
@@ -91,16 +94,24 @@ class InscriptionForm extends \PageHelper {
                                 </span>
                             </div>
 
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group ">
+                                <label for="SaisieMDP"></label>
                             <div class="g-recaptcha" data-theme="dark" data-sitekey="6LfT8xATAAAAAMk0k4j72_t40uAGZ5-NAoQOXNmj"></div>
+
+                            </div>
+                                <div>
+                                    En cliquant, j'accepte les <a style="cursor: pointer;" onclick="Ajax('pages/_LegacyPages/CGU.php');" >CGU</a> ainsi que le <a style="cursor: pointer;" onclick="Ajax('pages/regles.php');" >règlement de jeu</a>.
+                                </div>
 
                         </div>
                     </div>
                 </div>
 
                 <div class="box-footer">
-
                     <div class="pull-right">
-                        En cliquant, j'accepte les <a style="cursor: pointer;" onclick="Ajax('pages/_LegacyPages/CGU.php');" >CGU</a> ainsi que le <a style="cursor: pointer;" onclick="Ajax('pages/regles.php');" >règlement de jeu</a>.
                         <input type="button" class="btn btn-success btn-flat" onclick="VerificationFormulaire();" value="Envoyer" />
                     </div>
                 </div>
