@@ -6,9 +6,9 @@ class IndexWebsite extends PageHelper {
     public function __construct() {
 
         parent::__construct();
-        
+
         global $session;
-        
+
         if ($session->get("Administration_PannelAdmin") !== null) {
             parent::LoadAdminSessionValues();
         }
@@ -19,12 +19,11 @@ class IndexWebsite extends PageHelper {
         global $request;
         global $config;
         global $session;
-               
+
         //$this->objConnection;
         //$this->objConfig;
         //var_dump($this->objSession->get("ID"));
         //$this->objConnection;
-        
         ?>
 
         <!DOCTYPE html>
@@ -96,7 +95,6 @@ class IndexWebsite extends PageHelper {
 
 
                         <div class="col-md-12" style="padding-bottom: 60px;">
-
                             <div class="row">
                                 <?php if ($session->get("Administration_PannelAdmin") !== null) { ?>
                                     <?php include 'pages/Admin/Accueil_Seconde.php'; ?>
@@ -120,6 +118,11 @@ class IndexWebsite extends PageHelper {
             </body>
 
             <script type="text/javascript" >
+
+        <?php if ($this->isConnected) { ?>
+                    Actualisation_Messages_Sans_Boucle();
+        <?php } ?>
+            
                 $(function () {
 
                     $.contextMenu({

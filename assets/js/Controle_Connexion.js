@@ -45,6 +45,7 @@ $(document).ready(function () {
                         }
 
                         Ajax("pages/_LegacyPages/News.php");
+                        Actualisation_Messages_Sans_Boucle();
 
                     } else if (Parse_Json.result == "2") {
 
