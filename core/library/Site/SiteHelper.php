@@ -146,4 +146,25 @@ class SiteHelper {
         return DoctrineHelper::getRepository('\Site\Entity\LogsCreationJoueurs');
     }
     
+    /**
+     * @return \Site\Repository\LogsDeblocageYangsRepository
+     */
+    public static function getLogsDeblocageYangsRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\LogsDeblocageYangs');
+    }
+    
+    /**
+     * @return \Site\Repository\LogsMarcheAchatsRepository
+     */
+    public static function getLogsMarcheAchatsRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\LogsMarcheAchats');
+    }
+    
+    /**
+     * @return \Site\Repository\VotesLogsRepository
+     */
+    public static function getVotesLogsRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\VotesLogs');
+    }
+    
 }

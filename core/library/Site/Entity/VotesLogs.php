@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * VotesLogs
  *
  * @ORM\Table(name="site.votes_logs")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\Repository\VotesLogsRepository")
  */
 class VotesLogs {
 

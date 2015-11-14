@@ -112,4 +112,42 @@ class AccountRepository extends EntityRepository {
         }
     }
 
+    public function statProvenance($interval, $flag = "") {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("COUNT(AccountEntity)");
+        $qb->from("\Account\Entity\Account", "AccountEntity");
+        $qb->where("1 = 1");
+
+        switch ($interval) {
+            case 1:
+                $qb->andWhere("AccountEntity.createTime >= :now");
+                $qb->setParameter("now", $this->getDateNow());
+                break;
+            case 2:
+                $qb->andWhere("YEAR(AccountEntity.createTime) = YEAR(:now)");
+                $qb->andWhere("MONTH(AccountEntity.createTime) = MONTH(:now)");
+                $qb->andWhere("WEEK(AccountEntity.createTime) = WEEK(:now)");
+                $qb->setParameter("now", $this->getDateNow());
+                break;
+            case 3:
+                $qb->andWhere("YEAR(AccountEntity.createTime) = YEAR(:now)");
+                $qb->andWhere("MONTH(AccountEntity.createTime) = MONTH(:now)");
+                $qb->setParameter("now", $this->getDateNow());
+                break;
+            case 4:
+                break;
+        }
+        
+        $qb->andWhere("AccountEntity.langue = :flag");
+        $qb->setParameter("flag", $flag);
+
+        try {
+            return $qb->getQuery()->getSingleScalarResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+
 }
