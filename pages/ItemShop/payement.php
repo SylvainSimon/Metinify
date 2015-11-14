@@ -8,114 +8,72 @@ class payement extends \PageHelper {
 
     public function run() {
 
-        $Rechargement_Ip = $_SERVER["REMOTE_ADDR"];
+        global $request;
+        global $config;
+        global $session;
+        $em = \Shared\DoctrineHelper::getEntityManager();
+        $paymentResult = false;
 
-        $Resultat_Paiement = false;
+        if ($request->query->get("RECALL") !== null) {
 
-        if (@!empty($_GET['RECALL'])) {
-            
             $RECALL = urlencode($_GET['RECALL']);
-
             $r = @file("http://payment.allopass.com/api/checkcode.apu?code=$RECALL&auth=227909/898935/4188626");
-
             if (substr($r[0], 0, 2) == "OK") {
-
-                $Resultat_Paiement = true;
-            }
-            else {
-
-                $Resultat_Rechargement = "Raté";
+                $paymentResult = true;
+            } else {
+                $codeResult = "Raté";
             }
         }
 
-        $objAccount = \Account\AccountHelper::getAccountRepository()->find($_GET['data']);
+        $objAccount = \Account\AccountHelper::getAccountRepository()->find($request->query->get("data"));
 
-        /* ------------------------ Check dernier numéro ---------------------------- */
-        $Dernier_Numero = "SELECT id FROM site.logs_rechargements ORDER by id DESC LIMIT 1";
-        $Parametres_Dernier_Numero = $this->objConnection->prepare($Dernier_Numero);
-        $Parametres_Dernier_Numero->execute();
-        $Parametres_Dernier_Numero->setFetchMode(\PDO::FETCH_OBJ);
-        $Nombre_De_Resultat_Dernier_Numero = $Parametres_Dernier_Numero->rowCount();
-        /* -------------------------------------------------------------------------- */
-        $Donnees_Dernier_Numero = $Parametres_Dernier_Numero->fetch();
-        ?>
-        <?php
+        if ($paymentResult) {
 
-        if ($Nombre_De_Resultat_Dernier_Numero == 0) {
-            $Dernier_Numero = "1";
-        } else {
-            $Dernier_Numero = ($Donnees_Dernier_Numero->id + 1);
-        }
+            $codeResult = "Réussi";
 
-        if ($Resultat_Paiement) {
+            $objAccount->setCash($objAccount->getCash() + $config->itemShopReloadCash);
+            $em->persist($objAccount);
 
-            $Resultat_Rechargement = "Réussi";
+            $session->set("VamoNaies", $objAccount->getCash());
 
-            /* -------------------------- Update des VamoNaies ----------------------------- */
-            $Update_Monnaies = "UPDATE account.account 
-                        SET cash = cash + 1350 
-                        WHERE id = ?
-                        LIMIT 1";
+            $objLogsRechargement = new \Site\Entity\LogsRechargements();
+            $objLogsRechargement->setIdCompte($objAccount->getId());
+            $objLogsRechargement->setCompte($objAccount->getLogin());
+            $objLogsRechargement->setEmailCompte($objAccount->getEmail());
+            $objLogsRechargement->setCode($request->query->get("RECALL"));
+            $objLogsRechargement->setNombreVamonaies($config->itemShopReloadCash);
+            $objLogsRechargement->setResultat($codeResult);
+            $objLogsRechargement->setDate(new \DateTime(date("Y-m-d H:i:s")));
+            $objLogsRechargement->setIp($this->ipAdresse);
+            $em->persist($objLogsRechargement);
 
-            $Parametres_Update_Monnaies = $this->objConnection->prepare($Update_Monnaies);
-            $Parametres_Update_Monnaies->execute(array(
-                $_GET['data']));
-            /* ----------------------------------------------------------------------------- */
+            $em->flush();
 
             if ($this->isConnected) {
-                $_SESSION['VamoNaies'] = ($_SESSION['VamoNaies'] + 1350);
-            }
-
-            /* --------------------------- Insertion des logs ---------------------------- */
-            $Insertion_Logs = "INSERT INTO site.logs_rechargements (id, id_compte, compte, email_compte, code, nombre_vamonaies, date, resultat, ip) 
-                                              VALUES (:id, :id_compte, :compte, :email_compte, :code, :nombre_vamonaies, NOW(), :resultat, :ip)";
-
-            $Parametres_Insertion = $this->objConnection->prepare($Insertion_Logs);
-            $Parametres_Insertion->execute(array(
-                ':id' => $Dernier_Numero,
-                ':id_compte' => $objAccount->getId(),
-                ':compte' => $objAccount->getLogin(),
-                ':email_compte' => $objAccount->getEmail(),
-                ':code' => $_GET['RECALL'],
-                ':nombre_vamonaies' => "1350",
-                ':resultat' => $Resultat_Rechargement,
-                ':ip' => $Rechargement_Ip));
-            /* ---------------------------------------------------------------------------- */
-
-            if ($this->isConnected) {
-                header('Location: ItemShopRechargementTerm.php?Resultat=Reussi&id_compte=' . $_GET['data'] . '&id=' . $Dernier_Numero . '&compteur=oui');
+                header('Location: ItemShopRechargementTerm.php?Resultat=Reussi&id_compte=' . $request->query->get("data") . '&id=' . $objLogsRechargement->getId() . '&compteur=oui');
                 exit;
             } else {
-                header('Location: ItemShopRechargementTerm.php?Resultat=Reussi&id_compte=' . $_GET['data'] . '&id=' . $Dernier_Numero . '&compteur=non');
+                header('Location: ItemShopRechargementTerm.php?Resultat=Reussi&id_compte=' . $request->query->get("data") . '&id=' . $objLogsRechargement->getId() . '&compteur=non');
             }
-            ?>
-        <?php } else { ?>
+        } else {
 
-            <?php
+            $codeResult = "Mauvaise clès";
 
-            $Resultat_Rechargement = "Mauvaise clès";
+            $objLogsRechargement = new \Site\Entity\LogsRechargements();
+            $objLogsRechargement->setIdCompte($objAccount->getId());
+            $objLogsRechargement->setCompte($objAccount->getLogin());
+            $objLogsRechargement->setEmailCompte($objAccount->getEmail());
+            $objLogsRechargement->setCode($request->query->get("RECALL"));
+            $objLogsRechargement->setResultat($codeResult);
+            $objLogsRechargement->setDate(new \DateTime(date("Y-m-d H:i:s")));
+            $objLogsRechargement->setIp($this->ipAdresse);
+            $em->persist($objLogsRechargement);
 
-            /* --------------------------- Insertion des logs ---------------------------- */
-            $Insertion_Logs = "INSERT INTO site.logs_rechargements (id, id_compte, compte, email_compte, code, date, resultat, ip) 
-                                              VALUES (:id, :id_compte, :compte, :email_compte, :code, NOW(), :resultat, :ip)";
+            $em->flush();
 
-            $Parametres_Insertion = $this->objConnection->prepare($Insertion_Logs);
-            $Parametres_Insertion->execute(array(
-                ':id' => $Dernier_Numero,
-                ':id_compte' => $objAccount->getId(),
-                ':compte' => $objAccount->getLogin(),
-                ':email_compte' => $objAccount->getEmail(),
-                ':code' => $_GET['RECALL'],
-                ':resultat' => $Resultat_Rechargement,
-                ':ip' => $Rechargement_Ip));
-            /* ---------------------------------------------------------------------------- */
-
-            header('Location: ItemShopRechargementTerm.php?Resultat=Rate&Raison=ClesMauvaise&id_compte=' . $_GET['data'] . '&id=' . $Dernier_Numero . '');
+            header('Location: ItemShopRechargementTerm.php?Resultat=Rate&Raison=ClesMauvaise&id_compte=' . $request->query->get("data") . '&id=' . $objLogsRechargement->getId() . '');
             exit;
         }
-        ?>
-        <?php
-
     }
 
 }
