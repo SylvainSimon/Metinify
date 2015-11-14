@@ -134,5 +134,32 @@ class PlayerRepository extends EntityRepository {
             return [];
         }
     }
+    
+    public function statPlayer($job = "", $empire = "") {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("COUNT(PlayerEntity.id)");
+        $qb->from("\Player\Entity\Player", "PlayerEntity");
+        $qb->where("1 = 1");
+
+        if ($job !== "") {
+            $qb->andWhere("PlayerEntity.job IN(:job)");
+            $qb->setParameter("job", $job);
+        }
+
+        if ($empire !== "") {
+            $qb->innerJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = PlayerEntity.idAccount");
+            $qb->innerJoin("\Player\Entity\PlayerIndex", "PlayerIndexEntity", "WITH", "PlayerIndexEntity.id = AccountEntity.id");
+            $qb->andWhere("PlayerIndexEntity.empire IN(:empire)");
+            $qb->setParameter("empire", $empire);
+        }
+
+        try {
+            return $qb->getQuery()->getSingleScalarResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
 
 }
