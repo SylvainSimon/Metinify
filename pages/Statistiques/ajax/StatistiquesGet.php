@@ -104,7 +104,7 @@ class StatistiquesGet extends \PageHelper {
             );
             echo json_encode($Tableau_Json);
 
-            $cacheManager->set("arrStatistiques".$intervalStat, json_encode($Tableau_Json));
+            //$cacheManager->set("arrStatistiques".$intervalStat, json_encode($Tableau_Json));
         }
     }
 
