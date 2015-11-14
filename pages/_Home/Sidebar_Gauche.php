@@ -22,7 +22,6 @@ echo $view;
 
         <?php
         $urlClient = $config->linkClient;
-        $cacheManager = \CacheHelper::getCacheManager();
         if ($cacheManager->isExisting("sizeOfClient")) {
             $size = $cacheManager->get("sizeOfClient");
         } else {
