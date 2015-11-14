@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * LogsConnexion
  *
  * @ORM\Table(name="site.logs_connexion")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\Repository\LogsConnexionRepository")
  */
 class LogsConnexion {
 

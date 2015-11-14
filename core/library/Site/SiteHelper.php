@@ -104,4 +104,18 @@ class SiteHelper {
         return DoctrineHelper::getRepository('\Site\Entity\SupportObjets');
     }
     
+    /**
+     * @return \Site\Repository\LogsConnexionRepository
+     */
+    public static function getLogsConnexionRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\LogsConnexion');
+    }
+    
+    /**
+     * @return \Site\Repository\LogsCreationJoueursRepository
+     */
+    public static function getLogsCreationJoueursRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\LogsCreationJoueurs');
+    }
+    
 }

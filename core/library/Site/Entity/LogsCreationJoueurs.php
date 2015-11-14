@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * LogsCreationJoueurs
  *
  * @ORM\Table(name="site.logs_creation_joueurs", uniqueConstraints={@ORM\UniqueConstraint(name="id", columns={"id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\Repository\LogsCreationJoueursRepository")
  */
 class LogsCreationJoueurs {
 

@@ -17,6 +17,7 @@
         "firephp/firephp-core": "0.4.0",
         "swiftmailer/swiftmailer": "~5.2",
         "doctrine/orm": "2.5.0",
-        "phpfastcache/phpfastcache": "3.0.*"
+        "phpfastcache/phpfastcache": "3.0.*",
+        "beberlei/DoctrineExtensions": "1.0.6"
     }
 }

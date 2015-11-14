@@ -197,6 +197,9 @@ class ServicesHelper {
             $config = new Doctrine\ORM\Configuration();
 
             $config->addCustomStringFunction('PASSWORD', '\DoctrinePasswordExtension');
+            $config->addCustomStringFunction('WEEK', '\DoctrineExtensions\Query\Mysql\WEEK');
+            $config->addCustomStringFunction('MONTH', '\DoctrineExtensions\Query\Mysql\MONTH');
+            $config->addCustomStringFunction('YEAR', '\DoctrineExtensions\Query\Mysql\YEAR');
 
             // Proxy Configuration
             $proxiesCacheDir = $container['doctrine.orm.proxiesCacheDir'];

@@ -11,4 +11,9 @@ class EntityRepository extends \Doctrine\ORM\EntityRepository {
         return $this->dateTimeNow;
     }
 
+    protected function getDateNow() {
+        $this->dateTimeNow = date("Y-m-d");
+        return $this->dateTimeNow;
+    }
+
 }

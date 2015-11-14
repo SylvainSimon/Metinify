@@ -5,7 +5,7 @@ namespace Account\Repository;
 use \Shared\EntityRepository;
 
 class AccountRepository extends EntityRepository {
-    
+
     public function findAccountByLoginAndPassword($login = "", $password = "") {
 
         $qb = $this->_em->createQueryBuilder();
@@ -24,7 +24,7 @@ class AccountRepository extends EntityRepository {
             return null;
         }
     }
-    
+
     public function findAccountByEmailAndLogin($email = "", $login = "") {
 
         $qb = $this->_em->createQueryBuilder();
@@ -43,7 +43,7 @@ class AccountRepository extends EntityRepository {
             return null;
         }
     }
-    
+
     public function countByPseudoMessagerie($pseudoMessagerie = "") {
 
         $qb = $this->_em->createQueryBuilder();
@@ -72,6 +72,41 @@ class AccountRepository extends EntityRepository {
 
         try {
             return $qb->getQuery()->execute();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+
+    public function statAccountCreate($interval = 0) {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("COUNT(AccountEntity)");
+        $qb->from("\Account\Entity\Account", "AccountEntity");
+        $qb->where("1 = 1");
+
+        switch ($interval) {
+            case 1:
+                $qb->andWhere("AccountEntity.createTime >= :now");
+                $qb->setParameter("now", $this->getDateNow());
+                break;
+            case 2:
+                $qb->andWhere("YEAR(AccountEntity.createTime) = YEAR(:now)");
+                $qb->andWhere("MONTH(AccountEntity.createTime) = MONTH(:now)");
+                $qb->andWhere("WEEK(AccountEntity.createTime) = WEEK(:now)");
+                $qb->setParameter("now", $this->getDateNow());
+                break;
+            case 3:
+                $qb->andWhere("YEAR(AccountEntity.createTime) = YEAR(:now)");
+                $qb->andWhere("MONTH(AccountEntity.createTime) = MONTH(:now)");
+                $qb->setParameter("now", $this->getDateNow());
+                break;
+            case 4:
+                break;
+        }
+
+        try {
+            return $qb->getQuery()->getSingleScalarResult();
         } catch (\Doctrine\ORM\NoResultException $e) {
             return null;
         }

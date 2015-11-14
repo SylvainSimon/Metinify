@@ -18,13 +18,7 @@ class IndexWebsite extends PageHelper {
         global $request;
         global $config;
         global $session;
-
         $cacheManager = \CacheHelper::getCacheManager();
-
-        //$this->objConnection;
-        //$this->objConfig;
-        //var_dump($this->objSession->get("ID"));
-        //$this->objConnection;
         ?>
 
         <!DOCTYPE html>
@@ -128,7 +122,10 @@ class IndexWebsite extends PageHelper {
 
                     <footer>
                         <div class="col-md-12">
-                            <?php include_once 'pages/_Home/Footer.php'; ?> 
+                            <?php
+                            $templateFooter = $this->objTwig->loadTemplate("footer.html5.twig");
+                            echo $templateFooter->render(["isConnected" => $this->isConnected]);
+                            ?>
                             <div class="clearfix"></div>
                         </div>
                     </footer>
