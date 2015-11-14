@@ -53,44 +53,34 @@ function Valider_Mon_Achat(id_item, nombre_item) {
                         data: "id_item=" + id_item + "&nombre_item=" + nombre_item,
                         success: function (msg) {
 
+                            hideLoading();
                             var data = JSON.parse(msg);
 
                             if (data.result === 1) {
-
-                                hideLoading();
                                 Ajax("pages/ItemShop/ItemShopAchatTerm.php?idTransaction=" + data.idTransaction);
-
                             } else {
 
                                 if (data.code == 5) {
                                     Barre_De_Statut("Entrepôt plein.");
                                     Icone_Chargement(2);
-                                    alert("Votre entrepot n'a plus de place.");
-
+                                    popBootbox("Votre entrepot n'a plus de place.");
                                 } else if (data.code == 8) {
                                     Barre_De_Statut("Entrepôt inexistant.");
                                     Icone_Chargement(2);
-                                    alert("Votre entrepot n'existe pas.");
-
+                                    popBootbox("Votre entrepot n'existe pas.");
                                 } else if (data.code == 6) {
-
                                     Barre_De_Statut("Vous n'avez pas asser de Tananaies.");
                                     Icone_Chargement(2);
-
-                                    alert("Vous n'avez pas assez de TanaNaies.")
+                                    popBootbox("Vous n'avez pas assez de TanaNaies.");
 
                                 } else if (data.code == 4) {
-
                                     Barre_De_Statut("L'item choisie n'est pas valide.");
                                     Icone_Chargement(2);
-                                    alert("L'item n'est pas valide.")
-
+                                    popBootbox("L'item n'est pas valide.");
                                 } else if (data.code == 3) {
-
                                     Barre_De_Statut("Vous n'avez pas asser de Vamonaies.");
                                     Icone_Chargement(2);
-
-                                    alert("Vous n'avez pas assez de Vamonaies.")
+                                    popBootbox("Vous n'avez pas assez de Vamonaies.");
                                 }
                             }
                         }
