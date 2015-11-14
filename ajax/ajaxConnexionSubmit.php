@@ -44,7 +44,7 @@ class ajaxConnexionSubmit extends \ScriptHelper {
                     'reasons' => "",
                     'withRefresh' => 0,
                     'id' => \Encryption::encryptForUrl($objAccount->getId()),
-                    'data' => ""
+                    'data' => ''
                 );
             }
         } else {

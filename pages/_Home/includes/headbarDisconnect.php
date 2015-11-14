@@ -6,20 +6,8 @@ require __DIR__ . '../../../../core/initialize.php';
 
 $session = \SessionHelper::getSession();
 $etaitAdmin = $session->get("Administration_PannelAdmin");
-$connexion = \PDOHelper::getConnexion();
-
-if ($session->get("Administration_PannelAdmin")) {
-    ?>
-    <script type="text/javascript">
-        $("#Icone_Administration_Acces").remove();
-    </script>
-<?php } else { ?>
-    <script type="text/javascript">
-        Ajax('pages/_LegacyPages/News.php');
-    </script>
-<?php } ?>
-
-<?php \SessionHelper::destroySession(); ?>
+\SessionHelper::destroySession();
+?>
 
 <script type="text/javascript">
 
@@ -28,6 +16,8 @@ if ($session->get("Administration_PannelAdmin")) {
         $("#overlayMt2").css('display', "inline");
         location.reload(false);
 <?php } else { ?>
+        Ajax('pages/_LegacyPages/News.php');
+
         document.getElementById('Menu_Inscription_MonCompte').style.display = 'none';
         document.getElementById('Menu_Inscription_MonCompte2').style.display = 'inline';
 

@@ -34,8 +34,6 @@ if ($cacheManager->isExisting("resultcountPlayerOnline")) {
         <script type="text/javascript">
             ServeurClassyd();
             setInterval("ServeurClassyd()", "60000");
-        </script>
-        <script type="text/javascript">
             setInterval("JoueursConnectes()", "30000");
         </script>
 

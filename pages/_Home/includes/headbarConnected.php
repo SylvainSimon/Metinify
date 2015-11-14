@@ -14,7 +14,6 @@ class headbarConnected extends \PageHelper {
         $this->response->setContent($view);
         $this->response->send();
     }
-
 }
 
 $class = new headbarConnected();
