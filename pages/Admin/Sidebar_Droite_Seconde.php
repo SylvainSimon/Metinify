@@ -36,7 +36,7 @@ if ($cacheManager->isExisting("resultcountPlayerOnline")) {
 
     <div class="box-body">
 
-        <span data-tooltip="Connectés ou téléportés les 15 dernières minutes." id="nombrePlayerConnected"><?php echo $resultcountPlayerOnline ?> joueur connectés</span>
+        <span data-tooltip="Connectés ou téléportés les 15 dernières minutes." id="nombrePlayerConnected"><?php echo $resultcountPlayerOnline ?></span> joueur connectés
 
         <script type="text/javascript">
             ServeurClassyd();
