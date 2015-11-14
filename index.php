@@ -49,7 +49,7 @@ class IndexWebsite extends PageHelper {
 
                 <script src='assets/js/jquery.browser.min.js' type='text/javascript'></script>
                 <script src='./vendor/almasaeed2010/adminlte/plugins/slimScroll/jquery.slimscroll.min.js' type='text/javascript'></script>
-                <script src='./vendor/almasaeed2010/adminlte/plugins/select2/select2.min.js' type='text/javascript'></script>
+                <script src='assets/js/select2/select2.min.js' type='text/javascript'></script>
                 <script src='./vendor/almasaeed2010/adminlte/dist/js/app.min.js' type='text/javascript'></script>
 
                 <script src="assets/js/jquery.superbox/jquery.superbox.min.js" type="text/javascript"></script>

@@ -32,7 +32,6 @@ echo $view;
 
         <span class="info-box-number"><?php echo \FonctionsUtiles::Formatage_Taille($size); ?></span>
     </div>
-    <!-- /.info-box-content -->
 </div>
 
 <div class="box box-default flat">
