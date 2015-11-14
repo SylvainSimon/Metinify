@@ -44,85 +44,11 @@ class StatistiquesGet extends \PageHelper {
 
             $Donnees_Statistique_Nombres_Connexion = \Site\SiteHelper::getLogsConnexionRepository()->statConnexions($intervalStat, 1);
             $Donnees_Statistique_Nombres_Connexion_Unique = \Site\SiteHelper::getLogsConnexionRepository()->statConnexions($intervalStat, 1, true);
-
-            /* --------------- Nombre Changement Mail -------------------------------------------------------- */
-            if ($Intervalle == "Jour") {
-                $Statistique_Nombres_Changement_Mail = "SELECT COUNT(id) AS nombre 
-                                                FROM site.logs_changement_mail
-                                                WHERE logs_changement_mail.date >= CURDATE()";
-            } else if ($Intervalle == "Semaine") {
-                $Statistique_Nombres_Changement_Mail = "SELECT COUNT(id) AS nombre 
-                                                FROM site.logs_changement_mail
-                                                WHERE YEARWEEK(logs_changement_mail.date) = YEARWEEK(CURRENT_DATE)
-                                                AND MONTH(logs_changement_mail.date) = MONTH(NOW())";
-            } else if ($Intervalle == "Mois") {
-                $Statistique_Nombres_Changement_Mail = "SELECT COUNT(id) AS nombre 
-                                                FROM site.logs_changement_mail
-                                                WHERE MONTH(logs_changement_mail.date) = MONTH(NOW())
-                                                AND YEAR(logs_changement_mail.date) = YEAR(NOW())";
-            } else if ($Intervalle == "Toujours") {
-                $Statistique_Nombres_Changement_Mail = "SELECT COUNT(id) AS nombre 
-                                                FROM site.logs_changement_mail";
-            }
-            $Parametres_Nombres_Changement_Mail = $this->objConnection->prepare($Statistique_Nombres_Changement_Mail);
-            $Parametres_Nombres_Changement_Mail->execute(array($intervalStat));
-            $Parametres_Nombres_Changement_Mail->setFetchMode(\PDO::FETCH_OBJ);
-            $Donnees_Nombres_Changement_Mail = $Parametres_Nombres_Changement_Mail->fetch();
-            /* ----------------------------------------------------------------------------------------------- */
-
-            /* --------------- Nombre Recup MDP -------------------------------------------------------- */
-            if ($Intervalle == "Jour") {
-                $Statistique_Nombres_Recuperation_MDP = "SELECT COUNT(id) AS nombre 
-                                                FROM site.logs_oublie_mot_de_passe
-                                                WHERE logs_oublie_mot_de_passe.date_essai >= CURDATE()
-                                                AND resultat_demande = 1";
-            } else if ($Intervalle == "Semaine") {
-                $Statistique_Nombres_Recuperation_MDP = "SELECT COUNT(id) AS nombre 
-                                                FROM site.logs_oublie_mot_de_passe
-                                                WHERE YEARWEEK(logs_oublie_mot_de_passe.date_essai) = YEARWEEK(CURRENT_DATE)
-                                                AND MONTH(logs_oublie_mot_de_passe.date_essai) = MONTH(NOW())
-                                                AND resultat_demande = 1";
-            } else if ($Intervalle == "Mois") {
-                $Statistique_Nombres_Recuperation_MDP = "SELECT COUNT(id) AS nombre 
-                                                FROM site.logs_oublie_mot_de_passe
-                                                WHERE MONTH(logs_oublie_mot_de_passe.date_essai) = MONTH(NOW())
-                                                AND YEAR(logs_oublie_mot_de_passe.date_essai) = YEAR(NOW())
-                                                AND resultat_demande = 1";
-            } else if ($Intervalle == "Toujours") {
-                $Statistique_Nombres_Recuperation_MDP = "SELECT COUNT(id) AS nombre 
-                                                 FROM site.logs_oublie_mot_de_passe
-                                                 WHERE resultat_demande = 1";
-            }
-            $Parametres_Statistique_Nombres_Recuperation_MDP = $this->objConnection->prepare($Statistique_Nombres_Recuperation_MDP);
-            $Parametres_Statistique_Nombres_Recuperation_MDP->execute(array($intervalStat));
-            $Parametres_Statistique_Nombres_Recuperation_MDP->setFetchMode(\PDO::FETCH_OBJ);
-            $Donnees_Statistique_Nombres_Recuperation_MDP = $Parametres_Statistique_Nombres_Recuperation_MDP->fetch();
-            /* ----------------------------------------------------------------------------------------------- */
-
-            /* --------------- Nombre Changement MDP -------------------------------------------------------- */
-            if ($Intervalle == "Jour") {
-                $Statistique_Nombres_Changement_MDP = "SELECT COUNT(id) AS nombre 
-                                               FROM site.logs_changement_mot_de_passe
-                                               WHERE logs_changement_mot_de_passe.date >= CURDATE()";
-            } else if ($Intervalle == "Semaine") {
-                $Statistique_Nombres_Changement_MDP = "SELECT COUNT(id) AS nombre 
-                                               FROM site.logs_changement_mot_de_passe
-                                               WHERE YEARWEEK(logs_changement_mot_de_passe.date) = YEARWEEK(CURRENT_DATE)
-                                               AND MONTH(logs_changement_mot_de_passe.date) = MONTH(NOW())";
-            } else if ($Intervalle == "Mois") {
-                $Statistique_Nombres_Changement_MDP = "SELECT COUNT(id) AS nombre 
-                                               FROM site.logs_changement_mot_de_passe
-                                               WHERE MONTH(logs_changement_mot_de_passe.date) = MONTH(NOW())
-                                               AND YEAR(logs_changement_mot_de_passe.date) = YEAR(NOW())";
-            } else if ($Intervalle == "Toujours") {
-                $Statistique_Nombres_Changement_MDP = "SELECT COUNT(id) AS nombre 
-                                               FROM site.logs_changement_mot_de_passe";
-            }
-            $Parametres_Statistique_Nombres_Changement_MDP = $this->objConnection->prepare($Statistique_Nombres_Changement_MDP);
-            $Parametres_Statistique_Nombres_Changement_MDP->execute(array($intervalStat));
-            $Parametres_Statistique_Nombres_Changement_MDP->setFetchMode(\PDO::FETCH_OBJ);
-            $Donnees_Statistique_Nombres_Changement_MDP = $Parametres_Statistique_Nombres_Changement_MDP->fetch();
-            /* ----------------------------------------------------------------------------------------------- */
+            
+            $Donnees_Nombres_Changement_Mail = \Site\SiteHelper::getLogsChangementMailRepository()->statChangementMails($intervalStat);
+            $Donnees_Statistique_Nombres_Recuperation_MDP = \Site\SiteHelper::getLogsOublieMotDePasseRepository()->statOublieMotDePasse($intervalStat, 1);
+            
+            $Donnees_Statistique_Nombres_Changement_MDP = \Site\SiteHelper::getLogsChangementMotDePasseRepository()->statChangementMotDePasse($intervalStat);
 
             /* --------------- Nombre Changement Code Entrepot -------------------------------------------------------- */
             if ($Intervalle == "Jour") {
@@ -425,9 +351,9 @@ class StatistiquesGet extends \PageHelper {
                 'shamans' => "" . $Donnees_Statistique_Nombres_Shamans,
                 'connexion_site' => "" . $Donnees_Statistique_Nombres_Connexion,
                 'connexion_site_unique' => "" . $Donnees_Statistique_Nombres_Connexion_Unique,
-                'changement_mail' => "" . $Donnees_Nombres_Changement_Mail->nombre,
-                'recup_mdp' => "" . $Donnees_Statistique_Nombres_Recuperation_MDP->nombre,
-                'changement_mdp' => "" . $Donnees_Statistique_Nombres_Changement_MDP->nombre,
+                'changement_mail' => "" . $Donnees_Nombres_Changement_Mail,
+                'recup_mdp' => "" . $Donnees_Statistique_Nombres_Recuperation_MDP,
+                'changement_mdp' => "" . $Donnees_Statistique_Nombres_Changement_MDP,
                 'changement_entrepot' => "" . $Donnees_Statistique_Nombres_Changement_Code_Entrepot->nombre,
                 'deblocage_yangs' => "" . $Donnees_Statistique_Nombres_Deblocage_Yangs->nombre,
                 'nombre_vote' => "" . $Donnees_Statistique_Nombres_Vote->nombre,

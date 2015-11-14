@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * LogsChangementMotDePasse
  *
  * @ORM\Table(name="site.logs_changement_mot_de_passe")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\Repository\LogsChangementMotDePasseRepository")
  */
 class LogsChangementMotDePasse {
 

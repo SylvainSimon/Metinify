@@ -112,6 +112,34 @@ class SiteHelper {
     }
     
     /**
+     * @return \Site\Repository\LogsChangementMailRepository
+     */
+    public static function getLogsChangementMailRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\LogsChangementMail');
+    }
+    
+    /**
+     * @return \Site\Repository\LogsChangementMotDePasseRepository
+     */
+    public static function getLogsChangementMotDePasseRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\LogsChangementMotDePasse');
+    }
+    
+    /**
+     * @return \Site\Repository\LogsCodeEntrepotChangementRepository
+     */
+    public static function getLogsCodeEntrepotChangementRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\LogsCodeEntrepotChangement');
+    }
+    
+    /**
+     * @return \Site\Repository\LogsOublieMotDePasseRepository
+     */
+    public static function getLogsOublieMotDePasseRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\LogsOublieMotDePasse');
+    }
+    
+    /**
      * @return \Site\Repository\LogsCreationJoueursRepository
      */
     public static function getLogsCreationJoueursRepository() {
