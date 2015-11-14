@@ -3,4 +3,4 @@ nbproject
 /cache/doctrine/proxies
 /cache/doctrine/repositories
 /cache/fastcache/vamosmt2local
-/cache/twig
+/cache/twig/*
