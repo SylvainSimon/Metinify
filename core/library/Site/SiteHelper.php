@@ -7,6 +7,13 @@ use \Shared\DoctrineHelper;
 class SiteHelper {
 
     /**
+     * @return \Site\Repository\AdminNewsRepository
+     */
+    public static function getAdminNewsRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\AdminNews');
+    }
+
+    /**
      * @return \Site\Repository\AdministrationUsersRepository
      */
     public static function getAdministrationUsersRepository() {

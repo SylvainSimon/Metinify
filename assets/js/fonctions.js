@@ -293,6 +293,16 @@ function Distribuer_Monnaies() {
 
 }
 
+$(function () {
+    $.superbox.settings = {
+        closeTxt: "Fermer",
+        loadTxt: "Chargement...",
+        boxWidth: "1200",
+        boxHeight: "445"
+    };
+    $.superbox();
+});
+
 $(document).ready(function () {
     $(".fancybox_Rechargement").fancybox({
         padding: 0,

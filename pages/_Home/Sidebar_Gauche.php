@@ -8,19 +8,6 @@ $view = $templateTop->render(["arrObjPlayers" => $arrObjPlayers]);
 echo $view;
 ?>
 
-<script type="text/javascript">
-
-    $(function () {
-        $.superbox.settings = {
-            closeTxt: "Fermer",
-            loadTxt: "Chargement...",
-            boxWidth: "1200",
-            boxHeight: "445"
-        };
-        $.superbox();
-    });
-</script>
-
 <div class="info-box flat box-telechargement-exe" onclick="Ajax('pages/_LegacyPages/Telechargement.php')">
 
     <span class="info-box-icon"><i class="material-icons md-icon-download md-36"></i></span>
