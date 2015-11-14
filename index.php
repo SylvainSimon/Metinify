@@ -40,8 +40,6 @@ class IndexWebsite extends PageHelper {
                 <link href="./vendor/almasaeed2010/adminlte/plugins/select2/select2.min.css" rel="stylesheet" type="text/css" />
                 <link href="./css/css/styles.css" rel="stylesheet" type="text/css" />
 
-                <link href="css/jquery.fancybox.css" rel="stylesheet" type="text/css" />
-
                 <script src='./components/jquery/jquery.min.js' type='text/javascript'></script>
                 <script src='./components/jquery-ui/jquery-ui.min.js' type='text/javascript'></script>
                 <script src='./components/bootstrap/js/tab.js' type='text/javascript'></script>
@@ -52,7 +50,7 @@ class IndexWebsite extends PageHelper {
                 <script src='./vendor/almasaeed2010/adminlte/plugins/select2/select2.min.js' type='text/javascript'></script>
                 <script src='./vendor/almasaeed2010/adminlte/dist/js/app.min.js' type='text/javascript'></script>
 
-                <script src="assets/js/Jquery_Superbox.js" type="text/javascript"></script>
+                <script src="assets/js/jquery.superbox/jquery.superbox.min.js" type="text/javascript"></script>
                 <script src="assets/js/jquery.cookie/js.cookie.min.js" type='text/javascript'></script>
                 <script src="assets/js/fonctions.min.js" type='text/javascript'></script>
                 <script src="assets/js/Ajax.js" type='text/javascript'></script>
@@ -60,7 +58,7 @@ class IndexWebsite extends PageHelper {
                 <script src="assets/js/Ajax_Classement.js" type="text/javascript"></script>
 
                 <script src="assets/js/jquery.contextMenu/jquery.contextMenu.min.js" type='text/javascript'></script>
-                <script src="assets/js/jquery.countdown.min.js" type='text/javascript'></script>
+                <script src="assets/js/jquery.countdown/jquery.countdown.min.js" type='text/javascript'></script>
                 <script src="assets/js/jquery.fancybox/jquery.fancybox.min.js" type='text/javascript'></script>
                 <script src="assets/js/bootbox/bootbox.min.js" type='text/javascript'></script>
 
@@ -146,8 +144,6 @@ class IndexWebsite extends PageHelper {
 
             <?php if ($session->get("Administration_PannelAdmin") !== null) { ?>
                         Ajax('pages/Admin/Bienvenu.php');
-            <?php } else { ?>
-                        Ajax('pages/_LegacyPages/News.php');
             <?php } ?>
 
         <?php } ?>

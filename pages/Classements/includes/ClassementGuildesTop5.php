@@ -11,7 +11,7 @@
             <thead>
                 <tr>
                     <th class="">Nom</th>
-                    <th class="Align_Right">Level</th>
+                    <th style="text-align: right;">Level</th>
                 </tr>
             </thead>
 
@@ -68,7 +68,7 @@
                         ?>
                         <span style="vertical-align: text-top;"><?php echo $Donnees_Top_5_Guildes->guild_Name; ?></span>
                     </td>
-                    <td class="Align_Right">
+                    <td style="text-align: right;">
                         <?php echo $Donnees_Top_5_Guildes->guild_Level; ?>
                     </td>
                 </tr>
