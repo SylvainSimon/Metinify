@@ -25,3 +25,5 @@ smtpUser: ~
 smtpPassword: ~
 
 encryptKey: vamoslelapin
+
+fastChatType: files

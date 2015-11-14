@@ -1,7 +1,14 @@
 <?php
 $typeTop = array("PVE", "PVP");
 $typeResult = array_rand($typeTop);
-$arrObjPlayers = Player\PlayerHelper::getPlayerRepository()->findTop($typeTop[$typeResult], 6);
+
+$cacheManager = \CacheHelper::getCacheManager();
+if ($cacheManager->isExisting("arrObjPlayersTop" . $typeResult)) {
+    $arrObjPlayers = $cacheManager->get("arrObjPlayersTop" . $typeResult);
+} else {
+    $arrObjPlayers = Player\PlayerHelper::getPlayerRepository()->findTop($typeTop[$typeResult], 6);
+    $cacheManager->set("arrObjPlayersTop" . $typeResult, $arrObjPlayers, 21600);
+}
 
 $templateTop = $this->objTwig->loadTemplate("ClassementJoueurTop" . $typeTop[$typeResult] . ".html5.twig");
 $view = $templateTop->render(["arrObjPlayers" => $arrObjPlayers]);

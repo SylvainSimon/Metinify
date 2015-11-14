@@ -1,0 +1,49 @@
+<div class="box box-default flat">
+
+    <div class="box-header">
+        <h3 class="box-title">Top guilde</h3>
+    </div>
+
+    <div class="box-body no-padding">
+
+        <table class="table table-hover table-condensed table-responsive" style="border-collapse: collapse;">
+
+            <thead>
+                <tr>
+                    <th class="">Nom</th>
+                    <th style="text-align: right;">Level</th>
+                </tr>
+            </thead>
+
+            {% if arrObjGuilds|length > 0 %}
+                {% for objGuild in arrObjGuilds %}
+                    <tr>
+                        <td style="line-height: 10px;">
+                            
+                            {% if loop.index == 1 %}
+                                <i class="material-icons md-icon-star" style="color:#F3EC12;"></i>
+                            {% elseif loop.index == 2 %}
+                                <i class="material-icons md-icon-star text-gray"></i>
+                            {% elseif loop.index == 3 %}
+                                <i class="material-icons md-icon-star" style="color:#813838;"></i>
+                            {% elseif loop.index == 4 %}
+                                <i class="material-icons md-icon-bookmark" style="color:#F3EC12; opacity: 0.5"></i>
+                            {% elseif loop.index == 5 %}
+                                <i class="material-icons md-icon-bookmark text-gray" style="opacity: 0.5"></i>
+                            {% elseif loop.index == 6 %}
+                                <i class="material-icons md-icon-bookmark" style="color:#813838; opacity: 0.5"></i>
+                            {% else %}
+                                {{ loop.index }}
+                            {% endif %}
+                            
+                            <span style="vertical-align: text-top;">{{ objGuild.name }}</span>
+                        </td>
+                        <td style="text-align: right;">
+                            {{ objGuild.level }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </table>
+    </div>
+</div>

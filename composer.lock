@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d6129a81d36383599ea3a7cbd699c85a",
-    "content-hash": "55216bc8c97f351137a88f415617902b",
+    "hash": "434bc744970ff71b256071b3bdb6bef8",
+    "content-hash": "52b69df5485014d8235ac55ace32b337",
     "packages": [
         {
             "name": "afarkas/html5shiv",
@@ -1086,6 +1086,62 @@
                 "time"
             ],
             "time": "2015-06-25 04:19:39"
+        },
+        {
+            "name": "phpfastcache/phpfastcache",
+            "version": "3.0.18",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/khoaofgod/phpfastcache.git",
+                "reference": "d746949095fce99c316dc7483bb58e094b0db80f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/khoaofgod/phpfastcache/zipball/d746949095fce99c316dc7483bb58e094b0db80f",
+                "reference": "d746949095fce99c316dc7483bb58e094b0db80f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "phpfastcache.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Khoa Bui",
+                    "email": "khoaofgod@gmail.com",
+                    "homepage": "http://www.phpfastcache.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Cache Class - Supported Redis, Cookie, Predis, APC, MemCached, WinCache, Files, PDO, Reduce mySQL Call by Caching",
+            "homepage": "http://www.phpfastcache.com",
+            "keywords": [
+                "APC Cache",
+                "apc",
+                "cache",
+                "cache class",
+                "caching",
+                "cookie",
+                "files cache",
+                "memcache",
+                "memcached",
+                "mysql cache",
+                "pdo cache",
+                "php cache",
+                "predis",
+                "redis",
+                "wincache"
+            ],
+            "time": "2015-11-14 00:25:13"
         },
         {
             "name": "pimple/pimple",
