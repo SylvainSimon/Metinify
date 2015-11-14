@@ -47,6 +47,16 @@ class FonctionsUtiles {
         return "*" . strtoupper($output);
     }
 
+    static function sizeOfFileExt($urlClient) {
+        $headers = get_headers($urlClient, true);
+        if (isset($headers['Content-Length'])) {
+            $size = $headers['Content-Length'];
+        } else {
+            $size = 0;
+        }
+        return $size;
+    }
+
     static function GenerateString($Nombre_De_Caracteres, $type = "ALL") {
 
         $Chaine_De_Puisement = "";

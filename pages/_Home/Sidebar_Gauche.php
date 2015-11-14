@@ -21,13 +21,13 @@ echo $view;
         <span class="info-box-text">Télécharger</span>
 
         <?php
-        $url = 'http://vamosmt2.org:81/Installateur%20VamosMT2%20Client%20officiel%202014-2015.exe';
-        $headers = get_headers($url, true);
-
-        if (isset($headers['Content-Length'])) {
-            $size = $headers['Content-Length'];
+        $urlClient = $config->linkClient;
+        $cacheManager = \CacheHelper::getCacheManager();
+        if ($cacheManager->isExisting("sizeOfClient")) {
+            $size = $cacheManager->get("sizeOfClient");
         } else {
-            $size = 0;
+            $size = \FonctionsUtiles::sizeOfFileExt($urlClient);
+            $cacheManager->set("sizeOfClient", $size, 21600);
         }
         ?>
 

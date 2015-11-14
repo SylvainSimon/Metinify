@@ -11,19 +11,23 @@ class Telechargement extends \PageHelper {
 
     public function run() {
 
-        $url = 'http://vamosmt2.org:81/Installateur%20VamosMT2%20Client%20officiel%202014-2015.exe';
-        $headers = get_headers($url, true);
+        global $config;
 
-        if (isset($headers['Content-Length'])) {
-            $size = $headers['Content-Length'];
+        $urlClient = $config->linkClient;
+        $urlClientTorrent = $config->linkClientTorrent;
+
+        $cacheManager = \CacheHelper::getCacheManager();
+        if ($cacheManager->isExisting("sizeOfClient")) {
+            $size = $cacheManager->get("sizeOfClient");
         } else {
-            $size = 0;
+            $size = \FonctionsUtiles::sizeOfFileExt($urlClient);
+            $cacheManager->set("sizeOfClient", $size, 21600);
         }
 
-        $this->arrayTemplate["urlClient"] = $url;
-        $this->arrayTemplate["urlClientTorrent"] = "http://vamosmt2.org:81/VamosMT2%20Client%20officiel%202014-2015.exe.torrent";
+        $this->arrayTemplate["urlClient"] = $urlClient;
+        $this->arrayTemplate["urlClientTorrent"] = $urlClientTorrent;
         $this->arrayTemplate["tailleClient"] = \FonctionsUtiles::Formatage_Taille($size);
-        
+
         $view = $this->template->render($this->arrayTemplate);
 
         $this->response->setContent($view);

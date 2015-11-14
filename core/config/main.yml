@@ -1,6 +1,8 @@
 baseURL: https://vamosmt2.local/
 gameVersion: 5.1.9
 requiredSSL: true
+linkClient: http://vamosmt2.org:81/Installateur%20VamosMT2%20Client%20officiel%202014-2015.exe
+linkClientTorrent: http://vamosmt2.org:81/VamosMT2%20Client%20officiel%202014-2015.exe.torrent
 
 manualActivation: true
 defaultCash: 0
