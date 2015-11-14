@@ -85,6 +85,7 @@ class ServicesHelper {
             ));
 
             $twig->addExtension(new StringFunctionExtension());
+            $twig->addExtension(new ImageFunctionExtension());
             $twig->addExtension(new DateFunctionExtension());
             $twig->addExtension(new Twig_Extension_Debug());
             $twig->addExtension(new EncryptExtension());

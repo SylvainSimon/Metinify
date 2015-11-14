@@ -1,0 +1,36 @@
+{% if arrObjItemshop|length > 0 %}
+
+    {% for objItemshop in arrObjItemshop %}
+
+        <div class="Article_IS" onclick="Ajax('pages/ItemShop/ItemShopDetails.php?id_recu={{ objItemshop.getId }}');"  data-tooltip-isItemMetin="1" data-tooltip-track="1" data-tooltip="{{ objItemshop.getInfoItem }}">
+            <div class="Nom_Article">
+                {{ objItemshop.getNameItem }}
+            </div>
+            <div class="Prix_Article">
+                <span>{{ objItemshop.getPrix }}</span>
+
+                {% if objItemshop.getCat == "7" %}
+                    <img style="position: relative; top:-2px" src="../../images/versopiece.png" width="16" height="16" />
+                {% else %}
+                    <img  style="position: relative; top:-2px" src="../../images/rectopiece.png" width="16" height="16" />
+                {% endif %}
+            </div>
+
+            {% set imageSize = getimagesize("../../../images/items/" ~ objItemshop.getIdItem ~ ".png") %}
+
+            {% if imageSize.1 > imageSize.0 %}
+
+                {% if imageSize.1 > 64 %}
+                    <img class="Position_Icone_Article_1Case_TresGrande" src="../../images/items/{{ objItemshop.getIdItem }}.png" width="32" />
+                {% else %}
+                    <img class="Position_Icone_Article_1Case_Grande" src="../../images/items/{{ objItemshop.getIdItem }}.png" width="32" />
+                {% endif %}
+
+            {% else %}
+                <img class="Position_Icone_Article_1Case_Petite" src="../../images/items/{{ objItemshop.getIdItem }}.png" width="32" />
+            {% endif %}
+
+        </div>
+    {% endfor %}
+
+{% endif %}
