@@ -1,8 +1,6 @@
 <?php
 $typeTop = array("PVE", "PVP");
 $typeResult = array_rand($typeTop);
-
-$cacheManager = \CacheHelper::getCacheManager();
 if ($cacheManager->isExisting("arrObjPlayersTop" . $typeResult)) {
     $arrObjPlayers = $cacheManager->get("arrObjPlayersTop" . $typeResult);
 } else {

@@ -61,6 +61,24 @@ class PlayerRepository extends EntityRepository {
         }
     }
     
+    public function countPlayerOnline($minutes = 0) {
+
+        $nowInterval = \Carbon\Carbon::now()->subMinute($minutes);
+        
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("COUNT(PlayerEntity)");
+        $qb->from("\Player\Entity\Player", "PlayerEntity");
+        $qb->where("PlayerEntity.lastPlay >= :nowInterval");
+        $qb->setParameter("nowInterval", $nowInterval);
+
+        try {
+            return $qb->getQuery()->getSingleScalarResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return 0;
+        }
+    }
+    
     /**
      * Retourne un joueur d'un compte
      * @param integer $idAccount

@@ -19,6 +19,8 @@ class IndexWebsite extends PageHelper {
         global $config;
         global $session;
 
+        $cacheManager = \CacheHelper::getCacheManager();
+
         //$this->objConnection;
         //$this->objConfig;
         //var_dump($this->objSession->get("ID"));

@@ -220,7 +220,7 @@ function JoueursConnectes() {
         type: "POST",
         url: "ajax/ajaxStatutNombreJoueur.php",
         success: function (msg) {
-            $("#nombreconnecter").html(msg);
+            $("#nombrePlayerConnected").html(msg);
             redraw();
         }
     });

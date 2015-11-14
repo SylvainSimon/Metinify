@@ -27,3 +27,6 @@ smtpPassword: ~
 encryptKey: vamoslelapin
 
 fastChatType: files
+
+ipTestServer: 94.23.6.155
+portTestServer: 3306
