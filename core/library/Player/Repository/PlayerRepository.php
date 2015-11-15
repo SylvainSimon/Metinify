@@ -152,14 +152,14 @@ class PlayerRepository extends EntityRepository {
                 . "PlayerEntity.victimesPvp");
 
         $qb->from("\Player\Entity\Player", "PlayerEntity");
-        $qb->leftJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = PlayerEntity.idAccount");
-        $qb->leftJoin("\Player\Entity\PlayerIndex", "PlayerIndexEntity", "WITH", "PlayerIndexEntity.id = AccountEntity.id");
+        $qb->innerJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = PlayerEntity.idAccount");
+        $qb->innerJoin("\Player\Entity\PlayerIndex", "PlayerIndexEntity", "WITH", "PlayerIndexEntity.id = AccountEntity.id");
         $qb->where("1 = 1");
         $qb->andWhere("PlayerEntity.level > 100");
         $qb->setParameter("nowInterval", $nowInterval);
 
-        //$qb = $this->getDQLCompteActif($qb);
-        //$qb = $this->getDQLJoueurNonGM($qb);
+        $qb = $this->getDQLCompteActif($qb);
+        $qb = $this->getDQLJoueurNonGM($qb);
 
         if ($order == "PVE") {
             $qb->orderBy("PlayerEntity.scorePve DESC, PlayerEntity.level DESC, PlayerEntity.exp", "DESC");

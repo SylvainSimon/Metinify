@@ -17,6 +17,7 @@ function Recherche_Guildes(term) {
                 $("#pagedeclassement").html(msg);
                 Barre_De_Statut("Recherche terminé.");
                 Icone_Chargement(0);
+                redraw();
 
             }
         });
@@ -44,6 +45,7 @@ function Recherche_Joueurs_PVP(term) {
                 $("#pagedeclassement").html(msg);
                 Barre_De_Statut("Recherche terminé.");
                 Icone_Chargement(0);
+                redraw();
 
             }
         });
@@ -71,6 +73,7 @@ function Recherche_Joueurs_PVE(term) {
                 $("#pagedeclassement").html(msg);
                 Barre_De_Statut("Recherche terminé.");
                 Icone_Chargement(0);
+                redraw();
 
             }
         });
