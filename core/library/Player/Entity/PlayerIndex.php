@@ -41,9 +41,9 @@ class PlayerIndex
     private $pid4 = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="empire", type="boolean", nullable=false)
+     * @ORM\Column(name="empire", type="integer", nullable=false)
      */
     private $empire = '0';
 
@@ -157,7 +157,7 @@ class PlayerIndex
     /**
      * Set empire
      *
-     * @param boolean $empire
+     * @param integer $empire
      *
      * @return PlayerIndex
      */
@@ -171,7 +171,7 @@ class PlayerIndex
     /**
      * Get empire
      *
-     * @return boolean
+     * @return integer
      */
     public function getEmpire()
     {

@@ -1,0 +1,153 @@
+<div class="box box-default flat">
+
+    <div class="box-header">
+        <h3 class="box-title">Classement des guildes</h3>
+
+    </div>
+
+    <div class="box-body no-padding">
+
+        <script type="text/javascript">
+
+            function Recherche_Guildes() {
+
+                Barre_De_Statut("Recherche de la guilde en cours...");
+                Icone_Chargement(1);
+
+                $.ajax({
+                    type: "POST",
+                    url: "pages/Classements/ajax/ClassementGuildesSearch.php",
+                    data: "recherche=" + $("#SaisieRecherche").val(),
+                    success: function (msg) {
+
+                        $("#pagedeclassement").html(msg);
+                        Barre_De_Statut("Recherche terminé.");
+                        Icone_Chargement(0);
+
+                    }
+                });
+                return false;
+            }
+
+        </script>
+
+        <div class="row" style="padding: 10px;">
+            <div class="col-md-4">
+                <input type="text" class="form-control input-sm inline" autofocus="autofocus" placeholder="Guilde..." id="SaisieRecherche"/>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" class="btn btn-primary btn-flat btn-sm inline" src="images/Bouton_Rechercher.png" onclick="if ($('#SaisieRecherche').val() != '') {
+                            Recherche_Guildes();
+                        }" value="Rechercher"/>
+            </div>
+        </div>
+
+
+        <div id="Changement_de_Page">
+
+            <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;"> 
+                <thead>
+                    <tr>
+
+                        <th style="width: 15px;" align="center"></th>
+                        <th style="width: 150px;">Nom</th>
+                        <th style="width: 25px;"></th>
+                        <th class="Align_center">Level</th>
+                        <th>Chef</th>
+                        <th class="hidden-md hidden-sm hidden-xs">Expérience</th>
+                        <th style="width: 120px;">Score</th>
+                    </tr>
+                </thead>
+
+                <tbody id="pagedeclassement">
+
+                    {% if arrObjGuilds|length > 0 %}
+
+                        {% for objGuilds in arrObjGuilds %}
+
+                            <tr>
+                                <td align="center">
+                                    {% if place == 1 %}
+                                        <i class="material-icons md-icon-star" style="color:#F3EC12;"></i>
+                                    {% elseif place == 2 %}
+                                        <i class="material-icons md-icon-star text-gray"></i>
+                                    {% elseif place == 3 %}
+                                        <i class="material-icons md-icon-star" style="color:#813838;"></i>
+                                    {% elseif place == 4 %}
+                                        <i class="material-icons md-icon-bookmark" style="color:#F3EC12; opacity: 0.5"></i>
+                                    {% elseif place == 5 %}
+                                        <i class="material-icons md-icon-bookmark text-gray" style="opacity: 0.5"></i>
+                                    {% elseif place == 6 %}
+                                        <i class="material-icons md-icon-bookmark" style="color:#813838; opacity: 0.5"></i>
+                                    {% else %}
+                                        {{ place }}
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {{ objGuilds.name }}
+                                </td>
+
+                                <td>
+                                    {% if objGuilds.empire == 1 %}
+                                        <i class="text-red material-icons md-icon-map md-20"></i>
+                                    {% elseif objGuilds.empire == 2 %}
+                                        <i class="text-yellow material-icons md-icon-map md-20"></i>
+                                    {% elseif objGuilds.empire == 3 %}
+                                        <i class="text-blue material-icons md-icon-map md-20"></i>
+                                    {% endif %}
+                                </td>
+
+                                <td class="Align_center">
+                                    {{ objGuilds.level }}
+                                </td>
+                                <td>
+                                    {{ objGuilds.PlayerName }}
+                                </td>
+                                <td class="hidden-md hidden-sm hidden-xs">
+                                    {{ objGuilds.GuildExp }}
+                                </td>
+                                <td>
+                                    <span class="text-green">{{ objGuilds.victoire }}</span>
+                                    /
+                                    <span class="text-red">{{ objGuilds.defaite }}</span>
+                                    /
+                                    {{ objGuilds.egalite }}
+                                </td>
+
+                            </tr>
+
+                            {% set place = (place + 1) %}
+
+                        {% endfor %}
+
+                    {% else %}
+                        Aucune guilde
+                    {% endif %}
+                </tbody>
+
+            </table>
+
+            <div class="row" style="padding: 10px;">
+
+                <div class="col-xs-6">
+                    <div class="pull-left">
+                        {% if numPage > 0 %}
+                            <a href="javascript:void(0)" onclick="Ajax_Classement('pages/Classements/ajax/ClassementGuildesPage.php?page={{ (numPage-1) }}');">Page précédente</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="col-xs-6">
+                    <div class="pull-right">
+                        {% if numPage <= totalPage %}
+                            <a href="javascript:void(0)" onclick="Ajax_Classement('pages/Classements/ajax/ClassementGuildesPage.php?page={{ (numPage+1) }}');">Page suivante</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
