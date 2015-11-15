@@ -1,10 +1,10 @@
 .Article_Marche{
-    position: relative; 
-    padding: 5px; 
-    padding-top: 2px; 
-    width: 200px; 
-    height: 200px; 
-    display: inline-block; 
+    position: relative;
+    padding: 0px;
+    padding-top: 0px;
+    width: 180px;
+    height: 190px;
+    display: inline-block;
     margin-bottom: 10px;
     margin-right: 10px;
     border: 1px solid #424242;
@@ -22,17 +22,16 @@
 
 .Nom_Article_Marche{
     position: relative;
-    top: 2px;
-    left: 5px;
+    padding-top: 1px;
+    padding-left: 5px;
+    padding-right: 2px;
+    padding-bottom: 3px;
+    background: #3D3D3D;
+    border-bottom: #ccc;
 }
 
 .Level_Personnage{
-
     float: right;
-    border-left: 1px solid #CCCCCC;
-    width: 81px;
-    text-align: center;
-    text-indent: -2px;
 }
 
 .Icone_Piece{
@@ -75,8 +74,8 @@
 .Position_Icone_Article_Personnage{
 
     position: relative;
-    top:3px;
-    left: 20px;
+    top:5px;
+    left: 10px;
     margin: 0 auto 0 auto;
 }
 

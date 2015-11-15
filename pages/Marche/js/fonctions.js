@@ -1,7 +1,7 @@
 function Ajax_Appel_Marche(url, objet) {
 
-    window.parent.Barre_De_Statut("Appel de l'onglet...");
-    window.parent.Icone_Chargement(1);
+    Barre_De_Statut("Appel de l'onglet...");
+    Icone_Chargement(1);
 
     $.ajax({
         type: "POST",
@@ -9,8 +9,8 @@ function Ajax_Appel_Marche(url, objet) {
         success: function (msg) {
 
             $("#Contenue_Cadre_Marche").html(msg);
-            window.parent.Barre_De_Statut("Chargement terminé.");
-            window.parent.Icone_Chargement(0);
+            Barre_De_Statut("Chargement terminé.");
+            Icone_Chargement(0);
 
             if (objet !== false) {
                 $(".nav-tabs-custom li").attr("class", "");
@@ -27,8 +27,8 @@ function Ajax_Appel_Marche(url, objet) {
 
 function Ajax_Appel_Liste(param) {
 
-    window.parent.Barre_De_Statut("Génération de la liste...");
-    window.parent.Icone_Chargement(1);
+    Barre_De_Statut("Génération de la liste...");
+    Icone_Chargement(1);
 
     $.ajax({
         type: "POST",
@@ -42,8 +42,8 @@ function Ajax_Appel_Liste(param) {
         success: function (msg) {
 
             $("#Tableau_Liste_Article").html(msg);
-            window.parent.Barre_De_Statut("Liste d'articles généré.");
-            window.parent.Icone_Chargement(0);
+            Barre_De_Statut("Liste d'articles généré.");
+            Icone_Chargement(0);
 
             redraw();
 
@@ -54,8 +54,8 @@ function Ajax_Appel_Liste(param) {
 
 function Ouverture_Dialogue_Achat(id_message) {
 
-    window.parent.Barre_De_Statut("En attente de la confirmation...");
-    window.parent.Icone_Chargement(1);
+    Barre_De_Statut("En attente de la confirmation...");
+    Icone_Chargement(1);
     $("#dialog_Confirmation_Acheter_Article").dialog("open");
 }
 
@@ -79,8 +79,8 @@ function Acquisition_Article(id) {
                 className: "btn-primary",
                 callback: function () {
 
-                    window.parent.Barre_De_Statut("Réalisation de l'achat...");
-                    window.parent.Icone_Chargement(1);
+                    Barre_De_Statut("Réalisation de l'achat...");
+                    Icone_Chargement(1);
                     $.ajax({
                         type: "POST",
                         url: "pages/Marche/ajax/SQL_Procedure_Achat_Personnage.php",
@@ -96,27 +96,27 @@ function Acquisition_Article(id) {
                                         type: "POST",
                                         url: "ajax/Update_Vamonaies.php",
                                         success: function (msg) {
-                                            window.parent.Fonction_Reteneuse_Vamonaies(msg);
+                                            Fonction_Reteneuse_Vamonaies(msg);
                                         }
                                     });
                                     $.ajax({
                                         type: "POST",
                                         url: "ajax/Update_Tananaies.php",
                                         success: function (msg) {
-                                            window.parent.Fonction_Reteneuse_Tananaies(msg);
+                                            Fonction_Reteneuse_Tananaies(msg);
                                         }
                                     });
                                     Ajax_Appel_Marche('pages/Marche/MarchePlace.php');
                                 } else if (Parse_Json.result == "FAIL") {
 
-                                    window.parent.Barre_De_Statut(Parse_Json.reasons);
-                                    window.parent.Icone_Chargement(2);
+                                    Barre_De_Statut(Parse_Json.reasons);
+                                    Icone_Chargement(2);
                                 }
 
                             } catch (e) {
 
-                                window.parent.Barre_De_Statut("Annulation échoué.");
-                                window.parent.Icone_Chargement(2);
+                                Barre_De_Statut("Annulation échoué.");
+                                Icone_Chargement(2);
                             }
                         }
                     });
@@ -147,8 +147,8 @@ function Retirer_De_La_Vente(id) {
                 className: "btn-primary",
                 callback: function () {
 
-                    window.parent.Barre_De_Statut("Annulation de la vente...");
-                    window.parent.Icone_Chargement(1);
+                    Barre_De_Statut("Annulation de la vente...");
+                    Icone_Chargement(1);
                     $.ajax({
                         type: "POST",
                         url: "pages/Marche/ajax/SQL_Retirer_Vente.php",
@@ -162,14 +162,14 @@ function Retirer_De_La_Vente(id) {
                                     Ajax_Appel_Marche('pages/Marche/MarchePlace.php');
                                 } else if (Parse_Json.result == "FAIL") {
 
-                                    window.parent.Barre_De_Statut(Parse_Json.reasons);
-                                    window.parent.Icone_Chargement(2);
+                                    Barre_De_Statut(Parse_Json.reasons);
+                                    Icone_Chargement(2);
                                 }
 
                             } catch (e) {
 
-                                window.parent.Barre_De_Statut("Annulation échoué.");
-                                window.parent.Icone_Chargement(2);
+                                Barre_De_Statut("Annulation échoué.");
+                                Icone_Chargement(2);
                             }
                         }
                     });

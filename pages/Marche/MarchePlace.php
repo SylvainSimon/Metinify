@@ -10,7 +10,7 @@ class MarchePlace extends \PageHelper {
     public $strTemplate = "MarchePlace.html5.twig";
 
     public function run() {
-
+        
         $view = $this->template->render($this->arrayTemplate);
         $this->response->setContent($view);
         $this->response->send();

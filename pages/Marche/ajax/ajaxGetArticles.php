@@ -20,7 +20,6 @@ class ajaxGetArticles extends \ScriptHelper {
         $deviseFilter = $request->request->get("monnaie");
         
         $arrObjMarcheArticles = \Site\SiteHelper::getMarcheArticlesRepository()->findArticlePersonnages($raceFilter, $sexeFilter, $levelFilter, $orderFilter, $deviseFilter);
-        
         $this->arrayTemplate["arrObjMarcheArticles"] = $arrObjMarcheArticles;
 
         $view = $this->template->render($this->arrayTemplate);

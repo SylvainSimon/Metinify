@@ -5,76 +5,64 @@
         <div class="Article_Marche" data-tooltip="{{ objMarcheArticle.description }}" data-tooltip-isItemMetin="1" data-tooltip-track="1" id="Article_Vente_{{ objMarcheArticle.idMarchePersonnage }}">
 
             <div class="Nom_Article_Marche">
-
                 {{ objMarcheArticle.designation }}
-
-                {% if objMarcheArticle.idProprietaire == session.get("ID") %}
-                    <img data-tooltip="Annuler la vente de {{ objMarcheArticle.name }}" onclick="Retirer_De_La_Vente({{ objMarcheArticle.idMarchePersonnage }});" class="Bouton_Supprimer_Vente" src="../../images/invalid.gif" width="12" />
-                {% endif %}
-                <div class="Level_Personnage">Niveau {{ objMarcheArticle.level }}</div>
             </div>
 
-            <div class="Prix_Article">
+            <div class="Level_Personnage">
+                <table class="table table-condensed" style="border-collapse: collapse; margin-bottom: 0px;">
+                    <tr>
+                        <td style="border-top: 0px;" colspan="2">{{ objMarcheArticle.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Niveau</td>
+                        <td>{{ objMarcheArticle.level }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding-top: 0px;">                
+                            {{ formatNumber(objMarcheArticle.prix) }} 
+                            {% if objMarcheArticle.idDevise == "1" %}
+                                <i style="top: 4px; position: relative;" class="material-icons md-icon-whatshot md-20 text-yellow" title=""></i>
+                            {% elseif objMarcheArticle.idDevise == "2" %}
+                                <i style="top: 4px; position: relative;" class="material-icons md-icon-whatshot md-20 text-gray" title=""></i>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </table>
 
-                <div class="Position_Prix">{{ formatNumber(objMarcheArticle.prix) }}</div>
-
-                {% if objMarcheArticle.idDevise == "1" %}
-                    <div class="Icone_Piece">
-                        <img src="../../images/rectopiece.png" title="Vamonaies" width="16" height="16" />
-                    </div>
-                {% elseif objMarcheArticle.idDevise == "2" %}
-                    <div class="Icone_Piece">
-                        <img src="../../images/versopiece.png" title="Tananaies" width="16" height="16" />
-                    </div>
-                {% endif %}
             </div>
 
-            <div class="Icone_Article">
+            <div style="padding-top: 5px;">
                 {% if objMarcheArticle.job == "0" %}
-                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Guerrier_Homme.png" height="90" />
+                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Guerrier_Homme.png" height="150" />
                 {% elseif objMarcheArticle.job == "1" %}
-                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Ninja_Femme.png" height="90" />
+                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Ninja_Femme.png" height="150" />
                 {% elseif objMarcheArticle.job == "2" %}
-                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Sura_Homme.png" height="90" />
+                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Sura_Homme.png" height="150" />
                 {% elseif objMarcheArticle.job == "3" %}
-                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Chaman_Femme.png" height="90" />
+                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Chaman_Femme.png" height="150" />
                 {% elseif objMarcheArticle.job == "4" %}
-                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Guerrier_Femme.png" height="90" />
+                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Guerrier_Femme.png" height="150" />
                 {% elseif objMarcheArticle.job == "5" %}
-                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Ninja_Homme.png" height="90" />
+                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Ninja_Homme.png" height="150" />
                 {% elseif objMarcheArticle.job == "6" %}
-                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Sura_Femme.png" height="90" />
+                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Sura_Femme.png" height="150" />
                 {% elseif objMarcheArticle.job == "7" %}
-                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Chaman_Homme.png" height="90" />
+                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Chaman_Homme.png" height="150" />
                 {% endif %}
             </div>
 
-            <div>
-                <a rel="superbox[iframe][950x500]" href="pages/Marche/MarchePlayerInfo.php?id_marche_perso={{ objMarcheArticle.idMarchePersonnage }}">
-                    <i data-tootlip="Voir les informations de l'article" class="material-icons md-icon-help md-48"></i>
+            <div style="position: absolute; bottom: 0px; right: 5px;">
+                <a  class="fancybox_Rechargement" data-fancybox-type="iframe"href="pages/Marche/MarchePlayerInfo.php?id_marche_perso={{ objMarcheArticle.idMarchePersonnage }}">
+                    <i data-tootlip="Voir les informations de l'article" class="material-icons md-icon-help md-36 text-blue"></i>
                 </a>
 
                 <a onclick="Acquisition_Article({{ objMarcheArticle.idMarchePersonnage }});">
-                    <i data-tootlip="Acheter cette article" class="material-icons md-icon-shopping_cart md-48"></i>
+                    <i data-tootlip="Acheter cette article" class="material-icons md-icon-shopping_cart md-36 text-yellow"></i>
                 </a>
 
             </div>
         </div>
     {% endfor %}
-
-    <script type="text/javascript">
-
-        $(function () {
-            $.superbox.settings = {
-                closeTxt: "Fermer",
-                loadTxt: "Chargement...",
-                boxWidth: "400",
-                boxHeight: "300"
-            };
-            $.superbox();
-        });
-
-    </script>
 
 {% else %}
     <div>

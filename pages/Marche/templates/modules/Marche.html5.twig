@@ -14,13 +14,11 @@
                 <li><a href="javascript:void(0)" onclick="Ajax_Appel_Marche('pages/Marche/MarcheSale.php', this);">Vendre</a></li>
                 <li><a href="javascript:void(0)" onclick="Ajax_Appel_Marche('pages/Marche/MarcheMySales.php', this);">Mes ventes</a></li>
             </ul>
-            <div id="Contenue_Cadre_Marche" class="tab-content"></div>
+            <div id="Contenue_Cadre_Marche" class="tab-content">
+                {{ viewMarchePlace|raw }}
+            </div>
         </div>
 
         <div class="clear"></div>
     </div>
 </div>
-
-<script type="text/javascript">
-    Ajax_Appel_Marche("pages/Marche/MarchePlace.php", false);
-</script>

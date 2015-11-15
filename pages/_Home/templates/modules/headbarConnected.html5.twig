@@ -6,14 +6,14 @@
             Bienvenue <span onclick="Ajax('pages/MonCompte/modules/HistoryConnexion.php')" data-tooltip="Historique des connexions" class="Bold Pointer">{{ session.get("Utilisateur") }}</span>
         </div>
 
-        <div style="position: relative; left:-4px; top: -1px;"  class="col-lg-5 col-md-6 col-sm-6">
+        <div style="position: relative; left:-4px; top: 1px;"  class="col-lg-5 col-md-6 col-sm-6">
             <span data-tooltip="VamoNaies">
-                <img class="inline" src="images/rectopiece.png" height="35"/>
+                <i style="top: 7px; position: relative;" class="material-icons md-icon-whatshot md-24 text-yellow" title=""></i>
                 <div class="inline" id="Nombre_De_Vamonaies">{{ session.get("VamoNaies") }} </div>
             </span>
 
             <span data-tooltip="TanaNaies">
-                <img class="inline" src="images/versopiece.png" height="35"/>
+                <i style="top: 7px; position: relative; margin-left: 10px;" class="material-icons md-icon-whatshot md-24 text-gray" title=""></i>
                 <div class="inline" id="Nombre_De_Tananaies">{{ session.get("TanaNaies") }}</div>
             </span>
         </div>
