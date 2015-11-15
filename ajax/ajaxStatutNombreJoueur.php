@@ -12,7 +12,7 @@ class ajaxStatutNombreJoueur extends \ScriptHelper {
         if ($cacheManager->isExisting("resultcountPlayerOnline")) {
             $resultcountPlayerOnline = $cacheManager->get("resultcountPlayerOnline");
         } else {
-            $resultcountPlayerOnline = \Player\PlayerHelper::getPlayerRepository()->countPlayerOnline(90);
+            $resultcountPlayerOnline = \Player\PlayerHelper::getPlayerRepository()->countPlayerOnline(30);
             $cacheManager->set("resultcountPlayerOnline", $resultcountPlayerOnline, 60);
         }
 

@@ -44,7 +44,7 @@ class PlayerRepository extends EntityRepository {
             return null;
         }
     }
-    
+
     public function countPlayerByName($name = "") {
 
         $qb = $this->_em->createQueryBuilder();
@@ -60,11 +60,11 @@ class PlayerRepository extends EntityRepository {
             return 0;
         }
     }
-    
+
     public function countPlayerOnline($minutes = 0) {
 
         $nowInterval = \Carbon\Carbon::now()->subMinute($minutes);
-        
+
         $qb = $this->_em->createQueryBuilder();
 
         $qb->select("COUNT(PlayerEntity)");
@@ -78,7 +78,7 @@ class PlayerRepository extends EntityRepository {
             return 0;
         }
     }
-    
+
     /**
      * Retourne un joueur d'un compte
      * @param integer $idAccount
@@ -119,13 +119,13 @@ class PlayerRepository extends EntityRepository {
 
         $qb = $this->getDQLCompteActif($qb);
         $qb = $this->getDQLJoueurNonGM($qb);
-        
+
         if ($order == "PVE") {
             $qb->orderBy("PlayerEntity.scorePve DESC, PlayerEntity.level DESC, PlayerEntity.exp", "DESC");
         } else if ($order == "PVP") {
             $qb->orderBy("PlayerEntity.victimesPvp DESC, PlayerEntity.level DESC, PlayerEntity.exp", "DESC");
         }
-        
+
         $qb->setMaxResults($max);
 
         try {
@@ -134,7 +134,75 @@ class PlayerRepository extends EntityRepository {
             return [];
         }
     }
-    
+
+    public function findClassement($order = "PVE", $intervalStart = 0, $intervalLength = 10, $forSearch = false) {
+
+        $nowInterval = \Carbon\Carbon::now()->subMinute(30);
+        $qb = $this->_em->createQueryBuilder();
+
+        if ($forSearch) {
+            $qb->select("PlayerEntity.name");
+        } else {
+            $qb->select(""
+                    . "PlayerEntity.name, "
+                    . "PlayerEntity.level, "
+                    . "PlayerEntity.exp, "
+                    . "PlayerEntity.job, "
+                    . "PlayerEntity.skillGroup, "
+                    . "PlayerIndexEntity.empire, "
+                    . "PlayerEntity.scorePve, "
+                    . "IFELSE((PlayerEntity.lastPlay >= :nowInterval), 1, 0) AS online, "
+                    . "PlayerEntity.victimesPvp");
+        }
+
+        $qb->from("\Player\Entity\Player", "PlayerEntity");
+        $qb->innerJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = PlayerEntity.idAccount");
+        $qb->innerJoin("\Player\Entity\PlayerIndex", "PlayerIndexEntity", "WITH", "PlayerIndexEntity.id = AccountEntity.id");
+        $qb->where("1 = 1");
+        
+        $qb->setParameter("nowInterval", $nowInterval);
+        
+        $qb = $this->getDQLCompteActif($qb);
+        $qb = $this->getDQLJoueurNonGM($qb);
+
+        if ($order == "PVE") {
+            $qb->orderBy("PlayerEntity.scorePve DESC, PlayerEntity.level DESC, PlayerEntity.exp", "DESC");
+        } else if ($order == "PVP") {
+            $qb->orderBy("PlayerEntity.victimesPvp DESC, PlayerEntity.level DESC, PlayerEntity.exp", "DESC");
+        }
+
+        if (!$forSearch) {
+            $qb->setFirstResult($intervalStart);
+            $qb->setMaxResults($intervalLength);
+        }
+
+        try {
+            return $qb->getQuery()->getArrayResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return [];
+        }
+    }
+
+    public function countPlayerClassement() {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("COUNT(PlayerEntity.id)");
+        $qb->from("\Player\Entity\Player", "PlayerEntity");
+        $qb->innerJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = PlayerEntity.idAccount");
+        $qb->innerJoin("\Player\Entity\PlayerIndex", "PlayerIndexEntity", "WITH", "PlayerIndexEntity.id = AccountEntity.id");
+        $qb->where("1 = 1");
+
+        $qb = $this->getDQLCompteActif($qb);
+        $qb = $this->getDQLJoueurNonGM($qb);
+
+        try {
+            return $qb->getQuery()->getSingleScalarResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return 0;
+        }
+    }
+
     public function statPlayer($job = "", $empire = "") {
 
         $qb = $this->_em->createQueryBuilder();

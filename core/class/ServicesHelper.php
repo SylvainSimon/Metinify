@@ -201,6 +201,7 @@ class ServicesHelper {
             $config->addCustomStringFunction('WEEK', '\DoctrineExtensions\Query\Mysql\WEEK');
             $config->addCustomStringFunction('MONTH', '\DoctrineExtensions\Query\Mysql\MONTH');
             $config->addCustomStringFunction('YEAR', '\DoctrineExtensions\Query\Mysql\YEAR');
+            $config->addCustomStringFunction('IFELSE', '\DoctrineExtensions\Query\Mysql\IfElse');
 
             // Proxy Configuration
             $proxiesCacheDir = $container['doctrine.orm.proxiesCacheDir'];
