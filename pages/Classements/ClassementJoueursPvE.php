@@ -7,15 +7,23 @@ require __DIR__ . '../../../core/initialize.php';
 class ClassementJoueursPvE extends \PageHelper {
 
     public $strTemplate = "ClassementJoueursPvE.html5.twig";
-    
+
     public function run() {
 
         $numPage = 0;
         $i = $numPage + 1;
-        
-        $arrObjPlayers = \Player\PlayerHelper::getPlayerRepository()->findClassement("PVE", 0, 10);
-        $totalObjPlayers = \Player\PlayerHelper::getPlayerRepository()->countPlayerClassement();
-        
+
+        $cacheManager = \CacheHelper::getCacheManager();
+        if ($cacheManager->isExisting("arrObjPlayersCachePVE")) {
+            $arrObjPlayersCachePVE = $cacheManager->get("arrObjPlayersCachePVE");
+        } else {
+            $arrObjPlayersCachePVE = \Player\PlayerHelper::getPlayerRepository()->findClassement("PVE", 0, 0, true);
+            $cacheManager->set("arrObjPlayersCachePVE", $arrObjPlayersCachePVE, 3600);
+        }
+       
+        $arrObjPlayers = array_slice($arrObjPlayersCachePVE, 0, 10);
+        $totalObjPlayers = count($arrObjPlayersCachePVE);
+
         $totalPage = (($totalObjPlayers / 10) - 1);
 
         $this->arrayTemplate["arrObjPlayers"] = $arrObjPlayers;

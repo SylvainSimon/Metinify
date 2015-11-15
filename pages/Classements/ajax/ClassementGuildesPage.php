@@ -15,8 +15,16 @@ class ClassementGuildesPage extends \PageHelper {
         $numPage = $request->query->get("page");
         $intervalStart = ($numPage * 10);
 
-        $arrObjGuilds = \Player\PlayerHelper::getGuildRepository()->findClassement($intervalStart, 10);
-        $totalObjGuilds = \Player\PlayerHelper::getGuildRepository()->countGuildClassement();
+        $cacheManager = \CacheHelper::getCacheManager();
+        if ($cacheManager->isExisting("arrObjGuildesCache")) {
+            $arrObjGuildesCache = $cacheManager->get("arrObjGuildesCache");
+        } else {
+            $arrObjGuildesCache = \Player\PlayerHelper::getGuildRepository()->findClassement(0, 0, true);
+            $cacheManager->set("arrObjGuildesCache", $arrObjGuildesCache, 3600);
+        }
+        
+        $arrObjGuilds = array_slice($arrObjGuildesCache, $intervalStart, 10);
+        $totalObjGuilds = count($arrObjGuildesCache);
 
         $totalPage = (($totalObjGuilds / 10) - 1);
         $i = $intervalStart + 1;

@@ -13,8 +13,16 @@ class ClassementGuildes extends \PageHelper {
         $numPage = 0;
         $i = $numPage + 1;
         
-        $arrObjGuilds = \Player\PlayerHelper::getGuildRepository()->findClassement(0, 10);
-        $totalObjGuilds = \Player\PlayerHelper::getGuildRepository()->countGuildClassement();
+        $cacheManager = \CacheHelper::getCacheManager();
+        if ($cacheManager->isExisting("arrObjGuildesCache")) {
+            $arrObjGuildesCache = $cacheManager->get("arrObjGuildesCache");
+        } else {
+            $arrObjGuildesCache = \Player\PlayerHelper::getGuildRepository()->findClassement(0, 0, true);
+            $cacheManager->set("arrObjGuildesCache", $arrObjGuildesCache, 3600);
+        }
+        
+        $arrObjGuilds = array_slice($arrObjGuildesCache, 0, 10);
+        $totalObjGuilds = count($arrObjGuildesCache);
 
         $totalPage = (($totalObjGuilds / 10) - 1);
         

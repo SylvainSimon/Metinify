@@ -7,37 +7,42 @@ require __DIR__ . '../../../../core/initialize.php';
 class ClassementGuildesSearch extends \PageHelper {
 
     public $strTemplate = "ClassementGuildesSearch.html5.twig";
-    
+
     public function run() {
 
         global $request;
-        
+
         $index = 0;
         $guildName = $request->request->get("recherche");
 
-        $arrObjGuildsSearch = \Player\PlayerHelper::getGuildRepository()->findClassement(0, 0, true);
+        $cacheManager = \CacheHelper::getCacheManager();
+        if ($cacheManager->isExisting("arrObjGuildesCache")) {
+            $arrObjGuildesCache = $cacheManager->get("arrObjGuildesCache");
+        } else {
+            $arrObjGuildesCache = \Player\PlayerHelper::getGuildRepository()->findClassement(0, 0, true);
+            $cacheManager->set("arrObjGuildesCache", $arrObjGuildesCache, 3600);
+        }
 
-        foreach ($arrObjGuildsSearch AS $objGuildsSearch) {
+        foreach ($arrObjGuildesCache AS $objGuildesCache) {
             $index++;
-            if ($objGuildsSearch["name"] == $guildName) {
+            if ($objGuildesCache["name"] == $guildName) {
                 break;
             }
         }
 
-        if (count($arrObjGuildsSearch) != $index) {
+        if (count($arrObjGuildesCache) != $index) {
 
             $intervalStartSearch = ($index - 5);
-            if($intervalStartSearch < 0 ){
+            if ($intervalStartSearch < 0) {
                 $intervalStartSearch = 0;
             }
 
-            $arrObjGuilds = \Player\PlayerHelper::getGuildRepository()->findClassement($intervalStartSearch, 10);
+            $arrObjGuilds = array_slice($arrObjGuildesCache, $intervalStartSearch, 10);
 
             $this->arrayTemplate["finded"] = true;
             $this->arrayTemplate["arrObjGuilds"] = $arrObjGuilds;
             $this->arrayTemplate["search"] = $guildName;
             $this->arrayTemplate["place"] = $intervalStartSearch + 1;
-            
         } else {
             $this->arrayTemplate["finded"] = false;
         }

@@ -13,8 +13,16 @@ class ClassementJoueursPvP extends \PageHelper {
         $numPage = 0;
         $i = $numPage + 1;
         
-        $arrObjPlayers = \Player\PlayerHelper::getPlayerRepository()->findClassement("PVP", 0, 10);
-        $totalObjPlayers = \Player\PlayerHelper::getPlayerRepository()->countPlayerClassement();
+        $cacheManager = \CacheHelper::getCacheManager();
+        if ($cacheManager->isExisting("arrObjPlayersCachePVP")) {
+            $arrObjPlayersCachePVP = $cacheManager->get("arrObjPlayersCachePVP");
+        } else {
+            $arrObjPlayersCachePVP = \Player\PlayerHelper::getPlayerRepository()->findClassement("PVP", 0, 0, true);
+            $cacheManager->set("arrObjPlayersCachePVP", $arrObjPlayersCachePVP, 3600);
+        }
+        
+        $arrObjPlayers = array_slice($arrObjPlayersCachePVP, 0, 10);
+        $totalObjPlayers = count($arrObjPlayersCachePVP);
         
         $totalPage = (($totalObjPlayers / 10) - 1);
 

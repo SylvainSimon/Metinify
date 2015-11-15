@@ -15,23 +15,29 @@ class ClassementJoueursPvESearch extends \PageHelper {
         $index = 0;
         $playerName = $request->request->get("recherche");
 
-        $arrObjPlayersSearch = \Player\PlayerHelper::getPlayerRepository()->findClassement("PVE", 0, 0, true);
-
-        foreach ($arrObjPlayersSearch AS $objPlayersSearch) {
+        $cacheManager = \CacheHelper::getCacheManager();
+        if ($cacheManager->isExisting("arrObjPlayersCachePVE")) {
+            $arrObjPlayersCachePVE = $cacheManager->get("arrObjPlayersCachePVE");
+        } else {
+            $arrObjPlayersCachePVE = \Player\PlayerHelper::getPlayerRepository()->findClassement("PVE", 0, 0, true);
+            $cacheManager->set("arrObjPlayersCachePVE", $arrObjPlayersCachePVE, 3600);
+        }
+        
+        foreach ($arrObjPlayersCachePVE AS $objPlayersCachePVE) {
             $index++;
-            if ($objPlayersSearch["name"] == $playerName) {
+            if ($objPlayersCachePVE["name"] == $playerName) {
                 break;
             }
         }
 
-        if (count($arrObjPlayersSearch) != $index) {
+        if (count($arrObjPlayersCachePVE) != $index) {
 
             $intervalStartSearch = ($index - 5);
             if ($intervalStartSearch < 0) {
                 $intervalStartSearch = 0;
             }
 
-            $arrObjPlayers = \Player\PlayerHelper::getPlayerRepository()->findClassement("PVE", $intervalStartSearch, 10);
+            $arrObjPlayers = array_slice($arrObjPlayersCachePVE, $intervalStartSearch, 10);
 
             $this->arrayTemplate["finded"] = true;
             $this->arrayTemplate["arrObjPlayers"] = $arrObjPlayers;

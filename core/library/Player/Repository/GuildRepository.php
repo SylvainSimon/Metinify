@@ -47,24 +47,21 @@ class GuildRepository extends EntityRepository {
         }
     }
 
-    public function findClassement($intervalStart = 0, $intervalLength = 10, $forSearch = false) {
+    public function findClassement($intervalStart = 0, $intervalLength = 10, $forCache = false) {
 
         $qb = $this->_em->createQueryBuilder();
 
-        if ($forSearch) {
-            $qb->select("GuildEntity.name");
-        } else {
-            $qb->select(""
-                    . "GuildEntity.name, "
-                    . "GuildEntity.level,"
-                    . "GuildEntity.exp GuildExp,"
-                    . "GuildEntity.victoire,"
-                    . "GuildEntity.egalite,"
-                    . "GuildEntity.defaite,"
-                    . "PlayerIndexEntity.empire,"
-                    . "PlayerEntity.name PlayerName"
-            );
-        }
+        $qb->select(""
+                . "GuildEntity.name, "
+                . "GuildEntity.level,"
+                . "GuildEntity.exp GuildExp,"
+                . "GuildEntity.victoire,"
+                . "GuildEntity.egalite,"
+                . "GuildEntity.defaite,"
+                . "PlayerIndexEntity.empire,"
+                . "PlayerEntity.name PlayerName"
+        );
+        
         $qb->from("\Player\Entity\Guild", "GuildEntity");
         $qb->innerJoin("\Player\Entity\Player", "PlayerEntity", "WITH", "PlayerEntity.id = GuildEntity.master");
         $qb->innerJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = PlayerEntity.idAccount");
@@ -76,7 +73,7 @@ class GuildRepository extends EntityRepository {
 
         $qb->orderBy("GuildEntity.level DESC, GuildEntity.victoire DESC, GuildEntity.egalite DESC, GuildEntity.defaite", "ASC");
 
-        if (!$forSearch) {
+        if (!$forCache) {
             $qb->setFirstResult($intervalStart);
             $qb->setMaxResults($intervalLength);
         }

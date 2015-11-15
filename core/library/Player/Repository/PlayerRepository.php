@@ -135,37 +135,31 @@ class PlayerRepository extends EntityRepository {
         }
     }
 
-    public function findClassement($order = "PVE", $intervalStart = 0, $intervalLength = 10, $forSearch = false) {
+    public function findClassement($order = "PVE", $intervalStart = 0, $intervalLength = 10, $forCache = false) {
 
         $nowInterval = \Carbon\Carbon::now()->subMinute(30);
         $qb = $this->_em->createQueryBuilder();
 
-        if ($forSearch) {
-            $qb->select("PlayerEntity.name");
-        } else {
-            $qb->select(""
-                    . "PlayerEntity.name, "
-                    . "PlayerEntity.level, "
-                    . "PlayerEntity.exp, "
-                    . "PlayerEntity.job, "
-                    . "PlayerEntity.skillGroup, "
-                    . "PlayerIndexEntity.empire, "
-                    . "PlayerEntity.scorePve, "
-                    . "IFELSE((PlayerEntity.lastPlay >= :nowInterval), 1, 0) AS online, "
-                    . "PlayerEntity.victimesPvp");
-        }
+        $qb->select(""
+                . "PlayerEntity.name, "
+                . "PlayerEntity.level, "
+                . "PlayerEntity.exp, "
+                . "PlayerEntity.job, "
+                . "PlayerEntity.skillGroup, "
+                . "PlayerIndexEntity.empire, "
+                . "PlayerEntity.scorePve, "
+                . "IFELSE((PlayerEntity.lastPlay >= :nowInterval), 1, 0) AS online, "
+                . "PlayerEntity.victimesPvp");
 
         $qb->from("\Player\Entity\Player", "PlayerEntity");
-        $qb->innerJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = PlayerEntity.idAccount");
-        $qb->innerJoin("\Player\Entity\PlayerIndex", "PlayerIndexEntity", "WITH", "PlayerIndexEntity.id = AccountEntity.id");
+        $qb->leftJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = PlayerEntity.idAccount");
+        $qb->leftJoin("\Player\Entity\PlayerIndex", "PlayerIndexEntity", "WITH", "PlayerIndexEntity.id = AccountEntity.id");
         $qb->where("1 = 1");
+        $qb->andWhere("PlayerEntity.level > 100");
+        $qb->setParameter("nowInterval", $nowInterval);
 
-        if (!$forSearch) {
-            $qb->setParameter("nowInterval", $nowInterval);
-        }
-
-        $qb = $this->getDQLCompteActif($qb);
-        $qb = $this->getDQLJoueurNonGM($qb);
+        //$qb = $this->getDQLCompteActif($qb);
+        //$qb = $this->getDQLJoueurNonGM($qb);
 
         if ($order == "PVE") {
             $qb->orderBy("PlayerEntity.scorePve DESC, PlayerEntity.level DESC, PlayerEntity.exp", "DESC");
@@ -173,7 +167,7 @@ class PlayerRepository extends EntityRepository {
             $qb->orderBy("PlayerEntity.victimesPvp DESC, PlayerEntity.level DESC, PlayerEntity.exp", "DESC");
         }
 
-        if (!$forSearch) {
+        if (!$forCache) {
             $qb->setFirstResult($intervalStart);
             $qb->setMaxResults($intervalLength);
         }

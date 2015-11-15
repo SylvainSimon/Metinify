@@ -141,7 +141,7 @@
 <div class="row" style="padding: 10px;">
     <div class="col-xs-6">
         <div class="pull-left">
-            {% if numPage > totalPage %}
+            {% if numPage > 0 %}
                 <a href="javascript:void(0)" onclick="Ajax_Classement('pages/Classements/ajax/ClassementJoueursPvEPage.php?page={{ (numPage - 1) }}')">Page précédente</a>
             {% endif %}
         </div>
