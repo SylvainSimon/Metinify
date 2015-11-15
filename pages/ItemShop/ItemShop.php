@@ -11,13 +11,17 @@ class ItemShop extends \PageHelper {
 
     public function run() {
 
+        $arrObjItemshop = \Site\SiteHelper::getItemshopRepository()->findItemsByCategorie(8, true);
+        $templateTop = $this->objTwig->loadTemplate("ajaxCategorieGetArticles.html5.twig");
+        $viewItemshopDefault = $templateTop->render(["arrObjItemshop" => $arrObjItemshop]);
+
         $arrObjItemshopCategories = \Site\SiteHelper::getItemshopCategoriesRepository()->findCategoriesNotEmpty();
         $this->arrayTemplate["arrObjItemshopCategories"] = $arrObjItemshopCategories;
-        
+        $this->arrayTemplate["viewItemshopDefault"] = $viewItemshopDefault;
+
         $view = $this->template->render($this->arrayTemplate);
         $this->response->setContent($view);
         $this->response->send();
-
     }
 
 }

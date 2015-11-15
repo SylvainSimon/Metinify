@@ -93,6 +93,7 @@ class ServicesHelper {
             $twig->addGlobal('session', $container['session']);
             $twig->addGlobal('request', $container['request']);
             $twig->addGlobal('config', $container['config']);
+            $twig->addGlobal('urlBase', BASE_ROOT);
 
             return $twig;
         };

@@ -16,7 +16,7 @@
                 {% endif %}
             </div>
 
-            {% set imageSize = getimagesize("../../../images/items/" ~ objItemshop.getIdItem ~ ".png") %}
+            {% set imageSize = getimagesize(urlBase ~ "/images/items/" ~ objItemshop.getIdItem ~ ".png") %}
 
             {% if imageSize.1 > imageSize.0 %}
 
