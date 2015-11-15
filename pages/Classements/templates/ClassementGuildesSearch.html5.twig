@@ -1,0 +1,67 @@
+{% if finded %}
+    {% if arrObjGuilds|length > 0 %}
+
+        {% for objGuilds in arrObjGuilds %}
+
+            <tr {% if search == objGuilds.name %} style="background: #414141;" {% endif %} >
+                <td align="center">
+                    {% if place == 1 %}
+                        <i class="material-icons md-icon-star" style="color:#F3EC12;"></i>
+                    {% elseif place == 2 %}
+                        <i class="material-icons md-icon-star text-gray"></i>
+                    {% elseif place == 3 %}
+                        <i class="material-icons md-icon-star" style="color:#813838;"></i>
+                    {% elseif place == 4 %}
+                        <i class="material-icons md-icon-bookmark" style="color:#F3EC12; opacity: 0.5"></i>
+                    {% elseif place == 5 %}
+                        <i class="material-icons md-icon-bookmark text-gray" style="opacity: 0.5"></i>
+                    {% elseif place == 6 %}
+                        <i class="material-icons md-icon-bookmark" style="color:#813838; opacity: 0.5"></i>
+                    {% else %}
+                        {{ place }}
+                    {% endif %}
+                </td>
+
+                <td>
+                    {{ objGuilds.name }}
+                </td>
+
+                <td>
+                    {% if objGuilds.empire == 1 %}
+                        <i class="text-red material-icons md-icon-map md-20"></i>
+                    {% elseif objGuilds.empire == 2 %}
+                        <i class="text-yellow material-icons md-icon-map md-20"></i>
+                    {% elseif objGuilds.empire == 3 %}
+                        <i class="text-blue material-icons md-icon-map md-20"></i>
+                    {% endif %}
+                </td>
+
+                <td class="Align_center">
+                    {{ objGuilds.level }}
+                </td>
+                <td>
+                    {{ objGuilds.PlayerName }}
+                </td>
+                <td class="hidden-md hidden-sm hidden-xs">
+                    {{ objGuilds.GuildExp }}
+                </td>
+                <td>
+                    <span class="text-green">{{ objGuilds.victoire }}</span>
+                    /
+                    <span class="text-red">{{ objGuilds.defaite }}</span>
+                    /
+                    {{ objGuilds.egalite }}
+                </td>
+
+            </tr>
+
+            {% set place = (place + 1) %}
+
+        {% endfor %}
+
+    {% else %}
+        Aucune guilde
+    {% endif %}
+{% else %}
+    Recherche non trouvée
+{% endif %}
