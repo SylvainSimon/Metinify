@@ -1,13 +1,13 @@
 <?php
 
-namespace pages\Marche;
+namespace Includes;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class Marche extends \PageHelper {
+class MarchePlace extends \PageHelper {
 
     public $isProtected = true;
-    public $strTemplate = "Marche.html5.twig";
+    public $strTemplate = "MarchePlace.html5.twig";
 
     public function run() {
 
@@ -18,5 +18,5 @@ class Marche extends \PageHelper {
 
 }
 
-$class = new Marche();
+$class = new MarchePlace();
 $class->run();

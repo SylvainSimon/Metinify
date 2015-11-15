@@ -19,7 +19,7 @@ class ItemshopRepository extends EntityRepository {
             $qb->andWhere("ItemshopEntity.actif = :estActif");
             $qb->setParameter("estActif", $estActif);
         }
-        
+
         $qb->setMaxResults(1);
 
         try {
@@ -28,23 +28,26 @@ class ItemshopRepository extends EntityRepository {
             return null;
         }
     }
-    
+
     public function findItemsByCategorie($idCategorie = 0, $estActif = "") {
 
         $qb = $this->_em->createQueryBuilder();
 
         $qb->select("ItemshopEntity");
         $qb->from("\Site\Entity\Itemshop", "ItemshopEntity");
-        $qb->where("ItemshopEntity.cat = :idCategorie");
-        $qb->setParameter("idCategorie", $idCategorie);
+
+        if ($idCategorie !== 0) {
+            $qb->where("ItemshopEntity.cat = :idCategorie");
+            $qb->setParameter("idCategorie", $idCategorie);
+        }
 
         if ($estActif !== "") {
             $qb->andWhere("ItemshopEntity.actif = :estActif");
             $qb->setParameter("estActif", $estActif);
         }
-        
+
         $qb->orderBy("ItemshopEntity.nameItem", "ASC");
-        
+
         try {
             return $qb->getQuery()->getResult();
         } catch (\Doctrine\ORM\NoResultException $e) {

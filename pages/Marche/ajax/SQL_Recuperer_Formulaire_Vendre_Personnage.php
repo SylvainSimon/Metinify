@@ -136,7 +136,7 @@ class SQL_Recuperer_Formulaire_Vendre_Personnage extends \ScriptHelper {
                                         window.parent.Barre_De_Statut("Mise en vente réussi.");
                                         window.parent.Icone_Chargement(0);
 
-                                        Ajax_Appel_Marche('Marche_Place.php');
+                                        Ajax_Appel_Marche('pages/Marche/MarchePlace.php');
 
                                     } else if (Parse_Json.result == "FAIL") {
 

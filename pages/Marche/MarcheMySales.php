@@ -4,7 +4,7 @@ namespace Includes;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class Marche_Mes_Ventes extends \PageHelper {
+class MarcheMySales extends \PageHelper {
 
     public $isProtected = true;
 
@@ -65,5 +65,5 @@ class Marche_Mes_Ventes extends \PageHelper {
 
 }
 
-$class = new Marche_Mes_Ventes();
+$class = new MarcheMySales();
 $class->run();

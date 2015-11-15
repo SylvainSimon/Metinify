@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * LotterieParticipants
  *
  * @ORM\Table(name="site.lotterie_participants")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\Repository\MarcheArticlesRepository")
  */
 class LotterieParticipants {
 

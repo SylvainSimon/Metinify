@@ -62,6 +62,8 @@ class ServicesHelper {
                 BASE_ROOT . '/pages/ItemShop/templates/emails',
                 BASE_ROOT . '/pages/Messagerie/templates/modules',
                 BASE_ROOT . '/pages/Messagerie/templates/emails',
+                BASE_ROOT . '/pages/Marche/templates/modules',
+                BASE_ROOT . '/pages/Marche/templates/emails',
                 BASE_ROOT . '/pages/MonCompte/templates/modules',
                 BASE_ROOT . '/pages/MonCompte/templates/emails',
                 BASE_ROOT . '/pages/MonPersonnage/templates/',
@@ -199,6 +201,7 @@ class ServicesHelper {
             $config = new Doctrine\ORM\Configuration();
 
             $config->addCustomStringFunction('PASSWORD', '\DoctrinePasswordExtension');
+            $config->addCustomStringFunction('RAND', '\DoctrineRandExtension');
             $config->addCustomStringFunction('WEEK', '\DoctrineExtensions\Query\Mysql\WEEK');
             $config->addCustomStringFunction('MONTH', '\DoctrineExtensions\Query\Mysql\MONTH');
             $config->addCustomStringFunction('YEAR', '\DoctrineExtensions\Query\Mysql\YEAR');

@@ -70,6 +70,20 @@ class SiteHelper {
     }
     
     /**
+     * @return \Site\Repository\MarcheArticlesRepository
+     */
+    public static function getMarcheArticlesRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\MarcheArticles');
+    }
+    
+    /**
+     * @return \Site\Repository\MarchePersonnagesRepository
+     */
+    public static function getMarchePersonnagesRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\MarchePersonnages');
+    }
+    
+    /**
      * @return \Site\Repository\VotesListeSitesRepository
      */
     public static function getVotesListeSitesRepository() {

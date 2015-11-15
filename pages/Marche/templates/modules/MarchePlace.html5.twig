@@ -1,0 +1,66 @@
+<script type="text/javascript" src="pages/Marche/js/fonctions.min.js"></script>
+
+<div class="row">
+    <div class="col-lg-3">
+        <table class="table table-condensed" style="border-collapse: collapse;">
+            <tr>
+                <td style="border-top: 0px;">
+                    <select id="Selecteur_Filtre_Ventes_Race" class="select2" onchange="Ajax_Appel_Liste()">
+                        <option value="0">Toutes races</option>
+                        <option value="1">Guerriers</option>
+                        <option value="2">Suras</option>
+                        <option value="3">Ninjas</option>
+                        <option value="4">Shamans</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-top: 0px;">
+                    <select id="Selecteur_Filtre_Ventes_Sexe" class="select2" onchange="Ajax_Appel_Liste()">
+                        <option value="0">Tous sexe</option>
+                        <option value="1">Hommes</option>
+                        <option value="2">Femmes</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-top: 0px;">
+                    <select id="Selecteur_Filtre_Ventes_Level" class="select2" onchange="Ajax_Appel_Liste()">
+                        <option value="0">Tout niveau</option>
+                        <option value="1">De 1 à 100</option>
+                        <option value="2">De 101 à 200</option>
+                        <option value="3">De 201 à 270</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-top: 0px;">
+                    <select id="Selecteur_Filtre_Ventes_Ordre" class="select2" onchange="Ajax_Appel_Liste()">
+                        <option selected value="1">Ordre aléatoire</option>
+                        <option value="2">Prix croissant</option>
+                        <option value="3">Prix décroissant</option>
+                        <option value="4">Plus récentes</option>
+                        <option value="5">Plus anciennes</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-top: 0px;">
+                    <select id="Selecteur_Filtre_Ventes_Monnaie" class="select2" onchange="Ajax_Appel_Liste()">
+                        <option value="0">Peu importe</option>
+                        <option value="1">Vamonaies</option>
+                        <option value="2">Tananaies</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-lg-9" style="">
+        <div id="Tableau_Liste_Article" style="padding: 10px;">
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    Ajax_Appel_Liste(0);
+</script>

@@ -4,7 +4,7 @@ namespace Includes;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class Marche_Detail_Personnage extends \PageHelper {
+class MarchePlayerInfo extends \PageHelper {
 
     public $isProtected = true;
 
@@ -48,10 +48,10 @@ class Marche_Detail_Personnage extends \PageHelper {
                     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
                     <script src='../../components/jquery/jquery.min.js' type='text/javascript'></script>
                     <script src='../../components/jquery-ui/jquery-ui.min.js' type='text/javascript'></script>
-                    
-                                    <link href="../../css/css/Bootstrap.css" rel="stylesheet" type="text/css" />
-                <link href="../../css/css/AdminLTE.css" rel="stylesheet" type="text/css" />
-                <link href="../../css/css/styles.css" rel="stylesheet" type="text/css" />
+
+                    <link href="../../css/css/Bootstrap.css" rel="stylesheet" type="text/css" />
+                    <link href="../../css/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+                    <link href="../../css/css/styles.css" rel="stylesheet" type="text/css" />
 
                 </head>
                 <body>
@@ -234,13 +234,11 @@ class Marche_Detail_Personnage extends \PageHelper {
             </body>
             </html>
 
-        <?php } else { ?>
-            <?php include 'Marcher_Description_Interdiction.php'; ?>
-        <?php } ?>
         <?php
+        }
     }
 
 }
 
-$class = new Marche_Detail_Personnage();
+$class = new MarchePlayerInfo();
 $class->run();

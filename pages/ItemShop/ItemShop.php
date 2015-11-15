@@ -11,12 +11,26 @@ class ItemShop extends \PageHelper {
 
     public function run() {
 
-        $arrObjItemshop = \Site\SiteHelper::getItemshopRepository()->findItemsByCategorie(8, true);
+        $idCategorie = 8;
+        $cacheManager = \CacheHelper::getCacheManager();
+        if ($cacheManager->isExisting("isArrObjItemshopCat" . $idCategorie)) {
+            $arrObjItemshop = $cacheManager->get("isArrObjItemshopCat" . $idCategorie);
+        } else {
+            $arrObjItemshop = \Site\SiteHelper::getItemshopRepository()->findItemsByCategorie($idCategorie, true);
+            $cacheManager->set("isArrObjItemshopCat" . $idCategorie, $arrObjItemshop, 3600);
+        }
         $templateTop = $this->objTwig->loadTemplate("ajaxCategorieGetArticles.html5.twig");
         $viewItemshopDefault = $templateTop->render(["arrObjItemshop" => $arrObjItemshop]);
 
-        $arrObjItemshopCategories = \Site\SiteHelper::getItemshopCategoriesRepository()->findCategoriesNotEmpty();
-        $this->arrayTemplate["arrObjItemshopCategories"] = $arrObjItemshopCategories;
+        
+        if ($cacheManager->isExisting("isArrObjItemshopCategories")) {
+            $arrObjItemshopCategoriesCache = $cacheManager->get("isArrObjItemshopCategories");
+        } else {
+            $arrObjItemshopCategoriesCache = \Site\SiteHelper::getItemshopCategoriesRepository()->findCategoriesNotEmpty();
+            $cacheManager->set("isArrObjItemshopCategories", $arrObjItemshopCategoriesCache, 3600);
+        }
+
+        $this->arrayTemplate["arrObjItemshopCategories"] = $arrObjItemshopCategoriesCache;
         $this->arrayTemplate["viewItemshopDefault"] = $viewItemshopDefault;
 
         $view = $this->template->render($this->arrayTemplate);

@@ -267,9 +267,7 @@ class FonctionsUtiles {
     }
 
     static function Formatage_Yangs($Somme) {
-
         $Somme_Formatee = number_format($Somme, 0, '.', ' ');
-
         return $Somme_Formatee;
     }
 
