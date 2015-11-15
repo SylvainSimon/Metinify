@@ -1,3 +1,5 @@
+<script type="text/javascript" src="pages/Classements/js/fonctions.min.js"></script>
+
 <div class="box box-default flat">
 
     <div class="box-header">
@@ -7,38 +9,14 @@
 
     <div class="box-body no-padding">
 
-        <script type="text/javascript">
-
-            function Recherche_Guildes() {
-
-                Barre_De_Statut("Recherche de la guilde en cours...");
-                Icone_Chargement(1);
-
-                $.ajax({
-                    type: "POST",
-                    url: "pages/Classements/ajax/ClassementGuildesSearch.php",
-                    data: "recherche=" + $("#SaisieRecherche").val(),
-                    success: function (msg) {
-
-                        $("#pagedeclassement").html(msg);
-                        Barre_De_Statut("Recherche terminé.");
-                        Icone_Chargement(0);
-
-                    }
-                });
-                return false;
-            }
-
-        </script>
-
         <div class="row" style="padding: 10px;">
             <div class="col-md-4">
                 <input type="text" class="form-control input-sm inline" autofocus="autofocus" placeholder="Guilde..." id="SaisieRecherche"/>
             </div>
             <div class="col-md-2">
-                <input type="submit" class="btn btn-primary btn-flat btn-sm inline" src="images/Bouton_Rechercher.png" onclick="if ($('#SaisieRecherche').val() != '') {
-                            Recherche_Guildes();
-                        }" value="Rechercher"/>
+                <button type="submit" class="btn btn-primary btn-flat btn-sm inline" onclick="Recherche_Guildes($('#SaisieRecherche').val());">
+                    Rechercher
+                </button>
             </div>
         </div>
 
