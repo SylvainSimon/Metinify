@@ -2,11 +2,14 @@ function Ajax_Appel_Marche(url, objet) {
 
     Barre_De_Statut("Appel de l'onglet...");
     Icone_Chargement(1);
+    displayLoading();
 
     $.ajax({
         type: "POST",
         url: "" + url,
         success: function (msg) {
+
+            hideLoading();
 
             $("#Contenue_Cadre_Marche").html(msg);
             Barre_De_Statut("Chargement terminé.");
@@ -29,7 +32,8 @@ function Ajax_Appel_Liste(param) {
 
     Barre_De_Statut("Génération de la liste...");
     Icone_Chargement(1);
-
+    displayLoading();
+    
     $.ajax({
         type: "POST",
         url: "pages/Marche/ajax/ajaxGetArticles.php",
@@ -40,6 +44,8 @@ function Ajax_Appel_Liste(param) {
                 + "&monnaie=" + $("#Selecteur_Filtre_Ventes_Monnaie").val()
                 + "&date=" + $("#Selecteur_Filtre_Ventes_Date").val(),
         success: function (msg) {
+            
+            hideLoading();
 
             $("#Tableau_Liste_Article").html(msg);
             Barre_De_Statut("Liste d'articles généré.");

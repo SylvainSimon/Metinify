@@ -10,15 +10,19 @@ class SQL_Mettre_En_Vente extends \ScriptHelper {
 
     public function run() {
 
-        if (is_numeric($_POST["prix"])) {
+        global $request;
+        $em = \Shared\DoctrineHelper::getEntityManager();
 
-            $ID_Personnage = $_POST["id_personnage"];
-            $Texte_Titre = $_POST["texte_titre"];
-            $Texte_Description = $_POST["texte_description"];
-            $Prix_Article = str_replace(" ", "", $_POST["prix"]);
-            $Id_Devise = $_POST["id_devise"];
-            $this->objConnection_Ip = $_SERVER['REMOTE_ADDR'];
+        $playerId = $request->request->get("id_personnage");
+        $titre = $request->request->get("texte_titre");
+        $description = $request->request->get("texte_description");
+        $prix = trim($request->request->get("prix"));
+        $idDevise = $request->request->get("id_devise");
 
+        if (is_numeric($prix)) {
+
+            $objPlayer = parent::VerifMonJoueur($playerId);
+            
             /* ------------------------ Vérification Données ---------------------------- */
             $Verification_Donnees = "SELECT player.name, player.id
                              FROM player.player
@@ -29,7 +33,7 @@ class SQL_Mettre_En_Vente extends \ScriptHelper {
                              LIMIT 1";
             $Parametres_Verification_Donnees = $this->objConnection->prepare($Verification_Donnees);
             $Parametres_Verification_Donnees->execute(array(
-                $ID_Personnage,
+                $playerId,
                 $this->objAccount->getId()));
             $Parametres_Verification_Donnees->setFetchMode(\PDO::FETCH_OBJ);
             $Nombre_De_Resultat = $Parametres_Verification_Donnees->rowCount();
@@ -51,13 +55,13 @@ class SQL_Mettre_En_Vente extends \ScriptHelper {
 
                 $PID = "";
 
-                if ($Donnees_Selection_Index->pid1 == $ID_Personnage) {
+                if ($Donnees_Selection_Index->pid1 == $playerId) {
                     $PID = "1";
-                } else if ($Donnees_Selection_Index->pid2 == $ID_Personnage) {
+                } else if ($Donnees_Selection_Index->pid2 == $playerId) {
                     $PID = "2";
-                } else if ($Donnees_Selection_Index->pid3 == $ID_Personnage) {
+                } else if ($Donnees_Selection_Index->pid3 == $playerId) {
                     $PID = "3";
-                } else if ($Donnees_Selection_Index->pid4 == $ID_Personnage) {
+                } else if ($Donnees_Selection_Index->pid4 == $playerId) {
                     $PID = "4";
                 }
                 if ($PID != "") {
@@ -69,7 +73,7 @@ class SQL_Mettre_En_Vente extends \ScriptHelper {
                     $Parametres_Insertion_Marche_Personnage = $this->objConnection->prepare($Insertion_Marche_Personnage);
                     $Parametres_Insertion_Marche_Personnage->execute(array(
                         ':id_proprietaire' => $this->objAccount->getId(),
-                        ':id_personnage' => $ID_Personnage,
+                        ':id_personnage' => $playerId,
                         ':pid' => $PID));
                     /* ------------------------------------------------------------------------------------------------------------ */
 
@@ -92,7 +96,7 @@ class SQL_Mettre_En_Vente extends \ScriptHelper {
                 LIMIT 1";
 
                     $Parametres_Detachement_Player = $this->objConnection->prepare($Detachement_Player);
-                    $Parametres_Detachement_Player->execute(array($ID_Personnage));
+                    $Parametres_Detachement_Player->execute(array($playerId));
                     /* ----------------------------------------------------------- */
 
                     /* ----------------------------------------$Insertion_Marche_Personnage------------------------------------------ */
@@ -101,13 +105,13 @@ class SQL_Mettre_En_Vente extends \ScriptHelper {
 
                     $Parametres_Insertion_Article = $this->objConnection->prepare($Insertion_Article);
                     $Parametres_Insertion_Article->execute(array(
-                        ':designation' => $Texte_Titre,
-                        ':description' => $Texte_Description,
+                        ':designation' => $titre,
+                        ':description' => $description,
                         ':categorie' => '1',
                         ':identifiant_article' => $ID_Insertion_Marche_Personnage,
-                        ':prix' => $Prix_Article,
-                        ':devise' => $Id_Devise,
-                        ':ip' => $this->objConnection_Ip,
+                        ':prix' => $prix,
+                        ':devise' => $idDevise,
+                        ':ip' => $this->ipAdresse,
                     ));
                     /* ------------------------------------------------------------------------------------------------------------ */
 
@@ -118,10 +122,10 @@ class SQL_Mettre_En_Vente extends \ScriptHelper {
                     $Parametres_Insertion_Logs_Marche = $this->objConnection->prepare($Insertion_Logs_Marche);
                     $Parametres_Insertion_Logs_Marche->execute(array(
                         ':id_compte' => $this->objAccount->getId(),
-                        ':id_personnage' => $ID_Personnage,
-                        ':prix' => $Prix_Article,
-                        ':devise' => $Id_Devise,
-                        ':ip' => $this->objConnection_Ip));
+                        ':id_personnage' => $playerId,
+                        ':prix' => $prix,
+                        ':devise' => $idDevise,
+                        ':ip' => $this->ipAdresse));
                     /* ---------------------------------------------------------------------------- */
 
                     $Tableau_Retour_Json = array(
@@ -143,8 +147,6 @@ class SQL_Mettre_En_Vente extends \ScriptHelper {
                 );
             }
         } else {
-
-
             $Tableau_Retour_Json = array(
                 'result' => "FAIL",
                 'reasons' => "Vous n'avez pas indiquer un chiffre."
