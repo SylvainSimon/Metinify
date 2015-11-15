@@ -159,9 +159,11 @@ class PlayerRepository extends EntityRepository {
         $qb->innerJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = PlayerEntity.idAccount");
         $qb->innerJoin("\Player\Entity\PlayerIndex", "PlayerIndexEntity", "WITH", "PlayerIndexEntity.id = AccountEntity.id");
         $qb->where("1 = 1");
-        
-        $qb->setParameter("nowInterval", $nowInterval);
-        
+
+        if (!$forSearch) {
+            $qb->setParameter("nowInterval", $nowInterval);
+        }
+
         $qb = $this->getDQLCompteActif($qb);
         $qb = $this->getDQLJoueurNonGM($qb);
 

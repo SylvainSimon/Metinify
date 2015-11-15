@@ -37,6 +37,7 @@ class ClassementGuildesSearch extends \PageHelper {
             $this->arrayTemplate["arrObjGuilds"] = $arrObjGuilds;
             $this->arrayTemplate["search"] = $guildName;
             $this->arrayTemplate["place"] = $intervalStartSearch + 1;
+            
         } else {
             $this->arrayTemplate["finded"] = false;
         }
