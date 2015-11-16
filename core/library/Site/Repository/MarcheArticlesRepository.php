@@ -19,7 +19,7 @@ class MarcheArticlesRepository extends EntityRepository {
         return $dql;
     }
 
-    public function findArticlePersonnages($raceFilter = 0, $sexeFilter = 0, $levelFilter = 0, $orderFilter = 0, $deviseFilter = 0) {
+    public function findArticlePersonnages($idCompte = 0, $raceFilter = 0, $sexeFilter = 0, $levelFilter = 0, $orderFilter = 1, $deviseFilter = 0) {
 
         $qb = $this->_em->createQueryBuilder();
 
@@ -42,6 +42,11 @@ class MarcheArticlesRepository extends EntityRepository {
         $qb->innerJoin("\Site\Entity\MarchePersonnages", "MarchePersonnagesEntity", "WITH", "MarchePersonnagesEntity.id = MarcheArticlesEntity.identifiantArticle");
         $qb->innerJoin("\Player\Entity\Player", "PlayerEntity", "WITH", "PlayerEntity.id = MarchePersonnagesEntity.idPersonnage");
         $qb = $this->getDQLJoueurNonGM($qb);
+
+        if ($idCompte != 0) {
+            $qb->andWhere("MarchePersonnagesEntity.idProprietaire = :idCompte");
+            $qb->setParameter("idCompte", $idCompte);
+        }
 
         if ($raceFilter != 0) {
             $arrayJobType = [];
@@ -82,7 +87,7 @@ class MarcheArticlesRepository extends EntityRepository {
             }
         }
         
-        if ($orderFilter != 0) {
+        if ($orderFilter > 0) {
             switch ($orderFilter) {
                 case 1: 
                     $qb->addSelect('RAND() as HIDDEN rand');
@@ -114,6 +119,21 @@ class MarcheArticlesRepository extends EntityRepository {
             return $qb->getQuery()->getArrayResult();
         } catch (\Doctrine\ORM\NoResultException $e) {
             return [];
+        }
+    }
+    
+    public function deleteByIdentifiantArticle($identifiantArticle = 0) {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->delete("\Site\Entity\MarcheArticles", "MarcheArticlesEntity");
+        $qb->where("MarcheArticlesEntity.identifiantArticle = :identifiantArticle");
+        $qb->setParameter("identifiantArticle", $identifiantArticle);
+
+        try {
+            return $qb->getQuery()->execute();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
         }
     }
 

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * PlayerIndex
  *
  * @ORM\Table(name="player.player_index", indexes={@ORM\Index(name="pid1_key", columns={"pid1"}), @ORM\Index(name="pid2_key", columns={"pid2"}), @ORM\Index(name="pid3_key", columns={"pid3"}), @ORM\Index(name="pid4_key", columns={"pid4"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Player\Repository\PlayerIndexRepository")
  */
 class PlayerIndex
 {

@@ -35,6 +35,13 @@ class PlayerHelper {
     }
     
     /**
+     * @return \Player\Repository\PlayerIndexRepository
+     */
+    public static function getPlayerIndexRepository() {
+        return DoctrineHelper::getRepository('\Player\Entity\PlayerIndex');
+    }
+    
+    /**
      * @return \Player\Repository\GuildRepository
      */
     public static function getGuildRepository() {

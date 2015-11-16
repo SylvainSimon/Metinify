@@ -35,7 +35,8 @@ class PlayerRepository extends EntityRepository {
 
         $qb->select("PlayerEntity");
         $qb->from("\Player\Entity\Player", "PlayerEntity");
-        $qb->where("PlayerEntity.idAccount = :idAccount");
+        $qb->innerJoin("\Player\Entity\PlayerIndex", "PlayerIndexEntity", "WITH", "PlayerIndexEntity.id = :idAccount");
+        $qb->where("PlayerEntity.id = PlayerIndexEntity.pid1 OR PlayerEntity.id = PlayerIndexEntity.pid2 OR PlayerEntity.id = PlayerIndexEntity.pid3 OR PlayerEntity.id = PlayerIndexEntity.pid4");
         $qb->setParameter("idAccount", $idAccount);
 
         try {

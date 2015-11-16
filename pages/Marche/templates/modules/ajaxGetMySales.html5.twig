@@ -1,0 +1,68 @@
+{% if arrObjMarcheArticles|length > 0 %}
+
+    {% for objMarcheArticle in arrObjMarcheArticles %}
+
+        <div class="Article_Marche" data-tooltip-isItemMetin="1" data-tooltip-track="1" id="Article_Vente_{{ objMarcheArticle.idMarchePersonnage }}">
+
+            <div class="Nom_Article_Marche">
+                {{ objMarcheArticle.designation }}
+            </div>
+
+            <div class="Level_Personnage">
+                <table class="table table-condensed" style="border-collapse: collapse; margin-bottom: 0px;">
+                    <tr>
+                        <td style="border-top: 0px;" colspan="2">{{ objMarcheArticle.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Niveau</td>
+                        <td>{{ objMarcheArticle.level }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding-top: 0px;">                
+                            {{ formatNumber(objMarcheArticle.prix) }} 
+                            {% if objMarcheArticle.idDevise == "1" %}
+                                <i style="top: 4px; position: relative;" class="material-icons md-icon-whatshot md-20 text-yellow" title=""></i>
+                            {% elseif objMarcheArticle.idDevise == "2" %}
+                                <i style="top: 4px; position: relative;" class="material-icons md-icon-whatshot md-20 text-gray" title=""></i>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <div style="padding-top: 5px;">
+                {% if objMarcheArticle.job == "0" %}
+                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Guerrier_Homme.png" height="150" />
+                {% elseif objMarcheArticle.job == "1" %}
+                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Ninja_Femme.png" height="150" />
+                {% elseif objMarcheArticle.job == "2" %}
+                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Sura_Homme.png" height="150" />
+                {% elseif objMarcheArticle.job == "3" %}
+                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Chaman_Femme.png" height="150" />
+                {% elseif objMarcheArticle.job == "4" %}
+                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Guerrier_Femme.png" height="150" />
+                {% elseif objMarcheArticle.job == "5" %}
+                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Ninja_Homme.png" height="150" />
+                {% elseif objMarcheArticle.job == "6" %}
+                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Sura_Femme.png" height="150" />
+                {% elseif objMarcheArticle.job == "7" %}
+                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Chaman_Homme.png" height="150" />
+                {% endif %}
+            </div>
+
+            <div style="position: absolute; bottom: 0px; right: 5px;">
+                {% if objMarcheArticle.idProprietaire == session.get("ID") %}
+                    <i data-tooltip="Annuler la vente de {{ objMarcheArticle.name }}" onclick="SaleCancel({{ objMarcheArticle.idMarchePersonnage }})" class="material-icons md-icon-close md-36 text-red"></i>
+                    
+                  
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+
+{% else %}
+    <div>
+        Vous n'avez aucun personnage en vente.
+    </div>
+{% endif %}

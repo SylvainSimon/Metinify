@@ -10,6 +10,12 @@ class MarchePlace extends \PageHelper {
     public $strTemplate = "MarchePlace.html5.twig";
 
     public function run() {
+
+        $templateTop = $this->objTwig->loadTemplate("ajaxGetArticles.html5.twig");
+        $arrObjMarcheArticles = \Site\SiteHelper::getMarcheArticlesRepository()->findArticlePersonnages();
+        $viewArticles = $templateTop->render(["arrObjMarcheArticles" => $arrObjMarcheArticles]);
+
+        $this->arrayTemplate["viewArticles"] = $viewArticles;
         
         $view = $this->template->render($this->arrayTemplate);
         $this->response->setContent($view);

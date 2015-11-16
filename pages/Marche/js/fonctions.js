@@ -33,7 +33,7 @@ function Ajax_Appel_Liste(param) {
     Barre_De_Statut("Génération de la liste...");
     Icone_Chargement(1);
     displayLoading();
-    
+
     $.ajax({
         type: "POST",
         url: "pages/Marche/ajax/ajaxGetArticles.php",
@@ -44,7 +44,7 @@ function Ajax_Appel_Liste(param) {
                 + "&monnaie=" + $("#Selecteur_Filtre_Ventes_Monnaie").val()
                 + "&date=" + $("#Selecteur_Filtre_Ventes_Date").val(),
         success: function (msg) {
-            
+
             hideLoading();
 
             $("#Tableau_Liste_Article").html(msg);
@@ -56,13 +56,6 @@ function Ajax_Appel_Liste(param) {
         }
     });
     return false;
-}
-
-function Ouverture_Dialogue_Achat(id_message) {
-
-    Barre_De_Statut("En attente de la confirmation...");
-    Icone_Chargement(1);
-    $("#dialog_Confirmation_Acheter_Article").dialog("open");
 }
 
 function Acquisition_Article(id) {
@@ -133,13 +126,13 @@ function Acquisition_Article(id) {
 }
 
 
-function Retirer_De_La_Vente(id) {
+function SaleCancel(idMarchePersonnage) {
 
     bootbox.dialog({
         message: "Confirmez-vous l'annulation de la vente de ce personnage ?",
         animate: false,
         className: "myBootBox",
-        title: 'Confirmation de la demande',
+        title: 'Confirmation de l\'annulation',
         buttons: {
             danger: {
                 label: "Annuler",
@@ -155,26 +148,25 @@ function Retirer_De_La_Vente(id) {
 
                     Barre_De_Statut("Annulation de la vente...");
                     Icone_Chargement(1);
+                    displayLoading();
+
                     $.ajax({
                         type: "POST",
-                        url: "pages/Marche/ajax/SQL_Retirer_Vente.php",
-                        data: "id_marche_personnage=" + id,
+                        url: "pages/Marche/ajax/ajaxSaleCancel.php",
+                        data: "idMarchePersonnage=" + idMarchePersonnage,
                         success: function (msg) {
-                            try {
 
-                                Parse_Json = JSON.parse(msg);
-                                if (Parse_Json.result == "WIN") {
+                            hideLoading();
+                            
+                            Parse_Json = JSON.parse(msg);
 
-                                    Ajax_Appel_Marche('pages/Marche/MarchePlace.php');
-                                } else if (Parse_Json.result == "FAIL") {
+                            if (Parse_Json.result) {
 
-                                    Barre_De_Statut(Parse_Json.reasons);
-                                    Icone_Chargement(2);
-                                }
+                                Ajax_Appel_Marche('pages/Marche/MarcheMySales.php');
 
-                            } catch (e) {
-
-                                Barre_De_Statut("Annulation échoué.");
+                            } else {
+                                popBootbox(Parse_Json.reasons, "Erreur");
+                                Barre_De_Statut(Parse_Json.reasons);
                                 Icone_Chargement(2);
                             }
                         }
