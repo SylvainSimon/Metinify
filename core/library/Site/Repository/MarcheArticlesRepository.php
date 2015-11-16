@@ -122,6 +122,23 @@ class MarcheArticlesRepository extends EntityRepository {
         }
     }
     
+    public function findByIdentifiantArticle($identifiantArticle = 0) {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("MarcheArticlesEntity");
+        $qb->from("\Site\Entity\MarcheArticles", "MarcheArticlesEntity");
+        $qb->where("MarcheArticlesEntity.identifiantArticle = :identifiantArticle");
+        $qb->setParameter("identifiantArticle", $identifiantArticle);
+        $qb->setMaxResults(1);
+
+        try {
+            return $qb->getQuery()->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+    
     public function deleteByIdentifiantArticle($identifiantArticle = 0) {
 
         $qb = $this->_em->createQueryBuilder();

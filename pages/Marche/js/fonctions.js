@@ -108,43 +108,31 @@ function Acquisition_Article(id) {
                 className: "btn-primary",
                 callback: function () {
 
+                    displayLoading();
+
                     Barre_De_Statut("Réalisation de l'achat...");
                     Icone_Chargement(1);
+
                     $.ajax({
                         type: "POST",
-                        url: "pages/Marche/ajax/SQL_Procedure_Achat_Personnage.php",
-                        data: "id_marche_personnage=" + id,
+                        url: "pages/Marche/ajax/ajaxBuyPlayer.php",
+                        data: {"idMarchePersonnage": id},
                         success: function (msg) {
 
-                            try {
+                            hideLoading();
 
-                                Parse_Json = JSON.parse(msg);
-                                if (Parse_Json.result == "WIN") {
+                            var json = JSON.parse(msg);
 
-                                    $.ajax({
-                                        type: "POST",
-                                        url: "ajax/Update_Vamonaies.php",
-                                        success: function (msg) {
-                                            Fonction_Reteneuse_Vamonaies(msg);
-                                        }
-                                    });
-                                    $.ajax({
-                                        type: "POST",
-                                        url: "ajax/Update_Tananaies.php",
-                                        success: function (msg) {
-                                            Fonction_Reteneuse_Tananaies(msg);
-                                        }
-                                    });
-                                    Ajax_Appel_Marche('pages/Marche/MarchePlace.php');
-                                } else if (Parse_Json.result == "FAIL") {
+                            if (json.result) {
 
-                                    Barre_De_Statut(Parse_Json.reasons);
-                                    Icone_Chargement(2);
-                                }
+                                Fonction_Reteneuse_Vamonaies(json.cash);
+                                Fonction_Reteneuse_Tananaies(json.mileage);
 
-                            } catch (e) {
+                                Ajax('pages/MonPersonnage/MonPersonnage.php?id=' + json.idPlayer + '')
 
-                                Barre_De_Statut("Annulation échoué.");
+                            } else {
+                                popBootbox(json.reasons);
+                                Barre_De_Statut(json.reasons);
                                 Icone_Chargement(2);
                             }
                         }
@@ -188,15 +176,15 @@ function SaleCancel(idMarchePersonnage) {
 
                             hideLoading();
 
-                            Parse_Json = JSON.parse(msg);
+                            json = JSON.parse(msg);
 
-                            if (Parse_Json.result) {
+                            if (json.result) {
 
                                 Ajax_Appel_Marche('pages/Marche/MarcheMySales.php');
 
                             } else {
-                                popBootbox(Parse_Json.reasons, "Erreur");
-                                Barre_De_Statut(Parse_Json.reasons);
+                                popBootbox(json.reasons, "Erreur");
+                                Barre_De_Statut(json.reasons);
                                 Icone_Chargement(2);
                             }
                         }

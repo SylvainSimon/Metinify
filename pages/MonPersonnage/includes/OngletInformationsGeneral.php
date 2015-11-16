@@ -2,7 +2,32 @@
 
 
     <div class="row">
-        <div class="col-lg-4">
+        
+        <div class="col-lg-3">
+
+            <div style="padding-top: 5px; text-align: center; padding-bottom: 20px;">
+                <?php if ($Donnees_Appel_Joueurs_Page->job == "0") { ?>
+                    <img class="Position_Icone_Article_Personnage" src="../images/races/Guerrier_Homme.png" height="350" />
+                <?php } else if ($Donnees_Appel_Joueurs_Page->job == "1") { ?>
+                    <img class="Position_Icone_Article_Personnage" src="../images/races/Ninja_Femme.png" height="350" />
+                <?php } else if ($Donnees_Appel_Joueurs_Page->job == "2") { ?>
+                    <img class="Position_Icone_Article_Personnage" src="../images/races/Sura_Homme.png" height="350" />
+                <?php } else if ($Donnees_Appel_Joueurs_Page->job == "3") { ?>
+                    <img class="Position_Icone_Article_Personnage" src="../images/races/Chaman_Femme.png" height="350" />
+                <?php } else if ($Donnees_Appel_Joueurs_Page->job == "4") { ?>
+                    <img class="Position_Icone_Article_Personnage" src="../images/races/Guerrier_Femme.png" height="350" />
+                <?php } else if ($Donnees_Appel_Joueurs_Page->job == "5") { ?>
+                    <img class="Position_Icone_Article_Personnage" src="../images/races/Ninja_Homme.png" height="350" />
+                <?php } else if ($Donnees_Appel_Joueurs_Page->job == "6") { ?>
+                    <img class="Position_Icone_Article_Personnage" src="../images/races/Sura_Femme.png" height="350" />
+                <?php } else if ($Donnees_Appel_Joueurs_Page->job == "7") { ?>
+                    <img class="Position_Icone_Article_Personnage" src="../images/races/Chaman_Homme.png" height="350" />
+                <?php } ?>
+            </div>
+
+        </div>
+        
+        <div class="col-lg-5">
             <table class="table table-condensed" style="border-collapse: collapse;">
                 <tr>
                     <td style="border-top: 0px;" class="Colonne_Gauche">
@@ -255,8 +280,7 @@
                 </tr>
 
             </table>
-        </div>
-        <div class="col-lg-4">
+
 
             <table class="table table-condensed" style="border-collapse: collapse;">
                 <tr>
@@ -281,8 +305,8 @@
                 </tr>
 
             </table>
-
         </div>
+
 
         <div id="dialog_Confirmation_Deblocage_Yangs" title="Confirmer la réinitialisation">Pensez à déconnecter votre personnage et patientez 10 minutes.</div>
         <input style="display: none;" id="Id_Tempo_Deblocage_Yangs" value="" />
@@ -295,7 +319,7 @@
     <div class="row">
         <div class="col-lg-12" style="padding-bottom: 10px; padding-left: 25px;">
 
-            <button type="button" data-tooltip="Ramène le personnage sur sa map originel" class="btn btn-flat btn-warning" onclick="Ouverture_Dialogue_Deblocage_Perso(<?php echo $Donnees_Appel_Joueurs_Page->player_id; ?>);">
+            <button type="button" data-tooltip="Ramène le joueur sur sa map originel" class="btn btn-flat btn-warning" onclick="Ouverture_Dialogue_Deblocage_Perso(<?php echo $Donnees_Appel_Joueurs_Page->player_id; ?>);">
                 Débloquer
             </button>
 
@@ -305,11 +329,11 @@
                 </button>
             <?php } ?>
 
-            <button type="button" data-tooltip="" class="btn btn-flat btn-primary" onclick="Ajax('pages/MonPersonnage/PersonnageRenameForm.php?id_perso=<?php echo $Donnees_Appel_Joueurs_Page->player_id; ?>');">
+            <button type="button" data-tooltip="Renommer le joueur" class="btn btn-flat btn-primary" onclick="Ajax('pages/MonPersonnage/PersonnageRenameForm.php?id_perso=<?php echo $Donnees_Appel_Joueurs_Page->player_id; ?>');">
                 Renommer
             </button>
 
-            <button type="button" data-tooltip="Supprimer votre personnage" class="btn btn-flat btn-danger" onclick="Ajax('pages/MonPersonnage/PersonnageDeleteForm.php?id_perso=<?php echo $Donnees_Appel_Joueurs_Page->player_id; ?>');">
+            <button type="button" data-tooltip="Supprimer le joueur" class="btn btn-flat btn-danger" onclick="Ajax('pages/MonPersonnage/PersonnageDeleteForm.php?id_perso=<?php echo $Donnees_Appel_Joueurs_Page->player_id; ?>');">
                 Supprimer
             </button>
         </div>
