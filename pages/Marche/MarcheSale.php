@@ -153,44 +153,10 @@ class MarcheSell extends \PageHelper {
             </div>
             <div class="col-lg-8">
                 <div id="Contenue_Cadre_Vente"  style="padding-top: 5px; padding-right: 15px;">
-                    <= Pour commencer, séléctionnez le personnage que vous désirez mettre en vente.
+                    Pour commencer, il faut choisir un personnage à vendre.
                 </div>
             </div>
         </div>
-
-        <script type="text/javascript">
-
-            function Chargement_Formulaire_Vente(id_personnage) {
-
-                window.parent.Barre_De_Statut("Création du formulaire...");
-                window.parent.Icone_Chargement(1);
-
-                $.ajax({
-                    type: "POST",
-                    url: "pages/Marche/ajax/SQL_Recuperer_Formulaire_Vendre_Personnage.php",
-                    data: "id_personnage=" + id_personnage,
-                    success: function (msg) {
-                        if (msg == 0) {
-
-                            window.parent.Barre_De_Statut("Ce personnage ne vous appartient pas.");
-                            window.parent.Icone_Chargement(2);
-
-                        } else {
-
-                            $("#Contenue_Cadre_Vente").html(msg);
-                            window.parent.Barre_De_Statut("Formulaire généré.");
-                            window.parent.Icone_Chargement(0);
-
-                        }
-
-                        redraw();
-                    }
-                });
-                return false;
-
-            }
-
-        </script>
 
         <?php
     }

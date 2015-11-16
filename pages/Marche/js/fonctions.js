@@ -28,6 +28,36 @@ function Ajax_Appel_Marche(url, objet) {
 
 }
 
+function Chargement_Formulaire_Vente(id_personnage) {
+
+    window.parent.Barre_De_Statut("Création du formulaire...");
+    window.parent.Icone_Chargement(1);
+
+    $.ajax({
+        type: "POST",
+        url: "pages/Marche/ajax/ajaxGetSaleForm.php",
+        data: "idPlayer=" + id_personnage,
+        success: function (msg) {
+            if (msg == 0) {
+
+                window.parent.Barre_De_Statut("Ce personnage ne vous appartient pas.");
+                window.parent.Icone_Chargement(2);
+
+            } else {
+
+                $("#Contenue_Cadre_Vente").html(msg);
+                window.parent.Barre_De_Statut("Formulaire généré.");
+                window.parent.Icone_Chargement(0);
+
+            }
+
+            redraw();
+        }
+    });
+    return false;
+
+}
+
 function Ajax_Appel_Liste(param) {
 
     Barre_De_Statut("Génération de la liste...");
@@ -157,7 +187,7 @@ function SaleCancel(idMarchePersonnage) {
                         success: function (msg) {
 
                             hideLoading();
-                            
+
                             Parse_Json = JSON.parse(msg);
 
                             if (Parse_Json.result) {

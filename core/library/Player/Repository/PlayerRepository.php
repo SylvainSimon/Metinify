@@ -92,7 +92,7 @@ class PlayerRepository extends EntityRepository {
         $qb->select("PlayerEntity");
         $qb->from("\Player\Entity\Player", "PlayerEntity");
         $qb->where("PlayerEntity.id = :idPlayer");
-        $qb->where("PlayerEntity.idAccount = :idAccount");
+        $qb->andWhere("PlayerEntity.idAccount = :idAccount");
         $qb->setParameter("idPlayer", $idPlayer);
         $qb->setParameter("idAccount", $idAccount);
         $qb->setMaxResults(1);

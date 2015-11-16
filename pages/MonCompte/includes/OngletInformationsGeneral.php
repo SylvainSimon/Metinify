@@ -130,26 +130,7 @@
         <div class="col-lg-8">
 
             <?php
-            /* ------------------------ Recuperation Compte ----------------------------- */
-            $Liste_Personnages = "SELECT player.name,
-                                 player.id,
-                                 player.level,
-                                 player.job,
-                                 player.ip,
-                                 player.exp,
-                                 player.playtime,
-                                 player.skill_group,
-                                 player.last_play
-                          FROM player.player
-                          WHERE player.account_id = ?
-                          ORDER by level DESC
-                          LIMIT 4";
-            $Parametres_Liste_Personnages = $this->objConnection->prepare($Liste_Personnages);
-            $Parametres_Liste_Personnages->execute(array($this->objAccount->getId()));
-            $Parametres_Liste_Personnages->setFetchMode(\PDO::FETCH_OBJ);
-            $Nombre_De_Resultat = $Parametres_Liste_Personnages->rowCount();
-
-            /* -------------------------------------------------------------------------- */
+            $arrObjPlayers = Player\PlayerHelper::getPlayerRepository()->findPlayers($this->objAccount->getId());
             ?>
             <table class="table table-condensed table-hover" style="border-collapse: collapse;">
                 <thead>
@@ -166,104 +147,104 @@
                 </thead>
 
                 <tbody>
-                    <?php if ($Nombre_De_Resultat != 0) { ?>
+                    <?php if (count($arrObjPlayers) > 0) { ?>
 
-                        <?php while ($Resultat_Liste_Personnages = $Parametres_Liste_Personnages->fetch()) { ?>
+                        <?php foreach ($arrObjPlayers AS $objPlayers) { ?>
 
                             <?php
                             $dt = \Carbon\Carbon::create(2000, 1, 1, 0, 0, 0)->startOfDay();
-                            $dt2 = $dt->copy()->addMinute($Resultat_Liste_Personnages->playtime);
+                            $dt2 = $dt->copy()->addMinute($objPlayers->getPlaytime());
                             $var = $dt->diffInMonths($dt2) . " mois, ";
                             $var .= $dt->diffInDays($dt2) . " jours et ";
                             $var .= $dt->diffInHours($dt2) . " heures";
 
-                            Carbon\CarbonInterval::minutes($Resultat_Liste_Personnages->playtime);
+                            Carbon\CarbonInterval::minutes($objPlayers->getPlaytime());
                             ?>
-                            <tr data-tooltip="Cliquez pour voir le détails du personnage" onclick="Ajax('pages/MonPersonnage/MonPersonnage.php?id=<?php echo $Resultat_Liste_Personnages->id; ?>')" class="Pointer">
+                            <tr data-tooltip="Cliquez pour voir le détails du personnage" onclick="Ajax('pages/MonPersonnage/MonPersonnage.php?id=<?php echo $objPlayers->getId(); ?>')" class="Pointer">
                                 <td class="hidden-md hidden-sm hidden-xs">
-                                    <?php if ($Resultat_Liste_Personnages->job == "0") { ?> 
+                                    <?php if ($objPlayers->getJob() == "0") { ?> 
                                         <img class="cadrephotoclassement" src="../images/races/0_mini.png" height="25"/>
-                                    <?php } else if ($Resultat_Liste_Personnages->job == "1") { ?> 
+                                    <?php } else if ($objPlayers->getJob() == "1") { ?> 
                                         <img class="cadrephotoclassement" src="../images/races/1_mini.png" height="25"/>
-                                    <?php } else if ($Resultat_Liste_Personnages->job == "2") { ?> 
+                                    <?php } else if ($objPlayers->getJob() == "2") { ?> 
                                         <img class="cadrephotoclassement" src="../images/races/2_mini.png" height="25"/>
-                                    <?php } else if ($Resultat_Liste_Personnages->job == "3") { ?> 
+                                    <?php } else if ($objPlayers->getJob() == "3") { ?> 
                                         <img class="cadrephotoclassement" src="../images/races/3_mini.png" height="25"/>
-                                    <?php } else if ($Resultat_Liste_Personnages->job == "4") { ?> 
+                                    <?php } else if ($objPlayers->getJob() == "4") { ?> 
                                         <img class="cadrephotoclassement" src="../images/races/4_mini.png" height="25"/>
-                                    <?php } else if ($Resultat_Liste_Personnages->job == "5") { ?> 
+                                    <?php } else if ($objPlayers->getJob() == "5") { ?> 
                                         <img class="cadrephotoclassement" src="../images/races/5_mini.png" height="25"/>
-                                    <?php } else if ($Resultat_Liste_Personnages->job == "6") { ?> 
+                                    <?php } else if ($objPlayers->getJob() == "6") { ?> 
                                         <img class="cadrephotoclassement" src="../images/races/6_mini.png" height="25"/>
-                                    <?php } else if ($Resultat_Liste_Personnages->job == "7") { ?> 
+                                    <?php } else if ($objPlayers->getJob() == "7") { ?> 
                                         <img class="cadrephotoclassement" src="../images/races/7_mini.png" height="25"/>
                                     <?php } ?>
                                 </td>
                                 <td>
-                                    <?php echo $Resultat_Liste_Personnages->name ?>
+                                    <?php echo $objPlayers->getName(); ?>
                                 </td>
                                 <td>
 
-                                    <?php if ($Resultat_Liste_Personnages->job == 0) { ?>
-                                        <?php if ($Resultat_Liste_Personnages->skill_group == 1) { ?>
+                                    <?php if ($objPlayers->getJob() == 0) { ?>
+                                        <?php if ($objPlayers->getSkillGroup() == 1) { ?>
                                             Corp à Corp
-                                        <?php } elseif ($Resultat_Liste_Personnages->skill_group == 2) { ?>
+                                        <?php } elseif ($objPlayers->getSkillGroup() == 2) { ?>
                                             Mental
                                         <?php } else { ?>
                                             Non-définie
                                         <?php } ?>	
-                                    <?php } elseif ($Resultat_Liste_Personnages->job == 1) { ?>
-                                        <?php if ($Resultat_Liste_Personnages->skill_group == 1) { ?>
+                                    <?php } elseif ($objPlayers->getJob() == 1) { ?>
+                                        <?php if ($objPlayers->getSkillGroup() == 1) { ?>
                                             Assasin
-                                        <?php } elseif ($Resultat_Liste_Personnages->skill_group == 2) { ?>
+                                        <?php } elseif ($objPlayers->getSkillGroup() == 2) { ?>
                                             Archer
                                         <?php } else { ?>
                                             Non-définie
                                         <?php } ?>
-                                    <?php } elseif ($Resultat_Liste_Personnages->job == 2) { ?>
-                                        <?php if ($Resultat_Liste_Personnages->skill_group == 1) { ?>
+                                    <?php } elseif ($objPlayers->getJob() == 2) { ?>
+                                        <?php if ($objPlayers->getSkillGroup() == 1) { ?>
                                             Arme magique
-                                        <?php } elseif ($Resultat_Liste_Personnages->skill_group == 2) { ?>
+                                        <?php } elseif ($objPlayers->getSkillGroup() == 2) { ?>
                                             Magie Noir
                                         <?php } else { ?>
                                             Non-définie
                                         <?php } ?>
-                                    <?php } elseif ($Resultat_Liste_Personnages->job == 3) { ?>
-                                        <?php if ($Resultat_Liste_Personnages->skill_group == 1) { ?>
+                                    <?php } elseif ($objPlayers->getJob() == 3) { ?>
+                                        <?php if ($objPlayers->getSkillGroup() == 1) { ?>
                                             Dragon
-                                        <?php } elseif ($Resultat_Liste_Personnages->skill_group == 2) { ?>
+                                        <?php } elseif ($objPlayers->getSkillGroup() == 2) { ?>
                                             Soin
                                         <?php } else { ?>
                                             Non-définie
                                         <?php } ?>
-                                    <?php } elseif ($Resultat_Liste_Personnages->job == 4) { ?>
-                                        <?php if ($Resultat_Liste_Personnages->skill_group == 1) { ?>
+                                    <?php } elseif ($objPlayers->getJob() == 4) { ?>
+                                        <?php if ($objPlayers->getSkillGroup() == 1) { ?>
                                             CàC
-                                        <?php } elseif ($Resultat_Liste_Personnages->skill_group == 2) { ?>
+                                        <?php } elseif ($objPlayers->getSkillGroup() == 2) { ?>
                                             Mental
                                         <?php } else { ?>
                                             Non-définie
                                         <?php } ?>	
-                                    <?php } elseif ($Resultat_Liste_Personnages->job == 5) { ?>
-                                        <?php if ($Resultat_Liste_Personnages->skill_group == 1) { ?>
+                                    <?php } elseif ($objPlayers->getJob() == 5) { ?>
+                                        <?php if ($objPlayers->getSkillGroup() == 1) { ?>
                                             Assasin
-                                        <?php } elseif ($Resultat_Liste_Personnages->skill_group == 2) { ?>
+                                        <?php } elseif ($objPlayers->getSkillGroup() == 2) { ?>
                                             Archer
                                         <?php } else { ?>
                                             Non-définie
                                         <?php } ?>
-                                    <?php } elseif ($Resultat_Liste_Personnages->job == 6) { ?>
-                                        <?php if ($Resultat_Liste_Personnages->skill_group == 1) { ?>
+                                    <?php } elseif ($objPlayers->getJob() == 6) { ?>
+                                        <?php if ($objPlayers->getSkillGroup() == 1) { ?>
                                             AM
-                                        <?php } elseif ($Resultat_Liste_Personnages->skill_group == 2) { ?>
+                                        <?php } elseif ($objPlayers->getSkillGroup() == 2) { ?>
                                             MN
                                         <?php } else { ?>
                                             Non-définie
                                         <?php } ?>
-                                    <?php } elseif ($Resultat_Liste_Personnages->job == 7) { ?>
-                                        <?php if ($Resultat_Liste_Personnages->skill_group == 1) { ?>
+                                    <?php } elseif ($objPlayers->getJob() == 7) { ?>
+                                        <?php if ($objPlayers->getSkillGroup() == 1) { ?>
                                             Dragon
-                                        <?php } elseif ($Resultat_Liste_Personnages->skill_group == 2) { ?>
+                                        <?php } elseif ($objPlayers->getSkillGroup() == 2) { ?>
                                             Soin
                                         <?php } else { ?>
                                             Non-définie
@@ -272,15 +253,15 @@
                                         Non-définie
                                     <?php } ?>
                                 </td>
-                                <td><?php echo $Resultat_Liste_Personnages->level; ?></td>
+                                <td><?php echo $objPlayers->getLevel(); ?></td>
                                 <td class="hidden-md hidden-sm hidden-xs">
                                     <?php echo $var; ?>
                                 </td>
-                                <td><?php echo $Resultat_Liste_Personnages->ip ?></td>
+                                <td><?php echo $objPlayers->getIp() ?></td>
 
                                 <?php
                                 $Parametres_Verification_Connecte->execute(array(
-                                    $Resultat_Liste_Personnages->id));
+                                    $objPlayers->getId()));
                                 $Parametres_Verification_Connecte->setFetchMode(\PDO::FETCH_OBJ);
                                 $Resultat_Verification_Connecte = $Parametres_Verification_Connecte->rowCount();
                                 ?>

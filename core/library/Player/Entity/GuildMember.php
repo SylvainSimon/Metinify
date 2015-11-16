@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * GuildMember
  *
  * @ORM\Table(name="player.guild_member", uniqueConstraints={@ORM\UniqueConstraint(name="pid", columns={"pid"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Player\Repository\GuildMemberRepository")
  */
 class GuildMember
 {

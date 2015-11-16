@@ -1,0 +1,124 @@
+<form id="Formulaire_Vente_Personnage">
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group ">
+                        <label for="SalePlayerTitre">
+                            Titre
+                        </label>
+                        <div class="input-group col-xs-12">
+                            <input type="text" id="SalePlayerTitre" class="form-control input-sm"  maxlength="43" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+
+                    <div class="form-group ">
+                        <label for="Input_Vendre_Personnage_Personnage">
+                            Personnage
+                        </label>
+                        <div class="input-group col-xs-12">
+                            <input type="text" id="Input_Vendre_Personnage_Personnage" class="form-control input-sm" maxlength="60" value="{{ objPlayer.getName }}" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="form-group ">
+                <label for="SalePlayerPrice">
+                    Prix
+                </label>
+                <div class="input-group col-xs-12">
+                    <input type="text" class="form-control input-sm" id="SalePlayerPrice" /> 
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="form-group ">
+                <label for="SalePlayerDevise">
+                    Devise
+                </label>
+                <div class="input-group col-xs-12">
+
+                    <select id="SalePlayerDevise" class="select2">
+                        {% if arrObjMarcheDevises|length > 0 %}
+                            {% for objMarcheDevises in arrObjMarcheDevises %}
+                                <option value="{{ objMarcheDevises.getId }}">{{ objMarcheDevises.getDevise }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>         
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="form-group ">
+                <label for="SalePlayerDescription">
+                    Description
+                </label>
+                <div class="input-group col-xs-12">
+                    <textarea id="SalePlayerDescription" class="form-control input-sm" style="min-height: 150px; resize: none;" maxlength="140" /></textarea>
+                </div>
+            </div>         
+        </div>   
+    </div>   
+
+    <button type="button" class="pull-right btn btn-success btn-flat" style="margin-bottom: 15px;" onclick="Mettre_En_Vente()">
+        Mettre en vente    
+    </button>
+</form>
+
+<script type="text/javascript">
+
+    function Mettre_En_Vente() {
+
+        if ($("#Prix_Vente_Personnage").val() < 2000) {
+            popBootbox("Le prix minimum est de 2 000 monnaies.");
+        } else {
+
+            Barre_De_Statut("Mise en vente...");
+            Icone_Chargement(1);
+            displayLoading();
+
+            $.ajax({
+                type: "POST",
+                url: "pages/Marche/ajax/ajaxSaleAdd.php",
+                data: {
+                    "id_personnage": '{{ objPlayer.getId }}',
+                    "texte_titre": $("#SalePlayerTitre").val(),
+                    "texte_description": $("#SalePlayerDescription").val(),
+                    "prix": $("#SalePlayerPrice").val(),
+                    "id_devise": $("#SalePlayerDevise").val()},
+                
+                success: function (msg) {
+
+                    hideLoading();
+                    var json = JSON.parse(msg);
+
+                    if (json.result) {
+
+                        Barre_De_Statut("Mise en vente réussi.");
+                        Icone_Chargement(0);
+
+                        Ajax_Appel_Marche('pages/Marche/MarcheMySales.php');
+
+                    } else {
+
+                        popBootbox(json.reasons);
+                        Barre_De_Statut(json.reasons);
+                        Icone_Chargement(2);
+                    }
+
+                }
+            });
+        }
+    }
+
+</script>
