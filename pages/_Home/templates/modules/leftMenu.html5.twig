@@ -34,12 +34,12 @@
             <li id="Menu_Telechargement_ItemShop2" class="pointer"><a onclick="Ajax('pages/_LegacyPages/Telechargement.php')">Téléchargement</a></li>
         {% endif %}
 
+            <li class="pointer"><a onclick="Ajax('pages/_LegacyPages/Calendrier.php')">Calendrier</a></li>
+
         {% if isConnected == false %}
-            <li id="Menu_Telechargement_Equipe2" class="pointer" style="display: inline;"><a onclick="Ajax('pages/_LegacyPages/Calendrier.php')">Calendrier des events</a></li>
             <li id="Menu_Telechargement_Equipe" class="pointer" style="display: none;"><a id="Lien_Marche" onclick="" >Marché des personnages</a></li>
         {% else %}
             <li id="Menu_Telechargement_Equipe" class="pointer" style="display: inline;"><a id="Lien_Marche" onclick="Ajax('pages/Marche/Marche.php')">Marché des personnages</a></li>
-            <li id="Menu_Telechargement_Equipe2" class="pointer" style="display: none;"><a onclick="Ajax('pages/_LegacyPages/Calendrier.php')">Calendrier</a></li>
         {% endif %}
 
         <li><a onclick="window.open('http://forum.vamosmt2.org/forum/')">Notre forum</a></li>

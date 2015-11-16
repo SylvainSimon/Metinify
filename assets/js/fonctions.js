@@ -167,7 +167,7 @@ $(document).ready(function () {
             if (jqXHR.status === 418) {
                 Ajax("pages/_LegacyPages/News.php");
             } else if (jqXHR.status === 423) {
-                Ajax("pages/Bannissement.php");
+                Ajax("pages/_LegacyPages/Bannissement.php");
             }
 
         }

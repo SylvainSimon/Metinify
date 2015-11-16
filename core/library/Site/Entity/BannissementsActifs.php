@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * BannissementsActifs
  *
  * @ORM\Table(name="site.bannissements_actifs", uniqueConstraints={@ORM\UniqueConstraint(name="id", columns={"id"})}, indexes={@ORM\Index(name="definitif", columns={"definitif"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\Repository\BannissementsActifsRepository")
  */
 class BannissementsActifs {
 

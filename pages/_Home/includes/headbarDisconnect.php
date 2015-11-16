@@ -18,17 +18,15 @@ $etaitAdmin = $session->get("Administration_PannelAdmin");
 <?php } else { ?>
         Ajax('pages/_LegacyPages/News.php');
 
-        document.getElementById('Menu_Inscription_MonCompte').style.display = 'none';
-        document.getElementById('Menu_Inscription_MonCompte2').style.display = 'inline';
+        $("#Menu_Inscription_MonCompte").css("display", "none");
+        $("#Menu_Inscription_MonCompte2").css("display", "inline");
 
-        document.getElementById('Menu_Telechargement_ItemShop').style.display = 'none';
-        document.getElementById('Menu_Telechargement_ItemShop2').style.display = 'inline';
+        $("#Menu_Telechargement_ItemShop").css("display", "none");
+        $("#Menu_Telechargement_ItemShop2").css("display", "inline");
 
-        document.getElementById('Menu_Support').style.display = 'none';
-        document.getElementById('Menu_Support2').style.display = 'inline';
+        $("#Menu_Support").css("display", "none");
+        $("#Menu_Support2").css("display", "inline");
 
-        document.getElementById('Menu_Telechargement_Equipe').style.display = 'none';
-        document.getElementById('Menu_Telechargement_Equipe2').style.display = 'inline';
         Ajax_Connexion('pages/_Home/includes/headbarForm.php');
 <?php } ?>
 </script>

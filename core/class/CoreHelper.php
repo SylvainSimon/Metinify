@@ -85,7 +85,7 @@ class CoreHelper {
 
                 if ($this->objAccount->getStatus() == "BLOCK") {
                     if (!$this->isAllowForBlock) {
-                        include BASE_ROOT . '/pages/Bannissement.php';
+                        include BASE_ROOT . '/pages/_LegacyPages/Bannissement.php';
                         exit();
                     }
                 }

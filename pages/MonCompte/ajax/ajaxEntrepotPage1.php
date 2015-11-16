@@ -7,11 +7,11 @@ require __DIR__ . '../../../../core/initialize.php';
 class ajaxEntrepotPage1 extends \ScriptHelper {
 
     public $isProtected = true;
-    
+
     public function run() {
-        ?>
-        <?php include __DIR__ . '../../../../pages/Tableaux_Arrays.php'; ?>
-        <?php
+
+        include __DIR__ . '../../../../pages/Tableaux_Arrays.php';
+
         /* -------------------------- Preparation des Requetes ------------------------------- */
         $Appel_Case = "SELECT item.vnum,
                       item.count,
@@ -39,9 +39,9 @@ class ajaxEntrepotPage1 extends \ScriptHelper {
         /* ------------------------------------------------------------------------------------- */
 
         $Window = "SAFEBOX";
-        ?>
 
-        <?php for ($i = 0; $i < 44; $i++) { ?>
+        for ($i = 0; $i < 44; $i++) {
+            ?>
 
             <div class="Case_Inventaire">
                 <?php
@@ -71,14 +71,14 @@ class ajaxEntrepotPage1 extends \ScriptHelper {
 
                     <?php if ($Nombre_De_Resultat_Chercher_Chemin > 0) { ?>
 
-                        <?php $Resultat_Chercher_Chemin = $Parametres_Chercher_Chemin->fetch(); ?>
+                    <?php $Resultat_Chercher_Chemin = $Parametres_Chercher_Chemin->fetch(); ?>
 
                         <div class="Interieur_Case" data-tooltip="" data-tooltip-track="1" data-tooltip-isItemMetin="1">
                             <img id="cade_id_<?php echo $Donnees_Case->item_id; ?>" src="<?php echo $Resultat_Chercher_Chemin->chemin; ?>" style="position: absolute; cursor: default;" />
                             <?php
                             $flag = $Donnees_Case->flag;
                             ?>
-                            <?php if ($flag == 4 or $flag == 20 or $flag == 132 or $flag == 2052 or $flag == 8212) { ?>
+                                <?php if ($flag == 4 or $flag == 20 or $flag == 132 or $flag == 2052 or $flag == 8212) { ?>
                                 <span style="position: relative; width: 32px; top: 59%; right: -18px;">
                                     <?php if ($Donnees_Case->count < 100) { ?>
                                         <?php if ($Donnees_Case->count < 10) { ?>
@@ -88,10 +88,10 @@ class ajaxEntrepotPage1 extends \ScriptHelper {
                                         <?php } ?>
                                     <?php } else { ?>
                                         <?php echo $Donnees_Case->count; ?>
-                                    <?php } ?>
+                        <?php } ?>
                                 </span>
 
-                            <?php } ?>
+                    <?php } ?>
 
                         </div>
 
@@ -99,7 +99,7 @@ class ajaxEntrepotPage1 extends \ScriptHelper {
                             getInformationItem(<?php echo $Donnees_Case->item_id; ?>);
                         </script>
 
-                    <?php } else { ?>
+                <?php } else { ?>
 
                         <div class="Interieur_Case">
                             <?php if ($Donnees_Case->size == "1") { ?>
@@ -108,17 +108,17 @@ class ajaxEntrepotPage1 extends \ScriptHelper {
                                 <img src="../images/item_inexistant_2.png" data-tooltip-track="1" data-tooltip="<?php echo "Icone de " . $Donnees_Case->locale_name . " (" . $Donnees_Case->vnum . ") introuvable."; ?>" />
                             <?php } else if ($Donnees_Case->size == "3") { ?>
                                 <img src="../images/item_inexistant_3.png" data-tooltip-track="1" data-tooltip="<?php echo "Icone de " . $Donnees_Case->locale_name . " (" . $Donnees_Case->vnum . ") introuvable."; ?>" />
-                            <?php } ?>
+                    <?php } ?>
                         </div>
 
-                    <?php } ?>
-
-                <?php } else { ?>
+                    <?php }
+                } else {
+                    ?>
                     &nbsp;
-                <?php } ?>
+            <?php } ?>
             </div>
-        <?php } ?>
         <?php
+        }
     }
 
 }

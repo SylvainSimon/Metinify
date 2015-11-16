@@ -21,6 +21,13 @@ class SiteHelper {
     }
     
     /**
+     * @return \Site\Repository\BannissementsActifsRepository
+     */
+    public static function getBannissementsActifsRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\BannissementsActifs');
+    }
+    
+    /**
      * @return \Site\Repository\BlocageInscriptionRepository
      */
     public static function getBlocageInscriptionRepository() {

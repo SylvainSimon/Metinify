@@ -28,20 +28,18 @@ $(document).ready(function () {
                             location.reload(false);
                         } else {
 
-                            document.getElementById('Menu_Inscription_MonCompte').style.display = 'inline';
-                            document.getElementById('Menu_Inscription_MonCompte2').style.display = 'none';
+                            $("#Menu_Inscription_MonCompte").css("display", "inline");
+                            $("#Menu_Inscription_MonCompte2").css("display", "none");
                             $("#Lien_Mon_Compte").attr("onclick", "Ajax('pages/MonCompte/modules/MonCompte.php');");
 
-                            document.getElementById('Menu_Telechargement_ItemShop').style.display = 'inline';
-                            $("#Lien_Item_Shop").attr("onclick", "Ajax('pages/ItemShop/ItemShop.php?type=Item_Shop');");
-
-                            document.getElementById('Menu_Support2').style.display = 'none';
-                            document.getElementById('Menu_Support').style.display = 'inline';
+                            $("#Menu_Support").css("display", "inline");
+                            $("#Menu_Support2").css("display", "none");
                             $("#Lien_Support").attr("onclick", "Ajax('pages/Messagerie/Messagerie.php');");
 
-                            document.getElementById('Menu_Telechargement_Equipe2').style.display = 'none';
-                            document.getElementById('Menu_Telechargement_Equipe').style.display = 'inline';
+                            $("#Menu_Telechargement_ItemShop").css("display", "inline");
+                            $("#Lien_Item_Shop").attr("onclick", "Ajax('pages/ItemShop/ItemShop.php?type=Item_Shop');");
 
+                            $("#Menu_Telechargement_Equipe").css("display", "inline");
                             $("#Lien_Marche").attr("onclick", "Ajax('pages/Marche/Marche.php');");
 
                             Ajax_Connexion('pages/_Home/includes/headbarConnected.php');

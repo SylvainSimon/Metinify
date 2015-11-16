@@ -1,0 +1,67 @@
+<div class="box box-default flat">
+
+    {% if objBannissementActifs != null %}
+
+        <div class="box-header">
+            <h3 class="box-title">Votre compte {{ session.get("Utilisateur") }} est banni</h3>
+        </div>
+
+        <div class="box-body">
+
+            <div class="row">
+                <div class="col-lg-6">
+                    Le membre de l'équipe <b class="text-yellow">{{ objBannissementActifs.pseudoMessagerie }}</b> a procédé à une sanction contre vous.
+                    <br/>
+                    <br/>
+                    Cette sanction a été appliquée le <b class="text-green">{{ getFormatedDateTime(objBannissementActifs.dateDebutBannissement) }}</b>
+                    <br/>
+                    La raison invoquée est <b class="text-green">{{ objBannissementActifs.raison }}</b>
+                    <br/>
+                    <br/>
+                </div>
+                <div class="col-lg-6">
+                    {% if objBannissementActifs.commentaireBannissement != "" %}
+                        <span class="text-yellow">Commentaire du modérateur</span>
+                        <br/>
+                        <br/>
+                        {{ objBannissementActifs.commentaireBannissement }}
+                        <br/>
+                    {% endif %}
+                </div>
+            </div>
+            {% if objBannissementActifs.definitif == 1 %}
+                La suspension de ce compte et de tout ses personnage est définitive.<br/><br />
+                Si vous souhaitez contester, vous pouvez nous contacter via la page de <span onclick="Ajax('pages/Messagerie/Messagerie.php');" class="Pointer text-aqua">contact</span>.
+            {% else %}
+                Votre compte sera débloqué le {{ getFormatedDateTime(objBannissementActifs.dateFinBannissement) }}.
+                <br/>
+                <br/>
+                <div style="text-align: center; font-size:17px;">
+                    Il reste
+                    <h1 style="font-size: 60px; margin-top: 0px; margin-bottom: 0px;" id="CountDown"></h1>
+                </div>
+                <script>
+                    $('#CountDown').countdown('{{ getFormatedDateTime(objBannissementActifs.dateFinBannissement, 'Y/m/d H:i:s') }}', function (event) {
+                        $(this).html(event.strftime('%-D <span style="font-size:25px;">%!d:jour,jours;</span> %-H<span style="font-size:25px;">h</span> %M<span style="font-size:25px;">m</span> %S<span style="font-size:25px;">s</span>'));
+                    }).on('finish.countdown', function (event) {
+                        popBootbox("Votre compte devrais être automatiquement débanni dans les 5 prochaines minutes.<br/>Nous vous enverrons un mail automatiquement.");
+                    });
+                </script>
+            {% endif %}
+        </div>
+
+    {% else %}
+
+        <div class="box-header">
+            <h3 class="box-title">Votre compte <?= $this->objAccount->getLogin(); ?> est suspendue.</h3>
+        </div>
+
+        <div class="box-body">
+
+            En effet, un membre de l'équipe a procédé à une sanction envers votre compte.<br/><br/>
+            La suspension de ce compte et de tout ses personnage est définitive.<br/><br />
+            Si vous souhaitez contester, vous pouvez nous contacter via la page de <span onclick="Ajax('pages/Contact.php')" class="Pointer">contact</span> de VamosMt2.
+
+        </div>
+    {% endif %}
+</div>
