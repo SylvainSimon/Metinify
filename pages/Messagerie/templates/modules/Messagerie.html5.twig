@@ -27,14 +27,11 @@
                         {% endif %}
                 </ul>
 
-                <div id="Contenue_Cadre_Messagerie"></div>
+                <div id="Contenue_Cadre_Messagerie">
+                    {{ viewInbox|raw }}
+                </div>
 
             </div>
-
-
-            <script type="text/javascript">
-                Ajax_Appel_Messagerie("pages/Messagerie/MessagerieInbox.php", false);
-            </script>
 
             <div class="clear"></div>
         </div>
