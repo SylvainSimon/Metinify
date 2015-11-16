@@ -1,0 +1,110 @@
+<div class="row">
+    <div class="col-lg-4">
+        <table class="table table-condensed table-hover" style="border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Personnage</th>
+                    <th>Classe</th>
+                    <th width="30">Lvl</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% if arrObjPlayers|length > 0 %}
+
+                    {% for objPlayers in arrObjPlayers %}
+
+                        <tr data-tooltip="Vendre ce personnage" onclick="Chargement_Formulaire_Vente({{ objPlayers.getId }});" class="Pointer">
+                            <td>
+                                {% if objPlayers.getJob == 0 %}
+                                    <img class="Dimension_Image_Classement" src="../../images/races/0_mini.png"/>
+                                {% elseif objPlayers.getJob == 1 %}
+                                    <img class="Dimension_Image_Classement" src="../../images/races/1_mini.png"/>
+                                {% elseif objPlayers.getJob == 2 %}
+                                    <img  class="Dimension_Image_Classement" src="../../images/races/2_mini.png"/>
+                                {% elseif objPlayers.getJob == 3 %}
+                                    <img class="Dimension_Image_Classement" src="../../images/races/3_mini.png"/>
+                                {% elseif objPlayers.getJob == 4 %}
+                                    <img class="Dimension_Image_Classement" src="../../images/races/4_mini.png"/>
+                                {% elseif objPlayers.getJob == 5 %}
+                                    <img class="Dimension_Image_Classement" src="../../images/races/5_mini.png"/>
+                                {% elseif objPlayers.getJob == 6 %}
+                                    <img class="Dimension_Image_Classement" src="../../images/races/6_mini.png"/>
+                                {% elseif objPlayers.getJob == 7 %}
+                                    <img class="Dimension_Image_Classement" src="../../images/races/7_mini.png"/>
+                                {% endif %}
+                                
+                                {{ objPlayers.name }}
+                            </td>
+                            <td>
+                                {% if objPlayers.getJob == 0 or objPlayers.getJob == 4 %}
+                                    {% if objPlayers.getSkillGroup == 1 %}
+                                        Corps à Corps
+                                    {% elseif objPlayers.getSkillGroup == 2 %}
+                                        Mental
+                                    {% else %}
+                                        Non-définie
+                                    {% endif %}
+                                {% elseif objPlayers.getJob == 1 or objPlayers.getJob == 5 %}
+                                    {% if objPlayers.getSkillGroup == 1 %}
+                                        Assasin
+                                    {% elseif objPlayers.getSkillGroup == 2 %}
+                                        Archer
+                                    {% else %}
+                                        Non-définie
+                                    {% endif %}
+                                {% elseif objPlayers.getJob == 2 or objPlayers.getJob == 6 %}
+                                    {% if objPlayers.getSkillGroup == 1 %}
+                                        Arme magique
+                                    {% elseif objPlayers.getSkillGroup == 2 %}
+                                        Magie Noir
+                                    {% else %}
+                                        Non-définie
+                                    {% endif %}
+                                {% elseif objPlayers.getJob == 3 or objPlayers.getJob == 7 %}
+                                    {% if objPlayers.getSkillGroup == 1 %}
+                                        Dragon
+                                    {% elseif objPlayers.getSkillGroup == 2 %}
+                                        Soin
+                                    {% else %}
+                                        Non-définie
+                                    {% endif %}
+                                {% else %}
+                                    Non-définie
+                                {% endif %}
+                            </td>
+                            <td>{{ objPlayers.getLevel }}</td>
+                        </tr>
+
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="8">
+                            Aucun personnages
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+
+        </table>
+
+        <div style="padding-bottom: 10px; padding-left: 10px;">
+            - Vendez votre personnage contre des monnaies.<br/>
+            - Le personnage sera détaché du compte.<br/>
+            - Il sera remplacé par un personnage factice.<br/>
+            - Votre personnage sera sur la place du marché.<br/>
+            - Cela transfère l'équipement et l'inventaire.<br/>
+            - Le royaume du personnage est celui du compte.<br/>
+            - Le prix minimal est de 2 000 Vamonaies/Tananaies.<br/>
+            - Ce personnage ne doit pas être marié et sans guilde.<br />
+        </div>
+
+    </div>
+    <div class="col-lg-8">
+        <div id="Contenue_Cadre_Vente"  style="padding-top: 5px; padding-right: 15px;">
+            Pour commencer, il faut choisir un personnage à vendre.
+        </div>
+    </div>
+</div>
