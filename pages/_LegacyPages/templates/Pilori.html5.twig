@@ -1,0 +1,52 @@
+<div class="box box-default flat">
+
+    <div class="box-header">
+        <h3 class="box-title">Pilori des membres sanctionnés</h3>
+    </div>
+
+    <div class="box-body no-padding">
+        <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;">
+
+            <thead>
+                <tr>
+                    <th>Joueur</th>
+                    <th>Level</th>
+                    <th>Date du bannissement</th>
+                    <th>Raison</th>
+                    <th>Durée</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% if arrObjPlayers|length > 0 %}
+
+                    {% for objPlayers in arrObjPlayers %}
+                        <tr>
+                            <td>{{ objPlayers.name }}</td>
+                            <td>{{ objPlayers.level }}</td>
+                            <td>{{ getFormatedDateTime(objPlayers.dateDebutBannissement) }}</td>
+                            <td>{{ objPlayers.raison }}</td>
+                            {% if objPlayers.duree != 999 %}
+                                <td>{{ objPlayers.duree }} jours</td>
+                            {% else %}
+                                <td>Définitif</td>
+                            {% endif %}
+                            <td>
+                                {% if objPlayers.empire == 1 %}
+                                    <i data-tooltip="Empire Shinsoo" data-tooltip-position="left" class="text-red material-icons md-icon-map md-20"></i>
+                                {% elseif objPlayers.empire == 2 %}
+                                    <i data-tooltip="Empire Chunjo" data-tooltip-position="left" class="text-yellow material-icons md-icon-map md-20"></i>
+                                {% elseif objPlayers.empire == 3 %}
+                                    <i data-tooltip="Empire Jinno" data-tooltip-position="left" class="text-blue material-icons md-icon-map md-20"></i>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr><td colspan="6">Aucun membres bannis.</td></tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>

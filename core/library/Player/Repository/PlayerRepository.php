@@ -11,6 +11,11 @@ class PlayerRepository extends EntityRepository {
         return $dql;
     }
 
+    public function getDQLCompteBannis(\Doctrine\ORM\QueryBuilder $dql) {
+        $dql->andWhere("AccountEntity.status = 'BLOCK'");
+        return $dql;
+    }
+
     public function getDQLJoueurNonGM(\Doctrine\ORM\QueryBuilder $dql) {
         $dql->andWhere(""
                 . "PlayerEntity.name NOT IN "
@@ -41,6 +46,35 @@ class PlayerRepository extends EntityRepository {
 
         try {
             return $qb->getQuery()->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+
+    public function findPlayersBannis() {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select(""
+                . "PlayerEntity.name,"
+                . "PlayerEntity.level,"
+                . "PlayerEntity.job,"
+                . "PlayerIndexEntity.empire,"
+                . "BannissementsActifsEntity.dateDebutBannissement,"
+                . "BannissementsActifsEntity.duree,"
+                . "BannissementRaisonsEntity.raison");
+        $qb->from("\Player\Entity\Player", "PlayerEntity");
+        $qb->innerJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = PlayerEntity.idAccount");
+        $qb->innerJoin("\Player\Entity\PlayerIndex", "PlayerIndexEntity", "WITH", "PlayerIndexEntity.id = AccountEntity.id");
+        $qb->innerJoin("\Site\Entity\BannissementsActifs", "BannissementsActifsEntity", "WITH", "BannissementsActifsEntity.idCompte = AccountEntity.id");
+        $qb->innerJoin("\Site\Entity\BannissementRaisons", "BannissementRaisonsEntity", "WITH", "BannissementRaisonsEntity.id = BannissementsActifsEntity.raisonBannissement");
+        $qb = $this->getDQLCompteBannis($qb);
+
+        $qb->orderBy("BannissementsActifsEntity.dateDebutBannissement", "DESC");
+        $qb->setMaxResults(15);
+
+        try {
+            return $qb->getQuery()->getArrayResult();
         } catch (\Doctrine\ORM\NoResultException $e) {
             return null;
         }
