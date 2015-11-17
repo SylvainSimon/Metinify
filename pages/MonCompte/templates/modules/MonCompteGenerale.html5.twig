@@ -1,0 +1,292 @@
+<script type="text/javascript">var Clique_Code_Effacement = 0;</script>
+
+<div class="tab-pane active" id="Onglet_InformationGeneral">
+
+    <div class="row">
+        <div class="col-lg-4">
+            <table class="table table-condensed" style="border-collapse: collapse;">
+                <tbody>
+                    <tr>
+                        <td style="border-top: 0px;">Compte :</td>
+                        <td style="border-top: 0px;">{{ objAccount.getLogin }}</td>
+                    </tr>
+                    <tr>
+                        <td>Création :</td>
+                        <td><span style="font-size: 12px; font-weight: bold;">{{ getFormatedDateTime(objAccount.getCreateTime) }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Ip du compte :</td></td>
+
+                        {% if objAccount.getIpCreation == "" %}
+                            <td>Non-définie</td>
+                        {% else %}
+                            <td>{{ objAccount.getIpCreation }}</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td>Empire :</td>
+                        <td>
+                            {% if objPlayerIndex.empire == 1 %}
+                                <i data-tooltip="Empire Shinsoo" data-tooltip-position="left" class="text-red material-icons md-icon-map md-20"></i>
+                            {% elseif objPlayerIndex.empire == 2 %}
+                                <i data-tooltip="Empire Chunjo" data-tooltip-position="left" class="text-yellow material-icons md-icon-map md-20"></i>
+                            {% elseif objPlayerIndex.empire == 3 %}
+                                <i data-tooltip="Empire Jinno" data-tooltip-position="left" class="text-blue material-icons md-icon-map md-20"></i>
+                            {% else %}
+                                <i data-tooltip="Empire inconnu" data-tooltip-position="left" class="material-icons md-icon-help md-20"></i>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>E-mail :</td>
+                        <td>
+                            {{ objAccount.getEmail|truncate(8, false, "●●●●") }}
+                            <i data-tooltip="Modifier mon E-mail" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/modules/EmailChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
+
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>Mot de passe :</td>
+                        <td>
+                            ●●●●●●●●●●●●
+                            <i data-tooltip="Modifier mon mot de passe" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/modules/PasswordChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td>Code d'effacement :</td>
+                        <td>
+                            {% if objAccount.getCodeEffacement == "" %}
+                                Aucun code définie
+                                <i data-tooltip="Définir mon code d'effacement" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/modules/CodeEffacementCreateForm.php');" class="pull-right Pointer material-icons md-icon-add"></i>
+                            {% else %}
+                                <span id="Code_Effacement">●●●●●●●</span>
+
+                                <i style="margin-left: 5px;" data-tooltip="Modifier mon code" onclick="Ajax('pages/MonCompte/modules/CodeEffacementChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
+                                <i data-tooltip="Voir le code" onclick="if (Clique_Code_Effacement == 0) {
+                                            $('#Code_Effacement').html('{{ objAccount.getCodeEffacement }}');
+                                            Clique_Code_Effacement = 1;
+                                        } else {
+                                            $('#Code_Effacement').html('●●●●●●●');
+                                            Clique_Code_Effacement = 0;
+                                        }
+                                        ;" class="pull-right Pointer material-icons md-icon-visible"></i>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        {% if objSafebox.size == "" %}
+                            <td>Entrepot non-crée.</td>
+                        {% else %}
+                            <td id="Code_Entrepot">
+                                ●●●●●●
+
+                                <i style="margin-left: 5px;"  data-tooltip="Modifier mon code" onclick="Ajax('pages/MonCompte/modules/CodeEntrepotChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
+                                <i data-tooltip="Récupérer le code entrepôt" onclick="Ajax('pages/MonCompte/modules/CodeEntrepotForgottenEmail.php');" class="pull-right Pointer material-icons md-icon-settings_backup_restore text-blue"></i>
+                            </td>
+                        {% endif %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-lg-8">
+
+            <table class="table table-condensed table-hover" style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th class="hidden-md hidden-sm hidden-xs" width="50">Race</th>
+                        <th width="130">Pseudonyme</th>
+                        <th class="hidden-md hidden-sm hidden-xs">Classe</th>
+                        <th width="30">Lvl</th>
+                        <th class="hidden-md hidden-sm hidden-xs">Temps de jeu</th>
+                        <th width="95">Ip</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% if arrObjPlayers|length > 0 %}
+
+                        {% for objPlayers in arrObjPlayers %}
+
+                            <tr data-tooltip="Cliquez pour voir le détails du personnage" onclick="Ajax('pages/MonPersonnage/MonPersonnage.php?id={{ objPlayers.getId }}')" class="pointer">
+
+                                <td class="hidden-md hidden-sm hidden-xs">
+                                    {% if objPlayers.job == 0 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/0_mini.png"/>
+                                    {% elseif objPlayers.job == 1 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/1_mini.png"/>
+                                    {% elseif objPlayers.job == 2 %}
+                                        <img  class="Dimension_Image_Classement" src="images/races/2_mini.png"/>
+                                    {% elseif objPlayers.job == 3 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/3_mini.png"/>
+                                    {% elseif objPlayers.job == 4 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/4_mini.png"/>
+                                    {% elseif objPlayers.job == 5 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/5_mini.png"/>
+                                    {% elseif objPlayers.job == 6 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/6_mini.png"/>
+                                    {% elseif objPlayers.job == 7 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/7_mini.png"/>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {{ objPlayers.getName }}
+                                </td>
+                                <td>
+                                    {% if objPlayers.job == 0 or objPlayers.job == 4 %}
+                                        {% if objPlayers.skillGroup == 1 %}
+                                            Corps à Corps
+                                        {% elseif objPlayers.skillGroup == 2 %}
+                                            Mental
+                                        {% else %}
+                                            Non-définie
+                                        {% endif %}
+                                    {% elseif objPlayers.job == 1 or objPlayers.job == 5 %}
+                                        {% if objPlayers.skillGroup == 1 %}
+                                            Assasin
+                                        {% elseif objPlayers.skillGroup == 2 %}
+                                            Archer
+                                        {% else %}
+                                            Non-définie
+                                        {% endif %}
+                                    {% elseif objPlayers.job == 2 or objPlayers.job == 6 %}
+                                        {% if objPlayers.skillGroup == 1 %}
+                                            Arme magique
+                                        {% elseif objPlayers.skillGroup == 2 %}
+                                            Magie Noir
+                                        {% else %}
+                                            Non-définie
+                                        {% endif %}
+                                    {% elseif objPlayers.job == 3 or objPlayers.job == 7 %}
+                                        {% if objPlayers.skillGroup == 1 %}
+                                            Dragon
+                                        {% elseif objPlayers.skillGroup == 2 %}
+                                            Soin
+                                        {% else %}
+                                            Non-définie
+                                        {% endif %}
+                                    {% else %}
+                                        Non-définie
+                                    {% endif %}
+                                </td>
+                                <td>{{ objPlayers.getLevel }}</td>
+
+                                <td class="hidden-md hidden-sm hidden-xs">
+                                    {{ getMinutesToString(objPlayers.getPlaytime) }}
+                                </td>
+
+                                <td>{{ objPlayers.getIp }}</td>
+                            </tr>
+
+                        {% endfor %}
+
+                    {% else %}
+                        <tr>
+                            <td colspan="8">
+                                Aucuns personnages.
+                            </td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 10px;">
+
+
+        <div class="col-md-12">
+
+            {% if date(objAccount.getAutolootExpire()) > date() %}
+                <div class="col-lg-4" style="margin-top: 10px;">
+                    <img src='../images/Bonus/4.png' width='63' />
+                    <span id="Compteloot" style="position: relative; left:12px;"></span>
+                </div>                 
+                <script>
+                    $('#Compteloot').countdown('{{ getFormatedDateTime(objAccount.getAutolootExpire, "Y/m/d H:i:s") }}', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+                </script>
+            {% endif %}
+
+            {% if date(objAccount.getGoldExpire()) > date() %}
+                <div class="col-lg-4" style="margin-top: 10px;">
+                    <img src='../images/Bonus/1.png' width='63' />
+                    <span id="Comptegold" style="position: relative; left:12px;"></span>
+                </div>
+                <script>
+                    $('#Comptegold').countdown('{{ getFormatedDateTime(objAccount.getGoldExpire, "Y/m/d H:i:s") }}', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+                </script>
+            {% endif %}
+
+            {% if date(objAccount.getSilverExpire()) > date() %}
+                <div class="col-lg-4" style="margin-top: 10px;">
+                    <img src='../images/Bonus/2.png' width='63' />
+                    <span id="Comptesilver" style="position: relative; left:12px;"></span>
+                </div>                
+                <script>
+                    $('#Comptesilver').countdown('{{ getFormatedDateTime(objAccount.getSilverExpire, "Y/m/d H:i:s") }}', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+                </script>
+            {% endif %}
+
+            {% if date(objAccount.getMarriageFastExpire()) > date() %}
+                <div class="col-lg-4" style="margin-top: 10px;">
+                    <img src='../images/Bonus/6.png' width='63' />
+                    <span id="Comptelove" style="position: relative; left:12px;"></span>
+                </div>                 
+                <script>
+                    $('#Comptelove').countdown('{{ getFormatedDateTime(objAccount.getMarriageFastExpire, "Y/m/d H:i:s") }}', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+                </script>
+            {% endif %}
+
+            {% if date(objAccount.getSafeboxExpire()) > date() %}
+                <div class="col-lg-4" style="margin-top: 10px;">
+                    <img src='../images/Bonus/3.png' width='63' />
+                    <span id="Comptesafebox" style="position: relative; left:12px;"></span>
+                </div>                 
+                <script>
+                    $('#Comptesafebox').countdown('{{ getFormatedDateTime(objAccount.getSafeboxExpire, "Y/m/d H:i:s") }}', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+                </script>
+            {% endif %}
+
+            {% if date(objAccount.getMoneyDropRateExpire()) > date() %}
+                <div class="col-lg-4" style="margin-top: 10px;">
+                    <img src='../images/Bonus/7.png' width='63' />
+                    <span id="Comptemonnaie" style="position: relative; left:12px;"></span>
+                </div>                 
+                <script>
+                    $('#Comptemonnaie').countdown('{{ getFormatedDateTime(objAccount.getMoneyDropRateExpire, "Y/m/d H:i:s") }}', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+                </script>
+            {% endif %}
+
+            {% if date(objAccount.getFishMindExpire()) > date() %}
+                <div class="col-lg-4" style="margin-top: 10px;">
+                    <img src='../images/Bonus/5.png' width='63' />
+                    <span id="Comptepeche" style="position: relative; left:12px;"></span>
+                </div>                 
+                <script>
+                    $('#Comptepeche').countdown('{{ getFormatedDateTime(objAccount.getFishMindExpire, "Y/m/d H:i:s") }}', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+                </script>
+            {% endif %}
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

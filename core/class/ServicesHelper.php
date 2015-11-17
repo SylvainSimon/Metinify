@@ -40,7 +40,7 @@ class ServicesHelper {
 
         $container['cacheType'] = $container['config']->fastChatType;
 
-        $container['fastcache'] = function($container) {            
+        $container['fastcache'] = function($container) {
             phpFastCache::setup("storage", $container['cacheType']);
             phpFastCache::setup("path", BASE_ROOT . "/cache/fastcache/");
             $cache = phpFastCache();
@@ -86,12 +86,17 @@ class ServicesHelper {
                 'cache' => $urlCache,
             ));
 
+            $twig->addExtension(new Twig_Extensions_Extension_Text());
             $twig->addExtension(new StringFunctionExtension());
             $twig->addExtension(new ImageFunctionExtension());
             $twig->addExtension(new DateFunctionExtension());
             $twig->addExtension(new Twig_Extension_Debug());
             $twig->addExtension(new EncryptExtension());
 
+            include BASE_ROOT . '/pages/Tableaux_Arrays.php';
+
+            $twig->addGlobal('bonusItem', $Bonus_Item);
+            $twig->addGlobal('pierreItem', $Pierre_Item);
             $twig->addGlobal('session', $container['session']);
             $twig->addGlobal('request', $container['request']);
             $twig->addGlobal('config', $container['config']);

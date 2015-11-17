@@ -7,6 +7,17 @@ class DateTimeHelper {
         return $dateConverted;
     }
 
+    public static function minutesToString($minutes = "") {
+        
+        $dt = \Carbon\Carbon::create(2000, 1, 1, 0, 0, 0)->startOfDay();
+        $dt2 = $dt->copy()->addMinute($minutes);
+        $var = $dt->diffInMonths($dt2) . " mois, ";
+        $var .= $dt->diffInDays($dt2) . " jours et ";
+        $var .= $dt->diffInHours($dt2) . " heures";
+        
+        return $var;
+    }
+
     public static function dateTimeToFormatedString($dateTime, $format = null) {
 
         if (!is_a($dateTime, 'DateTime')) {

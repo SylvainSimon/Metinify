@@ -34,9 +34,9 @@ class Item
     private $pos = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="count", type="boolean", nullable=false)
+     * @ORM\Column(name="count", type="integer", nullable=false)
      */
     private $count = '0';
 
@@ -90,9 +90,9 @@ class Item
     private $socket5 = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="attrtype0", type="boolean", nullable=false)
+     * @ORM\Column(name="attrtype0", type="integer", nullable=false)
      */
     private $attrtype0 = '0';
 
@@ -104,9 +104,9 @@ class Item
     private $attrvalue0 = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="attrtype1", type="boolean", nullable=false)
+     * @ORM\Column(name="attrtype1", type="integer", nullable=false)
      */
     private $attrtype1 = '0';
 
@@ -118,9 +118,9 @@ class Item
     private $attrvalue1 = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="attrtype2", type="boolean", nullable=false)
+     * @ORM\Column(name="attrtype2", type="integer", nullable=false)
      */
     private $attrtype2 = '0';
 
@@ -132,9 +132,9 @@ class Item
     private $attrvalue2 = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="attrtype3", type="boolean", nullable=false)
+     * @ORM\Column(name="attrtype3", type="integer", nullable=false)
      */
     private $attrtype3 = '0';
 
@@ -146,9 +146,9 @@ class Item
     private $attrvalue3 = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="attrtype4", type="boolean", nullable=false)
+     * @ORM\Column(name="attrtype4", type="integer", nullable=false)
      */
     private $attrtype4 = '0';
 
@@ -160,9 +160,9 @@ class Item
     private $attrvalue4 = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="attrtype5", type="boolean", nullable=false)
+     * @ORM\Column(name="attrtype5", type="integer", nullable=false)
      */
     private $attrtype5 = '0';
 
@@ -174,9 +174,9 @@ class Item
     private $attrvalue5 = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="attrtype6", type="boolean", nullable=false)
+     * @ORM\Column(name="attrtype6", type="integer", nullable=false)
      */
     private $attrtype6 = '0';
 
@@ -273,7 +273,7 @@ class Item
     /**
      * Set count
      *
-     * @param boolean $count
+     * @param integer $count
      *
      * @return Item
      */
@@ -287,7 +287,7 @@ class Item
     /**
      * Get count
      *
-     * @return boolean
+     * @return integer
      */
     public function getCount()
     {
@@ -465,7 +465,7 @@ class Item
     /**
      * Set attrtype0
      *
-     * @param boolean $attrtype0
+     * @param integer $attrtype0
      *
      * @return Item
      */
@@ -479,7 +479,7 @@ class Item
     /**
      * Get attrtype0
      *
-     * @return boolean
+     * @return integer
      */
     public function getAttrtype0()
     {
@@ -513,7 +513,7 @@ class Item
     /**
      * Set attrtype1
      *
-     * @param boolean $attrtype1
+     * @param integer $attrtype1
      *
      * @return Item
      */
@@ -527,7 +527,7 @@ class Item
     /**
      * Get attrtype1
      *
-     * @return boolean
+     * @return integer
      */
     public function getAttrtype1()
     {
@@ -561,7 +561,7 @@ class Item
     /**
      * Set attrtype2
      *
-     * @param boolean $attrtype2
+     * @param integer $attrtype2
      *
      * @return Item
      */
@@ -575,7 +575,7 @@ class Item
     /**
      * Get attrtype2
      *
-     * @return boolean
+     * @return integer
      */
     public function getAttrtype2()
     {
@@ -609,7 +609,7 @@ class Item
     /**
      * Set attrtype3
      *
-     * @param boolean $attrtype3
+     * @param integer $attrtype3
      *
      * @return Item
      */
@@ -623,7 +623,7 @@ class Item
     /**
      * Get attrtype3
      *
-     * @return boolean
+     * @return integer
      */
     public function getAttrtype3()
     {
@@ -657,7 +657,7 @@ class Item
     /**
      * Set attrtype4
      *
-     * @param boolean $attrtype4
+     * @param integer $attrtype4
      *
      * @return Item
      */
@@ -671,7 +671,7 @@ class Item
     /**
      * Get attrtype4
      *
-     * @return boolean
+     * @return integer
      */
     public function getAttrtype4()
     {
@@ -705,7 +705,7 @@ class Item
     /**
      * Set attrtype5
      *
-     * @param boolean $attrtype5
+     * @param integer $attrtype5
      *
      * @return Item
      */
@@ -719,7 +719,7 @@ class Item
     /**
      * Get attrtype5
      *
-     * @return boolean
+     * @return integer
      */
     public function getAttrtype5()
     {
@@ -753,7 +753,7 @@ class Item
     /**
      * Set attrtype6
      *
-     * @param boolean $attrtype6
+     * @param integer $attrtype6
      *
      * @return Item
      */
@@ -767,7 +767,7 @@ class Item
     /**
      * Get attrtype6
      *
-     * @return boolean
+     * @return integer
      */
     public function getAttrtype6()
     {

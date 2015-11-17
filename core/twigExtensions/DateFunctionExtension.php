@@ -5,6 +5,7 @@ class DateFunctionExtension extends \Twig_Extension {
     public function getFunctions() {
         return array(
             'getFormatedDateTime' => new \Twig_SimpleFunction('getFormatedDateTime', array($this, 'getFormatedDateTime')),
+            'getMinutesToString' => new \Twig_SimpleFunction('getMinutesToString', array($this, 'getMinutesToString')),
         );
     }
 
@@ -14,6 +15,10 @@ class DateFunctionExtension extends \Twig_Extension {
 
     public function getFormatedDateTime($dateTime, $format = null) {
         return \DateTimeHelper::dateTimeToFormatedString($dateTime, $format);
+    }
+    
+    public function getMinutesToString($minutes) {
+        return \DateTimeHelper::minutesToString($minutes);
     }
 
 }

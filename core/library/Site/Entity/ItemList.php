@@ -1,13 +1,13 @@
 <?php
 
-namespace Player\Entity;
+namespace Site\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * ItemList
  *
- * @ORM\Table(name="player.item_list")
+ * @ORM\Table(name="site.item_list")
  * @ORM\Entity
  */
 class ItemList

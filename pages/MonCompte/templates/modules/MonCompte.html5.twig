@@ -1,0 +1,35 @@
+<script type="text/javascript" src="pages/MonCompte/js/fonctions.min.js"></script>
+
+<div class="box box-default flat">
+
+    <div class="box-header">
+        <h3 class="box-title">Mon compte</h3>
+    </div>
+
+    <div class="box-body no-padding">
+
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+
+                <li class="active"><a href="javascript:void(0)" onclick="Ajax_Appel_MonCompte('pages/MonCompte/modules/MonCompteGenerale.php', this);">Générales</a></li>
+                <li><a href="javascript:void(0)" onclick="Ajax_Appel_MonCompte('pages/MonCompte/modules/MonCompteEntrepot.php', this);">Entrepôt</a></li>
+                <!--<li class=""><a href="#Onglet_Entrepot" data-toggle="tab" aria-expanded="false">Entrepôt</a></li>-->
+                <!--<li class=""><a href="#Onglet_Entrepot_IS" data-toggle="tab" aria-expanded="false">Entrepot Item-Shop</a></li>-->
+                <!--<li class=""><a href="#Historiques_Paiements" data-toggle="tab" aria-expanded="false">Paiements</a></li>-->
+                <!--<li class=""><a href="#Historiques_Achats" data-toggle="tab" aria-expanded="false">Achats</a></li>-->
+            </ul>
+            <div  id="Contenue_Cadre_MonCompte" class="tab-content">
+
+                {{ viewGenerale|raw }}
+                <!-- <?php include '../../../pages/MonCompte/includes/OngletEntrepot.php'; ?> -->
+                <!--<?php include '../../../pages/MonCompte/includes/OngletEntrepotIS.php'; ?>-->
+                <!--<?php include '../../../pages/MonCompte/includes/OngletHistoriquesPaiements.php'; ?>-->
+                <!--<?php include '../../../pages/MonCompte/includes/OngletHistoriquesAchats.php'; ?>-->
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+</div>

@@ -13,44 +13,44 @@ use Doctrine\ORM\Mapping as ORM;
 class ItemProto
 {
     /**
-     * @var binary
+     * @var string
      *
-     * @ORM\Column(name="name", type="binary", nullable=false)
+     * @ORM\Column(name="name", type="string", nullable=false)
      */
-    private $name = 'Noname                  ';
+    private $name = 'Noname';
 
     /**
-     * @var binary
+     * @var string
      *
-     * @ORM\Column(name="locale_name", type="binary", nullable=false)
+     * @ORM\Column(name="locale_name", type="string", nullable=false)
      */
-    private $localeName = 'Noname                  ';
+    private $localeName = 'Noname';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="type", type="boolean", nullable=false)
+     * @ORM\Column(name="type", type="integer", nullable=false)
      */
     private $type = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="subtype", type="boolean", nullable=false)
+     * @ORM\Column(name="subtype", type="integer", nullable=false)
      */
     private $subtype = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="weight", type="boolean", nullable=true)
+     * @ORM\Column(name="weight", type="integer", nullable=true)
      */
     private $weight = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="size", type="boolean", nullable=true)
+     * @ORM\Column(name="size", type="integer", nullable=true)
      */
     private $size = '0';
 
@@ -118,16 +118,16 @@ class ItemProto
     private $refineSet2 = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="magic_pct", type="boolean", nullable=false)
+     * @ORM\Column(name="magic_pct", type="integer", nullable=false)
      */
     private $magicPct = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="limittype0", type="boolean", nullable=true)
+     * @ORM\Column(name="limittype0", type="integer", nullable=true)
      */
     private $limittype0 = '0';
 
@@ -139,9 +139,9 @@ class ItemProto
     private $limitvalue0 = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="limittype1", type="boolean", nullable=true)
+     * @ORM\Column(name="limittype1", type="integer", nullable=true)
      */
     private $limittype1 = '0';
 
@@ -153,9 +153,9 @@ class ItemProto
     private $limitvalue1 = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="applytype0", type="boolean", nullable=true)
+     * @ORM\Column(name="applytype0", type="integer", nullable=true)
      */
     private $applytype0 = '0';
 
@@ -167,9 +167,9 @@ class ItemProto
     private $applyvalue0 = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="applytype1", type="boolean", nullable=true)
+     * @ORM\Column(name="applytype1", type="integer", nullable=true)
      */
     private $applytype1 = '0';
 
@@ -181,9 +181,9 @@ class ItemProto
     private $applyvalue1 = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="applytype2", type="boolean", nullable=true)
+     * @ORM\Column(name="applytype2", type="integer", nullable=true)
      */
     private $applytype2 = '0';
 
@@ -237,58 +237,58 @@ class ItemProto
     private $value5 = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="socket0", type="boolean", nullable=true)
+     * @ORM\Column(name="socket0", type="integer", nullable=true)
      */
     private $socket0 = '-1';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="socket1", type="boolean", nullable=true)
+     * @ORM\Column(name="socket1", type="integer", nullable=true)
      */
     private $socket1 = '-1';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="socket2", type="boolean", nullable=true)
+     * @ORM\Column(name="socket2", type="integer", nullable=true)
      */
     private $socket2 = '-1';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="socket3", type="boolean", nullable=true)
+     * @ORM\Column(name="socket3", type="integer", nullable=true)
      */
     private $socket3 = '-1';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="socket4", type="boolean", nullable=true)
+     * @ORM\Column(name="socket4", type="integer", nullable=true)
      */
     private $socket4 = '-1';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="socket5", type="boolean", nullable=true)
+     * @ORM\Column(name="socket5", type="integer", nullable=true)
      */
     private $socket5 = '-1';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="specular", type="boolean", nullable=false)
+     * @ORM\Column(name="specular", type="integer", nullable=false)
      */
     private $specular = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="socket_pct", type="boolean", nullable=false)
+     * @ORM\Column(name="socket_pct", type="integer", nullable=false)
      */
     private $socketPct = '0';
 
@@ -313,7 +313,7 @@ class ItemProto
     /**
      * Set name
      *
-     * @param binary $name
+     * @param string $name
      *
      * @return ItemProto
      */
@@ -327,7 +327,7 @@ class ItemProto
     /**
      * Get name
      *
-     * @return binary
+     * @return string
      */
     public function getName()
     {
@@ -337,7 +337,7 @@ class ItemProto
     /**
      * Set localeName
      *
-     * @param binary $localeName
+     * @param string $localeName
      *
      * @return ItemProto
      */
@@ -351,7 +351,7 @@ class ItemProto
     /**
      * Get localeName
      *
-     * @return binary
+     * @return string
      */
     public function getLocaleName()
     {
@@ -361,7 +361,7 @@ class ItemProto
     /**
      * Set type
      *
-     * @param boolean $type
+     * @param integer $type
      *
      * @return ItemProto
      */
@@ -375,7 +375,7 @@ class ItemProto
     /**
      * Get type
      *
-     * @return boolean
+     * @return integer
      */
     public function getType()
     {
@@ -385,7 +385,7 @@ class ItemProto
     /**
      * Set subtype
      *
-     * @param boolean $subtype
+     * @param integer $subtype
      *
      * @return ItemProto
      */
@@ -399,7 +399,7 @@ class ItemProto
     /**
      * Get subtype
      *
-     * @return boolean
+     * @return integer
      */
     public function getSubtype()
     {
@@ -409,7 +409,7 @@ class ItemProto
     /**
      * Set weight
      *
-     * @param boolean $weight
+     * @param integer $weight
      *
      * @return ItemProto
      */
@@ -423,7 +423,7 @@ class ItemProto
     /**
      * Get weight
      *
-     * @return boolean
+     * @return integer
      */
     public function getWeight()
     {
@@ -433,7 +433,7 @@ class ItemProto
     /**
      * Set size
      *
-     * @param boolean $size
+     * @param integer $size
      *
      * @return ItemProto
      */
@@ -447,7 +447,7 @@ class ItemProto
     /**
      * Get size
      *
-     * @return boolean
+     * @return integer
      */
     public function getSize()
     {
@@ -673,7 +673,7 @@ class ItemProto
     /**
      * Set magicPct
      *
-     * @param boolean $magicPct
+     * @param integer $magicPct
      *
      * @return ItemProto
      */
@@ -687,7 +687,7 @@ class ItemProto
     /**
      * Get magicPct
      *
-     * @return boolean
+     * @return integer
      */
     public function getMagicPct()
     {
@@ -697,7 +697,7 @@ class ItemProto
     /**
      * Set limittype0
      *
-     * @param boolean $limittype0
+     * @param integer $limittype0
      *
      * @return ItemProto
      */
@@ -711,7 +711,7 @@ class ItemProto
     /**
      * Get limittype0
      *
-     * @return boolean
+     * @return integer
      */
     public function getLimittype0()
     {
@@ -745,7 +745,7 @@ class ItemProto
     /**
      * Set limittype1
      *
-     * @param boolean $limittype1
+     * @param integer $limittype1
      *
      * @return ItemProto
      */
@@ -759,7 +759,7 @@ class ItemProto
     /**
      * Get limittype1
      *
-     * @return boolean
+     * @return integer
      */
     public function getLimittype1()
     {
@@ -793,7 +793,7 @@ class ItemProto
     /**
      * Set applytype0
      *
-     * @param boolean $applytype0
+     * @param integer $applytype0
      *
      * @return ItemProto
      */
@@ -807,7 +807,7 @@ class ItemProto
     /**
      * Get applytype0
      *
-     * @return boolean
+     * @return integer
      */
     public function getApplytype0()
     {
@@ -841,7 +841,7 @@ class ItemProto
     /**
      * Set applytype1
      *
-     * @param boolean $applytype1
+     * @param integer $applytype1
      *
      * @return ItemProto
      */
@@ -855,7 +855,7 @@ class ItemProto
     /**
      * Get applytype1
      *
-     * @return boolean
+     * @return integer
      */
     public function getApplytype1()
     {
@@ -889,7 +889,7 @@ class ItemProto
     /**
      * Set applytype2
      *
-     * @param boolean $applytype2
+     * @param integer $applytype2
      *
      * @return ItemProto
      */
@@ -903,7 +903,7 @@ class ItemProto
     /**
      * Get applytype2
      *
-     * @return boolean
+     * @return integer
      */
     public function getApplytype2()
     {
@@ -1081,7 +1081,7 @@ class ItemProto
     /**
      * Set socket0
      *
-     * @param boolean $socket0
+     * @param integer $socket0
      *
      * @return ItemProto
      */
@@ -1095,7 +1095,7 @@ class ItemProto
     /**
      * Get socket0
      *
-     * @return boolean
+     * @return integer
      */
     public function getSocket0()
     {
@@ -1105,7 +1105,7 @@ class ItemProto
     /**
      * Set socket1
      *
-     * @param boolean $socket1
+     * @param integer $socket1
      *
      * @return ItemProto
      */
@@ -1119,7 +1119,7 @@ class ItemProto
     /**
      * Get socket1
      *
-     * @return boolean
+     * @return integer
      */
     public function getSocket1()
     {
@@ -1129,7 +1129,7 @@ class ItemProto
     /**
      * Set socket2
      *
-     * @param boolean $socket2
+     * @param integer $socket2
      *
      * @return ItemProto
      */
@@ -1143,7 +1143,7 @@ class ItemProto
     /**
      * Get socket2
      *
-     * @return boolean
+     * @return integer
      */
     public function getSocket2()
     {
@@ -1153,7 +1153,7 @@ class ItemProto
     /**
      * Set socket3
      *
-     * @param boolean $socket3
+     * @param integer $socket3
      *
      * @return ItemProto
      */
@@ -1167,7 +1167,7 @@ class ItemProto
     /**
      * Get socket3
      *
-     * @return boolean
+     * @return integer
      */
     public function getSocket3()
     {
@@ -1177,7 +1177,7 @@ class ItemProto
     /**
      * Set socket4
      *
-     * @param boolean $socket4
+     * @param integer $socket4
      *
      * @return ItemProto
      */
@@ -1191,7 +1191,7 @@ class ItemProto
     /**
      * Get socket4
      *
-     * @return boolean
+     * @return integer
      */
     public function getSocket4()
     {
@@ -1201,7 +1201,7 @@ class ItemProto
     /**
      * Set socket5
      *
-     * @param boolean $socket5
+     * @param integer $socket5
      *
      * @return ItemProto
      */
@@ -1215,7 +1215,7 @@ class ItemProto
     /**
      * Get socket5
      *
-     * @return boolean
+     * @return integer
      */
     public function getSocket5()
     {
@@ -1225,7 +1225,7 @@ class ItemProto
     /**
      * Set specular
      *
-     * @param boolean $specular
+     * @param integer $specular
      *
      * @return ItemProto
      */
@@ -1239,7 +1239,7 @@ class ItemProto
     /**
      * Get specular
      *
-     * @return boolean
+     * @return integer
      */
     public function getSpecular()
     {
@@ -1249,7 +1249,7 @@ class ItemProto
     /**
      * Set socketPct
      *
-     * @param boolean $socketPct
+     * @param integer $socketPct
      *
      * @return ItemProto
      */
@@ -1263,7 +1263,7 @@ class ItemProto
     /**
      * Get socketPct
      *
-     * @return boolean
+     * @return integer
      */
     public function getSocketPct()
     {

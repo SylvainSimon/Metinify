@@ -1,0 +1,63 @@
+{% if arrObjItems|length > 0 %}
+
+    {% set lastItem = iDepart %}
+
+    {% for objItem in arrObjItems %}
+
+        {% if ((lastItem - objItem.pos)|abs -1) > 0 %}
+
+            {% for i in 1..((lastItem - objItem.pos)|abs -1) %}
+                <div class="Case_Inventaire">
+                    &nbsp;
+                </div>
+            {% endfor %}
+
+        {% endif %}
+
+        <div class="Case_Inventaire">
+
+            {% if objItem.chemin != "" %}
+
+                <div class="Interieur_Case" data-tooltip="{{ include('ajaxItemGetInfo.html5.twig') }}" data-tooltip-track="1" data-tooltip-isItemMetin="1">
+                    <img id="cade_id_{{ objItem.id }}" src="{{ objItem.chemin }}" style="position: absolute; cursor: default;" />
+
+                    {% if objItem.flag == 4 or objItem.flag == 20 or objItem.flag == 132 or objItem.flag == 2052 or objItem.flag == 8212 %}  
+                        <span style="position: relative; width: 32px; top: 59%; right: -18px;">
+                            {% if objItem.count < 100 %}
+                                {% if objItem.count < 10 %}
+                                    &nbsp;&nbsp;&nbsp;&nbsp;{{ objItem.count }}
+                                {% else %}
+                                    &nbsp;&nbsp;{{ objItem.count }}
+                                {% endif %}
+                            {% else %}
+                                {{ objItem.count }}
+                            {% endif %}
+                        </span>
+                    {% endif %}
+
+                </div>
+
+                    
+                    
+                <!--<script type="text/javascript">
+                     getInformationItem({{ objItem.id }});
+                </script> -->
+
+            {% else %}
+                <div class="Interieur_Case">
+                    {% if objItem.size  == "1" %}
+                        <img src="../images/item_inexistant_1.png" data-tooltip-track="1" data-tooltip="Icone de {{ objItem.localeName }} ({{ objItem.vnum }}) introuvable." />
+                    {% elseif objItem.size  == "2" %}
+                        <img src="../images/item_inexistant_2.png" data-tooltip-track="1" data-tooltip="Icone de {{ objItem.localeName }} ({{ objItem.vnum }}) introuvable." />
+                    {% elseif objItem.size  == "3" %}
+                        <img src="../images/item_inexistant_3.png" data-tooltip-track="1" data-tooltip="Icone de {{ objItem.localeName }} ({{ objItem.vnum }}) introuvable." />
+                    {% endif %}
+                </div>
+
+            {% endif %}
+        </div>
+
+        {% set lastItem = objItem.pos %}
+        
+    {% endfor %}
+{% endif %}
