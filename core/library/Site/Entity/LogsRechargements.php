@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * LogsRechargements
  *
  * @ORM\Table(name="site.logs_rechargements")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\Repository\LogsRechargementsRepository")
  */
 class LogsRechargements {
 

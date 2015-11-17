@@ -133,6 +133,20 @@ class SiteHelper {
     }
     
     /**
+     * @return \Site\Repository\LogAchatsRepository
+     */
+    public static function getLogAchatsRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\LogAchats');
+    }
+    
+    /**
+     * @return \Site\Repository\LogsRechargementsRepository
+     */
+    public static function getLogsRechargementsRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\LogsRechargements');
+    }
+    
+    /**
      * @return \Site\Repository\LogsConnexionRepository
      */
     public static function getLogsConnexionRepository() {

@@ -1,0 +1,57 @@
+
+<div class="row">
+    <div class="col-lg-4" style="padding-left: 25px; padding-top: 10px; padding-bottom: 10px;">
+
+        <div id="Entrepot_IS">
+            <div id="Conteneur_Entrepot_IS">
+                {{ viewEntrepotIs|raw }}
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-8">
+
+        <div style="max-height: 380px; overflow-y: auto;">
+
+            <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;">
+                <thead>
+                    <tr>
+                        <th>Article</th>
+                        <th>Date d'achat</th>
+                        <th style="text-align: right;">Dépensé</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% if arrObjLogAchats|length > 0 %}
+
+                        {% for objLogAchat in arrObjLogAchats %}
+
+                            <tr class="Pointer">
+                                <td>
+                                    <span><img width='25' src="images/items/{{ objLogAchat.getVnumItem }}.png"></span>
+                                    {{ objLogAchat.getQuantite }}  {{ objLogAchat.getItem }}</td>
+                                <td>{{ getFormatedDateTime(objLogAchat.getDate) }}</td>
+                                <td style="text-align: right;">
+                                    {{ objLogAchat.getPrix }}
+                                    {% if objLogAchat.getMonnaie == "1" %} 
+                                        <i style="top: 4px; line-height: 10px; position: relative;" class="material-icons md-icon-whatshot text-yellow"></i>
+                                    {% else %}
+                                        <i style="top: 4px; line-height: 10px; position: relative;" class="material-icons md-icon-whatshot text-gray"></i>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                    {% else %}
+                        <tr><td colspan="7">Vous n'avez jamais acheter d'article.</td></tr>
+                    {% endif %}
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+
+</div>

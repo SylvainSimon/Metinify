@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-lg-4">
+        <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;">
+            <tr>
+                <td style="border-top: 0px;">
+                    <span>
+                        Nombre de paiement
+                    </span>
+                </td>
+                <td style="border-top: 0px;">
+                    <span class="pull-right">
+                        {{ arrObjLogsRechargement|length }}
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>
+                        Total de monnaies
+                    </span>
+                </td>
+                <td>
+                    <span class="pull-right">
+                        {{ totalMonnaie }}
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-lg-8">
+
+        <div style="max-height: 380px; overflow-y: auto;">
+
+            <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;">
+                <thead>
+                    <tr>
+                        <th width="250">Date</th>
+                        <th>Email</th>
+                        <th>Monnaies</th>
+                        <th width="120">Ip</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% if arrObjLogsRechargement|length > 0 %}
+                        {% for objLogsRechargement in arrObjLogsRechargement %}
+                            <tr class="Pointer">
+                                <td>{{ getFormatedDateTime(objLogsRechargement.date) }}</td>
+                                <td>{{ objLogsRechargement.emailCompte }}</td>
+                                <td>
+                                    {{ objLogsRechargement.nombreVamonaies }}
+                                     <i style="top: 4px; line-height: 10px; position: relative;" class="material-icons md-icon-whatshot text-yellow"></i>
+                                </td>
+                                <td>{{ objLogsRechargement.ip }}</td>
+                            </tr>
+                        {% endfor %}
+
+                    {% else %}
+                        <tr><td colspan="5">Vous n'avez jamais rechargé votre compte.</td></tr>
+                    {% endif %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
