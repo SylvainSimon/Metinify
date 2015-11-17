@@ -77,6 +77,8 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>Code entrepôt :</td>
+
                         {% if objSafebox.size == "" %}
                             <td>Entrepot non-crée.</td>
                         {% else %}
@@ -113,7 +115,7 @@
 
                         {% for objPlayers in arrObjPlayers %}
 
-                            <tr data-tooltip="Cliquez pour voir le détails du personnage" onclick="Ajax('pages/MonPersonnage/MonPersonnage.php?id={{ objPlayers.getId }}')" class="pointer">
+                            <tr data-tooltip="Voir la fiche détaillée" onclick="Ajax('pages/MonPersonnage/MonPersonnage.php?id={{ objPlayers.getId }}')" class="pointer">
 
                                 <td class="hidden-md hidden-sm hidden-xs">
                                     {% if objPlayers.job == 0 %}
@@ -205,7 +207,7 @@
 
             {% if date(objAccount.getAutolootExpire()) > date() %}
                 <div class="col-lg-4" style="margin-top: 10px;">
-                    <img src='../images/Bonus/4.png' width='63' />
+                    <img src='../images/Bonus/4.png' width='53' />
                     <span id="Compteloot" style="position: relative; left:12px;"></span>
                 </div>                 
                 <script>
@@ -217,7 +219,7 @@
 
             {% if date(objAccount.getGoldExpire()) > date() %}
                 <div class="col-lg-4" style="margin-top: 10px;">
-                    <img src='../images/Bonus/1.png' width='63' />
+                    <img src='../images/Bonus/1.png' width='53' />
                     <span id="Comptegold" style="position: relative; left:12px;"></span>
                 </div>
                 <script>
@@ -229,7 +231,7 @@
 
             {% if date(objAccount.getSilverExpire()) > date() %}
                 <div class="col-lg-4" style="margin-top: 10px;">
-                    <img src='../images/Bonus/2.png' width='63' />
+                    <img src='../images/Bonus/2.png' width='53' />
                     <span id="Comptesilver" style="position: relative; left:12px;"></span>
                 </div>                
                 <script>
@@ -241,7 +243,7 @@
 
             {% if date(objAccount.getMarriageFastExpire()) > date() %}
                 <div class="col-lg-4" style="margin-top: 10px;">
-                    <img src='../images/Bonus/6.png' width='63' />
+                    <img src='../images/Bonus/6.png' width='53' />
                     <span id="Comptelove" style="position: relative; left:12px;"></span>
                 </div>                 
                 <script>
@@ -253,7 +255,7 @@
 
             {% if date(objAccount.getSafeboxExpire()) > date() %}
                 <div class="col-lg-4" style="margin-top: 10px;">
-                    <img src='../images/Bonus/3.png' width='63' />
+                    <img src='../images/Bonus/3.png' width='53' />
                     <span id="Comptesafebox" style="position: relative; left:12px;"></span>
                 </div>                 
                 <script>
@@ -265,7 +267,7 @@
 
             {% if date(objAccount.getMoneyDropRateExpire()) > date() %}
                 <div class="col-lg-4" style="margin-top: 10px;">
-                    <img src='../images/Bonus/7.png' width='63' />
+                    <img src='../images/Bonus/7.png' width='53' />
                     <span id="Comptemonnaie" style="position: relative; left:12px;"></span>
                 </div>                 
                 <script>
@@ -277,7 +279,7 @@
 
             {% if date(objAccount.getFishMindExpire()) > date() %}
                 <div class="col-lg-4" style="margin-top: 10px;">
-                    <img src='../images/Bonus/5.png' width='63' />
+                    <img src='../images/Bonus/5.png' width='53' />
                     <span id="Comptepeche" style="position: relative; left:12px;"></span>
                 </div>                 
                 <script>
