@@ -163,9 +163,9 @@
                     <td>Célibataire</td>
                 {% else %}
                     {% if objMarriage.job == "1" or objMarriage.job == "3" or objMarriage.job == "4" or objMarriage.job == "6" %}   
-                        <td>Mariée à {{ objMarriage.name }}</td>
-                    {% else %}
                         <td>Marié à {{ objMarriage.name }}</td>
+                    {% else %}
+                        <td>Mariée à {{ objMarriage.name }}</td>
                     {% endif %}
                 {% endif %}
             </tr>
