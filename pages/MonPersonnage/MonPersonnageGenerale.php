@@ -20,7 +20,8 @@ class MonPersonnageGenerale extends \PageHelper {
         $isConnected = \Player\PlayerHelper::isConnected($objPlayer, 30);
         $haveGuild = \Player\PlayerHelper::haveGuild($objPlayer->getId());
         $localisation = json_decode(\Localisation::localize(0, $objPlayer, $isConnected));
-        
+        $objMarriage = \Player\PlayerHelper::getMarriageRepository()->findMariageByIdPlayer($objPlayer->getId());
+
         $this->arrayTemplate["objPlayer"] = $objPlayer;
         $this->arrayTemplate["objPlayerIndex"] = $objPlayerIndex;
         $this->arrayTemplate["localisation"] = $localisation;
@@ -28,6 +29,7 @@ class MonPersonnageGenerale extends \PageHelper {
         $this->arrayTemplate["calculateGrade"] = $calculateGrade;
         $this->arrayTemplate["objAccount"] = $this->objAccount;
         $this->arrayTemplate["haveGuild"] = $haveGuild;
+        $this->arrayTemplate["objMarriage"] = $objMarriage;
 
         $view = $this->template->render($this->arrayTemplate);
         $this->response->setContent($view);

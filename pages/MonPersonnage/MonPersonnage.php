@@ -27,6 +27,7 @@ class MonPersonnage extends \PageHelper {
         $calculateGrade = \Player\PlayerHelper::calculateGrade($objPlayer->getAlignment());
         $haveGuild = \Player\PlayerHelper::haveGuild($objPlayer->getId());
         $isConnected = \Player\PlayerHelper::isConnected($objPlayer, 30);
+        $objMarriage = \Player\PlayerHelper::getMarriageRepository()->findMariageByIdPlayer($objPlayer->getId());
 
         $localisation = json_decode(\Localisation::localize(0, $objPlayer, $isConnected));
 
@@ -38,6 +39,7 @@ class MonPersonnage extends \PageHelper {
             "isConnected" => $isConnected,
             "calculateGrade" => $calculateGrade,
             "haveGuild" => $haveGuild,
+            "objMarriage" => $objMarriage,
         ]);
 
         $this->arrayTemplate["viewGenerale"] = $viewGenerale;

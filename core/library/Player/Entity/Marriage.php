@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Marriage
  *
  * @ORM\Table(name="player.marriage")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Player\Repository\MarriageRepository")
  */
 class Marriage
 {

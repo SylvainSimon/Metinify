@@ -78,6 +78,13 @@ class PlayerHelper {
     }
 
     /**
+     * @return \Player\Repository\MarriageRepository
+     */
+    public static function getMarriageRepository() {
+        return DoctrineHelper::getRepository('\Player\Entity\Marriage');
+    }
+
+    /**
      * @return \Player\Repository\PlayerRepository
      */
     public static function getPlayerRepository() {
