@@ -23,7 +23,7 @@ class ajaxSaleAdd extends \ScriptHelper {
 
             $objPlayer = parent::VerifMonJoueur($playerId);
 
-            if (!\Player\PlayerHelper::haveGuild($objPlayer->getId())) {
+            if (\Player\PlayerHelper::haveGuild($objPlayer->getId()) === false) {
 
                 $objPlayerIndex = \Player\PlayerHelper::getPlayerIndexRepository()->find($this->objAccount->getId());
 

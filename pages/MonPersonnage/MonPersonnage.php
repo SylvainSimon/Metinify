@@ -7,110 +7,45 @@ require __DIR__ . '../../../core/initialize.php';
 class MonPersonnage extends \PageHelper {
 
     public $isProtected = true;
-    
+    public $strTemplate = "MonPersonnage.html5.twig";
+
     public function __construct() {
         parent::__construct();
 
         global $request;
         parent::VerifMonJoueur($request->query->get("id"));
     }
-    
+
     public function run() {
 
         global $request;
-        
-        include __DIR__ . '../../../pages/Tableaux_Arrays.php';
         $idPlayer = $request->query->get("id");
 
-        /* ------------------------------ Vérification connecte ---------------------------------------------- */
-        $Verification_Connecte = "SELECT id FROM player.player
-                          WHERE player.id = ?
-                          AND player.last_play >= (NOW() - INTERVAL 30 MINUTE)
-                          LIMIT 1";
-        $Parametres_Verification_Connecte = $this->objConnection->prepare($Verification_Connecte);
-        /* -------------------------------------------------------------------------------------------------- */
+        $templateGenerale = $this->objTwig->loadTemplate("MonPersonnageGenerale.html5.twig");
+        $objPlayer = \Player\PlayerHelper::getPlayerRepository()->find($idPlayer);
+        $objPlayerIndex = \Player\PlayerHelper::getPlayerIndexRepository()->find($objPlayer->getId());
+        $calculateGrade = \Player\PlayerHelper::calculateGrade($objPlayer->getAlignment());
+        $haveGuild = \Player\PlayerHelper::haveGuild($objPlayer->getId());
+        $isConnected = \Player\PlayerHelper::isConnected($objPlayer, 30);
 
-        /* --------------------------- Appel Joueur Page ---------------------------- */
-        $Appel_Joueur_Page = "SELECT player.id AS player_id,
-                             player.ip AS player_ip,
-                             player.name,
-                             player.exp,
-                             player.level,
-                             player.job,
-                             player.playtime,
-                             player.last_play,
-                             player.gold,
-                             player.alignment,
-                             player.map_index,
-                             player.exit_map_index,
-                             player.horse_stamina,
-                             player.horse_hp,
-                             player.horse_level,
-                             player.horse_riding,
-                             player.horse_hp_droptime,
-                             player.horse_skill_point,
-                             player.stat_point,
-                             player.st AS player_STR,
-                             player.ht AS player_VIT,
-                             player.dx AS player_DEX,
-                             player.iq AS player_INT,
-                             account.login AS account_login,
-                             account.id AS account_id,
-                             account.status AS account_status,
-                             player_index.empire,
-                             guild.name AS guild_name
-                        
-                        FROM player.player
-                        LEFT JOIN account.account
-                        ON account.id = player.account_id
-                        LEFT JOIN player.player_index
-                        ON account.id = player_index.id
-                        LEFT JOIN player.guild_member
-                        ON player.id = guild_member.pid
-                        LEFT JOIN player.guild
-                        ON guild_member.guild_id = guild.id
-                        WHERE player.id = '" . $idPlayer . "'
-                        LIMIT 1";
+        $localisation = json_decode(\Localisation::localize(0, $objPlayer, $isConnected));
 
-        $Parametres_Appel_Joueur_Page = $this->objConnection->query($Appel_Joueur_Page);
-        $Parametres_Appel_Joueur_Page->setFetchMode(\PDO::FETCH_OBJ);
-        /* --------------------------------------------------------------------------- */
+        $viewGenerale = $templateGenerale->render([
+            "objAccount" => $this->objAccount,
+            "objPlayer" => $objPlayer,
+            "objPlayerIndex" => $objPlayerIndex,
+            "localisation" => $localisation,
+            "isConnected" => $isConnected,
+            "calculateGrade" => $calculateGrade,
+            "haveGuild" => $haveGuild,
+        ]);
 
-        $Donnees_Appel_Joueurs_Page = $Parametres_Appel_Joueur_Page->fetch();
-        ?>
+        $this->arrayTemplate["viewGenerale"] = $viewGenerale;
+        $this->arrayTemplate["idPlayer"] = $idPlayer;
 
-        <div class="box box-default flat">
-
-            <div class="box-header">
-                <h3 class="box-title">Mon personnage</h3>
-            </div>
-
-            <div class="box-body no-padding">
-
-                <div class="nav-tabs-custom">
-                    <ul class="nav nav-tabs">
-
-                        <li class="active"><a href="#Onglet_InformationGeneral" data-toggle="tab" aria-expanded="true">Générales</a></li>
-                        <li class=""><a href="#Onglet_Equipement" data-toggle="tab" aria-expanded="false">Équipement</a></li>
-                        <li class=""><a href="#Onglet_Inventaire" data-toggle="tab" aria-expanded="false">Inventaire</a></li>
-                        <li class=""><a href="#Onglet_Equitation" data-toggle="tab" aria-expanded="false">Cheval</a></li>
-                        <li class=""><a href="#Onglet_Amis" data-toggle="tab" aria-expanded="false">Amis</a></li>
-                    </ul>
-                    <div class="tab-content">
-
-                        <?php include '../../pages/MonPersonnage/includes/OngletInformationsGeneral.php'; ?>
-                        <?php include '../../pages/MonPersonnage/includes/OngletEquipement.php'; ?>
-                        <?php include '../../pages/MonPersonnage/includes/OngletInventaire.php'; ?>
-                        <?php include '../../pages/MonPersonnage/includes/OngletEquitation.php'; ?>
-                        <?php include '../../pages/MonPersonnage/includes/OngletAmis.php'; ?>
-
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <?php
+        $view = $this->template->render($this->arrayTemplate);
+        $this->response->setContent($view);
+        $this->response->send();
     }
 
 }

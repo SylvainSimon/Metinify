@@ -66,7 +66,8 @@ class ServicesHelper {
                 BASE_ROOT . '/pages/Marche/templates/emails',
                 BASE_ROOT . '/pages/MonCompte/templates/modules',
                 BASE_ROOT . '/pages/MonCompte/templates/emails',
-                BASE_ROOT . '/pages/MonPersonnage/templates/',
+                BASE_ROOT . '/pages/MonPersonnage/templates/modules',
+                BASE_ROOT . '/pages/MonPersonnage/templates/emails',
                 BASE_ROOT . '/pages/Statistiques/templates/modules',
                 BASE_ROOT . '/pages/Votes/templates/',
                 BASE_ROOT . '/pages/_LegacyPages/templates/',
@@ -97,6 +98,7 @@ class ServicesHelper {
 
             $twig->addGlobal('bonusItem', $Bonus_Item);
             $twig->addGlobal('pierreItem', $Pierre_Item);
+            $twig->addGlobal('tabGrade', $Array_Grades);
             $twig->addGlobal('session', $container['session']);
             $twig->addGlobal('request', $container['request']);
             $twig->addGlobal('config', $container['config']);

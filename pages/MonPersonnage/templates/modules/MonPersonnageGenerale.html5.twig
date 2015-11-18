@@ -1,0 +1,385 @@
+<div class="row">
+
+    <div class="col-lg-3">
+
+        <div style="padding-top: 5px; text-align: center; padding-bottom: 20px;">
+            {% if objPlayer.getJob == "0" %}
+                <img class="Position_Icone_Article_Personnage" src="../images/races/Guerrier_Homme.png" height="350" />
+            {% elseif objPlayer.getJob == "1" %}
+                <img class="Position_Icone_Article_Personnage" src="../images/races/Ninja_Femme.png" height="350" />
+            {% elseif objPlayer.getJob == "2" %}
+                <img class="Position_Icone_Article_Personnage" src="../images/races/Sura_Homme.png" height="350" />
+            {% elseif objPlayer.getJob == "3" %}
+                <img class="Position_Icone_Article_Personnage" src="../images/races/Chaman_Femme.png" height="350" />
+            {% elseif objPlayer.getJob == "4" %}
+                <img class="Position_Icone_Article_Personnage" src="../images/races/Guerrier_Femme.png" height="350" />
+            {% elseif objPlayer.getJob == "5" %}
+                <img class="Position_Icone_Article_Personnage" src="../images/races/Ninja_Homme.png" height="350" />
+            {% elseif objPlayer.getJob == "6" %}
+                <img class="Position_Icone_Article_Personnage" src="../images/races/Sura_Femme.png" height="350" />
+            {% elseif objPlayer.getJob == "7" %}
+                <img class="Position_Icone_Article_Personnage" src="../images/races/Chaman_Homme.png" height="350" />
+            {% endif %}
+        </div>
+
+    </div>
+
+    <div class="col-lg-5">
+        <table class="table table-condensed" style="border-collapse: collapse;">
+            <tr>
+                <td style="border-top: 0px;" class="Colonne_Gauche">
+                    <span>Personnage :</span>
+                </td>
+                <td style="border-top: 0px;">
+                    {{ objPlayer.getName }}
+                </td>
+            </tr>
+            <tr>
+                <td class="Colonne_Gauche">
+                    <span>Level :</span>
+                </td>
+                <td>{{ objPlayer.getLevel }}</td>
+            </tr>
+            <tr>
+                <td class="Colonne_Gauche">Expérience</td>
+                <td>{{ objPlayer.getExp }}</td>
+            </tr>
+            <tr>
+                <td class="Colonne_Gauche">
+                    <span>Yangs :</span>
+                </td>
+                <td>{{ objPlayer.getGold }}</td>
+            </tr>
+            <tr>
+                <td class="Colonne_Gauche">
+                    <span>Temp de jeu :</span>
+                </td>
+                <td>{{ getMinutesToString(objPlayer.getPlaytime) }}</td>
+            </tr>
+            <tr>
+                <td class="Colonne_Gauche">
+                    <span>Grade :</span>
+                </td>
+                {% if calculateGrade < 0 %}
+                    <td>
+                        <span class="text-red">{{ tabGrade[calculateGrade] }}</span>
+                    </td>
+                {% else %}
+                    <td>
+                        <span class="text-blue">{{ tabGrade[calculateGrade] }}</span>
+                    </td>
+                {% endif %}
+            </tr>
+
+            <tr>
+                <td class="Colonne_Gauche">Dernière connexion :</td>
+                <td><span style="font-size: 12px; font-weight: bold;">{{ getFormatedDateTime(objPlayer.getLastPlay) }}</span></td>
+            </tr>
+
+            <tr>
+                <td class="Colonne_Gauche">
+                    {% if isConnected %}
+                        <span>Map :</span>
+                    {% else %}
+                        <span>Map de sortie :</span>
+                    {% endif %}
+                </td>
+                <td>{{ localisation.map }}</td>
+            </tr>
+            <tr>
+                <td class="Colonne_Gauche">
+                    <span>Position :</span>
+                </td>
+                <td>{{ localisation.positionX }} - {{ localisation.positionY }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="col-lg-4">
+
+        <table class="table table-condensed" style="border-collapse: collapse;">
+            <tr>
+                <td style="border-top: 0px;">Compte</td>
+                <td style="border-top: 0px;">
+                    <a title="Aller sur la page du compte" href="javascript:void(0)" onclick="Ajax('pages/MonCompte/modules/MonCompte.php')">
+                        {{ objAccount.getLogin }}
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Empire</td>
+                <td style="line-height: 10px;">
+                    {% if objPlayerIndex.empire == 1 %}
+                        <i data-tooltip="Empire Shinsoo" data-tooltip-position="left" class="text-red material-icons md-icon-map md-20"></i>
+                    {% elseif objPlayerIndex.empire == 2 %}
+                        <i data-tooltip="Empire Chunjo" data-tooltip-position="left" class="text-yellow material-icons md-icon-map md-20"></i>
+                    {% elseif objPlayerIndex.empire == 3 %}
+                        <i data-tooltip="Empire Jinno" data-tooltip-position="left" class="text-blue material-icons md-icon-map md-20"></i>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td style="line-height: 10px;">
+                    {% if objAccount.getStatus == "OK" %}
+                        <i data-tooltip="Compte actif" data-tooltip-position="left" class="text-green material-icons md-icon-done md-20"></i>
+                    {% elseif objAccount.getStatus == "BLOCK" %}
+                        <i data-tooltip="Compte banni" data-tooltip-position="left" class="text-red material-icons md-icon-close md-20"></i>
+                    {% else %}
+                        <i data-tooltip="Etat inconnu" data-tooltip-position="left" class="material-icons md-icon-help md-20"></i>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>IP</td></td>
+                <td>{{ objPlayer.getIp }}</td>
+            </tr>
+        </table>
+
+        <table class="table table-condensed" style="border-collapse: collapse;">
+            <tr>
+                <td>Guilde</td>
+                {% if haveGuild == false %}
+                    <td>
+                        Pas de guilde
+                    </td>
+                {% else %}
+                    <td>
+                        {{ haveGuild.name }}
+                        <div class="pull-right" style="line-height: 10px;">
+                            {% if haveGuild.isMaster %}
+                                <img src="../images/icones/couronne.png" title="Chef de la Guilde"/>
+                            {% else %}
+                                <img src="../images/icones/membre.png" title="Membre" />
+                            {% endif %}
+                        </div>
+                    </td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td>Conjoint</td>
+                <?php
+                /* ----------------------------------------------- Conjoint -------------------------------------------- */
+                $Appel_Joueur_Conjoint = "SELECT player.name,
+                player.id
+                FROM player.marriage
+                LEFT JOIN player.player
+                ON (player.id = marriage.pid1)
+                WHERE (marriage.pid1 = '" . $Donnees_Appel_Joueurs_Page->player_id . "'
+                OR marriage.pid2 = '" . $Donnees_Appel_Joueurs_Page->player_id . "')";
+
+                $Parametres_Appel_Joueur_Conjoint = $this->objConnection->query($Appel_Joueur_Conjoint);
+                $Parametres_Appel_Joueur_Conjoint->setFetchMode(\PDO::FETCH_OBJ);
+                /* ----------------------------------------------------------------------------------------------------- */
+
+                $Resultat_Verification_Conjoint = $Parametres_Appel_Joueur_Conjoint->fetch();
+                ?>
+
+                <?php if (@$Resultat_Verification_Conjoint->name == $Donnees_Appel_Joueurs_Page->name) { ?>
+
+                <?php
+                /* ----------------------------------------------- Conjoint -------------------------------------------- */
+                $Appel_Joueur_Conjoint = "SELECT player.name,
+                player.id
+                FROM player.marriage
+                LEFT JOIN player.player
+                ON (player.id = marriage.pid2)
+                WHERE (marriage.pid1 = '" . $Donnees_Appel_Joueurs_Page->player_id . "'
+                OR marriage.pid2 = '" . $Donnees_Appel_Joueurs_Page->player_id . "')";
+
+                $Parametres_Appel_Joueur_Conjoint = $this->objConnection->query($Appel_Joueur_Conjoint);
+                $Parametres_Appel_Joueur_Conjoint->setFetchMode(\PDO::FETCH_OBJ);
+                /* ----------------------------------------------------------------------------------------------------- */
+
+                $Resultat_Verification_Conjoint = $Parametres_Appel_Joueur_Conjoint->fetch();
+                ?>
+                <?php } ?>
+
+                <?php if ($Resultat_Verification_Conjoint == "") { ?>
+                <td>Célibataire</td>
+                <?php } else { ?>
+                <?php
+                if (($Donnees_Appel_Joueurs_Page->job == "1") ||
+                ($Donnees_Appel_Joueurs_Page->job == "3") ||
+                ($Donnees_Appel_Joueurs_Page->job == "4") ||
+                ($Donnees_Appel_Joueurs_Page->job == "6")) {
+                ?>
+                <td><?php echo "Mariée à" . $Resultat_Verification_Conjoint->name ?></td>
+                <?php } else { ?>
+                <td><?php echo "Marié à " . $Resultat_Verification_Conjoint->name ?></td>
+                <?php } ?>
+                <?php } ?>
+            </tr>
+
+        </table>
+
+
+        <table class="table table-condensed" style="border-collapse: collapse;">
+            <tr>
+                <td style="border-top: 0px;">Points de stats</td></td>
+                <td style="border-top: 0px;">{{ objPlayer.getStatPoint }}</td>
+            </tr>
+            <tr>
+                <td>Vitalité</td></td>
+                <td>{{ objPlayer.getHt }}</td>
+            </tr>
+            <tr>
+                <td>Intelligence</td></td>
+                <td>{{ objPlayer.getIq }}</td>
+            </tr>
+            <tr>
+                <td>Force</td></td>
+                <td>{{ objPlayer.getSt }}</td>
+            </tr>
+            <tr>
+                <td>Dextérité</td></td>
+                <td>{{ objPlayer.getDx }}</td>
+            </tr>
+
+        </table>
+    </div>
+
+
+    <div id="dialog_Confirmation_Deblocage_Yangs" title="Confirmer la réinitialisation">Pensez à déconnecter votre personnage et patientez 10 minutes.</div>
+    <input style="display: none;" id="Id_Tempo_Deblocage_Yangs" value="" />
+
+    <div id="dialog_Confirmation_Deblocage_Perso" title="Confirmer le déblocage">Pensez à déconnecter votre personnage et patientez 10 minutes.</div>
+    <input style="display: none;" id="Id_Tempo_Deblocage_Perso" value="" />
+
+</div>
+
+<div class="row">
+    <div class="col-lg-12" style="padding-bottom: 10px; padding-left: 25px;">
+
+        <button type="button" data-tooltip="Ramène le joueur sur sa map originel" class="btn btn-flat btn-warning" onclick="Ouverture_Dialogue_Deblocage_Perso( < ?php echo $Donnees_Appel_Joueurs_Page - > player_id; ? > );">
+            Débloquer
+        </button>
+
+        <?php if ($Donnees_Appel_Joueurs_Page->gold < 0) { ?>
+        <button type="button" data-tooltip="Ramène les yangs bloqués à 1 500 000" class="btn btn-flat btn-warning" onclick="Ouverture_Dialogue_Deblocage_Yangs( < ?php echo $Donnees_Appel_Joueurs_Page - > player_id; ? > );">
+            Réinitialiser mes yangs
+        </button>
+        <?php } ?>
+
+        <button type="button" data-tooltip="Renommer le joueur" class="btn btn-flat btn-primary" onclick="Ajax('pages/MonPersonnage/PersonnageRenameForm.php?id_perso=<?php echo $Donnees_Appel_Joueurs_Page->player_id; ?>');">
+            Renommer
+        </button>
+
+        <button type="button" data-tooltip="Supprimer le joueur" class="btn btn-flat btn-danger" onclick="Ajax('pages/MonPersonnage/PersonnageDeleteForm.php?id_perso=<?php echo $Donnees_Appel_Joueurs_Page->player_id; ?>');">
+            Supprimer
+        </button>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+            function Compte_A_Rebour() {
+
+            }
+
+    $(function () {
+    $("#dialog_Confirmation_Deblocage_Perso").dialog({
+    resizable: false,
+            autoOpen: false,
+            modal: true,
+            buttons: {
+            "Je confirme": function () {
+            $(this).dialog("close");
+                    Deblocage_Personnage();
+            },
+                    "Annuler": function () {
+                    $(this).dialog("close");
+                            window.parent.Barre_De_Statut("Déblocage annulé.");
+                            window.parent.Icone_Chargement(0);
+                    }
+            }
+    });
+    });
+            $(function () {
+            $("#dialog_Confirmation_Deblocage_Yangs").dialog({
+            resizable: false,
+                    autoOpen: false,
+                    modal: true,
+                    buttons: {
+                    "Je confirme": function () {
+                    $(this).dialog("close");
+                            Deblocage_Yangs();
+                    },
+                            "Annuler": function () {
+                            $(this).dialog("close");
+                                    window.parent.Barre_De_Statut("Déblocage annulé.");
+                                    window.parent.Icone_Chargement(0);
+                            }
+                    }
+            });
+            });
+            function Ouverture_Dialogue_Deblocage_Perso(id_perso) {
+
+            window.parent.Barre_De_Statut("En attente de la confirmation...");
+                    window.parent.Icone_Chargement(1);
+                    $("#Id_Tempo_Deblocage_Perso").val(id_perso);
+                    $("#dialog_Confirmation_Deblocage_Perso").dialog("open");
+            }
+
+    function Ouverture_Dialogue_Deblocage_Yangs(id_perso) {
+
+    window.parent.Barre_De_Statut("En attente de la confirmation...");
+            window.parent.Icone_Chargement(1);
+            $("#Id_Tempo_Deblocage_Yangs").val(id_perso);
+            $("#dialog_Confirmation_Deblocage_Yangs").dialog("open");
+    }
+
+    function Deblocage_Yangs() {
+
+    window.parent.Barre_De_Statut("Réinitialisation des yangs en cours...");
+            window.parent.Icone_Chargement(1);
+            $.ajax({
+            type: "POST",
+                    url: "pages/MonPersonnage/ajax/ajaxRepaireYang.php",
+                    data: "id_perso=" + $("#Id_Tempo_Deblocage_Yangs").val(),
+                    success: function (msg) {
+
+                    if (msg == "NOT_YOU") {
+                    window.parent.Barre_De_Statut("Ce perssonage ne vous appartient pas.");
+                            window.parent.Icone_Chargement(2);
+                    } else if (msg == "YANGS") {
+                    window.parent.Barre_De_Statut("Ce personnage n'as pas de problème de yangs.");
+                            window.parent.Icone_Chargement(2);
+                    } else {
+
+                    window.parent.Barre_De_Statut("Yangs réinitialisé.");
+                            window.parent.Icone_Chargement(0);
+                    }
+
+                    }
+            });
+    }
+
+    function Deblocage_Personnage() {
+
+    window.parent.Barre_De_Statut("Réinitialisation des coordonées du personnage...");
+            window.parent.Icone_Chargement(1);
+            $.ajax({
+            type: "POST",
+                    url: "pages/MonPersonnage/ajax/ajaxRepairePosition.php",
+                    data: "id_perso=" + $("#Id_Tempo_Deblocage_Perso").val(),
+                    success: function (msg) {
+
+                    if (msg == "NOT_EMPIRE") {
+
+                    window.parent.Barre_De_Statut("Ce personnage n'as pas d'empire.");
+                            window.parent.Icone_Chargement(2);
+                    } else if (msg == "NOT_YOU") {
+
+                    window.parent.Barre_De_Statut("Ce personnage ne vous appartient pas.");
+                            window.parent.Icone_Chargement(2);
+                    } else {
+
+                    window.parent.Barre_De_Statut("Coordonées réinitialisé.");
+                            window.parent.Icone_Chargement(0);
+                    }
+
+                    }
+            });
+    }
+</script>
