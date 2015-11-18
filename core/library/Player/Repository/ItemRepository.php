@@ -6,10 +6,10 @@ use \Shared\EntityRepository;
 
 class ItemRepository extends EntityRepository {
 
-    public function findByPosIntervalAndOwnerId($posStart = 0, $posMax = 0, $ownerId = 0, $window = "") {
+    public function findByPosIntervalAndOwnerId($posStart = 0, $posMax = 0, $ownerId = 0, $window = "", $single = false) {
 
         $qb = $this->_em->createQueryBuilder();
-        
+
         $qb->select(""
                 . "ItemEntity.count,"
                 . "ItemEntity.id,"
@@ -51,19 +51,28 @@ class ItemRepository extends EntityRepository {
         $qb->leftJoin("\Site\Entity\ItemList", "ItemListEntity", "WITH", "ItemListEntity.item = ItemEntity.vnum");
 
         $qb->where("ItemEntity.ownerId = :ownerId");
-        $qb->andWhere("ItemEntity.pos >= :posStart");
-        $qb->andWhere("ItemEntity.pos < :posMax");
+        if ($single) {
+            $qb->andWhere("ItemEntity.pos = :posStart");
+            $qb->setParameter("posStart", $posStart);
+        } else {
+            $qb->andWhere("ItemEntity.pos >= :posStart");
+            $qb->andWhere("ItemEntity.pos < :posMax");
+            $qb->setParameter("posStart", $posStart);
+            $qb->setParameter("posMax", $posMax);
+        }
+        
         $qb->andWhere("ItemEntity.window = :window");
 
         $qb->setParameter("ownerId", $ownerId);
-        $qb->setParameter("posStart", $posStart);
-        $qb->setParameter("posMax", $posMax);
         $qb->setParameter("window", $window);
-        
         $qb->orderBy("ItemEntity.pos", "ASC");
 
         try {
-            return $qb->getQuery()->getResult();
+            if ($single) {
+                return $qb->getQuery()->getSingleResult();
+            } else {
+                return $qb->getQuery()->getResult();
+            }
         } catch (\Doctrine\ORM\NoResultException $e) {
             return null;
         }
