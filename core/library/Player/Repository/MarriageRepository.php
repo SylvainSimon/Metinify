@@ -21,8 +21,22 @@ class MarriageRepository extends EntityRepository {
         $qb->setParameter("idPlayer", $idPlayer);
         $qb->setMaxResults(1);
 
-        try {  
+        try {
             return $qb->getQuery()->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+
+    public function deleteByIdPlayer($idPlayer = 0) {
+
+        $qb = $this->_em->createQueryBuilder();
+        $qb->delete("\Player\Entity\Marriage", "MarriageEntity");
+        $qb->where("MarriageEntity.pid1 = :idPlayer OR MarriageEntity.pid2 = :idPlayer");
+        $qb->setParameter("idPlayer", $idPlayer);
+
+        try {
+            return $qb->getQuery()->execute();
         } catch (\Doctrine\ORM\NoResultException $e) {
             return null;
         }

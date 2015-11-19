@@ -38,5 +38,20 @@ class MessengerListRepository extends EntityRepository {
             return null;
         }
     }
+    
+
+    public function deleteByNamePlayer($namePlayer = "") {
+
+        $qb = $this->_em->createQueryBuilder();
+        $qb->delete("\Player\Entity\MessengerList", "MessengerListEntity");
+        $qb->where("MessengerListEntity.account = :namePlayer OR MessengerListEntity.companion = :namePlayer");
+        $qb->setParameter("namePlayer", $namePlayer);
+
+        try {
+            return $qb->getQuery()->execute();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
 
 }

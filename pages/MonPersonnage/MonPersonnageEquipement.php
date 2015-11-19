@@ -13,7 +13,6 @@ class MonPersonnageEquipement extends \PageHelper {
 
         global $request;
         $idPlayer = $request->query->get("id");
-        $objPlayer = \Player\PlayerHelper::getPlayerRepository()->find($idPlayer);
         
         $objItemArme = \Player\PlayerHelper::getItemRepository()->findByPosIntervalAndOwnerId(4, 4, $idPlayer, "EQUIPMENT", true);
         $objItemArmure = \Player\PlayerHelper::getItemRepository()->findByPosIntervalAndOwnerId(0, 0, $idPlayer, "EQUIPMENT", true);

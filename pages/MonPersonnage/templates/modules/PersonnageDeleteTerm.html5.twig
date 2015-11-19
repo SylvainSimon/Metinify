@@ -1,0 +1,48 @@
+{% if result == "Oui" %}
+    <div class="box box-default flat">
+
+        <div class="box-header">
+            <h3 class="box-title">Suppression réussie</h3>
+        </div>
+
+        <div class="box-body">
+            Votre personnage a été complètement effacé de nos serveurs.
+            <br/><br/>
+
+            Tous les items, les amis et autres données ont été supprimées également.
+            <br/><br/>
+
+            Si vous pensez qu'il s'agit d'une erreur, nous vous prions de contacter la messagerie 
+            support de VamosMt2.
+
+        </div>
+
+        <div class="box-footer">
+            <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/_LegacyPages/News.php');" />
+        </div>
+
+    </div>
+
+{% else %}
+    <div class="box box-default flat">
+
+        <div class="box-header">
+            <h3 class="box-title">Suppression annulée</h3>
+        </div>
+
+        <div class="box-body">
+            La suppression du personnage a été annulé.<br/><br/>
+
+            Nous avons détecté que votre demande n'avez pas suivie les procédures réglementaires.<br/>
+            Pour essayer de nouveau, il faut reprendre la procédure depuis le début.<br/><br/>
+
+            Si vous pensez qu'il s'agit d'une erreur, nous vous prions de contacter la messagerie 
+            support de VamosMt2.
+        </div>
+
+        <div class="box-footer">
+            <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/_LegacyPages/News.php');" />
+        </div>
+
+    </div>
+{% endif %}

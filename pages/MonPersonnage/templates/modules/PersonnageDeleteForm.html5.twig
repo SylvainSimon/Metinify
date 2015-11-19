@@ -1,0 +1,62 @@
+<div class="box box-default flat">
+
+    <div class="box-header">
+        <h3 class="box-title">Suppression du personnage {{ objPlayer.getName }}</h3>
+    </div>
+
+    <div class="box-body">
+        Grâçe à cette fonction, vous allez pouvoir supprimer votre personnage <span class="text-yellow">{{ objPlayer.getName }}</span>.
+        <br/><br/>
+
+        Pour effectuer cette action, <span class="text-yellow">ne vous demandons de bien vouloir quitter votre guilde actuel</span> si vous en avez une,
+        ou de passer le pouvoir à un tiers membre si vous en êtes le chef.
+        <br/><br/>
+
+        Nous allons vous envoyer un e-mail pour prouver votre identité, il contiendra un code confidentiel unique.
+    </div>
+
+    <div class="box-footer">
+        <div class="pull-left">
+            <input type="button" class="btn btn-danger btn-flat" value="Annuler" onclick="Ajax('pages/_LegacyPages/News.php');" />
+        </div>
+
+        <div class="pull-right">
+            <input type="button" class="btn btn-success btn-flat" value="Envoyer" onclick="Envoie_Mail_Supprimer_Perso();" />
+        </div>        
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    function Envoie_Mail_Supprimer_Perso() {
+
+        Barre_De_Statut("Traitement de la demande...");
+        Icone_Chargement(1);
+
+        $.ajax({
+            type: "POST",
+            url: "pages/MonPersonnage/ajax/ajaxPersonnageDeleteSendEmail.php",
+            data: "id_personnage={{ objPlayer.getId }}",
+            success: function (msg) {
+
+                var json = JSON.parse(msg);
+
+                if (json.result) {
+
+                    Barre_De_Statut("Le mail a été envoyé avec succès.");
+                    Icone_Chargement(0);
+
+                    Ajax('pages/MonPersonnage/PersonnageDeleteVerify.php?id_personnage={{ objPlayer.getId }}');
+
+                } else {
+                    popBootbox(json.reasons);
+                    Barre_De_Statut(json.reasons);
+                    Icone_Chargement(2);
+                }
+            }
+        });
+        return false;
+    }
+
+</script>

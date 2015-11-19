@@ -97,5 +97,22 @@ class ItemRepository extends EntityRepository {
             return 0;
         }
     }
+    
+
+    public function deleteByOwnerId($ownerId = 0, $window = []) {
+
+        $qb = $this->_em->createQueryBuilder();
+        $qb->delete("\Player\Entity\Item", "ItemEntity");
+        $qb->where("ItemEntity.pid1 = :ownerId");
+        $qb->andWhere("ItemEntity.window IN(:window)");
+        $qb->setParameter("ownerId", $ownerId);
+        $qb->setParameter("window", $window);
+
+        try {
+            return $qb->getQuery()->execute();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
 
 }

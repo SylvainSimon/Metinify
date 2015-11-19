@@ -13,7 +13,7 @@ class ajaxPersonnageDeleteSendEmail extends \ScriptHelper {
         global $request;
         $em = \Shared\DoctrineHelper::getEntityManager();
 
-        $idCompte = $request->request->get("id_compte");
+        $idCompte = $this->objAccount->getId();
         $idPersonnage = $request->request->get("id_personnage");
         $objPlayer = \Player\PlayerHelper::getPlayerRepository()->find($idPersonnage);
 
@@ -47,11 +47,11 @@ class ajaxPersonnageDeleteSendEmail extends \ScriptHelper {
                 $em->flush();
 
                 $Tableau_Retour_Json = array(
-                    'result' => "WIN"
+                    'result' => true
                 );
             } else {
                 $Tableau_Retour_Json = array(
-                    'result' => "FAIL",
+                    'result' => false,
                     'reasons' => "Le compte n'existe pas."
                 );
             }
