@@ -46,19 +46,19 @@ class ajaxPersonnageRenameExecute extends \ScriptHelper {
                 $em->flush();
 
                 $Tableau_Retour_Json = array(
-                    'result' => "WIN",
+                    'result' => true,
                     'cash' => "1500",
                     'reasons' => "Personnage renommé avec succès."
                 );
             } else {
                 $Tableau_Retour_Json = array(
-                    'result' => "FAIL",
+                    'result' => false,
                     'reasons' => "Vous n'avez pas assez de VamoNaies."
                 );
             }
         } else {
             $Tableau_Retour_Json = array(
-                'result' => "FAIL",
+                'result' => false,
                 'reasons' => "Ce nom est déjà pris."
             );
         }

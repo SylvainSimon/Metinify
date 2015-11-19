@@ -133,7 +133,7 @@ class PersonnageRenameForm extends \PageHelper {
                                     try {
                                         Parse_Json = JSON.parse(msg);
 
-                                        if (Parse_Json.result == "WIN") {
+                                        if (Parse_Json.result) {
 
                                             Barre_De_Statut(Parse_Json.reasons);
                                             Icone_Chargement(0);
@@ -156,7 +156,7 @@ class PersonnageRenameForm extends \PageHelper {
 
                                             Ajax('pages/MonPersonnage/PersonnageRenameTerm.php');
 
-                                        } else if (Parse_Json.result == "FAIL") {
+                                        } else {
 
                                             Barre_De_Statut(Parse_Json.reasons);
                                             Icone_Chargement(2);

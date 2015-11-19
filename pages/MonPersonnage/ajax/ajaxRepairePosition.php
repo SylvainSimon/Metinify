@@ -7,89 +7,52 @@ require __DIR__ . '../../../../core/initialize.php';
 class ajaxRepairePosition extends \ScriptHelper {
 
     public $isProtected = true;
-    
+
     public function run() {
 
-        $Id_Personnage = $_POST["id_perso"];
-        $Ip = $_SERVER["REMOTE_ADDR"];
+        global $request;
+        $em = \Shared\DoctrineHelper::getEntityManager();
 
+        $idPlayer = $request->request->get("id_perso");
+        $objPlayer = \Player\PlayerHelper::getPlayerRepository()->findPlayerByIdPlayerAndIdAccount($idPlayer, $this->objAccount->getId());
+        $objPlayerIndex = \Player\PlayerHelper::getPlayerIndexRepository()->find($this->objAccount->getId());
 
-        /* ------------------------ Vérification Données ---------------------------- */
-        $Verification_Donnees = "SELECT player.name 
-                             FROM player.player
-                             WHERE id = ?
-                             AND account_id = ?
-                             LIMIT 1";
-        $Parametres_Verification_Donnees = $this->objConnection->prepare($Verification_Donnees);
-        $Parametres_Verification_Donnees->execute(array(
-            $Id_Personnage,
-            $this->objAccount->getId()));
-        $Parametres_Verification_Donnees->setFetchMode(\PDO::FETCH_OBJ);
-        $Nombre_De_Resultat = $Parametres_Verification_Donnees->rowCount();
-        /* -------------------------------------------------------------------------- */
+        if ($objPlayer !== null) {
 
-        if ($Nombre_De_Resultat != 0) {
+            if ($objPlayerIndex !== null) {
 
-            $Selection_Empire = "SELECT empire 
-                     FROM player.player_index 
-                     WHERE id = ? 
-                     LIMIT 1";
-            $Parametres_Selection_Empire = $this->objConnection->prepare($Selection_Empire);
-            $Parametres_Selection_Empire->execute(array(
-                $this->objAccount->getId()));
-            $Parametres_Selection_Empire->setFetchMode(\PDO::FETCH_OBJ);
-            $Nombre_De_Resultat_Selection_Empire = $Parametres_Selection_Empire->rowCount();
-
-            if ($Nombre_De_Resultat_Selection_Empire != 0) {
-
-                $Donnees_Selection_Empire = $Parametres_Selection_Empire->fetch();
-
-                if ($Donnees_Selection_Empire->empire == "1") {
+                if ($objPlayerIndex->getEmpire() == "1") {
                     $x = "488774";
                     $y = "955480";
                     $map = "1";
-                } elseif ($Donnees_Selection_Empire->empire == "2") {
+                } elseif ($objPlayerIndex->getEmpire() == "2") {
                     $x = "64305";
                     $y = "186753";
                     $map = "21";
-                } elseif ($Donnees_Selection_Empire->empire == "3") {
+                } elseif ($objPlayerIndex->getEmpire() == "3") {
                     $x = "963684";
                     $y = "285235";
                     $map = "41";
                 }
 
-                /* ----------------- Update Coordonées --------------------- */
-                $Update_Coordonees = "UPDATE player.player 
-                          SET map_index = ?, 
-                              x = ?,
-                              y = ?,
-                              exit_map_index = ?,
-                              exit_x = ?,
-                              exit_y = ?
-                          WHERE id = ?";
+                $objPlayer->setMapIndex($map);
+                $objPlayer->setX($x);
+                $objPlayer->setY($y);
+                $objPlayer->setExitMapIndex($map);
+                $objPlayer->setExitX($x);
+                $objPlayer->setExitY($y);
+                $em->persist($objPlayer);
+                
+                $objLogDeblocagePerso = new \Site\Entity\LogsDeblocagePersos();
+                $objLogDeblocagePerso->setIdPerso($objPlayer->getId());
+                $objLogDeblocagePerso->setIdCompte($this->objAccount->getId());
+                $objLogDeblocagePerso->setMapIndex($map);
+                $objLogDeblocagePerso->setDate(new \DateTime(date("Y-m-d H:i:s")));
+                $objLogDeblocagePerso->setIp($this->ipAdresse);
+                $em->persist($objLogDeblocagePerso);
+                
+                $em->flush();
 
-                $Parametres_Update_Coordonees = $this->objConnection->prepare($Update_Coordonees);
-                $Parametres_Update_Coordonees->execute(array(
-                    $map,
-                    $x,
-                    $y,
-                    $map,
-                    $x,
-                    $y,
-                    $Id_Personnage));
-                /* ----------------------------------------------------------- */
-
-                /* -------------------------------------------- Insertion logs ----------------- */
-                $Insertion_Logs = "INSERT INTO site.logs_deblocage_persos (id_perso, id_compte, map_index, date, ip) 
-                              VALUES (:id_perso, :id_compte, :map_index, NOW(), :ip)";
-
-                $Parametres_Insertion = $this->objConnection->prepare($Insertion_Logs);
-                $Parametres_Insertion->execute(array(
-                    ':id_perso' => $Id_Personnage,
-                    ':id_compte' => $this->objAccount->getId(),
-                    ':map_index' => $map,
-                    ':ip' => $Ip));
-                /* ----------------------------------------------------------------------------- */
             } else {
                 echo "NOT_EMPIRE";
             }
