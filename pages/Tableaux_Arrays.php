@@ -79,11 +79,6 @@ $Array_Poisson_Materiel = array(
     '240' => 'Canne +20/Petit Pois.'
 );
 
-$Array_Uppgrade = array(
-    'HYUNIRON' => 'Métal Magique',
-    'POWER' => 'Forgeron'
-);
-
 $Bonus_Item = array(
     '0' => '',
     '1' => 'Max PV',

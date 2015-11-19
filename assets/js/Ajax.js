@@ -21,7 +21,7 @@ function Ajax(url) {
         },
         error: function () {
 
-            Ajax('pages/Page_Introuvable.php');
+            Ajax('pages/_LegacyPages/Error404.php');
         }
     });
     return false;
