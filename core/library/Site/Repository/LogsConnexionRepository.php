@@ -31,6 +31,26 @@ class LogsConnexionRepository extends EntityRepository {
         return $dql;
     }
 
+    public function findByIdCompteAndCompte($idCompte = 0, $compte = "", $max = 20) {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("LogsConnexionEntity");
+        $qb->from("\Site\Entity\LogsConnexion", "LogsConnexionEntity");
+        $qb->where("LogsConnexionEntity.idCompte = :idCompte");
+        $qb->andWhere("LogsConnexionEntity.compte = :compte");
+        $qb->setParameter("idCompte", $idCompte);
+        $qb->setParameter("compte", $compte);
+
+        $qb->setMaxResults($max);
+
+        try {
+            return $qb->getQuery()->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+
     public function statConnexions($interval = 0, $result = "", $estUnique = false) {
 
         $qb = $this->_em->createQueryBuilder();
@@ -40,7 +60,7 @@ class LogsConnexionRepository extends EntityRepository {
         } else {
             $qb->select("COUNT(LogsConnexionEntity)");
         }
-        
+
         $qb->from("\Site\Entity\LogsConnexion", "LogsConnexionEntity");
         $qb->where("1 = 1");
 

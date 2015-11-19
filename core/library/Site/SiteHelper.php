@@ -42,6 +42,13 @@ class SiteHelper {
     }
     
     /**
+     * @return \Site\Repository\IpPaysFrRepository
+     */
+    public static function getIpPaysFrRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\IpPaysFr');
+    }
+    
+    /**
      * @return \Site\Repository\IpToCountryRepository
      */
     public static function getIpToCountryRepository() {

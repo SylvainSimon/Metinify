@@ -1,0 +1,55 @@
+<div class="box box-default flat">
+
+    <div class="box-header">
+        <h3 class="box-title">Historique de vos connexions</h3>
+
+    </div>
+
+    <div class="box-body no-padding">
+
+        <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;"> 
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Identifiant</th>
+                    <th style="text-align: right;">IP</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if arrObjLogsConnexion|length > 0 %}
+
+                    {% for objLogsConnexion in arrObjLogsConnexion %}
+                        <tr>
+                            <td style="line-height: 10px;">
+                                {% if objLogsConnexion.getResultat == 1 %}
+                                    <i class="material-icons md-icon-done text-green md-20"></i>
+                                {% elseif objLogsConnexion.getResultat == 3 %}
+                                    <i title="Compte banni" class="material-icons md-icon-lock text-red md-20"></i>
+                                {% else %}
+                                    <i title="Connexion échouée" class="material-icons md-icon-close text-red md-20"></i>
+                                {% endif %}
+
+                                <span style="vertical-align: super">
+                                    {{ getFormatedDateTime(objLogsConnexion.getDate) }}
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    {{ objLogsConnexion.getCompte }}
+                                </span>    
+                            </td>
+                            <td style="text-align: right;">
+                                {{ objLogsConnexion.getIp }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                {% else %}
+                    <tr><td colspan="">Il n'y a aucuns enregistrement dans votre historique de connexion.</td></tr>
+                {% endif %}
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
