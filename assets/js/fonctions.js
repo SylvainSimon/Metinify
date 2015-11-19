@@ -320,6 +320,24 @@ $(document).ready(function () {
         openSpeed: 400,
         closeSpeed: 200
     });
+    
+    $(".fancybox_Marche").fancybox({
+        padding: 0,
+        closeBtn: false,
+        autoSize: false,
+        scrollOutside: false,
+        fitToView: true,
+        autoWidth: false,
+        height: "auto",
+        maxHeight: "80%",
+        width: 800,
+        closeClick: false,
+        topRatio: 0.50,
+        openEffect: 'elastic',
+        closeEffect: 'elastic',
+        openSpeed: 400,
+        closeSpeed: 200
+    });
 
     $(".fancybox_Trailer").fancybox({
         minWidth: 1200,

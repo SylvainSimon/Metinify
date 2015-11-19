@@ -1,0 +1,133 @@
+<div class="box box-default flat no-margin">
+
+    <div class="box-header">
+        <h3 class="box-title">Détails de l'article</h3>
+    </div>
+
+    <div class="box-body" style="height: 100%">
+
+        <div class="col-sm-6" style="padding-left: 5px;">
+
+            <table>
+                <tr>
+                    <td class="Colonne_Gauche">Pseudo : </td>
+                    <td>{{ objPlayer.getName }}</td>
+                </tr>
+                <tr>
+                    <td class="Colonne_Gauche">Level : </td>
+                    <td>{{ objPlayer.getLevel }}</td>
+                </tr>
+                <tr>
+                    <td class="Colonne_Gauche">Race : </td>
+                    <td>
+                        {% if objPlayer.getJob == 0 %}
+                            <img class="Dimension_Image_Classement" src="../../images/races/0_mini.png"/>
+                        {% elseif objPlayer.getJob == 1 %}
+                            <img class="Dimension_Image_Classement" src="../../images/races/1_mini.png"/>
+                        {% elseif objPlayer.getJob == 2 %}
+                            <img  class="Dimension_Image_Classement" src="../../images/races/2_mini.png"/>
+                        {% elseif objPlayer.getJob == 3 %}
+                            <img class="Dimension_Image_Classement" src="../../images/races/3_mini.png"/>
+                        {% elseif objPlayer.getJob == 4 %}
+                            <img class="Dimension_Image_Classement" src="../../images/races/4_mini.png"/>
+                        {% elseif objPlayer.getJob == 5 %}
+                            <img class="Dimension_Image_Classement" src="../../images/races/5_mini.png"/>
+                        {% elseif objPlayer.getJob == 6 %}
+                            <img class="Dimension_Image_Classement" src="../../images/races/6_mini.png"/>
+                        {% elseif objPlayer.getJob == 7 %}
+                            <img class="Dimension_Image_Classement" src="../../images/races/7_mini.png"/>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Colonne_Gauche">Yangs : </td>
+                    <td>{{ objPlayer.getGold }}</td>
+                </tr>
+            </table>
+
+            <table>
+                <tr>
+                    <th colspan="2" class="Colonne_Gauche">Temps de jeu : </th>
+                </tr>
+                <tr>
+                    <td colspan="2">{{ getMinutesToString(objPlayer.getPlaytime) }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-sm-6" style="padding-right: 5px;">
+
+            <div class="col-sm-6">
+                <div id="Equipement" style="position: relative;">
+
+                    <div class="Case_Equipement Case_Arme">
+                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemArme}, with_context = false) }}
+                    </div>
+                    <div class="Case_Equipement Case_Armure">
+                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemArmure}, with_context = false) }}
+                    </div>
+                    <div class="Case_Equipement Case_Casque">
+                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemCasque}, with_context = false) }}
+                    </div>
+                    <div class="Case_Equipement Case_Bouclier">
+                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemBouclier}, with_context = false) }}
+                    </div>
+                    <div class="Case_Equipement Case_Bracelet">
+                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemBracelet}, with_context = false) }}
+                    </div>
+                    <div class="Case_Equipement Case_Boucles">
+                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemBoucle}, with_context = false) }}
+                    </div>
+                    <div class="Case_Equipement Case_Collier">
+                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemCollier}, with_context = false) }}
+                    </div>
+                    <div class="Case_Equipement Case_Chaussure">
+                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemChaussure}, with_context = false) }}
+                    </div>
+                    <div class="Case_Equipement Case_Fleche">
+                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemFleche}, with_context = false) }}
+                    </div>
+
+                    <div class="Case_Equipement Case_Special1">
+                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemSpecial1}, with_context = false) }}
+                    </div>
+                    <div class="Case_Equipement Case_Special2">
+                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemSpecial2}, with_context = false) }}
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-6">
+
+                <div id="Inventaire" style="position: relative;">
+                    <div style="position: relative;top: -10px; left: -23px;">
+                        <div class="Bouton_Inventaire_1 pointer" onclick="Page_Inventaire(1);"> I </div>
+                        <div class="Bouton_Inventaire_2 pointer" onclick="Page_Inventaire(2);"> II </div>
+                        <div class="Bouton_Inventaire_3 pointer" onclick="Page_Inventaire(3);"> III </div>
+                        <div class="Bouton_Inventaire_4 pointer" onclick="Page_Inventaire(4);"> IV </div>
+                    </div>
+                    <script type="text/javascript">
+
+                        function Page_Inventaire(page) {
+                            $.ajax({
+                                type: "POST",
+                                url: "pages/MonPersonnage/ajax/ajaxInventairePage.php",
+                                data: {"id":{{ objPlayer.getId }}, "page": page},
+                                success: function (msg) {
+                                    $("#Conteneur_Inventaire").html(msg);
+                                    redraw();
+                                }
+                            });
+                        }
+
+                    </script>
+
+                    <div id="Conteneur_Inventaire">
+                        {{ viewInventairePage1|raw }}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

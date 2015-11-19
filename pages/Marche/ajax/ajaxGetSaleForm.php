@@ -8,24 +8,25 @@ class ajaxGetSaleForm extends \ScriptHelper {
 
     public $isProtected = true;
     public $strTemplate = "ajaxGetSaleForm.html5.twig";
+    public $objPlayer;
+
+    public function __construct() {
+        parent::__construct();
+
+        global $request;
+        $this->objPlayer = parent::VerifMonJoueur($request->request->get("idPlayer"));
+    }
 
     public function run() {
 
-        global $request;
-        $idPlayer = $request->request->get("idPlayer");
+        $arrObjMarcheDevises = \Site\SiteHelper::getMarcheDevisesRepository()->findAll();
 
-        $objPlayer = \Player\PlayerHelper::getPlayerRepository()->findPlayerByIdPlayerAndIdAccount($idPlayer, $this->objAccount->getId());
+        $this->arrayTemplate["objPlayer"] = $this->objPlayer;
+        $this->arrayTemplate["arrObjMarcheDevises"] = $arrObjMarcheDevises;
 
-        if ($objPlayer !== null) {
-            $arrObjMarcheDevises = \Site\SiteHelper::getMarcheDevisesRepository()->findAll();
-
-            $this->arrayTemplate["objPlayer"] = $objPlayer;
-            $this->arrayTemplate["arrObjMarcheDevises"] = $arrObjMarcheDevises;
-
-            $view = $this->template->render($this->arrayTemplate);
-            $this->response->setContent($view);
-            $this->response->send();
-        }
+        $view = $this->template->render($this->arrayTemplate);
+        $this->response->setContent($view);
+        $this->response->send();
     }
 
 }

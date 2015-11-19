@@ -38,8 +38,6 @@ if (count($arrObjVotesListeSites) > 0) {
 
                                     Barre_De_Statut("En attente de votre vote...");
                                     Icone_Chargement(1);
-
-                                    setTimeout(Distribuer_Monnaies, 15000);
                                 }
                                 else {
                                     bootbox.dialog({
@@ -84,36 +82,5 @@ if (count($arrObjVotesListeSites) > 0) {
                 }
             });
         }
-
-        $(function () {
-            $("#dialog_Avertissement_Vote").dialog({
-                resizable: false,
-                autoOpen: false,
-                height: 220,
-                width: 400,
-                buttons: {
-                    "Ouvrir tout de même": function () {
-                        $(this).dialog("close");
-
-                        $.ajax({
-                            type: "POST",
-                            url: "pages/Votes/ajax/ajaxGetUrlSite.php",
-                            data: "id_site=" + $("#Id_Tempo_id_site").val(),
-                            success: function (msg) {
-                                $("#Lien_Popup").attr("href", msg);
-                                $("#Lien_Popup").click();
-                            }
-                        });
-                        return false;
-
-                    },
-                    "Ne pas ouvrir": function () {
-                        $(this).dialog("close");
-                    }
-                }
-            });
-
-        });
-
     </script>
 <?php } ?>
