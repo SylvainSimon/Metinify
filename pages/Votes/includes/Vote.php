@@ -32,14 +32,18 @@ if (count($arrObjVotesListeSites) > 0) {
                             url: "pages/Votes/ajax/ajaxVerification.php",
                             data: "id_site=" + id_site_vote,
                             success: function (msg) {
+                                
                                 if (msg != 1) {
+                                    
                                     $("#Lien_Popup").attr("href", msg);
                                     $("#Lien_Popup").click();
 
                                     Barre_De_Statut("En attente de votre vote...");
                                     Icone_Chargement(1);
-                                }
-                                else {
+                                    
+                                    setTimeout(Distribuer_Monnaies, 15000);
+
+                                } else {
                                     bootbox.dialog({
                                         message: "Votre vote ne vous a pas rapporté de Vamonaies.<br/><br/>Il semble que vous ayez voté il y à moins de 2 heures.<br/>Pour recevoir de nouveau des Vamonaies, il faut patienter.",
                                         animate: false,

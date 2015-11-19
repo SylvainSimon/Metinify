@@ -6,6 +6,27 @@ use \Shared\EntityRepository;
 
 class VotesLogsRepository extends EntityRepository {
 
+    public function countVotePrecedent($idCompte = 0, $idSite = 0) {
+
+        $nowInterval = \Carbon\Carbon::now()->subHour(2);
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("COUNT(VotesLogsEntity)");
+        $qb->from("\Site\Entity\VotesLogs", "VotesLogsEntity");
+        $qb->where("VotesLogsEntity.date > :nowInterval");
+        $qb->andWhere("VotesLogsEntity.idCompte = :idCompte");
+        $qb->andWhere("VotesLogsEntity.idSiteVote = :idSiteVote");
+        $qb->setParameter("nowInterval", $nowInterval);
+        $qb->setParameter("idCompte", $idCompte);
+        $qb->setParameter("idSiteVote", $idSite);
+
+        try {
+            return $qb->getQuery()->getSingleScalarResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return [];
+        }
+    }
+
     public function statVotes($interval = 0) {
         $qb = $this->_em->createQueryBuilder();
 
@@ -32,7 +53,7 @@ class VotesLogsRepository extends EntityRepository {
             case 4:
                 break;
         }
-        
+
         try {
             return $qb->getQuery()->getSingleScalarResult();
         } catch (\Doctrine\ORM\NoResultException $e) {
