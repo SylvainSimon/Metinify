@@ -92,6 +92,13 @@ class PlayerHelper {
     }
 
     /**
+     * @return \Player\Repository\MessengerListRepository
+     */
+    public static function getMessengerListRepository() {
+        return DoctrineHelper::getRepository('\Player\Entity\MessengerList');
+    }
+    
+    /**
      * @return \Player\Repository\PlayerIndexRepository
      */
     public static function getPlayerIndexRepository() {

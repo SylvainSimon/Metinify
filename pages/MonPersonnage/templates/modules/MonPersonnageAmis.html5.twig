@@ -1,0 +1,131 @@
+<div class="row">
+    <div class="col-lg-12">      
+        <div class="Zone_Tableau_Amis">
+
+            <table class="table table-condensed" style="border-collapse: collapse; margin-bottom: 0px;">
+
+                <thead>
+                    <tr>
+
+                        <th>Joueur</th>
+                        <th width="50">Niveau</th>
+                        <th class="hidden-md hidden-sm hidden-xs">Expérience</th>
+                        <th class="hidden-md hidden-sm hidden-xs">Classe</th>
+                        <th>Temps de jeu</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% if arrObjMessengerList|length > 0 %}
+
+                        {% for objMessengerList in arrObjMessengerList %}
+                            <tr>
+                                <td>
+                                    {% if objMessengerList.job == 0 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/0_mini.png"/>
+                                    {% elseif objMessengerList.job == 1 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/1_mini.png"/>
+                                    {% elseif objMessengerList.job == 2 %}
+                                        <img  class="Dimension_Image_Classement" src="images/races/2_mini.png"/>
+                                    {% elseif objMessengerList.job == 3 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/3_mini.png"/>
+                                    {% elseif objMessengerList.job == 4 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/4_mini.png"/>
+                                    {% elseif objMessengerList.job == 5 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/5_mini.png"/>
+                                    {% elseif objMessengerList.job == 6 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/6_mini.png"/>
+                                    {% elseif objMessengerList.job == 7 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/7_mini.png"/>
+                                    {% endif %}
+                                    {{ objMessengerList.name }}
+                                </td>
+                                <td class="Align_center">{{ objMessengerList.level }}</td>
+
+                                <td class="hidden-md hidden-sm hidden-xs">{{ objMessengerList.exp }}</td>
+                                <td>
+                                    {% if objMessengerList.job == 0 or objMessengerList.job == 4 %}
+                                        {% if objMessengerList.skillGroup == 1 %}
+                                            Corps à Corps
+                                        {% elseif objMessengerList.skillGroup == 2 %}
+                                            Mental
+                                        {% else %}
+                                            Non-définie
+                                        {% endif %}
+                                    {% elseif objMessengerList.job == 1 or objMessengerList.job == 5 %}
+                                        {% if objMessengerList.skillGroup == 1 %}
+                                            Assasin
+                                        {% elseif objMessengerList.skillGroup == 2 %}
+                                            Archer
+                                        {% else %}
+                                            Non-définie
+                                        {% endif %}
+                                    {% elseif objMessengerList.job == 2 or objMessengerList.job == 6 %}
+                                        {% if objMessengerList.skillGroup == 1 %}
+                                            Arme magique
+                                        {% elseif objMessengerList.skillGroup == 2 %}
+                                            Magie Noir
+                                        {% else %}
+                                            Non-définie
+                                        {% endif %}
+                                    {% elseif objMessengerList.job == 3 or objMessengerList.job == 7 %}
+                                        {% if objMessengerList.skillGroup == 1 %}
+                                            Dragon
+                                        {% elseif objMessengerList.skillGroup == 2 %}
+                                            Soin
+                                        {% else %}
+                                            Non-définie
+                                        {% endif %}
+                                    {% else %}
+                                        Non-définie
+                                    {% endif %}
+                                </td>
+                                <td>{{ getMinutesToString(objMessengerList.playtime) }}</td>
+
+                                <td>
+                                    {% if objMessengerList.status == "OK" %}
+                                        <i data-tooltip="Compte actif" data-tooltip-position="left" class="text-green material-icons md-icon-done md-20"></i>
+                                    {% elseif objMessengerList.status == "BLOCK" %}
+                                        <i data-tooltip="Compte banni" data-tooltip-position="left" class="text-red material-icons md-icon-close md-20"></i>
+                                    {% else %}
+                                        <i data-tooltip="Etat inconnu" data-tooltip-position="left" class="material-icons md-icon-help md-20"></i>
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {% if objMessengerList.empire == 1 %}
+                                        <i data-tooltip="Empire Shinsoo" data-tooltip-position="left" class="text-red material-icons md-icon-map md-20"></i>
+                                    {% elseif objMessengerList.empire == 2 %}
+                                        <i data-tooltip="Empire Chunjo" data-tooltip-position="left" class="text-yellow material-icons md-icon-map md-20"></i>
+                                    {% elseif objMessengerList.empire == 3 %}
+                                        <i data-tooltip="Empire Jinno" data-tooltip-position="left" class="text-blue material-icons md-icon-map md-20"></i>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if objMessengerList.online %}
+                                        <span data-tooltip="En ligne" data-tooltip-position="left">
+                                            <i class="text-green material-icons md-icon-account-circle"></i>
+                                        </span>
+                                    {% else %}
+                                        <span data-tooltip="Hors-ligne" data-tooltip-position="left">
+                                            <i class="text-red material-icons md-icon-account-circle"></i>
+                                        </span>
+                                    {% endif %}
+
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                    {% else %}
+                    <td colspan="9">Aucuns amis.</td>
+                {% endif %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

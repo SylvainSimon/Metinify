@@ -1,0 +1,76 @@
+
+{% if objPlayer.getHorseLevel == 0 %}
+    Ce perssonage ne possède pas de cheval.
+{% else %}
+
+    <div class="row">
+        <div class="col-lg-4">
+
+            <table class="table table-condensed" style="border-collapse: collapse; margin-bottom: 0px;">
+
+                <tr>
+                    <td style="border-top: 0px;" >Niveau :</td></td>
+                    <td style="border-top: 0px;">{{ objPlayer.getHorseLevel }}</td>
+                </tr>
+                <tr>
+                    <td >Type de cheval :</td>
+                    {% if objPlayer.getHorseLevel > 0 and objPlayer.getHorseLevel < 12 %}
+                        <td>Poney</td>
+                    {% elseif objPlayer.getHorseLevel > 11 and objPlayer.getHorseLevel < 21 %}
+                        <td>Cheval de combat</td>
+                    {% elseif objPlayer.getHorseLevel >= 21 %}
+                        <td>Cheval militaire</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td >Endurance :</td></td>
+                    <td>{{ objPlayer.getHorseHp }}</td>
+                </tr>
+                <tr>
+                    <td>Faim :</td></td>
+                    <td>{{ objPlayer.getHorseStamina }}</td>
+                </tr>
+                <tr>
+                    <td >Etat :</td></td>
+                    {% if objPlayer.getHorseRiding == 1 %}
+                        <td>En service.</td>
+                    {% else %}
+                        <td>A l'écurie.</td>
+                    {% endif %}
+                </tr>
+
+            </table>
+
+        </div>
+        <div class="col-lg-8" style="text-align: center;">
+
+            {% if haveGuild == false %}
+                {% if objPlayer.getHorseLevel > 0 and objPlayer.getHorseLevel < 12 %}
+                    <img src="../images/chevaux/Cheval_1_Membre.png" style="width: 90%; height: auto;"/>
+                {% elseif objPlayer.getHorseLevel > 11 and objPlayer.getHorseLevel < 21 %}
+                    <img src="../images/chevaux/Cheval_11_Membre.png" style="width: 90%; height: auto;"/>
+                {% elseif objPlayer.getHorseLevel >= 21 %}
+                    <img src="../images/chevaux/Cheval_21_Membre.png" style="width: 90%; height: auto;"/>
+                {% endif %}
+            {% else %}
+                {% if haveGuild.isMaster %}
+                    {% if objPlayer.getHorseLevel > 0 and objPlayer.getHorseLevel < 12 %}
+                        <img src="../images/chevaux/Cheval_1_Chef.png" style="width: 90%; height: auto;" />
+                    {% elseif objPlayer.getHorseLevel > 11 and objPlayer.getHorseLevel < 21 %}
+                        <img src="../images/chevaux/Cheval_11_Chef.png" style="width: 90%; height: auto;"/>
+                    {% elseif objPlayer.getHorseLevel >= 21 %}
+                        <img src="../images/chevaux/Cheval_21_Chef.png" style="width: 90%; height: auto;"/>
+                    {% endif %}
+                {% else %}
+                    {% if objPlayer.getHorseLevel > 0 and objPlayer.getHorseLevel < 12 %}
+                        <img src="../images/chevaux/Cheval_1_Sans_Guilde.png" style="width: 90%; height: auto;"/>
+                    {% elseif objPlayer.getHorseLevel > 11 and objPlayer.getHorseLevel < 21 %}
+                        <img src="../images/chevaux/Cheval_11_Sans_Guilde.png" style="width: 90%; height: auto;"/>
+                    {% elseif objPlayer.getHorseLevel >= 21 %}
+                        <img src="../images/chevaux/Cheval_21_Sans_Guilde.png" style="width: 90%; height: auto;"/>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

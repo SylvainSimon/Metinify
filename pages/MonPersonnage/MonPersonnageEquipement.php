@@ -1,6 +1,6 @@
 <?php
 
-namespace Pages\MonCompte;
+namespace Pages\MonPersonnage;
 
 require __DIR__ . '../../../core/initialize.php';
 
