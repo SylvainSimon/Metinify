@@ -9,29 +9,22 @@
         Pour continuer il faut récupérer le code de confirmation qui a été généré et
         envoyer à votre adresse e-mail.
         <br/><br/>
-
-        Il est indispensable pour confirmer la suppression de votre personnage et n'est valable
-        qu'une heure.
-        <br/>
         
-        De la même manière, vous n'aurez plus accès à cette page si
-        vous fermez votre navigateur et il faudra générer une nouvelle demande.
+        Vous n'aurez plus accès à cette page si vous fermez votre navigateur et il faudra faire une nouvelle demande.
         <br/><br/>
 
         Veuillez saisir dans le champ ci-dessous votre code de confirmation unique :
-        <br/>
-        Attention, vous n'avez le droit qu'as un seul essaie par heure.
         <br/><br/>
 
         <div class="row">
             <div class="col-lg-6">
-                <div class="form-group ">
+                <div class="form-group" style="margin-bottom: 0px;">
                     <label for="inputNumeroVerif">
                         Code d'entrepôt
                     </label>
 
                     <div class="input-group col-xs-12">
-                        <input type="text" id="inputNumeroVerif" class="form-control input-sm text" placeholder="XXXXXXXXX"><br/><br/>
+                        <input type="text" id="inputNumeroVerif" class="form-control input-sm text" placeholder="">
                     </div>
                 </div>
             </div>
@@ -67,11 +60,11 @@
 
                         Barre_De_Statut("Suppression effectuer");
                         Icone_Chargement(0);
-                        Ajax("pages/PersonnageDeleteTerm.php?result=Oui");
+                        Ajax("pages/MonPersonnage/PersonnageDeleteTerm.php?result=Oui");
                     } else {
 
                         popBootbox(json.reasons, "Erreur");
-                        Ajax("pages/PersonnageDeleteTerm.php?result=Non");
+                        Ajax("pages/MonPersonnage/PersonnageDeleteTerm.php?result=Non");
                     }
                 }
             });

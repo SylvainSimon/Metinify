@@ -18,7 +18,7 @@ class SuppressionPersonnageRepository extends EntityRepository {
         $qb->setParameter("numeroVerif", $numeroVerif);
 
         try {
-            $qb->getQuery()->getSingleResult();
+            return $qb->getQuery()->getSingleResult();
         } catch (\Doctrine\ORM\NoResultException $e) {
             return null;
         }

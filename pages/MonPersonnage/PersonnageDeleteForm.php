@@ -13,10 +13,8 @@ class PersonnageDeleteForm extends \PageHelper {
 
         global $request;
 
-        $idPlayer = $request->request->get("id_perso");
-        $objPlayer = Player\PlayerHelper::getPlayerRepository()->find($idPlayer);
-
-        $this->arrayTemplate["idPlayer"] = $idPlayer;
+        $idPlayer = $request->query->get("id_perso");
+        $objPlayer = \Player\PlayerHelper::getPlayerRepository()->find($idPlayer);
         $this->arrayTemplate["objPlayer"] = $objPlayer;
 
         $view = $this->template->render($this->arrayTemplate);

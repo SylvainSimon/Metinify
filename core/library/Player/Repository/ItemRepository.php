@@ -103,7 +103,7 @@ class ItemRepository extends EntityRepository {
 
         $qb = $this->_em->createQueryBuilder();
         $qb->delete("\Player\Entity\Item", "ItemEntity");
-        $qb->where("ItemEntity.pid1 = :ownerId");
+        $qb->where("ItemEntity.ownerId = :ownerId");
         $qb->andWhere("ItemEntity.window IN(:window)");
         $qb->setParameter("ownerId", $ownerId);
         $qb->setParameter("window", $window);

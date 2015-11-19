@@ -18,343 +18,343 @@ class Player
      *
      * @ORM\Column(name="name", type="string", length=12)
      */
-    private $name;
+    public $name;
     
     /**
      * @var integer
      *
      * @ORM\Column(name="account_id", type="integer", nullable=false)
      */
-    private $idAccount = '0';
+    public $idAccount = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="job", type="integer", nullable=false)
      */
-    private $job = '0';
+    public $job = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="voice", type="integer", nullable=false)
      */
-    private $voice = '0';
+    public $voice = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="dir", type="integer", nullable=false)
      */
-    private $dir = '0';
+    public $dir = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="x", type="integer", nullable=false)
      */
-    private $x = '0';
+    public $x = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="y", type="integer", nullable=false)
      */
-    private $y = '0';
+    public $y = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="z", type="integer", nullable=false)
      */
-    private $z = '0';
+    public $z = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="map_index", type="integer", nullable=false)
      */
-    private $mapIndex = '0';
+    public $mapIndex = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="exit_x", type="integer", nullable=false)
      */
-    private $exitX = '0';
+    public $exitX = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="victimes_pvp", type="integer", nullable=false)
      */
-    private $victimesPvp = '0';
+    public $victimesPvp = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="exit_y", type="integer", nullable=false)
      */
-    private $exitY = '0';
+    public $exitY = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="exit_map_index", type="integer", nullable=false)
      */
-    private $exitMapIndex = '0';
+    public $exitMapIndex = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="hp", type="smallint", nullable=false)
      */
-    private $hp = '0';
+    public $hp = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="mp", type="smallint", nullable=false)
      */
-    private $mp = '0';
+    public $mp = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="stamina", type="smallint", nullable=false)
      */
-    private $stamina = '0';
+    public $stamina = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="random_hp", type="smallint", nullable=false)
      */
-    private $randomHp = '0';
+    public $randomHp = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="random_sp", type="smallint", nullable=false)
      */
-    private $randomSp = '0';
+    public $randomSp = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="playtime", type="integer", nullable=false)
      */
-    private $playtime = '0';
+    public $playtime = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="level", type="integer", nullable=false)
      */
-    private $level = '0';
+    public $level = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="level_step", type="integer", nullable=false)
      */
-    private $levelStep = '0';
+    public $levelStep = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="st", type="smallint", nullable=false)
      */
-    private $st = '0';
+    public $st = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="ht", type="smallint", nullable=false)
      */
-    private $ht = '0';
+    public $ht = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="dx", type="smallint", nullable=false)
      */
-    private $dx = '0';
+    public $dx = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="iq", type="smallint", nullable=false)
      */
-    private $iq = '0';
+    public $iq = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="exp", type="integer", nullable=false)
      */
-    private $exp = '0';
+    public $exp = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="gold", type="integer", nullable=false)
      */
-    private $gold = '0';
+    public $gold = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="stat_point", type="smallint", nullable=false)
      */
-    private $statPoint = '0';
+    public $statPoint = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="skill_point", type="smallint", nullable=false)
      */
-    private $skillPoint = '0';
+    public $skillPoint = '0';
 
     /**
      * @var string
      *
      * @ORM\Column(name="quickslot", type="blob", length=255, nullable=true)
      */
-    private $quickslot;
+    public $quickslot;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ip", type="string", length=16, nullable=true)
      */
-    private $ip = '0.0.0.0';
+    public $ip = '0.0.0.0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="part_main", type="smallint", nullable=false)
      */
-    private $partMain = '0';
+    public $partMain = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="part_base", type="integer", nullable=false)
      */
-    private $partBase = '0';
+    public $partBase = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="part_hair", type="smallint", nullable=false)
      */
-    private $partHair = '0';
+    public $partHair = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="skill_group", type="integer", nullable=false)
      */
-    private $skillGroup = '0';
+    public $skillGroup = '0';
 
     /**
      * @var string
      *
      * @ORM\Column(name="skill_level", type="blob", length=65535, nullable=true)
      */
-    private $skillLevel;
+    public $skillLevel;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="alignment", type="integer", nullable=false)
      */
-    private $alignment = '0';
+    public $alignment = '0';
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="last_play", type="datetime", nullable=false)
      */
-    private $lastPlay = '0000-00-00 00:00:00';
+    public $lastPlay = '0000-00-00 00:00:00';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="change_name", type="integer", nullable=false)
      */
-    private $changeName = '0';
+    public $changeName = '0';
 
     /**
      * @var string
      *
      * @ORM\Column(name="mobile", type="string", length=12, nullable=true)
      */
-    private $mobile = '';
+    public $mobile = '';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="sub_skill_point", type="smallint", nullable=false)
      */
-    private $subSkillPoint = '0';
+    public $subSkillPoint = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="stat_reset_count", type="integer", nullable=false)
      */
-    private $statResetCount = '0';
+    public $statResetCount = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="horse_hp", type="smallint", nullable=false)
      */
-    private $horseHp = '0';
+    public $horseHp = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="horse_stamina", type="smallint", nullable=false)
      */
-    private $horseStamina = '0';
+    public $horseStamina = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="horse_level", type="integer", nullable=false)
      */
-    private $horseLevel = '0';
+    public $horseLevel = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="horse_hp_droptime", type="integer", nullable=false)
      */
-    private $horseHpDroptime = '0';
+    public $horseHpDroptime = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="horse_riding", type="integer", nullable=false)
      */
-    private $horseRiding = '0';
+    public $horseRiding = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="horse_skill_point", type="smallint", nullable=false)
      */
-    private $horseSkillPoint = '0';
+    public $horseSkillPoint = '0';
 
     /**
      * @var integer
      *
      * @ORM\Column(name="score_pve", type="integer", nullable=false)
      */
-    private $scorePve = '0';
+    public $scorePve = '0';
 
     /**
      * @var integer
@@ -363,7 +363,7 @@ class Player
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    public $id;
 
 
     /**

@@ -41,7 +41,7 @@ class ajaxPersonnageDeleteSendEmail extends \ScriptHelper {
                 $objSuppressionPersonnage->setEmail($objAccount->getEmail());
                 $objSuppressionPersonnage->setNumeroVerif($numeroVerif);
                 $objSuppressionPersonnage->setDate(new \DateTime(date("Y-m-d H:i:s")));
-                $objSuppressionPersonnage->setIp($this->ipAdress);
+                $objSuppressionPersonnage->setIp($this->ipAdresse);
 
                 $em->persist($objSuppressionPersonnage);
                 $em->flush();

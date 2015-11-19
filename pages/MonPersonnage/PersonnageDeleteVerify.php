@@ -13,7 +13,7 @@ class PersonnageDeleteVerify extends \PageHelper {
 
         global $request;
 
-        $idPlayer = $request->request->get("id_personnage");
+        $idPlayer = $request->query->get("id_personnage");
         
         $this->arrayTemplate["idPlayer"] = $idPlayer;
         $this->arrayTemplate["idCompte"] = $this->objAccount->getId();

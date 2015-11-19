@@ -22,11 +22,10 @@ class ajaxPersonnageDeleteExecute extends \ScriptHelper {
 
         if ($objSuppressionPersonnage !== null) {
 
-            if (\Player\PlayerHelper::haveGuild($idPlayer) !== false) {
+            if (\Player\PlayerHelper::haveGuild($idPlayer) == false) {
 
                 $objPlayerIndex = \Player\PlayerHelper::getPlayerIndexRepository()->find($idAccount);
 
-                $func = "";
                 if ($objPlayerIndex->getPid1() == $idPlayer) {
                     $func = "setPid1";
                 } else if ($objPlayerIndex->getPid2() == $idPlayer) {
@@ -37,9 +36,7 @@ class ajaxPersonnageDeleteExecute extends \ScriptHelper {
                     $func = "setPid4";
                 }
 
-                if ($func !== "") {
-                    $objPlayerIndex->$func($idPlayer);
-                }
+                $objPlayerIndex->$func(0);
 
                 $em->persist($objPlayerIndex);
 
@@ -87,7 +84,7 @@ class ajaxPersonnageDeleteExecute extends \ScriptHelper {
                 'reasons' => "Le code de vérification n'est pas le bon."
             );
         }
-        
+
         echo json_encode($Tableau_Retour_Json);
     }
 
