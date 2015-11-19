@@ -1,0 +1,133 @@
+<div class="box box-default flat">
+
+    <div class="box-header">
+        <h3 class="box-title">Demande de renommage du personnage {{ objPlayer.getName }}</h3>
+    </div>
+
+    <div class="box-body">
+        Grâçe à cette fonction, vous allez pouvoir renommer votre personnage {{ objPlayer.getName }}.<br/>
+        Pour effectuer cette action, il faut debourser la somme de <span class="text-yellow">1500 Vamonaies</span>.
+        <br/>
+        <br/>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group ">
+                    <label>
+                        Nom actuel
+                    </label>
+                    <div class="input-group col-xs-12">
+                        <input type="texte" disabled value="{{ objPlayer.getName }}" class="form-control input-sm text"/>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label for="Champs_Saisie_Nouveau_Nom">
+                        Nouveau nom
+                    </label>
+
+                    <div class="input-group col-xs-12">
+                        <input type="text" maxlength="12" autofocus="autofocus" placeholder="Nouveau nom" id="Champs_Saisie_Nouveau_Nom" class="form-control input-sm text"/>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label for="Champs_Saisie_Nouveau_Nom_Repete">
+                        Répétez nouveau nom
+                    </label>
+
+                    <div class="input-group col-xs-12">
+                        <input type="text" maxlength="12" placeholder="Répétez" id="Champs_Saisie_Nouveau_Nom_Repete" class="form-control input-sm text"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        Pour valider le renommage, cliquez sur le bouton "Renommer".<br/>
+        Si vous êtes là par erreur, vous pouvez toujours annuler la demande.
+
+    </div>
+
+    <div class="box-footer">
+        <div class="pull-left">
+            <input type="button" class="btn btn-danger btn-flat" value="Annuler" onclick="Ajax('pages/_LegacyPages/News.php');" />
+        </div>
+
+        <div class="pull-right">
+            <input type="button" class="btn btn-success btn-flat" value="Renommer" onclick="PlayerRename($('#Champs_Saisie_Nouveau_Nom').val());" />
+        </div>        
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    function PlayerRename(newName) {
+
+        if (newName != $("#Champs_Saisie_Nouveau_Nom_Repete").val()) {
+            popBootbox("Les deux pseudo ne sont pas identiques.");
+            Barre_De_Statut("Les deux pseudo ne sont pas identiques.");
+            Icone_Chargement(2);
+            return;
+        }
+
+        pseudo = $("#Champs_Saisie_Nouveau_Nom").val();
+        for (i = 0; i < pseudo.length; i++) {
+
+            if ((pseudo.charCodeAt(i) >= 0 && pseudo.charCodeAt(i) < 45) ||
+                    (pseudo.charCodeAt(i) >= 45 && pseudo.charCodeAt(i) < 48) ||
+                    (pseudo.charCodeAt(i) > 57 && pseudo.charCodeAt(i) < 65) ||
+                    (pseudo.charCodeAt(i) > 90 && pseudo.charCodeAt(i) < 95) ||
+                    (pseudo.charCodeAt(i) >= 95 && pseudo.charCodeAt(i) < 97) ||
+                    (pseudo.charCodeAt(i) > 122) && (pseudo.charCodeAt(i) < 128) ||
+                    (pseudo.charCodeAt(i) > 144)) {
+
+                UtilisateurSyntax = 1;
+                break;
+            } else {
+
+                UtilisateurSyntax = 0;
+            }
+        }
+
+        if (UtilisateurSyntax == 0) {
+            
+            Barre_De_Statut("Traitement de la demande...");
+            Icone_Chargement(1);
+            displayLoading();
+            
+            $.ajax({
+                type: "POST",
+                url: "pages/MonPersonnage/ajax/ajaxPersonnageRenameExecute.php",
+                data: {"idPlayer": '{{ idPlayer }}', "newName": newName},
+                success: function (msg) {
+
+                    hideLoading();
+
+                    try {
+                        Parse_Json = JSON.parse(msg);
+                        if (Parse_Json.result) {
+
+                            Barre_De_Statut(Parse_Json.reasons);
+                            Icone_Chargement(0);
+                            Ajax('pages/MonPersonnage/PersonnageRenameTerm.php');
+                        } else {
+                            Barre_De_Statut(Parse_Json.reasons);
+                            Icone_Chargement(2);
+                        }
+
+                    } catch (e) {
+                        Barre_De_Statut("Le renommage a échoué.");
+                        Icone_Chargement(2);
+                    }
+                }
+            });
+            return false;
+        } else {
+            popBootbox("Les caractère employés sont invalides.");
+            Barre_De_Statut("Les caractère employés sont invalides.");
+            Icone_Chargement(2);
+        }
+    }
+
+</script>

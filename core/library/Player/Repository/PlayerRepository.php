@@ -50,6 +50,26 @@ class PlayerRepository extends EntityRepository {
             return null;
         }
     }
+    
+    public function verifyIsMyPlayer($idAccount = 0, $idPlayer = 0) {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("PlayerEntity");
+        $qb->from("\Player\Entity\Player", "PlayerEntity");
+        $qb->innerJoin("\Player\Entity\PlayerIndex", "PlayerIndexEntity", "WITH", "PlayerIndexEntity.id = :idAccount");
+        $qb->where("PlayerEntity.id = PlayerIndexEntity.pid1 OR PlayerEntity.id = PlayerIndexEntity.pid2 OR PlayerEntity.id = PlayerIndexEntity.pid3 OR PlayerEntity.id = PlayerIndexEntity.pid4");
+        $qb->andWhere("PlayerEntity = :idPlayer");
+        $qb->setParameter("idAccount", $idAccount);
+        $qb->setParameter("idPlayer", $idPlayer);
+        $qb->setMaxResults(1);
+
+        try {
+            return $qb->getQuery()->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
 
     public function findPlayersBannis() {
 

@@ -7,27 +7,14 @@ require __DIR__ . '../../../core/initialize.php';
 class PersonnageRenameTerm extends \PageHelper {
 
     public $isProtected = true;
-    
+    public $strTemplate = "PersonnageRenameTerm.html5.twig";
+
     public function run() {
-        ?>
-        <div class="box box-default flat">
-
-            <div class="box-header">
-                <h3 class="box-title">Personnage renommé</h3>
-            </div>
-
-            <div class="box-body">
-                Votre personnage a bien été renommé.<br/>
-                Merci de votre confiance.
-            </div>
-
-            <div class="box-footer">
-                <input type="button" class="btn btn-primary btn-flat" value="Accueil" onclick="Ajax('pages/_LegacyPages/News.php');" />
-            </div>
-        </div>
-        <?php
+        
+        $view = $this->template->render($this->arrayTemplate);
+        $this->response->setContent($view);
+        $this->response->send();
     }
-
 }
 
 $class = new PersonnageRenameTerm();

@@ -130,16 +130,13 @@ class CoreHelper {
 
         global $session;
 
-        $objPlayer = \Player\PlayerHelper::getPlayerRepository()->find($idParametre);
+        $objPlayer = \Player\PlayerHelper::getPlayerRepository()->verifyIsMyPlayer($session->get("ID"), $idParametre);
 
         if ($objPlayer !== null) {
-
-            if ($objPlayer->getIdAccount() != $session->get("ID")) {
-                include '../../pages/MagicWord.php';
-                exit();
-            }else{
-                return $objPlayer;
-            }
+            return $objPlayer;
+        } else {
+            include '../../pages/MagicWord.php';
+            exit();
         }
     }
 

@@ -14,11 +14,11 @@ class ajaxPersonnageRenameExecute extends \ScriptHelper {
         global $session;
         
         $em = \Shared\DoctrineHelper::getEntityManager();
-        $Suppression_Perssonage_Procedure_ID_Personnage = $request->request->get("id_personnage");
+        $idPlayer = \Encryption::decrypt($request->request->get("idPlayer"));
 
-        $objPlayer = parent::VerifMonJoueur($Suppression_Perssonage_Procedure_ID_Personnage);
+        $objPlayer = parent::VerifMonJoueur($idPlayer);
         $playerNameOld = $objPlayer->getName();
-        $playerNameNew = $request->request->get("nouveau_nom");
+        $playerNameNew = $request->request->get("newName");
 
         $countPlayerByName = \Player\PlayerHelper::getPlayerRepository()->countPlayerByName($playerNameNew);
 
