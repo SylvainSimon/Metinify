@@ -47,7 +47,7 @@ function Ajax_Appel_Statistiques(page, objet) {
     $.ajax({
         type: "POST",
         url: "pages/Statistiques/ajax/StatistiquesGet.php",
-        data: "id_statistique=" + page,
+        data: {"page": page},
         success: function (msg) {
 
             try {
@@ -58,13 +58,13 @@ function Ajax_Appel_Statistiques(page, objet) {
                     animationEasing: "easeOutBounce",
                     segmentStrokeWidth: 0,
                     segmentShowStroke: false,
-                    segmentStrokeColor : "#666",
+                    segmentStrokeColor: "#666",
                     tooltipCornerRadius: 0,
                     tooltipFontSize: 11,
                     responsive: true,
-                    legendTemplate : '<ul style=\"list-style-type:none; padding-left:0px;\" class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>; display:inline-block; width:10px; height:10px;\"></span>&nbsp;<%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+                    legendTemplate: '<ul style=\"list-style-type:none; padding-left:0px;\" class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>; display:inline-block; width:10px; height:10px;\"></span>&nbsp;<%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
                 });
-                
+
                 myPieChartRoyaume.addData({
                     value: Parse_Json.shinsoo,
                     color: "#dd4b39",
@@ -85,50 +85,50 @@ function Ajax_Appel_Statistiques(page, objet) {
                     highlight: "#1981BE",
                     label: "Jinno"
                 });
-                
+
                 $("#myChartRoyaumeLegend").html(myPieChartRoyaume.generateLegend());
 
                 var myPieChartJob = new Chart(ctxJob).Doughnut(data, {
                     animationEasing: "easeOutBounce",
                     segmentStrokeWidth: 0,
                     segmentShowStroke: false,
-                    segmentStrokeColor : "#666",
+                    segmentStrokeColor: "#666",
                     tooltipCornerRadius: 0,
                     tooltipFontSize: 11,
                     responsive: true,
-                    legendTemplate : '<ul style=\"list-style-type:none; padding-left:0px;\" class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>; display:inline-block; width:10px; height:10px;\"></span>&nbsp;<%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+                    legendTemplate: '<ul style=\"list-style-type:none; padding-left:0px;\" class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>; display:inline-block; width:10px; height:10px;\"></span>&nbsp;<%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
                 });
-                
+
                 myPieChartJob.addData({
                     value: Parse_Json.guerriers,
                     color: "#dd4b39",
                     highlight: "#E05D4C",
                     label: "Guerriers"
                 });
-                
+
                 myPieChartJob.addData({
                     value: Parse_Json.suras,
                     color: "#d2d6de",
                     highlight: "#D6DAE1",
                     label: "Suras"
                 });
-                
+
                 myPieChartJob.addData({
                     value: Parse_Json.ninjas,
                     color: "#00a65a",
                     highlight: "#19AE6A",
                     label: "Ninjas"
                 });
-                
+
                 myPieChartJob.addData({
                     value: Parse_Json.shamans,
                     color: "#f39c12",
                     highlight: "#F4A529",
                     label: "Shamans"
                 });
-                
+
                 $("#myChartJobLegend").html(myPieChartJob.generateLegend());
-                
+
 
                 $("#Contenue_Comptes").html(Parse_Json.comptes);
                 $("#Contenue_Joueurs").html(Parse_Json.joueurs);

@@ -121,7 +121,7 @@ class CoreHelper {
         global $session;
 
         if ($idParametre != $session->get("ID")) {
-            include '../../pages/MagicWord.php';
+            include BASE_ROOT . '/pages/MagicWord.php';
             exit();
         }
     }
@@ -135,7 +135,7 @@ class CoreHelper {
         if ($objPlayer !== null) {
             return $objPlayer;
         } else {
-            include '../../pages/MagicWord.php';
+            include BASE_ROOT . '/pages/MagicWord.php';
             exit();
         }
     }
@@ -174,7 +174,7 @@ class CoreHelper {
         if (in_array($droit, $this->arrAdminRights)) {
             return true;
         } else {
-            include '../../pages/MagicWord.php';
+            include BASE_ROOT . '/pages/MagicWord.php';
             exit();
         }
     }

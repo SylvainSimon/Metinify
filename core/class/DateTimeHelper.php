@@ -8,14 +8,12 @@ class DateTimeHelper {
     }
 
     public static function minutesToString($minutes = "") {
-        
-        $dt = \Carbon\Carbon::create(2000, 1, 1, 0, 0, 0)->startOfDay();
-        $dt2 = $dt->copy()->addMinute($minutes);
-        $var = $dt->diffInMonths($dt2) . " mois, ";
-        $var .= $dt->diffInDays($dt2) . " jours et ";
-        $var .= $dt->diffInHours($dt2) . " heures";
-        
-        return $var;
+
+        $dtF = new DateTime("@0");
+        $dtT = new DateTime("@0");
+        $dtT->add(new DateInterval('PT' . $minutes . 'M'));
+
+        return $dtF->diff($dtT)->format('%a jour, %h heures, %i minutes');
     }
 
     public static function dateTimeToFormatedString($dateTime, $format = null) {

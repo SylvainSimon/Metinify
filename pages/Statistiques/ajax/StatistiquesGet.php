@@ -11,8 +11,8 @@ class StatistiquesGet extends \PageHelper {
         global $request;
 
         $cacheManager = \CacheHelper::getCacheManager();
-        $intervalStat = $request->request->get("id_statistique");
-
+        $intervalStat = \Encryption::decrypt($request->request->get("page"));
+        
         if ($cacheManager->isExisting("arrStatistiques" . $intervalStat)) {
             $arrStatistiques = $cacheManager->get("arrStatistiques" . $intervalStat);
             echo $arrStatistiques;
