@@ -28,7 +28,7 @@
         <table class="table table-condensed" style="border-collapse: collapse;">
             <tr>
                 <td style="border-top: 0px;" class="Colonne_Gauche">
-                    <span>Personnage :</span>
+                    <span>Personnage</span>
                 </td>
                 <td style="border-top: 0px;">
                     {{ objPlayer.getName }}
@@ -36,29 +36,29 @@
             </tr>
             <tr>
                 <td class="Colonne_Gauche">
-                    <span>Level :</span>
+                    <span>Level</span>
                 </td>
                 <td>{{ objPlayer.getLevel }}</td>
             </tr>
             <tr>
                 <td class="Colonne_Gauche">Expérience</td>
-                <td>{{ objPlayer.getExp }}</td>
+                <td>{{ objPlayer.getExp|number_format }}</td>
             </tr>
             <tr>
                 <td class="Colonne_Gauche">
-                    <span>Yangs :</span>
+                    <span>Yangs</span>
                 </td>
-                <td>{{ objPlayer.getGold }}</td>
+                <td>{{ objPlayer.getGold|number_format }}</td>
             </tr>
             <tr>
                 <td class="Colonne_Gauche">
-                    <span>Temp de jeu :</span>
+                    <span>Temp de jeu</span>
                 </td>
                 <td>{{ getMinutesToString(objPlayer.getPlaytime) }}</td>
             </tr>
             <tr>
                 <td class="Colonne_Gauche">
-                    <span>Grade :</span>
+                    <span>Grade</span>
                 </td>
                 {% if calculateGrade < 0 %}
                     <td>
@@ -72,23 +72,23 @@
             </tr>
 
             <tr>
-                <td class="Colonne_Gauche">Dernière connexion :</td>
+                <td class="Colonne_Gauche">Dernière connexion</td>
                 <td><span style="font-size: 12px; font-weight: bold;">{{ getFormatedDateTime(objPlayer.getLastPlay) }}</span></td>
             </tr>
 
             <tr>
                 <td class="Colonne_Gauche">
                     {% if isConnected %}
-                        <span>Map :</span>
+                        <span>Map</span>
                     {% else %}
-                        <span>Map de sortie :</span>
+                        <span>Map de sortie</span>
                     {% endif %}
                 </td>
                 <td>{{ localisation.map }}</td>
             </tr>
             <tr>
                 <td class="Colonne_Gauche">
-                    <span>Position :</span>
+                    <span>Position</span>
                 </td>
                 <td>{{ localisation.positionX }} - {{ localisation.positionY }}</td>
             </tr>
@@ -175,12 +175,8 @@
 
         <table class="table table-condensed" style="border-collapse: collapse;">
             <tr>
-                <td style="border-top: 0px;">Points de stats</td></td>
-                <td style="border-top: 0px;">{{ objPlayer.getStatPoint }}</td>
-            </tr>
-            <tr>
-                <td>Vitalité</td></td>
-                <td>{{ objPlayer.getHt }}</td>
+                <td style="border-top: 0px;">Vitalité</td></td>
+                <td style="border-top: 0px;">{{ objPlayer.getHt }}</td>
             </tr>
             <tr>
                 <td>Intelligence</td></td>
