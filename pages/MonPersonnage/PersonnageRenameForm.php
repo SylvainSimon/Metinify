@@ -12,15 +12,13 @@ class PersonnageRenameForm extends \PageHelper {
 
     public function __construct() {
         parent::__construct();
-
         global $request;
-        $this->objPlayer = parent::VerifMonJoueur($request->query->get("id_perso"));
+        $this->objPlayer = parent::VerifMonJoueur(\Encryption::decrypt($request->query->get("idPlayer")));
     }
 
     public function run() {
 
         $this->arrayTemplate["objPlayer"] = $this->objPlayer;
-        $this->arrayTemplate["idPlayer"] = \Encryption::encrypt($this->objPlayer->getId());
 
         $view = $this->template->render($this->arrayTemplate);
         $this->response->setContent($view);

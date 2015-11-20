@@ -6,16 +6,16 @@ class Encryption {
     public static $clesCryptage;
 
     public static function initialize() {
-        
+
         global $config;
-        
+
         if (!in_array('mcrypt', get_loaded_extensions())) {
             throw new \Exception('The PHP mcrypt extension is not installed');
         }
         if ((self::$resTd = mcrypt_module_open("rijndael-256", '', "cfb", '')) == false) {
             throw new \Exception('Error initializing encryption module');
         }
-        
+
         self::$clesCryptage = $config->encryptKey;
     }
 
@@ -44,14 +44,8 @@ class Encryption {
     }
 
     public static function encryptForUrl($varValue, $clesCryptage = null) {
-
-        if (is_array($varValue)) {
-            return self::encrypt($varValue, $clesCryptage);
-        } else {
-            return urlencode(self::encrypt($varValue, $clesCryptage));
-        }
+        return urlencode(self::encrypt($varValue, $clesCryptage));
     }
-
 
     public static function decrypt($varValue, $clesCryptage = null) {
 
@@ -80,16 +74,18 @@ class Encryption {
         mcrypt_generic_init(self::$resTd, md5($clesCryptage), $iv);
         $strDecrypted = mdecrypt_generic(self::$resTd, $varValue);
         mcrypt_generic_deinit(self::$resTd);
-        return $strDecrypted;
+        
+        if (strpos($strDecrypted, "%") !== false) {
+            return urldecode($strDecrypted);
+        } else {
+            return $strDecrypted;
+        }        
+       
     }
 
     public static function decryptForUrl($varValue, $clesCryptage = null) {
 
-        if (is_array($varValue)) {
-            return self::decrypt($varValue, $clesCryptage);
-        } else {
-            return self::decrypt(urldecode($varValue), $clesCryptage);
-        }
+
     }
 
     public static function hash($strPassword) {
@@ -108,7 +104,6 @@ class Encryption {
         }
         throw new \Exception('None of the required crypt() algorithms is available');
     }
-
 
     public static function test($strHash) {
         if (strncmp($strHash, '$2y$', 4) === 0) {

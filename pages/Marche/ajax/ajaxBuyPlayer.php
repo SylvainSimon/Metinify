@@ -151,7 +151,7 @@ class ajaxBuyPlayer extends \ScriptHelper {
                                     'result' => true,
                                     'cash' => $this->objAccount->getCash(),
                                     'mileage' => $this->objAccount->getMileage(),
-                                    'idPlayer' => $idPlayer
+                                    'idPlayer' => \Encryption::encryptForUrl($idPlayer)
                                 );
                             } else {
                                 $Tableau_Retour_Json = array(

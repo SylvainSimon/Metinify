@@ -20,7 +20,6 @@ function Ajax(url) {
 
         },
         error: function () {
-
             Ajax('pages/_LegacyPages/Error404.php');
         }
     });

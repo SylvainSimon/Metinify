@@ -6,10 +6,10 @@
     <div class="box-body no-padding hidden-sm hidden-xs">
 
         <table class="table table-condensed table-hover" style="border-collapse: collapse;">
-            <?php if ($this->arrAdminRights["gererMonnaies"]) { ?>
+            <?php if ($this->HaveTheRight(\DroitsHelper::GERER_MONNAIES)) { ?>
                 <tr onclick="Ajax('pages/Admin/Gestion_Monnaies.php');"><td> Gestion des monnaies</td></tr>
             <?php } ?>
-            <?php if ($this->arrAdminRights["gererNews"]) { ?>
+            <?php if ($this->HaveTheRight(\DroitsHelper::GERER_NEWS)) { ?>
                 <tr onclick="Ajax('pages/Admin/Gestion_News.php')"><td> Gestion des news</td></tr>
             <?php } ?>
         </table>

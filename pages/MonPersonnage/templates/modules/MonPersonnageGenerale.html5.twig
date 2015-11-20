@@ -203,21 +203,21 @@
 <div class="row">
     <div class="col-lg-12" style="padding-bottom: 10px; padding-left: 25px;">
 
-        <button type="button" data-tooltip="Ramène le joueur sur sa map originel" class="btn btn-flat btn-warning" onclick="Deblocage_Personnage({{ objPlayer.getId }});">
+        <button type="button" data-tooltip="Débloquer la position" class="btn btn-flat btn-warning" onclick="Deblocage_Personnage('{{ encryptForUrl(objPlayer.getId) }}');">
             Débloquer
         </button>
 
         {% if objPlayer.getGold < 0 %}
-            <button type="button" data-tooltip="Ramène les yangs bloqués à 1 500 000" class="btn btn-flat btn-warning" onclick="Deblocage_Yangs({{ objPlayer.getId }});">
-                Réinitialiser mes yangs
+            <button type="button" data-tooltip="Débloquer mes yangs" class="btn btn-flat btn-warning" onclick="Deblocage_Yangs('{{ encryptForUrl(objPlayer.getId) }}');">
+                Débloquer les yangs
             </button>
         {% endif %}
 
-        <button type="button" data-tooltip="Renommer le joueur" class="btn btn-flat btn-primary" onclick="Ajax('pages/MonPersonnage/PersonnageRenameForm.php?id_perso={{ objPlayer.getId }}');">
+        <button type="button" data-tooltip="Renommer le joueur" class="btn btn-flat btn-primary" onclick="Ajax('pages/MonPersonnage/PersonnageRenameForm.php?idPlayer={{ encryptForUrl(objPlayer.getId) }}');">
             Renommer
         </button>
 
-        <button type="button" data-tooltip="Supprimer le joueur" class="btn btn-flat btn-danger" onclick="Ajax('pages/MonPersonnage/PersonnageDeleteForm.php?id_perso={{ objPlayer.getId }}');">
+        <button type="button" data-tooltip="Supprimer le joueur" class="btn btn-flat btn-danger" onclick="Ajax('pages/MonPersonnage/PersonnageDeleteForm.php?idPlayer={{ encryptForUrl(objPlayer.getId) }}');">
             Supprimer
         </button>
     </div>

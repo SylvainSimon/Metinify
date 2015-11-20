@@ -91,15 +91,15 @@
         }
 
         if (UtilisateurSyntax == 0) {
-            
+
             Barre_De_Statut("Traitement de la demande...");
             Icone_Chargement(1);
             displayLoading();
-            
+
             $.ajax({
                 type: "POST",
                 url: "pages/MonPersonnage/ajax/ajaxPersonnageRenameExecute.php",
-                data: {"idPlayer": '{{ idPlayer }}', "newName": newName},
+                data: {"idPlayer": '{{ encryptForUrl(objPlayer.getId) }}', "newName": newName},
                 success: function (msg) {
 
                     hideLoading();

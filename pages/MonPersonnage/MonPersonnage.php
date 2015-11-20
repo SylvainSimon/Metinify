@@ -13,13 +13,13 @@ class MonPersonnage extends \PageHelper {
         parent::__construct();
 
         global $request;
-        parent::VerifMonJoueur($request->query->get("id"));
+        parent::VerifMonJoueur(\Encryption::decrypt($request->query->get("id")));
     }
 
     public function run() {
 
         global $request;
-        $idPlayer = $request->query->get("id");
+        $idPlayer = \Encryption::decrypt($request->query->get("id"));
 
         $templateGenerale = $this->objTwig->loadTemplate("MonPersonnageGenerale.html5.twig");
         $objPlayer = \Player\PlayerHelper::getPlayerRepository()->find($idPlayer);

@@ -8,15 +8,17 @@ class PersonnageDeleteForm extends \PageHelper {
 
     public $isProtected = true;
     public $strTemplate = "PersonnageDeleteForm.html5.twig";
+    public $objPlayer;
+
+    public function __construct() {
+        parent::__construct();
+        global $request;
+        $this->objPlayer = parent::VerifMonJoueur(\Encryption::decrypt($request->query->get("idPlayer")));
+    }
 
     public function run() {
 
-        global $request;
-
-        $idPlayer = $request->query->get("id_perso");
-        $objPlayer = \Player\PlayerHelper::getPlayerRepository()->find($idPlayer);
-        $this->arrayTemplate["objPlayer"] = $objPlayer;
-
+        $this->arrayTemplate["objPlayer"] = $this->objPlayer;
         $view = $this->template->render($this->arrayTemplate);
 
         $this->response->setContent($view);

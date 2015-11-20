@@ -29,6 +29,13 @@ class AdministrationUsers {
     private $idCompte;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="droits", type="string", nullable=true)
+     */
+    private $droits;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="pannel_admin", type="boolean", nullable=true)
@@ -232,6 +239,29 @@ class AdministrationUsers {
      */
     public function getIdCompte() {
         return $this->idCompte;
+    }
+
+    /**
+     * Set droits
+     *
+     * @param string $droits
+     *
+     * @return AdministrationUsers
+     */
+    public function setDroits($droits) {
+        
+        $this->droits = serialize(json_encode($droits));
+
+        return $this;
+    }
+
+    /**
+     * Get droits
+     *
+     * @return string
+     */
+    public function getDroits() {
+        return json_decode(unserialize($this->droits));
     }
 
     /**

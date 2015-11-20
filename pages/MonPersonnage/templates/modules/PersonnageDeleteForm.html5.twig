@@ -33,12 +33,16 @@
 
         Barre_De_Statut("Traitement de la demande...");
         Icone_Chargement(1);
+        
+        displayLoading();
 
         $.ajax({
             type: "POST",
             url: "pages/MonPersonnage/ajax/ajaxPersonnageDeleteSendEmail.php",
             data: "id_personnage={{ objPlayer.getId }}",
             success: function (msg) {
+
+                hideLoading();
 
                 var json = JSON.parse(msg);
 
@@ -47,7 +51,7 @@
                     Barre_De_Statut("Le mail a été envoyé avec succès.");
                     Icone_Chargement(0);
 
-                    Ajax('pages/MonPersonnage/PersonnageDeleteVerify.php?id_personnage={{ objPlayer.getId }}');
+                    Ajax('pages/MonPersonnage/PersonnageDeleteVerify.php?idPlayer={{ encryptForUrl(objPlayer.getId) }}');
 
                 } else {
                     popBootbox(json.reasons);

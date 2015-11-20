@@ -14,7 +14,7 @@ class ajaxDiscussionArchivage extends \PageHelper {
         global $request;
         $em = \Shared\DoctrineHelper::getEntityManager();
 
-        $idDiscussion = \Encryption::decryptForUrl($request->request->get("idDiscussion"));
+        $idDiscussion = \Encryption::decrypt($request->request->get("idDiscussion"));
         $objDiscussion = \Site\SiteHelper::getSupportDiscussionsRepository()->find($idDiscussion);
 
         if ($objDiscussion !== null) {

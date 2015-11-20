@@ -55,7 +55,7 @@ function Deblocage_Yangs(id) {
                     $.ajax({
                         type: "POST",
                         url: "pages/MonPersonnage/ajax/ajaxRepaireYang.php",
-                        data: "id_perso=" + id,
+                        data: {"idPlayer": id},
                         success: function (msg) {
 
                             if (msg == "NOT_YOU") {
@@ -104,7 +104,7 @@ function Deblocage_Personnage(id) {
                     $.ajax({
                         type: "POST",
                         url: "pages/MonPersonnage/ajax/ajaxRepairePosition.php",
-                        data: "id_perso=" + id,
+                        data: {"idPlayer": id},
                         success: function (msg) {
 
                             if (msg == "NOT_EMPIRE") {

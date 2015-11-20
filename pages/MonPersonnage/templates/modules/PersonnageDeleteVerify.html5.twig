@@ -8,8 +8,7 @@
 
         Pour continuer il faut récupérer le code de confirmation qui a été généré et
         envoyer à votre adresse e-mail.
-        <br/><br/>
-        
+        <br/>
         Vous n'aurez plus accès à cette page si vous fermez votre navigateur et il faudra faire une nouvelle demande.
         <br/><br/>
 
@@ -20,7 +19,7 @@
             <div class="col-lg-6">
                 <div class="form-group" style="margin-bottom: 0px;">
                     <label for="inputNumeroVerif">
-                        Code d'entrepôt
+                        Code de confirmation
                     </label>
 
                     <div class="input-group col-xs-12">
@@ -46,13 +45,17 @@
         Barre_De_Statut("Traitement de la suppression...");
         Icone_Chargement(1);
 
+        displayLoading();
+
         if (numeroVerif != "") {
             
             $.ajax({
                 type: "POST",
                 url: "pages/MonPersonnage/ajax/ajaxPersonnageDeleteExecute.php",
-                data: {"id_compte": '{{ idCompte }}', "id_personnage": '{{ idPlayer }}', "numero_verif": numeroVerif},
+                data: {"idPlayer": '{{ encrypt(idPlayer) }}', "numeroVerif": numeroVerif},
                 success: function (msg) {
+
+                    hideLoading();
 
                     var json = JSON.parse(msg);
 
@@ -72,7 +75,6 @@
         } else {
 
             popBootbox("Vous n'avez indiqué aucun numéro.");
-
             Barre_De_Statut("Vous n'avez indiqué aucun numéro.");
             Icone_Chargement(2);
         }

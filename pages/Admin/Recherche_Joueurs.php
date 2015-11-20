@@ -11,8 +11,7 @@ class Recherche_Joueurs extends \PageHelper {
 
     public function __construct() {
         parent::__construct();
-
-        $this->VerifyTheRight("rechercheJoueurs");
+        $this->VerifyTheRight(\DroitsHelper::RECHERCHE_JOUEUR);
     }
 
     public function run() {

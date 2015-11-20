@@ -7,17 +7,22 @@ require __DIR__ . '../../../../core/initialize.php';
 class ajaxPersonnageRenameExecute extends \ScriptHelper {
 
     public $isProtected = true;
+    public $objPlayer;
 
+    public function __construct() {
+        parent::__construct();
+        global $request;
+        $this->objPlayer = parent::VerifMonJoueur(\Encryption::decrypt($request->query->get("idPlayer")));
+    }
+    
     public function run() {
 
         global $request;
         global $session;
         
         $em = \Shared\DoctrineHelper::getEntityManager();
-        $idPlayer = \Encryption::decrypt($request->request->get("idPlayer"));
 
-        $objPlayer = parent::VerifMonJoueur($idPlayer);
-        $playerNameOld = $objPlayer->getName();
+        $playerNameOld = $this->objPlayer->getName();
         $playerNameNew = $request->request->get("newName");
 
         $countPlayerByName = \Player\PlayerHelper::getPlayerRepository()->countPlayerByName($playerNameNew);
@@ -26,8 +31,8 @@ class ajaxPersonnageRenameExecute extends \ScriptHelper {
 
             if ($this->objAccount->getCash() >= 1500) {
 
-                $objPlayer->setName($playerNameNew);
-                $em->persist($objPlayer);
+                $this->objPlayer->setName($playerNameNew);
+                $em->persist($this->objPlayer);
 
                 $objLogRename = new \Site\Entity\LogsRename();
                 $objLogRename->setIdCompte($this->objAccount->getId());

@@ -160,45 +160,30 @@ class CoreHelper {
         $objAdministrationUser = Site\SiteHelper::getAdministrationUsersRepository()->findAdministrationUser($this->objAccount->getId());
 
         if ($objAdministrationUser !== null) {
-            $this->isAdmin = $objAdministrationUser->getPannelAdmin();
-            $this->arrAdminRights["supportTicket"] = $objAdministrationUser->getSupportTicket();
-            $this->arrAdminRights["rechercheJoueurs"] = $objAdministrationUser->getRechercheJoueurs();
-            $this->arrAdminRights["rechercheJoueursAdmin"] = $objAdministrationUser->getRechercheJoueursAdmin();
-            $this->arrAdminRights["rechercheComptes"] = $objAdministrationUser->getRechercheComptes();
-            $this->arrAdminRights["rechercheGuildes"] = $objAdministrationUser->getRechercheGuildes();
-            $this->arrAdminRights["rechercheEmails"] = $objAdministrationUser->getRechercheEmails();
-            $this->arrAdminRights["rechercheIps"] = $objAdministrationUser->getRechercheIp();
-            $this->arrAdminRights["recherchePecheurs"] = $objAdministrationUser->getRecherchePecheurs();
-            $this->arrAdminRights["rechercheMaries"] = $objAdministrationUser->getRechercheMaries();
-            $this->arrAdminRights["rechercheItems"] = $objAdministrationUser->getRechercheItems();
-            $this->arrAdminRights["rechercheBanissements"] = $objAdministrationUser->getRechercheBannissements();
-            $this->arrAdminRights["rechercheRename"] = $objAdministrationUser->getRechercheRenames();
-            $this->arrAdminRights["banissement"] = $objAdministrationUser->getBannissement();
-            $this->arrAdminRights["banissementIp"] = $objAdministrationUser->getBannissementIp();
-            $this->arrAdminRights["debanissement"] = $objAdministrationUser->getDebannissement();
-            $this->arrAdminRights["debanissementIp"] = $objAdministrationUser->getDebannissementIp();
-            $this->arrAdminRights["voirPersonnage"] = $objAdministrationUser->getVoirPersonnage();
-            $this->arrAdminRights["voirCompte"] = $objAdministrationUser->getVoirCompte();
-            $this->arrAdminRights["voirDescriptionMembre"] = $objAdministrationUser->getDescriptionMembre();
-            $this->arrAdminRights["gererMonnaies"] = $objAdministrationUser->getGererMonnaies();
-            $this->arrAdminRights["gererNews"] = $objAdministrationUser->getGererNews();
-            $this->arrAdminRights["gererEquipe"] = $objAdministrationUser->getEquipe();
-            $this->arrAdminRights["historiqueCommandes"] = $objAdministrationUser->getCommandes();
-            $this->arrAdminRights["historiqueMp"] = $objAdministrationUser->getMp();
 
+            $this->isAdmin = $objAdministrationUser->getPannelAdmin();
+            $this->arrAdminRights = $objAdministrationUser->getDroits();
+            
             return true;
         } else {
             return false;
         }
     }
 
-    public function VerifyTheRight($nameRight = "") {
-
-        if ($this->arrAdminRights[$nameRight]) {
+    public function VerifyTheRight($droit = 0) {        
+        if (in_array($droit, $this->arrAdminRights)) {
             return true;
         } else {
             include '../../pages/MagicWord.php';
             exit();
+        }
+    }
+    
+    public function HaveTheRight($droit = 0) {        
+        if (in_array($droit, $this->arrAdminRights)) {
+            return true;
+        } else {
+            return false;
         }
     }
 

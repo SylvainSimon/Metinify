@@ -12,7 +12,7 @@ class Gestion_Monnaies extends \PageHelper {
     public function __construct() {
         parent::__construct();
 
-        $this->VerifyTheRight("gererMonnaies");
+        $this->VerifyTheRight(\DroitsHelper::GERER_MONNAIES);
     }
 
     public function run() {

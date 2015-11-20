@@ -13,7 +13,7 @@ class ajaxRepairePosition extends \ScriptHelper {
         global $request;
         $em = \Shared\DoctrineHelper::getEntityManager();
 
-        $idPlayer = $request->request->get("id_perso");
+        $idPlayer = \Encryption::decrypt($request->request->get("idPlayer"));
         $objPlayer = \Player\PlayerHelper::getPlayerRepository()->findPlayerByIdPlayerAndIdAccount($idPlayer, $this->objAccount->getId());
         $objPlayerIndex = \Player\PlayerHelper::getPlayerIndexRepository()->find($this->objAccount->getId());
 

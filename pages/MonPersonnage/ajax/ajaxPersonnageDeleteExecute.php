@@ -7,24 +7,29 @@ require __DIR__ . '../../../../core/initialize.php';
 class ajaxPersonnageDeleteExecute extends \ScriptHelper {
 
     public $isProtected = true;
+    public $objPlayer;
 
+    public function __construct() {
+        parent::__construct();
+        global $request;
+        $this->objPlayer = parent::VerifMonJoueur(\Encryption::decrypt($request->request->get("idPlayer")));
+    }
+    
     public function run() {
 
         global $request;
         $em = \Shared\DoctrineHelper::getEntityManager();
 
-        $idAccount = $request->request->get("id_compte");
-        $idPlayer = $request->request->get("id_personnage");
-        $codeVerif = $request->request->get("numero_verif");
-
-        $objPlayer = \Player\PlayerHelper::getPlayerRepository()->find($idPlayer);
-        $objSuppressionPersonnage = \Site\SiteHelper::getSuppressionPersonnageRepository()->findByIdPlayerAndNumeroVerif($idPlayer, $codeVerif);
+        $idPlayer = $this->objPlayer->getId();
+        $codeVerif = $request->request->get("numeroVerif");
+        
+        $objSuppressionPersonnage = \Site\SiteHelper::getSuppressionPersonnageRepository()->findByIdPlayerAndNumeroVerif($this->objPlayer->getId(), $codeVerif);
 
         if ($objSuppressionPersonnage !== null) {
 
             if (\Player\PlayerHelper::haveGuild($idPlayer) == false) {
 
-                $objPlayerIndex = \Player\PlayerHelper::getPlayerIndexRepository()->find($idAccount);
+                $objPlayerIndex = \Player\PlayerHelper::getPlayerIndexRepository()->find($this->objAccount->getId());
 
                 if ($objPlayerIndex->getPid1() == $idPlayer) {
                     $func = "setPid1";
@@ -44,22 +49,22 @@ class ajaxPersonnageDeleteExecute extends \ScriptHelper {
                 \Player\PlayerHelper::getItemRepository()->deleteByOwnerId($idPlayer, ["EQUIPMENT", "INVENTORY"]);
 
                 $objPlayerDelete = new \Player\Entity\PlayerDeleted();
-                $oldReflection = new \ReflectionObject($objPlayer);
+                $oldReflection = new \ReflectionObject($this->objPlayer);
                 $newReflection = new \ReflectionObject($objPlayerDelete);
 
                 foreach ($oldReflection->getProperties() as $property) {
                     if ($newReflection->hasProperty($property->getName())) {
                         $newProperty = $newReflection->getProperty($property->getName());
                         $newProperty->setAccessible(true);
-                        $newProperty->setValue($objPlayerDelete, $property->getValue($objPlayer));
+                        $newProperty->setValue($objPlayerDelete, $property->getValue($this->objPlayer));
                     }
                 }
 
                 $em->persist($objPlayerDelete);
 
-                \Player\PlayerHelper::getMessengerListRepository()->deleteByNamePlayer($objPlayer->getName());
+                \Player\PlayerHelper::getMessengerListRepository()->deleteByNamePlayer($this->objPlayer->getName());
 
-                $em->remove($objPlayer);
+                $em->remove($this->objPlayer);
                 $em->remove($objSuppressionPersonnage);
 
                 $em->flush();
