@@ -15,6 +15,7 @@ class DateTimeHelper {
 
         return $dtF->diff($dtT)->format('%a jour, %h heures, %i minutes');
     }
+    
 
     public static function dateTimeToFormatedString($dateTime, $format = null) {
 

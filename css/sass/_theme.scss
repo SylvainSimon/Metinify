@@ -30,7 +30,7 @@ html {
 
 .direct-chat-text{
     border-radius: 0px;
-        border: 0px;
+    border: 0px;
 }
 
 .modal-header{
@@ -115,8 +115,8 @@ body {
 }
 
 .box .overlay, .overlay-wrapper .overlay{
-    background: rgba(28, 28, 28, 0.7);
-    
+    background: rgba(40, 40, 40, 0.7);
+
 }
 
 .box .overlay>.fa, .overlay-wrapper .overlay>.fa{
@@ -789,10 +789,51 @@ label{
     position: relative;
 }
 
+table.dataTable thead .sorting:after {
+    font-family: 'Roboto', 'Material Icons' !important;
+    font-size: 20px;
+    content: "\E8D5" !important;
+}
 
 .Images_Recherches{
     position: relative;
     height: 20px;
     background: #303030;
     border: 1px solid grey;
+}
+
+table.dataTable thead .sorting_desc:after {
+    font-family: 'Roboto', 'Material Icons' !important;
+    font-size: 20px;
+    content: "\E316" !important;
+}
+
+table.dataTable thead .sorting_asc:after {
+    font-family: 'Roboto', 'Material Icons' !important;
+    font-size: 20px;
+    content: "\E313" !important;
+}
+
+table.dataTable.table-condensed thead .sorting:after, table.dataTable.table-condensed thead .sorting_asc:after, table.dataTable.table-condensed thead .sorting_desc:after{
+    top: 4px !important;
+    right: 0px !important;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #242424;
+}
+.table-hover>tbody>tr:hover {
+    background-color: #3F3F3F !important;
+}
+
+.dataTable{
+    width:100% !important;
+}
+
+.table.dataTable>thead>tr>th{
+    border-bottom: 1px solid #666666;
+}
+
+.table.dataTable>thead>tr:last-child>th{
+        background: #383838;
 }

@@ -173,6 +173,39 @@ $(document).ready(function () {
         }
     });
 
+    $.extend($.fn.dataTable.defaults, {
+        "fnDrawCallback": function (oSettings) {
+            redraw();
+        },
+        "fnInitComplete": function (oSettings, json) {
+            redraw();
+        },
+        "bJQueryUI": false,
+        "sDom": '<"clear"><"top">rt<lp><"clear">',
+        "sPaginationType": "full_numbers",
+        "bPaginate": true,
+        "bServerSide": true
+    });
+
+    $.extend(true, $.fn.dataTable.defaults, {
+        "oLanguage": {
+            "sLengthMenu": "_MENU_<span class='hidden-xs'> par page</span>",
+            "sZeroRecords": "Aucun élément trouvé",
+            "sInfo": "Affichage de _START_ à _END_ sur _TOTAL_ éléments",
+            "sInfoEmpty": "Affichage de 0 à 0 sur 0 éléments",
+            "sInfoFiltered": "(filtré d'un total de _MAX_ éléments)",
+            "sSearch": "Rechercher",
+            "sEmptyTable": "Aucun élément trouvé",
+            "sProcessing": "Chargement des données...",
+            "oPaginate": {
+                "sPrevious": "«",
+                "sNext": "»",
+                "sFirst": "Début",
+                "sLast": "Fin"
+            }
+        }
+    });
+
     redraw();
 });
 
@@ -181,6 +214,22 @@ function displayLoading() {
 }
 function hideLoading() {
     $("#Contenue_Principal > .box .overlay").remove();
+}
+
+
+function processingDatatable(processing) {
+    if (processing) {
+        displayLoadingDataTable();
+    } else {
+        hideLoadingDataTable();
+    }
+}
+
+function displayLoadingDataTable() {
+    $(".box.boxDataTable").append('<div class="overlay"><i class="fa fa-spin material-icons md-icon-spin"></i></div>');
+}
+function hideLoadingDataTable() {
+    $(".box.boxDataTable .overlay").remove();
 }
 
 function getInformationItem(idItem) {
@@ -320,7 +369,7 @@ $(document).ready(function () {
         openSpeed: 400,
         closeSpeed: 200
     });
-    
+
     $(".fancybox_Marche").fancybox({
         padding: 0,
         closeBtn: false,

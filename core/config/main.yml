@@ -8,6 +8,9 @@ manualActivation: true
 defaultCash: 0
 defaultMileage: 0
 
+libelleCash: VamoNaies
+libelleMileage: TanaNaies
+
 twigCache: false
 twigCacheUrl: /cache/twig
 

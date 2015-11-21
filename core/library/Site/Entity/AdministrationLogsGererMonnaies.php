@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * AdministrationLogsGererMonnaies
  *
  * @ORM\Table(name="site.administration_logs_gerer_monnaies")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\Repository\AdministrationLogsGererMonnaiesRepository")
  */
 class AdministrationLogsGererMonnaies {
 
