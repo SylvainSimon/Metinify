@@ -418,6 +418,23 @@ $(document).ready(function () {
         closeSpeed: 200
     });
 
+    $(".fancybox_News").fancybox({
+        padding: 0,
+        closeBtn: false,
+        autoSize: false,
+        scrollOutside: false,
+        fitToView: true,
+        autoWidth: false,
+        height: "auto",
+        maxHeight: "80%",
+        width: 800,
+        closeClick: false,
+        openEffect: 'elastic',
+        closeEffect: 'elastic',
+        openSpeed: 400,
+        closeSpeed: 200
+    });
+
     $(".fancybox_Trailer").fancybox({
         minWidth: 1200,
         minHeight: 521,

@@ -893,7 +893,24 @@ table.dataTable.table-condensed thead>tr:first-child>th:last-child{
     background: transparent !important;
 }
 
+.dataTable tbody td .material-icons{
+    color: rgba(255, 255, 255, 1);
+}
+
 div.dataTables_paginate{
     float: right;
     margin-right: 10px !important;
+}
+
+tbody td.lineIcon{
+    line-height: 10px !important;
+}
+
+.mce-panel{
+    border-width: 0px !important;
+    background: #212121 !important;
+}
+
+.mce-edit-area{
+    border: 1px solid #4A4A4A !important;
 }

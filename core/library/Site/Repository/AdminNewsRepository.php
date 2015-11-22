@@ -18,6 +18,7 @@ class AdminNewsRepository extends EntityRepository {
                 . "AccountEntity.pseudoMessagerie");
         $qb->from("\Site\Entity\AdminNews", "AdminNewsEntity");
         $qb->innerJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = AdminNewsEntity.auteur");
+        $qb->orderBy("AdminNewsEntity.date", "DESC");
         $qb->setMaxResults($max);
 
         try {

@@ -1,0 +1,120 @@
+<script type="text/javascript" src="assets/js/tinymce/tinymce.min.js"></script>
+
+<div class="box boxDataTable box-default flat">
+
+    <div class="box-header">
+        <h3 class="box-title">Liste des actualités</h3>
+        <div class="box-tools" style="right: 5px;">
+            <a class="fancybox_News" data-fancybox-type="ajax" href="pages/Admin/includes/GererNewsEdit.php?mode=create" data-tooltip="Créer une actualité">
+                <button type="button" class="btn btn-sm btn-success btn-flat" >
+                    Ajouter
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <div class="box-body no-padding">
+
+        <table class="table table-condensed table-hover table-striped" id="listGererNews" style="border-collapse: collapse; margin-top: 0px !important;">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <th>Titre</th>
+                    <th>Message</th>
+                    <th>Auteur</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="100%" class="dataTables_empty">Tableau en cours de chargement...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+
+    var aoColumns = [{{ dtColumns|raw }}];
+    var aoColumnsFilter = [{{ dtFilterColumns|raw  }}];
+    var sAjaxSource = '{{ ajaxSource }}';
+
+    $('#listGererNews').on('processing.dt', function (e, settings, processing) {
+        processingDatatable(processing);
+    });
+
+    $(document).ready(function () {
+        oTableGererNews = $('#listGererNews').dataTable({
+            aaSorting: [[0, "desc"]],
+            aoColumns: aoColumns,
+            sDom: '<"clear"><"top">rt<lp><"clear">',
+            sAjaxSource: sAjaxSource,
+            aLengthMenu: [[10, 25, 50, 100], ["10", "25", "50", "100"]],
+            iDisplayLength: 10,
+            fnServerData: function (sSource, aoData, fnCallback) {
+                $.getJSON(sSource, aoData, function (json) {
+                    $("#datatable_total").html(json.iTotalRecords);
+                    fnCallback(json);
+                });
+            }
+        }).columnFilter({aoColumns: aoColumnsFilter});
+    });
+
+    function SuppressionNews(idNew) {
+
+        bootbox.dialog({
+            message: "Confirmez-vous la suppression de cette actualité ?",
+            animate: false,
+            className: "myBootBox",
+            title: 'Confirmation de la demande',
+            buttons: {
+                danger: {
+                    label: "Annuler",
+                    className: "btn-danger",
+                    callback: function () {
+
+                    }
+                },
+                success: {
+                    label: "Confirmer",
+                    className: "btn-primary",
+                    callback: function () {
+
+                        displayLoading();
+
+                        $.ajax({
+                            type: "POST",
+                            url: "pages/Admin/ajax/ajaxGererNewsDelete.php",
+                            data: {"newId": idNew},
+                            success: function (msg) {
+
+                                hideLoading();
+
+                                var json = JSON.parse(msg);
+
+                                if (json.result) {
+
+                                } else {
+                                    popBootbox(json.reasons);
+                                }
+
+                                parent.oTableGererNews.fnStandingRedraw();
+                            }
+
+                        });
+                    }
+                }
+            }
+        });
+
+    }
+
+</script>

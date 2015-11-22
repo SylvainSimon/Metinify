@@ -20,7 +20,7 @@
                         <div style="position: relative; padding-right: 4px; left:4px;">{{ objAdminNews.contenueMessage }}</div>
                     </div>
                 {% else %}
-                    {{ objAdminNews.contenueMessage }}
+                    {{ objAdminNews.contenueMessage|raw }}
                 {% endif %}
 
 

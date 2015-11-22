@@ -1,0 +1,86 @@
+<div class="box box-default flat no-border" style="margin-bottom: 0px;">
+
+    <div class="box-header">
+        {% if objAdminNews.getId > 0 %}
+            <h3 class="box-title">Modification d'une actualité</h3>
+        {% else %}
+            <h3 class="box-title">Ajout d'une actualité</h3>
+        {% endif %}
+    </div>
+
+    <input type="hidden" id="newId" value="{{ objAdminNews.getId }}">
+
+    <div class="box-body no-padding" style="padding-top: 10px !important;">
+        <div class="col-lg-12">
+            <div class="form-group ">
+                <label for="newTitre">
+                    Titre
+                </label>
+
+                <div class="input-group col-xs-12">
+                    <input type="text" id="newTitre" class="form-control input-sm text" value="{{ objAdminNews.getTitreMessage }}" required >
+                </div>
+
+                <span class="help-block">    
+                    <ul class="list-unstyled">
+                        <li id="ReponseDuTestNomDutilisateur"></li>
+                    </ul>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="form-group ">
+                <label for="newsMessage">
+                    Message
+                </label>
+
+                <div class="input-group col-xs-12">
+
+                    <textarea style="resize: none; min-height: 200px;" id="newsMessage" class="form-control input-sm">{{ objAdminNews.getContenueMessage }}</textarea>
+                </div>
+
+                <span class="help-block">    
+                    <ul class="list-unstyled">
+                        <li id="ReponseDuTestNomDutilisateur"></li>
+                    </ul>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-footer">
+        <div class="pull-right">
+            <input type="button" class="btn btn-success btn-flat" onclick="EnregistrementNews();" value="Enregistrer" />
+        </div>
+    </div>
+</div>
+
+<script>
+    function EnregistrementNews() {
+
+        displayLoading();
+
+        $.ajax({
+            type: "POST",
+            url: "pages/Admin/ajax/ajaxGererNewsEditSave.php",
+            data: {"newId": $("#newId").val(), "newTitre": $("#newTitre").val(), "newsMessage": tinymce.activeEditor.getContent()},
+            success: function (msg) {
+                hideLoading();
+                parent.jQuery.fancybox.close();
+                parent.oTableGererNews.fnStandingRedraw();
+            }
+
+        });
+    }
+
+    tinymce.remove();
+    tinymce.init({
+        selector: "#newsMessage",
+        theme: "modern",
+        resize: false,
+        statusbar: false,
+        menubar: false,
+        plugins: "autosave charmap code fullscreen image importcss link paste searchreplace tabfocus table template visualblocks",
+        forced_root_block: false
+    });
+</script>

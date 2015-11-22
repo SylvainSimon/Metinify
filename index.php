@@ -63,6 +63,7 @@ class IndexWebsite extends PageHelper {
                 <script src="assets/js/datatables/js/jquery.dataTables.min.js" type='text/javascript'></script>
                 <script src="assets/js/datatables/js/dataTables.bootstrap.min.js" type='text/javascript'></script>
                 <script src="assets/js/datatables/js/jquery.dataTables.columnFilter.min.js" type='text/javascript'></script>
+                <script src="assets/js/datatables/js/jquery.dataTables.StandingRedraw.min.js" type='text/javascript'></script>
                 <script src="assets/js/datatables/extras/Responsive/js/dataTables.responsive.min.js" type='text/javascript'></script>
 
                 <!--[if lt IE 9]>

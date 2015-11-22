@@ -129,141 +129,12 @@ class FonctionsUtiles {
         return $Recomposition_Date;
     }
 
-    static function Formatage_Date_News($Donnees_Brute) {
-
-        $Array_Mois = array(
-            '01' => 'Janvier',
-            '02' => 'Fevrier',
-            '03' => 'Mars',
-            '04' => 'Avril',
-            '05' => 'Mai',
-            '06' => 'Juin',
-            '07' => 'Juillet',
-            '08' => 'Aout',
-            '09' => 'Septembre',
-            '10' => 'Octobre',
-            '11' => 'Novembre',
-            '12' => 'Decembre'
-        );
-
-        $Explosion_DateEntiere = explode(" ", $Donnees_Brute);
-
-        $Explosion_Date = explode("-", $Explosion_DateEntiere[0]);
-
-        if ($Explosion_DateEntiere[0] != '0000-00-00') {
-
-            $Date_Jours = $Explosion_Date[2];
-            $Date_Mois = $Array_Mois[$Explosion_Date[1]];
-            $Date_Annee = $Explosion_Date[0];
-        }
-
-        if ($Explosion_DateEntiere[0] != '0000-00-00') {
-            $Recomposition_Date = "" . $Date_Jours . " " . $Date_Mois . " " . $Date_Annee . "";
-        } else {
-            $Recomposition_Date = "La date n'a pas été définie.";
-        }
-
-        return $Recomposition_Date;
-    }
-
-    static function Formatage_Date_Vue($Donnees_Brute) {
-
-        $Explosion_DateEntiere = explode(" ", $Donnees_Brute);
-
-        $Explosion_Date = explode("-", $Explosion_DateEntiere[0]);
-        $Explosion_Heure = explode(":", $Explosion_DateEntiere[1]);
-
-        if ($Explosion_DateEntiere[0] != '0000-00-00') {
-
-            $Date_Jours = $Explosion_Date[2];
-            $Date_Mois = $Explosion_Date[1];
-        }
-
-        $Date_Heure = $Explosion_Heure[0];
-        $Date_Minute = $Explosion_Heure[1];
-        $Date_Seconde = $Explosion_Heure[2];
-
-        if ($Explosion_DateEntiere[0] != '0000-00-00') {
-            $Recomposition_Date = "Vu : " . $Date_Jours . "/" . $Date_Mois . " à " . $Date_Heure . ":" . $Date_Minute . ":" . $Date_Seconde . "";
-        } else {
-            $Recomposition_Date = "Non-Vu";
-        }
-
-        return $Recomposition_Date;
-    }
-
     static function Raccourcissement_Chaine($Chaine, $Limite) {
 
         $Chaine_Temporaire = substr($Chaine, 0, $Limite);
         $Chaine_Final = $Chaine_Temporaire . "...";
 
         return $Chaine_Final;
-    }
-
-    static function Obtenir_Annee_Date($Donnees_Brute) {
-
-        $Explosion_DateEntiere = explode(" ", $Donnees_Brute);
-
-        $Explosion_Date = explode("-", $Explosion_DateEntiere[0]);
-
-        $Date_Annee = $Explosion_Date[0];
-
-        return $Date_Annee;
-    }
-
-    static function Obtenir_Mois_Date($Donnees_Brute) {
-
-        $Explosion_DateEntiere = explode(" ", $Donnees_Brute);
-
-        $Explosion_Date = explode("-", $Explosion_DateEntiere[0]);
-
-        $Date_Annee = $Explosion_Date[1];
-
-        return $Date_Annee;
-    }
-
-    static function Obtenir_Jours_Date($Donnees_Brute) {
-
-        $Explosion_DateEntiere = explode(" ", $Donnees_Brute);
-
-        $Explosion_Date = explode("-", $Explosion_DateEntiere[0]);
-
-        $Date_Annee = $Explosion_Date[2];
-
-        return $Date_Annee;
-    }
-
-    static function Obtenir_Heure_Date($Donnees_Brute) {
-
-        $Explosion_DateEntiere = explode(" ", $Donnees_Brute);
-
-        $Explosion_Heure = explode(":", $Explosion_DateEntiere[1]);
-
-        $Date_Annee = $Explosion_Heure[0];
-
-        return $Date_Annee;
-    }
-
-    static function Obtenir_Minute_Date($Donnees_Brute) {
-
-        $Explosion_DateEntiere = explode(" ", $Donnees_Brute);
-
-        $Explosion_Heure = explode(":", $Explosion_DateEntiere[1]);
-
-        $Date_Annee = $Explosion_Heure[1];
-
-        return $Date_Annee;
-    }
-
-    static function Obtenir_Seconde_Date($Donnees_Brute) {
-
-        $Explosion_DateEntiere = explode(" ", $Donnees_Brute);
-
-        $Explosion_Heure = explode(":", $Explosion_DateEntiere[1]);
-
-        $Date_Annee = $Explosion_Heure[2];
-
-        return $Date_Annee;
     }
 
     static function Formatage_Yangs($Somme) {
@@ -336,6 +207,21 @@ class FonctionsUtiles {
         }
 
         $iconElement .= 'material-icons md-icon-map md-20"></i>';
+
+        return $iconElement;
+    }
+
+    static function findIconDevise($idDevise) {
+
+        $iconElement = '<i data-tooltip="' . DeviseHelper::getLibelle($idDevise) . '" class="';
+
+        if ($idDevise == 1) {
+            $iconElement .= "text-yellow ";
+        } else if ($idDevise == 2) {
+            $iconElement .= "text-gray ";
+        }
+
+        $iconElement .= 'material-icons md-icon-whatshot md-16"></i>';
 
         return $iconElement;
     }

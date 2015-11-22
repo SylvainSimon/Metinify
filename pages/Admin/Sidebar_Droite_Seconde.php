@@ -10,7 +10,7 @@
                 <tr onclick="Ajax('pages/Admin/GererMonnaies.php');"><td> Gestion des monnaies</td></tr>
             <?php } ?>
             <?php if ($this->HaveTheRight(\DroitsHelper::GERER_NEWS)) { ?>
-                <tr onclick="Ajax('pages/Admin/Gestion_News.php')"><td> Gestion des news</td></tr>
+                <tr onclick="Ajax('pages/Admin/GererNews.php')"><td> Gestion des news</td></tr>
             <?php } ?>
         </table>
     </div>
