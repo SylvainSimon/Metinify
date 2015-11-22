@@ -271,54 +271,56 @@ class FonctionsUtiles {
         return $Somme_Formatee;
     }
 
-    static function Find_Name_Race($Job) {
+    static function findTitleJob($job) {
 
         $Nom_Race = "";
 
-        if ($Job == "0") {
+        if ($job == "0") {
             $Nom_Race = "Guerrier, Homme";
-        } else if ($Job == "1") {
+        } else if ($job == "1") {
             $Nom_Race = "Ninja, Femme";
-        } else if ($Job == "2") {
+        } else if ($job == "2") {
             $Nom_Race = "Sura, Homme";
-        } else if ($Job == "3") {
+        } else if ($job == "3") {
             $Nom_Race = "Shaman, Femme";
-        } else if ($Job == "4") {
+        } else if ($job == "4") {
             $Nom_Race = "Guerrière, Femme";
-        } else if ($Job == "5") {
+        } else if ($job == "5") {
             $Nom_Race = "Ninja, Homme";
-        } else if ($Job == "6") {
+        } else if ($job == "6") {
             $Nom_Race = "Sura, Femme";
-        } else if ($Job == "7") {
+        } else if ($job == "7") {
             $Nom_Race = "Shaman, Homme";
         }
 
         return $Nom_Race;
     }
 
-    static function Find_Image_Race($Job) {
+    static function findIconJob($job) {
 
-        $Lien_Image = "";
+        $imgLink = '<img class="Images_Recherches" data-tooltip="'.self::findTitleJob($job).'" src="';
 
-        if ($Job == "0") {
-            $Lien_Image = "images/races/0_mini.png";
-        } else if ($Job == "1") {
-            $Lien_Image = "images/races/1_mini.png";
-        } else if ($Job == "2") {
-            $Lien_Image = "images/races/2_mini.png";
-        } else if ($Job == "3") {
-            $Lien_Image = "images/races/3_mini.png";
-        } else if ($Job == "4") {
-            $Lien_Image = "images/races/4_mini.png";
-        } else if ($Job == "5") {
-            $Lien_Image = "images/races/5_mini.png";
-        } else if ($Job == "6") {
-            $Lien_Image = "images/races/6_mini.png";
-        } else if ($Job == "7") {
-            $Lien_Image = "images/races/7_mini.png";
+        if ($job == "0") {
+            $imgLink .= "images/races/0_mini.png";
+        } else if ($job == "1") {
+            $imgLink .= "images/races/1_mini.png";
+        } else if ($job == "2") {
+            $imgLink .= "images/races/2_mini.png";
+        } else if ($job == "3") {
+            $imgLink .= "images/races/3_mini.png";
+        } else if ($job == "4") {
+            $imgLink .= "images/races/4_mini.png";
+        } else if ($job == "5") {
+            $imgLink .= "images/races/5_mini.png";
+        } else if ($job == "6") {
+            $imgLink .= "images/races/6_mini.png";
+        } else if ($job == "7") {
+            $imgLink .= "images/races/7_mini.png";
         }
+        
+        $imgLink .= '" height="20">';
 
-        return $Lien_Image;
+        return $imgLink;
     }
 
     static function FindIconeEmpire($idEmpire) {
@@ -355,30 +357,30 @@ class FonctionsUtiles {
 
     static function Find_Image_Empire($Empire) {
 
-        $Lien_Image = "images/races/Royaume_Inconnu.jpg";
+        $imgLink = "images/races/Royaume_Inconnu.jpg";
 
         if ($Empire == "0") {
-            $Lien_Image = "images/races/Royaume_Inconnu.jpg";
+            $imgLink = "images/races/Royaume_Inconnu.jpg";
         } else if ($Empire == "1") {
-            $Lien_Image = "images/empire/red.jpg";
+            $imgLink = "images/empire/red.jpg";
         } else if ($Empire == "2") {
-            $Lien_Image = "images/empire/yellow.jpg";
+            $imgLink = "images/empire/yellow.jpg";
         } else if ($Empire == "3") {
-            $Lien_Image = "images/empire/blue.jpg";
+            $imgLink = "images/empire/blue.jpg";
         }
-        return $Lien_Image;
+        return $imgLink;
     }
 
     static function Find_Image_Status($Status) {
 
-        $Lien_Image = "";
+        $imgLink = "";
 
         if ($Status == "OK") {
-            $Lien_Image = "images/valid.gif";
+            $imgLink = "images/valid.gif";
         } else if ($Status == "BLOCK") {
-            $Lien_Image = "images/invalid.gif";
+            $imgLink = "images/invalid.gif";
         }
-        return $Lien_Image;
+        return $imgLink;
     }
 
     static function Find_Title_Status($Status) {

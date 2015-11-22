@@ -31,7 +31,7 @@ class GererMonnaies extends \PageHelper {
         $sFilterColumns = '';
         $sFilterColumns .= '{ type: "date-range"},';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
-        $sFilterColumns .= '{ type: "select", values: [{value:"1", label:"Ajout"}, {value:"2", label:"Suppression"}] },';
+        $sFilterColumns .= '{ type: "select", values: [{value:"1", label:"Ajoute"}, {value:"2", label:"Enlève"}] },';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
         $sFilterColumns .= '{ type: "select", values: [' . \DeviseHelper::getForDatatableSelect() . '] },';
         $sFilterColumns .= '{ type: "text", placeholder: "" }';
