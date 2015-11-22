@@ -6,15 +6,21 @@
 
     <div class="box-body no-padding">
 
-        <table class="table table-condensed table-hover table-striped" id="listRecherchePlayer" style="border-collapse: collapse;">
+        <table class="table table-condensed table-hover table-striped" id="listRecherchePlayer" style="border-collapse: collapse; margin-top: 0px !important;">
             <thead>
                 <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                     <th></th>
                     <th></th>
                 </tr>
                 <tr>
                     <th>Joueur</th>
                     <th>Niveau</th>
+                    <th>Yangs</th>
+                    <th>Empire</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,7 +44,7 @@
 
     $(document).ready(function () {
         oTableRecherchePlayer = $('#listRecherchePlayer').dataTable({
-            aaSorting: [[0, "desc"]],
+            aaSorting: [[0, "asc"]],
             aoColumns: aoColumns,
             sDom: '<"clear"><"top">rt<lp><"clear">',
             sAjaxSource: sAjaxSource,

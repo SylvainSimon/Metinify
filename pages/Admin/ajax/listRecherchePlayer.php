@@ -32,6 +32,36 @@ class listHistoGererMonnaies extends \ScriptHelper {
                 'dbType' => "",
                 'dbSortField' => 'PlayerEntity.level',
                 'dtField' => 'level',
+            ),
+            array(
+                'dbField' => 'PlayerEntity.gold',
+                'dbConcatSeparator' => "",
+                'dbType' => "",
+                'dbSortField' => 'PlayerEntity.gold',
+                'dtField' => 'yangs',
+                'formatter' => function( $d, $row ) {
+                    return number_format($d, 0, '.', ',');
+                }
+            ),
+            array(
+                'dbField' => 'PlayerIndexEntity.empire',
+                'dbConcatSeparator' => "",
+                'dbType' => "",
+                'dbSortField' => 'PlayerIndexEntity.empire',
+                'dtField' => 'empire',
+                'formatter' => function( $d, $row ) {
+                    return \FonctionsUtiles::findIconEmpire($d);
+                }
+            ),
+            array(
+                'dbField' => 'AccountEntity.status',
+                'dbConcatSeparator' => "",
+                'dbType' => "",
+                'dbSortField' => 'AccountEntity.status',
+                'dtField' => 'status',
+                'formatter' => function( $d, $row ) {
+                    return \FonctionsUtiles::findIconStatus($d);
+                }
             )
         );
 

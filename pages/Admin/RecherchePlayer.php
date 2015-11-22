@@ -18,12 +18,18 @@ class Recherche_Joueurs extends \PageHelper {
     public function run() {
 
         $sColumns = '';
-        $sColumns .= '{ "mData": "name", "bSortable": true, "sWidth": "120px" },';
-        $sColumns .= '{ "mData": "level", "bSortable": true }';
+        $sColumns .= '{ "mData": "name", "bSortable": true },';
+        $sColumns .= '{ "mData": "level", "bSortable": true, "sWidth": "50px" },';
+        $sColumns .= '{ "mData": "yangs", "bSortable": true, "sWidth": "90px" },';
+        $sColumns .= '{ "mData": "empire", "bSortable": true, "sWidth": "80px" },';
+        $sColumns .= '{ "mData": "status", "bSortable": true, "sWidth": "68px" }';
         
         $sFilterColumns = '';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
-        $sFilterColumns .= '{ type: "text", placeholder: "" }';
+        $sFilterColumns .= '{ type: "text", placeholder: "" },';
+        $sFilterColumns .= '{ type: "text", placeholder: "" },';
+        $sFilterColumns .= '{ type: "select", values: [' . \EmpireHelper::getForDatatableSelect() . '] },';
+        $sFilterColumns .= '{ type: "select", values: [' . \StatusHelper::getForDatatableSelect(true) . '] }';
 
         $this->arrayTemplate["dtColumns"] = rtrim($sColumns, ',');
         $this->arrayTemplate["dtFilterColumns"] = rtrim($sFilterColumns, ',');

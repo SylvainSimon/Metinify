@@ -11,6 +11,10 @@ defaultMileage: 0
 libelleCash: VamoNaies
 libelleMileage: TanaNaies
 
+libelleEmpire1: Shinsoo
+libelleEmpire2: Chunjo
+libelleEmpire3: Jinno
+
 twigCache: false
 twigCacheUrl: /cache/twig
 

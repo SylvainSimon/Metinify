@@ -298,7 +298,7 @@ class FonctionsUtiles {
 
     static function findIconJob($job) {
 
-        $imgLink = '<img class="Images_Recherches" data-tooltip="'.self::findTitleJob($job).'" src="';
+        $imgLink = '<img class="Images_Recherches" data-tooltip="' . self::findTitleJob($job) . '" src="';
 
         if ($job == "0") {
             $imgLink .= "images/races/0_mini.png";
@@ -317,82 +317,41 @@ class FonctionsUtiles {
         } else if ($job == "7") {
             $imgLink .= "images/races/7_mini.png";
         }
-        
+
         $imgLink .= '" height="20">';
 
         return $imgLink;
     }
 
-    static function FindIconeEmpire($idEmpire) {
+    static function findIconEmpire($idEmpire) {
+
+        $iconElement = '<i data-tooltip="Empire ' . EmpireHelper::getLibelle($idEmpire) . '" class="';
 
         if ($idEmpire == 1) {
-            $icone = "<i data-tooltip='Empire Shinsoo' class='text-red material-icons md-icon-map md-20'></i>";
+            $iconElement .= "text-red ";
         } else if ($idEmpire == 2) {
-            $icone = "<i data-tooltip='Empire Chunjo' class='text-yellow material-icons md-icon-map md-20'></i>";
+            $iconElement .= "text-yellow ";
         } else if ($idEmpire == 3) {
-            $icone = "<i data-tooltip='Empire Jinno' class='text-blue material-icons md-icon-map md-20'></i>";
-        } else {
-            $icone = "<i data-tooltip='Royaume inconnu' class='material-icons md-icon-map md-20'></i>";
+            $iconElement .= "text-blue ";
         }
 
-        return $icone;
+        $iconElement .= 'material-icons md-icon-map md-20"></i>';
+
+        return $iconElement;
     }
 
-    static function Find_Name_Empire($Empire) {
+    static function findIconStatus($statut) {
 
-        $Nom_Empire = "Empire inconnu";
+        $iconElement = '<i data-tooltip="' . StatusHelper::getLibelle($statut) . '" class="';
 
-        if ($Empire == "0") {
-            $Nom_Empire = "Empire inconnu";
-        } else if ($Empire == "1") {
-            $Nom_Empire = "Empire Shinsoo";
-        } else if ($Empire == "2") {
-            $Nom_Empire = "Empire Chunjo";
-        } else if ($Empire == "3") {
-            $Nom_Empire = "Empire Jinno";
+        if ($statut == "OK") {
+            $iconElement .= "text-green ";
+        } else if ($statut == "BLOCK") {
+            $iconElement .= "text-red ";
         }
 
-        return $Nom_Empire;
+        $iconElement .= 'material-icons md-icon-account-circle md-20"></i>';
+
+        return $iconElement;
     }
-
-    static function Find_Image_Empire($Empire) {
-
-        $imgLink = "images/races/Royaume_Inconnu.jpg";
-
-        if ($Empire == "0") {
-            $imgLink = "images/races/Royaume_Inconnu.jpg";
-        } else if ($Empire == "1") {
-            $imgLink = "images/empire/red.jpg";
-        } else if ($Empire == "2") {
-            $imgLink = "images/empire/yellow.jpg";
-        } else if ($Empire == "3") {
-            $imgLink = "images/empire/blue.jpg";
-        }
-        return $imgLink;
-    }
-
-    static function Find_Image_Status($Status) {
-
-        $imgLink = "";
-
-        if ($Status == "OK") {
-            $imgLink = "images/valid.gif";
-        } else if ($Status == "BLOCK") {
-            $imgLink = "images/invalid.gif";
-        }
-        return $imgLink;
-    }
-
-    static function Find_Title_Status($Status) {
-
-        $Title = "";
-
-        if ($Status == "OK") {
-            $Title = "Compte Actif";
-        } else if ($Status == "BLOCK") {
-            $Title = "Compte Banni";
-        }
-        return $Title;
-    }
-
 }
