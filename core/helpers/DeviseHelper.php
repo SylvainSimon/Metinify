@@ -8,7 +8,7 @@ class DeviseHelper {
     public static function getAll($sort = true) {
 
         global $config;
-        
+
         $arrTypeAction = array(
             self::CASH => $config->libelleCash,
             self::MILEAGE => $config->libelleMileage,
@@ -31,4 +31,17 @@ class DeviseHelper {
             return "";
         }
     }
+
+    public static function getForDatatableSelect() {
+
+        $arrResult = [];
+        $arrTypeAction = self::getAll();
+
+        foreach ($arrTypeAction AS $idDevise => $devise) {
+            $arrResult[] = "{value:'" . $idDevise . "', label:'" . $devise . "'}";
+        }
+        
+        return implode(", ", $arrResult);
+    }
+
 }

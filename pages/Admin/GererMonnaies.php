@@ -21,17 +21,19 @@ class GererMonnaies extends \PageHelper {
         $arrDevise = \DeviseHelper::getAll();
 
         $sColumns = '';
-        $sColumns .= '{ "mData": "emetteur", "bSortable": true, "sWidth": "100px" },';
+        $sColumns .= '{ "mData": "date", "bSortable": true, "sWidth": "120px" },';
+        $sColumns .= '{ "mData": "emetteur", "bSortable": true, "sWidth": "90px" },';
         $sColumns .= '{ "mData": "operation", "bSortable": true, "sWidth": "65px" },';
         $sColumns .= '{ "mData": "montant", "bSortable": true },';
-        $sColumns .= '{ "mData": "devise", "bSortable": true, "sWidth": "60px" },';
-        $sColumns .= '{ "mData": "recepteur", "bSortable": true, "sWidth": "100px" },';
+        $sColumns .= '{ "mData": "devise", "bSortable": true, "sWidth": "90px" },';
+        $sColumns .= '{ "mData": "recepteur", "bSortable": true, "sWidth": "90px" },';
 
         $sFilterColumns = '';
+        $sFilterColumns .= '{ type: "date-range"},';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
+        $sFilterColumns .= '{ type: "select", values: [{value:"1", label:"Ajout"}, {value:"2", label:"Suppression"}] },';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
-        $sFilterColumns .= '{ type: "text", placeholder: "" },';
-        $sFilterColumns .= '{ type: "text", placeholder: "" },';
+        $sFilterColumns .= '{ type: "select", values: [' . \DeviseHelper::getForDatatableSelect() . '] },';
         $sFilterColumns .= '{ type: "text", placeholder: "" }';
 
         $this->arrayTemplate["dtColumns"] = rtrim($sColumns, ',');

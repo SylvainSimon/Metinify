@@ -87,8 +87,10 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
                 <tr>
+                    <th>Date</th>
                     <th>Emmeteur</th>
                     <th>Opération</th>
                     <th>Montant</th>
@@ -109,17 +111,15 @@
             var aoColumnsFilter = [{{ dtFilterColumns|raw  }}];
             var sAjaxSource = '{{ ajaxSource }}';
 
+            $('#listHistoGererMonnaies').on('processing.dt', function (e, settings, processing) {
+                processingDatatable(processing);
+            });
+
             $(document).ready(function () {
-
-                $('#listHistoGererMonnaies').on('processing.dt', function (e, settings, processing) {
-                    processingDatatable(processing);
-                });
-
                 oTableHistoGererMonnaies = $('#listHistoGererMonnaies').dataTable({
                     aaSorting: [[0, "desc"]],
                     aoColumns: aoColumns,
                     sDom: '<"clear"><"top">rt<lp><"clear">',
-                    responsive: true,
                     sAjaxSource: sAjaxSource,
                     aLengthMenu: [[10, 25, 50, 100], ["10", "25", "50", "100"]],
                     iDisplayLength: 10,

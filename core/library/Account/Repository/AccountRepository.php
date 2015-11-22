@@ -43,6 +43,23 @@ class AccountRepository extends EntityRepository {
             return null;
         }
     }
+    
+    public function findAccountByLogin($login = "") {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("AccountEntity");
+        $qb->from("\Account\Entity\Account", "AccountEntity");
+        $qb->where("AccountEntity.login = :login");
+        $qb->setParameter("login", $login);
+        $qb->setMaxResults(1);
+
+        try {
+            return $qb->getQuery()->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
 
     public function countByPseudoMessagerie($pseudoMessagerie = "") {
 
@@ -69,6 +86,41 @@ class AccountRepository extends EntityRepository {
         $qb->where("AccountEntity.id = :idAccount");
         $qb->setParameter("idAccount", $idAccount);
         $qb->setParameter("password", $password);
+
+        try {
+            return $qb->getQuery()->execute();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+
+    public function updateMonnaiesByLogin($login = "", $typeTransaction = 0, $ammount = 0, $devise = 0) {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->update("\Account\Entity\Account", "AccountEntity");
+
+        if ($devise !== "") {
+
+            if ($typeTransaction == 1) {
+                $operator = " + ";
+            } else {
+                $operator = " - ";
+            }
+
+            if ($devise == \DeviseHelper::CASH) {
+                $qb->set("AccountEntity.cash", "(AccountEntity.cash $operator :ammount)");
+            } else if ($devise == \DeviseHelper::MILEAGE) {
+                $qb->set("AccountEntity.mileage", "(AccountEntity.mileage $operator :ammount)");
+            }
+        }
+
+        if ($login !== "") {
+            $qb->where("AccountEntity.login = :login");
+            $qb->setParameter("login", $login);
+        }
+
+        $qb->setParameter("ammount", $ammount);
 
         try {
             return $qb->getQuery()->execute();
@@ -139,7 +191,7 @@ class AccountRepository extends EntityRepository {
             case 4:
                 break;
         }
-        
+
         $qb->andWhere("AccountEntity.langue = :flag");
         $qb->setParameter("flag", $flag);
 

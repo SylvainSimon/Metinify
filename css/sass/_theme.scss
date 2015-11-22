@@ -386,7 +386,7 @@ footer {
 
 .form-control{
     background: #1B1B1B !important;
-    border-color: #676767 !important;
+    border-color: #4A4A4A !important;
     color: white;
 }
 
@@ -793,6 +793,7 @@ table.dataTable thead .sorting:after {
     font-family: 'Roboto', 'Material Icons' !important;
     font-size: 20px;
     content: "\E8D5" !important;
+    border-bottom: 1px solid #4A4A4A;
 }
 
 .Images_Recherches{
@@ -819,6 +820,14 @@ table.dataTable.table-condensed thead .sorting:after, table.dataTable.table-cond
     right: 0px !important;
 }
 
+table.dataTable.table-condensed thead>tr:first-child>th{
+    padding-right: 0px;
+}
+
+table.dataTable.table-condensed thead>tr:first-child>th:last-child{
+    padding-right: 5px;
+}
+
 .table-striped>tbody>tr:nth-of-type(odd) {
     background-color: #242424;
 }
@@ -828,6 +837,11 @@ table.dataTable.table-condensed thead .sorting:after, table.dataTable.table-cond
 
 .dataTable{
     width:100% !important;
+    border-bottom: 1px solid #4A4A4A;
+}
+
+.dataTable input{
+    width: 100% !important;
 }
 
 .table.dataTable>thead>tr>th{
@@ -835,5 +849,50 @@ table.dataTable.table-condensed thead .sorting:after, table.dataTable.table-cond
 }
 
 .table.dataTable>thead>tr:last-child>th{
-        background: #383838;
+    background: #383838;
+}
+
+.pagination>li>a {
+    background: #575757;
+    color: #FFF7EE;
+    border: 1px solid #4A4A4A;
+}
+
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus{
+    color: #fff;
+    background-color: #3C8DBC;
+    border-color: #4A4A4A;
+}
+
+.pagination>.disabled>span, .pagination>.disabled>span:hover, .pagination>.disabled>span:focus, .pagination>.disabled>a, .pagination>.disabled>a:hover, .pagination>.disabled>a:focus{
+    color: #CACACA;
+    background-color: #212121;
+    border-color: #4A4A4A;
+}
+
+.pagination>li:first-child>a, .pagination>li:first-child>span {
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.pagination>li:last-child>a, .pagination>li:last-child>span {
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.dataTables_length{
+    float: left;
+    margin-left: 10px;
+    margin-top: 2px;
+}
+
+
+.dataTable thead .input-group-addon{
+    padding: 0px 2px !important;
+    background: transparent !important;
+}
+
+div.dataTables_paginate{
+    float: right;
+    margin-right: 10px !important;
 }

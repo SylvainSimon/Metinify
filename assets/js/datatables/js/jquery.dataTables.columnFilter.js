@@ -250,7 +250,9 @@
 
                     //$('#' + sFromId + ',#' + sToId, th).keyup(function () {
                     // $('#' + sFromId + ',#' + sToId, th).on('change', function () {
-                    $('#' + sFromId + ',#' + sToId, th).enterKey(function () {
+                    $('#' + sFromId + ',#' + sToId, th).keypress(function( event ) {
+                        
+                        if ( event.which == 13 ) {
 
                         var iMin = document.getElementById(sFromId).value * 1;
                         var iMax = document.getElementById(sToId).value * 1;
@@ -259,6 +261,7 @@
 
                         oTable.fnDraw();
                         fnOnFiltered();
+                      }
                     });
 
 
@@ -352,9 +355,11 @@
                     //------------end date range filtering function
 
                     //$('#' + sFromId + ',#' + sToId, th).change(function () {
-                    $('#' + sFromId + ',#' + sToId, th).enterKey(function () {
+                    $('#' + sFromId + ',#' + sToId, th).keypress(function( event ) {
+                        if ( event.which == 13 ) {
                         oTable.fnDraw();
                         fnOnFiltered();
+                    }
                     });
 
 
@@ -694,7 +699,7 @@
                 var defaults = {
                     sPlaceHolder: "head:before",
                     sRangeSeparator: "~",
-                    iFilteringDelay: 500,
+                    iFilteringDelay: 10,
                     aoColumns: null,
                     sRangeFormat: "{from} {to}",
                     sDateFromToken: "from",

@@ -120,7 +120,7 @@ function popBootbox(message, title, withReload) {
 $.fn.select2.defaults.set("theme", "bootstrap");
 
 function redrawSelect2() {
-    $("select.select2").each(function (i, obj) {
+    $("select.select2, .dataTables_length select").each(function (i, obj) {
 
         if (!$(obj).data('select2')) {
             var defaultId = "";
@@ -189,7 +189,7 @@ $(document).ready(function () {
 
     $.extend(true, $.fn.dataTable.defaults, {
         "oLanguage": {
-            "sLengthMenu": "_MENU_<span class='hidden-xs'> par page</span>",
+            "sLengthMenu": "_MENU_<span class='hidden-xs'> éléments</span>",
             "sZeroRecords": "Aucun élément trouvé",
             "sInfo": "Affichage de _START_ à _END_ sur _TOTAL_ éléments",
             "sInfoEmpty": "Affichage de 0 à 0 sur 0 éléments",

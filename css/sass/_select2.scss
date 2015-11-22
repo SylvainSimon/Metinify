@@ -2,9 +2,20 @@
 
 .select2-selection__rendered{
     font-family: 'Roboto', 'Material Icons' !important;
-    font-size: 15px !important;
+    font-size: 12px !important;
     line-height:17px;
     color: #D2D2D2 !important;
+}
+
+.select2-container--bootstrap .select2-selection--single{
+    padding: 6px 36px 6px 12px;
+}
+
+.select2-container--bootstrap .select2-search--dropdown .select2-search__field{
+    background-color: #212121;
+    border: 1px solid #4A4A4A;
+    border-radius: 0;
+    color: #D2D2D2;
 }
 
 .select2-results__option{
@@ -47,7 +58,7 @@
 
 .select2-container--bootstrap .select2-selection{
     background: #1B1B1B !important;
-    border: 1px solid #676767 !important;
+    border: 1px solid #4A4A4A !important;
 }
 
 .select2-dropdown{
