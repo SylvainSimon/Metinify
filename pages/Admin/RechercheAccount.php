@@ -4,11 +4,11 @@ namespace Administration;
 
 require __DIR__ . '../../../core/initialize.php';
 
-class Recherche_Joueurs extends \PageHelper {
+class RechercheAccount extends \PageHelper {
 
     public $isProtected = true;
     public $isAdminProtected = true;
-    public $strTemplate = "RecherchePlayer.html5.twig";
+    public $strTemplate = "RechercheAccount.html5.twig";
 
     public function __construct() {
         parent::__construct();
@@ -18,14 +18,15 @@ class Recherche_Joueurs extends \PageHelper {
     public function run() {
 
         $sColumns = '';
-        $sColumns .= '{ "mData": "name", "bSortable": true },';
+        $sColumns .= '{ "mData": "compte", "bSortable": true },';
 
-        if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_COMPTE)) {
-            $sColumns .= '{ "mData": "compte", "bSortable": true, "sWidth": "80px" },';
+        if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_EMAIL)) {
+            $sColumns .= '{ "mData": "email", "bSortable": true, "sWidth": "100px" },';
         }
 
-        $sColumns .= '{ "mData": "level", "bSortable": true, "sWidth": "50px" },';
-        $sColumns .= '{ "mData": "yangs", "bSortable": true, "sWidth": "90px" },';
+        $sColumns .= '{ "mData": "cash", "bSortable": true, "sWidth": "75px" },';
+        $sColumns .= '{ "mData": "mileage", "bSortable": true, "sWidth": "75px" },';
+
         $sColumns .= '{ "mData": "empire", "bSortable": true, "sClass": "text-center lineIcon", "sWidth": "80px" },';
         $sColumns .= '{ "mData": "status", "bSortable": true, "sClass": "text-center lineIcon", "sWidth": "68px" },';
 
@@ -36,12 +37,13 @@ class Recherche_Joueurs extends \PageHelper {
         $sFilterColumns = '';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
 
-        if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_COMPTE)) {
+        if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_EMAIL)) {
             $sFilterColumns .= '{ type: "text", placeholder: "" },';
         }
 
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
+
         $sFilterColumns .= '{ type: "select", values: [' . \EmpireHelper::getForDatatableSelect() . '] },';
         $sFilterColumns .= '{ type: "select", values: [' . \StatusHelper::getForDatatableSelect(true) . '] },';
 
@@ -52,8 +54,8 @@ class Recherche_Joueurs extends \PageHelper {
         $this->arrayTemplate["dtColumns"] = rtrim($sColumns, ',');
         $this->arrayTemplate["dtFilterColumns"] = rtrim($sFilterColumns, ',');
         $this->arrayTemplate["rightRechercheIp"] = $this->HaveTheRight(\DroitsHelper::RECHERCHE_IP);
-        $this->arrayTemplate["rightRechercheCompte"] = $this->HaveTheRight(\DroitsHelper::RECHERCHE_COMPTE);
-        $this->arrayTemplate["ajaxSource"] = "pages/Admin/ajax/listRecherchePlayer.php?sEcho=1";
+        $this->arrayTemplate["rightRechercheEmail"] = $this->HaveTheRight(\DroitsHelper::RECHERCHE_EMAIL);
+        $this->arrayTemplate["ajaxSource"] = "pages/Admin/ajax/listRechercheAccount.php?sEcho=1";
 
         $view = $this->template->render($this->arrayTemplate);
 
@@ -63,5 +65,5 @@ class Recherche_Joueurs extends \PageHelper {
 
 }
 
-$class = new Recherche_Joueurs();
+$class = new RechercheAccount();
 $class->run();

@@ -1,16 +1,16 @@
 <div class="box boxDataTable box-default flat">
 
     <div class="box-header">
-        <h3 class="box-title">Recherche de joueurs</h3>
+        <h3 class="box-title">Recherche de comptes</h3>
     </div>
 
     <div class="box-body no-padding">
 
-        <table class="table table-condensed table-hover table-striped" id="listRecherchePlayer" style="border-collapse: collapse; margin-top: 0px !important;">
+        <table class="table table-condensed table-hover table-striped" id="listRechercheAccount" style="border-collapse: collapse; margin-top: 0px !important;">
             <thead>
                 <tr>
                     <th></th>
-                        {% if rightRechercheCompte %}
+                        {% if rightRechercheEmail %}
                         <th></th>
                         {% endif %}
                     <th></th>
@@ -22,16 +22,16 @@
                         {% endif %}
                 </tr>
                 <tr>
-                    <th>Joueur</th>
-                        {% if rightRechercheCompte %}
-                        <th>Compte</th>
+                    <th>Compte</th>
+                        {% if rightRechercheEmail %}
+                        <th>E-mail</th>
                         {% endif %}
-                    <th>Niveau</th>
-                    <th>Yangs</th>
+                    <th>{{ config.libelleCash }}</th>
+                    <th>{{ config.libelleMileage }}</th>
                     <th>Empire</th>
                     <th>Status</th>
                         {% if rightRechercheIp %}
-                        <th>IP</th>
+                        <th>IP création</th>
                         {% endif %}
                 </tr>
             </thead>
@@ -50,12 +50,12 @@
     var aoColumnsFilter = [{{ dtFilterColumns|raw  }}];
     var sAjaxSource = '{{ ajaxSource }}';
 
-    $('#listRecherchePlayer').on('processing.dt', function (e, settings, processing) {
+    $('#listRechercheAccount').on('processing.dt', function (e, settings, processing) {
         processingDatatable(processing);
     });
 
     $(document).ready(function () {
-        oTableRecherchePlayer = $('#listRecherchePlayer').dataTable({
+        oTableRechercheAccount = $('#listRechercheAccount').dataTable({
             aaSorting: [[0, "asc"]],
             aoColumns: aoColumns,
             sDom: '<"clear"><"top">rt<lp><"clear">',

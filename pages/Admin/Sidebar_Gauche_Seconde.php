@@ -9,7 +9,7 @@
                 <tr onclick="Ajax('pages/Admin/RecherchePlayer.php')"><td>Recherche de joueurs</td></tr>
             <?php } ?>
             <?php if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_COMPTE)) { ?>
-                <tr onclick="Ajax('pages/Admin/Recherche_Comptes.php')"><td>Recherche de comptes</td></tr>
+                <tr onclick="Ajax('pages/Admin/RechercheAccount.php')"><td>Recherche de comptes</td></tr>
             <?php } ?>
             <?php if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_COMMANDE)) { ?>
                 <tr onclick="Ajax('pages/Admin/Commandes.php')"><td>Historiques des commandes</td></tr>

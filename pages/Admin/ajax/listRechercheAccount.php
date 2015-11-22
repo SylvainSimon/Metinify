@@ -10,16 +10,6 @@ class listHistoGererMonnaies extends \ScriptHelper {
 
         $columnsParameters = array(
             array(
-                'dbField' => 'PlayerEntity.name',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerEntity.name',
-                'dtField' => 'name',
-                'formatter' => function( $d, $row ) {
-                    return \FonctionsUtiles::findIconJob($row["job"]) . " " . $d;
-                }
-            ),
-            array(
                 'dbField' => 'AccountEntity.login',
                 'dbConcatSeparator' => "",
                 'dbType' => "",
@@ -27,27 +17,30 @@ class listHistoGererMonnaies extends \ScriptHelper {
                 'dtField' => 'compte',
             ),
             array(
-                'dbField' => 'PlayerEntity.job',
+                'dbField' => 'AccountEntity.email',
                 'dbConcatSeparator' => "",
                 'dbType' => "",
-                'dbSortField' => 'PlayerEntity.job',
-                'dtField' => 'job',
+                'dbSortField' => 'AccountEntity.email',
+                'dtField' => 'email',
             ),
             array(
-                'dbField' => 'PlayerEntity.level',
+                'dbField' => 'AccountEntity.cash',
                 'dbConcatSeparator' => "",
                 'dbType' => "",
-                'dbSortField' => 'PlayerEntity.level',
-                'dtField' => 'level',
-            ),
-            array(
-                'dbField' => 'PlayerEntity.gold',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerEntity.gold',
-                'dtField' => 'yangs',
+                'dbSortField' => 'AccountEntity.cash',
+                'dtField' => 'cash',
                 'formatter' => function( $d, $row ) {
-                    return number_format($d, 0, '.', ',');
+                    return number_format($d, 0, '.', ',') . "<span style='position:relative; top:2px;'>".\FonctionsUtiles::findIconDevise(\DeviseHelper::CASH)."</span>";
+                }
+            ),
+            array(
+                'dbField' => 'AccountEntity.mileage',
+                'dbConcatSeparator' => "",
+                'dbType' => "",
+                'dbSortField' => 'AccountEntity.mileage',
+                'dtField' => 'mileage',
+                'formatter' => function( $d, $row ) {
+                    return number_format($d, 0, '.', ',') . "<span style='position:relative; top:2px;'>".\FonctionsUtiles::findIconDevise(\DeviseHelper::MILEAGE)."</span>";
                 }
             ),
             array(
@@ -71,10 +64,10 @@ class listHistoGererMonnaies extends \ScriptHelper {
                 }
             ),
             array(
-                'dbField' => 'PlayerEntity.ip',
+                'dbField' => 'AccountEntity.ipCreation',
                 'dbConcatSeparator' => "",
                 'dbType' => "",
-                'dbSortField' => 'PlayerEntity.ip',
+                'dbSortField' => 'AccountEntity.ipCreation',
                 'dtField' => 'ip',
             )
         );
@@ -82,8 +75,7 @@ class listHistoGererMonnaies extends \ScriptHelper {
         $datatable = new \DataTable();
         $datatable->setColumnsParameters($columnsParameters)
                 ->setRequest($_GET)
-                ->from("\Player\Entity\Player", "PlayerEntity")
-                ->leftJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = PlayerEntity.idAccount")
+                ->from("\Account\Entity\Account", "AccountEntity")
                 ->leftJoin("\Player\Entity\PlayerIndex", "PlayerIndexEntity", "WITH", "PlayerIndexEntity.id = AccountEntity.id");
 
         $datatable->getResult()->toJson();
