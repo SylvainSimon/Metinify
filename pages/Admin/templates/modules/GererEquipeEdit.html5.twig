@@ -1,0 +1,44 @@
+<div class="box box-default flat" style="margin-bottom: 0px;">
+
+    <div class="box-header">
+        {% if objGmList.getMid > 0 %}
+            <h3 class="box-title">Modification d'un membre</h3>
+        {% else %}
+            <h3 class="box-title">Ajout d'un membre</h3>
+        {% endif %}
+    </div>
+
+    <input type="hidden" id="newId" value="{{ objGmList.getMid }}">
+
+    <div class="box-body no-padding" style="padding-top: 10px !important;">
+
+    </div>
+
+    <div class="box-footer">
+        <div class="pull-left">
+            <input type="button" class="btn btn-danger btn-flat" onclick="$.featherlight.close();" value="Fermer" />
+        </div>
+        <div class="pull-right">
+            <input type="button" class="btn btn-success btn-flat" onclick="EnregistrementMembreEquipe();" value="Enregistrer" />
+        </div>
+    </div>
+                
+<script>
+    function EnregistrementMembreEquipe() {
+
+        displayLoading();
+
+        $.ajax({
+            type: "POST",
+            url: "pages/Admin/ajax/ajaxGererNewsEditSave.php",
+            data: {"newId": $("#newId").val(), "newTitre": $("#newTitre").val(), "newsMessage": tinymce.activeEditor.getContent()},
+            success: function (msg) {
+                hideLoading();
+                $.featherlight.close();
+                parent.oTableGererNews.fnStandingRedraw();
+            }
+
+        });
+    }
+</script>
+</div>

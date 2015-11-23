@@ -25,6 +25,7 @@ class GererEquipe extends \PageHelper {
         $sColumns .= '{ "mData": "playtime", "bSortable": true, "sWidth": "200px" },';
         $sColumns .= '{ "mData": "lastPlay", "bSortable": true, "sWidth": "120px" },';
         $sColumns .= '{ "mData": "status", "bSortable": true, "sClass": "text-center lineIcon", "sWidth": "68px" },';
+        $sColumns .= '{ "mData": "actions", "bSortable": false, "sWidth": "55px" },';
 
         $sFilterColumns = '';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
@@ -33,6 +34,7 @@ class GererEquipe extends \PageHelper {
         $sFilterColumns .= 'null,';
         $sFilterColumns .= '{ type: "date-range"},';
         $sFilterColumns .= '{ type: "select", values: [' . \StatusHelper::getForDatatableSelect(true) . '] },';
+        $sFilterColumns .= 'null,';
 
         $this->arrayTemplate["dtColumns"] = rtrim($sColumns, ',');
         $this->arrayTemplate["dtFilterColumns"] = rtrim($sFilterColumns, ',');

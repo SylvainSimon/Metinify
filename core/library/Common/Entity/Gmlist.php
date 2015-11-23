@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Gmlist
  *
  * @ORM\Table(name="common.gmlist")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Common\Repository\GmlistRepository")
  */
 class Gmlist {
 
