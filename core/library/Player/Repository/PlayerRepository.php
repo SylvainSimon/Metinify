@@ -50,6 +50,42 @@ class PlayerRepository extends EntityRepository {
             return null;
         }
     }
+
+    public function findByName($name = "") {
+        
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("PlayerEntity");
+        $qb->from("\Player\Entity\Player", "PlayerEntity");
+        $qb->where("PlayerEntity.name = :name");
+        $qb->setParameter("name", $name);
+
+        try {
+            return $qb->getQuery()->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+    
+    public function findByNameForAjaxSelect($name = "") {
+
+        $name = ($name !== "") ? "%" . $name . "%" : "%";
+        
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("PlayerEntity.id, PlayerEntity.name");
+        $qb->from("\Player\Entity\Player", "PlayerEntity");
+        $qb->innerJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = PlayerEntity.idAccount");
+        $qb->innerJoin("\Player\Entity\PlayerIndex", "PlayerIndexEntity", "WITH", "PlayerIndexEntity.id = AccountEntity.id");
+        $qb->where("PlayerEntity.name LIKE :name");
+        $qb->setParameter("name", $name);
+
+        try {
+            return $qb->getQuery()->getArrayResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
     
     public function verifyIsMyPlayer($idAccount = 0, $idPlayer = 0) {
 

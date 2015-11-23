@@ -137,6 +137,7 @@ function redrawSelect2() {
             if (!$(obj).parents("div.form-hidden").length) {
                 $(obj).select2({
                     tags: "true",
+                    locale: 'fr',
                     minimumResultsForSearch: 10,
                     allowClear: true,
                     placeholder: {
@@ -167,6 +168,7 @@ function redrawSelect2() {
             if (!$(obj).parents("div.form-hidden").length) {
                 $(obj).select2({
                     tags: "true",
+                    locale: 'fr',
                     minimumResultsForSearch: 10,
                     allowClear: false,
                     placeholder: {
@@ -189,8 +191,11 @@ function redraw() {
     $("span.select2-selection__rendered").removeAttr("title");
 }
 
-$(document).ready(function () {
 
+$.fn.select2.defaults.set('language', 'fr');
+
+$(document).ready(function () {
+    
     $.ajaxSetup({
         error: function (jqXHR, exception) {
 

@@ -4517,7 +4517,7 @@ S2.define('select2/defaults',[
 
     if ($.isArray(options.language)) {
       var languages = new Translation();
-      options.language.push('en');
+      options.language.push('fr');
 
       var languageNames = options.language;
 
@@ -4554,7 +4554,7 @@ S2.define('select2/defaults',[
       options.translations = languages;
     } else {
       var baseTranslation = Translation.loadPath(
-        this.defaults.amdLanguageBase + 'en'
+        this.defaults.amdLanguageBase + 'fr'
       );
       var customTranslation = new Translation(options.language);
 

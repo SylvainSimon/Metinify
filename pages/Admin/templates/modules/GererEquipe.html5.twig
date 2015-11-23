@@ -71,4 +71,52 @@
             }
         }).columnFilter({aoColumns: aoColumnsFilter});
     });
+    
+    function SuppressionMembreEquipe(idMember) {
+
+        bootbox.dialog({
+            message: "Confirmez-vous la suppression de ce membre de l'équipe ?",
+            animate: false,
+            className: "myBootBox",
+            title: 'Confirmation de la demande',
+            buttons: {
+                danger: {
+                    label: "Annuler",
+                    className: "btn-danger",
+                    callback: function () {
+
+                    }
+                },
+                success: {
+                    label: "Confirmer",
+                    className: "btn-primary",
+                    callback: function () {
+
+                        displayLoading();
+
+                        $.ajax({
+                            type: "POST",
+                            url: "pages/Admin/ajax/ajaxGererEquipeDelete.php",
+                            data: {"memberId": idMember},
+                            success: function (msg) {
+
+                                hideLoading();
+
+                                var json = JSON.parse(msg);
+
+                                if (json.result) {
+
+                                } else {
+                                    popBootbox(json.reasons);
+                                }
+
+                                parent.oTableGererEquipe.fnStandingRedraw();
+                            }
+
+                        });
+                    }
+                }
+            }
+        });
+    }
 </script>
