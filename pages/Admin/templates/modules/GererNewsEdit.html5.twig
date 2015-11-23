@@ -49,12 +49,14 @@
     </div>
 
     <div class="box-footer">
+        <div class="pull-left">
+            <input type="button" class="btn btn-danger btn-flat" onclick="$.featherlight.close();" value="Fermer" />
+        </div>
         <div class="pull-right">
             <input type="button" class="btn btn-success btn-flat" onclick="EnregistrementNews();" value="Enregistrer" />
         </div>
     </div>
-</div>
-
+                
 <script>
     function EnregistrementNews() {
 
@@ -66,7 +68,7 @@
             data: {"newId": $("#newId").val(), "newTitre": $("#newTitre").val(), "newsMessage": tinymce.activeEditor.getContent()},
             success: function (msg) {
                 hideLoading();
-                parent.jQuery.fancybox.close();
+                $.featherlight.close();
                 parent.oTableGererNews.fnStandingRedraw();
             }
 
@@ -84,3 +86,4 @@
         forced_root_block: false
     });
 </script>
+</div>

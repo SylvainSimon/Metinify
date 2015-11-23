@@ -202,7 +202,9 @@ $(document).ready(function () {
 
         }
     });
-
+    
+    $.featherlight.defaults.closeIcon = "";
+    
     $.extend($.fn.dataTable.defaults, {
         "fnDrawCallback": function (oSettings) {
             redraw();

@@ -914,3 +914,18 @@ tbody td.lineIcon{
 .mce-edit-area{
     border: 1px solid #4A4A4A !important;
 }
+
+.featherlight-content{
+    padding: 0px !important;
+    border-bottom: 0px !important;
+}
+
+.featherlight{
+    background: rgba(0,0,0,.5) !important;
+}
+
+@media all{
+    .featherlight .featherlight-inner {
+    display: grid !important;
+    }
+}

@@ -65,6 +65,9 @@ class IndexWebsite extends PageHelper {
                 <script src="assets/js/datatables/js/jquery.dataTables.columnFilter.min.js" type='text/javascript'></script>
                 <script src="assets/js/datatables/js/jquery.dataTables.StandingRedraw.min.js" type='text/javascript'></script>
                 <script src="assets/js/datatables/extras/Responsive/js/dataTables.responsive.min.js" type='text/javascript'></script>
+                
+                <link href="assets/js/featherlight/release/featherlight.min.css" rel="stylesheet" type="text/css" />
+                <script src="assets/js/featherlight/release/featherlight.min.js" type='text/javascript'></script>
 
                 <!--[if lt IE 9]>
                 <script src="./vendor/afarkas/html5shiv/dist/html5shiv.min.js"></script>

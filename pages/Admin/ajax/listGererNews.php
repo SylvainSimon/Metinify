@@ -51,7 +51,7 @@ class listGererNews extends \ScriptHelper {
                 'dtField' => 'actions',
                 'formatter' => function( $d, $row ) {
 
-                    $varButton = '<a class="btn btn-material btn-primary btn-sm fancybox_News" data-fancybox-type="ajax" href="pages/Admin/includes/GererNewsEdit.php?mode=mod&idNews=' . $d . '" data-tooltip="Modifier"><i class="material-icons md-icon-edit"></i></a>';
+                    $varButton = '<a class="btn btn-material btn-primary btn-sm" data-featherlight="ajax" href="pages/Admin/includes/GererNewsEdit.php?mode=mod&idNews=' . $d . '" data-tooltip="Modifier"><i class="material-icons md-icon-edit"></i></a>';
                     $varButton .= '<a class="btn btn-material btn-danger btn-sm " data-tooltip="Supprimer" onclick="SuppressionNews(' . $d . ')"><i class="material-icons md-icon-delete"></i></a>';
 
                     return '<div class="btn-toolbar">' . $varButton . "</div>";
