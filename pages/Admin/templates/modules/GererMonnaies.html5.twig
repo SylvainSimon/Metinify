@@ -11,7 +11,20 @@
             <div class="col-lg-12">
 
                 <div class="row">
-                    <div class="col-lg-3">
+
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="inputAccount">
+                                Compte
+                            </label>
+
+                            <div class="input-group col-xs-12">
+                                <input class="form-control input-sm" id="inputAccount" type="text" placeholder="Nom du compte..." autofocus />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-8">
                         <div class="form-group">
                             <label for="inputTransactionType">
                                 Action
@@ -26,21 +39,23 @@
                         </div>
 
                     </div>
-                    <div class="col-lg-3">
+                </div>
+                <div class="row">
+                    <div class="col-lg-7">
                         <div class="form-group">
                             <label for="inputAmount">
                                 Nombre
                             </label>
 
                             <div class="input-group col-xs-12">
-                                <input class="form-control input-sm" id="inputAmount" type="text" placeholder="Nombre..." />
+                                <input class="form-control input-sm" id="inputAmount" type="text" placeholder="Nombre de monnaies..." />
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-5">
                         <div class="form-group">
                             <label for="selectDevise">
-                                Type
+                                Devise
                             </label>
 
                             <div class="input-group col-xs-12">
@@ -54,56 +69,57 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
-                        <div class="form-group">
-                            <label for="inputAccount">
-                                Compte
-                            </label>
-
-                            <div class="input-group col-xs-12">
-                                <input class="form-control input-sm" id="inputAccount" type="text" placeholder="Nom du compte..." autofocus />
-                            </div>
-                        </div>
-                    </div>
                 </div>
+
             </div>
             <div class="col-lg-12">
 
-                <button type="button" class="pull-right btn btn-flat btn-primary btn-sm" onclick="Update_Monnaie()">
-                    Valider la transaction
+                <button type="button" class="pull-right btn btn-flat btn-success btn-sm" onclick="Update_Monnaie()">
+                    Valider
                 </button>
 
             </div>
         </div>
     </div>
 
-    <div class="box boxDataTable box-footer no-padding no-border" style="margin-bottom: 0px;">
+    <div class="box boxDataTable box-footer collapsed-box no-padding no-border" style="margin-bottom: 0px; border-top: 1px solid #4C4C4C !important;">
 
-        <table class="table table-condensed table-hover table-striped" id="listHistoGererMonnaies" style="border-collapse: collapse;">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th>Date</th>
-                    <th>Emmeteur</th>
-                    <th>Opération</th>
-                    <th>Montant</th>
-                    <th>Devise</th>
-                    <th>Recepteur</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td colspan="100%" class="dataTables_empty">Tableau en cours de chargement...</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="box-header">
+            <h3 class="box-title">Historique des changements</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa material-icons md-icon-add"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+
+            <table class="table table-condensed table-hover table-striped" id="listHistoGererMonnaies" style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <th>Emmeteur</th>
+                        <th>Opération</th>
+                        <th>Montant</th>
+                        <th>Devise</th>
+                        <th>Recepteur</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="100%" class="dataTables_empty">Tableau en cours de chargement...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <script type="text/javascript" charset="utf-8">
 

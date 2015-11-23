@@ -18,7 +18,7 @@ class GererMonnaies extends \PageHelper {
 
     public function run() {
 
-        $arrDevise = \DeviseHelper::getAll();
+        $arrDevise = \DeviseHelper::getAll(false);
 
         $sColumns = '';
         $sColumns .= '{ "mData": "date", "bSortable": true, "sWidth": "120px" },';
@@ -33,7 +33,7 @@ class GererMonnaies extends \PageHelper {
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
         $sFilterColumns .= '{ type: "select", values: [{value:"1", label:"Ajoute"}, {value:"2", label:"Enlève"}] },';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
-        $sFilterColumns .= '{ type: "select", values: [' . \DeviseHelper::getForDatatableSelect() . '] },';
+        $sFilterColumns .= '{ type: "select", values: [' . \DeviseHelper::getForDatatableSelect(false) . '] },';
         $sFilterColumns .= '{ type: "text", placeholder: "" }';
 
         $this->arrayTemplate["dtColumns"] = rtrim($sColumns, ',');

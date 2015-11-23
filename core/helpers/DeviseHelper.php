@@ -32,10 +32,10 @@ class DeviseHelper {
         }
     }
 
-    public static function getForDatatableSelect() {
+    public static function getForDatatableSelect($sort = true) {
 
         $arrResult = [];
-        $arrTypeAction = self::getAll();
+        $arrTypeAction = self::getAll($sort);
 
         foreach ($arrTypeAction AS $idDevise => $devise) {
             $arrResult[] = "{value:'" . $idDevise . "', label:'" . $devise . "'}";
