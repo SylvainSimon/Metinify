@@ -31,7 +31,7 @@ class GererNews extends \PageHelper {
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
         $sFilterColumns .= 'null,';
-
+        
         $this->arrayTemplate["dtColumns"] = rtrim($sColumns, ',');
         $this->arrayTemplate["dtFilterColumns"] = rtrim($sFilterColumns, ',');
         $this->arrayTemplate["ajaxSource"] = "pages/Admin/ajax/listGererNews.php?sEcho=1";

@@ -3,14 +3,17 @@
     <div class="box-header">
         <h3 class="box-title">Gestion</h3>
     </div>
-    <div class="box-body no-padding hidden-sm hidden-xs">
+    <div class="box-body no-padding">
 
         <table class="table table-condensed table-hover" style="border-collapse: collapse;">
             <?php if ($this->HaveTheRight(\DroitsHelper::GERER_MONNAIES)) { ?>
-                <tr onclick="Ajax('pages/Admin/GererMonnaies.php');"><td> Gestion des monnaies</td></tr>
+                <tr class="pointer" onclick="Ajax('pages/Admin/GererMonnaies.php');"><td> Gestion des monnaies</td></tr>
             <?php } ?>
             <?php if ($this->HaveTheRight(\DroitsHelper::GERER_NEWS)) { ?>
-                <tr onclick="Ajax('pages/Admin/GererNews.php')"><td> Gestion des news</td></tr>
+                <tr class="pointer" onclick="Ajax('pages/Admin/GererNews.php')"><td> Gestion des news</td></tr>
+            <?php } ?>
+            <?php if ($this->HaveTheRight(\DroitsHelper::GERER_EQUIPE)) { ?>
+                <tr class="pointer" onclick="Ajax('pages/Admin/GererEquipe.php')"><td> Gestion de l'équipe</td></tr>
             <?php } ?>
         </table>
     </div>

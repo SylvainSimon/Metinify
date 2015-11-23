@@ -24,4 +24,5 @@ class DroitsHelper {
     const VIEW_ACCOUNT = 20;
     const GERER_MONNAIES = 21;
     const GERER_NEWS = 22;
+    const GERER_EQUIPE = 23;
 }

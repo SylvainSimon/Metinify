@@ -533,7 +533,7 @@ class DataTable {
         // Total
         $queryBuilderTotal = $this->_qbCountTotal;
         $queryBuilderTotal->from($entity, $alias);
-        $queryBuilderTotal->select('COUNT (DISTINCT(' . $alias . '.id))');
+        $queryBuilderTotal->select('COUNT (DISTINCT(' . $alias . '))');
         $this->getJoinStatement($queryBuilderTotal);
         $this->getWhereStatement($queryBuilderTotal);
         $this->getNotInStatement($queryBuilderTotal);
@@ -543,7 +543,7 @@ class DataTable {
         // Affichage
         $queryBuilderDisplay = $this->_qbCountDisplay;
         $queryBuilderDisplay->from($entity, $alias);
-        $queryBuilderDisplay->select('COUNT (DISTINCT(' . $alias . '.id))');
+        $queryBuilderDisplay->select('COUNT (DISTINCT(' . $alias . '))');
         $this->getJoinStatement($queryBuilderDisplay);
         $this->getWhereStatement($queryBuilderDisplay);
         $this->getNotInStatement($queryBuilderDisplay);

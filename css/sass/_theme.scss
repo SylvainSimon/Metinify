@@ -924,8 +924,7 @@ tbody td.lineIcon{
     background: rgba(0,0,0,.5) !important;
 }
 
-@media all{
-    .featherlight .featherlight-inner {
-    display: grid !important;
-    }
+.mce-btn-group:not(:first-child){
+    padding-left: 0px !important;
+    margin-left: 0px !important;
 }
