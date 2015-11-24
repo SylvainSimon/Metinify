@@ -204,6 +204,8 @@ class FonctionsUtiles {
             $iconElement .= "text-yellow ";
         } else if ($idEmpire == 3) {
             $iconElement .= "text-blue ";
+        } else {
+            $iconElement .= "text-gray ";
         }
 
         $iconElement .= 'material-icons md-icon-map md-20"></i>';
@@ -234,6 +236,8 @@ class FonctionsUtiles {
             $iconElement .= "text-green ";
         } else if ($statut == "BLOCK") {
             $iconElement .= "text-red ";
+        } else {
+            $iconElement .= "text-gray ";
         }
 
         $iconElement .= 'material-icons md-icon-account-circle md-20"></i>';

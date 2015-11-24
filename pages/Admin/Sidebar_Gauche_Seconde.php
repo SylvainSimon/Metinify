@@ -11,6 +11,9 @@
             <?php if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_COMPTE)) { ?>
                 <tr class="pointer" onclick="Ajax('pages/Admin/RechercheAccount.php')"><td>Recherche de comptes</td></tr>
             <?php } ?>
+            <?php if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_BANNISSEMENT)) { ?>
+                <tr class="pointer" onclick="Ajax('pages/Admin/RechercheBanned.php')"><td>Liste des bannis</td></tr>
+            <?php } ?>
             <?php if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_COMMANDE)) { ?>
                 <tr class="pointer" onclick="Ajax('pages/Admin/Commandes.php')"><td>Historiques des commandes</td></tr>
             <?php } ?>

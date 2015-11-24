@@ -230,7 +230,7 @@ class DataTable {
                             foreach ($column["dbSortReplaceField"] AS $fieldBefore => $fieldAfter) {
 
                                 if ($field == $fieldBefore) {
-                                    $dbField[$idfield] = "IFELSE(" . $fieldBefore . " = '', " . $fieldAfter . ", " . $field . ")";
+                                    $dbField[$idfield] = "IFELSE(" . $fieldBefore . " IS NULL, " . $fieldAfter . ", " . $field . ")";
                                 }
                             }
                         }
@@ -656,7 +656,8 @@ class DataTable {
         $separator = ",'" . $separator . "',";
         $return = "concat(";
         foreach ($fields as $field) {
-            $return .= "LOWER(" . $field . ")" . $separator;
+            $return .= "IFELSE(LOWER(" . $field . ") IS NULL, '', " . $field . ")" . $separator;
+
         }
         $return = rtrim($return, $separator) . ")";
         return $return;
