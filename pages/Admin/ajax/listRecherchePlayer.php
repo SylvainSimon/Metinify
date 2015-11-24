@@ -8,6 +8,10 @@ class listHistoGererMonnaies extends \ScriptHelper {
 
     public function run() {
 
+        if($_GET["sEcho"] == 1){
+            exit();
+        }
+        
         $columnsParameters = array(
             array(
                 'dbField' => 'PlayerEntity.name',

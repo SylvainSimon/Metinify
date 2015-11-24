@@ -444,6 +444,10 @@ class DataTable {
                             }
                         }
 
+                        if(!isset($request['sRangeSeparator'])){
+                            $request['sRangeSeparator'] = "~";
+                        }
+                        
                         $separator = $request['sRangeSeparator'];
                         $pos = strpos($value, $separator);
 

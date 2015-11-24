@@ -45,7 +45,7 @@ class RechercheAccount extends \PageHelper {
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
 
         $sFilterColumns .= '{ type: "select", values: [' . \EmpireHelper::getForDatatableSelect() . '] },';
-        $sFilterColumns .= '{ type: "select", values: [' . \StatusHelper::getForDatatableSelect(true) . '] },';
+        $sFilterColumns .= '{ type: "select", values: [' . \StatusHelper::getForDatatableSelect(true) . '], selected: "' . \StatusHelper::ACTIF . '" },';
 
         if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_IP)) {
             $sFilterColumns .= '{ type: "text", placeholder: "" },';
@@ -55,7 +55,7 @@ class RechercheAccount extends \PageHelper {
         $this->arrayTemplate["dtFilterColumns"] = rtrim($sFilterColumns, ',');
         $this->arrayTemplate["rightRechercheIp"] = $this->HaveTheRight(\DroitsHelper::RECHERCHE_IP);
         $this->arrayTemplate["rightRechercheEmail"] = $this->HaveTheRight(\DroitsHelper::RECHERCHE_EMAIL);
-        $this->arrayTemplate["ajaxSource"] = "pages/Admin/ajax/listRechercheAccount.php?sEcho=1";
+        $this->arrayTemplate["ajaxSource"] = "pages/Admin/ajax/listRechercheAccount.php";
 
         $view = $this->template->render($this->arrayTemplate);
 

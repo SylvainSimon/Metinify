@@ -25,4 +25,5 @@ class DroitsHelper {
     const GERER_MONNAIES = 21;
     const GERER_NEWS = 22;
     const GERER_EQUIPE = 23;
+    const GERER_BANNISSEMENT = 24;
 }

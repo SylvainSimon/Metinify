@@ -43,7 +43,7 @@ class Recherche_Joueurs extends \PageHelper {
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
         $sFilterColumns .= '{ type: "select", values: [' . \EmpireHelper::getForDatatableSelect() . '] },';
-        $sFilterColumns .= '{ type: "select", values: [' . \StatusHelper::getForDatatableSelect(true) . '] },';
+        $sFilterColumns .= '{ type: "select", values: [' . \StatusHelper::getForDatatableSelect(true) . '], selected: "' . \StatusHelper::ACTIF . '" },';
 
         if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_IP)) {
             $sFilterColumns .= '{ type: "text", placeholder: "" },';
@@ -53,7 +53,7 @@ class Recherche_Joueurs extends \PageHelper {
         $this->arrayTemplate["dtFilterColumns"] = rtrim($sFilterColumns, ',');
         $this->arrayTemplate["rightRechercheIp"] = $this->HaveTheRight(\DroitsHelper::RECHERCHE_IP);
         $this->arrayTemplate["rightRechercheCompte"] = $this->HaveTheRight(\DroitsHelper::RECHERCHE_COMPTE);
-        $this->arrayTemplate["ajaxSource"] = "pages/Admin/ajax/listRecherchePlayer.php?sEcho=1";
+        $this->arrayTemplate["ajaxSource"] = "pages/Admin/ajax/listRecherchePlayer.php";
 
         $view = $this->template->render($this->arrayTemplate);
 
