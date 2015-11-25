@@ -33,6 +33,10 @@ class RechercheAccount extends \PageHelper {
         if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_IP)) {
             $sColumns .= '{ "mData": "ip", "bSortable": true, "sWidth": "100px" },';
         }
+        
+        if ($this->HaveTheRight(\DroitsHelper::BANNISSEMENT)) {
+            $sColumns .= '{ "mData": "actions", "bSortable": false, "sWidth": "40px" },';
+        }
 
         $sFilterColumns = '';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
@@ -50,11 +54,16 @@ class RechercheAccount extends \PageHelper {
         if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_IP)) {
             $sFilterColumns .= '{ type: "text", placeholder: "" },';
         }
+        
+        if ($this->HaveTheRight(\DroitsHelper::BANNISSEMENT)) {
+            $sFilterColumns .= 'null,';
+        }
 
         $this->arrayTemplate["dtColumns"] = rtrim($sColumns, ',');
         $this->arrayTemplate["dtFilterColumns"] = rtrim($sFilterColumns, ',');
         $this->arrayTemplate["rightRechercheIp"] = $this->HaveTheRight(\DroitsHelper::RECHERCHE_IP);
         $this->arrayTemplate["rightRechercheEmail"] = $this->HaveTheRight(\DroitsHelper::RECHERCHE_EMAIL);
+        $this->arrayTemplate["rightBannissement"] = $this->HaveTheRight(\DroitsHelper::BANNISSEMENT);
         $this->arrayTemplate["ajaxSource"] = "pages/Admin/ajax/listRechercheAccount.php";
 
         $view = $this->template->render($this->arrayTemplate);

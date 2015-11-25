@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * BannissementsActifs
  *
- * @ORM\Table(name="site.bannissements_actifs", uniqueConstraints={@ORM\UniqueConstraint(name="id", columns={"id"})}, indexes={@ORM\Index(name="definitif", columns={"definitif"})})
+ * @ORM\Table(name="site.bannissements_actifs", indexes={@ORM\Index(name="definitif", columns={"definitif"})})
  * @ORM\Entity(repositoryClass="Site\Repository\BannissementsActifsRepository")
  */
 class BannissementsActifs {
@@ -17,81 +17,79 @@ class BannissementsActifs {
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    public $id;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_compte", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\Column(name="id_compte", type="integer", nullable=true)
      */
-    private $idCompte = '0';
+    public $idCompte = '0';
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_debut_bannissement", type="datetime", nullable=true)
      */
-    private $dateDebutBannissement;
+    public $dateDebutBannissement;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_fin_bannissement", type="datetime", nullable=true)
      */
-    private $dateFinBannissement;
+    public $dateFinBannissement;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="raison_bannissement", type="integer", nullable=true)
      */
-    private $raisonBannissement;
+    public $raisonBannissement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="commentaire_bannissement", type="string", length=255, nullable=true)
      */
-    private $commentaireBannissement;
+    public $commentaireBannissement;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="id_compte_gm", type="integer", nullable=true)
      */
-    private $idCompteGm;
+    public $idCompteGm;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ip_gm", type="string", length=20, nullable=true)
      */
-    private $ipGm;
+    public $ipGm;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="duree", type="integer", nullable=true)
      */
-    private $duree;
+    public $duree;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="definitif", type="integer", nullable=true)
      */
-    private $definitif;
+    public $definitif;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="debann_par", type="integer", nullable=true)
      */
-    private $debannPar;
+    public $debannPar;
 
     /**
      * Set id

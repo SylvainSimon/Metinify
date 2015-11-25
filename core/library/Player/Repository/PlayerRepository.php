@@ -118,12 +118,11 @@ class PlayerRepository extends EntityRepository {
                 . "PlayerIndexEntity.empire,"
                 . "BannissementsActifsEntity.dateDebutBannissement,"
                 . "BannissementsActifsEntity.duree,"
-                . "BannissementRaisonsEntity.raison");
+                . "BannissementsActifsEntity.raisonBannissement");
         $qb->from("\Player\Entity\Player", "PlayerEntity");
         $qb->innerJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = PlayerEntity.idAccount");
         $qb->innerJoin("\Player\Entity\PlayerIndex", "PlayerIndexEntity", "WITH", "PlayerIndexEntity.id = AccountEntity.id");
         $qb->innerJoin("\Site\Entity\BannissementsActifs", "BannissementsActifsEntity", "WITH", "BannissementsActifsEntity.idCompte = AccountEntity.id");
-        $qb->innerJoin("\Site\Entity\BannissementRaisons", "BannissementRaisonsEntity", "WITH", "BannissementRaisonsEntity.id = BannissementsActifsEntity.raisonBannissement");
         $qb = $this->getDQLCompteBannis($qb);
 
         $qb->orderBy("BannissementsActifsEntity.dateDebutBannissement", "DESC");

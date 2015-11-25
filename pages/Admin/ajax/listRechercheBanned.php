@@ -6,6 +6,9 @@ require __DIR__ . '../../../../core/initialize.php';
 
 class listHistoGererMonnaies extends \ScriptHelper {
 
+    public $isProtected = true;
+    public $isAdminProtected = true;
+
     public function run() {
 
         $columnsParameters = array(
@@ -38,11 +41,9 @@ class listHistoGererMonnaies extends \ScriptHelper {
                 'dbSortField' => ['PlayerEntity1.name', 'PlayerEntity2.name', 'PlayerEntity3.name', 'PlayerEntity4.name'],
                 'dtField' => 'names',
                 'formatter' => function( $d, $row ) {
-
-                    $arrReturn = array_unique(explode("|VAMOS|", $d));
-
-                    return implode(", ", $arrReturn);
-                }
+            $arrReturn = array_unique(explode("|VAMOS|", $d));
+            return implode(", ", $arrReturn);
+        }
             ),
             array(
                 'dbField' => 'BannissementRaisonsEntity.raison',
@@ -52,11 +53,43 @@ class listHistoGererMonnaies extends \ScriptHelper {
                 'dtField' => 'raison',
             ),
             array(
+                'dbField' => 'BannissementsActifsEntity.duree',
+                'dbConcatSeparator' => "",
+                'dbType' => "",
+                'dbSortField' => 'BannissementsActifsEntity.duree',
+                'dtField' => 'duree',
+                'formatter' => function( $d, $row ) {
+
+                    if ($d == 999) {
+                        return "Définitif";
+                    } else {
+                        return \BanDureeHelper::getLibelle($d);
+                    }
+                }
+            ),
+            array(
                 'dbField' => 'AccountEntity.ipCreation',
                 'dbConcatSeparator' => "",
                 'dbType' => "",
                 'dbSortField' => 'AccountEntity.ipCreation',
                 'dtField' => 'ip',
+            ),
+            array(
+                'dbField' => 'AccountEntity.id',
+                'dbConcatSeparator' => "",
+                'dbType' => "",
+                'dbSortField' => 'AccountEntity.id',
+                'dtField' => 'actions',
+                'formatter' => function( $d, $row ) {
+
+                    if ($this->HaveTheRight(\DroitsHelper::DEBANNISSEMENT)) {
+                        $varButton = '<a class="btn btn-material btn-success btn-sm" onclick="SuppressionBannissement(' . $d . ')" data-tooltip="Lever"><i class="material-icons md-icon-lock-open"></i></a>';
+                    } else {
+                        $varButton = "";
+                    }
+
+                    return '<div class="btn-toolbar">' . $varButton . "</div>";
+                }
             )
         );
 

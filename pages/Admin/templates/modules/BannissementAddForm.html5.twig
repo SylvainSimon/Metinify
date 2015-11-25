@@ -1,0 +1,151 @@
+<div class="box box-default flat" style="margin-bottom: 0px;">
+
+    <div class="box-header">
+        <h3 class="box-title">Bannissement du compte {{ objAccount.getLogin }}</h3>
+    </div>
+
+    <div class="box-body no-padding" style="padding-top: 10px !important;">
+
+        <input type="hidden" id="accountId" value="{{ objAccount.getId }}">
+
+        <div class="col-xs-6">
+            <table class="table table-condensed" style="border-collapse: collapse;">
+                <tbody>
+
+                    {% if arrObjPlayers|length > 0 %}
+                        {% for objPlayers in arrObjPlayers %}
+                            <tr>
+                                <td>
+                                    {% if objPlayers.getJob == 0 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/0_mini.png"/>
+                                    {% elseif objPlayers.getJob == 1 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/1_mini.png"/>
+                                    {% elseif objPlayers.getJob == 2 %}
+                                        <img  class="Dimension_Image_Classement" src="images/races/2_mini.png"/>
+                                    {% elseif objPlayers.getJob == 3 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/3_mini.png"/>
+                                    {% elseif objPlayers.getJob == 4 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/4_mini.png"/>
+                                    {% elseif objPlayers.getJob == 5 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/5_mini.png"/>
+                                    {% elseif objPlayers.getJob == 6 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/6_mini.png"/>
+                                    {% elseif objPlayers.getJob == 7 %}
+                                        <img class="Dimension_Image_Classement" src="images/races/7_mini.png"/>
+                                    {% endif %}
+                                    {{ objPlayers.getName }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td>Aucun joueur sur ce compte</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="col-xs-6">
+
+            <div class="row">
+                <div class="col-md-12" style="margin-bottom: 10px;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ iconCash|raw }} {{ objAccount.getCash|number_format }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ iconMileage|raw }} {{ objAccount.getMileage|number_format }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    Compte crée le :<br/><span class="text-primary">{{ getFormatedDateTime(objAccount.getCreateTime) }}</span>
+                </div>
+            </div>
+        </div>   
+
+        <div class="clearfix"></div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="banRaison">
+                    Raison
+                </label>
+
+                <div class="input-group col-xs-12">
+                    <select class="select2" id="banRaison">
+                        {% if arrBannissementMotifs|length > 0 %}
+                            {% for key, motifs in arrBannissementMotifs %}
+                                <option value="{{ key }}">{{ motifs }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="banDuree">
+                    Durée
+                </label>
+
+                <div class="input-group col-xs-12">
+                    <select class="select2" id="banDuree">
+                        {% if arrBannissementDuree|length > 0 %}
+                            {% for key, duree in arrBannissementDuree %}
+                                <option value="{{ key }}">{{ duree }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="form-group ">
+                <label for="banCommentaire">
+                    Commentaire
+                </label>
+
+                <div class="input-group col-xs-12">
+                    <textarea id='banCommentaire' class="form-control input-sm" style="resize: none; min-height: 100px"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="box-footer">
+        <div class="pull-left">
+            <input type="button" class="btn btn-danger btn-flat" onclick="$.featherlight.close();" value="Fermer" />
+        </div>
+        <div class="pull-right">
+            <input type="button" class="btn btn-success btn-flat" onclick="BannissementCompte();" value="Bannir" />
+        </div>
+    </div>
+
+    <script>
+
+        redrawSelect2();
+
+        function BannissementCompte() {
+
+            displayLoading();
+
+            $.ajax({
+                type: "POST",
+                url: "pages/Admin/ajax/ajaxBannissementAdd.php",
+                data: {"accountId": $("#accountId").val(), "banRaison": $("#banRaison").val(), "banDuree": $("#banDuree").val(), "banCommentaire": $("#banCommentaire").val()},
+                success: function (msg) {
+                    hideLoading();
+                    $.featherlight.close();
+                    parent.oTable.fnStandingRedraw();
+                }
+
+            });
+        }
+    </script>
+</div>

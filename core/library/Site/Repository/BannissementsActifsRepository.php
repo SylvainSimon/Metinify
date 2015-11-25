@@ -30,5 +30,21 @@ class BannissementsActifsRepository extends EntityRepository {
             return null;
         }
     }
+    
+    public function findByIdAccount($idAccount = 0) {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("BannissementsActifsEntity");
+        $qb->from("\Site\Entity\BannissementsActifs", "BannissementsActifsEntity");
+        $qb->where("BannissementsActifsEntity.idCompte = :idAccount");
+        $qb->setParameter("idAccount", $idAccount);
+
+        try {
+            return $qb->getQuery()->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
 
 }

@@ -26,12 +26,8 @@
                             <td>{{ objPlayers.name }}</td>
                             <td>{{ objPlayers.level }}</td>
                             <td>{{ getFormatedDateTime(objPlayers.dateDebutBannissement) }}</td>
-                            <td>{{ objPlayers.raison }}</td>
-                            {% if objPlayers.duree != 999 %}
-                                <td>{{ objPlayers.duree }} jours</td>
-                            {% else %}
-                                <td>Définitif</td>
-                            {% endif %}
+                            <td>{{ helpBanRaison(objPlayers.raisonBannissement) }}</td>
+                            <td>{{ helpBanDuree(objPlayers.duree) }} </td>
                             <td>
                                 {% if objPlayers.empire == 1 %}
                                     <i data-tooltip="Empire Shinsoo" data-tooltip-position="left" class="text-red material-icons md-icon-map md-20"></i>

@@ -19,77 +19,77 @@ class HistoriqueBanissements {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    public $id;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="id_compte", type="integer", nullable=true)
      */
-    private $idCompte;
+    public $idCompte;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_debut_bannissement", type="datetime", nullable=true)
      */
-    private $dateDebutBannissement;
+    public $dateDebutBannissement;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_fin_bannissement", type="datetime", nullable=true)
      */
-    private $dateFinBannissement;
+    public $dateFinBannissement;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="raison_bannissement", type="integer", nullable=true)
      */
-    private $raisonBannissement;
+    public $raisonBannissement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="commentaire_bannissement", type="string", length=255, nullable=true)
      */
-    private $commentaireBannissement;
+    public $commentaireBannissement;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="id_compte_gm", type="integer", nullable=true)
      */
-    private $idCompteGm;
+    public $idCompteGm;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ip_gm", type="string", length=20, nullable=true)
      */
-    private $ipGm;
+    public $ipGm;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="duree", type="integer", nullable=true)
      */
-    private $duree;
+    public $duree;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="definitif", type="integer", nullable=true)
      */
-    private $definitif;
+    public $definitif;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="debann_par", type="integer", nullable=true)
      */
-    private $debannPar;
+    public $debannPar;
 
     /**
      * Get id

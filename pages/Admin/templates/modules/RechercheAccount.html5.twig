@@ -1,3 +1,5 @@
+<script type="text/javascript" src="assets/js/tinymce/tinymce.min.js"></script>
+
 <div class="box boxDataTable box-default flat">
 
     <div class="box-header">
@@ -20,6 +22,9 @@
                         {% if rightRechercheIp %}
                         <th></th>
                         {% endif %}
+                        {% if rightBannissement %}
+                        <th></th>
+                        {% endif %}
                 </tr>
                 <tr>
                     <th>Compte</th>
@@ -32,6 +37,9 @@
                     <th>Status</th>
                         {% if rightRechercheIp %}
                         <th>IP création</th>
+                        {% endif %}
+                        {% if rightBannissement %}
+                        <th>Action</th>
                         {% endif %}
                 </tr>
             </thead>
@@ -55,7 +63,7 @@
     });
 
     $(document).ready(function () {
-        oTableRechercheAccount = $('#listRechercheAccount').dataTable({
+        oTable = $('#listRechercheAccount').dataTable({
             aaSorting: [[0, "asc"]],
             aoColumns: aoColumns,
             sDom: '<"clear"><"top">rt<lp><"clear">',

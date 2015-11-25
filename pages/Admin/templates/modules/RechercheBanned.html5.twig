@@ -13,7 +13,11 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                         {% if rightRechercheIp %}
+                        <th></th>
+                        {% endif %}
+                        {% if rightDebannissement %}
                         <th></th>
                         {% endif %}
                 </tr>
@@ -21,9 +25,13 @@
                     <th>Compte</th>
                     <th>Joueurs</th>
                     <th>Raison</th>
+                    <th>Durée</th>
                     <th>Empire</th>
                         {% if rightRechercheIp %}
                         <th>IP création</th>
+                        {% endif %}
+                        {% if rightDebannissement %}
+                        <th>Action</th>
                         {% endif %}
                 </tr>
             </thead>
@@ -62,4 +70,52 @@
             }
         }).columnFilter({aoColumns: aoColumnsFilter});
     });
+    
+    function SuppressionBannissement(idAccount) {
+
+        bootbox.dialog({
+            message: "Confirmez-vous la levé de ce bannissement ?<br/><br/>Le joueur sera avertit par e-mail que son compte est de nouveau accessible.",
+            animate: false,
+            className: "myBootBox",
+            title: 'Confirmation de la demande',
+            buttons: {
+                danger: {
+                    label: "Annuler",
+                    className: "btn-danger",
+                    callback: function () {
+
+                    }
+                },
+                success: {
+                    label: "Confirmer",
+                    className: "btn-primary",
+                    callback: function () {
+
+                        displayLoading();
+
+                        $.ajax({
+                            type: "POST",
+                            url: "pages/Admin/ajax/ajaxBannissementDelete.php",
+                            data: {"idAccount": idAccount},
+                            success: function (msg) {
+
+                                hideLoading();
+
+                                var json = JSON.parse(msg);
+
+                                if (json.result) {
+
+                                } else {
+                                    popBootbox(json.reasons);
+                                }
+
+                                parent.oTableRechercheBanned.fnStandingRedraw();
+                            }
+
+                        });
+                    }
+                }
+            }
+        });
+    }
 </script>
