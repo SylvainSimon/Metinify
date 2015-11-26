@@ -2,7 +2,7 @@
 
 namespace Administration;
 
-require __DIR__ . '../../../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
 class GererNews extends \PageHelper {
 

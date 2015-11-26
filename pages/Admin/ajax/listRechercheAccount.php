@@ -89,7 +89,7 @@ class listHistoGererMonnaies extends \ScriptHelper {
 
                     if ($row["status"] == \StatusHelper::ACTIF) {
                         if ($this->HaveTheRight(\DroitsHelper::BANNISSEMENT)) {
-                            $varButton = '<a class="btn btn-material btn-danger btn-sm" data-featherlight="ajax" href="pages/Admin/includes/BannissementAddForm.php?idAccount=' . $d . '" data-tooltip="Bannir"><i class="material-icons md-icon-lock"></i></a>';
+                            $varButton = '<a class="btn btn-material btn-danger btn-sm" data-featherlight="ajax" href="pages/Admin/BannissementAddForm.php?idAccount=' . $d . '" data-tooltip="Bannir"><i class="material-icons md-icon-lock"></i></a>';
                         }
                     }
 
