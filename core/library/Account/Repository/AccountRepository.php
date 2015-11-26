@@ -43,6 +43,38 @@ class AccountRepository extends EntityRepository {
             return null;
         }
     }
+
+    public function findAccountByEmail($email = "") {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("AccountEntity");
+        $qb->from("\Account\Entity\Account", "AccountEntity");
+        $qb->where("AccountEntity.email = :email");
+        $qb->setParameter("email", $email);
+
+        try {
+            return $qb->getQuery()->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return [];
+        }
+    }
+    
+    public function findByIpCreation($ip = "") {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("AccountEntity");
+        $qb->from("\Account\Entity\Account", "AccountEntity");
+        $qb->where("AccountEntity.ipCreation = :ipCreation");
+        $qb->setParameter("ipCreation", $ip);
+
+        try {
+            return $qb->getQuery()->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return [];
+        }
+    }
     
     public function findAccountByLogin($login = "") {
 

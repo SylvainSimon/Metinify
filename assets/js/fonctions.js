@@ -151,7 +151,7 @@ function redrawSelect2() {
             }
         }
     });
-    
+
     $(".dataTables_length select").each(function (i, obj) {
         if (!$(obj).data('select2')) {
             var defaultId = "";
@@ -184,9 +184,20 @@ function redrawSelect2() {
     });
 }
 
+function redrawCheckbox() {
+    $("input.icheck, .icheck input[type=checkbox]").iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'icheckbox_square-blue',
+        increaseArea: '20%',
+        inheritClass: true,
+        cursor: true
+    });
+}
+
 function redraw() {
     createTooltip();
     redrawSelect2();
+    redrawCheckbox();
 
     $("span.select2-selection__rendered").removeAttr("title");
 }
@@ -195,7 +206,7 @@ function redraw() {
 $.fn.select2.defaults.set('language', 'fr');
 
 $(document).ready(function () {
-    
+
     $.ajaxSetup({
         error: function (jqXHR, exception) {
 
@@ -207,9 +218,9 @@ $(document).ready(function () {
 
         }
     });
-    
+
     $.featherlight.defaults.closeIcon = "";
-    
+
     $.extend($.fn.dataTable.defaults, {
         "fnDrawCallback": function (oSettings) {
             redraw();
@@ -251,6 +262,13 @@ function displayLoading() {
 }
 function hideLoading() {
     $("#Contenue_Principal > .box .overlay").remove();
+}
+
+function displayLoadingFeatherlight() {
+    $(".box.featherlight-inner").append('<div class="overlay"><i class="fa fa-spin material-icons md-icon-spin"></i></div>');
+}
+function hideLoadingFeatherlight() {
+    $(".box.featherlight-inner").remove();
 }
 
 

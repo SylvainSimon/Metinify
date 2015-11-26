@@ -23,8 +23,7 @@
                     {% if objBannissementActifs.commentaireBannissement != "" %}
                         <span class="text-yellow">Commentaire du modérateur</span>
                         <br/>
-                        <br/>
-                        {{ objBannissementActifs.commentaireBannissement }}
+                        {{ objBannissementActifs.commentaireBannissement|nl2br }}
                         <br/>
                     {% endif %}
                 </div>

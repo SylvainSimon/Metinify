@@ -19,6 +19,7 @@ class DroitsHelper {
     const BANNISSEMENT = 15;
     const BANNISSEMENT_IP = 16;
     const DEBANNISSEMENT = 17;
+    const BANNISSEMENT_EMAIL = 18;
     const VIEW_PLAYER = 19;
     const VIEW_ACCOUNT = 20;
     const GERER_MONNAIES = 21;

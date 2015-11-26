@@ -69,6 +69,10 @@ class IndexWebsite extends PageHelper {
                 
                 <link href="assets/js/featherlight/release/featherlight.min.css" rel="stylesheet" type="text/css" />
                 <script src="assets/js/featherlight/release/featherlight.min.js" type='text/javascript'></script>
+                
+                <link href="vendor/almasaeed2010/adminlte/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
+                <link href="vendor/almasaeed2010/adminlte/plugins/iCheck/minimal/blue.css" rel="stylesheet" type="text/css" />
+                <script src="vendor/almasaeed2010/adminlte/plugins/iCheck/icheck.min.js" type='text/javascript'></script>
 
                 <!--[if lt IE 9]>
                 <script src="./vendor/afarkas/html5shiv/dist/html5shiv.min.js"></script>

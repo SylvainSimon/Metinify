@@ -104,6 +104,23 @@
             </div>
         </div>
 
+        {% if rightBannissementEmail or rightBannissementIp %}
+            <div class="col-sm-12" style="margin-bottom: 5px;">
+                <div class="row">
+                    {% if rightBannissementEmail %}
+                        <div class="col-sm-6" style="margin-bottom: 5px;">
+                            <input type="checkbox" id="withBanEmail" class="icheck" /> <label for="withBanEmail">Bannir les compte avec l'email <span class="text-orange">{{ objAccount.getEmail }}</span></label>
+                        </div>
+                    {% endif %}
+                    {% if rightBannissementIp  %}
+                        <div class="col-sm-6" style="margin-bottom: 5px;">
+                            <input type="checkbox" id="withBanIp" class="icheck" /> <label for="withBanIp">Bannir les compte avec l'ip <span class="text-orange">{{ objAccount.getIpCreation }}</span></label>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+
         <div class="col-sm-12">
             <div class="form-group ">
                 <label for="banCommentaire">
@@ -130,17 +147,25 @@
     <script>
 
         redrawSelect2();
+        redrawCheckbox();
 
         function BannissementCompte() {
 
-            displayLoading();
+            displayLoadingFeatherlight();
 
             $.ajax({
                 type: "POST",
                 url: "pages/Admin/ajax/ajaxBannissementAdd.php",
-                data: {"accountId": $("#accountId").val(), "banRaison": $("#banRaison").val(), "banDuree": $("#banDuree").val(), "banCommentaire": $("#banCommentaire").val()},
+                data: {
+                    "accountId": $("#accountId").val(),
+                    "banRaison": $("#banRaison").val(),
+                    "banDuree": $("#banDuree").val(),
+                    "banCommentaire": $("#banCommentaire").val(),
+                    "withBanEmail": $("#withBanEmail").prop("checked"),
+                    "withBanIp": $("#withBanIp").prop("checked")
+                },
                 success: function (msg) {
-                    hideLoading();
+                    hideLoadingFeatherlight();
                     $.featherlight.close();
                     parent.oTable.fnStandingRedraw();
                 }

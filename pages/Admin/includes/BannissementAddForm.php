@@ -27,6 +27,8 @@ class BannissementAddForm extends \PageHelper {
         $this->arrayTemplate["arrBannissementDuree"] = \BanDureeHelper::getAll(false);
         $this->arrayTemplate["iconCash"] = \FonctionsUtiles::findIconDevise(1);
         $this->arrayTemplate["iconMileage"] = \FonctionsUtiles::findIconDevise(2);
+        $this->arrayTemplate["rightBannissementEmail"] = $this->HaveTheRight(\DroitsHelper::BANNISSEMENT_IP);
+        $this->arrayTemplate["rightBannissementIp"] = $this->HaveTheRight(\DroitsHelper::BANNISSEMENT_EMAIL);
         $this->arrayTemplate["arrObjPlayers"] = $arrObjPlayers;
         $this->arrayTemplate["objAccount"] = $objAccount;
 
