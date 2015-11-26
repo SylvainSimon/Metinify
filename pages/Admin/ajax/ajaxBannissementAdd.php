@@ -32,21 +32,25 @@ class ajaxBannissementAdd extends \PageHelper {
         if ($objAccount !== null) {
             array_push($arrObjAccount, $objAccount);
         }
-        
-        if ($withBanEmail !== null && $withBanEmail == "true") {
-            $arrBanEmail = \Account\AccountHelper::getAccountRepository()->findAccountByEmail($objAccount->getEmail());
-            if (count($arrBanEmail) > 0) {
-                foreach ($arrBanEmail AS $banEmail) {
-                    array_push($arrObjAccount, $banEmail);
+
+        if ($this->HaveTheRight(\DroitsHelper::BANNISSEMENT_EMAIL)) {
+            if ($withBanEmail !== null && $withBanEmail == "true") {
+                $arrBanEmail = \Account\AccountHelper::getAccountRepository()->findAccountByEmail($objAccount->getEmail());
+                if (count($arrBanEmail) > 0) {
+                    foreach ($arrBanEmail AS $banEmail) {
+                        array_push($arrObjAccount, $banEmail);
+                    }
                 }
             }
         }
-        
-        if ($withBanIp !== null && $withBanIp == "true") {
-            $arrBanIp = \Account\AccountHelper::getAccountRepository()->findByIpCreation($objAccount->getIpCreation());
-            if (count($arrBanIp) > 0) {
-                foreach ($arrBanIp AS $banIp) {
-                    array_push($arrObjAccount, $banIp);
+
+        if ($this->HaveTheRight(\DroitsHelper::BANNISSEMENT_IP)) {
+            if ($withBanIp !== null && $withBanIp == "true") {
+                $arrBanIp = \Account\AccountHelper::getAccountRepository()->findByIpCreation($objAccount->getIpCreation());
+                if (count($arrBanIp) > 0) {
+                    foreach ($arrBanIp AS $banIp) {
+                        array_push($arrObjAccount, $banIp);
+                    }
                 }
             }
         }
