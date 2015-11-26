@@ -42,7 +42,7 @@
                                 <select class="select2" onchange="Objet_selectionner();" id="Selecteur_Objet_Ticket" name="Selecteur_Objet_Ticket">
                                     <option selected="selected" value="0"> -- </option>
                                     {% for objSupportObjets in arrObjSupportObjets %}
-                                        <option value="<?php echo $objSupportObjets->getId(); ?>">{{ objSupportObjets.getObjet }}</option>
+                                        <option value="{{ objSupportObjets.getId }}">{{ objSupportObjets.getObjet }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
