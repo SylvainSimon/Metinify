@@ -14,6 +14,20 @@
             <?php if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_BANNISSEMENT)) { ?>
                 <tr class="pointer" onclick="Ajax('pages/Admin/RechercheBanned.php')"><td>Liste des bannis</td></tr>
             <?php } ?>
+            <?php if ($this->HaveTheRight(\DroitsHelper::RADAR)) { ?>
+                <tr class="pointer" onclick="Ajax('pages/Admin/Radar.php')"><td>Radar des cartes</td></tr>
+            <?php } ?>
+        </table>
+    </div>
+</div>
+
+<div class="box box-default flat">
+    <div class="box-header">
+        <h3 class="box-title">Journaux</h3>
+    </div>
+    <div class="box-body no-padding">
+
+        <table class="table table-condensed table-hover" style="border-collapse: collapse;">
             <?php if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_COMMANDE)) { ?>
                 <tr class="pointer" onclick="Ajax('pages/Admin/Commandes.php')"><td>Historiques des commandes</td></tr>
             <?php } ?>

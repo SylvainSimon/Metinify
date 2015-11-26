@@ -26,4 +26,5 @@ class DroitsHelper {
     const GERER_NEWS = 22;
     const GERER_EQUIPE = 23;
     const GERER_BANNISSEMENT = 24;
+    const RADAR = 25;
 }

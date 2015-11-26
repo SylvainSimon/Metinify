@@ -151,6 +151,26 @@ class PlayerRepository extends EntityRepository {
         }
     }
 
+    public function findPlayerOnlineByMap($minutes = 0, $idMap = 0) {
+
+        $nowInterval = \Carbon\Carbon::now()->subMinute($minutes);
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("PlayerEntity");
+        $qb->from("\Player\Entity\Player", "PlayerEntity");
+        $qb->where("PlayerEntity.lastPlay >= :nowInterval");
+        $qb->andWhere("PlayerEntity.mapIndex = :mapIndex");
+        $qb->setParameter("nowInterval", $nowInterval);
+        $qb->setParameter("mapIndex", $idMap);
+
+        try {
+            return $qb->getQuery()->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return [];
+        }
+    }
+
     public function countPlayerOnline($minutes = 0) {
 
         $nowInterval = \Carbon\Carbon::now()->subMinute($minutes);

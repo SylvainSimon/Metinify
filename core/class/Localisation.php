@@ -4,7 +4,7 @@ class Localisation extends \ScriptHelper {
 
     public static function getMapByIndex($mapIndex) {
 
-        $mapArchive = "../../maps.txt";
+        $mapArchive = BASE_ROOT . "/maps.txt";
         $mapContents = file($mapArchive);
         $returnArray = false;
         foreach ($mapContents AS $aktMap) {
