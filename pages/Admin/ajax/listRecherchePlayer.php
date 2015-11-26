@@ -6,6 +6,9 @@ require __DIR__ . '../../../../core/initialize.php';
 
 class listHistoGererMonnaies extends \ScriptHelper {
 
+    public $isProtected = true;
+    public $isAdminProtected = true;
+    
     public function run() {
 
         if($_GET["sEcho"] == 1){
@@ -80,6 +83,25 @@ class listHistoGererMonnaies extends \ScriptHelper {
                 'dbType' => "",
                 'dbSortField' => 'PlayerEntity.ip',
                 'dtField' => 'ip',
+            ),
+            array(
+                'dbField' => 'AccountEntity.id',
+                'dbConcatSeparator' => "",
+                'dbType' => "",
+                'dbSortField' => 'AccountEntity.id',
+                'dtField' => 'actions',
+                'formatter' => function( $d, $row ) {
+
+                    $varButton = "";
+
+                    if ($row["status"] == \StatusHelper::ACTIF) {
+                        if ($this->HaveTheRight(\DroitsHelper::BANNISSEMENT)) {
+                            $varButton = '<a class="btn btn-material btn-danger btn-sm" data-featherlight="ajax" href="pages/Admin/BannissementAddForm.php?idAccount=' . $d . '" data-tooltip="Bannir"><i class="material-icons md-icon-lock"></i></a>';
+                        }
+                    }
+
+                    return '<div class="btn-toolbar">' . $varButton . "</div>";
+                }
             )
         );
 

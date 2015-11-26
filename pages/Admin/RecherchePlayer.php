@@ -32,6 +32,10 @@ class Recherche_Joueurs extends \PageHelper {
         if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_IP)) {
             $sColumns .= '{ "mData": "ip", "bSortable": true, "sWidth": "100px" },';
         }
+        
+        if ($this->HaveTheRight(\DroitsHelper::BANNISSEMENT)) {
+            $sColumns .= '{ "mData": "actions", "bSortable": false, "sWidth": "40px" },';
+        }
 
         $sFilterColumns = '';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
@@ -48,11 +52,16 @@ class Recherche_Joueurs extends \PageHelper {
         if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_IP)) {
             $sFilterColumns .= '{ type: "text", placeholder: "" },';
         }
+        
+        if ($this->HaveTheRight(\DroitsHelper::BANNISSEMENT)) {
+            $sFilterColumns .= 'null,';
+        }
 
         $this->arrayTemplate["dtColumns"] = rtrim($sColumns, ',');
         $this->arrayTemplate["dtFilterColumns"] = rtrim($sFilterColumns, ',');
         $this->arrayTemplate["rightRechercheIp"] = $this->HaveTheRight(\DroitsHelper::RECHERCHE_IP);
         $this->arrayTemplate["rightRechercheCompte"] = $this->HaveTheRight(\DroitsHelper::RECHERCHE_COMPTE);
+        $this->arrayTemplate["rightBannissement"] = $this->HaveTheRight(\DroitsHelper::BANNISSEMENT);
         $this->arrayTemplate["ajaxSource"] = "pages/Admin/ajax/listRecherchePlayer.php";
 
         $view = $this->template->render($this->arrayTemplate);

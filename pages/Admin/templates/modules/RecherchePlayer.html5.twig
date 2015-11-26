@@ -20,6 +20,9 @@
                         {% if rightRechercheIp %}
                         <th></th>
                         {% endif %}
+                        {% if rightBannissement %}
+                        <th></th>
+                        {% endif %}
                 </tr>
                 <tr>
                     <th>Joueur</th>
@@ -32,6 +35,9 @@
                     <th>Status</th>
                         {% if rightRechercheIp %}
                         <th>IP</th>
+                        {% endif %}
+                        {% if rightBannissement %}
+                        <th>Action</th>
                         {% endif %}
                 </tr>
             </thead>
