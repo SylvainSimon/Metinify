@@ -1,11 +1,16 @@
 function AjaxMaps(url, idMap) {
-    $.ajax({
-        type: "POST",
-        url: url,
-        data: "idMap=" + idMap,
-        success: function (msg) {
-            $("#Map_Apercu").html(msg);
-            redraw();
-        }
-    });
+
+    if (idMap > 0) {
+        $.ajax({
+            type: "GET",
+            url: url,
+            data: "idMap=" + idMap,
+            success: function (msg) {
+                $("#Map_Apercu").html(msg);
+                redraw();
+            }
+        });
+    }else{
+        $("#Map_Apercu").html("");
+    }
 }

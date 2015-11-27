@@ -76,3 +76,11 @@
     background-color: #3F3F3F;
     color: #D2D2D2 !important;
 }
+
+.select2-results__options--nested{
+    text-indent: 10px;
+}
+
+.select2-container--bootstrap .select2-results__group{
+    padding: 2px 8px;
+}

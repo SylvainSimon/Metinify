@@ -5,7 +5,7 @@
         {% for objPlayers in arrObjPlayers %}
             <div class="pointRadar" data-x="{{ ((objPlayers.x - baseX) / 200 / 0.5) }}" data-y="{{ ((objPlayers.y - baseY) / 200 / 0.5) }}"  data-tooltip="Position {{ ((objPlayers.x - baseX) / 200 / 0.5)|round }} - {{ ((objPlayers.y - baseY) / 200 / 0.5)|round }}" style="position:absolute; top:0px; left:0px;">
                 <span class="cursor">
-                    <i class="material-icons md-icon-lens text-red" style="font-size: 14px;"></i>
+                    <i class="material-icons md-icon-lens text-red" style="font-size: 10px;"></i>
                 </span>
             </div>
         {% endfor %}

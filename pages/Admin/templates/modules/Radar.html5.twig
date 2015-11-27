@@ -8,36 +8,34 @@
 
     <div class="box-body no-padding">
 
-        <div class="col-lg-3 no-padding">
-            <table class="table table-condensed" style="border-collapse: collapse;">
-                <tr>
-                    <td colspan="2">Shinsoo</td>
-                </tr>
-                <tr>
-                    <td onclick="AjaxMaps('pages/Admin/ajax/ajaxRadarGet.php', 1);">
-                        Map 1
-                    </td>
-                    <td onclick="AjaxMaps('pages/Admin/ajax/ajaxRadarGet.php', 3);">
-                        Map 2
-                    </td>
-                </tr>
-            </table>
-            <table class="table table-condensed" style="border-collapse: collapse;">
-                <tr>
-                    <td colspan="2">Chunjo</td>
-                </tr>
-                <tr>
-                    <td onclick="AjaxMaps('pages/Admin/ajax/ajaxRadarGet.php', 21);">
-                        Map 1
-                    </td>
-                    <td onclick="AjaxMaps('pages/Admin/ajax/ajaxRadarGet.php', 23);">
-                        Map 2
-                    </td>
-                </tr>
-            </table>
+        <div class="col-lg-3" style="padding-top: 15px; padding-bottom: 15px;">
+
+            <div class="input-group col-xs-12">
+                <select id="selectMap" class="select2" onchange="AjaxMaps('pages/Admin/ajax/ajaxRadarGet.php', this.value);">
+                    <optgroup label="SHINSOO">
+                        <option value="1">Yongan</option>
+                        <option value="3">Jayang</option>
+                    </optgroup>
+                    <optgroup label="CHUNJO">
+                        <option value="21">Joan</option>
+                        <option value="23">Bokjung</option>
+                    </optgroup>
+                    <optgroup label="JINNO">
+                        <option value="41">Pyungmoo</option>
+                        <option value="43">Bakra</option>
+                    </optgroup>
+                    <option value="64">Vallée de Seungryong</option>
+                    <option value="61">Mont Sohan</option>
+                    <option value="63">Désert de Yongbi</option>
+                    <option value="65">Temple de Hwang</option>
+                    <option value="67">Bois enchanté</option>
+                    <option value="68">Bois rouge</option>
+                </select>
+            </div>
+
         </div>
 
-        <div class="col-lg-9">
+        <div class="col-lg-9" style="padding-top: 15px; padding-bottom: 15px;">
             <div id="Map_Apercu">
 
             </div>
