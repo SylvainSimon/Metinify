@@ -18,7 +18,7 @@ class ajaxGererNewsEditSave extends \ScriptHelper {
     public function run() {
 
         global $request;
-        $idMap = $request->request->get("idMap");
+        $idMap = $request->query->get("idMap");
 
         $arrObjPlayers = \Player\PlayerHelper::getPlayerRepository()->findPlayerOnlineByMap(30, $idMap);
 
