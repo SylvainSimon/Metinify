@@ -34,9 +34,9 @@ class Guild
     private $master = '0';
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="level", type="boolean", nullable=true)
+     * @ORM\Column(name="level", type="integer", nullable=true)
      */
     private $level;
 
@@ -48,9 +48,9 @@ class Guild
     private $exp;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="skill_point", type="boolean", nullable=false)
+     * @ORM\Column(name="skill_point", type="integer", nullable=false)
      */
     private $skillPoint = '0';
 
@@ -182,7 +182,7 @@ class Guild
     /**
      * Set level
      *
-     * @param boolean $level
+     * @param integer $level
      *
      * @return Guild
      */
@@ -196,7 +196,7 @@ class Guild
     /**
      * Get level
      *
-     * @return boolean
+     * @return integer
      */
     public function getLevel()
     {
@@ -230,7 +230,7 @@ class Guild
     /**
      * Set skillPoint
      *
-     * @param boolean $skillPoint
+     * @param integer $skillPoint
      *
      * @return Guild
      */
@@ -244,7 +244,7 @@ class Guild
     /**
      * Get skillPoint
      *
-     * @return boolean
+     * @return integer
      */
     public function getSkillPoint()
     {

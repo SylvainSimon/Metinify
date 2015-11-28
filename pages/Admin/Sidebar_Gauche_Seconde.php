@@ -6,10 +6,13 @@
 
         <table class="table table-condensed table-hover" style="border-collapse: collapse;">
             <?php if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_JOUEUR)) { ?>
-                <tr class="pointer" onclick="Ajax('pages/Admin/RecherchePlayer.php')"><td>Recherche de joueurs</td></tr>
+                <tr class="pointer" onclick="Ajax('pages/Admin/RecherchePlayer.php')"><td>Recherche de joueur</td></tr>
             <?php } ?>
             <?php if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_COMPTE)) { ?>
                 <tr class="pointer" onclick="Ajax('pages/Admin/RechercheAccount.php')"><td>Recherche de comptes</td></tr>
+            <?php } ?>
+            <?php if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_GUILDE)) { ?>
+                <tr class="pointer" onclick="Ajax('pages/Admin/RechercheGuilde.php')"><td>Recherche de guilde</td></tr>
             <?php } ?>
             <?php if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_BANNISSEMENT)) { ?>
                 <tr class="pointer" onclick="Ajax('pages/Admin/RechercheBanned.php')"><td>Liste des bannis</td></tr>
