@@ -1,0 +1,33 @@
+<div style='font-size: 12px; width: 200px;'>
+    {% if objPlayers.job == 0 %}
+        <img class='Dimension_Image_Classement' src='images/races/0_mini.png'/>
+    {% elseif objPlayers.job == 1 %}
+        <img class='Dimension_Image_Classement' src='images/races/1_mini.png'/>
+    {% elseif objPlayers.job == 2 %}
+        <img  class='Dimension_Image_Classement' src='images/races/2_mini.png'/>
+    {% elseif objPlayers.job == 3 %}
+        <img class='Dimension_Image_Classement' src='images/races/3_mini.png'/>
+    {% elseif objPlayers.job == 4 %}
+        <img class='Dimension_Image_Classement' src='images/races/4_mini.png'/>
+    {% elseif objPlayers.job == 5 %}
+        <img class='Dimension_Image_Classement' src='images/races/5_mini.png'/>
+    {% elseif objPlayers.job == 6 %}
+        <img class='Dimension_Image_Classement' src='images/races/6_mini.png'/>
+    {% elseif objPlayers.job == 7 %}
+        <img class='Dimension_Image_Classement' src='images/races/7_mini.png'/>
+    {% endif %}
+    {{ objPlayers.name }} 
+    <span class='text-orange pull-right' style='position: relative; top:3px;'>{{ ((objPlayers.x - baseX) / 200 / 0.5)|round }} - {{ ((objPlayers.y - baseY) / 200 / 0.5)|round }}</span>
+    <br/>
+    <br/>
+    {% if objPlayers.haveCanneAPeche %}
+        <span class='text-aqua'>Tient une canne à pêche</span>
+        <br/>
+    {% endif %}
+    Niveau {{ objPlayers.level }} 
+    <br/>
+    <br/>
+    {{ getMinutesToString(objPlayers.playtime) }}
+    <br/>
+    {{ objPlayers.gold|number_format }} yangs
+</div>

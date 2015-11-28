@@ -1,11 +1,25 @@
+{% set nombreGM = 0 %}
+{% set nombrePecheur = 0 %}
+
 <div style="position: relative;">
     <img id="imageMap" src="./images/maps/{{ idMap }}.jpg"  style="width: 100%; height: auto" />
 
     {% if arrObjPlayers|length > 0 %}
         {% for objPlayers in arrObjPlayers %}
-            <div class="pointRadar" data-x="{{ ((objPlayers.x - baseX) / 200 / 0.5) }}" data-y="{{ ((objPlayers.y - baseY) / 200 / 0.5) }}"  data-tooltip="Position {{ ((objPlayers.x - baseX) / 200 / 0.5)|round }} - {{ ((objPlayers.y - baseY) / 200 / 0.5)|round }}" style="position:absolute; top:0px; left:0px;">
-                <span class="cursor">
-                    <i class="material-icons md-icon-lens text-red" style="font-size: 10px;"></i>
+            <div class="pointRadar" data-x="{{ ((objPlayers.x - baseX) / 200 / 0.5) }}" data-y="{{ ((objPlayers.y - baseY) / 200 / 0.5) }}" style="position:absolute; top:0px; left:0px;">
+                <span>
+                    {% if objPlayers.isGM %}
+                        {% set nombreGM = nombreGM + 1 %}
+                        <i  data-tooltip="{{ include('RadarPlayerGetInfo.html5.twig') }}" data-tooltip-persistence="9999999" data-tooltip-track="1" data-tooltip-isItemMetin="1" class="material-icons md-icon-lens text-fuchsia" style="font-size: 10px;"></i>
+                    {% else %}
+
+                        {% if objPlayers.haveCanneAPeche %}
+                            {% set nombrePecheur = nombrePecheur + 1 %}
+                            <i  data-tooltip="{{ include('RadarPlayerGetInfo.html5.twig') }}" data-tooltip-persistence="9999999" data-tooltip-track="1" data-tooltip-isItemMetin="1" class="material-icons md-icon-lens text-aqua" style="font-size: 10px;"></i>
+                        {% else %}
+                            <i  data-tooltip="{{ include('RadarPlayerGetInfo.html5.twig') }}" data-tooltip-persistence="9999999" data-tooltip-track="1" data-tooltip-isItemMetin="1" class="material-icons md-icon-lens text-red" style="font-size: 10px;"></i>
+                        {% endif %}
+                    {% endif %}
                 </span>
             </div>
         {% endfor %}
@@ -28,12 +42,15 @@
         });
     });
 
-    $(document).ready(function () {
+    $("#imageMap").load(function () {
+
+        $("#countOnMap").html("{{ (countOnMap ) }} connecté(s) sur la carte : <br/><i class='material-icons md-icon-lens text-red' style='font-size: 10px;'></i> {{ (countOnMap - nombrePecheur - nombreGM ) }} joueurs<br/><i class='material-icons md-icon-lens text-aqua' style='font-size: 10px;'></i> {{ nombrePecheur }} pêcheurs<br/><i class='material-icons md-icon-lens text-fuchsia' style='font-size: 10px;'></i> {{ nombreGM }} Game Master");
+
         $(".pointRadar").each(function () {
 
             var attrX = $(this).attr("data-x");
             var attrY = $(this).attr("data-y");
-            
+
             var diffX = ($("#imageMap").prop("width") / parseInt('{{ mapX }}'));
             var diffY = ($("#imageMap").prop("height") / parseInt('{{ mapY }}'));
 

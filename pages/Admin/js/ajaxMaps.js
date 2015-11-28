@@ -8,14 +8,19 @@ function AjaxMaps(url, idMap) {
             url: url,
             data: "idMap=" + idMap,
             success: function (msg) {
-                
+
                 hideLoading();
-                
+
+                $("#boxToolMap").css("display", "inline");
                 $("#Map_Apercu").html(msg);
                 redraw();
             }
         });
-    }else{
+    } else {
+
+        hideLoading();
+        $("#boxToolMap").css("display", "none");
+        $("#countOnMap").html("Aucune carte n'est sélectionnée.");
         $("#Map_Apercu").html("");
     }
 }

@@ -52,7 +52,7 @@ class PlayerRepository extends EntityRepository {
     }
 
     public function findByName($name = "") {
-        
+
         $qb = $this->_em->createQueryBuilder();
 
         $qb->select("PlayerEntity");
@@ -66,11 +66,11 @@ class PlayerRepository extends EntityRepository {
             return null;
         }
     }
-    
+
     public function findByNameForAjaxSelect($name = "") {
 
         $name = ($name !== "") ? "%" . $name . "%" : "%";
-        
+
         $qb = $this->_em->createQueryBuilder();
 
         $qb->select("PlayerEntity.id, PlayerEntity.name");
@@ -86,7 +86,7 @@ class PlayerRepository extends EntityRepository {
             return null;
         }
     }
-    
+
     public function verifyIsMyPlayer($idAccount = 0, $idPlayer = 0) {
 
         $qb = $this->_em->createQueryBuilder();
@@ -151,21 +151,38 @@ class PlayerRepository extends EntityRepository {
         }
     }
 
-    public function findPlayerOnlineByMap($minutes = 0, $idMap = 0) {
+    public function findPlayerOnlineByMap($minutes = 0, $idMap = 0, $withGm = false) {
 
         $nowInterval = \Carbon\Carbon::now()->subMinute($minutes);
 
         $qb = $this->_em->createQueryBuilder();
 
-        $qb->select("PlayerEntity");
+        $qb->select(""
+                . "PlayerEntity.name, "
+                . "PlayerEntity.job, "
+                . "PlayerEntity.level, "
+                . "PlayerEntity.playtime, "
+                . "PlayerEntity.gold, "
+                . "PlayerEntity.x, "
+                . "PlayerEntity.y,"
+                . "IFELSE(GmlistEntity.mname IS NULL, 0, 1) AS isGM,"
+                . "IFELSE(ItemProtoEntityPeche.type IS NULL, 0, 1) AS haveCanneAPeche"
+                . "");
         $qb->from("\Player\Entity\Player", "PlayerEntity");
+        $qb->leftJoin("\Common\Entity\Gmlist", "GmlistEntity", "WITH", "PlayerEntity.name = GmlistEntity.mname");
+        $qb->leftJoin("\Player\Entity\Item", "ItemEntityPeche", "WITH", "ItemEntityPeche.ownerId = PlayerEntity.id AND ItemEntityPeche.window = 'EQUIPMENT' AND ItemEntityPeche.pos = " . \ItemEquipmentPosHelper::ARME);
+        $qb->leftJoin("\Player\Entity\ItemProto", "ItemProtoEntityPeche", "WITH", "ItemEntityPeche.vnum = ItemProtoEntityPeche.vnum AND ItemProtoEntityPeche.type = " . \ItemProtoTypeHelper::CANNE_A_PECHE);
         $qb->where("PlayerEntity.lastPlay >= :nowInterval");
         $qb->andWhere("PlayerEntity.mapIndex = :mapIndex");
         $qb->setParameter("nowInterval", $nowInterval);
         $qb->setParameter("mapIndex", $idMap);
 
+        if (!$withGm) {
+            $qb = $this->getDQLJoueurNonGM($qb);
+        }
+
         try {
-            return $qb->getQuery()->getResult();
+            return $qb->getQuery()->getArrayResult();
         } catch (\Doctrine\ORM\NoResultException $e) {
             return [];
         }
