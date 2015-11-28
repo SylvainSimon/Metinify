@@ -9,7 +9,7 @@
                 <tr class="pointer" onclick="Ajax('pages/Admin/RecherchePlayer.php')"><td>Recherche de joueur</td></tr>
             <?php } ?>
             <?php if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_COMPTE)) { ?>
-                <tr class="pointer" onclick="Ajax('pages/Admin/RechercheAccount.php')"><td>Recherche de comptes</td></tr>
+                <tr class="pointer" onclick="Ajax('pages/Admin/RechercheAccount.php')"><td>Recherche de compte</td></tr>
             <?php } ?>
             <?php if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_GUILDE)) { ?>
                 <tr class="pointer" onclick="Ajax('pages/Admin/RechercheGuilde.php')"><td>Recherche de guilde</td></tr>

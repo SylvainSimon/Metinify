@@ -14,7 +14,7 @@ class listRechercheGuilde extends \ScriptHelper {
         if ($_GET["sEcho"] == 1) {
             exit();
         }
-        
+
         $columnsParameters = array(
             array(
                 'dbField' => 'GuildEntity.name',
@@ -33,10 +33,20 @@ class listRechercheGuilde extends \ScriptHelper {
             array(
                 'dbField' => ["GuildEntity.victoire", "GuildEntity.defaite", "GuildEntity.egalite"],
                 'dbSortReplaceField' => [],
-                'dbConcatSeparator' => "",
+                'dbConcatSeparator' => "|VAMOS|",
                 'dbType' => "",
                 'dbSortField' => ["GuildEntity.victoire", "GuildEntity.defaite", "GuildEntity.egalite"],
                 'dtField' => 'scores',
+                'formatter' => function( $d, $row ) {
+
+            $explosion = explode("|VAMOS|", $d);
+
+            $scores = "<span class='text-green'>" . $explosion[0] . "</span>";
+            $scores .= " / <span class='text-red'>" . $explosion[1] . "</span>";
+            $scores .= " / <span>" . $explosion[2] . "</span>";
+
+            return $scores;
+        }
             ),
             array(
                 'dbField' => 'AccountEntity.login',
