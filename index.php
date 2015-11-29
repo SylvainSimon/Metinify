@@ -50,6 +50,16 @@ class IndexWebsite extends PageHelper {
                 <script src="assets/js/jquery.superbox/jquery.superbox.min.js" type="text/javascript"></script>
                 <script src="assets/js/jquery.cookie/js.cookie.min.js" type='text/javascript'></script>
                 <script src="assets/js/fonctions.min.js" type='text/javascript'></script>
+
+                <?php if ($config->modChristmas) { ?>
+                    <script src="assets/js/snowstorm/snowstorm.min.js" type='text/javascript'></script>
+                    <script type="text/javascript">
+                        snowStorm.followMouse = false;
+                        snowStorm.usePositionFixed = true;
+                    </script>
+                    <link href="./css/css/modes/christmas.css" rel="stylesheet" type="text/css" />
+                <?php } ?>
+
                 <script src="assets/js/Ajax.js" type='text/javascript'></script>
                 <script src="assets/js/Ajax_Connexion.js" type='text/javascript'></script>
                 <script src="assets/js/Ajax_Classement.js" type="text/javascript"></script>
@@ -58,18 +68,18 @@ class IndexWebsite extends PageHelper {
                 <script src="assets/js/jquery.countdown/jquery.countdown.min.js" type='text/javascript'></script>
                 <script src="assets/js/jquery.fancybox/jquery.fancybox.min.js" type='text/javascript'></script>
                 <script src="assets/js/bootbox/bootbox.min.js" type='text/javascript'></script>
-                
+
                 <link href="assets/js/datatables/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
-                
+
                 <script src="assets/js/datatables/js/jquery.dataTables.min.js" type='text/javascript'></script>
                 <script src="assets/js/datatables/js/dataTables.bootstrap.min.js" type='text/javascript'></script>
                 <script src="assets/js/datatables/js/jquery.dataTables.columnFilter.min.js" type='text/javascript'></script>
                 <script src="assets/js/datatables/js/jquery.dataTables.StandingRedraw.min.js" type='text/javascript'></script>
                 <script src="assets/js/datatables/extras/Responsive/js/dataTables.responsive.min.js" type='text/javascript'></script>
-                
+
                 <link href="assets/js/featherlight/release/featherlight.min.css" rel="stylesheet" type="text/css" />
                 <script src="assets/js/featherlight/release/featherlight.min.js" type='text/javascript'></script>
-                
+
                 <link href="vendor/almasaeed2010/adminlte/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
                 <link href="vendor/almasaeed2010/adminlte/plugins/iCheck/minimal/blue.css" rel="stylesheet" type="text/css" />
                 <script src="vendor/almasaeed2010/adminlte/plugins/iCheck/icheck.min.js" type='text/javascript'></script>
@@ -152,13 +162,13 @@ class IndexWebsite extends PageHelper {
             <script type="text/javascript">
 
         <?php if ($request->query->get("ok") !== null) { ?>
-                    Ajax('pages/_LegacyPages/AccountActivationTerm.php');
+                        Ajax('pages/_LegacyPages/AccountActivationTerm.php');
         <?php } elseif ($request->query->get("paypal") !== null) { ?>
-                    Ajax('pages/_LegacyPages/PaypalTerm.php');
+                        Ajax('pages/_LegacyPages/PaypalTerm.php');
         <?php } else { ?>
 
             <?php if ($session->get("Administration_PannelAdmin") !== null) { ?>
-                        Ajax('pages/Admin/Bienvenu.php');
+                            Ajax('pages/Admin/Bienvenu.php');
             <?php } ?>
 
         <?php } ?>

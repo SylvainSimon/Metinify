@@ -31,6 +31,9 @@
     <div class="box-body no-padding">
 
         <table class="table table-condensed table-hover" style="border-collapse: collapse;">
+            <?php if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_GUILDE_GUERRE)) { ?>
+                <tr class="pointer" onclick="Ajax('pages/Admin/RechercheGuildeWar.php')"><td>Guerres de guilde</td></tr>
+            <?php } ?>
             <?php if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_COMMANDE)) { ?>
                 <tr class="pointer" onclick="Ajax('pages/Admin/Commandes.php')"><td>Historiques des commandes</td></tr>
             <?php } ?>

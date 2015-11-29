@@ -27,4 +27,5 @@ class DroitsHelper {
     const GERER_EQUIPE = 23;
     const GERER_BANNISSEMENT = 24;
     const RADAR = 25;
+    const RECHERCHE_GUILDE_GUERRE = 26;
 }

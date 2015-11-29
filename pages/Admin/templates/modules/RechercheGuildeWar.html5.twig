@@ -1,0 +1,65 @@
+<script type="text/javascript" src="assets/js/tinymce/tinymce.min.js"></script>
+
+<div class="box boxDataTable box-default flat">
+
+    <div class="box-header">
+        <h3 class="box-title">Guerres de guilde</h3>
+    </div>
+
+    <div class="box-body no-padding">
+
+        <table class="table table-condensed table-hover table-striped" id="listRechercheGuildeWar" style="border-collapse: collapse; margin-top: 0px !important;">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <th>Guilde</th>
+                    <th>Chef</th>
+                    <th>Guilde</th>
+                    <th>Chef</th>
+                    <th>Vainqueur</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="100%" class="dataTables_empty">Tableau en cours de chargement...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+
+    var aoColumns = [{{ dtColumns|raw }}];
+    var aoColumnsFilter = [{{ dtFilterColumns|raw  }}];
+    var sAjaxSource = '{{ ajaxSource }}';
+
+    $('#listRechercheGuildeWar').on('processing.dt', function (e, settings, processing) {
+        processingDatatable(processing);
+    });
+
+    $(document).ready(function () {
+        oTable = $('#listRechercheGuildeWar').dataTable({
+            aaSorting: [[0, "desc"]],
+            aoColumns: aoColumns,
+            sDom: '<"clear"><"top">rt<lp><"clear">',
+            sAjaxSource: sAjaxSource,
+            aLengthMenu: [[10, 25, 50, 100], ["10", "25", "50", "100"]],
+            iDisplayLength: 10,
+            fnServerData: function (sSource, aoData, fnCallback) {
+                $.getJSON(sSource, aoData, function (json) {
+                    $("#datatable_total").html(json.iTotalRecords);
+                    fnCallback(json);
+                });
+            }
+        }).columnFilter({aoColumns: aoColumnsFilter});
+    });
+</script>
