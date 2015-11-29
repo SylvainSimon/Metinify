@@ -32,12 +32,6 @@ class ServicesHelper {
             return $config->objInstance;
         };
 
-        $container['pdo'] = function ($container) {
-            $config = $container['config'];
-            $connexion = new \PDO('' . $config->driverbdd . ':host=' . $config->hostbdd . ';charset=utf8', $config->userbdd, $config->passwordbdd);
-            return $connexion;
-        };
-
         $container['cacheType'] = $container['config']->fastChatType;
 
         $container['fastcache'] = function($container) {

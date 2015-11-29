@@ -287,23 +287,6 @@ function hideLoadingDataTable() {
     $(".box.boxDataTable .overlay").remove();
 }
 
-function getInformationItem(idItem) {
-
-    $.ajax({
-        type: "POST",
-        url: "ajax/ajaxItemGetInfo.php",
-        data: "id=" + idItem,
-        success: function (msg) {
-
-            if ($("#cade_id_" + idItem).parent(".Interieur_Case").attr("data-tooltip") === "") {
-                $("#cade_id_" + idItem).parent(".Interieur_Case").attr("data-tooltip", msg);
-                redraw();
-            }
-        }
-    });
-
-}
-
 function ServeurClassyd() {
 
     $.ajax({

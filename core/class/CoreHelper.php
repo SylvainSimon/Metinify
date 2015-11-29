@@ -4,7 +4,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CoreHelper {
 
-    public $objConnection;
     public $objConfig;
     public $objSession;
     public $objTwig;
@@ -32,11 +31,6 @@ class CoreHelper {
         if (!$this->objConfig->requiredSSL) {
             $this->redirectToSSL();
         }
-
-        /* @var $connexion \PDO */
-        global $connexion;
-        $connexion = $container["pdo"];
-        $this->objConnection = $connexion;
 
         /* @var $twig \Twig_Environment */
         global $twig;
