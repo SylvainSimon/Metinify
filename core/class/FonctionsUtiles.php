@@ -167,6 +167,39 @@ class FonctionsUtiles {
         return $Nom_Race;
     }
 
+    static function findSkillGroup($job = 0, $skillGroup = 0) {
+
+        $return = "Non définie";
+
+        if ($job == 0 or $job == 4) {
+            if ($skillGroup == 1) {
+                $return = "Corps à corps";
+            } else if ($skillGroup == 2) {
+                $return = "Mental";
+            }
+        } else if ($job == 1 or $job == 5) {
+            if ($skillGroup == 1) {
+                $return = "Assasin";
+            } else if ($skillGroup == 2) {
+                $return = "Archer";
+            }
+        } else if ($job == 2 or $job == 6) {
+            if ($skillGroup == 1) {
+                $return = "Arme magique";
+            } else if ($skillGroup == 2) {
+                $return = "Magie noire";
+            }
+        } else if ($job == 3 or $job == 7) {
+            if ($skillGroup == 1) {
+                $return = "Dragon";
+            } else if ($skillGroup == 2) {
+                $return = "Soin";
+            }
+        }
+
+        return $return;
+    }
+
     static function findIconJob($job) {
 
         $imgLink = '<img class="Dimension_Image_Classement" data-tooltip="' . self::findTitleJob($job) . '" src="';
@@ -244,4 +277,5 @@ class FonctionsUtiles {
 
         return $iconElement;
     }
+
 }

@@ -32,41 +32,7 @@
 
                                 <td class="hidden-md hidden-sm hidden-xs">{{ objMessengerList.exp }}</td>
                                 <td>
-                                    {% if objMessengerList.job == 0 or objMessengerList.job == 4 %}
-                                        {% if objMessengerList.skillGroup == 1 %}
-                                            Corps à Corps
-                                        {% elseif objMessengerList.skillGroup == 2 %}
-                                            Mental
-                                        {% else %}
-                                            Non-définie
-                                        {% endif %}
-                                    {% elseif objMessengerList.job == 1 or objMessengerList.job == 5 %}
-                                        {% if objMessengerList.skillGroup == 1 %}
-                                            Assasin
-                                        {% elseif objMessengerList.skillGroup == 2 %}
-                                            Archer
-                                        {% else %}
-                                            Non-définie
-                                        {% endif %}
-                                    {% elseif objMessengerList.job == 2 or objMessengerList.job == 6 %}
-                                        {% if objMessengerList.skillGroup == 1 %}
-                                            Arme magique
-                                        {% elseif objMessengerList.skillGroup == 2 %}
-                                            Magie Noir
-                                        {% else %}
-                                            Non-définie
-                                        {% endif %}
-                                    {% elseif objMessengerList.job == 3 or objMessengerList.job == 7 %}
-                                        {% if objMessengerList.skillGroup == 1 %}
-                                            Dragon
-                                        {% elseif objMessengerList.skillGroup == 2 %}
-                                            Soin
-                                        {% else %}
-                                            Non-définie
-                                        {% endif %}
-                                    {% else %}
-                                        Non-définie
-                                    {% endif %}
+                                    {{ findSkillGroup(objMessengerList.job, objMessengerList.skillGroup) }}
                                 </td>
                                 <td>{{ getMinutesToString(objMessengerList.playtime) }}</td>
 

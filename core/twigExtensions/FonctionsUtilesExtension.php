@@ -6,6 +6,7 @@ class FonctionsUtilesExtension extends \Twig_Extension {
         return array(
             'findIconEmpire' => new \Twig_SimpleFunction('findIconEmpire', array($this, 'findIconEmpire')),
             'findIconJob' => new \Twig_SimpleFunction('findIconJob', array($this, 'findIconJob')),
+            'findSkillGroup' => new \Twig_SimpleFunction('findSkillGroup', array($this, 'findSkillGroup')),
         );
     }
 
@@ -17,8 +18,12 @@ class FonctionsUtilesExtension extends \Twig_Extension {
         return \FonctionsUtiles::findIconEmpire($idEmpire);
     }
 
-    public function findIconJob($idJob = 0) {
-        return \FonctionsUtiles::findIconJob($idJob);
+    public function findIconJob($job = 0) {
+        return \FonctionsUtiles::findIconJob($job);
+    }
+
+    public function findSkillGroup($job = 0, $skillGroup = 0) {
+        return \FonctionsUtiles::findSkillGroup($job, $skillGroup);
     }
 
 }

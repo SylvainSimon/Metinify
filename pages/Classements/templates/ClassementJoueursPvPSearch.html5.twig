@@ -37,41 +37,7 @@
                 </td>
 
                 <td>
-                    {% if objPlayers.job == 0 or objPlayers.job == 4 %}
-                        {% if objPlayers.skillGroup == 1 %}
-                            Corps à Corps
-                        {% elseif objPlayers.skillGroup == 2 %}
-                            Mental
-                        {% else %}
-                            Non-définie
-                        {% endif %}
-                    {% elseif objPlayers.job == 1 or objPlayers.job == 5 %}
-                        {% if objPlayers.skillGroup == 1 %}
-                            Assasin
-                        {% elseif objPlayers.skillGroup == 2 %}
-                            Archer
-                        {% else %}
-                            Non-définie
-                        {% endif %}
-                    {% elseif objPlayers.job == 2 or objPlayers.job == 6 %}
-                        {% if objPlayers.skillGroup == 1 %}
-                            Arme magique
-                        {% elseif objPlayers.skillGroup == 2 %}
-                            Magie Noir
-                        {% else %}
-                            Non-définie
-                        {% endif %}
-                    {% elseif objPlayers.job == 3 or objPlayers.job == 7 %}
-                        {% if objPlayers.skillGroup == 1 %}
-                            Dragon
-                        {% elseif objPlayers.skillGroup == 2 %}
-                            Soin
-                        {% else %}
-                            Non-définie
-                        {% endif %}
-                    {% else %}
-                        Non-définie
-                    {% endif %}
+                    {{ findSkillGroup(objPlayers.job, objPlayers.skillGroup) }}
                 </td>
 
                 <td>
