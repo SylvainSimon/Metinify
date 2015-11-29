@@ -109,13 +109,7 @@
             <tr>
                 <td>Empire</td>
                 <td style="line-height: 10px;">
-                    {% if objPlayerIndex.empire == 1 %}
-                        <i data-tooltip="Empire Shinsoo" data-tooltip-position="left" class="text-red material-icons md-icon-map md-20"></i>
-                    {% elseif objPlayerIndex.empire == 2 %}
-                        <i data-tooltip="Empire Chunjo" data-tooltip-position="left" class="text-yellow material-icons md-icon-map md-20"></i>
-                    {% elseif objPlayerIndex.empire == 3 %}
-                        <i data-tooltip="Empire Jinno" data-tooltip-position="left" class="text-blue material-icons md-icon-map md-20"></i>
-                    {% endif %}
+                    {{ findIconEmpire(objPlayerIndex.empire)|raw }}
                 </td>
             </tr>
             <tr>

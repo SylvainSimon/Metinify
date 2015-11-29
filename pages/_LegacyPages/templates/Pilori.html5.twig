@@ -29,13 +29,7 @@
                             <td>{{ helpBanRaison(objPlayers.raisonBannissement) }}</td>
                             <td>{{ helpBanDuree(objPlayers.duree) }} </td>
                             <td>
-                                {% if objPlayers.empire == 1 %}
-                                    <i data-tooltip="Empire Shinsoo" data-tooltip-position="left" class="text-red material-icons md-icon-map md-20"></i>
-                                {% elseif objPlayers.empire == 2 %}
-                                    <i data-tooltip="Empire Chunjo" data-tooltip-position="left" class="text-yellow material-icons md-icon-map md-20"></i>
-                                {% elseif objPlayers.empire == 3 %}
-                                    <i data-tooltip="Empire Jinno" data-tooltip-position="left" class="text-blue material-icons md-icon-map md-20"></i>
-                                {% endif %}
+                                {{ findIconEmpire(objPlayers.empire)|raw }}
                             </td>
                         </tr>
                     {% endfor %}

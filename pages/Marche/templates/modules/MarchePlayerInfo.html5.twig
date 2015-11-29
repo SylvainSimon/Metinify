@@ -18,25 +18,9 @@
                     <td>{{ objPlayer.getLevel }}</td>
                 </tr>
                 <tr>
-                    <td class="Colonne_Gauche">Race : </td>
+                    <td class="Colonne_Gauche">Race</td>
                     <td>
-                        {% if objPlayer.getJob == 0 %}
-                            <img class="Dimension_Image_Classement" src="../../images/races/0_mini.png"/>
-                        {% elseif objPlayer.getJob == 1 %}
-                            <img class="Dimension_Image_Classement" src="../../images/races/1_mini.png"/>
-                        {% elseif objPlayer.getJob == 2 %}
-                            <img  class="Dimension_Image_Classement" src="../../images/races/2_mini.png"/>
-                        {% elseif objPlayer.getJob == 3 %}
-                            <img class="Dimension_Image_Classement" src="../../images/races/3_mini.png"/>
-                        {% elseif objPlayer.getJob == 4 %}
-                            <img class="Dimension_Image_Classement" src="../../images/races/4_mini.png"/>
-                        {% elseif objPlayer.getJob == 5 %}
-                            <img class="Dimension_Image_Classement" src="../../images/races/5_mini.png"/>
-                        {% elseif objPlayer.getJob == 6 %}
-                            <img class="Dimension_Image_Classement" src="../../images/races/6_mini.png"/>
-                        {% elseif objPlayer.getJob == 7 %}
-                            <img class="Dimension_Image_Classement" src="../../images/races/7_mini.png"/>
-                        {% endif %}
+                        {{ findIconJob(objPlayer.job)|raw }}
                     </td>
                 </tr>
                 <tr>

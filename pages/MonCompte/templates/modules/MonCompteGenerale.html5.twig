@@ -7,15 +7,11 @@
             <table class="table table-condensed" style="border-collapse: collapse;">
                 <tbody>
                     <tr>
-                        <td style="border-top: 0px;">Compte :</td>
-                        <td style="border-top: 0px;">{{ objAccount.getLogin }}</td>
+                        <td style="border-top: 0px;">Date de création</td>
+                        <td style="border-top: 0px;"><span style="font-size: 12px; font-weight: bold;">{{ getFormatedDateTime(objAccount.getCreateTime) }}</span></td>
                     </tr>
                     <tr>
-                        <td>Création :</td>
-                        <td><span style="font-size: 12px; font-weight: bold;">{{ getFormatedDateTime(objAccount.getCreateTime) }}</span></td>
-                    </tr>
-                    <tr>
-                        <td>Ip du compte :</td></td>
+                        <td>IP de création</td></td>
 
                         {% if objAccount.getIpCreation == "" %}
                             <td>Non-définie</td>
@@ -24,17 +20,9 @@
                         {% endif %}
                     </tr>
                     <tr>
-                        <td>Empire :</td>
-                        <td>
-                            {% if objPlayerIndex.empire == 1 %}
-                                <i data-tooltip="Empire Shinsoo" data-tooltip-position="left" class="text-red material-icons md-icon-map md-20"></i>
-                            {% elseif objPlayerIndex.empire == 2 %}
-                                <i data-tooltip="Empire Chunjo" data-tooltip-position="left" class="text-yellow material-icons md-icon-map md-20"></i>
-                            {% elseif objPlayerIndex.empire == 3 %}
-                                <i data-tooltip="Empire Jinno" data-tooltip-position="left" class="text-blue material-icons md-icon-map md-20"></i>
-                            {% else %}
-                                <i data-tooltip="Empire inconnu" data-tooltip-position="left" class="material-icons md-icon-help md-20"></i>
-                            {% endif %}
+                        <td>Empire</td>
+                        <td style="line-height: 10px;">
+                            {{ findIconEmpire(objPlayerIndex.empire)|raw }}
                         </td>
                     </tr>
                     <tr>
@@ -99,8 +87,7 @@
             <table class="table table-condensed table-hover" style="border-collapse: collapse;">
                 <thead>
                     <tr>
-                        <th class="hidden-md hidden-sm hidden-xs" width="50">Race</th>
-                        <th width="130">Pseudonyme</th>
+                        <th width="170">Personnage</th>
                         <th class="hidden-md hidden-sm hidden-xs">Classe</th>
                         <th width="30">Lvl</th>
                         <th class="hidden-md hidden-sm hidden-xs">Temps de jeu</th>
@@ -118,25 +105,7 @@
                             <tr data-tooltip="Voir la fiche détaillée" onclick="Ajax('pages/MonPersonnage/MonPersonnage.php?id={{ encryptForUrl(objPlayers.getId) }}')" class="pointer">
 
                                 <td class="hidden-md hidden-sm hidden-xs">
-                                    {% if objPlayers.job == 0 %}
-                                        <img class="Dimension_Image_Classement" src="images/races/0_mini.png"/>
-                                    {% elseif objPlayers.job == 1 %}
-                                        <img class="Dimension_Image_Classement" src="images/races/1_mini.png"/>
-                                    {% elseif objPlayers.job == 2 %}
-                                        <img  class="Dimension_Image_Classement" src="images/races/2_mini.png"/>
-                                    {% elseif objPlayers.job == 3 %}
-                                        <img class="Dimension_Image_Classement" src="images/races/3_mini.png"/>
-                                    {% elseif objPlayers.job == 4 %}
-                                        <img class="Dimension_Image_Classement" src="images/races/4_mini.png"/>
-                                    {% elseif objPlayers.job == 5 %}
-                                        <img class="Dimension_Image_Classement" src="images/races/5_mini.png"/>
-                                    {% elseif objPlayers.job == 6 %}
-                                        <img class="Dimension_Image_Classement" src="images/races/6_mini.png"/>
-                                    {% elseif objPlayers.job == 7 %}
-                                        <img class="Dimension_Image_Classement" src="images/races/7_mini.png"/>
-                                    {% endif %}
-                                </td>
-                                <td>
+                                    {{ findIconJob(objPlayers.job)|raw }}
                                     {{ objPlayers.getName }}
                                 </td>
                                 <td>

@@ -169,7 +169,7 @@ class FonctionsUtiles {
 
     static function findIconJob($job) {
 
-        $imgLink = '<img class="Images_Recherches" data-tooltip="' . self::findTitleJob($job) . '" src="';
+        $imgLink = '<img class="Dimension_Image_Classement" data-tooltip="' . self::findTitleJob($job) . '" src="';
 
         if ($job == "0") {
             $imgLink .= "images/races/0_mini.png";

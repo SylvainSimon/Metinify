@@ -18,24 +18,7 @@
 
                         <tr data-tooltip="Vendre ce personnage" onclick="Chargement_Formulaire_Vente({{ objPlayers.getId }});" class="Pointer">
                             <td>
-                                {% if objPlayers.getJob == 0 %}
-                                    <img class="Dimension_Image_Classement" src="../../images/races/0_mini.png"/>
-                                {% elseif objPlayers.getJob == 1 %}
-                                    <img class="Dimension_Image_Classement" src="../../images/races/1_mini.png"/>
-                                {% elseif objPlayers.getJob == 2 %}
-                                    <img  class="Dimension_Image_Classement" src="../../images/races/2_mini.png"/>
-                                {% elseif objPlayers.getJob == 3 %}
-                                    <img class="Dimension_Image_Classement" src="../../images/races/3_mini.png"/>
-                                {% elseif objPlayers.getJob == 4 %}
-                                    <img class="Dimension_Image_Classement" src="../../images/races/4_mini.png"/>
-                                {% elseif objPlayers.getJob == 5 %}
-                                    <img class="Dimension_Image_Classement" src="../../images/races/5_mini.png"/>
-                                {% elseif objPlayers.getJob == 6 %}
-                                    <img class="Dimension_Image_Classement" src="../../images/races/6_mini.png"/>
-                                {% elseif objPlayers.getJob == 7 %}
-                                    <img class="Dimension_Image_Classement" src="../../images/races/7_mini.png"/>
-                                {% endif %}
-                                
+                                {{ findIconJob(objPlayers.job)|raw }}
                                 {{ objPlayers.name }}
                             </td>
                             <td>
