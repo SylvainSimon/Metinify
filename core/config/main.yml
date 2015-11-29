@@ -18,20 +18,22 @@ libelleEmpire3: Jinno
 twigCache: false
 twigCacheUrl: /cache/twig
 
-cacheBdd: array
-driverbdd: mysql
-hostbdd: localhost
-userbdd: root
-passwordbdd: ~
-portbdd: 3306
-charsetbdd: UTF8
+bdd:
+    cache: array
+    driver: mysql
+    host: localhost
+    user: root
+    password: ~
+    port: 3306
+    charset: UTF8
 
-smtpSender: no-reply@vamosmt2.org
-smtpReplyTo: contact@vamosmt2.org
-smtpHost: localhost
-smtpPort: 25
-smtpUser: ~
-smtpPassword: ~
+smtp:
+    host: localhost
+    port: 25
+    user: ~
+    password: ~
+    sender: no-reply@vamosmt2.org
+    replyTo: contact@vamosmt2.org
 
 encryptKey: vamoslelapin
 

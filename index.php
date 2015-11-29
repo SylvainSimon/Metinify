@@ -19,6 +19,7 @@ class IndexWebsite extends PageHelper {
         global $config;
         global $session;
         $cacheManager = \CacheHelper::getCacheManager();
+        
         ?>
 
         <!DOCTYPE html>

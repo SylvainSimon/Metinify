@@ -117,19 +117,19 @@ class ServicesHelper {
             // build connection parameters
             $connectionParameters = array(
                 'dbname' => "site",
-                'user' => $param->userbdd,
-                'password' => $param->passwordbdd,
-                'host' => $param->hostbdd,
-                'port' => $param->portbdd,
+                'user' => $param->bdd["user"],
+                'password' => $param->bdd["password"],
+                'host' => $param->bdd["host"],
+                'port' => $param->bdd["port"],
             );
 
-            switch (strtolower($param->driverbdd)) {
+            switch (strtolower($param->bdd["driver"])) {
                 case 'mysql':
                     $connectionParameters['driver'] = 'pdo_mysql';
-                    $connectionParameters['charset'] = strtolower($param->charsetbdd);
+                    $connectionParameters['charset'] = strtolower($param->bdd["charset"]);
                     break;
                 default:
-                    throw new RuntimeException('Database driver ' . $param->driverbdd . ' not known by doctrine.');
+                    throw new RuntimeException('Database driver ' . $param->bdd["driver"] . ' not known by doctrine.');
             }
 
             /* if (!empty($GLOBALS['TL_CONFIG']['dbPdoDriverOptions'])) {
@@ -214,7 +214,7 @@ class ServicesHelper {
             $config->setProxyDir($proxiesCacheDir);
             $config->setProxyNamespace('entities\proxies');
 
-            switch ($param->cacheBdd) {
+            switch ($param->bdd["cache"]) {
                 case 'apc':
                     $cache = new \Doctrine\Common\Cache\ApcCache();
                     break;

@@ -939,3 +939,25 @@ tbody td.lineIcon{
     top: 5px;
     position: relative;
 }
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 0px; 
+    height: 0; 
+    overflow: hidden;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.trailerVideo .featherlight-content{
+    min-width: 80% !important;
+}

@@ -36,7 +36,7 @@ function verifNomDutilisateur() {
         UtilisateurSyntax = 1;
     }
 
-    else if (texte = RequeteAJAX('ajax/VerifUtilisateur.php?pseudo=' + escape(pseudo)))
+    else if (texte = RequeteAJAX('ajax/ajaxVerifLoginAvailable.php?pseudo=' + escape(pseudo)))
     {
         if (texte == 1) {
             document.getElementById('ReponseDuTestNomDutilisateur').innerHTML = "<span class='text-danger'>Identifiant déjà utilisé</span>";

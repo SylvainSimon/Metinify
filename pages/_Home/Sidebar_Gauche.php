@@ -36,8 +36,7 @@ echo $view;
 
 <div class="box box-default flat">
     <div class="box-body no-padding">
-        <a href="trailer.php" onclick="Icone_Chargement(1);
-                Barre_De_Statut('Ouverture du trailer...')" class="fancybox_Trailer" data-fancybox-type="iframe">
+        <a onclick="$.featherlight({ajax: 'trailer.php', variant: 'trailerVideo'});">
 
             <img class="ImageVideoNouveaute" src="./images/trailer.png" />
         </a>
