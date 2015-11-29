@@ -19,7 +19,7 @@
                     </tr>
                     <tr>
                         <td colspan="2" style="padding-top: 0px;">                
-                            {{ formatNumber(objMarcheArticle.prix) }} 
+                            {{ objMarcheArticle.prix|number_format }} 
                             {% if objMarcheArticle.idDevise == "1" %}
                                 <i style="top: 4px; position: relative;" class="material-icons md-icon-whatshot md-20 text-yellow" title=""></i>
                             {% elseif objMarcheArticle.idDevise == "2" %}

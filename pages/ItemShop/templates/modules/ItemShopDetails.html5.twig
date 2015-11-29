@@ -28,12 +28,12 @@
             </div>
 
             <div class="Rappel_Prix_Unité pull-right" style="display: inline; margin-top: 15px;">
-                Total à payer : <span id="Prix">{{ objItemShop.getPrix }}</span>
+                Total à payer : <span id="Prix">{{ objItemShop.getPrix|number_format }}</span>
 
                 {% if objItemShop.getCat == 7 %}
-                    <img class="Image_Piece_Detail_Item" src="../../images/versopiece.png" width="24" >
+                    <i style="top: 4px; position: relative;" class="material-icons md-icon-whatshot md-24 text-gray" title=""></i>
                 {% else %}
-                    <img class="Image_Piece_Detail_Item" src="../../images/rectopiece.png" width="24" >
+                    <i style="top: 4px; position: relative;" class="material-icons md-icon-whatshot md-24 text-yellow" title=""></i>
                 {% endif %}
             </div>
         </div>

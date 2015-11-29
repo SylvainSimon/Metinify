@@ -291,65 +291,6 @@ footer {
     top:4px;
 }
 
-#countdown_dashboard {
-    height: 96px;
-    width: 630px;
-    margin: 0 auto 0 auto;
-}
-
-.dash {
-    display: inline-block;
-    width: 138px;
-    height: 96px;
-    margin-left: 10px;
-    position: relative;
-    color: #333;
-}
-
-.weeks_dash, .days_dash, .hours_dash, .minutes_dash, .seconds_dash{
-    border: 1px solid grey;
-    -webkit-box-shadow: 0px 0px 8px 2px black;
-    -moz-box-shadow: 0px 0px 8px 2px black;
-    -o-box-shadow: 0px 0px 8px 2px black;
-    box-shadow: 0px 0px 4px 1px black;
-}
-
-.weeks_dash {
-    background: transparent url('../../images/compte_a_rebours/dark_weeks_dash.png') 0 0 no-repeat;
-    display: none;
-}
-
-.days_dash {
-    background: transparent url('../../images/compte_a_rebours/dark_days_dash.png') 0 0 no-repeat;
-}
-
-.hours_dash {
-    clear: left;
-    background: transparent url('../../images/compte_a_rebours/dark_hours_dash.png') 0 0 no-repeat;
-}
-
-.minutes_dash {
-    background: transparent url('../../images/compte_a_rebours/dark_minutes_dash.png') 0 0 no-repeat;
-}
-
-.seconds_dash {
-    background: transparent url('../../images/compte_a_rebours/dark_seconds_dash.png') 0 0 no-repeat;
-}
-
-.digit {
-    font: bold 52pt Verdana;
-    font-weight: bold;
-    float: left;
-    width: 59px;
-    text-align: center;
-    position: relative;
-    left: 14px;
-}
-
-.dash_title {
-    display: none;
-}
-
 .btn-default{
     background-color: #373737; 
     border-color: #606060;
@@ -567,65 +508,39 @@ label{
     height: 32px;
 
 }
-.Bouton_Inventaire_1{
 
+.Bouton_Inventaire_1, .Bouton_Inventaire_2, .Bouton_Inventaire_3, .Bouton_Inventaire_4{
+    position: absolute;
+    height: 19px;
+    width: 35px;
+    border: 1px solid #5D5D5D;
+    background: #002C41;
+    text-align: center;
+    line-height: 17px;
+}
+
+.Bouton_Inventaire_1{
     position: absolute;
     top: 18px;
     left: 33px;
-    height: 18px;
-    width: 35px;
-    border: 1px solid grey;
-    background: url("../../images/Bouton_Inventaire.png") no-repeat;
-    text-align: center;
-    color: white;
-    font-size: 11px;
-    line-height: 18px;
-
 }
 
 .Bouton_Inventaire_2{
-
     position: absolute;
     top: 18px;
     left:72px;
-    height: 18px;
-    width: 35px;
-    border: 1px solid grey;
-    background: url("../../images/Bouton_Inventaire.png") no-repeat;
-    text-align: center;
-    color: white;
-    font-size: 11px;
-    line-height: 18px;
 }
 
 .Bouton_Inventaire_3{
-
     position: absolute;
     top: 18px;
     left:111px;
-    height: 18px;
-    width: 35px;
-    border: 1px solid grey;
-    background: url("../../images/Bouton_Inventaire.png") no-repeat;
-    text-align: center;
-    color: white;
-    font-size: 11px;
-    line-height: 18px;
 }
 
 .Bouton_Inventaire_4{
-
     position: absolute;
     top: 18px;
     left:150px;
-    height: 18px;
-    width: 35px;
-    border: 1px solid grey;
-    background: url("../../images/Bouton_Inventaire.png") no-repeat;
-    text-align: center;
-    color: white;
-    font-size: 11px;
-    line-height: 18px;
 }
 
 
@@ -657,48 +572,47 @@ label{
 .Bouton_Entrepot_1{
 
     position: absolute;
-    top: 339px;
+    top: 338px;
     left: 33px;
-    height: 18px;
+    height: 20px;
     width: 50px;
-    border: 1px solid grey;
-    background: url("../../images/Bouton_Entrepot.png") no-repeat;
+    border: 1px solid #5D5D5D;
     text-align: center;
     color: white;
-    font-size: 11px;
+    font-size: 14px;
     line-height: 18px;
-
+    background: #002C41;
 }
 
 .Bouton_Entrepot_2{
 
     position: absolute;
-    top: 339px;
+    top: 338px;
     left: 85px;
-    height: 18px;
+    height: 20px;
     width: 50px;
-    border: 1px solid grey;
-    background: url("../../images/Bouton_Entrepot.png") no-repeat;
+    border: 1px solid #5D5D5D;
     text-align: center;
     color: white;
-    font-size: 11px;
+    font-size: 14px;
     line-height: 18px;
+    background: #002C41;
 
 }
 
 .Bouton_Entrepot_3{
 
     position: absolute;
-    top: 339px;
+    top: 338px;
     left: 137px;
-    height: 18px;
+    height: 20px;
     width: 50px;
-    border: 1px solid grey;
-    background: url("../../images/Bouton_Entrepot.png") no-repeat;
+    border: 1px solid #5D5D5D;
     text-align: center;
     color: white;
-    font-size: 11px;
+    font-size: 14px;
     line-height: 18px;
+    background: #002C41;
 
 }
 
