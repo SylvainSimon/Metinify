@@ -932,3 +932,10 @@ tbody td.lineIcon{
 .select2-dropdown{
     z-index: 9999999999;
 }
+
+.dataTable.specialIcon tbody td .material-icons {
+    color: #fff;
+    line-height: 10px;
+    top: 5px;
+    position: relative;
+}

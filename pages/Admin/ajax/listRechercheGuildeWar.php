@@ -77,9 +77,14 @@ class listRechercheGuilde extends \ScriptHelper {
                 'dbSortField' => 'GuildEntityWin.name',
                 'dtField' => 'winner',
                 'formatter' => function( $d, $row ) {
-                
-                    
-                    return $d;
+
+                    if ($row["result1"] > $row["result2"]) {
+                        return $d . " (<span class='text-green'>" . $row["result1"] . "</span> / <span class='text-red'>" . $row["result2"] . "</span>)";
+                    } else if ($row["result1"] < $row["result2"]) {
+                        return $d . " (<span class='text-green'>" . $row["result2"] . "</span> / <span class='text-red'>" . $row["result1"] . "</span>)";
+                    }else{
+                        return "Match nul";
+                    }
                 }
             ),
             array(

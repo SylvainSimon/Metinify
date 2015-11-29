@@ -23,7 +23,7 @@ class RechercheGuilde extends \PageHelper {
         $sColumns .= '{ "mData": "firstChef", "bSortable": true },';
         $sColumns .= '{ "mData": "secondGuild", "bSortable": true, "sWidth": "130px" },';
         $sColumns .= '{ "mData": "secondChef", "bSortable": true },';
-        $sColumns .= '{ "mData": "winner", "bSortable": true, "sWidth": "100px" },';
+        $sColumns .= '{ "mData": "winner", "bSortable": true, "sWidth": "160px" },';
 
         $sFilterColumns = '';
         $sFilterColumns .= '{ type: "date-range"},';

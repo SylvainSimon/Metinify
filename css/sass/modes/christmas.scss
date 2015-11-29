@@ -1,3 +1,5 @@
 html { 
     background: url("../../../images/fondWinter.jpg") fixed no-repeat top center #252219;
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
 }

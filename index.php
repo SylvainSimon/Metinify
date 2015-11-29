@@ -51,7 +51,7 @@ class IndexWebsite extends PageHelper {
                 <script src="assets/js/jquery.cookie/js.cookie.min.js" type='text/javascript'></script>
                 <script src="assets/js/fonctions.min.js" type='text/javascript'></script>
 
-                <?php if ($config->modChristmas) { ?>
+                <?php if ($config->templateMod == "christmas") { ?>
                     <script src="assets/js/snowstorm/snowstorm.min.js" type='text/javascript'></script>
                     <script type="text/javascript">
                         snowStorm.followMouse = false;
