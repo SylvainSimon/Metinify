@@ -19,7 +19,6 @@ class IndexWebsite extends PageHelper {
         global $config;
         global $session;
         $cacheManager = \CacheHelper::getCacheManager();
-        
         ?>
 
         <!DOCTYPE html>
@@ -130,7 +129,11 @@ class IndexWebsite extends PageHelper {
                     <div class="content-wrapper">
 
                         <div id="logo">
-                            <img src="./images/logo.png" />
+
+                            <object data="./images/logo.svg" type="image/svg+xml">
+                                <img src="./images/logo.png" />
+                            </object>
+
                         </div>
 
 
@@ -163,13 +166,13 @@ class IndexWebsite extends PageHelper {
             <script type="text/javascript">
 
         <?php if ($request->query->get("ok") !== null) { ?>
-                        Ajax('pages/_LegacyPages/AccountActivationTerm.php');
+                            Ajax('pages/_LegacyPages/AccountActivationTerm.php');
         <?php } elseif ($request->query->get("paypal") !== null) { ?>
-                        Ajax('pages/_LegacyPages/PaypalTerm.php');
+                            Ajax('pages/_LegacyPages/PaypalTerm.php');
         <?php } else { ?>
 
             <?php if ($session->get("Administration_PannelAdmin") !== null) { ?>
-                            Ajax('pages/Admin/Bienvenu.php');
+                                Ajax('pages/Admin/Bienvenu.php');
             <?php } ?>
 
         <?php } ?>
