@@ -1,4 +1,4 @@
-<div class="video-container">
+<div class="video-container" style="background: black;">
     <iframe src="https://www.youtube-nocookie.com/embed/wReSiTaGDWQ?rel=0&autoplay=1&showinfo=0&controls=0&loop=1&vq=hd1080" allowfullscreen></iframe>
 
     <script type="text/javascript">

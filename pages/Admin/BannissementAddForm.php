@@ -19,17 +19,12 @@ class BannissementAddForm extends \PageHelper {
 
         global $request;
         $idAccount = $request->query->get("idAccount");
-
         $objAccount = \Account\AccountHelper::getAccountRepository()->find($idAccount);
-        $arrObjPlayers = \Player\PlayerHelper::getPlayerRepository()->findPlayers($objAccount->getId());
 
-        $this->arrayTemplate["arrBannissementMotifs"] = \BanRaisonHelper::getAll();
+        $this->arrayTemplate["arrBannissementMotifs"] = \BanRaisonHelper::getAll(false);
         $this->arrayTemplate["arrBannissementDuree"] = \BanDureeHelper::getAll(false);
-        $this->arrayTemplate["iconCash"] = \FonctionsUtiles::findIconDevise(1);
-        $this->arrayTemplate["iconMileage"] = \FonctionsUtiles::findIconDevise(2);
         $this->arrayTemplate["rightBannissementEmail"] = $this->HaveTheRight(\DroitsHelper::BANNISSEMENT_IP);
         $this->arrayTemplate["rightBannissementIp"] = $this->HaveTheRight(\DroitsHelper::BANNISSEMENT_EMAIL);
-        $this->arrayTemplate["arrObjPlayers"] = $arrObjPlayers;
         $this->arrayTemplate["objAccount"] = $objAccount;
 
         $view = $this->template->render($this->arrayTemplate);

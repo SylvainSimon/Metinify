@@ -8,66 +8,6 @@
 
         <input type="hidden" id="accountId" value="{{ objAccount.getId }}">
 
-        <!--
-        <div class="col-xs-6">
-            <table class="table table-condensed" style="border-collapse: collapse;">
-                <tbody>
-
-                    {% if arrObjPlayers|length > 0 %}
-                        {% for objPlayers in arrObjPlayers %}
-                            <tr>
-                                <td>
-                                    {% if objPlayers.getJob == 0 %}
-                                        <img class="Dimension_Image_Classement" src="images/races/0_mini.png"/>
-                                    {% elseif objPlayers.getJob == 1 %}
-                                        <img class="Dimension_Image_Classement" src="images/races/1_mini.png"/>
-                                    {% elseif objPlayers.getJob == 2 %}
-                                        <img  class="Dimension_Image_Classement" src="images/races/2_mini.png"/>
-                                    {% elseif objPlayers.getJob == 3 %}
-                                        <img class="Dimension_Image_Classement" src="images/races/3_mini.png"/>
-                                    {% elseif objPlayers.getJob == 4 %}
-                                        <img class="Dimension_Image_Classement" src="images/races/4_mini.png"/>
-                                    {% elseif objPlayers.getJob == 5 %}
-                                        <img class="Dimension_Image_Classement" src="images/races/5_mini.png"/>
-                                    {% elseif objPlayers.getJob == 6 %}
-                                        <img class="Dimension_Image_Classement" src="images/races/6_mini.png"/>
-                                    {% elseif objPlayers.getJob == 7 %}
-                                        <img class="Dimension_Image_Classement" src="images/races/7_mini.png"/>
-                                    {% endif %}
-                                    {{ objPlayers.getName }}
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    {% else %}
-                        <tr>
-                            <td>Aucun joueur sur ce compte</td>
-                        </tr>
-                    {% endif %}
-                </tbody>
-            </table>
-        </div>
-
-
-        <div class="col-xs-6">
-
-            <div class="row">
-                <div class="col-md-12" style="margin-bottom: 10px;">
-                    <div class="row">
-                        <div class="col-md-6">
-                            {{ iconCash|raw }} {{ objAccount.getCash|number_format }}
-                        </div>
-                        <div class="col-md-6">
-                            {{ iconMileage|raw }} {{ objAccount.getMileage|number_format }}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    Compte crée le :<br/><span class="text-primary">{{ getFormatedDateTime(objAccount.getCreateTime) }}</span>
-                </div>
-            </div>
-        </div>   
-        -->
-
         <div class="clearfix"></div>
 
         <div class="col-sm-6">
@@ -153,25 +93,48 @@
 
         function BannissementCompte() {
 
-            displayLoadingFeatherlight();
+            bootbox.dialog({
+                message: "Confirmez-vous le bannissement de ce/ces compte(s) ?",
+                animate: false,
+                className: "myBootBox",
+                title: 'Confirmation de l\'action',
+                buttons: {
+                    danger: {
+                        label: "Annuler",
+                        className: "btn-danger",
+                        callback: function () {
 
-            $.ajax({
-                type: "POST",
-                url: "pages/Admin/ajax/ajaxBannissementAdd.php",
-                data: {
-                    "accountId": $("#accountId").val(),
-                    "banRaison": $("#banRaison").val(),
-                    "banDuree": $("#banDuree").val(),
-                    "banCommentaire": $("#banCommentaire").val(),
-                    "withBanEmail": $("#withBanEmail").prop("checked"),
-                    "withBanIp": $("#withBanIp").prop("checked")
-                },
-                success: function (msg) {
-                    hideLoadingFeatherlight();
-                    $.featherlight.close();
-                    parent.oTable.fnStandingRedraw();
+                        }
+                    },
+                    success: {
+                        label: "Confirmer",
+                        className: "btn-primary",
+                        callback: function () {
+
+                            displayLoadingFeatherlight();
+
+                            $.ajax({
+                                type: "POST",
+                                url: "pages/Admin/ajax/ajaxBannissementAdd.php",
+                                data: {
+                                    "accountId": $("#accountId").val(),
+                                    "banRaison": $("#banRaison").val(),
+                                    "banDuree": $("#banDuree").val(),
+                                    "banCommentaire": $("#banCommentaire").val(),
+                                    "withBanEmail": $("#withBanEmail").prop("checked"),
+                                    "withBanIp": $("#withBanIp").prop("checked")
+                                },
+                                success: function (msg) {
+                                    hideLoadingFeatherlight();
+                                    $.featherlight.close();
+                                    parent.oTable.fnStandingRedraw();
+                                }
+
+                            });
+
+                        }
+                    }
                 }
-
             });
         }
     </script>

@@ -1,19 +1,20 @@
+imports:
+    - { resource: language.yml }
+
 baseURL: https://vamosmt2.local/
 gameVersion: 5.1.9
 requiredSSL: true
+encryptKey: vamoslelapin
+
 linkClient: http://vamosmt2.org:81/Installateur%20VamosMT2%20Client%20officiel%202014-2015.exe
 linkClientTorrent: http://vamosmt2.org:81/VamosMT2%20Client%20officiel%202014-2015.exe.torrent
 
-manualActivation: true
-defaultCash: 0
-defaultMileage: 0
+templateMod: default #christmas
 
-libelleCash: VamoNaies
-libelleMileage: TanaNaies
-
-libelleEmpire1: Shinsoo
-libelleEmpire2: Chunjo
-libelleEmpire3: Jinno
+register:
+    emailActivation: true
+    initCash: 0
+    initMileage: 0
 
 twigCache: false
 twigCacheUrl: /cache/twig
@@ -35,13 +36,9 @@ smtp:
     sender: no-reply@vamosmt2.org
     replyTo: contact@vamosmt2.org
 
-encryptKey: vamoslelapin
+serverStatus:
+    host: 94.23.6.155
+    port: 3306
 
 fastChatType: files
-
 itemShopReloadCash: 1350
-
-ipTestServer: 94.23.6.155
-portTestServer: 3306
-
-templateMod: default #christmas

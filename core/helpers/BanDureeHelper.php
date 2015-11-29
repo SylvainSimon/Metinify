@@ -3,6 +3,7 @@
 class BanDureeHelper {
 
     const UN_JOUR = 1;
+    const TROIS_JOUR = 3;
     const UNE_SEMAINE = 7;
     const UN_MOIS = 30;
     const UN_AN = 365;
@@ -12,6 +13,7 @@ class BanDureeHelper {
 
         $arr = array(
             self::UN_JOUR => "1 jour",
+            self::TROIS_JOUR => "3 jours",
             self::UNE_SEMAINE => "1 semaine",
             self::UN_MOIS => "1 mois",
             self::UN_AN => "1 an",

@@ -31,8 +31,8 @@ class InscriptionSubmit extends \PageHelper {
         $objAccount->setLogin(trim($login));
         $objAccount->setPassword($passwordEncrypted);
         $objAccount->setEmail($email);
-        $objAccount->setCash($config->defaultCash);
-        $objAccount->setMileage($config->defaultMileage);
+        $objAccount->setCash($config->register["initCash"]);
+        $objAccount->setMileage($config->register["initMileage"]);
         $objAccount->setIpCreation($this->ipAdresse);
         $objAccount->setLangue($Langue);
         $objAccount->setCreateTime(new \DateTime(date("Y-m-d H:i:s")));
@@ -45,7 +45,7 @@ class InscriptionSubmit extends \PageHelper {
         $objAccount->setFishMindExpire(new \DateTime(date("Y-m-d H:i:s")));
         $objAccount->setSafeboxExpire(new \DateTime(date("Y-m-d H:i:s")));
 
-        if ($config->manualActivation) {
+        if ($config->register["emailActivation"]) {
             $objAccount->setStatus(".");
         } else {
             $objAccount->setStatus("OK");
@@ -54,7 +54,7 @@ class InscriptionSubmit extends \PageHelper {
         $em->persist($objAccount);
         $em->flush();
 
-        if ($config->manualActivation) {
+        if ($config->register["emailActivation"]) {
             $template = $this->objTwig->loadTemplate("InscriptionSubmitVerif.html5.twig");
             $result = $template->render([
                 "account" => $objAccount->getLogin(),
