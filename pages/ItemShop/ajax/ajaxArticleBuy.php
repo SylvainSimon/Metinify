@@ -137,7 +137,7 @@ class ajaxArticleBuy extends \ScriptHelper {
             } elseif ($objItemshop->getType() == 2) {
 
                 //Si le membre a assez de cash
-                if ($_SESSION['VamoNaies'] >= $objItemshop->getPrix()) {
+                if ($session->get("VamoNaies") >= $objItemshop->getPrix()) {
 
                     $anneeRestantMysql = (2037 - date("Y"));
                     $dateActuel = \Carbon\Carbon::now();
@@ -209,7 +209,7 @@ class ajaxArticleBuy extends \ScriptHelper {
                 /* -------------- Si l'item est de type TanaNaies -------------- */
             } elseif ($objItemshop->getType() == 3) {
                 //Si le membre a assez de marques
-                if ($_SESSION['TanaNaies'] >= ($objItemshop->getPrix() * $nombreItem)) {
+                if ($session->get("TanaNaies") >= ($objItemshop->getPrix() * $nombreItem)) {
 
                     $flagItem = \Player\PlayerHelper::getItemProtoRepository()->findFlagByVnum($objItemshop->getIdItem());
 

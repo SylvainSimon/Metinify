@@ -320,45 +320,57 @@ function Fonction_Reteneuse_Tananaies(Nombre_Objectif_Tananaies) {
     Definition_Compteurs_Tananaies(Nombre_Transmis_Tananaies);
 }
 
+Number.prototype.formatMoney = function (c, d, t) {
+    var n = this,
+            c = isNaN(c = Math.abs(c)) ? 2 : c,
+            d = d == undefined ? "." : d,
+            t = t == undefined ? "," : t,
+            s = n < 0 ? "-" : "",
+            i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
+            j = (j = i.length) > 3 ? j % 3 : 0;
+    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+};
 
-function Definition_Compteurs_Tananaies(Nombre_Tananaies) {
 
-    if (parseInt($("#Nombre_De_Tananaies").html()) != Nombre_Tananaies) {
+function Definition_Compteurs_Tananaies(nombreMileageCible) {
 
-        if (parseInt($("#Nombre_De_Tananaies").html()) < Nombre_Tananaies) {
-            document.getElementById("Nombre_De_Tananaies").innerHTML = (parseInt($("#Nombre_De_Tananaies").html()) + 1);
+    var nombreMileage = parseInt($("#Nombre_De_Tananaies").html().replace(",", ""));
 
-        } else if (parseInt($("#Nombre_De_Tananaies").html()) > Nombre_Tananaies) {
-            document.getElementById("Nombre_De_Tananaies").innerHTML = (parseInt($("#Nombre_De_Tananaies").html()) - 1);
+    if (nombreMileage != nombreMileageCible) {
+
+        if (nombreMileage < nombreMileageCible) {
+            $("#Nombre_De_Tananaies").html((nombreMileage + 1).formatMoney(0));
+
+        } else if (nombreMileage > nombreMileageCible) {
+            $("#Nombre_De_Tananaies").html((nombreMileage - 1).formatMoney(0));
         }
     }
 
-    if (parseInt($("#Nombre_De_Tananaies").html()) != Nombre_Tananaies) {
+    if (nombreMileage != nombreMileageCible) {
         setTimeout("Definition_Compteurs_Tananaies(Nombre_Transmis_Tananaies)", 1);
     }
 }
 
 function Fonction_Reteneuse_Vamonaies(Nombre_Objectif_Vamonaie) {
-
     Nombre_Transmis_Vamonaies = Nombre_Objectif_Vamonaie;
     Definition_Compteurs_VamoNaies(Nombre_Transmis_Vamonaies);
 }
 
 
-function Definition_Compteurs_VamoNaies(Nombre_Vamonaies) {
+function Definition_Compteurs_VamoNaies(nombreCashCible) {
 
-    if (parseInt($("#Nombre_De_Vamonaies").html()) != Nombre_Vamonaies)
-    {
-        if (parseInt($("#Nombre_De_Vamonaies").html()) < Nombre_Vamonaies) {
-            document.getElementById("Nombre_De_Vamonaies").innerHTML = (parseInt($("#Nombre_De_Vamonaies").html()) + 1);
+    var nombreCash = parseInt($("#Nombre_De_Vamonaies").html().replace(",", ""));
 
-        } else if (parseInt(document.getElementById('Nombre_De_Vamonaies').innerHTML) > Nombre_Vamonaies) {
-            document.getElementById("Nombre_De_Vamonaies").innerHTML = (parseInt($("#Nombre_De_Vamonaies").html()) - 1);
+    if (nombreCash != nombreCashCible) {
+
+        if (nombreCash < nombreCashCible) {
+            $("#Nombre_De_Vamonaies").html((nombreCash + 1).formatMoney(0));
+        } else if (nombreCash > nombreCashCible) {
+            $("#Nombre_De_Vamonaies").html((nombreCash - 1).formatMoney(0));
         }
-
     }
 
-    if (parseInt($("#Nombre_De_Vamonaies").html()) != Nombre_Vamonaies) {
+    if (nombreCash != nombreCashCible) {
         setTimeout("Definition_Compteurs_VamoNaies(Nombre_Transmis_Vamonaies)", 2);
     }
 }
