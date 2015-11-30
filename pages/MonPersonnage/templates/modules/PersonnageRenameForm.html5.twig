@@ -1,14 +1,10 @@
 <div class="box box-default flat">
 
     <div class="box-header">
-        <h3 class="box-title">Renommage du personnage {{ objPlayer.getName }}</h3>
+        <h3 class="box-title">Renommer un personnage</h3>
     </div>
 
     <div class="box-body">
-        Grâçe à cette fonction, vous allez pouvoir renommer votre personnage.<br/>
-        Pour effectuer cette action, il faut débourser <span class="text-yellow">{{ config.mod_player.rename.price }} {{ helpDevise(config.mod_player.rename.devise) }}</span>.
-        <br/>
-        <br/>
 
         <div class="row">
             <div class="col-lg-6">
@@ -20,28 +16,31 @@
                         <input type="texte" disabled value="{{ objPlayer.getName }}" class="form-control input-sm text"/>
                     </div>
                 </div>
-
+            </div>
+            <div class="col-lg-6">
                 <div class="form-group ">
                     <label for="Champs_Saisie_Nouveau_Nom">
                         Nouveau nom
                     </label>
 
                     <div class="input-group col-xs-12">
-                        <input type="text" maxlength="12" autofocus="autofocus" placeholder="Nouveau nom" id="Champs_Saisie_Nouveau_Nom" class="form-control input-sm text"/>
+                        <input type="text" maxlength="12" autofocus="autofocus" placeholder="Écrire un nouveau nom" id="Champs_Saisie_Nouveau_Nom" class="form-control input-sm text"/>
                     </div>
                 </div>
 
                 <div class="form-group ">
                     <label for="Champs_Saisie_Nouveau_Nom_Repete">
-                        Répétez nouveau nom
+                        Répéter (vérification)
                     </label>
 
                     <div class="input-group col-xs-12">
-                        <input type="text" maxlength="12" placeholder="Répétez" id="Champs_Saisie_Nouveau_Nom_Repete" class="form-control input-sm text"/>
+                        <input type="text" maxlength="12" placeholder="Répéter le nouveau nom" id="Champs_Saisie_Nouveau_Nom_Repete" class="form-control input-sm text"/>
                     </div>
                 </div>
             </div>
         </div>
+
+        <i style="top: 4px;position: relative;" class="material-icons md-icon-help-outline text-yellow"></i> Pour que cela prenne effet plus rapidemment, déconnectez votre personnage du jeu avant d'effectuer cette opération.
 
     </div>
 
@@ -51,7 +50,7 @@
         </div>
 
         <div class="pull-right">
-            <input type="button" class="btn btn-success btn-flat" value="Renommer" onclick="PlayerRename($('#Champs_Saisie_Nouveau_Nom').val());" />
+            <input type="button" class="btn btn-success btn-flat" value="Renommer pour {{ config.mod_player.rename.price }} {{ helpDevise(config.mod_player.rename.devise) }}" onclick="PlayerRename($('#Champs_Saisie_Nouveau_Nom').val());" />
         </div>        
     </div>
 
