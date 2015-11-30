@@ -205,6 +205,26 @@ function redraw() {
 
 $.fn.select2.defaults.set('language', 'fr');
 
+toastr.options = {
+    "closeButton": true,
+    "debug": false,
+    "newestOnTop": true,
+    "progressBar": false,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": true,
+    "onclick": null,
+    "showDuration": 100,
+    "hideDuration": 10,
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "closeEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut",
+    "closeHtml": "<i class='material-icons md-icon-close'></i>"
+}
+
 $(document).ready(function () {
 
     $.ajaxSetup({
@@ -391,16 +411,6 @@ function Distribuer_Monnaies() {
     return false;
 
 }
-
-$(function () {
-    $.superbox.settings = {
-        closeTxt: "Fermer",
-        loadTxt: "Chargement...",
-        boxWidth: "1200",
-        boxHeight: "445"
-    };
-    $.superbox();
-});
 
 $(document).ready(function () {
     $(".fancybox_Rechargement").fancybox({

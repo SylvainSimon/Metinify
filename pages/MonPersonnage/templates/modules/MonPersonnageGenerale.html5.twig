@@ -99,12 +99,9 @@
 
         <table class="table table-condensed" style="border-collapse: collapse;">
             <tr>
-                <td>IP</td></td>
-                <td>{{ objPlayer.getIp }}</td>
+                <td style="border-top: 0px;">IP</td></td>
+                <td  style="border-top: 0px;">{{ objPlayer.getIp }}</td>
             </tr>
-        </table>
-
-        <table class="table table-condensed" style="border-collapse: collapse;">
             <tr>
                 <td>Guilde</td>
                 {% if haveGuild == false %}
@@ -188,3 +185,8 @@
         </button>
     </div>
 </div>
+
+<script type="text/javascript">
+    Fonction_Reteneuse_Vamonaies({{ session.get("VamoNaies") }});
+    Fonction_Reteneuse_Tananaies({{ session.get("TanaNaies") }});
+</script>  

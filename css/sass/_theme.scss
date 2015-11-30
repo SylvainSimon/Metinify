@@ -837,6 +837,12 @@ tbody td.lineIcon{
     background: rgba(0,0,0,.5) !important;
 }
 
+@media all{
+    .featherlight {
+        z-index: 214748360 !important;
+    }
+}
+
 .mce-btn-group:not(:first-child){
     padding-left: 0px !important;
     margin-left: 0px !important;
@@ -873,4 +879,28 @@ tbody td.lineIcon{
 
 .trailerVideo .featherlight-content{
     min-width: 80% !important;
+}
+
+#toast-container{
+    z-index: 999999999;
+}
+
+#toast-container>.toast-success{
+    background-image:none !important;
+}
+
+#toast-container>div{
+    padding: 15px !important;
+    box-shadow:none !important;
+    -webkit-box-shadow:none !important;
+    opacity: 0.9;
+    border-radius: 0px !important;
+}
+
+#toast-container>:hover{
+    opacity: 1;
+}
+
+.toast-success{
+    background-color: #00A65A !important;
 }

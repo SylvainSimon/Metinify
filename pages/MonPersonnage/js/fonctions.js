@@ -107,20 +107,9 @@ function Deblocage_Personnage(id) {
                         data: {"idPlayer": id},
                         success: function (msg) {
 
-                            if (msg == "NOT_EMPIRE") {
-
-                                Barre_De_Statut("Ce personnage n'as pas d'empire.");
-                                Icone_Chargement(2);
-                            } else if (msg == "NOT_YOU") {
-
-                                Barre_De_Statut("Ce personnage ne vous appartient pas.");
-                                Icone_Chargement(2);
-                            } else {
-
-                                Barre_De_Statut("Coordonées réinitialisé.");
-                                Icone_Chargement(0);
-                            }
-
+                            toastr.success("La position du joueur à été réinitialisée");
+                            Barre_De_Statut("Coordonées réinitialisé.");
+                            Icone_Chargement(0);
                         }
                     });
 

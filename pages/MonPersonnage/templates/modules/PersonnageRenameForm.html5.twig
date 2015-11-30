@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <i style="top: 4px;position: relative;" class="material-icons md-icon-help-outline text-yellow"></i> Pour que cela prenne effet plus rapidemment, déconnectez votre personnage du jeu avant d'effectuer cette opération.
+        <i style="top: 4px;position: relative;" class="material-icons md-icon-help-outline text-yellow"></i> Pour que cela prenne effet, déconnectez votre personnage puis reconnectez-le.
 
     </div>
 
@@ -121,9 +121,11 @@
                                     var json = JSON.parse(msg);
 
                                     if (json.result) {
-                                        Barre_De_Statut(json.reasons);
+                                        
+                                        toastr.success(json.reasons);
                                         Icone_Chargement(0);
-                                        Ajax('pages/MonPersonnage/PersonnageRenameTerm.php');
+                                        
+                                        Ajax('pages/MonPersonnage/MonPersonnage.php?id={{ encryptForUrl(objPlayer.getId) }}');
 
                                     } else {
 

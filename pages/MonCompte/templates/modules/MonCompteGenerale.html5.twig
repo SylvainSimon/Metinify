@@ -102,7 +102,7 @@
 
                         {% for objPlayers in arrObjPlayers %}
 
-                            <tr data-tooltip="Voir la fiche détaillée" onclick="Ajax('pages/MonPersonnage/MonPersonnage.php?id={{ encryptForUrl(objPlayers.getId) }}')" class="pointer">
+                            <tr data-tooltip="Voir la fiche détaillée" onclick="Ajax('pages/MonPersonnage/MonPersonnage.php?id={{ encryptForUrl(objPlayers.getId) }}');" class="pointer">
 
                                 <td class="hidden-md hidden-sm hidden-xs">
                                     {{ findIconJob(objPlayers.job)|raw }}

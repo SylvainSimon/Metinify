@@ -4,7 +4,6 @@ require __DIR__ . '/core/initialize.php';
 class IndexWebsite extends PageHelper {
 
     public function __construct() {
-
         parent::__construct();
         global $session;
 
@@ -34,6 +33,8 @@ class IndexWebsite extends PageHelper {
                 <link href="./css/css/Bootstrap.css" rel="stylesheet" type="text/css" />
                 <link href="./css/css/AdminLTE.css" rel="stylesheet" type="text/css" />
                 <link href="./vendor/almasaeed2010/adminlte/plugins/select2/select2.min.css" rel="stylesheet" type="text/css" />
+                <link href="assets/js/toastr/build/toastr.min.css" rel="stylesheet" type="text/css" />
+
                 <link href="./css/css/styles.css" rel="stylesheet" type="text/css" />
 
                 <script src='./components/jquery/jquery.min.js' type='text/javascript'></script>
@@ -41,13 +42,13 @@ class IndexWebsite extends PageHelper {
                 <script src='./components/bootstrap/js/tab.js' type='text/javascript'></script>
                 <script src='./components/bootstrap/js/modal.js' type='text/javascript'></script>
 
-                <script src='assets/js/jquery.browser.min.js' type='text/javascript'></script>
                 <script src='./vendor/almasaeed2010/adminlte/plugins/slimScroll/jquery.slimscroll.min.js' type='text/javascript'></script>
                 <script src='./vendor/almasaeed2010/adminlte/plugins/select2/select2.min.js' type='text/javascript'></script>
                 <script src='./vendor/almasaeed2010/adminlte/plugins/select2/i18n/fr.js' type='text/javascript'></script>
                 <script src='./vendor/almasaeed2010/adminlte/dist/js/app.min.js' type='text/javascript'></script>
 
-                <script src="assets/js/jquery.superbox/jquery.superbox.min.js" type="text/javascript"></script>
+                <script src="assets/js/toastr/build/toastr.min.js" type='text/javascript'></script>
+                
                 <script src="assets/js/jquery.cookie/js.cookie.min.js" type='text/javascript'></script>
                 <script src="assets/js/fonctions.min.js" type='text/javascript'></script>
 
@@ -79,7 +80,7 @@ class IndexWebsite extends PageHelper {
 
                 <link href="assets/js/featherlight/release/featherlight.min.css" rel="stylesheet" type="text/css" />
                 <script src="assets/js/featherlight/release/featherlight.min.js" type='text/javascript'></script>
-
+                
                 <link href="vendor/almasaeed2010/adminlte/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
                 <link href="vendor/almasaeed2010/adminlte/plugins/iCheck/minimal/blue.css" rel="stylesheet" type="text/css" />
                 <script src="vendor/almasaeed2010/adminlte/plugins/iCheck/icheck.min.js" type='text/javascript'></script>
@@ -164,7 +165,6 @@ class IndexWebsite extends PageHelper {
             </body>
 
             <script type="text/javascript">
-
         <?php if ($request->query->get("ok") !== null) { ?>
                             Ajax('pages/_LegacyPages/AccountActivationTerm.php');
         <?php } elseif ($request->query->get("paypal") !== null) { ?>
