@@ -7,23 +7,21 @@
         <div class="col-lg-4">
 
             <table class="table table-condensed" style="border-collapse: collapse; margin-bottom: 0px;">
-
                 <tr>
-                    <td style="border-top: 0px;" >Niveau :</td></td>
-                    <td style="border-top: 0px;">{{ objPlayer.getHorseLevel }}</td>
-                </tr>
-                <tr>
-                    <td >Type de cheval :</td>
+                    <td style="border-top: 0px;">Type</td>
+                    <td style="border-top: 0px;">
                     {% if objPlayer.getHorseLevel > 0 and objPlayer.getHorseLevel < 12 %}
-                        <td>Poney</td>
+                        Poney
                     {% elseif objPlayer.getHorseLevel > 11 and objPlayer.getHorseLevel < 21 %}
-                        <td>Cheval de combat</td>
+                        Cheval de combat
                     {% elseif objPlayer.getHorseLevel >= 21 %}
-                        <td>Cheval militaire</td>
+                        Cheval militaire
                     {% endif %}
+                     (niveau {{ objPlayer.getHorseLevel }})
+                    </td>
                 </tr>
                 <tr>
-                    <td >Endurance :</td></td>
+                    <td>Endurance :</td></td>
                     <td>{{ objPlayer.getHorseHp }}</td>
                 </tr>
                 <tr>
@@ -31,7 +29,7 @@
                     <td>{{ objPlayer.getHorseStamina }}</td>
                 </tr>
                 <tr>
-                    <td >Etat :</td></td>
+                    <td>Etat :</td></td>
                     {% if objPlayer.getHorseRiding == 1 %}
                         <td>En service.</td>
                     {% else %}

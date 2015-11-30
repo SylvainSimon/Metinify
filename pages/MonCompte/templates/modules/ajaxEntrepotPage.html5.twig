@@ -40,11 +40,11 @@
             {% else %}
                 <div class="Interieur_Case">
                     {% if objItem.size  == "1" %}
-                        <img src="../images/item_inexistant_1.png" data-tooltip-track="1" data-tooltip="Icone de {{ objItem.localeName }} ({{ objItem.vnum }}) introuvable." />
+                        <img style="display: block;" src="../images/item_inexistant_1.png" data-tooltip-track="1" data-tooltip-isItemMetin="1" data-tooltip="Icone de {{ objItem.localeName }} ({{ objItem.vnum }}) introuvable." />
                     {% elseif objItem.size  == "2" %}
-                        <img src="../images/item_inexistant_2.png" data-tooltip-track="1" data-tooltip="Icone de {{ objItem.localeName }} ({{ objItem.vnum }}) introuvable." />
+                        <img style="display: block;" src="../images/item_inexistant_2.png" data-tooltip-track="1" data-tooltip-isItemMetin="1" data-tooltip="Icone de {{ objItem.localeName }} ({{ objItem.vnum }}) introuvable." />
                     {% elseif objItem.size  == "3" %}
-                        <img src="../images/item_inexistant_3.png" data-tooltip-track="1" data-tooltip="Icone de {{ objItem.localeName }} ({{ objItem.vnum }}) introuvable." />
+                        <img style="display: block;" src="../images/item_inexistant_3.png" data-tooltip-track="1" data-tooltip-isItemMetin="1" data-tooltip="Icone de {{ objItem.localeName }} ({{ objItem.vnum }}) introuvable." />
                     {% endif %}
                 </div>
 
