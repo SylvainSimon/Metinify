@@ -115,13 +115,7 @@
             <tr>
                 <td>Status</td>
                 <td style="line-height: 10px;">
-                    {% if objAccount.getStatus == "OK" %}
-                        <i data-tooltip="Compte actif" data-tooltip-position="left" class="text-green material-icons md-icon-done md-20"></i>
-                    {% elseif objAccount.getStatus == "BLOCK" %}
-                        <i data-tooltip="Compte banni" data-tooltip-position="left" class="text-red material-icons md-icon-close md-20"></i>
-                    {% else %}
-                        <i data-tooltip="Etat inconnu" data-tooltip-position="left" class="material-icons md-icon-help md-20"></i>
-                    {% endif %}
+                    {{ findIconStatus(objAccount.getStatus)|raw }}
                 </td>
             </tr>
             <tr>

@@ -31,35 +31,21 @@
                                 <td class="Align_center">{{ objMessengerList.level }}</td>
 
                                 <td class="hidden-md hidden-sm hidden-xs">{{ objMessengerList.exp }}</td>
+                                
                                 <td>
                                     {{ findSkillGroup(objMessengerList.job, objMessengerList.skillGroup) }}
                                 </td>
+                                
                                 <td>{{ getMinutesToString(objMessengerList.playtime) }}</td>
 
                                 <td>
-                                    {% if objMessengerList.status == "OK" %}
-                                        <i data-tooltip="Compte actif" data-tooltip-position="left" class="text-green material-icons md-icon-done md-20"></i>
-                                    {% elseif objMessengerList.status == "BLOCK" %}
-                                        <i data-tooltip="Compte banni" data-tooltip-position="left" class="text-red material-icons md-icon-close md-20"></i>
-                                    {% else %}
-                                        <i data-tooltip="Etat inconnu" data-tooltip-position="left" class="material-icons md-icon-help md-20"></i>
-                                    {% endif %}
+                                    {{ findIconStatus(objMessengerList.status)|raw }}
                                 </td>
-
                                 <td>
                                     {{ findIconEmpire(objMessengerList.empire)|raw }}
                                 </td>
                                 <td>
-                                    {% if objMessengerList.online %}
-                                        <span data-tooltip="En ligne" data-tooltip-position="left">
-                                            <i class="text-green material-icons md-icon-account-circle"></i>
-                                        </span>
-                                    {% else %}
-                                        <span data-tooltip="Hors-ligne" data-tooltip-position="left">
-                                            <i class="text-red material-icons md-icon-account-circle"></i>
-                                        </span>
-                                    {% endif %}
-
+                                    {{ findIconOnline(objMessengerList.online)|raw }}
                                 </td>
                             </tr>
                         {% endfor %}

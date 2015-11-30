@@ -81,16 +81,7 @@
 
                                 <td style="width: 70px;">
                                     {{ findIconEmpire(objPlayers.empire)|raw }}
-
-                                    {% if objPlayers.online == 0 %}
-                                        <span data-tooltip="Hors-ligne" data-tooltip-position="left" class="pull-right">
-                                            <i class="text-red material-icons md-icon-account-circle"></i>
-                                        </span>
-                                    {% else %}
-                                        <span data-tooltip="En ligne" data-tooltip-position="left" class="pull-right">
-                                            <i class="text-green material-icons md-icon-account-circle"></i>
-                                        </span>
-                                    {% endif %}
+                                    {{ findIconOnline(objPlayers.online)|raw }}
                                 </td>
 
                             </tr>

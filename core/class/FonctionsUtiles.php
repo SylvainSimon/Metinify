@@ -261,19 +261,40 @@ class FonctionsUtiles {
         return $iconElement;
     }
 
-    static function findIconStatus($statut) {
+    static function findIconOnline($statut = false) {
 
-        $iconElement = '<i data-tooltip="' . StatusHelper::getLibelle($statut) . '" class="';
-
-        if ($statut == "OK") {
-            $iconElement .= "text-green ";
-        } else if ($statut == "BLOCK") {
-            $iconElement .= "text-red ";
+        if ($statut) {
+            $iconElement = '<i data-tooltip="En ligne" class="';
         } else {
-            $iconElement .= "text-gray ";
+            $iconElement = '<i data-tooltip="Hors-ligne" class="';
         }
 
-        $iconElement .= 'material-icons md-icon-account-circle md-20"></i>';
+        if ($statut) {
+            $iconElement .= "text-green";
+        } else {
+            $iconElement .= "text-red ";
+        }
+
+        $iconElement .= 'material-icons md-icon-account-circle md-20 pull-right"></i>';
+
+        return $iconElement;
+    }
+
+    static function findIconStatus($statut) {
+
+        $iconElement = '<i data-tooltip-position="left" data-tooltip="' . StatusHelper::getLibelle($statut) . '" class="';
+
+        if ($statut == StatusHelper::ACTIF) {
+            $iconElement .= "text-green md-icon-done ";
+        } else if ($statut == StatusHelper::BANNI) {
+            $iconElement .= "text-red md-icon-close ";
+        } else if ($statut == StatusHelper::NON_CONFIRME) {
+            $iconElement .= "text-warning md-icon-warning ";
+        } else {
+            $iconElement .= "text-gray md-icon-help ";
+        }
+
+        $iconElement .= 'material-icons md-20"></i>';
 
         return $iconElement;
     }
