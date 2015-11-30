@@ -200,7 +200,15 @@ class FonctionsUtiles {
         return $return;
     }
 
-    static function findIconJob($job) {
+    static function isWomen($job = 0) {
+        if ($job == "1" or $job == "3" or $job == "4" or $job == "6") {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    static function findIconJob($job = 0) {
 
         $imgLink = '<img class="Dimension_Image_Classement" data-tooltip="' . self::findTitleJob($job) . '" src="';
 

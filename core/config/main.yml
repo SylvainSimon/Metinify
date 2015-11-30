@@ -1,10 +1,10 @@
-imports:
-    - { resource: language.yml }
-
 baseURL: https://vamosmt2.local/
 gameVersion: 5.1.9
 requiredSSL: true
 encryptKey: vamoslelapin
+
+happy_hours_start: 20-11-2015 10:20:50
+happy_hours_end: 05-12-2015 09:20:50
 
 linkClient: http://vamosmt2.org:81/Installateur%20VamosMT2%20Client%20officiel%202014-2015.exe
 linkClientTorrent: http://vamosmt2.org:81/VamosMT2%20Client%20officiel%202014-2015.exe.torrent

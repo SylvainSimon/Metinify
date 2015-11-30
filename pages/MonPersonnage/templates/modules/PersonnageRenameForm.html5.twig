@@ -5,8 +5,8 @@
     </div>
 
     <div class="box-body">
-        Grâçe à cette fonction, vous allez pouvoir renommer votre personnage {{ objPlayer.getName }}.<br/>
-        Pour effectuer cette action, il faut debourser la somme de <span class="text-yellow">1500 Vamonaies</span>.
+        Grâçe à cette fonction, vous allez pouvoir renommer votre personnage.<br/>
+        Pour effectuer cette action, il faut débourser <span class="text-yellow">{{ config.mod_player.rename.price }} {{ helpDevise(config.mod_player.rename.devise) }}</span>.
         <br/>
         <br/>
 
@@ -42,9 +42,6 @@
                 </div>
             </div>
         </div>
-
-        Pour valider le renommage, cliquez sur le bouton "Renommer".<br/>
-        Si vous êtes là par erreur, vous pouvez toujours annuler la demande.
 
     </div>
 
@@ -92,41 +89,59 @@
 
         if (UtilisateurSyntax == 0) {
 
-            Barre_De_Statut("Traitement de la demande...");
-            Icone_Chargement(1);
-            displayLoading();
+            bootbox.dialog({
+                message: "Confirmez-vous la modification du nom ?",
+                animate: false,
+                className: "myBootBox",
+                title: 'Confirmation de la demande',
+                buttons: {
+                    danger: {
+                        label: "Annuler",
+                        className: "btn-danger",
+                        callback: function () {
 
-            $.ajax({
-                type: "POST",
-                url: "pages/MonPersonnage/ajax/ajaxPersonnageRenameExecute.php",
-                data: {"idPlayer": '{{ encryptForUrl(objPlayer.getId) }}', "newName": newName},
-                success: function (msg) {
-
-                    hideLoading();
-
-                    try {
-                        Parse_Json = JSON.parse(msg);
-                        if (Parse_Json.result) {
-
-                            Barre_De_Statut(Parse_Json.reasons);
-                            Icone_Chargement(0);
-                            Ajax('pages/MonPersonnage/PersonnageRenameTerm.php');
-                        } else {
-                            Barre_De_Statut(Parse_Json.reasons);
-                            Icone_Chargement(2);
                         }
+                    },
+                    success: {
+                        label: "Confirmer",
+                        className: "btn-primary",
+                        callback: function () {
 
-                    } catch (e) {
-                        Barre_De_Statut("Le renommage a échoué.");
-                        Icone_Chargement(2);
+                            Barre_De_Statut("Traitement de la demande...");
+                            Icone_Chargement(1);
+                            displayLoading();
+
+                            $.ajax({
+                                type: "POST",
+                                url: "pages/MonPersonnage/ajax/ajaxPersonnageRenameExecute.php",
+                                data: {"idPlayer": '{{ encrypt(objPlayer.getId) }}', "newName": newName},
+                                success: function (msg) {
+
+                                    hideLoading();
+
+                                    var json = JSON.parse(msg);
+
+                                    if (json.result) {
+                                        Barre_De_Statut(json.reasons);
+                                        Icone_Chargement(0);
+                                        Ajax('pages/MonPersonnage/PersonnageRenameTerm.php');
+
+                                    } else {
+
+                                        popBootbox(json.reasons);
+                                        Barre_De_Statut(json.reasons);
+                                        Icone_Chargement(2);
+                                    }
+
+                                }
+                            });
+                        }
                     }
                 }
             });
-            return false;
+
         } else {
             popBootbox("Les caractère employés sont invalides.");
-            Barre_De_Statut("Les caractère employés sont invalides.");
-            Icone_Chargement(2);
         }
     }
 
