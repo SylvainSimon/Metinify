@@ -22,20 +22,19 @@ class ajaxRepairePosition extends \ScriptHelper {
 
         if ($objPlayerIndex !== null) {
 
-            if ($objPlayerIndex->getEmpire() == "1") {
+            if ($objPlayerIndex->getEmpire() == \EmpireHelper::ROUGE) {
                 $x = 488774;
                 $y = 955480;
                 $map = 1;
-            } elseif ($objPlayerIndex->getEmpire() == "2") {
+            } elseif ($objPlayerIndex->getEmpire() == \EmpireHelper::JAUNE) {
                 $x = 64305;
                 $y = 186753;
                 $map = 21;
-            } elseif ($objPlayerIndex->getEmpire() == "3") {
+            } elseif ($objPlayerIndex->getEmpire() == \EmpireHelper::BLEU) {
                 $x = 963684;
                 $y = 285235;
                 $map = 41;
             }
-            \Debug::log($this->objPlayer);
 
             $this->objPlayer->setMapIndex($map);
             $this->objPlayer->setX($x);
@@ -46,8 +45,6 @@ class ajaxRepairePosition extends \ScriptHelper {
             
             $em->persist($this->objPlayer);
             
-            \Debug::log($this->objPlayer);
-
             $objLogDeblocagePerso = new \Site\Entity\LogsDeblocagePersos();
             $objLogDeblocagePerso->setIdPerso($this->objPlayer->getId());
             $objLogDeblocagePerso->setIdCompte($this->objAccount->getId());
