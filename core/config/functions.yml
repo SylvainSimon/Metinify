@@ -3,3 +3,7 @@ mod_player:
         activate: true
         price: 1500
         devise: 1
+    delete:
+        activate: true
+    repairPosition:
+        activate: true

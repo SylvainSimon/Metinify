@@ -1,0 +1,20 @@
+html { 
+    background: url("../../../images/fondHalloween.jpg") fixed no-repeat top center #252219;
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+}
+
+.box {
+    border-top: 0px;
+    border: 1px solid #2C1608;
+    border-top-color: #241206 !important;
+}
+
+.box-header {
+    background: #3E210F;
+    border-bottom: 1px solid #241206;
+}
+
+.box-body {
+    background: #1B0807;
+}

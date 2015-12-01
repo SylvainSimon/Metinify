@@ -134,6 +134,14 @@ class CoreHelper {
         }
     }
 
+    public function moduleIsActivated($isActivated = false) {
+
+        if(!$isActivated){
+            include BASE_ROOT . '/pages/_LegacyPages/ErrorDisabled.php';
+            exit();
+        }
+    }
+
     public function ReloadSessionValues() {
 
         /* @var $session \Symfony\Component\HttpFoundation\Session\Session */

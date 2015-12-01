@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,IAAK,CACD,UAAU,CAAE,2EAA2E,CACvF,uBAAuB,CAAE,KAAK,CAC9B,eAAe,CAAE,KAAK,CAG1B,IAAK,CACD,UAAU,CAAE,GAAG,CACf,MAAM,CAAE,iBAAiB,CACzB,gBAAgB,CAAE,kBAAkB,CAGxC,WAAY,CACR,UAAU,CAAE,OAAO,CACnB,aAAa,CAAE,iBAAiB,CAGpC,SAAU,CACN,UAAU,CAAE,OAAO",
+"sources": ["../../sass/modes/halloween.scss"],
+"names": [],
+"file": "halloween.css"
+}

@@ -23,17 +23,17 @@ class ajaxRepairePosition extends \ScriptHelper {
         if ($objPlayerIndex !== null) {
 
             if ($objPlayerIndex->getEmpire() == \EmpireHelper::ROUGE) {
-                $x = 488774;
-                $y = 955480;
-                $map = 1;
+                $x = \EmpireHelper::ROUGE_DEFAULT_X;
+                $y = \EmpireHelper::ROUGE_DEFAULT_Y;
+                $map = \MapHelper::MAP_1_ROUGE;
             } elseif ($objPlayerIndex->getEmpire() == \EmpireHelper::JAUNE) {
-                $x = 64305;
-                $y = 186753;
-                $map = 21;
+                $x = \EmpireHelper::JAUNE_DEFAULT_X;
+                $y = \EmpireHelper::JAUNE_DEFAULT_Y;
+                $map = \MapHelper::MAP_1_JAUNE;
             } elseif ($objPlayerIndex->getEmpire() == \EmpireHelper::BLEU) {
-                $x = 963684;
-                $y = 285235;
-                $map = 41;
+                $x = \EmpireHelper::BLEU_DEFAULT_X;
+                $y = \EmpireHelper::BLEU_DEFAULT_Y;
+                $map = \MapHelper::MAP_1_BLEU;
             }
 
             $this->objPlayer->setMapIndex($map);
@@ -42,9 +42,9 @@ class ajaxRepairePosition extends \ScriptHelper {
             $this->objPlayer->setExitMapIndex($map);
             $this->objPlayer->setExitX($x);
             $this->objPlayer->setExitY($y);
-            
+
             $em->persist($this->objPlayer);
-            
+
             $objLogDeblocagePerso = new \Site\Entity\LogsDeblocagePersos();
             $objLogDeblocagePerso->setIdPerso($this->objPlayer->getId());
             $objLogDeblocagePerso->setIdCompte($this->objAccount->getId());

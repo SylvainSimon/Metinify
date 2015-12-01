@@ -5,6 +5,15 @@ class EmpireHelper {
     const ROUGE = 1;
     const JAUNE = 2;
     const BLEU = 3;
+    
+    const ROUGE_DEFAULT_X = 488774;
+    const ROUGE_DEFAULT_Y = 955480;
+    
+    const JAUNE_DEFAULT_X = 64305;
+    const JAUNE_DEFAULT_Y = 186753;
+    
+    const BLEU_DEFAULT_X = 963684;
+    const BLEU_DEFAULT_Y = 285235;
 
     public static function getAll($sort = true) {
         global $config;

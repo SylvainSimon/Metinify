@@ -164,9 +164,11 @@
 <div class="row">
     <div class="col-lg-12" style="padding-bottom: 10px; padding-left: 25px;">
 
-        <button type="button" data-tooltip="Débloquer la position" class="btn btn-flat btn-warning" onclick="Deblocage_Personnage('{{ encrypt(objPlayer.getId) }}');">
-            Débloquer
-        </button>
+        {% if config.mod_player.repairPosition.activate %}
+            <button type="button" data-tooltip="Débloquer la position" class="btn btn-flat btn-warning" onclick="Deblocage_Personnage('{{ encrypt(objPlayer.getId) }}');">
+                Débloquer
+            </button>
+        {% endif %}
 
         {% if objPlayer.getGold < 0 %}
             <button type="button" data-tooltip="Débloquer mes yangs" class="btn btn-flat btn-warning" onclick="Deblocage_Yangs('{{ encryptForUrl(objPlayer.getId) }}');">
@@ -180,9 +182,11 @@
             </button>
         {% endif %}
 
-        <button type="button" data-tooltip="Supprimer le joueur" class="btn btn-flat btn-danger" onclick="Ajax('pages/MonPersonnage/PersonnageDeleteForm.php?idPlayer={{ encryptForUrl(objPlayer.getId) }}');">
-            Supprimer
-        </button>
+        {% if config.mod_player.delete.activate %}
+            <button type="button" data-tooltip="Supprimer le joueur" class="btn btn-flat btn-danger" onclick="Ajax('pages/MonPersonnage/PersonnageDeleteForm.php?idPlayer={{ encryptForUrl(objPlayer.getId) }}');">
+                Supprimer
+            </button>
+        {% endif %}
     </div>
 </div>
 

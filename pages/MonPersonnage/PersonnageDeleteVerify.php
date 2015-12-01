@@ -12,6 +12,10 @@ class PersonnageDeleteVerify extends \PageHelper {
 
     public function __construct() {
         parent::__construct();
+
+        global $config;
+        parent::moduleIsActivated($config->mod_player["delete"]["activate"]);
+
         global $request;
         $this->objPlayer = parent::VerifMonJoueur(\Encryption::decrypt($request->query->get("idPlayer")));
     }

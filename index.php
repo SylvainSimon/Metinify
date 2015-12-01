@@ -61,6 +61,10 @@ class IndexWebsite extends PageHelper {
                     <link href="./css/css/modes/christmas.css" rel="stylesheet" type="text/css" />
                 <?php } ?>
 
+                <?php if ($config->templateMod == "halloween") { ?>
+                    <link href="./css/css/modes/halloween.css" rel="stylesheet" type="text/css" />
+                <?php } ?>
+
                 <script src="assets/js/Ajax.js" type='text/javascript'></script>
                 <script src="assets/js/Ajax_Connexion.js" type='text/javascript'></script>
                 <script src="assets/js/Ajax_Classement.js" type="text/javascript"></script>
