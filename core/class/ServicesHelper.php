@@ -32,6 +32,14 @@ class ServicesHelper {
             return $config->objInstance;
         };
 
+        $container['translator'] = function ($container) {
+
+            $request = $container['request'];
+
+            $translator = new TranslateHelper($request);
+            return $translator->objInstance;
+        };
+
         $container['cacheType'] = $container['config']->fastChatType;
 
         $container['fastcache'] = function($container) {
@@ -45,6 +53,7 @@ class ServicesHelper {
         $container['twig'] = function ($container) {
 
             $config = $container['config'];
+            $translator = $container['translator'];
 
             $arrayOfFileSystem = [
                 BASE_ROOT . '/pages/Admin/templates/modules',
@@ -92,6 +101,7 @@ class ServicesHelper {
 
             include BASE_ROOT . '/pages/Tableaux_Arrays.php';
 
+            $twig->addExtension(new \Symfony\Bridge\Twig\Extension\TranslationExtension($translator));
             $twig->addGlobal('bonusItem', $Bonus_Item);
             $twig->addGlobal('pierreItem', $Pierre_Item);
             $twig->addGlobal('tabGrade', $Array_Grades);

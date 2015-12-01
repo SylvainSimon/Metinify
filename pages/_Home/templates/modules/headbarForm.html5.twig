@@ -1,7 +1,8 @@
 <script type="text/javascript" src="assets/js/Controle_Connexion.js"></script>
 
 <div class="col-md-8 col-sm-6" style="padding-left: 40px;">
-    <span>Bienvenue <span class="Bold">Visiteur</span> ({{ request.server.get("REMOTE_ADDR") }}) <a href="javascript:void(0);" onclick="Ajax('pages/MonCompte/modules/PasswordForgottenForm.php')">Mot de passe perdu ?</a></span>
+    {{ 'home.welcome'|trans({}, 'common') }} <span class="Bold">{{ 'home.visitor'|trans({}, 'common') }}</span> ({{ request.server.get("REMOTE_ADDR") }}) 
+    <a href="javascript:void(0);" onclick="Ajax('pages/MonCompte/modules/PasswordForgottenForm.php');">{{ 'home.forgotPassword'|trans({}, 'common') }}</a>
 </div>
 <div class="col-md-4 col-sm-6 pull-right">
     <form class="pull-right" action="#" method="POST" id="Formulaire_Connexion">

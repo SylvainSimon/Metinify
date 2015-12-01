@@ -13,6 +13,7 @@ class MapHelper {
     const DESERT_YONGBI = 63;
     const VALLEE_SEUNGRYONG = 64;
     const TEMPLE = 65;
+    const TOUR_DEMON = 66;
     const FORET = 67;
     const BOIS_ROUGE = 68;
     const CAVE_2 = 71;
