@@ -60,7 +60,7 @@ class InscriptionSubmit extends \PageHelper {
                 "account" => $objAccount->getLogin(),
                 "accountId" => $objAccount->getId()
             ]);
-            $subject = 'VamosMT2 - Activation de votre compte ' . $objAccount->getLogin();
+            $subject = 'VamosMT2 - Activez votre compte ' . $objAccount->getLogin();
             \EmailHelper::sendEmail($objAccount->getEmail(), $subject, $result);
         }
 

@@ -3,7 +3,7 @@
 
         <input id="Input_Id_Expediteur_Message" style="display: none;" type="text" value="<?php echo $this->objAccount->getId(); ?>">
 
-        {% if nombreDiscussionOuverte >= 3 %}
+        {% if nombreDiscussionOuverte >= config.support.max_open %}
             <div style="padding: 10px;">
                 Il semble que possédiez trop de ticket en attente ou en cours de traitement.
                 <br/>

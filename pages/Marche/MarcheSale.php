@@ -9,6 +9,12 @@ class MarcheSell extends \PageHelper {
     public $isProtected = true;
     public $strTemplate = "MarcheSale.html5.twig";
 
+    public function __construct() {
+        parent::__construct();
+        global $config;
+        parent::moduleIsActivated($config->marche["activate"]);
+    }
+    
     public function run() {
 
         $arrObjPlayers = \Player\PlayerHelper::getPlayerRepository()->findPlayers($this->objAccount->getId());

@@ -1,9 +1,24 @@
 mod_player:
     rename:
         activate: true
-        price: 1500
+        price: 2000
         devise: 1
     delete:
         activate: true
     repairPosition:
         activate: true
+        
+register:
+    activate: true
+    emailActivation: true
+    initCash: 0
+    initMileage: 0
+ 
+item_shop:
+     activate: true
+ 
+marche:
+     activate: true
+     
+support:
+    max_open: 3

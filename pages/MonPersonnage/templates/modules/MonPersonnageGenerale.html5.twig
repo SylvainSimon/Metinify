@@ -1,6 +1,6 @@
 <div class="row">
 
-    <div class="col-lg-3">
+    <div class="col-lg-4">
 
         <div style="padding-top: 5px; text-align: center; padding-bottom: 20px;">
             {% if objPlayer.getJob == "0" %}
@@ -21,6 +21,35 @@
                 <img class="Position_Icone_Article_Personnage" src="../images/races/Chaman_Homme.png" height="350" />
             {% endif %}
         </div>
+        
+<div class="row">
+    <div class="col-lg-12" style="text-align: center;">
+
+        {% if config.mod_player.repairPosition.activate %}
+            <button style="margin-bottom: 5px;" type="button" data-tooltip="Débloquer la position" class="btn btn-flat btn-warning" onclick="Deblocage_Personnage('{{ encrypt(objPlayer.getId) }}');">
+                Débloquer
+            </button>
+        {% endif %}
+
+        {% if objPlayer.getGold < 0 %}
+            <button style="margin-bottom: 5px;" type="button" data-tooltip="Débloquer mes yangs" class="btn btn-flat btn-warning" onclick="Deblocage_Yangs('{{ encryptForUrl(objPlayer.getId) }}');">
+                Débloquer les yangs
+            </button>
+        {% endif %}
+
+        {% if config.mod_player.rename.activate %}
+            <button style="margin-bottom: 5px;" type="button" data-tooltip="Renommer le joueur" class="btn btn-flat btn-primary" onclick="Ajax('pages/MonPersonnage/PersonnageRenameForm.php?idPlayer={{ encryptForUrl(objPlayer.getId) }}');">
+                Renommer
+            </button>
+        {% endif %}
+
+        {% if config.mod_player.delete.activate %}
+            <button style="margin-bottom: 5px;" type="button" data-tooltip="Supprimer le joueur" class="btn btn-flat btn-danger" onclick="Ajax('pages/MonPersonnage/PersonnageDeleteForm.php?idPlayer={{ encryptForUrl(objPlayer.getId) }}');">
+                Supprimer
+            </button>
+        {% endif %}
+    </div>
+</div>
 
     </div>
 
@@ -92,15 +121,9 @@
                 </td>
                 <td>{{ localisation.positionX }} - {{ localisation.positionY }}</td>
             </tr>
-        </table>
-    </div>
-
-    <div class="col-lg-4">
-
-        <table class="table table-condensed" style="border-collapse: collapse;">
             <tr>
-                <td style="border-top: 0px;">IP</td></td>
-                <td  style="border-top: 0px;">{{ objPlayer.getIp }}</td>
+                <td>IP</td></td>
+                <td>{{ objPlayer.getIp }}</td>
             </tr>
             <tr>
                 <td>Guilde</td>
@@ -123,7 +146,6 @@
             </tr>
             <tr>
                 <td>Conjoint</td>
-
                 {% if objMarriage == null %}
                     <td>Célibataire</td>
                 {% else %}
@@ -135,59 +157,24 @@
                 {% endif %}
             </tr>
 
-        </table>
-
-
-        <table class="table table-condensed" style="border-collapse: collapse;">
             <tr>
-                <td style="border-top: 0px;">Vitalité</td></td>
-                <td style="border-top: 0px;">{{ objPlayer.getHt }}</td>
+                <td>VIT : {{ objPlayer.getHt }}</td></td>
+                <td>INT : {{ objPlayer.getIq }}</td>
             </tr>
             <tr>
-                <td>Intelligence</td></td>
-                <td>{{ objPlayer.getIq }}</td>
-            </tr>
-            <tr>
-                <td>Force</td></td>
-                <td>{{ objPlayer.getSt }}</td>
-            </tr>
-            <tr>
-                <td>Dextérité</td></td>
-                <td>{{ objPlayer.getDx }}</td>
+                <td>STR : {{ objPlayer.getSt }}</td></td>
+                <td>DEX : {{ objPlayer.getDx }}</td>
             </tr>
 
         </table>
+
     </div>
 
-</div>
-
-<div class="row">
-    <div class="col-lg-12" style="padding-bottom: 10px; padding-left: 25px;">
-
-        {% if config.mod_player.repairPosition.activate %}
-            <button type="button" data-tooltip="Débloquer la position" class="btn btn-flat btn-warning" onclick="Deblocage_Personnage('{{ encrypt(objPlayer.getId) }}');">
-                Débloquer
-            </button>
-        {% endif %}
-
-        {% if objPlayer.getGold < 0 %}
-            <button type="button" data-tooltip="Débloquer mes yangs" class="btn btn-flat btn-warning" onclick="Deblocage_Yangs('{{ encryptForUrl(objPlayer.getId) }}');">
-                Débloquer les yangs
-            </button>
-        {% endif %}
-
-        {% if config.mod_player.rename.activate %}
-            <button type="button" data-tooltip="Renommer le joueur" class="btn btn-flat btn-primary" onclick="Ajax('pages/MonPersonnage/PersonnageRenameForm.php?idPlayer={{ encryptForUrl(objPlayer.getId) }}');">
-                Renommer
-            </button>
-        {% endif %}
-
-        {% if config.mod_player.delete.activate %}
-            <button type="button" data-tooltip="Supprimer le joueur" class="btn btn-flat btn-danger" onclick="Ajax('pages/MonPersonnage/PersonnageDeleteForm.php?idPlayer={{ encryptForUrl(objPlayer.getId) }}');">
-                Supprimer
-            </button>
-        {% endif %}
+    <div class="col-lg-3 specialColumn" style="padding-top: 10px; padding-bottom: 10px; padding-right:25px;">
+        {{ viewEquipement|raw }}
+        {{ viewInventaire|raw }}
     </div>
+
 </div>
 
 <script type="text/javascript">

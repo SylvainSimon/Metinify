@@ -464,19 +464,18 @@ label{
 /*-----------INVENTAIRE-------------------*/
 #Inventaire{
 
-    width: 169px;
-    height: 327px;
-    background: url('../../images/inventaire.png') no-repeat;
+    width: 100%;
+    height: auto;
 }
 
 #Conteneur_Inventaire{
 
-    position: relative;
+    position: absolute;
     width: 160px;
     height: 288px;
 
-    top: 32px;
-    left:5px;
+    top: 0px;
+    left:0px;
     overflow: hidden;
 
     font-size: 1px; 
@@ -487,31 +486,34 @@ label{
 
 .Case_Inventaire{
 
-    display: inline-table;
+    display:  inline-block;;
     height: 32px;
-    width: 32px;
-    max-width: 32px;
+    width: 20%;
     margin: 0px;
     padding: 0px;
     border: none;
     color: white;
-    vertical-align: bottom;
-
+    vertical-align: middle;
     font-size: 10px; 
-
 }
 
 .Interieur_Case{
 
-    width: 32px;
-    height: 32px;
+}
 
+
+@media (min-width: 1200px){
+    .col-lg-3.specialColumn{ 
+        width: 22%;
+    }
 }
 
 .Bouton_Inventaire_1, .Bouton_Inventaire_2, .Bouton_Inventaire_3, .Bouton_Inventaire_4{
-    position: absolute;
     height: 19px;
-    width: 35px;
+    display: inline-block;
+    width: 22%;
+    margin: 0px;
+    padding: 0px;
     border: 1px solid #5D5D5D;
     background: #002C41;
     text-align: center;
@@ -519,27 +521,23 @@ label{
 }
 
 .Bouton_Inventaire_1{
-    position: absolute;
-    top: 18px;
-    left: 33px;
+    top: 8px;
+    left: 9px;
 }
 
 .Bouton_Inventaire_2{
-    position: absolute;
-    top: 18px;
-    left:72px;
+    top: 8px;
+    left:48px;
 }
 
 .Bouton_Inventaire_3{
-    position: absolute;
-    top: 18px;
-    left:111px;
+    top: 8px;
+    left:87px;
 }
 
 .Bouton_Inventaire_4{
-    position: absolute;
-    top: 18px;
-    left:150px;
+    top: 8px;
+    left:126px;
 }
 
 
@@ -656,17 +654,15 @@ label{
 
 /*-----------EQUIPEMENT-------------------*/
 #Equipement{
-    width: 160px;
-    height: 192px;
-    background: url('../../images/equipement.png') no-repeat;
+    width: 100%;
+    height: auto;
     overflow: hidden;
+    position: relative;
 }
 
 .Case_Equipement{
     display: inline-table;
-    height: 32px;
-    min-width: 32px;
-    max-width: 32px;
+    width: 20%;
     margin: 0px;
     padding: 0px;
     border: none;
@@ -674,17 +670,17 @@ label{
     font-size: 10px; 
 }
 
-.Case_Arme{position: absolute;top: 19px;left: 32px;}
-.Case_Armure{position: absolute;top: 52px;left: 68px;}
-.Case_Casque{position: absolute;top: 17px;left: 68px;}
-.Case_Bouclier{position: absolute;top: 51px;left: 106px;}
-.Case_Bracelet{position: absolute;top: 82px;left: 106px;}
-.Case_Boucles{position: absolute;top: 67px;left: 144px;}
-.Case_Collier{position: absolute;top: 100px;left: 145px;}
-.Case_Chaussure{position: absolute;top: 159px;left: 69px;}
-.Case_Fleche{position: absolute;top: 17px;left: 145px;}
-.Case_Special1{position: absolute;top: 128px;left: 33px;}
-.Case_Special2{position: absolute;top: 128px;left: 107px;}
+.Case_Arme{position: absolute;top: 7px;left: 8px;}
+.Case_Armure{position: absolute;top: 42px;left: 45px;}
+.Case_Casque{position: absolute;top: 7px;left: 44px;}
+.Case_Bouclier{position: absolute;top: 41px;left: 82px;}
+.Case_Bracelet{position: absolute;top: 71px;left: 82px;}
+.Case_Boucles{position: absolute;top: 57px;left: 120px;}
+.Case_Collier{position: absolute;top: 90px;left: 121px;}
+.Case_Chaussure{position: absolute;top: 149px;left: 45px;}
+.Case_Fleche{position: absolute;top: 7px;left: 121px;}
+.Case_Special1{position: absolute;top: 118px;left: 9px;}
+.Case_Special2{position: absolute;top: 118px;left: 82px;}
 
 
 .Icone_Chef_Guilde{

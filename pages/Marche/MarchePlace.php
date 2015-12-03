@@ -9,6 +9,12 @@ class MarchePlace extends \PageHelper {
     public $isProtected = true;
     public $strTemplate = "MarchePlace.html5.twig";
 
+    public function __construct() {
+        parent::__construct();
+        global $config;
+        parent::moduleIsActivated($config->marche["activate"]);
+    }
+    
     public function run() {
 
         $templateTop = $this->objTwig->loadTemplate("ajaxGetArticles.html5.twig");

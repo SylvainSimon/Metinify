@@ -1,44 +1,108 @@
-<div class="row">
-    <div class="col-lg-4" style="padding-left: 25px; padding-top: 10px; padding-bottom: 10px;">
+<div id="Equipement">
 
-        <div id="Equipement">
+    <img id="imageEquipement"  src="../../images/equipement.png" style="width: 100%; height: auto;" />
 
-            <div class="Case_Equipement Case_Arme">
-                {{ include('ajaxEquipement.html5.twig', {objItem: objItemArme}, with_context = false) }}
-            </div>
-            <div class="Case_Equipement Case_Armure">
-                {{ include('ajaxEquipement.html5.twig', {objItem: objItemArmure}, with_context = false) }}
-            </div>
-            <div class="Case_Equipement Case_Casque">
-                {{ include('ajaxEquipement.html5.twig', {objItem: objItemCasque}, with_context = false) }}
-            </div>
-            <div class="Case_Equipement Case_Bouclier">
-                {{ include('ajaxEquipement.html5.twig', {objItem: objItemBouclier}, with_context = false) }}
-            </div>
-            <div class="Case_Equipement Case_Bracelet">
-                {{ include('ajaxEquipement.html5.twig', {objItem: objItemBracelet}, with_context = false) }}
-            </div>
-            <div class="Case_Equipement Case_Boucles">
-                {{ include('ajaxEquipement.html5.twig', {objItem: objItemBoucle}, with_context = false) }}
-            </div>
-            <div class="Case_Equipement Case_Collier">
-                {{ include('ajaxEquipement.html5.twig', {objItem: objItemCollier}, with_context = false) }}
-            </div>
-            <div class="Case_Equipement Case_Chaussure">
-                {{ include('ajaxEquipement.html5.twig', {objItem: objItemChaussure}, with_context = false) }}
-            </div>
-            <div class="Case_Equipement Case_Fleche">
-                {{ include('ajaxEquipement.html5.twig', {objItem: objItemFleche}, with_context = false) }}
-            </div>
-
-            <div class="Case_Equipement Case_Special1">
-                {{ include('ajaxEquipement.html5.twig', {objItem: objItemSpecial1}, with_context = false) }}
-            </div>
-            <div class="Case_Equipement Case_Special2">
-                {{ include('ajaxEquipement.html5.twig', {objItem: objItemSpecial2}, with_context = false) }}
-            </div>
-
-        </div>
-
+    <div class="Case_Equipement Case_Arme">
+        {{ include('ajaxEquipement.html5.twig', {objItem: objItemArme}, with_context = false) }}
     </div>
+    <div class="Case_Equipement Case_Armure">
+        {{ include('ajaxEquipement.html5.twig', {objItem: objItemArmure}, with_context = false) }}
+    </div>
+    <div class="Case_Equipement Case_Casque">
+        {{ include('ajaxEquipement.html5.twig', {objItem: objItemCasque}, with_context = false) }}
+    </div>
+    <div class="Case_Equipement Case_Bouclier">
+        {{ include('ajaxEquipement.html5.twig', {objItem: objItemBouclier}, with_context = false) }}
+    </div>
+    <div class="Case_Equipement Case_Bracelet">
+        {{ include('ajaxEquipement.html5.twig', {objItem: objItemBracelet}, with_context = false) }}
+    </div>
+    <div class="Case_Equipement Case_Boucles">
+        {{ include('ajaxEquipement.html5.twig', {objItem: objItemBoucle}, with_context = false) }}
+    </div>
+    <div class="Case_Equipement Case_Collier">
+        {{ include('ajaxEquipement.html5.twig', {objItem: objItemCollier}, with_context = false) }}
+    </div>
+    <div class="Case_Equipement Case_Chaussure">
+        {{ include('ajaxEquipement.html5.twig', {objItem: objItemChaussure}, with_context = false) }}
+    </div>
+    <div class="Case_Equipement Case_Fleche">
+        {{ include('ajaxEquipement.html5.twig', {objItem: objItemFleche}, with_context = false) }}
+    </div>
+
+    <div class="Case_Equipement Case_Special1">
+        {{ include('ajaxEquipement.html5.twig', {objItem: objItemSpecial1}, with_context = false) }}
+    </div>
+    <div class="Case_Equipement Case_Special2">
+        {{ include('ajaxEquipement.html5.twig', {objItem: objItemSpecial2}, with_context = false) }}
+    </div>
+
 </div>
+
+<script type="text/javascript">
+
+    var initImageEquipementWidth = "{{ tailleImageEquipementWidth }}";
+    var initImageEquipementHeight = "{{ tailleImageEquipementHeight }}";
+
+    var initArmePositionX = parseInt($(".Case_Arme").css("left"));
+    var initArmePositionY = parseInt($(".Case_Arme").css("top"));
+    var initArmurePositionX = parseInt($(".Case_Armure").css("left"));
+    var initArmurePositionY = parseInt($(".Case_Armure").css("top"));
+    var initCasquePositionX = parseInt($(".Case_Casque").css("left"));
+    var initCasquePositionY = parseInt($(".Case_Casque").css("top"));
+    var initBouclierPositionX = parseInt($(".Case_Bouclier").css("left"));
+    var initBouclierPositionY = parseInt($(".Case_Bouclier").css("top"));
+    var initBraceletPositionX = parseInt($(".Case_Bracelet").css("left"));
+    var initBraceletPositionY = parseInt($(".Case_Bracelet").css("top"));
+    var initBouclesPositionX = parseInt($(".Case_Boucles").css("left"));
+    var initBouclesPositionY = parseInt($(".Case_Boucles").css("top"));
+    var initCollierPositionX = parseInt($(".Case_Collier").css("left"));
+    var initCollierPositionY = parseInt($(".Case_Collier").css("top"));
+    var initChaussurePositionX = parseInt($(".Case_Chaussure").css("left"));
+    var initChaussurePositionY = parseInt($(".Case_Chaussure").css("top"));
+    var initFlechePositionX = parseInt($(".Case_Fleche").css("left"));
+    var initFlechePositionY = parseInt($(".Case_Fleche").css("top"));
+    var initSpecial1PositionX = parseInt($(".Case_Special1").css("left"));
+    var initSpecial1PositionY = parseInt($(".Case_Special1").css("top"));
+    var initSpecial2PositionX = parseInt($(".Case_Special2").css("left"));
+    var initSpecial2PositionY = parseInt($(".Case_Special2").css("top"));
+
+    function redrawCaseEquipement() {
+
+        var rationEquipementX = (parseInt($("#imageEquipement").css("width")) / parseInt(initImageEquipementWidth));
+        var rationEquipementY = (parseInt($("#imageEquipement").css("height")) / parseInt(initImageEquipementHeight));
+
+        calculePositionEquipement(rationEquipementX, rationEquipementY, initArmePositionX, initArmePositionY, $(".Case_Arme"));
+        calculePositionEquipement(rationEquipementX, rationEquipementY, initArmurePositionX, initArmurePositionY, $(".Case_Armure"));
+        calculePositionEquipement(rationEquipementX, rationEquipementY, initCasquePositionX, initCasquePositionY, $(".Case_Casque"));
+        calculePositionEquipement(rationEquipementX, rationEquipementY, initBouclierPositionX, initBouclierPositionY, $(".Case_Bouclier"));
+        calculePositionEquipement(rationEquipementX, rationEquipementY, initBraceletPositionX, initBraceletPositionY, $(".Case_Bracelet"));
+        calculePositionEquipement(rationEquipementX, rationEquipementY, initBouclesPositionX, initBouclesPositionY, $(".Case_Boucles"));
+        calculePositionEquipement(rationEquipementX, rationEquipementY, initCollierPositionX, initCollierPositionY, $(".Case_Collier"));
+        calculePositionEquipement(rationEquipementX, rationEquipementY, initChaussurePositionX, initChaussurePositionY, $(".Case_Chaussure"));
+        calculePositionEquipement(rationEquipementX, rationEquipementY, initFlechePositionX, initFlechePositionY, $(".Case_Fleche"));
+        calculePositionEquipement(rationEquipementX, rationEquipementY, initSpecial1PositionX, initSpecial1PositionY, $(".Case_Special1"));
+        calculePositionEquipement(rationEquipementX, rationEquipementY, initSpecial2PositionX, initSpecial2PositionY, $(".Case_Special2"));
+    }
+
+    function calculePositionEquipement(rationEquipementX, rationEquipementY, initObjectPositionX, initObjectPositionY, object) {
+
+        newPositionX = Math.round(parseInt(initObjectPositionX) * rationEquipementX);
+        newPositionY = Math.round(parseInt(initObjectPositionY) * rationEquipementY);
+
+
+        console.log(rationEquipementX);
+        console.log(rationEquipementY);
+
+        object.css("left", newPositionX + "px");
+        object.css("top", newPositionY + "px");
+    }
+
+    $("#imageEquipement").load(function () {
+        redrawCaseEquipement();
+    });
+
+    $(window).resize(function () {
+        redrawCaseEquipement();
+    });
+</script>

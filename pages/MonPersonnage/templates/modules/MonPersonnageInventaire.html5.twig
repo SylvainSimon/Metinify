@@ -1,70 +1,61 @@
-<div class="row">
-    <div class="col-lg-4" style="padding-left: 25px; padding-top: 10px; padding-bottom: 10px;">
-        <div id="Inventaire">
+<div id="Inventaire">
 
-            <div class="Bouton_Inventaire_1 Pointer" data-tooltip="Page 1" data-tooltip-position="top" onclick="Page_Inventaire(1);"> I </div>
-            <div class="Bouton_Inventaire_2 Pointer" data-tooltip="Page 2" data-tooltip-position="top" onclick="Page_Inventaire(2);"> II </div>
-            <div class="Bouton_Inventaire_3 Pointer" data-tooltip="Page 3" data-tooltip-position="top" onclick="Page_Inventaire(3);"> III </div>
-            <div class="Bouton_Inventaire_4 Pointer" data-tooltip="Page 4" data-tooltip-position="top" onclick="Page_Inventaire(4);"> IV </div>
+    <div style="height: 20px; width: 100%; text-align: center;">
+        <div class="Bouton_Inventaire_1 Pointer" data-tooltip="Page 1" data-tooltip-position="top" onclick="Page_Inventaire(1);"> I </div>
+        <div class="Bouton_Inventaire_2 Pointer" data-tooltip="Page 2" data-tooltip-position="top" onclick="Page_Inventaire(2);"> II </div>
+        <div class="Bouton_Inventaire_3 Pointer" data-tooltip="Page 3" data-tooltip-position="top" onclick="Page_Inventaire(3);"> III </div>
+        <div class="Bouton_Inventaire_4 Pointer" data-tooltip="Page 4" data-tooltip-position="top" onclick="Page_Inventaire(4);"> IV </div>
+    </div>
 
-            <script type="text/javascript">
+    <div class="clear"></div>
+    
+    <div style="position: relative;">
+        <img id="imageInventaire" style="width:100%; height:auto;" src="../../images/inventaire.png" />
 
-                function Page_Inventaire(page) {
+        <script type="text/javascript">
 
-                    displayLoading();
+            function Page_Inventaire(page) {
 
-                    $.ajax({
-                        type: "POST",
-                        url: "pages/MonPersonnage/ajax/ajaxInventairePage.php",
-                        data: {"id":{{ idPlayer }}, "page": page},
-                        success: function (msg) {
+                displayLoading();
+                $.ajax({
+                    type: "POST",
+                    url: "pages/MonPersonnage/ajax/ajaxInventairePage.php",
+                    data: {"id":{{ idPlayer }}, "page": page},
+                    success: function (msg) {
 
-                            hideLoading();
-                            $("#Conteneur_Inventaire").html(msg);
-                            redraw();
-                        }
-                    });
-                }
-            </script>
+                        hideLoading();
+                        $("#Conteneur_Inventaire").html(msg);
+                        redrawCaseInventaire();
+                        redraw();
+                    }
+                });
+            }
 
-            <div id="Conteneur_Inventaire">
-                {{ viewInventairePage1|raw }}
-            </div>
+            function redrawCaseInventaire() {
 
+                var widthInventaire = ($("#imageInventaire").prop("width"));
+                var heightInventaire = ($("#imageInventaire").prop("height"));
+
+                $("#Conteneur_Inventaire").css("width", widthInventaire);
+                $("#Conteneur_Inventaire").css("height", heightInventaire);
+
+                $(".Case_Inventaire").css("height", (100 / 9) + "%");
+            }
+
+            $("#imageInventaire").load(function () {
+                redrawCaseInventaire();
+            });
+
+            $(window).resize(function () {
+                redrawCaseInventaire();
+            });
+
+        </script>
+
+
+        <div id="Conteneur_Inventaire">
+            {{ viewInventairePage1|raw }}
         </div>
     </div>
-    <div class="col-lg-8">
-        <div style="max-height: 380px; overflow-y: auto;">
 
-            <div>
-                <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;">
-
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th width="100" style="text-align: right">Nombre</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-
-                        {% if arrObjItems|length > 0 %}
-                            {% for objItem in arrObjItems %}
-                                <tr>
-                                    <td>{{ objItem.localeName|convert_encoding('UTF-8', 'ISO-8859-1') }}</td>
-                                    <td style="text-align: right">{{ objItem.count }}</td>
-                                </tr>
-                            {% endfor %}
-
-                        {% else %}
-                            <tr>
-                                <td colspan="2">Aucuns items dans l'entrepot.</td>
-                            </tr>
-                        {% endif %}
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
-    </div>
 </div>

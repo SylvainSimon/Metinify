@@ -11,11 +11,6 @@ linkClientTorrent: http://vamosmt2.org:81/VamosMT2%20Client%20officiel%202014-20
 
 templateMod: default #halloween #christmas
 
-register:
-    emailActivation: true
-    initCash: 0
-    initMileage: 0
-
 twigCache: false
 twigCacheUrl: /cache/twig
 

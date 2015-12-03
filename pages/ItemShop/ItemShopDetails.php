@@ -9,6 +9,12 @@ class ItemShopDetails extends \PageHelper {
     public $isProtected = true;
     public $strTemplate = "ItemShopDetails.html5.twig";
 
+    public function __construct() {
+        parent::__construct();
+        global $config;
+        parent::moduleIsActivated($config->item_shop["activate"]);
+    }
+    
     public function run() {
         
         global $request;

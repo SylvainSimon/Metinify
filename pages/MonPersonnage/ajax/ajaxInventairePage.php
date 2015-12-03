@@ -7,7 +7,7 @@ require __DIR__ . '../../../../core/initialize.php';
 class ajaxInventairePage extends \ScriptHelper {
 
     public $isProtected = true;
-    public $strTemplate = "ajaxEntrepotPage.html5.twig";
+    public $strTemplate = "ajaxInventairePage.html5.twig";
 
     public function run() {
 
