@@ -506,6 +506,9 @@ label{
     .col-lg-3.specialColumn{ 
         width: 22%;
     }
+    .col-lg-5.specialColumn{ 
+        width: 44.6%;
+    }
 }
 
 .Bouton_Inventaire_1, .Bouton_Inventaire_2, .Bouton_Inventaire_3, .Bouton_Inventaire_4{
@@ -518,6 +521,13 @@ label{
     background: #002C41;
     text-align: center;
     line-height: 17px;
+}
+
+.Bouton_Inventaire_1:hover, 
+.Bouton_Inventaire_2:hover, 
+.Bouton_Inventaire_3:hover, 
+.Bouton_Inventaire_4:hover{
+    background: #013F5D;
 }
 
 .Bouton_Inventaire_1{
@@ -899,4 +909,10 @@ tbody td.lineIcon{
 
 .toast-success{
     background-color: #00A65A !important;
+}
+
+.progress{
+    background-color: #545454;
+    margin-bottom: 15px;
+    border-radius: 0px !important;
 }

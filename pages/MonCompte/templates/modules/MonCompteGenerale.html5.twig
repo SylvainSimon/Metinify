@@ -91,7 +91,7 @@
                         <th class="hidden-md hidden-sm hidden-xs">Classe</th>
                         <th width="30">Lvl</th>
                         <th class="hidden-md hidden-sm hidden-xs">Temps de jeu</th>
-                        <th width="95">Ip</th>
+                        <th class="hidden-md hidden-sm hidden-xs" width="95">Ip</th>
                     </tr>
 
                 </thead>
@@ -104,11 +104,11 @@
 
                             <tr data-tooltip="Voir la fiche détaillée" onclick="Ajax('pages/MonPersonnage/MonPersonnage.php?id={{ encryptForUrl(objPlayers.getId) }}');" class="pointer">
 
-                                <td class="hidden-md hidden-sm hidden-xs">
+                                <td>
                                     {{ findIconJob(objPlayers.job)|raw }}
                                     {{ objPlayers.getName }}
                                 </td>
-                                <td>
+                                <td class="hidden-md hidden-sm hidden-xs">
                                     {{ findSkillGroup(objPlayers.job, objPlayers.skillGroup) }}
                                 </td>
                                 <td>{{ objPlayers.getLevel }}</td>
@@ -117,7 +117,7 @@
                                     {{ getMinutesToString(objPlayers.getPlaytime) }}
                                 </td>
 
-                                <td>{{ objPlayers.getIp }}</td>
+                                <td class="hidden-md hidden-sm hidden-xs">{{ objPlayers.getIp }}</td>
                             </tr>
 
                         {% endfor %}
