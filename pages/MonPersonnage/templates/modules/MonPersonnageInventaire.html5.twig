@@ -1,16 +1,19 @@
-<div id="Inventaire">
+<div id="Inventaire" style="margin-top: 10px;">
 
-    <div style="height: 20px; width: 100%; text-align: center;">
-        <div class="Bouton_Inventaire_1 Pointer" data-tooltip="Page 1" data-tooltip-position="top" onclick="Page_Inventaire(1);"> I </div>
-        <div class="Bouton_Inventaire_2 Pointer" data-tooltip="Page 2" data-tooltip-position="top" onclick="Page_Inventaire(2);"> II </div>
-        <div class="Bouton_Inventaire_3 Pointer" data-tooltip="Page 3" data-tooltip-position="top" onclick="Page_Inventaire(3);"> III </div>
-        <div class="Bouton_Inventaire_4 Pointer" data-tooltip="Page 4" data-tooltip-position="top" onclick="Page_Inventaire(4);"> IV </div>
+    <div style="height: 20px; margin-bottom: 2px; width: 100%; /* text-align: center; */">
+        <div style="float: left;" class="Bouton_Inventaire_1 Pointer" data-tooltip="Page 1" data-tooltip-position="top" onclick="Page_Inventaire(1);" title=""> I </div>
+        <div style="float: left; margin-left: 4%;" class="Bouton_Inventaire_2 Pointer" data-tooltip="Page 2" data-tooltip-position="top" onclick="Page_Inventaire(2);" title=""> II </div>
+        <div style="float: right; margin-left: 4%;" class="Bouton_Inventaire_4 Pointer" data-tooltip="Page 4" data-tooltip-position="top" onclick="Page_Inventaire(4);" title=""> IV </div>
+        <div style="float: right;" class="Bouton_Inventaire_3 Pointer" data-tooltip="Page 3" data-tooltip-position="top" onclick="Page_Inventaire(3);" title=""> III </div>
     </div>
 
     <div class="clear"></div>
-    
+
     <div style="position: relative;">
-        <img id="imageInventaire" style="width:100%; height:auto;" src="../../images/inventaire.png" />
+
+        
+        <img  id="imageInventaire" src="../../images/inventaire.svg" style="width:100%; height:auto;  border: 1px solid #6b645b;"  alt="Blue Square"/>
+
 
         <script type="text/javascript">
 
@@ -33,8 +36,10 @@
 
             function redrawCaseInventaire() {
 
-                var widthInventaire = ($("#imageInventaire").prop("width"));
-                var heightInventaire = ($("#imageInventaire").prop("height"));
+                var widthInventaire = ($("#imageInventaire").css("width"));
+                var heightInventaire = ($("#imageInventaire").css("height"));
+
+                console.log(heightInventaire);
 
                 $("#Conteneur_Inventaire").css("width", widthInventaire);
                 $("#Conteneur_Inventaire").css("height", heightInventaire);
@@ -42,11 +47,11 @@
                 $(".Case_Inventaire").css("height", (100 / 9) + "%");
             }
 
-            $("#imageInventaire").load(function () {
+            $(window).resize(function () {
                 redrawCaseInventaire();
             });
 
-            $(window).resize(function () {
+            $("#imageInventaire").load(function () {
                 redrawCaseInventaire();
             });
 

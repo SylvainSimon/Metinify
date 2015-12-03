@@ -134,11 +134,9 @@ class IndexWebsite extends PageHelper {
                     <div class="content-wrapper">
 
                         <div id="logo">
-
                             <object data="./images/logo.svg" type="image/svg+xml">
                                 <img src="./images/logo.png" />
                             </object>
-
                         </div>
 
 
