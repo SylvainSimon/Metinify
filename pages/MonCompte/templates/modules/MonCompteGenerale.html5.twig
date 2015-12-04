@@ -2,58 +2,174 @@
 
 <div class="tab-pane active" id="Onglet_InformationGeneral">
 
-    <div class="row">
-        <div class="col-lg-4">
-            <table class="table table-condensed" style="border-collapse: collapse;">
-                <tbody>
-                    <tr>
-                        <td style="border-top: 0px;">Date de création</td>
-                        <td style="border-top: 0px;"><span style="font-size: 12px; font-weight: bold;">{{ getFormatedDateTime(objAccount.getCreateTime) }}</span></td>
-                    </tr>
-                    <tr>
-                        <td>IP de création</td></td>
+    <div class="col-lg-5" style="padding-left: 0px; padding-right: 0px;">
 
-                        {% if objAccount.getIpCreation == "" %}
-                            <td>Non-définie</td>
+        <table class="table table-condensed table-hover" style="border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Personnage</th>
+                    <th width="40">Niveau</th>
+                    <th width="142">Expérience</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% if arrObjPlayers|length > 0 %}
+
+                    {% for objPlayer in arrObjPlayers %}
+
+                        <tr onclick="Ajax('pages/MonPersonnage/MonPersonnage.php?id={{ encryptForUrl(objPlayer.getId) }}');" class="pointer">
+
+                            <td>
+                                {{ findIconJob(objPlayer.job)|raw }}
+                                {{ objPlayer.getName }}
+                            </td>
+                            <td style="text-align: center;">{{ objPlayer.getLevel }}</td>
+                            <td style="padding: 0px;">{{ include('experience_bubles.html5.twig', {'myScale': '0.25'}) }}</td>
+                        </tr>
+
+                    {% endfor %}
+
+                {% else %}
+                    <tr>
+                        <td colspan="8">
+                            Aucuns personnages.
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+
+        </table>
+
+        {% if date(objAccount.getAutolootExpire()) > date() %}
+            <div class="col-lg-4" style="margin-top: 10px;">
+                <img src='../images/Bonus/4.png' width='53' />
+                <span id="Compteloot" style="position: relative; left:12px;"></span>
+            </div>                 
+            <script>
+                    $('#Compteloot').countdown('{{ getFormatedDateTime(objAccount.getAutolootExpire, "Y/m/d H:i:s") }}', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+            </script>
+        {% endif %}
+
+        {% if date(objAccount.getGoldExpire()) > date() %}
+            <div class="col-lg-4" style="margin-top: 10px;">
+                <img src='../images/Bonus/1.png' width='53' />
+                <span id="Comptegold" style="position: relative; left:12px;"></span>
+            </div>
+            <script>
+                    $('#Comptegold').countdown('{{ getFormatedDateTime(objAccount.getGoldExpire, "Y/m/d H:i:s") }}', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+            </script>
+        {% endif %}
+
+        {% if date(objAccount.getSilverExpire()) > date() %}
+            <div class="col-lg-4" style="margin-top: 10px;">
+                <img src='../images/Bonus/2.png' width='53' />
+                <span id="Comptesilver" style="position: relative; left:12px;"></span>
+            </div>                
+            <script>
+                    $('#Comptesilver').countdown('{{ getFormatedDateTime(objAccount.getSilverExpire, "Y/m/d H:i:s") }}', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+            </script>
+        {% endif %}
+
+        {% if date(objAccount.getMarriageFastExpire()) > date() %}
+            <div class="col-lg-4" style="margin-top: 10px;">
+                <img src='../images/Bonus/6.png' width='53' />
+                <span id="Comptelove" style="position: relative; left:12px;"></span>
+            </div>                 
+            <script>
+                    $('#Comptelove').countdown('{{ getFormatedDateTime(objAccount.getMarriageFastExpire, "Y/m/d H:i:s") }}', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+            </script>
+        {% endif %}
+
+        {% if date(objAccount.getSafeboxExpire()) > date() %}
+            <div class="col-lg-4" style="margin-top: 10px;">
+                <img src='../images/Bonus/3.png' width='53' />
+                <span id="Comptesafebox" style="position: relative; left:12px;"></span>
+            </div>                 
+            <script>
+                    $('#Comptesafebox').countdown('{{ getFormatedDateTime(objAccount.getSafeboxExpire, "Y/m/d H:i:s") }}', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+            </script>
+        {% endif %}
+
+        {% if date(objAccount.getMoneyDropRateExpire()) > date() %}
+            <div class="col-lg-4" style="margin-top: 10px;">
+                <img src='../images/Bonus/7.png' width='53' />
+                <span id="Comptemonnaie" style="position: relative; left:12px;"></span>
+            </div>                 
+            <script>
+                    $('#Comptemonnaie').countdown('{{ getFormatedDateTime(objAccount.getMoneyDropRateExpire, "Y/m/d H:i:s") }}', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+            </script>
+        {% endif %}
+
+        {% if date(objAccount.getFishMindExpire()) > date() %}
+            <div class="col-lg-4" style="margin-top: 10px;">
+                <img src='../images/Bonus/5.png' width='53' />
+                <span id="Comptepeche" style="position: relative; left:12px;"></span>
+            </div>                 
+            <script>
+                    $('#Comptepeche').countdown('{{ getFormatedDateTime(objAccount.getFishMindExpire, "Y/m/d H:i:s") }}', function (event) {
+                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                    });
+            </script>
+        {% endif %}
+    </div>
+
+    <div class="col-lg-4 specialColumn" style="padding-left: 10px; padding-right: 10px;">
+        <table class="table table-condensed" style="border-collapse: collapse;">
+            <tbody>
+                <tr>
+                    <td style="border-top: 0px;">Date de création</td>
+                    <td style="border-top: 0px;"><span style="font-size: 12px; font-weight: bold;">{{ getFormatedDateTime(objAccount.getCreateTime) }}</span></td>
+                </tr>
+                <tr>
+                    <td>Empire</td>
+                    <td style="line-height: 10px;">
+                        {{ findIconEmpire(objPlayerIndex.empire)|raw }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>E-mail</td>
+                    <td>
+                        {{ objAccount.getEmail|truncate(8, false, "●●●●") }}
+                        <i data-tooltip="Modifier mon E-mail" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/modules/EmailChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Mot de passe</td>
+                    <td>
+                        ●●●●●●●●●●●●
+                        <i data-tooltip="Modifier mon mot de passe" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/modules/PasswordChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Code d'effacement</td>
+                    <td>
+                        {% if objAccount.getCodeEffacement == "" %}
+                            Aucun code définie
+                            <i data-tooltip="Définir mon code d'effacement" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/modules/CodeEffacementCreateForm.php');" class="pull-right Pointer material-icons md-icon-add"></i>
                         {% else %}
-                            <td>{{ objAccount.getIpCreation }}</td>
-                        {% endif %}
-                    </tr>
-                    <tr>
-                        <td>Empire</td>
-                        <td style="line-height: 10px;">
-                            {{ findIconEmpire(objPlayerIndex.empire)|raw }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>E-mail :</td>
-                        <td>
-                            {{ objAccount.getEmail|truncate(8, false, "●●●●") }}
-                            <i data-tooltip="Modifier mon E-mail" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/modules/EmailChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
+                            <span id="Code_Effacement">●●●●●●●</span>
 
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td>Mot de passe :</td>
-                        <td>
-                            ●●●●●●●●●●●●
-                            <i data-tooltip="Modifier mon mot de passe" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/modules/PasswordChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
-                        </td>
-
-                    </tr>
-
-                    <tr>
-                        <td>Code d'effacement :</td>
-                        <td>
-                            {% if objAccount.getCodeEffacement == "" %}
-                                Aucun code définie
-                                <i data-tooltip="Définir mon code d'effacement" data-tooltip-position="right" onclick="Ajax('pages/MonCompte/modules/CodeEffacementCreateForm.php');" class="pull-right Pointer material-icons md-icon-add"></i>
-                            {% else %}
-                                <span id="Code_Effacement">●●●●●●●</span>
-
-                                <i style="margin-left: 5px;" data-tooltip="Modifier mon code" onclick="Ajax('pages/MonCompte/modules/CodeEffacementChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
-                                <i data-tooltip="Voir le code" onclick="if (Clique_Code_Effacement == 0) {
+                            <i style="margin-left: 5px;" data-tooltip="Modifier mon code" onclick="Ajax('pages/MonCompte/modules/CodeEffacementChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
+                            <i data-tooltip="Voir le code" onclick="if (Clique_Code_Effacement == 0) {
                                             $('#Code_Effacement').html('{{ objAccount.getCodeEffacement }}');
                                             Clique_Code_Effacement = 1;
                                         } else {
@@ -61,169 +177,29 @@
                                             Clique_Code_Effacement = 0;
                                         }
                                         ;" class="pull-right Pointer material-icons md-icon-visible"></i>
-                            {% endif %}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Code entrepôt :</td>
-
-                        {% if objSafebox.size == "" %}
-                            <td>Entrepot non-crée.</td>
-                        {% else %}
-                            <td id="Code_Entrepot">
-                                ●●●●●●
-
-                                <i style="margin-left: 5px;"  data-tooltip="Modifier mon code" onclick="Ajax('pages/MonCompte/modules/CodeEntrepotChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
-                                <i data-tooltip="Récupérer le code entrepôt" onclick="Ajax('pages/MonCompte/modules/CodeEntrepotForgottenEmail.php');" class="pull-right Pointer material-icons md-icon-settings_backup_restore text-blue"></i>
-                            </td>
                         {% endif %}
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Code entrepôt</td>
 
-        <div class="col-lg-8">
-
-            <table class="table table-condensed table-hover" style="border-collapse: collapse;">
-                <thead>
-                    <tr>
-                        <th width="170">Personnage</th>
-                        <th class="hidden-md hidden-sm hidden-xs">Classe</th>
-                        <th width="30">Lvl</th>
-                        <th class="hidden-md hidden-sm hidden-xs">Temps de jeu</th>
-                        <th class="hidden-md hidden-sm hidden-xs" width="95">Ip</th>
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    {% if arrObjPlayers|length > 0 %}
-
-                        {% for objPlayers in arrObjPlayers %}
-
-                            <tr data-tooltip="Voir la fiche détaillée" onclick="Ajax('pages/MonPersonnage/MonPersonnage.php?id={{ encryptForUrl(objPlayers.getId) }}');" class="pointer">
-
-                                <td>
-                                    {{ findIconJob(objPlayers.job)|raw }}
-                                    {{ objPlayers.getName }}
-                                </td>
-                                <td class="hidden-md hidden-sm hidden-xs">
-                                    {{ findSkillGroup(objPlayers.job, objPlayers.skillGroup) }}
-                                </td>
-                                <td>{{ objPlayers.getLevel }}</td>
-
-                                <td class="hidden-md hidden-sm hidden-xs">
-                                    {{ getMinutesToString(objPlayers.getPlaytime) }}
-                                </td>
-
-                                <td class="hidden-md hidden-sm hidden-xs">{{ objPlayers.getIp }}</td>
-                            </tr>
-
-                        {% endfor %}
-
+                    {% if objSafebox.size == "" %}
+                        <td>Entrepot non-crée.</td>
                     {% else %}
-                        <tr>
-                            <td colspan="8">
-                                Aucuns personnages.
-                            </td>
-                        </tr>
+                        <td id="Code_Entrepot">
+                            ●●●●●●
+
+                            <i style="margin-left: 5px;"  data-tooltip="Modifier mon code" onclick="Ajax('pages/MonCompte/modules/CodeEntrepotChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
+                            <i data-tooltip="Récupérer le code entrepôt" onclick="Ajax('pages/MonCompte/modules/CodeEntrepotForgottenEmail.php');" class="pull-right Pointer material-icons md-icon-settings_backup_restore text-blue"></i>
+                        </td>
                     {% endif %}
-                </tbody>
-
-            </table>
-        </div>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-    <div class="row" style="margin-bottom: 10px;">
-
-
-        <div class="col-md-12">
-
-            {% if date(objAccount.getAutolootExpire()) > date() %}
-                <div class="col-lg-4" style="margin-top: 10px;">
-                    <img src='../images/Bonus/4.png' width='53' />
-                    <span id="Compteloot" style="position: relative; left:12px;"></span>
-                </div>                 
-                <script>
-                    $('#Compteloot').countdown('{{ getFormatedDateTime(objAccount.getAutolootExpire, "Y/m/d H:i:s") }}', function (event) {
-                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
-                    });
-                </script>
-            {% endif %}
-
-            {% if date(objAccount.getGoldExpire()) > date() %}
-                <div class="col-lg-4" style="margin-top: 10px;">
-                    <img src='../images/Bonus/1.png' width='53' />
-                    <span id="Comptegold" style="position: relative; left:12px;"></span>
-                </div>
-                <script>
-                    $('#Comptegold').countdown('{{ getFormatedDateTime(objAccount.getGoldExpire, "Y/m/d H:i:s") }}', function (event) {
-                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
-                    });
-                </script>
-            {% endif %}
-
-            {% if date(objAccount.getSilverExpire()) > date() %}
-                <div class="col-lg-4" style="margin-top: 10px;">
-                    <img src='../images/Bonus/2.png' width='53' />
-                    <span id="Comptesilver" style="position: relative; left:12px;"></span>
-                </div>                
-                <script>
-                    $('#Comptesilver').countdown('{{ getFormatedDateTime(objAccount.getSilverExpire, "Y/m/d H:i:s") }}', function (event) {
-                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
-                    });
-                </script>
-            {% endif %}
-
-            {% if date(objAccount.getMarriageFastExpire()) > date() %}
-                <div class="col-lg-4" style="margin-top: 10px;">
-                    <img src='../images/Bonus/6.png' width='53' />
-                    <span id="Comptelove" style="position: relative; left:12px;"></span>
-                </div>                 
-                <script>
-                    $('#Comptelove').countdown('{{ getFormatedDateTime(objAccount.getMarriageFastExpire, "Y/m/d H:i:s") }}', function (event) {
-                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
-                    });
-                </script>
-            {% endif %}
-
-            {% if date(objAccount.getSafeboxExpire()) > date() %}
-                <div class="col-lg-4" style="margin-top: 10px;">
-                    <img src='../images/Bonus/3.png' width='53' />
-                    <span id="Comptesafebox" style="position: relative; left:12px;"></span>
-                </div>                 
-                <script>
-                    $('#Comptesafebox').countdown('{{ getFormatedDateTime(objAccount.getSafeboxExpire, "Y/m/d H:i:s") }}', function (event) {
-                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
-                    });
-                </script>
-            {% endif %}
-
-            {% if date(objAccount.getMoneyDropRateExpire()) > date() %}
-                <div class="col-lg-4" style="margin-top: 10px;">
-                    <img src='../images/Bonus/7.png' width='53' />
-                    <span id="Comptemonnaie" style="position: relative; left:12px;"></span>
-                </div>                 
-                <script>
-                    $('#Comptemonnaie').countdown('{{ getFormatedDateTime(objAccount.getMoneyDropRateExpire, "Y/m/d H:i:s") }}', function (event) {
-                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
-                    });
-                </script>
-            {% endif %}
-
-            {% if date(objAccount.getFishMindExpire()) > date() %}
-                <div class="col-lg-4" style="margin-top: 10px;">
-                    <img src='../images/Bonus/5.png' width='53' />
-                    <span id="Comptepeche" style="position: relative; left:12px;"></span>
-                </div>                 
-                <script>
-                    $('#Comptepeche').countdown('{{ getFormatedDateTime(objAccount.getFishMindExpire, "Y/m/d H:i:s") }}', function (event) {
-                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
-                    });
-                </script>
-            {% endif %}
-        </div>
+    <div class="col-lg-3 specialColumn">
+        {{ viewEntrepot|raw }}
     </div>
-    <div class="clearfix"></div>
+
 </div>

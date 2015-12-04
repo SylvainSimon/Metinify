@@ -1,0 +1,93 @@
+{% set expNecessaire = helpLevel(objPlayer.level) %}
+{% set expPart1 = (expNecessaire / 4) %}
+{% set expPart2 = expPart1 + expPart1 %}
+{% set expPart3 = expPart2 + expPart1 %}
+{% set expPart4 = expPart3 + expPart1 %}
+{% set expActuel = objPlayer.getExp %}
+{% set proportionTotal = ((expActuel / expNecessaire) * 100)|round(2, 'floor') %}
+
+<div style="display: inline;" data-tooltip="{{ proportionTotal }} %" data-tooltip-track="1" data-tooltip-isItemMetin="1">
+    <svg height="32" width="32"> 
+    <a transform="translate(16,16) scale({{ myScale }}) rotate(180)">
+        <g>
+        <circle r="50" stroke="grey" stroke-width="2" fill="none"></circle>
+        </g>
+        <g>
+        <clipPath id="g-clip1_{{ objPlayer.id }}">
+            {% if expActuel >= expPart1 %}
+                <rect id="g-clip-rect" y="-50" height="100" x="-50" width="100"></rect>
+            {% elseif expActuel > 0 %}
+                {% set proportionPx1 = ((expActuel) / expPart1 * 100)|round %}
+                <rect id="g-clip-rect" y="-50" height="{{ proportionPx1 }}" x="-50" width="100"></rect>
+            {% else %}
+                <rect id="g-clip-rect" y="-50" height="0" x="-50" width="100"></rect>
+            {% endif %}
+        </clipPath>
+        <circle clip-path="url(#g-clip1_{{ objPlayer.id }})" r="47" fill="#CCCC00" ></circle>
+        </g>
+    </a>
+    </svg>
+
+    <svg height="32" width="32"> 
+    <a transform="translate(16,16) scale({{ myScale }}) rotate(180)">
+        <g>
+        <circle r="50" stroke="grey" stroke-width="2" fill="none"></circle>
+        </g>
+        <g>
+        <clipPath id="g-clip2_{{ objPlayer.id }}">
+            {% if expActuel >= expPart2 %}
+                <rect id="g-clip-rect" y="-50" height="100" x="-50" width="100"></rect>
+            {% elseif expActuel > expPart1 %}
+                {% set proportionPx2 = ((expActuel - expPart1) / expPart1 * 100)|round %}
+                <rect id="g-clip-rect" y="-50" height="{{ proportionPx2 }}" x="-50" width="100"></rect>
+            {% else %}
+                <rect id="g-clip-rect" y="-50" height="0" x="-50" width="100"></rect>
+            {% endif %}
+        </clipPath>
+        <circle clip-path="url(#g-clip2_{{ objPlayer.id }})" r="47" fill="#CCCC00" ></circle>
+        </g>
+    </a>
+    </svg>
+
+    <svg height="32" width="32"> 
+    <a transform="translate(16,16) scale({{ myScale }}) rotate(180)">
+        <g>
+        <circle r="50" stroke="grey" stroke-width="2" fill="none"></circle>
+        </g>
+        <g>
+        <clipPath id="g-clip3_{{ objPlayer.id }}">
+            {% if expActuel >= expPart3 %}
+                <rect id="g-clip-rect" y="-50" height="100" x="-50" width="100"></rect>
+            {% elseif expActuel > expPart2 %}
+                {% set proportionPx3 = ((expActuel - expPart2) / expPart1 * 100)|round %}
+                <rect id="g-clip-rect" y="-50" height="{{ proportionPx3 }}" x="-50" width="100"></rect>
+            {% else %}
+                <rect id="g-clip-rect" y="-50" height="0" x="-50" width="100"></rect>
+            {% endif %}
+        </clipPath>
+        <circle clip-path="url(#g-clip3_{{ objPlayer.id }})" r="47" fill="#CCCC00" ></circle>
+        </g>
+    </a>
+    </svg>
+
+    <svg height="32" width="32"> 
+    <a transform="translate(16,16) scale({{ myScale }}) rotate(180)">
+        <g>
+        <circle r="50" stroke="grey" stroke-width="2" fill="none"></circle>
+        </g>
+        <g>
+        <clipPath id="g-clip4_{{ objPlayer.id }}">
+            {% if expActuel >= expPart4 %}
+                <rect id="g-clip-rect" y="-50" height="100" x="-50" width="100"></rect>
+            {% elseif expActuel > expPart3 %}
+                {% set proportionPx4 = ((expActuel - expPart3) / expPart1 * 100)|round %}
+                <rect id="g-clip-rect" y="-50" height="{{ proportionPx4 }}" x="-50" width="100"></rect>
+            {% else %}
+                <rect id="g-clip-rect" y="-50" height="0" x="-50" width="100"></rect>
+            {% endif %}
+        </clipPath>
+        <circle clip-path="url(#g-clip4_{{ objPlayer.id }})" r="47" fill="#CCCC00" ></circle>
+        </g>
+    </a>
+    </svg>
+</div>

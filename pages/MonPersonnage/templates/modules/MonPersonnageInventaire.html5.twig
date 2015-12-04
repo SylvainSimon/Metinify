@@ -11,9 +11,7 @@
 
     <div style="position: relative;">
 
-        
-        <img  id="imageInventaire" src="../../images/inventaire.svg" style="width:100%; height:auto;  border: 1px solid #6b645b;"  alt="Blue Square"/>
-
+        <img id="imageInventaire" src="../../images/inventaire.svg" style="width:100%; height:auto;  border: 1px solid #6b645b;"/>
 
         <script type="text/javascript">
 
@@ -52,6 +50,10 @@
             });
 
             $("#imageInventaire").load(function () {
+                redrawCaseInventaire();
+            });
+            
+            $("#imageInventaire").ready(function () {
                 redrawCaseInventaire();
             });
 

@@ -1,70 +1,64 @@
+<h4>Entrepot</h4>
+<div id="Entrepot" style="margin-top: 10px;">
+    <div style="position: relative;">
 
-<div class="row">
-    <div class="col-lg-4" style="padding-left: 25px; padding-top: 10px; padding-bottom: 10px;">
-        <div id="Entrepot">
+        <img id="imageEntrepot" src="../../images/inventaire.svg" style="width:100%; height:auto;  border: 1px solid #6b645b;"/>
 
-            <div data-tooltip="Page 1" class="Bouton_Entrepot_1 Pointer" onclick="Page_Entrepot(1);"> I </div>
-            <div data-tooltip="Page 2" class="Bouton_Entrepot_2 Pointer" onclick="Page_Entrepot(2);"> II </div>
-            <div data-tooltip="Page 3" class="Bouton_Entrepot_3 Pointer" onclick="Page_Entrepot(3);"> III </div>
+        <script type="text/javascript">
 
-            <script type="text/javascript">
+            function Page_Entrepot(page) {
 
-                function Page_Entrepot(page) {
+                displayLoading();
 
-                    displayLoading();
+                $.ajax({
+                    type: "POST",
+                    url: "pages/MonCompte/ajax/ajaxEntrepotPage.php",
+                    data: {"id":{{ objAccount.getId }}, "page": page},
+                    success: function (msg) {
 
-                    $.ajax({
-                        type: "POST",
-                        url: "pages/MonCompte/ajax/ajaxEntrepotPage.php",
-                        data: {"id":{{ objAccount.getId }}, "page": page},
-                        success: function (msg) {
+                        hideLoading();
+                        $("#Conteneur_Entrepot").html(msg);
+                        redrawCaseEntrepot();
+                        redraw();
+                    }
+                });
+            }
 
-                            hideLoading();
-                            $("#Conteneur_Entrepot").html(msg);
-                            redraw();
-                        }
-                    });
-                }
-            </script>
+            function redrawCaseEntrepot() {
 
-            <div id="Conteneur_Entrepot">
-                {{ viewEntrepotPage1|raw }}
-            </div>
+                var widthInventaire = ($("#imageEntrepot").css("width"));
+                var heightInventaire = ($("#imageEntrepot").css("height"));
 
+                console.log(heightInventaire);
+
+                $("#Conteneur_Entrepot").css("width", widthInventaire);
+                $("#Conteneur_Entrepot").css("height", heightInventaire);
+
+                $(".Case_Inventaire").css("height", (100 / 9) + "%");
+            }
+
+            $(window).resize(function () {
+                redrawCaseEntrepot();
+            });
+
+
+            $("#imageEntrepot").load(function () {
+                redrawCaseEntrepot();
+            });
+
+            $("#imageEntrepot").ready(function () {
+                redrawCaseEntrepot();
+            });
+
+        </script>
+
+        <div id="Conteneur_Entrepot">
+            {{ viewEntrepotPage1|raw }}
         </div>
     </div>
-    <div class="col-lg-8">
-        <div style="max-height: 380px; overflow-y: auto;">
-
-            <div>
-                <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;">
-
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th width="100" style="text-align: right">Nombre</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-
-                        {% if arrObjItems|length > 0 %}
-                            {% for objItem in arrObjItems %}
-                                <tr>
-                                    <td>{{ objItem.localeName|convert_encoding('UTF-8', 'ISO-8859-1') }}</td>
-                                    <td style="text-align: right">{{ objItem.count }}</td>
-                                </tr>
-                            {% endfor %}
-
-                        {% else %}
-                            <tr>
-                                <td colspan="2">Aucuns items dans l'entrepot.</td>
-                            </tr>
-                        {% endif %}
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
-    </div>
+</div>
+<div style="margin-top: 4px; margin-bottom: 15px; padding-bottom: 15px;">
+    <div style="float: left;" class="Bouton_Entrepot Pointer" onclick="Page_Entrepot(1);"> I </div>
+    <div style="float: left; margin-left: 5%;" class="Bouton_Entrepot Pointer" onclick="Page_Entrepot(2);"> II </div>
+    <div style="float: right;" class="Bouton_Entrepot Pointer" onclick="Page_Entrepot(3);"> III </div>
 </div>

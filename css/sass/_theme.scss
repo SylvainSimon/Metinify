@@ -506,6 +506,9 @@ label{
     .col-lg-3.specialColumn{ 
         width: 22%;
     }
+    .col-lg-4.specialColumn{ 
+        width: 36%;
+    }
     .col-lg-5.specialColumn{ 
         width: 44.6%;
     }
@@ -530,99 +533,44 @@ label{
     background: #013F5D;
 }
 
-.Bouton_Inventaire_1{
-    top: 8px;
-    left: 9px;
-}
-
-.Bouton_Inventaire_2{
-    top: 8px;
-    left:48px;
-}
-
-.Bouton_Inventaire_3{
-    top: 8px;
-    left:87px;
-}
-
-.Bouton_Inventaire_4{
-    top: 8px;
-    left:126px;
-}
-
 
 
 /*--------------------------ENTREPOT---------------------------*/
 #Entrepot{
-    width: 169px;
-    height: 357px;
-    background: url('../../images/entrepot.png') no-repeat;
-    border-radius: 8px;
+    width: 100%;
+    height: auto;
 }
 
 #Conteneur_Entrepot{
 
-    position: relative;
+    position: absolute;
     width: 160px;
     height: 288px;
 
-    top: 30px;
-    left:5px;
+    top: 0px;
+    left:0px;
     overflow: hidden;
 
-    font-size: 0px; 
-    letter-spacing: 0px;
+    font-size: 1px; 
+    letter-spacing: -1px;
     word-spacing: -1px;
-
 }
 
-.Bouton_Entrepot_1{
-
-    position: absolute;
-    top: 338px;
-    left: 33px;
-    height: 20px;
-    width: 50px;
+.Bouton_Entrepot{
+    height: 19px;
+    display: inline-block;
+    width: 30%;
+    margin: 0px;
+    padding: 0px;
     border: 1px solid #5D5D5D;
-    text-align: center;
-    color: white;
-    font-size: 14px;
-    line-height: 18px;
     background: #002C41;
+    text-align: center;
+    line-height: 17px;
 }
 
-.Bouton_Entrepot_2{
-
-    position: absolute;
-    top: 338px;
-    left: 85px;
-    height: 20px;
-    width: 50px;
-    border: 1px solid #5D5D5D;
-    text-align: center;
-    color: white;
-    font-size: 14px;
-    line-height: 18px;
-    background: #002C41;
-
+.Bouton_Entrepot:hover{
+    background: #013F5D;
 }
-
-.Bouton_Entrepot_3{
-
-    position: absolute;
-    top: 338px;
-    left: 137px;
-    height: 20px;
-    width: 50px;
-    border: 1px solid #5D5D5D;
-    text-align: center;
-    color: white;
-    font-size: 14px;
-    line-height: 18px;
-    background: #002C41;
-
-}
-
 /* ----------------- Entrepot IS ------------------- */
 
 #Entrepot_IS{

@@ -14,7 +14,7 @@
 
         {% endif %}
 
-        <div class="Case_Inventaire">
+        <div class="Case_Inventaire" style="position: relative;">
 
             {% if objItem.chemin != "" %}
 
@@ -22,25 +22,26 @@
 
                     {% if objItem.size  == "1" %}
                         <img id="cade_id_{{ objItem.id }}" src="{{ objItem.chemin }}" style="display: inline; cursor: default; width: 80%; padding-top: 10%; position: relative;" />
+                    {% elseif objItem.size  == "2" %}
+                        <img id="cade_id_{{ objItem.id }}" src="{{ objItem.chemin }}" style="display: inline; cursor: default; width: 90%; position: relative; padding-top: 8%;" />
                     {% else %}
                         <img id="cade_id_{{ objItem.id }}" src="{{ objItem.chemin }}" style="display: inline; cursor: default; width: 100%; position: relative;" />
                     {% endif %}
-                    
-                    {% if objItem.flag == 4 or objItem.flag == 20 or objItem.flag == 132 or objItem.flag == 2052 or objItem.flag == 8212 %}  
-                        <span style="position: absolute; bottom: 0; right: 4px;">
-                            {% if objItem.count < 100 %}
-                                {% if objItem.count < 10 %}
-                                    &nbsp;&nbsp;&nbsp;&nbsp;{{ objItem.count }}
-                                {% else %}
-                                    &nbsp;&nbsp;{{ objItem.count }}
-                                {% endif %}
-                            {% else %}
-                                {{ objItem.count }}
-                            {% endif %}
-                        </span>
-                    {% endif %}
-
                 </div>
+
+                {% if objItem.flag == 4 or objItem.flag == 20 or objItem.flag == 132 or objItem.flag == 2052 or objItem.flag == 8212 %}  
+                    <span style="position: absolute; bottom: 1px; right: 1px;">
+                        {% if objItem.count < 100 %}
+                            {% if objItem.count < 10 %}
+                                &nbsp;&nbsp;&nbsp;&nbsp;{{ objItem.count }}
+                            {% else %}
+                                &nbsp;&nbsp;{{ objItem.count }}
+                            {% endif %}
+                        {% else %}
+                            {{ objItem.count }}
+                        {% endif %}
+                    </span>
+                {% endif %}
 
             {% else %}
                 <div class="Interieur_Case">
