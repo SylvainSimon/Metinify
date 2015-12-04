@@ -44,103 +44,99 @@
         </table>
 
         {% if date(objAccount.getAutolootExpire()) > date() %}
-            <div class="col-lg-4" style="margin-top: 10px;">
+            <div class="col-lg-12" style="margin-top: 10px;">
                 <img src='../images/Bonus/4.png' width='53' />
                 <span id="Compteloot" style="position: relative; left:12px;"></span>
             </div>                 
             <script>
-                    $('#Compteloot').countdown('{{ getFormatedDateTime(objAccount.getAutolootExpire, "Y/m/d H:i:s") }}', function (event) {
-                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
-                    });
+                $('#Compteloot').countdown('{{ getFormatedDateTime(objAccount.getAutolootExpire, "Y/m/d H:i:s") }}', function (event) {
+                    $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                });
             </script>
         {% endif %}
 
         {% if date(objAccount.getGoldExpire()) > date() %}
-            <div class="col-lg-4" style="margin-top: 10px;">
+            <div class="col-lg-12" style="margin-top: 10px;">
                 <img src='../images/Bonus/1.png' width='53' />
                 <span id="Comptegold" style="position: relative; left:12px;"></span>
             </div>
             <script>
-                    $('#Comptegold').countdown('{{ getFormatedDateTime(objAccount.getGoldExpire, "Y/m/d H:i:s") }}', function (event) {
-                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
-                    });
+                $('#Comptegold').countdown('{{ getFormatedDateTime(objAccount.getGoldExpire, "Y/m/d H:i:s") }}', function (event) {
+                    $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                });
             </script>
         {% endif %}
 
         {% if date(objAccount.getSilverExpire()) > date() %}
-            <div class="col-lg-4" style="margin-top: 10px;">
+            <div class="col-lg-12" style="margin-top: 10px;">
                 <img src='../images/Bonus/2.png' width='53' />
                 <span id="Comptesilver" style="position: relative; left:12px;"></span>
             </div>                
             <script>
-                    $('#Comptesilver').countdown('{{ getFormatedDateTime(objAccount.getSilverExpire, "Y/m/d H:i:s") }}', function (event) {
-                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
-                    });
+                $('#Comptesilver').countdown('{{ getFormatedDateTime(objAccount.getSilverExpire, "Y/m/d H:i:s") }}', function (event) {
+                    $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                });
             </script>
         {% endif %}
 
         {% if date(objAccount.getMarriageFastExpire()) > date() %}
-            <div class="col-lg-4" style="margin-top: 10px;">
+            <div class="col-lg-12" style="margin-top: 10px;">
                 <img src='../images/Bonus/6.png' width='53' />
                 <span id="Comptelove" style="position: relative; left:12px;"></span>
             </div>                 
             <script>
-                    $('#Comptelove').countdown('{{ getFormatedDateTime(objAccount.getMarriageFastExpire, "Y/m/d H:i:s") }}', function (event) {
-                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
-                    });
+                $('#Comptelove').countdown('{{ getFormatedDateTime(objAccount.getMarriageFastExpire, "Y/m/d H:i:s") }}', function (event) {
+                    $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                });
             </script>
         {% endif %}
 
         {% if date(objAccount.getSafeboxExpire()) > date() %}
-            <div class="col-lg-4" style="margin-top: 10px;">
+            <div class="col-lg-12" style="margin-top: 10px;">
                 <img src='../images/Bonus/3.png' width='53' />
                 <span id="Comptesafebox" style="position: relative; left:12px;"></span>
             </div>                 
             <script>
-                    $('#Comptesafebox').countdown('{{ getFormatedDateTime(objAccount.getSafeboxExpire, "Y/m/d H:i:s") }}', function (event) {
-                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
-                    });
+                $('#Comptesafebox').countdown('{{ getFormatedDateTime(objAccount.getSafeboxExpire, "Y/m/d H:i:s") }}', function (event) {
+                    $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                });
             </script>
         {% endif %}
 
         {% if date(objAccount.getMoneyDropRateExpire()) > date() %}
-            <div class="col-lg-4" style="margin-top: 10px;">
+            <div class="col-lg-12" style="margin-top: 10px;">
                 <img src='../images/Bonus/7.png' width='53' />
                 <span id="Comptemonnaie" style="position: relative; left:12px;"></span>
             </div>                 
             <script>
-                    $('#Comptemonnaie').countdown('{{ getFormatedDateTime(objAccount.getMoneyDropRateExpire, "Y/m/d H:i:s") }}', function (event) {
-                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
-                    });
+                $('#Comptemonnaie').countdown('{{ getFormatedDateTime(objAccount.getMoneyDropRateExpire, "Y/m/d H:i:s") }}', function (event) {
+                    $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                });
             </script>
         {% endif %}
 
         {% if date(objAccount.getFishMindExpire()) > date() %}
-            <div class="col-lg-4" style="margin-top: 10px;">
+            <div class="col-lg-12" style="margin-top: 10px;">
                 <img src='../images/Bonus/5.png' width='53' />
                 <span id="Comptepeche" style="position: relative; left:12px;"></span>
             </div>                 
             <script>
-                    $('#Comptepeche').countdown('{{ getFormatedDateTime(objAccount.getFishMindExpire, "Y/m/d H:i:s") }}', function (event) {
-                        $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
-                    });
+                $('#Comptepeche').countdown('{{ getFormatedDateTime(objAccount.getFishMindExpire, "Y/m/d H:i:s") }}', function (event) {
+                    $(this).html(event.strftime('%-m mois / %-D %!d:jour,jours; %-H:%M:%S'));
+                });
             </script>
         {% endif %}
     </div>
 
     <div class="col-lg-4 specialColumn" style="padding-left: 10px; padding-right: 10px;">
+
+        <h4>Compte 
+            <span class="pull-right">{{ findIconEmpire(objPlayerIndex.empire)|raw }}</span>
+        </h4>
+        Inscrit le {{ getFormatedDateTime(objAccount.getCreateTime, "d/m/Y à H:i") }}
+
         <table class="table table-condensed" style="border-collapse: collapse;">
             <tbody>
-                <tr>
-                    <td style="border-top: 0px;">Date de création</td>
-                    <td style="border-top: 0px;"><span style="font-size: 12px; font-weight: bold;">{{ getFormatedDateTime(objAccount.getCreateTime) }}</span></td>
-                </tr>
-                <tr>
-                    <td>Empire</td>
-                    <td style="line-height: 10px;">
-                        {{ findIconEmpire(objPlayerIndex.empire)|raw }}
-                    </td>
-                </tr>
                 <tr>
                     <td>E-mail</td>
                     <td>
@@ -170,35 +166,31 @@
 
                             <i style="margin-left: 5px;" data-tooltip="Modifier mon code" onclick="Ajax('pages/MonCompte/modules/CodeEffacementChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
                             <i data-tooltip="Voir le code" onclick="if (Clique_Code_Effacement == 0) {
-                                            $('#Code_Effacement').html('{{ objAccount.getCodeEffacement }}');
-                                            Clique_Code_Effacement = 1;
-                                        } else {
-                                            $('#Code_Effacement').html('●●●●●●●');
-                                            Clique_Code_Effacement = 0;
-                                        }
-                                        ;" class="pull-right Pointer material-icons md-icon-visible"></i>
+                                        $('#Code_Effacement').html('{{ objAccount.getCodeEffacement }}');
+                                        Clique_Code_Effacement = 1;
+                                    } else {
+                                        $('#Code_Effacement').html('●●●●●●●');
+                                        Clique_Code_Effacement = 0;
+                                    }
+                                    ;" class="pull-right Pointer material-icons md-icon-visible"></i>
                         {% endif %}
                     </td>
-                </tr>
-                <tr>
-                    <td>Code entrepôt</td>
-
-                    {% if objSafebox.size == "" %}
-                        <td>Entrepot non-crée.</td>
-                    {% else %}
-                        <td id="Code_Entrepot">
-                            ●●●●●●
-
-                            <i style="margin-left: 5px;"  data-tooltip="Modifier mon code" onclick="Ajax('pages/MonCompte/modules/CodeEntrepotChangeForm.php');" class="pull-right Pointer material-icons md-icon-edit text-yellow"></i>
-                            <i data-tooltip="Récupérer le code entrepôt" onclick="Ajax('pages/MonCompte/modules/CodeEntrepotForgottenEmail.php');" class="pull-right Pointer material-icons md-icon-settings_backup_restore text-blue"></i>
-                        </td>
-                    {% endif %}
                 </tr>
             </tbody>
         </table>
     </div>
 
     <div class="col-lg-3 specialColumn">
+        <h4>Entrepot
+            <span class="pull-right" style="position: relative; top:2px;">
+                {% if objSafebox.size == "" %}
+                    <i data-tooltip="L'entrepôt n'éxiste pas encore" class="Pointer material-icons md-icon-close text-red md-20"></i>
+                {% else %}
+                    <i data-tooltip="Récupérer le code entrepôt" onclick="Ajax('pages/MonCompte/modules/CodeEntrepotForgottenEmail.php');" class="Pointer material-icons md-icon-settings_backup_restore text-blue md-20"></i>
+                    <i data-tooltip="Modifier mon code" onclick="Ajax('pages/MonCompte/modules/CodeEntrepotChangeForm.php');" class="Pointer material-icons md-icon-edit text-yellow md-20"></i>
+                {% endif %}
+            </span>
+        </h4>
         {{ viewEntrepot|raw }}
     </div>
 
