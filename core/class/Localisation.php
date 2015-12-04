@@ -51,7 +51,7 @@ class Localisation extends \ScriptHelper {
             }
 
             $view = [
-                "map" => $Array_Maps[$indexMap],
+                "map" => MapHelper::getLibelle($indexMap),
                 "positionX" => floor($chaDataX),
                 "positionY" => floor($chaDataY)
             ];

@@ -28,6 +28,9 @@ class TranslateHelper {
         $translator->addResource('yaml', BASE_ROOT . '/core/translations/menu.fr.yml', 'fr', 'menu');
         $translator->addResource('yaml', BASE_ROOT . '/core/translations/menu.' . $sousDomaine . '.yml', $sousDomaine, 'menu');
         
+        $translator->addResource('yaml', BASE_ROOT . '/core/translations/map.fr.yml', 'fr', 'map');
+        $translator->addResource('yaml', BASE_ROOT . '/core/translations/map.' . $sousDomaine . '.yml', $sousDomaine, 'map');
+        
         $this->objInstance = $translator;
     }
 
