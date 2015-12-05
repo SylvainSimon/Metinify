@@ -37,8 +37,9 @@ function VerificationSecu(){
             data: "Code_Effacement="+$("#ChampsSaisieSecu").val(),
             success: function(msg){
                 if(msg==1){
-                        
-                    Ajax("pages/MonCompte/modules/CodeEffacementCreateTerm.php");
+                    
+                    toastr.success("Le code de sureté à bien été défini.");
+                    Ajax("pages/MonCompte/modules/MonCompte.php");
                     
                 }else{
                     

@@ -44,8 +44,9 @@ function Changement_Code_Entrepot(){
             success: function(msg){
                 if(msg==1){
                         
-                    Ajax("pages/MonCompte/modules/CodeEntrepotChangeTerm.php");
-                    
+                    toastr.success("Le code de votre entrepôt à été changé.");
+                    Ajax("pages/MonCompte/modules/MonCompte.php");
+                                            
                 }else{
                     
                     alert("Le code renseigné n'est pas correct.");

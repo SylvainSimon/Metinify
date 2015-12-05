@@ -57,7 +57,8 @@ function Changement_Code_Effacement(){
             success: function(msg){
                 if(msg==1){
                         
-                    Ajax("pages/MonCompte/modules/CodeEffacementChangeTerm.php");
+                    toastr.success("Le code de sureté à bien été changé.");
+                    Ajax("pages/MonCompte/modules/MonCompte.php");
                     
                 }else{
                     
