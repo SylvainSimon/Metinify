@@ -8,6 +8,7 @@ class HelperExtension extends \Twig_Extension {
             'helpBanDuree' => new \Twig_SimpleFunction('helpBanDuree', array($this, 'helpBanDuree')),
             'helpDevise' => new \Twig_SimpleFunction('helpDevise', array($this, 'helpDevise')),
             'helpLevel' => new \Twig_SimpleFunction('helpLevel', array($this, 'helpLevel')),
+            'helpEmpire' => new \Twig_SimpleFunction('helpEmpire', array($this, 'helpEmpire')),
         );
     }
 
@@ -29,6 +30,10 @@ class HelperExtension extends \Twig_Extension {
     
     public function helpLevel($level = 0) {
         return LevelHelper::getValue($level);
+    }
+    
+    public function helpEmpire($empire = 0) {
+        return EmpireHelper::getLibelle($empire);
     }
 
 }

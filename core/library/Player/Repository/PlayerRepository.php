@@ -161,6 +161,7 @@ class PlayerRepository extends EntityRepository {
                 . "PlayerEntity.name, "
                 . "PlayerEntity.job, "
                 . "PlayerEntity.level, "
+                . "PlayerEntity.exp, "
                 . "PlayerEntity.playtime, "
                 . "PlayerEntity.gold, "
                 . "PlayerEntity.x, "

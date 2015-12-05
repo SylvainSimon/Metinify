@@ -92,6 +92,21 @@ body {
     background-color: rgba(0,0,0,0.5); /*dim the background*/
 }
 
+.btn-primary{
+    background-color: #075A8A;
+    border-color: #206186;
+}
+
+.btn-primary:hover{
+    background-color: #016A9D;
+    border-color: #285F79;
+}
+
+.btn-warning{
+    background-color: rgb(207, 124, 0);
+    border-color: #C17B0C;
+}
+
 .box-telechargement-exe{
     border: 1px solid #6D4949; 
     background-color: #6D1A0C !important; 
@@ -511,6 +526,9 @@ label{
     }
     .col-lg-5.specialColumn{ 
         width: 44.6%;
+    }
+    .col-lg-6.specialColumn{ 
+        width: 53%;
     }
 }
 

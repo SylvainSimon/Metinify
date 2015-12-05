@@ -5,15 +5,15 @@
     <img id="imageMap" src="./images/maps/{{ idMap }}.jpg"  style="width: 100%; height: auto" />
 
     {% if arrObjPlayers|length > 0 %}
-        {% for objPlayers in arrObjPlayers %}
-            <div class="pointRadar" data-x="{{ ((objPlayers.x - baseX) / 200 / 0.5) }}" data-y="{{ ((objPlayers.y - baseY) / 200 / 0.5) }}" style="position:absolute; top:0px; left:0px;">
+        {% for objPlayer in arrObjPlayers %}
+            <div class="pointRadar" data-x="{{ ((objPlayer.x - baseX) / 200 / 0.5) }}" data-y="{{ ((objPlayer.y - baseY) / 200 / 0.5) }}" style="position:absolute; top:0px; left:0px;">
                 <span>
-                    {% if objPlayers.isGM %}
+                    {% if objPlayer.isGM %}
                         {% set nombreGM = nombreGM + 1 %}
                         <i  data-tooltip="{{ include('RadarPlayerGetInfo.html5.twig') }}" data-tooltip-persistence="9999999" data-tooltip-track="1" data-tooltip-isItemMetin="1" class="material-icons md-icon-lens text-fuchsia" style="font-size: 10px;"></i>
                     {% else %}
 
-                        {% if objPlayers.haveCanneAPeche %}
+                        {% if objPlayer.haveCanneAPeche %}
                             {% set nombrePecheur = nombrePecheur + 1 %}
                             <i  data-tooltip="{{ include('RadarPlayerGetInfo.html5.twig') }}" data-tooltip-persistence="9999999" data-tooltip-track="1" data-tooltip-isItemMetin="1" class="material-icons md-icon-lens text-aqua" style="font-size: 10px;"></i>
                         {% else %}
