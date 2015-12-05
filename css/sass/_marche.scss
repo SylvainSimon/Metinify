@@ -20,6 +20,14 @@
 
 }
 
+.Position_Icone_Article_Personnage{
+
+    position: relative;
+    top:5px;
+    left: 10px;
+    margin: 0 auto 0 auto;
+}
+
 .Nom_Article_Marche{
     position: relative;
     padding-top: 1px;
@@ -69,14 +77,6 @@
 .Position_Loupe_Detail:active{
 
     opacity: 0.9;
-}
-
-.Position_Icone_Article_Personnage{
-
-    position: relative;
-    top:5px;
-    left: 10px;
-    margin: 0 auto 0 auto;
 }
 
 .Bouton_Supprimer_Vente{

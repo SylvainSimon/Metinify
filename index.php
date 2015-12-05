@@ -41,6 +41,7 @@ class IndexWebsite extends PageHelper {
                 <script src='./components/jquery-ui/jquery-ui.min.js' type='text/javascript'></script>
                 <script src='./components/bootstrap/js/tab.js' type='text/javascript'></script>
                 <script src='./components/bootstrap/js/modal.js' type='text/javascript'></script>
+                <script src='./components/bootstrap/js/dropdown.js' type='text/javascript'></script>
 
                 <script src='./vendor/almasaeed2010/adminlte/plugins/slimScroll/jquery.slimscroll.min.js' type='text/javascript'></script>
                 <script src='./vendor/almasaeed2010/adminlte/plugins/select2/select2.min.js' type='text/javascript'></script>
@@ -48,7 +49,7 @@ class IndexWebsite extends PageHelper {
                 <script src='./vendor/almasaeed2010/adminlte/dist/js/app.min.js' type='text/javascript'></script>
 
                 <script src="assets/js/toastr/build/toastr.min.js" type='text/javascript'></script>
-                
+
                 <script src="assets/js/jquery.cookie/js.cookie.min.js" type='text/javascript'></script>
                 <script src="assets/js/fonctions.min.js" type='text/javascript'></script>
 
@@ -84,7 +85,7 @@ class IndexWebsite extends PageHelper {
 
                 <link href="assets/js/featherlight/release/featherlight.min.css" rel="stylesheet" type="text/css" />
                 <script src="assets/js/featherlight/release/featherlight.min.js" type='text/javascript'></script>
-                
+
                 <link href="vendor/almasaeed2010/adminlte/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
                 <link href="vendor/almasaeed2010/adminlte/plugins/iCheck/minimal/blue.css" rel="stylesheet" type="text/css" />
                 <script src="vendor/almasaeed2010/adminlte/plugins/iCheck/icheck.min.js" type='text/javascript'></script>
@@ -111,11 +112,11 @@ class IndexWebsite extends PageHelper {
                             <?php
                             if (!$this->isConnected) {
                                 $templateHeadbar = $this->objTwig->loadTemplate("headbarForm.html5.twig");
+                                echo $templateHeadbar->render([]);
                             } else {
                                 $templateHeadbar = $this->objTwig->loadTemplate("headbarConnected.html5.twig");
+                                echo $templateHeadbar->render(["objAccount" => $this->objAccount]);
                             }
-
-                            echo $templateHeadbar->render([]);
                             ?>
                         </div>
                     </div>
@@ -124,10 +125,10 @@ class IndexWebsite extends PageHelper {
 
                     <aside class="main-sidebar" style="background: #131313; border-right: 1px solid #3E3E3E;">
                         <section class="sidebar">
-                            <?php
-                            $templateMenu = $this->objTwig->loadTemplate("leftMenu.html5.twig");
-                            echo $templateMenu->render(["isConnected" => $this->isConnected]);
-                            ?>
+        <?php
+        $templateMenu = $this->objTwig->loadTemplate("leftMenu.html5.twig");
+        echo $templateMenu->render(["isConnected" => $this->isConnected]);
+        ?>
                         </section>
                     </aside>
 
@@ -140,8 +141,8 @@ class IndexWebsite extends PageHelper {
 
                         <div class="col-md-12" style="padding-bottom: 60px;">
                             <div class="row">
-                                <?php if ($session->get("Administration_PannelAdmin") !== null) { ?>
-                                    <?php include 'pages/Admin/Accueil_Seconde.php'; ?>
+        <?php if ($session->get("Administration_PannelAdmin") !== null) { ?>
+            <?php include 'pages/Admin/Accueil_Seconde.php'; ?>
                                 <?php } else { ?>
                                     <?php include 'pages/_LegacyPages/Accueil.php'; ?>
                                 <?php } ?>
@@ -153,10 +154,10 @@ class IndexWebsite extends PageHelper {
 
                     <footer>
                         <div class="col-md-12">
-                            <?php
-                            $templateFooter = $this->objTwig->loadTemplate("footer.html5.twig");
-                            echo $templateFooter->render(["isConnected" => $this->isConnected]);
-                            ?>
+        <?php
+        $templateFooter = $this->objTwig->loadTemplate("footer.html5.twig");
+        echo $templateFooter->render(["isConnected" => $this->isConnected]);
+        ?>
                             <div class="clearfix"></div>
                         </div>
                     </footer>
@@ -166,27 +167,28 @@ class IndexWebsite extends PageHelper {
 
             <script type="text/javascript">
         <?php if ($request->query->get("ok") !== null) { ?>
-                            Ajax('pages/_LegacyPages/AccountActivationTerm.php');
+                        Ajax('pages/_LegacyPages/AccountActivationTerm.php');
         <?php } elseif ($request->query->get("paypal") !== null) { ?>
-                            Ajax('pages/_LegacyPages/PaypalTerm.php');
+                        Ajax('pages/_LegacyPages/PaypalTerm.php');
         <?php } else { ?>
 
             <?php if ($session->get("Administration_PannelAdmin") !== null) { ?>
-                                Ajax('pages/Admin/Bienvenu.php');
+                            Ajax('pages/Admin/Bienvenu.php');
             <?php } ?>
 
         <?php } ?>
             </script>  
 
-            <?php if ($this->isConnected) { ?>
+        <?php if ($this->isConnected) { ?>
                 <script type="text/javascript">Actualisation_Messages_Sans_Boucle();</script> 
             <?php } ?>
 
         </html>
-        <?php
+            <?php
+        }
+
     }
 
-}
-
-$class = new IndexWebsite();
-$class->run();
+    $class = new IndexWebsite();
+    $class->run();
+    

@@ -139,7 +139,6 @@ function Valider_Formulaire_Nouveau_Ticket() {
             success: function (msg) {
 
                 hideLoading();
-                console.log(msg);
 
                 if (msg == 1) {
 

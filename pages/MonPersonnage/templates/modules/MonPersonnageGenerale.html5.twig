@@ -12,21 +12,21 @@
 
     <div style="padding-top: 5px; text-align: center; padding-bottom: 20px;">
         {% if objPlayer.getJob == "0" %}
-            <img class="Position_Icone_Article_Personnage" src="../images/races/Guerrier_Homme.png" style="width: 60%;" />
+            <img src="../images/races/Guerrier_Homme.png" style="width: 60%;" />
         {% elseif objPlayer.getJob == "1" %}
-            <img class="Position_Icone_Article_Personnage" src="../images/races/Ninja_Femme.png" style="width: 60%;" />
+            <img src="../images/races/Ninja_Femme.png" style="width: 60%;" />
         {% elseif objPlayer.getJob == "2" %}
-            <img class="Position_Icone_Article_Personnage" src="../images/races/Sura_Homme.png" style="width: 60%;" />
+            <img src="../images/races/Sura_Homme.png" style="width: 60%;" />
         {% elseif objPlayer.getJob == "3" %}
-            <img class="Position_Icone_Article_Personnage" src="../images/races/Chaman_Femme.png" style="width: 60%;" />
+            <img src="../images/races/Chaman_Femme.png" style="width: 60%;" />
         {% elseif objPlayer.getJob == "4" %}
-            <img class="Position_Icone_Article_Personnage" src="../images/races/Guerrier_Femme.png" style="width: 60%;" />
+            <img src="../images/races/Guerrier_Femme.png" style="width: 60%;" />
         {% elseif objPlayer.getJob == "5" %}
-            <img class="Position_Icone_Article_Personnage" src="../images/races/Ninja_Homme.png" style="width: 60%;" />
+            <img src="../images/races/Ninja_Homme.png" style="width: 60%;" />
         {% elseif objPlayer.getJob == "6" %}
-            <img class="Position_Icone_Article_Personnage" src="../images/races/Sura_Femme.png" style="width: 60%;" />
+            <img src="../images/races/Sura_Femme.png" style="width: 60%;" />
         {% elseif objPlayer.getJob == "7" %}
-            <img class="Position_Icone_Article_Personnage" src="../images/races/Chaman_Homme.png" style="width: 60%;" />
+            <img src="../images/races/Chaman_Homme.png" style="width: 60%;" />
         {% endif %}
     </div>
 
@@ -35,135 +35,68 @@
 <div class="col-lg-5 specialColumn">
 
     <h4>Informations
-            <span style="font-size: 14px; top: 3px; position: relative;" class="pull-right">{{ getMinutesToString(objPlayer.getPlaytime) }}</span>
+        <span style="font-size: 14px; top: 3px; position: relative;" class="pull-right">{{ getMinutesToString(objPlayer.getPlaytime) }}</span>
     </h4>
 
     <div>
         Expérience
     </div>
-    {{ include('experience_bubles.html5.twig', {'myScale': '0.3'}) }}
 
-    <table class="table table-condensed" style="border-collapse: collapse;">
-        <tr>
-            <td style="border-top:0px;">
-                <span>Yangs</span>
-            </td>
-            <td style="border-top:0px;">{{ objPlayer.getGold|number_format }}</td>
-        </tr>
+    {{ include('experience_bubles.html5.twig', {'myScale': '0.25'}) }}
 
-        <tr>
-            <td>Dernière connexion</td>
-            <td>{{ getFormatedDateTime(objPlayer.getLastPlay) }}</td>
-        </tr>
-
-        <tr>
-            <td>
-                <span>Localisation</span>
-            </td>
-            <td>{{ localisation.map }}</td>
-        </tr>
-        <tr>
-            <td>
-                <span>Position</span>
-            </td>
-            <td>{{ localisation.positionX }} - {{ localisation.positionY }}</td>
-        </tr>
-        <tr>
-            <td>Guilde</td>
-            {% if haveGuild == false %}
-                <td>
-                    Pas de guilde
-                </td>
+    {% if haveGuild %}
+        <br/>
+        <div style="display: inline; line-height: 10px;">
+            {% if haveGuild.isMaster %}
+                <i class="material-icons md-icon-person text-yellow"></i> Chef de la guilde
             {% else %}
-                <td>
-                    {{ haveGuild.name }}
-                    <div class="pull-right" style="line-height: 10px;">
-                        {% if haveGuild.isMaster %}
-                            <i class="material-icons md-icon-person text-yellow" data-tooltip="Chef"></i>
-                        {% else %}
-                            <i class="material-icons md-icon-person text-gray" data-tooltip="Membre"></i>
-                        {% endif %}
-                    </div>
-                </td>
+                <i class="material-icons md-icon-person text-gray"></i> Membre de la guilde
             {% endif %}
-        </tr>
-        <tr>
-            <td>Conjoint</td>
-            {% if objMarriage == null %}
-                <td>Célibataire</td>
+        </div>
+        {{ haveGuild.name }}
+    {% endif %}
+
+    <br/>
+    <i class="material-icons md-icon-location text-orange"></i> {{ localisation.map }} <span class="text-yellow">{{ localisation.positionX }} - {{ localisation.positionY }}</span>
+
+    {% if objMarriage %}
+        <br/>
+        <div>
+            {% if isWomen(objMarriage.job) %}
+                <i class="material-icons md-icon-people text-blue"></i> Marié à {{ objMarriage.name }}
             {% else %}
-                {% if isWomen(objMarriage.job) %}
-                    <td>Marié à {{ objMarriage.name }}</td>
-                {% else %}
-                    <td>Mariée à {{ objMarriage.name }}</td>
-                {% endif %}
+                <i class="material-icons md-icon-people text-fuchsia"></i> Mariée à {{ objMarriage.name }}
             {% endif %}
-        </tr>
-
-    </table>
-
-    {% set totalPoint = (objPlayer.getHt + objPlayer.getIq + objPlayer.getSt + objPlayer.getDx) %}
-    {% set propVit = ((objPlayer.getHt / totalPoint) * 100) %}
-    {% set propInt = ((objPlayer.getIq / totalPoint) * 100)  %}
-    {% set propStr = ((objPlayer.getSt / totalPoint) * 100)  %}
-    {% set propDex = ((objPlayer.getDx / totalPoint) * 100)  %}
-
-    <div class="progress-group">
-        <span class="progress-text">VIT</span>
-        <span class="progress-number"><b>{{ objPlayer.getHt }}</b>/127</span>
-
-        <div class="progress sm">
-            <div class="progress-bar progress-bar-red" style="width: {{ propVit }}%"></div>
         </div>
-    </div>
-    <div class="progress-group">
-        <span class="progress-text">INT</span>
-        <span class="progress-number"><b>{{ objPlayer.getIq }}</b>/127</span>
-        <div class="progress sm">
-            <div class="progress-bar progress-bar-aqua" style="width: {{ propInt }}%"></div>
-        </div>
-    </div>
+    {% endif %}
 
-    <div class="progress-group">
-        <span class="progress-text">STR</span>
-        <span class="progress-number"><b>{{ objPlayer.getSt }}</b>/127</span>
-
-        <div class="progress sm">
-            <div class="progress-bar progress-bar-green" style="width: {{ propStr }}%"></div>
-        </div>
-    </div>
-    <div class="progress-group">
-        <span class="progress-text">DEX</span>
-        <span class="progress-number"><b>{{ objPlayer.getDx }}</b>/127</span>
-
-        <div class="progress sm">
-            <div class="progress-bar progress-bar-yellow" style="width: {{ propDex }}%"></div>
-        </div>
+    <div style="margin-top: 10px;">
+    {{ include('player_stats.html5.twig') }}
     </div>
 
     <div class="row" style="padding-top: 10px;">
         <div class="col-lg-12">
 
             {% if config.mod_player.repairPosition.activate %}
-                <button style="margin-bottom: 5px;" type="button" data-tooltip="Débloquer la position" class="btn btn-flat btn-warning" onclick="Deblocage_Personnage('{{ encrypt(objPlayer.getId) }}');">
+                <button style="margin-bottom: 5px; width: 32.8%;" type="button" data-tooltip="Débloquer la position" class="btn btn-flat btn-warning" onclick="Deblocage_Personnage('{{ encrypt(objPlayer.getId) }}');">
                     Débloquer
                 </button>
             {% endif %}
 
             {% if objPlayer.getGold < 0 %}
-                <button style="margin-bottom: 5px;" type="button" data-tooltip="Débloquer mes yangs" class="btn btn-flat btn-warning" onclick="Deblocage_Yangs('{{ encryptForUrl(objPlayer.getId) }}');">
+                <button style="margin-bottom: 5px; width: 32.8%;" type="button" data-tooltip="Débloquer mes yangs" class="btn btn-flat btn-warning" onclick="Deblocage_Yangs('{{ encryptForUrl(objPlayer.getId) }}');">
                     Débloquer les yangs
                 </button>
             {% endif %}
 
             {% if config.mod_player.rename.activate %}
-                <button style="margin-bottom: 5px;" type="button" data-tooltip="Renommer le joueur" class="btn btn-flat btn-primary" onclick="Ajax('pages/MonPersonnage/PersonnageRenameForm.php?idPlayer={{ encryptForUrl(objPlayer.getId) }}');">
+                <button style="margin-bottom: 5px; width: 32.8%;" type="button" class="btn btn-flat btn-primary" onclick="Ajax('pages/MonPersonnage/PersonnageRenameForm.php?idPlayer={{ encryptForUrl(objPlayer.getId) }}');">
                     Renommer
                 </button>
             {% endif %}
 
             {% if config.mod_player.delete.activate %}
-                <button style="margin-bottom: 5px;" type="button" data-tooltip="Supprimer le joueur" class="btn btn-flat btn-danger" onclick="Ajax('pages/MonPersonnage/PersonnageDeleteForm.php?idPlayer={{ encryptForUrl(objPlayer.getId) }}');">
+                <button style="margin-bottom: 5px; width: 32.8%;" type="button" class="btn btn-flat btn-danger" onclick="Ajax('pages/MonPersonnage/PersonnageDeleteForm.php?idPlayer={{ encryptForUrl(objPlayer.getId) }}');">
                     Supprimer
                 </button>
             {% endif %}
@@ -175,6 +108,10 @@
 <div class="col-lg-3 specialColumn" style="padding-top: 10px; padding-bottom: 10px;">
     {{ viewEquipement|raw }}
     {{ viewInventaire|raw }}
+
+    <div style="background: #000000; height: 24px; width: 100%; border: 1px solid #6B645B; font-size: 12px; line-height: 23px; border-top: 0; padding-left: 5px; padding-right: 5px;">
+        <span style="float: right;">{{ objPlayer.getGold|number_format }} Yang</span>
+    </div>
 </div>
 
 

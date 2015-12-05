@@ -1,0 +1,38 @@
+{% set totalPoint = (objPlayer.getHt + objPlayer.getIq + objPlayer.getSt + objPlayer.getDx) %}
+{% set propVit = ((objPlayer.getHt / totalPoint) * 100) %}
+{% set propInt = ((objPlayer.getIq / totalPoint) * 100)  %}
+{% set propStr = ((objPlayer.getSt / totalPoint) * 100)  %}
+{% set propDex = ((objPlayer.getDx / totalPoint) * 100)  %}
+
+<div class="progress-group">
+    <span class="progress-text">VIT</span>
+    <span class="progress-number"><b>{{ objPlayer.getHt }}</b>/127</span>
+
+    <div class="progress sm">
+        <div class="progress-bar progress-bar-red" style="width: {{ propVit }}%"></div>
+    </div>
+</div>
+<div class="progress-group">
+    <span class="progress-text">INT</span>
+    <span class="progress-number"><b>{{ objPlayer.getIq }}</b>/127</span>
+    <div class="progress sm">
+        <div class="progress-bar progress-bar-aqua" style="width: {{ propInt }}%"></div>
+    </div>
+</div>
+
+<div class="progress-group">
+    <span class="progress-text">STR</span>
+    <span class="progress-number"><b>{{ objPlayer.getSt }}</b>/127</span>
+
+    <div class="progress sm">
+        <div class="progress-bar progress-bar-green" style="width: {{ propStr }}%"></div>
+    </div>
+</div>
+<div class="progress-group">
+    <span class="progress-text">DEX</span>
+    <span class="progress-number"><b>{{ objPlayer.getDx }}</b>/127</span>
+
+    <div class="progress sm">
+        <div class="progress-bar progress-bar-yellow" style="width: {{ propDex }}%"></div>
+    </div>
+</div>

@@ -10,6 +10,8 @@ class headbarConnected extends \PageHelper {
 
     public function run() {
 
+        $this->arrayTemplate["objAccount"] = $this->objAccount;
+        
         $view = $this->template->render($this->arrayTemplate);
         $this->response->setContent($view);
         $this->response->send();

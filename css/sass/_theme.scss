@@ -106,6 +106,10 @@ body {
     background-color: rgb(207, 124, 0);
     border-color: #C17B0C;
 }
+.btn-danger {
+    background-color: #AE392A;
+    border-color: #A22A1B;
+}
 
 .box-telechargement-exe{
     border: 1px solid #6D4949; 
@@ -881,4 +885,13 @@ tbody td.lineIcon{
     background-color: #545454;
     margin-bottom: 15px;
     border-radius: 0px !important;
+}
+
+.dropdown-menu{
+    border-color: rgb(76, 76, 76) !important;
+    background-color: #191919;
+    padding: 0px 0;
+    font-size: 12px;
+    box-shadow:none;
+    border-radius: 0px;
 }
