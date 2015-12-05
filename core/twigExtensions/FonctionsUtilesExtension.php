@@ -9,6 +9,7 @@ class FonctionsUtilesExtension extends \Twig_Extension {
             'findSkillGroup' => new \Twig_SimpleFunction('findSkillGroup', array($this, 'findSkillGroup')),
             'findIconStatus' => new \Twig_SimpleFunction('findIconStatus', array($this, 'findIconStatus')),
             'findIconOnline' => new \Twig_SimpleFunction('findIconOnline', array($this, 'findIconOnline')),
+            'countBonusOnAccount' => new \Twig_SimpleFunction('countBonusOnAccount', array($this, 'countBonusOnAccount')),
             'isWomen' => new \Twig_SimpleFunction('isWomen', array($this, 'isWomen')),
         );
     }
@@ -39,6 +40,10 @@ class FonctionsUtilesExtension extends \Twig_Extension {
 
     public function isWomen($job = false) {
         return \FonctionsUtiles::isWomen($job);
+    }
+
+    public function countBonusOnAccount($objAccount = null) {
+        return \FonctionsUtiles::countBonusOnAccount($objAccount);
     }
 
 }

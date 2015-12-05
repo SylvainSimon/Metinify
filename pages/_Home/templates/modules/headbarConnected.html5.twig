@@ -17,129 +17,131 @@
                 <div style="font-size: 14px;" class="inline" id="Nombre_De_Tananaies">{{ session.get("TanaNaies")|number_format }}</div>
             </span>
 
-            <div class="dropdown" style="display: inline;">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="position: relative; top:7px; left: 5px;">
-                    <i class="material-icons md-icon-star-border text-yellow md-24"></i>
-                </a>
-                <ul class="dropdown-menu">
-                    <div style="width: 210px; padding: 10px;">
+            {% if countBonusOnAccount(objAccount) > 0 %}
 
-                        {% if date(objAccount.getAutolootExpire()) > date() %}
-                            <div>
-                                <img src='../images/Bonus/4.png' width='53' />
-                                <span id="Compteloot" style="position: relative; left:12px;"></span>
-                                {% if date(objAccount.getAutolootExpire()) > date()|date_modify("+1 year") %}
-                                    <span style="position: relative; left:12px;">A vie</span>
-                                {% else %}                
-                                    <script>
-                                    $('#Compteloot').countdown('{{ getFormatedDateTime(objAccount.getAutolootExpire, "Y/m/d H:i:s") }}', function (event) {
-                                        $(this).html(event.strftime('%-D %!d:jour,jours; %-H:%M:%S'));
-                                    });
-                                    </script>
-                                </div>  
+                <div class="dropdown" style="display: inline;">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="position: relative; top:7px; left: 5px;">
+                        <i class="material-icons md-icon-star-border text-yellow md-24"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <div style="width: 210px; padding: 10px;">
+
+                            {% if date(objAccount.getAutolootExpire()) > date() %}
+                                <div>
+                                    <img src='../images/Bonus/4.png' width='53' />
+                                    <span id="Compteloot" style="position: relative; left:12px;"></span>
+                                    {% if date(objAccount.getAutolootExpire()) > date()|date_modify("+1 year") %}
+                                        <span style="position: relative; left:12px;">A vie</span>
+                                    {% else %}                
+                                        <script>
+                                            $('#Compteloot').countdown('{{ getFormatedDateTime(objAccount.getAutolootExpire, "Y/m/d H:i:s") }}', function (event) {
+                                                $(this).html(event.strftime('%-D %!d:jour,jours; %-H:%M:%S'));
+                                            });
+                                        </script>
+                                    </div>  
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
 
-                        {% if date(objAccount.getGoldExpire()) > date() %}
-                            <div>
-                                <img src='../images/Bonus/1.png' width='53' />
-                                <span id="Comptegold" style="position: relative; left:12px;"></span>
-                                {% if date(objAccount.getGoldExpire()) > date()|date_modify("+1 year") %}
-                                    <span style="position: relative; left:12px;">A vie</span>
-                                {% else %}  
-                                    <script>
-                                    $('#Comptegold').countdown('{{ getFormatedDateTime(objAccount.getGoldExpire, "Y/m/d H:i:s") }}', function (event) {
-                                        $(this).html(event.strftime('%-D %!d:jour,jours; %-H:%M:%S'));
-                                    });
-                                    </script>
-                                </div>  
+                            {% if date(objAccount.getGoldExpire()) > date() %}
+                                <div>
+                                    <img src='../images/Bonus/1.png' width='53' />
+                                    <span id="Comptegold" style="position: relative; left:12px;"></span>
+                                    {% if date(objAccount.getGoldExpire()) > date()|date_modify("+1 year") %}
+                                        <span style="position: relative; left:12px;">A vie</span>
+                                    {% else %}  
+                                        <script>
+                                            $('#Comptegold').countdown('{{ getFormatedDateTime(objAccount.getGoldExpire, "Y/m/d H:i:s") }}', function (event) {
+                                                $(this).html(event.strftime('%-D %!d:jour,jours; %-H:%M:%S'));
+                                            });
+                                        </script>
+                                    </div>  
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
 
-                        {% if date(objAccount.getSilverExpire()) > date() %}
-                            <div>
-                                <img src='../images/Bonus/2.png' width='53' />
-                                <span id="Comptesilver" style="position: relative; left:12px;"></span>
-                                {% if date(objAccount.getSilverExpire()) > date()|date_modify("+1 year") %}
-                                    <span style="position: relative; left:12px;">A vie</span>
-                                {% else %} 
-                                    <script>
-                                    $('#Comptesilver').countdown('{{ getFormatedDateTime(objAccount.getSilverExpire, "Y/m/d H:i:s") }}', function (event) {
-                                        $(this).html(event.strftime('%-D %!d:jour,jours; %-H:%M:%S'));
-                                    });
-                                    </script>
-                                </div>  
+                            {% if date(objAccount.getSilverExpire()) > date() %}
+                                <div>
+                                    <img src='../images/Bonus/2.png' width='53' />
+                                    <span id="Comptesilver" style="position: relative; left:12px;"></span>
+                                    {% if date(objAccount.getSilverExpire()) > date()|date_modify("+1 year") %}
+                                        <span style="position: relative; left:12px;">A vie</span>
+                                    {% else %} 
+                                        <script>
+                                            $('#Comptesilver').countdown('{{ getFormatedDateTime(objAccount.getSilverExpire, "Y/m/d H:i:s") }}', function (event) {
+                                                $(this).html(event.strftime('%-D %!d:jour,jours; %-H:%M:%S'));
+                                            });
+                                        </script>
+                                    </div>  
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
 
-                        {% if date(objAccount.getMarriageFastExpire()) > date() %}
-                            <div>
-                                <img src='../images/Bonus/6.png' width='53' />
-                                <span id="Comptelove" style="position: relative; left:12px;"></span>
-                                {% if date(objAccount.getMarriageFastExpire()) > date()|date_modify("+1 year") %}
-                                    <span style="position: relative; left:12px;">A vie</span>
-                                {% else %} 
-                                    <script>
-                                    $('#Comptelove').countdown('{{ getFormatedDateTime(objAccount.getMarriageFastExpire, "Y/m/d H:i:s") }}', function (event) {
-                                        $(this).html(event.strftime('%-D %!d:jour,jours; %-H:%M:%S'));
-                                    });
-                                    </script>
-                                </div>  
+                            {% if date(objAccount.getMarriageFastExpire()) > date() %}
+                                <div>
+                                    <img src='../images/Bonus/6.png' width='53' />
+                                    <span id="Comptelove" style="position: relative; left:12px;"></span>
+                                    {% if date(objAccount.getMarriageFastExpire()) > date()|date_modify("+1 year") %}
+                                        <span style="position: relative; left:12px;">A vie</span>
+                                    {% else %} 
+                                        <script>
+                                            $('#Comptelove').countdown('{{ getFormatedDateTime(objAccount.getMarriageFastExpire, "Y/m/d H:i:s") }}', function (event) {
+                                                $(this).html(event.strftime('%-D %!d:jour,jours; %-H:%M:%S'));
+                                            });
+                                        </script>
+                                    </div>  
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
 
-                        {% if date(objAccount.getSafeboxExpire()) > date() %}
-                            <div>
-                                <img src='../images/Bonus/3.png' width='53' />
-                                <span id="Comptesafebox" style="position: relative; left:12px;"></span>
-                                {% if date(objAccount.getSafeboxExpire()) > date()|date_modify("+1 year") %}
-                                    <span style="position: relative; left:12px;">A vie</span>
-                                {% else %} 
-                                    <script>
-                                    $('#Comptesafebox').countdown('{{ getFormatedDateTime(objAccount.getSafeboxExpire, "Y/m/d H:i:s") }}', function (event) {
-                                        $(this).html(event.strftime('%-D %!d:jour,jours; %-H:%M:%S'));
-                                    });
-                                    </script>
-                                </div>  
+                            {% if date(objAccount.getSafeboxExpire()) > date() %}
+                                <div>
+                                    <img src='../images/Bonus/3.png' width='53' />
+                                    <span id="Comptesafebox" style="position: relative; left:12px;"></span>
+                                    {% if date(objAccount.getSafeboxExpire()) > date()|date_modify("+1 year") %}
+                                        <span style="position: relative; left:12px;">A vie</span>
+                                    {% else %} 
+                                        <script>
+                                            $('#Comptesafebox').countdown('{{ getFormatedDateTime(objAccount.getSafeboxExpire, "Y/m/d H:i:s") }}', function (event) {
+                                                $(this).html(event.strftime('%-D %!d:jour,jours; %-H:%M:%S'));
+                                            });
+                                        </script>
+                                    </div>  
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
 
-                        {% if date(objAccount.getMoneyDropRateExpire()) > date() %}
-                            <div>
-                                <img src='../images/Bonus/7.png' width='53' />
-                                <span id="Comptemonnaie" style="position: relative; left:12px;"></span>
+                            {% if date(objAccount.getMoneyDropRateExpire()) > date() %}
+                                <div>
+                                    <img src='../images/Bonus/7.png' width='53' />
+                                    <span id="Comptemonnaie" style="position: relative; left:12px;"></span>
 
-                                {% if date(objAccount.getMoneyDropRateExpire()) > date()|date_modify("+1 year") %}
-                                    <span style="position: relative; left:12px;">A vie</span>
-                                {% else %} 
-                                    <script>
-                                    $('#Comptemonnaie').countdown('{{ getFormatedDateTime(objAccount.getMoneyDropRateExpire, "Y/m/d H:i:s") }}', function (event) {
-                                        $(this).html(event.strftime('%-D %!d:jour,jours; %-H:%M:%S'));
-                                    });
-                                    </script>
-                                </div>  
+                                    {% if date(objAccount.getMoneyDropRateExpire()) > date()|date_modify("+1 year") %}
+                                        <span style="position: relative; left:12px;">A vie</span>
+                                    {% else %} 
+                                        <script>
+                                            $('#Comptemonnaie').countdown('{{ getFormatedDateTime(objAccount.getMoneyDropRateExpire, "Y/m/d H:i:s") }}', function (event) {
+                                                $(this).html(event.strftime('%-D %!d:jour,jours; %-H:%M:%S'));
+                                            });
+                                        </script>
+                                    </div>  
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
 
-                        {% if date(objAccount.getFishMindExpire()) > date() %}
-                            <div>
-                                <img src='../images/Bonus/5.png' width='53' />
-                                <span id="Comptepeche" style="position: relative; left:12px;"></span>
-                                {% if date(objAccount.getFishMindExpire()) > date()|date_modify("+1 year") %}
-                                    <span style="position: relative; left:12px;">A vie</span>
-                                {% else %} 
-                                    <script>
-                                        $('#Comptepeche').countdown('{{ getFormatedDateTime(objAccount.getFishMindExpire, "Y/m/d H:i:s") }}', function (event) {
-                                            $(this).html(event.strftime('%-D %!d:jour,jours; %-H:%M:%S'));
-                                        });
-                                    </script>
-                                </div>  
+                            {% if date(objAccount.getFishMindExpire()) > date() %}
+                                <div>
+                                    <img src='../images/Bonus/5.png' width='53' />
+                                    <span id="Comptepeche" style="position: relative; left:12px;"></span>
+                                    {% if date(objAccount.getFishMindExpire()) > date()|date_modify("+1 year") %}
+                                        <span style="position: relative; left:12px;">A vie</span>
+                                    {% else %} 
+                                        <script>
+                                            $('#Comptepeche').countdown('{{ getFormatedDateTime(objAccount.getFishMindExpire, "Y/m/d H:i:s") }}', function (event) {
+                                                $(this).html(event.strftime('%-D %!d:jour,jours; %-H:%M:%S'));
+                                            });
+                                        </script>
+                                    </div>  
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
-                    </div>
-                </ul>
-
-            </div>
+                        </div>
+                    </ul>
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>

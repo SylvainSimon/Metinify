@@ -37,13 +37,17 @@ class InscriptionSubmit extends \PageHelper {
         $objAccount->setLangue($Langue);
         $objAccount->setCreateTime(new \DateTime(date("Y-m-d H:i:s")));
         
+        $anneeRestantMysql = (2037 - date("Y"));
+        $dateActuel = \Carbon\Carbon::now();
+        $dateBonusNew = $dateActuel->addYear($anneeRestantMysql);
+        
         $objAccount->setMarriageFastExpire(new \DateTime(date("Y-m-d H:i:s")));
         $objAccount->setMoneyDropRateExpire(new \DateTime(date("Y-m-d H:i:s")));
         $objAccount->setGoldExpire(new \DateTime(date("Y-m-d H:i:s")));
         $objAccount->setSilverExpire(new \DateTime(date("Y-m-d H:i:s")));
-        $objAccount->setAutolootExpire(new \DateTime(date("Y-m-d H:i:s")));
+        $objAccount->setAutolootExpire($dateBonusNew);
         $objAccount->setFishMindExpire(new \DateTime(date("Y-m-d H:i:s")));
-        $objAccount->setSafeboxExpire(new \DateTime(date("Y-m-d H:i:s")));
+        $objAccount->setSafeboxExpire($dateBonusNew);
 
         if ($config->register["emailActivation"]) {
             $objAccount->setStatus(\StatusHelper::NON_CONFIRME);

@@ -208,6 +208,34 @@ class FonctionsUtiles {
         }
     }
 
+    static function countBonusOnAccount($objAccount) {
+
+        $count = 0;
+        if ($objAccount->getAutolootExpire() > \Carbon\Carbon::now()) {
+            $count++;
+        }
+        if ($objAccount->getGoldExpire() > \Carbon\Carbon::now()) {
+            $count++;
+        }
+        if ($objAccount->getSilverExpire() > \Carbon\Carbon::now()) {
+            $count++;
+        }
+        if ($objAccount->getMarriageFastExpire() > \Carbon\Carbon::now()) {
+            $count++;
+        }
+        if ($objAccount->getSafeboxExpire() > \Carbon\Carbon::now()) {
+            $count++;
+        }
+        if ($objAccount->getMoneyDropRateExpire() > \Carbon\Carbon::now()) {
+            $count++;
+        }
+        if ($objAccount->getFishMindExpire() > \Carbon\Carbon::now()) {
+            $count++;
+        }
+        
+        return $count;
+    }
+
     static function findIconJob($job = 0) {
 
         $imgLink = '<img class="Dimension_Image_Classement" data-tooltip="' . self::findTitleJob($job) . '" src="';
