@@ -35,6 +35,8 @@ class ajaxConnexionSubmit extends \ScriptHelper {
                 $Tableau_Retour_Json = array(
                     'result' => "1",
                     'reasons' => "",
+                    'isUnconfimed' => $objAccount->getStatus() == \StatusHelper::NON_CONFIRME,
+                    'isBanned' => $objAccount->getStatus() == \StatusHelper::BANNI,
                     'withRefresh' => 1,
                     'data' => '<div style="position: relative;top: 45%;width: 431px; margin: 0 auto 0 auto;"><h2>Chargement de l\'administration...</h2></div>'
                 );
@@ -42,6 +44,8 @@ class ajaxConnexionSubmit extends \ScriptHelper {
                 $Tableau_Retour_Json = array(
                     'result' => "1",
                     'reasons' => "",
+                    'isUnconfimed' => $objAccount->getStatus() == \StatusHelper::NON_CONFIRME,
+                    'isBanned' => $objAccount->getStatus() == \StatusHelper::BANNI,
                     'withRefresh' => 0,
                     'id' => \Encryption::encryptForUrl($objAccount->getId()),
                     'data' => ''

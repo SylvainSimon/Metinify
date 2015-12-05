@@ -5,13 +5,27 @@
 </nav>
 
 <div id="Contenue_Principal" class="col-lg-8 col-md-6 col-sm-12">
-    <?php
-    $arrObjAdminNews = \Site\SiteHelper::getAdminNewsRepository()->findNews(4);
-    $templateTop = $this->objTwig->loadTemplate("News.html5.twig");
-    $view = $templateTop->render(["arrObjAdminNews" => $arrObjAdminNews]);
-    echo $view;
-    ?>
-
+    <?php if ($this->isConnected) { ?>
+        <?php if ($this->objAccount->getStatus() == StatusHelper::BANNI) { ?>
+            <?php include 'pages/_LegacyPages/Bannissement.php'; ?>
+        <?php } elseif ($this->objAccount->getStatus() == StatusHelper::NON_CONFIRME) { ?>
+            <?php include 'pages/_LegacyPages/AttenteConfirmation.php'; ?>
+        <?php } else { ?>
+            <?php
+            $arrObjAdminNews = \Site\SiteHelper::getAdminNewsRepository()->findNews(4);
+            $templateTop = $this->objTwig->loadTemplate("News.html5.twig");
+            $view = $templateTop->render(["arrObjAdminNews" => $arrObjAdminNews]);
+            echo $view;
+            ?>
+        <?php } ?>
+    <?php } else { ?>
+        <?php
+        $arrObjAdminNews = \Site\SiteHelper::getAdminNewsRepository()->findNews(4);
+        $templateTop = $this->objTwig->loadTemplate("News.html5.twig");
+        $view = $templateTop->render(["arrObjAdminNews" => $arrObjAdminNews]);
+        echo $view;
+        ?>
+    <?php } ?>
 </div> 
 
 <nav class="col-lg-2 col-md-3 hidden-sm hidden-xs">

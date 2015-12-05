@@ -46,9 +46,9 @@ class InscriptionSubmit extends \PageHelper {
         $objAccount->setSafeboxExpire(new \DateTime(date("Y-m-d H:i:s")));
 
         if ($config->register["emailActivation"]) {
-            $objAccount->setStatus(".");
+            $objAccount->setStatus(\StatusHelper::NON_CONFIRME);
         } else {
-            $objAccount->setStatus("OK");
+            $objAccount->setStatus(\StatusHelper::ACTIF);
         }
         
         $em->persist($objAccount);

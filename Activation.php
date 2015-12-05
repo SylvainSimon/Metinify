@@ -17,8 +17,8 @@ class Activation extends \PageHelper {
 
             if ($objAccount !== null) {
 
-                if ($objAccount->getStatus() != "BLOCK") {
-                    $objAccount->setStatus("OK");
+                if ($objAccount->getStatus() != StatusHelper::BANNI) {
+                    $objAccount->setStatus(StatusHelper::ACTIF);
                     $em->persist($objAccount);
 
                     $em->flush();

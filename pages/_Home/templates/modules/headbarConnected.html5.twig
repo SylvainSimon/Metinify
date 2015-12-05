@@ -8,18 +8,18 @@
 
         <div style="position: relative; left:-4px; top: 1px;"  class="col-lg-5 col-md-6 col-sm-6">
             <span data-tooltip="VamoNaies">
-                <i style="top: 7px; position: relative;" class="material-icons md-icon-whatshot md-24 text-yellow" title=""></i>
+                <i style="top: 7px; position: relative;" class="material-icons md-icon-whatshot md-24 text-yellow"></i>
                 <div style="font-size: 14px;" class="inline" id="Nombre_De_Vamonaies">{{ session.get("VamoNaies")|number_format }} </div>
             </span>
 
             <span data-tooltip="TanaNaies">
-                <i style="top: 7px; position: relative; margin-left: 10px;" class="material-icons md-icon-whatshot md-24 text-gray" title=""></i>
+                <i style="top: 7px; position: relative; margin-left: 10px;" class="material-icons md-icon-whatshot md-24 text-gray"></i>
                 <div style="font-size: 14px;" class="inline" id="Nombre_De_Tananaies">{{ session.get("TanaNaies")|number_format }}</div>
             </span>
 
             <div class="dropdown" style="display: inline;">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <span>Bonus en cours</span>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="position: relative; top:7px; left: 5px;">
+                    <i class="material-icons md-icon-star-border text-yellow md-24"></i>
                 </a>
                 <ul class="dropdown-menu">
                     <div style="width: 210px; padding: 10px;">
@@ -142,7 +142,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <div class="" style="margin-right: 10px;">

@@ -80,9 +80,16 @@ class CoreHelper {
         if ($this->isPage) {
             if ($session->get("ID") !== null) {
 
-                if ($this->objAccount->getStatus() == "BLOCK") {
+                if ($this->objAccount->getStatus() == StatusHelper::BANNI) {
                     if (!$this->isAllowForBlock) {
                         include BASE_ROOT . '/pages/_LegacyPages/Bannissement.php';
+                        exit();
+                    }
+                }
+
+                if ($this->objAccount->getStatus() == StatusHelper::NON_CONFIRME) {
+                    if (!$this->isAllowForBlock) {
+                        include BASE_ROOT . '/pages/_LegacyPages/AttenteConfirmation.php';
                         exit();
                     }
                 }
@@ -139,7 +146,7 @@ class CoreHelper {
 
     public function moduleIsActivated($isActivated = false) {
 
-        if(!$isActivated){
+        if (!$isActivated) {
             include BASE_ROOT . '/pages/_LegacyPages/ErrorDisabled.php';
             exit();
         }
@@ -168,14 +175,14 @@ class CoreHelper {
 
             $this->isAdmin = $objAdministrationUser->getPannelAdmin();
             $this->arrAdminRights = $objAdministrationUser->getDroits();
-            
+
             return true;
         } else {
             return false;
         }
     }
 
-    public function VerifyTheRight($droit = 0) {        
+    public function VerifyTheRight($droit = 0) {
         if (in_array($droit, $this->arrAdminRights)) {
             return true;
         } else {
@@ -183,8 +190,8 @@ class CoreHelper {
             exit();
         }
     }
-    
-    public function HaveTheRight($droit = 0) {        
+
+    public function HaveTheRight($droit = 0) {
         if (in_array($droit, $this->arrAdminRights)) {
             return true;
         } else {

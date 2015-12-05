@@ -125,24 +125,24 @@ class IndexWebsite extends PageHelper {
 
                     <aside class="main-sidebar" style="background: #131313; border-right: 1px solid #3E3E3E;">
                         <section class="sidebar">
-        <?php
-        $templateMenu = $this->objTwig->loadTemplate("leftMenu.html5.twig");
-        echo $templateMenu->render(["isConnected" => $this->isConnected]);
-        ?>
+                            <?php
+                            $templateMenu = $this->objTwig->loadTemplate("leftMenu.html5.twig");
+                            echo $templateMenu->render(["isConnected" => $this->isConnected]);
+                            ?>
                         </section>
                     </aside>
 
                     <div class="content-wrapper">
 
                         <div id="logo">
-                            <img height="50" src="./images/logo.svg" onerror="this.src='./images/logo.png'">
+                            <img height="55" width="360" src="./images/logo.svg" onerror="this.src='./images/logo.png'">
                         </div>
 
 
                         <div class="col-md-12" style="padding-bottom: 60px;">
                             <div class="row">
-        <?php if ($session->get("Administration_PannelAdmin") !== null) { ?>
-            <?php include 'pages/Admin/Accueil_Seconde.php'; ?>
+                                <?php if ($session->get("Administration_PannelAdmin") !== null) { ?>
+                                    <?php include 'pages/Admin/Accueil_Seconde.php'; ?>
                                 <?php } else { ?>
                                     <?php include 'pages/_LegacyPages/Accueil.php'; ?>
                                 <?php } ?>
@@ -154,10 +154,10 @@ class IndexWebsite extends PageHelper {
 
                     <footer>
                         <div class="col-md-12">
-        <?php
-        $templateFooter = $this->objTwig->loadTemplate("footer.html5.twig");
-        echo $templateFooter->render(["isConnected" => $this->isConnected]);
-        ?>
+                            <?php
+                            $templateFooter = $this->objTwig->loadTemplate("footer.html5.twig");
+                            echo $templateFooter->render(["isConnected" => $this->isConnected]);
+                            ?>
                             <div class="clearfix"></div>
                         </div>
                     </footer>
@@ -179,16 +179,15 @@ class IndexWebsite extends PageHelper {
         <?php } ?>
             </script>  
 
-        <?php if ($this->isConnected) { ?>
+            <?php if ($this->isConnected) { ?>
                 <script type="text/javascript">Actualisation_Messages_Sans_Boucle();</script> 
             <?php } ?>
 
         </html>
-            <?php
-        }
-
+        <?php
     }
 
-    $class = new IndexWebsite();
-    $class->run();
-    
+}
+
+$class = new IndexWebsite();
+$class->run();
