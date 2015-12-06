@@ -1,57 +1,84 @@
 
-<div class="row">
-    <div class="col-lg-4" style="padding-left: 25px; padding-top: 10px; padding-bottom: 10px;">
+<div class="col-lg-3 specialColumn" style="padding-top: 10px; padding-bottom: 10px;">
 
-        <div id="Entrepot_IS">
-            <div id="Conteneur_Entrepot_IS">
-                {{ viewEntrepotIs|raw }}
-            </div>
+    <div style="position: relative;">
+        <img id="imageEntrepotIS" src="../../images/inventaire.svg" style="width:100%; height:auto;  border: 1px solid #6b645b;"/>
+
+        <div id="Conteneur_Entrepot_IS">
+            {{ viewEntrepotIs|raw }}
         </div>
 
+        <script type="text/javascript">
+            function redrawCaseEntrepotIS() {
+
+                var widthInventaire = ($("#imageEntrepotIS").css("width"));
+                var heightInventaire = ($("#imageEntrepotIS").css("height"));
+
+                $("#Conteneur_Entrepot_IS").css("width", widthInventaire);
+                $("#Conteneur_Entrepot_IS").css("height", heightInventaire);
+
+                $(".Case_Inventaire").css("height", (100 / 9) + "%");
+
+                $("#tableHistoriqueAchat").css("max-height", parseInt($("#imageEntrepotIS").height()) + 22 + "px");
+            }
+
+            $(window).resize(function () {
+                redrawCaseEntrepotIS();
+            });
+
+
+            $("#imageEntrepotIS").load(function () {
+                redrawCaseEntrepotIS();
+            });
+
+            $("#imageEntrepotIS").ready(function () {
+                redrawCaseEntrepotIS();
+            });
+
+        </script>
     </div>
-    <div class="col-lg-8">
+</div>
+<div class="col-lg-9 specialColumn" style="float: right; padding-right: 0; padding-left: 0px;">
 
-        <div style="max-height: 380px; overflow-y: auto;">
+    <div id="tableHistoriqueAchat" style="max-height: 400px; overflow-y: auto;">
 
-            <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;">
-                <thead>
-                    <tr>
-                        <th>Article</th>
-                        <th>Date d'achat</th>
-                        <th style="text-align: right;">Dépensé</th>
-                    </tr>
-                </thead>
+        <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;">
+            <thead>
+                <tr>
+                    <th>Article</th>
+                    <th>Date d'achat</th>
+                    <th style="text-align: right;">Dépensé</th>
+                </tr>
+            </thead>
 
-                <tbody>
+            <tbody>
 
-                    {% if arrObjLogAchats|length > 0 %}
+                {% if arrObjLogAchats|length > 0 %}
 
-                        {% for objLogAchat in arrObjLogAchats %}
+                    {% for objLogAchat in arrObjLogAchats %}
 
-                            <tr class="Pointer">
-                                <td>
-                                    <span><img width='25' src="images/items/{{ objLogAchat.getVnumItem }}.png"></span>
-                                    {{ objLogAchat.getQuantite }}  {{ objLogAchat.getItem }}</td>
-                                <td>{{ getFormatedDateTime(objLogAchat.getDate) }}</td>
-                                <td style="text-align: right;">
-                                    {{ objLogAchat.getPrix }}
-                                    {% if objLogAchat.getMonnaie == "1" %} 
-                                        <i style="top: 4px; line-height: 10px; position: relative;" class="material-icons md-icon-whatshot text-yellow"></i>
-                                    {% else %}
-                                        <i style="top: 4px; line-height: 10px; position: relative;" class="material-icons md-icon-whatshot text-gray"></i>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                        {% endfor %}
+                        <tr class="Pointer">
+                            <td>
+                                <span><img width='25' src="images/items/{{ objLogAchat.getVnumItem }}.png"></span>
+                                {{ objLogAchat.getQuantite }}  {{ objLogAchat.getItem }}</td>
+                            <td>{{ getFormatedDateTime(objLogAchat.getDate) }}</td>
+                            <td style="text-align: right;">
+                                {{ objLogAchat.getPrix }}
+                                {% if objLogAchat.getMonnaie == "1" %} 
+                                    <i style="top: 4px; line-height: 10px; position: relative;" class="material-icons md-icon-whatshot text-yellow"></i>
+                                {% else %}
+                                    <i style="top: 4px; line-height: 10px; position: relative;" class="material-icons md-icon-whatshot text-gray"></i>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
 
-                    {% else %}
-                        <tr><td colspan="7">Vous n'avez jamais acheter d'article.</td></tr>
-                    {% endif %}
-                </tbody>
+                {% else %}
+                    <tr><td colspan="7">Vous n'avez jamais acheter d'article.</td></tr>
+                {% endif %}
+            </tbody>
 
-            </table>
-        </div>
-
+        </table>
     </div>
 
 </div>

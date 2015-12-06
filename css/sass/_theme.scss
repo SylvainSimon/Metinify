@@ -542,6 +542,9 @@ label{
     .col-lg-6.specialColumn{ 
         width: 53%;
     }
+    .col-lg-9.specialColumn{ 
+        width: 78%;
+    }
 }
 
 .Bouton_Inventaire_1, .Bouton_Inventaire_2, .Bouton_Inventaire_3, .Bouton_Inventaire_4{
@@ -603,26 +606,19 @@ label{
 }
 /* ----------------- Entrepot IS ------------------- */
 
-#Entrepot_IS{
-
-    width: 169px;
-    height: 327px;
-    background: url('../../images/entrepot_IS.png') no-repeat;
-    border-radius: 8px;
-
-}
-
 #Conteneur_Entrepot_IS{
 
-    position: relative;
+    position: absolute;
     width: 160px;
     height: 288px;
-    top: 31px;
-    left: 5px;
+
+    top: 0px;
+    left:0px;
     overflow: hidden;
-    font-size: 1px;
+
+    font-size: 1px; 
     letter-spacing: -1px;
-    word-spacing: 0px;
+    word-spacing: -1px;
 
 }
 

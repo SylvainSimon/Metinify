@@ -19,7 +19,6 @@
             {% if objItem.chemin != "" %}
 
                 <div class="Interieur_Case" data-tooltip="{{ include('ajaxItemGetInfo.html5.twig') }}" data-tooltip-track="1" data-tooltip-isItemMetin="1" style="position: relative; text-align: center;">
-
                     {% if objItem.size  == "1" %}
                         <img id="cade_id_{{ objItem.id }}" src="{{ objItem.chemin }}" style="display: inline; cursor: default; width: 80%; padding-top: 10%; position: relative;" />
                     {% elseif objItem.size  == "2" %}
