@@ -1,13 +1,31 @@
-<div class="col-lg-4">
+<div class="col-lg-3">
 
-    <div style="text-align: center; padding-top: 15px;">
-        <h4>{{ objPlayer.getName }} - Niveau {{ objPlayer.getLevel }}</h4>
+    <div style="text-align: center; padding-top: 20px;">
 
-        {% if calculateGrade < 0 %}
-            <h5 class="text-red" style="font-size: 16px;">{{ tabGrade[calculateGrade] }}</h5>
-        {% else %}
-            <h5 class="text-blue" style="font-size: 16px;">{{ tabGrade[calculateGrade] }}</h5>
+        {% if haveGuild %}
+            <div class="row">
+                <div class="col-lg-12" style="font-size: 16px;">
+                    {% if haveGuild.isMaster %}
+                        <i class="material-icons md-icon-group-work text-yellow md-20"></i>
+                    {% else %}
+                        <i class="material-icons md-icon-group-work text-gray md-20"></i>
+                    {% endif %}
+                    <span style="position: relative; top:-3px;">
+                        {{ haveGuild.name }}
+                    </span>
+                </div>
+            </div>
         {% endif %}
+        <h4 style="font-size: 16px; margin-top: 5px;"><span class="text-olive">Lv {{ objPlayer.getLevel }}</span> 
+            {% if calculateGrade == 0 %}
+                <span class="text-gray">{{ tabGrade[calculateGrade] }}</span>
+            {% elseif calculateGrade < 0 %}
+                <span class="text-red">{{ tabGrade[calculateGrade] }}</span>
+            {% else %}
+                <span class="text-blue">{{ tabGrade[calculateGrade] }}</span>
+            {% endif %} 
+            &nbsp;<span class="yellow">{{ objPlayer.getName }}</span>
+        </h4>
     </div>
 
     <div style="padding-top: 5px; text-align: center; padding-bottom: 20px;">
@@ -32,71 +50,79 @@
 
 </div>
 
-<div class="col-lg-5 specialColumn">
-
-    <h4>Informations
-        <span style="font-size: 14px; top: 3px; position: relative;" class="pull-right">{{ getMinutesToString(objPlayer.getPlaytime) }}</span>
-    </h4>
-
-    <div>
+<div class="col-lg-6 specialColumn" style="padding-top: 20px;">
+    
+    <div style="font-size: 15px;">
         Expérience
     </div>
 
-    {{ include('experience_bubles.html5.twig', {'myScale': '0.25'}) }}
-
-    {% if haveGuild %}
-        <br/>
-        <div style="display: inline; line-height: 10px;">
-            {% if haveGuild.isMaster %}
-                <i class="material-icons md-icon-person text-yellow"></i> Chef de la guilde
-            {% else %}
-                <i class="material-icons md-icon-person text-gray"></i> Membre de la guilde
-            {% endif %}
+    <div style="position: relative; left: -3px; top: 2px;margin-bottom: 5px;">
+        {{ include('experience_bubles.html5.twig', {'myScale': '0.25'}) }}
+    </div>
+    
+    <div class="row" style="margin-bottom: 5px;">
+        <div class="col-lg-12" style="font-size: 16px;">
+            <i class="material-icons md-icon-time text-gray md-20"></i> 
+            <span style="position: relative; top:-3px;">
+                {{ getMinutesToString(objPlayer.getPlaytime) }} de jeu
+            </span>
         </div>
-        {{ haveGuild.name }}
-    {% endif %}
+    </div>
 
-    <br/>
-    <i class="material-icons md-icon-location text-orange"></i> {{ localisation.map }} <span class="text-yellow">{{ localisation.positionX }} - {{ localisation.positionY }}</span>
+    <div class="row" style="margin-bottom: 5px;">
+        <div class="col-lg-12" style="font-size: 16px;">
+            <i class="material-icons md-icon-location text-orange md-20"></i> 
+            <span style="position: relative; top:-3px;">
+                <span class="text-yellow">{{ localisation.positionX }} - {{ localisation.positionY }}</span> {{ localisation.map }}
+            </span>
+        </div>
+    </div>
 
     {% if objMarriage %}
-        <br/>
-        <div>
-            {% if isWomen(objMarriage.job) %}
-                <i class="material-icons md-icon-people text-blue"></i> Marié à {{ objMarriage.name }}
-            {% else %}
-                <i class="material-icons md-icon-people text-fuchsia"></i> Mariée à {{ objMarriage.name }}
-            {% endif %}
+        <div class="row" style="margin-bottom: 5px;">
+            <div class="col-lg-12" style="font-size: 16px;">
+                {% if isWomen(objPlayer.getJob) %}
+                    <i class="material-icons md-icon-people text-olive md-20"></i> 
+                    <span style="position: relative; top:-3px;">
+                        Mariée à {{ objMarriage.name }}
+                    </span>
+                {% else %}
+                    <i class="material-icons md-icon-people text-olive md-20"></i>
+                    <span style="position: relative; top:-3px;">
+                        Marié à {{ objMarriage.name }}
+                    </span>
+                {% endif %}
+            </div>
         </div>
     {% endif %}
 
     <div style="margin-top: 10px;">
-    {{ include('player_stats.html5.twig') }}
+        {{ include('player_stats.html5.twig') }}
     </div>
 
     <div class="row" style="padding-top: 10px;">
         <div class="col-lg-12">
 
             {% if config.mod_player.repairPosition.activate %}
-                <button style="margin-bottom: 5px; width: 32.8%;" type="button" data-tooltip="Débloquer la position" class="btn btn-flat btn-warning" onclick="Deblocage_Personnage('{{ encrypt(objPlayer.getId) }}');">
+                <button style="margin-bottom: 5px; width: 32.6%;" type="button" data-tooltip="Débloquer la position" class="btn btn-flat btn-warning" onclick="Deblocage_Personnage('{{ encrypt(objPlayer.getId) }}');">
                     Débloquer
                 </button>
             {% endif %}
 
             {% if objPlayer.getGold < 0 %}
-                <button style="margin-bottom: 5px; width: 32.8%;" type="button" data-tooltip="Débloquer mes yangs" class="btn btn-flat btn-warning" onclick="Deblocage_Yangs('{{ encryptForUrl(objPlayer.getId) }}');">
+                <button style="margin-bottom: 5px; width: 32.6%;" type="button" data-tooltip="Débloquer mes yangs" class="btn btn-flat btn-warning" onclick="Deblocage_Yangs('{{ encryptForUrl(objPlayer.getId) }}');">
                     Débloquer les yangs
                 </button>
             {% endif %}
 
             {% if config.mod_player.rename.activate %}
-                <button style="margin-bottom: 5px; width: 32.8%;" type="button" class="btn btn-flat btn-primary" onclick="Ajax('pages/MonPersonnage/PersonnageRenameForm.php?idPlayer={{ encryptForUrl(objPlayer.getId) }}');">
+                <button style="margin-bottom: 5px; width: 32.6%;" type="button" class="btn btn-flat btn-primary" onclick="Ajax('pages/MonPersonnage/PersonnageRenameForm.php?idPlayer={{ encryptForUrl(objPlayer.getId) }}');">
                     Renommer
                 </button>
             {% endif %}
 
             {% if config.mod_player.delete.activate %}
-                <button style="margin-bottom: 5px; width: 32.8%;" type="button" class="btn btn-flat btn-danger" onclick="Ajax('pages/MonPersonnage/PersonnageDeleteForm.php?idPlayer={{ encryptForUrl(objPlayer.getId) }}');">
+                <button style="margin-bottom: 5px; width: 32.6%;" type="button" class="btn btn-flat btn-danger" onclick="Ajax('pages/MonPersonnage/PersonnageDeleteForm.php?idPlayer={{ encryptForUrl(objPlayer.getId) }}');">
                     Supprimer
                 </button>
             {% endif %}

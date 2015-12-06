@@ -3,7 +3,7 @@
     <div class="box-header">
         <h3 class="box-title">Magasin d'items</h3>
     </div>
-    
+
     <div class="box-body">
         <span class="text-green">Achat terminé avec succée.</span>
         <br/>
@@ -24,3 +24,10 @@
     Fonction_Reteneuse_Vamonaies({{ session.get("VamoNaies") }});
     Fonction_Reteneuse_Tananaies({{ session.get("TanaNaies") }});
 </script>  
+
+{% if isBonusCompte == "1" %}
+    <script type="text/javascript">
+        $("#accountBonus").html("{% spaceless %}{{ include('account_bonus.html5.twig')|e('js') }}{% endspaceless   %}");
+        
+    </script>  
+{% endif %}

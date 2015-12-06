@@ -42,12 +42,13 @@ class ajaxArticleBuy extends \ScriptHelper {
         $em = \Shared\DoctrineHelper::getEntityManager();
 
         $arrResult["result"] = 1;
+        $arrResult["isBonusCompte"] = 0;
 
         $idItem = $request->request->get("id_item");
         $nombreItem = $request->request->get("nombre_item");
         $objItemshop = \Site\SiteHelper::getItemshopRepository()->findItem($idItem, true);
 
-        if(!$this->checkEntrepotIS()){
+        if (!$this->checkEntrepotIS()) {
             $arrResult["result"] = 0;
             $arrResult["code"] = 8;
             echo json_encode($arrResult);
@@ -202,6 +203,8 @@ class ajaxArticleBuy extends \ScriptHelper {
 
                     $session->set("VamoNaies", $this->objAccount->getCash());
                     $session->set("TanaNaies", $this->objAccount->getMileage());
+
+                    $arrResult["isBonusCompte"] = 1;
                 } else {
                     $arrResult = ["result" => 0, "code" => 3];
                 }

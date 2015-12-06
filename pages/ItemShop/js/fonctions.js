@@ -57,7 +57,7 @@ function Valider_Mon_Achat(id_item, nombre_item) {
                             var data = JSON.parse(msg);
 
                             if (data.result === 1) {
-                                Ajax("pages/ItemShop/ItemShopAchatTerm.php?idTransaction=" + data.idTransaction);
+                                Ajax("pages/ItemShop/ItemShopAchatTerm.php?idTransaction=" + data.idTransaction + "&isBonusCompte=" + data.isBonusCompte);
                             } else {
 
                                 if (data.code == 5) {

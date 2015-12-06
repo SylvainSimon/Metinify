@@ -14,6 +14,8 @@ class ItemShopAchatTerm extends \PageHelper {
         global $request;
         
         $this->arrayTemplate["idTransaction"] = $request->query->get("idTransaction");
+        $this->arrayTemplate["isBonusCompte"] = $request->query->get("isBonusCompte");
+        $this->arrayTemplate["objAccount"] = $this->objAccount;
         
         $view = $this->template->render($this->arrayTemplate);
         $this->response->setContent($view);
