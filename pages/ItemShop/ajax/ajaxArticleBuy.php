@@ -95,8 +95,6 @@ class ajaxArticleBuy extends \ScriptHelper {
                         for ($i = 0; $i < $nombreItem; $i++) {
 
                             $nextFreePosition = $this->checkFieldEntrepotIS();
-
-                            //Si l'entrepot n'est pas plein
                             if ($nextFreePosition !== false) {
 
                                 $objItem = new \Player\Entity\Item();
@@ -116,12 +114,8 @@ class ajaxArticleBuy extends \ScriptHelper {
                                 $em->persist($objItem);
 
                                 $prixTotal = ($objItemshop->getPrix() * 1);
-                                if (($objItemshop->getIdItem() == "2613") || ($objItemshop->getIdItem() == "2614")) {
-                                    $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
-                                } else {
-                                    $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
-                                    $this->objAccount->setMileage($this->objAccount->getMileage() + $prixTotal);
-                                }
+                                $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
+                                $this->objAccount->setMileage($this->objAccount->getMileage() + $prixTotal);
 
                                 $em->persist($this->objAccount);
                                 $em->flush();
@@ -254,7 +248,7 @@ class ajaxArticleBuy extends \ScriptHelper {
                         for ($i = 0; $i < $nombreItem; $i++) {
 
                             $nextFreePosition = $this->checkFieldEntrepotIS();
-                            
+
                             if ($nextFreePosition !== false) {
                                 $nextFreePosition = $this->checkFieldEntrepotIS();
 
@@ -276,12 +270,11 @@ class ajaxArticleBuy extends \ScriptHelper {
 
                                 $prixTotal = ($objItemshop->getPrix() * 1);
                                 $this->objAccount->setMileage($this->objAccount->getMileage() - $prixTotal);
-                                
+
                                 $em->persist($this->objAccount);
                                 $em->flush();
                                 $em->detach($objItem);
                                 $session->set("TanaNaies", $this->objAccount->getMileage());
-                                
                             } else {
                                 $arrResult = ["result" => 0, "code" => 5];
                             }
