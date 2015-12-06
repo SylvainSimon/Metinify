@@ -22,4 +22,21 @@ class ItemProtoRepository extends EntityRepository {
             return null;
         }
     }
+    
+    public function findSocketPctByVnum($vNum = 0) {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("ItemProtoEntity.socketPct");
+        $qb->from("\Player\Entity\ItemProto", "ItemProtoEntity");
+        $qb->where("ItemProtoEntity.vnum = :vNum");
+        $qb->setParameter("vNum", $vNum);
+        $qb->setMaxResults(1);
+
+        try {
+            return $qb->getQuery()->getSingleScalarResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
 }

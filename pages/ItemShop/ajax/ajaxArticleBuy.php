@@ -17,19 +17,15 @@ class ajaxArticleBuy extends \ScriptHelper {
         }
     }
 
-    public function checkFieldEntrepotIS($nombreItem = 1) {
-        $nextFreePosition = 0;
-        $out = false;
-        while ($out == false) {
-            $objItem = \Player\PlayerHelper::getItemRepository()->countByOwnerIdPosAndWindow($this->objAccount->getId(), $nextFreePosition, "MALL");
-            if ($objItem > 0) {
-                $nextFreePosition++;
+    public function checkFieldEntrepotIS($nextFreePosition = 0) {
+
+        $objItem = \Player\PlayerHelper::getItemRepository()->countByOwnerIdPosAndWindow($this->objAccount->getId(), $nextFreePosition, "MALL");
+        if ($objItem > 0) {
+            if ($nextFreePosition >= 44) {
+                return false;
             } else {
-                $out = true;
+                return $this->checkFieldEntrepotIS($nextFreePosition + 1);
             }
-        }
-        if ($nextFreePosition > (44 - $nombreItem)) {
-            return false;
         } else {
             return $nextFreePosition;
         }
@@ -64,6 +60,7 @@ class ajaxArticleBuy extends \ScriptHelper {
                 if ($session->get("VamoNaies") >= ($objItemshop->getPrix() * $nombreItem)) {
 
                     $flagItem = \Player\PlayerHelper::getItemProtoRepository()->findFlagByVnum($objItemshop->getIdItem());
+                    $socketPct = \Player\PlayerHelper::getItemProtoRepository()->findSocketPctByVnum($objItemshop->getIdItem());
 
                     //Si empilable
                     if ($flagItem == 4 || $flagItem == 20 || $flagItem == 132 || $flagItem == 2052 || $flagItem == 8212) {
@@ -95,39 +92,47 @@ class ajaxArticleBuy extends \ScriptHelper {
                             $arrResult = ["result" => 0, "code" => 5];
                         }
                     } else {
-                        //Si l'entrepot n'est pas plein
-                        if ($this->checkFieldEntrepotIS() !== false) {
+                        for ($i = 0; $i < $nombreItem; $i++) {
 
-                            for ($i = 1; $i <= $nombreItem; $i++) {
-                                $nextFreePosition = $this->checkFieldEntrepotIS();
+                            $nextFreePosition = $this->checkFieldEntrepotIS();
+
+                            //Si l'entrepot n'est pas plein
+                            if ($nextFreePosition !== false) {
 
                                 $objItem = new \Player\Entity\Item();
                                 $objItem->setOwnerId($this->objAccount->getId());
                                 $objItem->setWindow("MALL");
                                 $objItem->setPos($nextFreePosition);
-                                $objItem->setCount("1");
+                                $objItem->setCount(1);
                                 $objItem->setVnum($objItemshop->getIdItem());
-                                $objItem->setSocket0("1");
-                                $objItem->setSocket1("1");
-                                $objItem->setSocket2("1");
+
+                                if ($socketPct > 0) {
+                                    for ($iSocket = 0; $iSocket < $socketPct; $iSocket++) {
+                                        $func = "setSocket" . $iSocket;
+                                        $objItem->$func("1");
+                                    }
+                                }
+
                                 $em->persist($objItem);
-                            }
 
-                            $prixTotal = ($objItemshop->getPrix() * $nombreItem);
-                            if (($objItemshop->getIdItem() == "2613") || ($objItemshop->getIdItem() == "2614")) {
-                                $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
+                                $prixTotal = ($objItemshop->getPrix() * 1);
+                                if (($objItemshop->getIdItem() == "2613") || ($objItemshop->getIdItem() == "2614")) {
+                                    $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
+                                } else {
+                                    $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
+                                    $this->objAccount->setMileage($this->objAccount->getMileage() + $prixTotal);
+                                }
+
+                                $em->persist($this->objAccount);
+                                $em->flush();
+                                $em->detach($objItem);
+
+                                $session->set("VamoNaies", $this->objAccount->getCash());
+                                $session->set("TanaNaies", $this->objAccount->getMileage());
                             } else {
-                                $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
-                                $this->objAccount->setMileage($this->objAccount->getMileage() + $prixTotal);
+                                $arrResult = ["result" => 0, "code" => 5];
+                                break;
                             }
-
-                            $em->persist($this->objAccount);
-                            $em->flush();
-
-                            $session->set("VamoNaies", $this->objAccount->getCash());
-                            $session->set("TanaNaies", $this->objAccount->getMileage());
-                        } else {
-                            $arrResult = ["result" => 0, "code" => 5];
                         }
                     }
                 } else {
@@ -215,6 +220,7 @@ class ajaxArticleBuy extends \ScriptHelper {
                 if ($session->get("TanaNaies") >= ($objItemshop->getPrix() * $nombreItem)) {
 
                     $flagItem = \Player\PlayerHelper::getItemProtoRepository()->findFlagByVnum($objItemshop->getIdItem());
+                    $socketPct = \Player\PlayerHelper::getItemProtoRepository()->findSocketPctByVnum($objItemshop->getIdItem());
 
                     //Si empilable
                     if ($flagItem == 4 || $flagItem == 20 || $flagItem == 132 || $flagItem == 2052 || $flagItem == 8212) {
@@ -244,33 +250,41 @@ class ajaxArticleBuy extends \ScriptHelper {
                             $arrResult = ["result" => 0, "code" => 5];
                         }
                     } else {
-                        //Si l'entrepot n'est pas plein
-                        if ($this->checkFieldEntrepotIS() !== false) {
 
-                            for ($i = 1; $i <= $nombreItem; $i++) {
+                        for ($i = 0; $i < $nombreItem; $i++) {
+
+                            $nextFreePosition = $this->checkFieldEntrepotIS();
+                            
+                            if ($nextFreePosition !== false) {
                                 $nextFreePosition = $this->checkFieldEntrepotIS();
 
                                 $objItem = new \Player\Entity\Item();
                                 $objItem->setOwnerId($this->objAccount->getId());
                                 $objItem->setWindow("MALL");
                                 $objItem->setPos($nextFreePosition);
-                                $objItem->setCount("1");
+                                $objItem->setCount(1);
                                 $objItem->setVnum($objItemshop->getIdItem());
-                                $objItem->setSocket0("1");
-                                $objItem->setSocket1("1");
-                                $objItem->setSocket2("1");
+
+                                if ($socketPct > 0) {
+                                    for ($iSocket = 0; $iSocket < $socketPct; $iSocket++) {
+                                        $func = "setSocket" . $iSocket;
+                                        $objItem->$func("1");
+                                    }
+                                }
+
                                 $em->persist($objItem);
+
+                                $prixTotal = ($objItemshop->getPrix() * 1);
+                                $this->objAccount->setMileage($this->objAccount->getMileage() - $prixTotal);
+                                
+                                $em->persist($this->objAccount);
+                                $em->flush();
+                                $em->detach($objItem);
+                                $session->set("TanaNaies", $this->objAccount->getMileage());
+                                
+                            } else {
+                                $arrResult = ["result" => 0, "code" => 5];
                             }
-
-                            $prixTotal = ($objItemshop->getPrix() * $nombreItem);
-                            $this->objAccount->setMileage($this->objAccount->getMileage() - $prixTotal);
-                            $em->persist($this->objAccount);
-
-                            $em->flush();
-
-                            $session->set("TanaNaies", $this->objAccount->getMileage());
-                        } else {
-                            $arrResult = ["result" => 0, "code" => 5];
                         }
                     }
                 } else {
