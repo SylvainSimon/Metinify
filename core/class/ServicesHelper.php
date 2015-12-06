@@ -102,8 +102,6 @@ class ServicesHelper {
             include BASE_ROOT . '/pages/Tableaux_Arrays.php';
 
             $twig->addExtension(new \Symfony\Bridge\Twig\Extension\TranslationExtension($translator));
-            $twig->addGlobal('bonusItem', $Bonus_Item);
-            $twig->addGlobal('pierreItem', $Pierre_Item);
             $twig->addGlobal('session', $container['session']);
             $twig->addGlobal('request', $container['request']);
             $twig->addGlobal('config', $container['config']);

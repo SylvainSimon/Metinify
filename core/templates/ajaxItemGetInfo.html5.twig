@@ -55,29 +55,76 @@
 <br/>
 <br/>
 
+{% if objItem.socket0 != 0 %}
+    <div style='position: relative; margin-bottom: 4px;'>
+        <img src='../../images/case.svg'style='border: 1px solid #6b645b;' width='32' height='32' />
+        {% if objItem.socket0 != 1 %}
+            <span >{{ objItem.socket0Name }}</span>
+            <img src='{{ objItem.socket0Chemin }}' style='display: inline; position: absolute; top:0px; left:0px; cursor: default; width: 32px;' />
+        {% else %}
+            <span >Emplacement libre</span>
+        {% endif %}
+    </div>
+{% endif %}
+
 {% if objItem.socket1 != 0 %}
-    {{ attribute(pierreItem, objItem.socket1) }}
-    <br/>
+    <div style='position: relative; margin-bottom: 4px;'>
+        <img src='../../images/case.svg'style='border: 1px solid #6b645b;' width='32' height='32' />
+        {% if objItem.socket1 != 1 %}
+            <span >{{ objItem.socket1Name }}</span>
+            <img src='{{ objItem.socket1Chemin }}' style='display: inline; position: absolute; top:0px; left:0px; cursor: default; width: 32px;' />
+        {% else %}
+            <span >Emplacement libre</span>
+        {% endif %}
+    </div>
 {% endif %}
 
 {% if objItem.socket2 != 0 %}
-    {{ attribute(pierreItem, objItem.socket2) }}
-    <br/>
+    <div style='position: relative; margin-bottom: 4px;'>
+        <img src='../../images/case.svg'style='border: 1px solid #6b645b;' width='32' height='32' />
+        {% if objItem.socket2 != 1 %}
+            <span >{{ objItem.socket2Name }}</span>
+            <img src='{{ objItem.socket2Chemin }}' style='display: inline; position: absolute; top:0px; left:0px; cursor: default; width: 32px;' />
+        {% else %}
+            <span >Emplacement libre</span>
+        {% endif %}
+    </div>
 {% endif %}
 
 {% if objItem.socket3 != 0 %}
-    {{ attribute(pierreItem, objItem.socket3) }}
-    <br/>
+    <div style='position: relative; margin-bottom: 4px;'>
+        <img src='../../images/case.svg'style='border: 1px solid #6b645b;' width='32' height='32' />
+        {% if objItem.socket3 != 1 %}
+            <span >{{ objItem.socket3Name }}</span>
+            <img src='{{ objItem.socket3Chemin }}' style='display: inline; position: absolute; top:0px; left:0px; cursor: default; width: 32px;' />
+        {% else %}
+            <span >Emplacement libre</span>
+        {% endif %}
+    </div>
 {% endif %}
 
 {% if objItem.socket4 != 0 %}
-    {{ attribute(pierreItem, objItem.socket4) }}
-    <br/>
+    <div style='position: relative; margin-bottom: 4px;'>
+        <img src='../../images/case.svg'style='border: 1px solid #6b645b;' width='32' height='32' />
+        {% if objItem.socket4 != 1 %}
+            <span >{{ objItem.socket4Name }}</span>
+            <img src='{{ objItem.socket4Chemin }}' style='display: inline; position: absolute; top:0px; left:0px; cursor: default; width: 32px;' />
+        {% else %}
+            <span >Emplacement libre</span>
+        {% endif %}
+    </div>
 {% endif %}
 
 {% if objItem.socket5 != 0 %}
-    {{ attribute(pierreItem, objItem.socket5) }}
-    <br/>
+    <div style='position: relative; margin-bottom: 4px;'>
+        <img src='../../images/case.svg'style='border: 1px solid #6b645b;' width='32' height='32' />
+        {% if objItem.socket5 != 1 %}
+            <span >{{ objItem.socket5Name }}</span>
+            <img src='{{ objItem.socket5Chemin }}' style='display: inline; position: absolute; top:0px; left:0px; cursor: default; width: 32px;' />
+        {% else %}
+            <span >Emplacement libre</span>
+        {% endif %}
+    </div>
 {% endif %}
 
 {% set bonusAjoute3 = objItem.attrtype2 %}
