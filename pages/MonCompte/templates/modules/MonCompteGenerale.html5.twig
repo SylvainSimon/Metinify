@@ -2,7 +2,7 @@
 
 <div class="tab-pane active" id="Onglet_InformationGeneral">
 
-    <div class="col-lg-6 specialColumn" style="padding-left: 0px; padding-right: 0px;">
+    <div class="col-lg-9 specialColumn" style="padding-left: 0px; padding-right: 0px;">
 
         <table class="table table-condensed table-hover" style="border-collapse: collapse;">
             <thead>
@@ -42,52 +42,47 @@
             </tbody>
 
         </table>
-    </div>
+            
+        <div style="padding-left: 15px; padding-right: 15px;">
 
-    <div class="col-lg-3" style="padding-left: 10px; padding-right: 10px;">
-
-        <h4>Compte
-            <span style="font-size: 12px; top: 3px; position: relative;" class="pull-right">Crée le {{ getFormatedDateTime(objAccount.getCreateTime, "d/m/Y") }}</span>
-        </h4>
-
-        <div class="row" style="margin-bottom: 5px;">
-            <div class="col-lg-12">
-                {{ findIconEmpire(objPlayerIndex.empire)|raw }} 
-                <span style="position: relative; top:-5px;">
-                    Empire {{ helpEmpire(objPlayerIndex.empire) }}
-                </span>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-lg-12" style="margin-bottom: 2px;">
-                <button class="btn btn-primary btn-flat btn-sm" style="width: 100%;" onclick="Ajax('pages/MonCompte/modules/PasswordChangeForm.php');">
-                    Modifier mot de passe
-                </button>
-            </div>
-            <div class="col-lg-12" style="margin-bottom: 5px;">
-
-                <button class="btn btn-primary btn-flat btn-sm" style="width: 100%;" onclick="Ajax('pages/MonCompte/modules/EmailChangeForm.php');">
-                    Modifier adresse e-mail
-                </button>
+            <div class="row" style="margin-bottom: 5px;">
+                <div class="col-lg-12" style="font-size: 18px;">
+                    {{ findIconEmpire(objPlayerIndex.empire)|raw }} 
+                    <span style="position: relative; top:-4px;">
+                        Empire {{ helpEmpire(objPlayerIndex.empire) }}
+                    </span>
+                </div>
             </div>
 
-            <div class="col-lg-12" style="margin-top: 5px;">
-                {% if objAccount.getCodeEffacement == "" %}
-                    <button class="btn btn-success btn-flat btn-sm" style="width: 100%;" onclick="Ajax('pages/MonCompte/modules/CodeEffacementCreateForm.php');">
-                        Créer code de sureté
+
+            <div class="row">
+                <div class="col-lg-6" style="margin-bottom: 5px;">
+                    <button class="btn btn-primary btn-flat btn-sm" style="width: 100%; margin-bottom: 5px;" onclick="Ajax('pages/MonCompte/modules/PasswordChangeForm.php');">
+                        Modifier mot de passe
                     </button>
-                {% else %}
-                    <button class="btn bg-purple btn-flat btn-sm" style="width: 100%;" onclick="Ajax('pages/MonCompte/modules/CodeEffacementChangeForm.php');">
-                        Modifier code de sureté
-                    </button>
-                {% endif %}
 
+                    <button class="btn btn-primary btn-flat btn-sm" style="width: 100%;" onclick="Ajax('pages/MonCompte/modules/EmailChangeForm.php');">
+                        Modifier adresse e-mail
+                    </button>
+                </div>
+
+                <div class="col-lg-6" style="margin-top: 5px;">
+                    {% if objAccount.getCodeEffacement == "" %}
+                        <button class="btn btn-success btn-flat btn-sm" style="width: 100%;" onclick="Ajax('pages/MonCompte/modules/CodeEffacementCreateForm.php');">
+                            Créer code de sureté
+                        </button>
+                    {% else %}
+                        <button class="btn bg-purple btn-flat btn-sm" style="width: 100%;" onclick="Ajax('pages/MonCompte/modules/CodeEffacementChangeForm.php');">
+                            Modifier code de sureté
+                        </button>
+                    {% endif %}
+
+                </div>
             </div>
         </div>
 
     </div>
+
 
     <div class="col-lg-3 specialColumn">
         <h4>Entrepot
