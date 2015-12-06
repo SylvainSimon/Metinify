@@ -6,9 +6,9 @@
 {% if bonusBase1 != 0 %}
     <br/>
     {% if objItem.applyvalue0 < 0 %}
-        <span class='text-red'>{{ attribute(bonusItem, bonusBase1) }} : {{ objItem.applyvalue0 }}</span>
+        <span class='text-red'>{{ helpItemAttr(bonusBase1) }} : {{ objItem.applyvalue0 }}</span>
     {% else %}
-        <span class='text-green'>{{ attribute(bonusItem, bonusBase1) }} : {{ objItem.applyvalue0 }}</span>
+        <span class='text-green'>{{ helpItemAttr(bonusBase1) }} : {{ objItem.applyvalue0 }}</span>
     {% endif %}
 {% endif %}
 
@@ -16,9 +16,9 @@
 {% if bonusBase2 != 0 %}
     <br/>
     {% if objItem.applyvalue1 < 0 %}
-        <span class='text-red'>{{ attribute(bonusItem, bonusBase2) }} : {{ objItem.applyvalue1 }}</span>
+        <span class='text-red'>{{ helpItemAttr(bonusBase2) }} : {{ objItem.applyvalue1 }}</span>
     {% else %}
-        <span class='text-green'>{{ attribute(bonusItem, bonusBase2) }} : {{ objItem.applyvalue1 }}</span>
+        <span class='text-green'>{{ helpItemAttr(bonusBase2) }} : {{ objItem.applyvalue1 }}</span>
     {% endif %}
 {% endif %}
 
@@ -26,9 +26,9 @@
 {% if bonusBase3 != 0 %}
     <br/>
     {% if objItem.applyvalue2 < 0 %}
-        <span class='text-red'>{{ attribute(bonusItem, bonusBase3) }} : {{ objItem.applyvalue2 }}</span>
+        <span class='text-red'>{{ helpItemAttr(bonusBase3) }} : {{ objItem.applyvalue2 }}</span>
     {% else %}
-        <span class='text-green'>{{ attribute(bonusItem, bonusBase3) }} : {{ objItem.applyvalue2 }}</span>
+        <span class='text-green'>{{ helpItemAttr(bonusBase3) }} : {{ objItem.applyvalue2 }}</span>
     {% endif %}
 {% endif %}
 
@@ -36,9 +36,9 @@
 {% if bonusAjoute1 != 0 %}
     <br/>
     {% if objItem.attrvalue0 < 0 %}
-        <span class='text-red'>{{ bonusItem[bonusAjoute1] }} : {{ objItem.attrvalue0 }}</span>
+        <span class='text-red'>{{ helpItemAttr(bonusAjoute1) }} : {{ objItem.attrvalue0 }}</span>
     {% else %}
-        <span class='text-green'>{{ bonusItem[bonusAjoute1] }} : {{ objItem.attrvalue0 }}</span>
+        <span class='text-green'>{{ helpItemAttr(bonusAjoute1) }} : {{ objItem.attrvalue0 }}</span>
     {% endif %}
 {% endif %}
 
@@ -46,9 +46,9 @@
 {% if bonusAjoute2 != 0 %}
     <br/>
     {% if objItem.attrvalue1 < 0 %}
-        <span class='text-red'>{{ bonusItem[bonusAjoute2] }} : {{ objItem.attrvalue1 }}</span>
+        <span class='text-red'>{{ helpItemAttr(bonusAjoute2) }} : {{ objItem.attrvalue1 }}</span>
     {% else %}
-        <span class='text-green'>{{ bonusItem[bonusAjoute2] }} : {{ objItem.attrvalue1 }}</span>
+        <span class='text-green'>{{ helpItemAttr(bonusAjoute2) }} : {{ objItem.attrvalue1 }}</span>
     {% endif %}
 {% endif %}
 
@@ -84,9 +84,9 @@
 {% if bonusAjoute3 != 0 %}
     <br/>
     {% if objItem.attrvalue2 < 0 %}
-        <span class='text-red'>{{ bonusItem[bonusAjoute3] }} : {{ objItem.attrvalue2 }}</span>
+        <span class='text-red'>{{ helpItemAttr(bonusAjoute3) }} : {{ objItem.attrvalue2 }}</span>
     {% else %}
-        <span class='text-green'>{{ bonusItem[bonusAjoute3] }} : {{ objItem.attrvalue2 }}</span>
+        <span class='text-green'>{{ helpItemAttr(bonusAjoute3) }} : {{ objItem.attrvalue2 }}</span>
     {% endif %}
 {% endif %}
 
@@ -94,9 +94,9 @@
 {% if bonusAjoute4 != 0 %}
     <br/>
     {% if objItem.attrvalue3 < 0 %}
-        <span class='text-red'>{{ bonusItem[bonusAjoute4] }} : {{ objItem.attrvalue3 }}</span>
+        <span class='text-red'>{{ helpItemAttr(bonusAjoute4) }} : {{ objItem.attrvalue3 }}</span>
     {% else %}
-        <span class='text-green'>{{ bonusItem[bonusAjoute4] }} : {{ objItem.attrvalue3 }}</span>
+        <span class='text-green'>{{ helpItemAttr(bonusAjoute4) }} : {{ objItem.attrvalue3 }}</span>
     {% endif %}
 {% endif %}
 
@@ -104,9 +104,9 @@
 {% if bonusAjoute5 != 0 %}
     <br/>
     {% if objItem.attrvalue4 < 0 %}
-        <span class='text-red'>{{ bonusItem[bonusAjoute5] }} : {{ objItem.attrvalue4 }}</span>
+        <span class='text-red'>{{ helpItemAttr(bonusAjoute5) }} : {{ objItem.attrvalue4 }}</span>
     {% else %}
-        <span class='text-green'>{{ bonusItem[bonusAjoute5] }} : {{ objItem.attrvalue4 }}</span>
+        <span class='text-green'>{{ helpItemAttr(bonusAjoute5) }} : {{ objItem.attrvalue4 }}</span>
     {% endif %}
 {% endif %}
 
@@ -114,9 +114,9 @@
 {% if bonusAjoute6 != 0 %}
     <br/>
     {% if objItem.attrvalue5 < 0 %}
-        <span class='text-red'>{{ bonusItem[bonusAjoute6] }} : {{ objItem.attrvalue5 }}</span>
+        <span class='text-red'>{{ helpItemAttr(bonusAjoute6) }} : {{ objItem.attrvalue5 }}</span>
     {% else %}
-        <span class='text-green'>{{ bonusItem[bonusAjoute6] }} : {{ objItem.attrvalue5 }}</span>
+        <span class='text-green'>{{ helpItemAttr(bonusAjoute6) }} : {{ objItem.attrvalue5 }}</span>
     {% endif %}
 {% endif %}
 
@@ -124,8 +124,8 @@
 {% if bonusAjoute7 != 0 %}
     <br/>
     {% if objItem.attrvalue6 < 0 %}
-        <span class='text-red'>{{ bonusItem[bonusAjoute7] }} : {{ objItem.attrvalue6 }}</span>
+        <span class='text-red'>{{ helpItemAttr(bonusAjoute7) }} : {{ objItem.attrvalue6 }}</span>
     {% else %}
-        <span class='text-green'>{{ bonusItem[bonusAjoute7] }} : {{ objItem.attrvalue6 }}</span>
+        <span class='text-green'>{{ helpItemAttr(bonusAjoute7) }} : {{ objItem.attrvalue6 }}</span>
     {% endif %}
 {% endif %}

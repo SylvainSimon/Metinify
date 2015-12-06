@@ -1,20 +1,5 @@
 <?php
 
-$Array_Mois = array(
-    '01' => 'Janvier',
-    '02' => 'Fevrier',
-    '03' => 'Mars',
-    '04' => 'Avril',
-    '05' => 'Mai',
-    '06' => 'Juin',
-    '07' => 'Juillet',
-    '08' => 'Aout',
-    '09' => 'Septembre',
-    '10' => 'Octobre',
-    '11' => 'Novembre',
-    '12' => 'Decembre'
-);
-
 $Array_Poisson = array(
     '0' => 'Rien',
     '1' => 'Anneau d\'or',
@@ -265,51 +250,4 @@ $Pierre_Item = array(
     '28643' => '<img src=\'../images/pierres/PierreHate.png\' /><span style=\'position:relative; left:5px;\'>Pierre de Hâte +6</span>',
     '90102' => '<img src=\'../images/pierres/PierreForce.png\' /><span style=\'position:relative; left:5px;\'>Pierre de Force +7</span>',
     '90105' => '<img src=\'../images/pierres/PierreIntelligence.png\' /><span style=\'position:relative; left:5px;\'>Pierre d\'Intelligence +7</span>'
-);
-
-$Array_Grades = array(
-    '0' => 'Neutre',
-    '1' => 'Amical',
-    '2' => 'Bon',
-    '3' => 'Noble',
-    '4' => 'Chevalier',
-    '-1' => 'Agressif',
-    '-2' => 'Retord',
-    '-3' => 'Malicieux',
-    '-4' => 'Cruel'
-);
-
-$Array_Maps = array(
-    '1' => 'Map 1 Rouge',
-    '3' => 'Map 2 Rouge',
-    '21' => 'Map 1 Jaune',
-    '23' => 'Map 2 Jaune',
-    '41' => 'Map 1 Bleu',
-    '43' => 'Map 2 Bleu',
-    '61' => 'Mont So-Han',
-    '62' => 'Papier Doyum',
-    '63' => 'Désert de Yongbi',
-    '64' => 'Vallée de Seungryong',
-    '65' => 'Temple',
-    '67' => 'Forêt',
-    '68' => 'Bois Rouge',
-    '71' => 'Cave V2',
-    '74' => 'A définir',
-    '75' => 'A définir',
-    '77' => 'A définir',
-    '78' => 'A définir',
-    '199' => 'Map 230',
-    '200' => 'Map X-King',
-    '201' => 'Map DD'
-);
-
-$Array_BonusCompte = array(
-    
-    'gold_expire' => '<img src=\'../images/Bonus/1.png\' width=\'63\' />',
-    'silver_expire' => '<img src=\'../images/Bonus/2.png\' width=\'63\' />',
-    'safebox_expire' => '<img src=\'../images/Bonus/3.png\' width=\'63\' />',
-    'autoloot_expire' => '<img src=\'../images/Bonus/4.png\' width=\'63\' />',
-    'fish_mind_expire' => '<img src=\'../images/Bonus/5.png\' width=\'63\' />',
-    'marriage_fast_expire' => '<img src=\'../images/Bonus/6.png\' width=\'63\' />',
-    'money_drop_rate_expire' => '<img src=\'../images/Bonus/7.png\' width=\'63\' />'
 );

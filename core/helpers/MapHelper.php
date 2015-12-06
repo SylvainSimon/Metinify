@@ -24,9 +24,7 @@ class MapHelper {
     public static function getAll($sort = true) {
 
         global $translator;
-        
-        \Debug::log($translator);
-        
+                
         $arrMap = array(
             self::MAP_1_ROUGE => $translator->trans('map.map1Red', array(), 'map'),
             self::MAP_2_ROUGE => $translator->trans('map.map2Red', array(), 'map'),

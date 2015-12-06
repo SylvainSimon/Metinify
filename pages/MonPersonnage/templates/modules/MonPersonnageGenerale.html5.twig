@@ -18,11 +18,11 @@
         {% endif %}
         <h4 style="font-size: 16px; margin-top: 5px;"><span class="text-olive">Lv {{ objPlayer.getLevel }}</span> 
             {% if calculateGrade == 0 %}
-                <span class="text-gray">{{ tabGrade[calculateGrade] }}</span>
+                <span class="text-gray">{{ helpGrade(calculateGrade) }}</span>
             {% elseif calculateGrade < 0 %}
-                <span class="text-red">{{ tabGrade[calculateGrade] }}</span>
+                <span class="text-red">{{ helpGrade(calculateGrade) }}</span>
             {% else %}
-                <span class="text-blue">{{ tabGrade[calculateGrade] }}</span>
+                <span class="text-blue">{{ helpGrade(calculateGrade) }}</span>
             {% endif %} 
             &nbsp;<span class="yellow">{{ objPlayer.getName }}</span>
         </h4>

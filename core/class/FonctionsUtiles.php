@@ -82,53 +82,6 @@ class FonctionsUtiles {
         return $Chaine_Retourne;
     }
 
-    static function Formatage_Date($Donnees_Brute, $simplifie = false) {
-
-        $Array_Mois = array(
-            '01' => 'Janvier',
-            '02' => 'Fevrier',
-            '03' => 'Mars',
-            '04' => 'Avril',
-            '05' => 'Mai',
-            '06' => 'Juin',
-            '07' => 'Juillet',
-            '08' => 'Aout',
-            '09' => 'Septembre',
-            '10' => 'Octobre',
-            '11' => 'Novembre',
-            '12' => 'Decembre'
-        );
-
-        $Explosion_DateEntiere = explode(" ", $Donnees_Brute);
-
-        $Explosion_Date = explode("-", $Explosion_DateEntiere[0]);
-        $Explosion_Heure = explode(":", $Explosion_DateEntiere[1]);
-
-        if ($Explosion_DateEntiere[0] != '0000-00-00') {
-
-            $Date_Jours = $Explosion_Date[2];
-            $Date_Mois = $Array_Mois[$Explosion_Date[1]];
-            $Date_Annee = $Explosion_Date[0];
-        }
-
-        $Date_Heure = $Explosion_Heure[0];
-        $Date_Minute = $Explosion_Heure[1];
-        $Date_Seconde = $Explosion_Heure[2];
-
-        if ($Explosion_DateEntiere[0] != '0000-00-00') {
-
-            if ($simplifie) {
-                $Recomposition_Date = "" . $Date_Jours . " " . $Date_Mois . " " . $Date_Annee . " à " . $Date_Heure . "h" . $Date_Minute . "m" . $Date_Seconde . "s";
-            } else {
-                $Recomposition_Date = "Le " . $Date_Jours . " " . $Date_Mois . " " . $Date_Annee . " à " . $Date_Heure . "h" . $Date_Minute . "m" . $Date_Seconde . "s";
-            }
-        } else {
-            $Recomposition_Date = "La date n'a pas été définie.";
-        }
-
-        return $Recomposition_Date;
-    }
-
     static function Raccourcissement_Chaine($Chaine, $Limite) {
 
         $Chaine_Temporaire = substr($Chaine, 0, $Limite);

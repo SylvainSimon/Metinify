@@ -31,6 +31,12 @@ class TranslateHelper {
         $translator->addResource('yaml', BASE_ROOT . '/core/translations/map.fr.yml', 'fr', 'map');
         $translator->addResource('yaml', BASE_ROOT . '/core/translations/map.' . $sousDomaine . '.yml', $sousDomaine, 'map');
         
+        $translator->addResource('yaml', BASE_ROOT . '/core/translations/grade.fr.yml', 'fr', 'grade');
+        $translator->addResource('yaml', BASE_ROOT . '/core/translations/grade.' . $sousDomaine . '.yml', $sousDomaine, 'grade');
+        
+        $translator->addResource('yaml', BASE_ROOT . '/core/translations/item_attr.fr.yml', 'fr', 'itemAttr');
+        $translator->addResource('yaml', BASE_ROOT . '/core/translations/item_attr.' . $sousDomaine . '.yml', $sousDomaine, 'itemAttr');
+        
         $this->objInstance = $translator;
     }
 

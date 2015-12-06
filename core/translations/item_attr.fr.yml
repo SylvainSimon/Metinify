@@ -1,0 +1,61 @@
+itemAttr:
+    maxPv:                          Max PV
+    maxPm:                          Max PM
+    vitalite:                       Vitalité
+    intelligence:                   Intelligence
+    force:                          Force
+    dexterite:                      Dexterité
+    vitAttaque:                     Vitesse d'attaque
+    vitDeplacement:                 Vitesse de déplacement
+    vitSort:                        Vitesse des sorts
+    regenPV:                        Régénération des PV
+    regenPM:                        Régénération des PM
+    chanceEmpoisonnement:           Chance d'empoisonnement
+    chanceEtourdissement:           Chance d'étourdissement
+    chanceRalentissement:           Chance de ralentissement
+    chanceCoupCritique:             Chance de faire un coup critique
+    chanceCoupPercant:              Chance de faire un coup perçant
+    bonusContreDemiHomme:           Bonus contre les demi-hommes
+    bonusContreAnimaux:             Bonus contre les animaux
+    bonusContreOrc:                 Bonus contre les orcs
+    bonusContreEsoterique:          Bonus contre les ésotériques
+    bonusContreMortVivant:          Bonus contre les mort-vivants
+    bonusContreDemon:               Bonus contre les démons
+    degatAbsorbePv:                 Dégats absorbés par les PV
+    degatAbsorbePm:                 Dégats absorbés par les PM
+    chancePrendrePm:                Chance de prendre les PM de l'adversaire
+    chanceRecupPm:                  Chance de récupération des PM
+    chanceBloqueAttaquePhysique:    Chance de bloquer les attaques physique
+    chanceEviteFleche:              Chance d'éviter les flèches
+    defenseEpee:                    Défense à l'épée
+    defenseEpee2Mains:              Défense à l'épée à deux mains
+    defenseDague:                   Défense à la dague
+    defenseGong:                    Défense au gong
+    resistanceSpecialiste:          Résistance aux spécialistes
+    resistanceFleche:               Résistance aux flèches
+    resistanceFeu:                  Résistance au feu
+    resistanceLumiere:              Résistance à la lumière
+    resistanceMagie:                Résistance à la magie
+    resistanceVent:                 Résistance au vent
+    chanceDetournerAttaquePhysique: Chance de détourner une attaque physique
+    chanceDetournerMalediction:     Chance de détourner une malédiction
+    resistancePoison:               Résistance contre le poison
+    chanceRestaurerPm:              Chance de restaurer les PM
+    chanceBonusXp:                  Chance d'obtenir un bonus XP
+    chanceDoubleYang:               Chance d'obtenir le double de yang
+    chanceDoubleObjet:              Chance d'obtenir le double d'objet
+    antiEtourdissement:             Anti-étourdissement
+    antiRalentissement:             Anti-ralentissement
+    valeurAttaque:                  Valeur d'attaque
+    valeurDefense:                  Point de défense
+    bonusContreGuerrier:            Bonus contre les guerriers
+    bonusContreNinja:               Bonus contre les ninjas
+    bonusContreSura:                Bonus contre les suras
+    bonusContreShaman:              Bonus contre les shamans
+    bonusContreMonstre:             Bonus contre les monstres
+    degatCompetence:                Dégats de compétences
+    degatMoyen:                     Dégats moyens
+    chanceBloquerAttaqueGuerrier:   Chances de bloquer une attaque de guerrier
+    chanceBloquerAttaqueNinja:      Chances de bloquer une attaque de ninja
+    chanceBloquerAttaqueSura:       Chances de bloquer une attaque de sura
+    chanceBloquerAttaqueShaman:     Chances de bloquer une attaque de shaman

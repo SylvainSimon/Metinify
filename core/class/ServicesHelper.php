@@ -104,7 +104,6 @@ class ServicesHelper {
             $twig->addExtension(new \Symfony\Bridge\Twig\Extension\TranslationExtension($translator));
             $twig->addGlobal('bonusItem', $Bonus_Item);
             $twig->addGlobal('pierreItem', $Pierre_Item);
-            $twig->addGlobal('tabGrade', $Array_Grades);
             $twig->addGlobal('session', $container['session']);
             $twig->addGlobal('request', $container['request']);
             $twig->addGlobal('config', $container['config']);

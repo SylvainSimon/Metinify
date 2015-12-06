@@ -9,6 +9,8 @@ class HelperExtension extends \Twig_Extension {
             'helpDevise' => new \Twig_SimpleFunction('helpDevise', array($this, 'helpDevise')),
             'helpLevel' => new \Twig_SimpleFunction('helpLevel', array($this, 'helpLevel')),
             'helpEmpire' => new \Twig_SimpleFunction('helpEmpire', array($this, 'helpEmpire')),
+            'helpGrade' => new \Twig_SimpleFunction('helpGrade', array($this, 'helpGrade')),
+            'helpItemAttr' => new \Twig_SimpleFunction('helpItemAttr', array($this, 'helpItemAttr')),
         );
     }
 
@@ -34,6 +36,14 @@ class HelperExtension extends \Twig_Extension {
     
     public function helpEmpire($empire = 0) {
         return EmpireHelper::getLibelle($empire);
+    }
+    
+    public function helpGrade($grade = 0) {
+        return GradeHelper::getLibelle($grade);
+    }
+    
+    public function helpItemAttr($itemAttr = 0) {
+        return ItemAttrHelper::getLibelle($itemAttr);
     }
 
 }
