@@ -819,7 +819,7 @@ tbody td.lineIcon{
 
 @media all{
     .featherlight {
-        z-index: 214748360 !important;
+        z-index: 100000 !important;
     }
 }
 
@@ -898,4 +898,19 @@ tbody td.lineIcon{
     font-size: 12px;
     box-shadow:none;
     border-radius: 0px;
+}
+
+.marcheFeatherLightbox .featherlight-content{
+    min-width: 50% !important;
+}
+
+@media only screen and (max-width: 1024px){
+    .featherlight .featherlight-content {
+        margin-left: 10px;
+        margin-right: 10px;
+        max-height: 98%;
+        min-width: 80% !important;
+        padding: 10px 10px 0;
+        border-bottom: 10px solid transparent;
+    }
 }

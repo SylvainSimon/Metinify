@@ -7,7 +7,7 @@ require __DIR__ . '../../../core/initialize.php';
 class MonPersonnageEquipement extends \PageHelper {
 
     public $isProtected = true;
-    public $strTemplate = "MonPersonnageEquipement.html5.twig";
+    public $strTemplate = "playerEquipement.html5.twig";
 
     public function run() {
 

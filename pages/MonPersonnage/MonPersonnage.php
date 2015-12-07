@@ -21,7 +21,7 @@ class MonPersonnage extends \PageHelper {
         global $request;
         $idPlayer = \Encryption::decrypt($request->query->get("id"));
         
-        $templateEquipement = $this->objTwig->loadTemplate("MonPersonnageEquipement.html5.twig");
+        $templateEquipement = $this->objTwig->loadTemplate("playerEquipement.html5.twig");
         $tailleImageEquipement = getimagesize("../../images/equipement.png");
         $objItemArme = \Player\PlayerHelper::getItemRepository()->findByPosIntervalAndOwnerId(4, 4, $idPlayer, "EQUIPMENT", true);
         $objItemArmure = \Player\PlayerHelper::getItemRepository()->findByPosIntervalAndOwnerId(0, 0, $idPlayer, "EQUIPMENT", true);
@@ -55,7 +55,7 @@ class MonPersonnage extends \PageHelper {
         $templateEntrepotPage1 = $this->objTwig->loadTemplate("ajaxInventairePage.html5.twig");
         $viewEntrepotPage1 = $templateEntrepotPage1->render(["arrObjItems" => $arrObjItemsPage1, "iDepart" => 0]);
         
-        $templateInventaire = $this->objTwig->loadTemplate("MonPersonnageInventaire.html5.twig");
+        $templateInventaire = $this->objTwig->loadTemplate("playerInventaire.html5.twig");
         $viewInventaire = $templateInventaire->render([
             "objAccount" => $this->objAccount,
             "viewInventairePage1" => $viewEntrepotPage1,

@@ -4,115 +4,83 @@
         <h3 class="box-title">Détails de l'article</h3>
     </div>
 
-    <div class="box-body" style="height: 100%">
+    <div class="box-body no-padding">
 
-        <div class="col-sm-6" style="padding-left: 5px;">
+        <div class="col-lg-3">
 
-            <table>
-                <tr>
-                    <td class="Colonne_Gauche">Pseudo : </td>
-                    <td>{{ objPlayer.getName }}</td>
-                </tr>
-                <tr>
-                    <td class="Colonne_Gauche">Level : </td>
-                    <td>{{ objPlayer.getLevel }}</td>
-                </tr>
-                <tr>
-                    <td class="Colonne_Gauche">Race</td>
-                    <td>
-                        {{ findIconJob(objPlayer.job)|raw }}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="Colonne_Gauche">Yangs : </td>
-                    <td>{{ objPlayer.getGold|number_format }}</td>
-                </tr>
-            </table>
+            <div style="text-align: center; padding-top: 10px;">
 
-            <table>
-                <tr>
-                    <th colspan="2" class="Colonne_Gauche">Temps de jeu : </th>
-                </tr>
-                <tr>
-                    <td colspan="2">{{ getMinutesToString(objPlayer.getPlaytime) }}</td>
-                </tr>
-            </table>
+                <h4 style="font-size: 16px; margin-top: 5px;"><span class="text-olive">Lv {{ objPlayer.getLevel }}</span> 
+                    {% if calculateGrade == 0 %}
+                        <span class="text-gray">{{ helpGrade(calculateGrade) }}</span>
+                    {% elseif calculateGrade < 0 %}
+                        <span class="text-red">{{ helpGrade(calculateGrade) }}</span>
+                    {% else %}
+                        <span class="text-blue">{{ helpGrade(calculateGrade) }}</span>
+                    {% endif %} 
+                    &nbsp;<span class="yellow">{{ objPlayer.getName }}</span>
+                </h4>
+            </div>
+
+            <div style="padding-top: 5px; text-align: center; padding-bottom: 20px;">
+                {% if objPlayer.getJob == "0" %}
+                    <img src="../images/races/Guerrier_Homme.png" style="width: 60%;" />
+                {% elseif objPlayer.getJob == "1" %}
+                    <img src="../images/races/Ninja_Femme.png" style="width: 60%;" />
+                {% elseif objPlayer.getJob == "2" %}
+                    <img src="../images/races/Sura_Homme.png" style="width: 60%;" />
+                {% elseif objPlayer.getJob == "3" %}
+                    <img src="../images/races/Chaman_Femme.png" style="width: 60%;" />
+                {% elseif objPlayer.getJob == "4" %}
+                    <img src="../images/races/Guerrier_Femme.png" style="width: 60%;" />
+                {% elseif objPlayer.getJob == "5" %}
+                    <img src="../images/races/Ninja_Homme.png" style="width: 60%;" />
+                {% elseif objPlayer.getJob == "6" %}
+                    <img src="../images/races/Sura_Femme.png" style="width: 60%;" />
+                {% elseif objPlayer.getJob == "7" %}
+                    <img src="../images/races/Chaman_Homme.png" style="width: 60%;" />
+                {% endif %}
+            </div>
         </div>
 
-        <div class="col-sm-6" style="padding-right: 5px;">
+        <div class="col-lg-6 specialColumn" style="padding-top: 10px;">
 
-            <div class="col-sm-6">
-                <div id="Equipement" style="position: relative;">
+            <div style="font-size: 15px;">
+                Expérience
+            </div>
 
-                    <div class="Case_Equipement Case_Arme">
-                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemArme}, with_context = false) }}
-                    </div>
-                    <div class="Case_Equipement Case_Armure">
-                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemArmure}, with_context = false) }}
-                    </div>
-                    <div class="Case_Equipement Case_Casque">
-                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemCasque}, with_context = false) }}
-                    </div>
-                    <div class="Case_Equipement Case_Bouclier">
-                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemBouclier}, with_context = false) }}
-                    </div>
-                    <div class="Case_Equipement Case_Bracelet">
-                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemBracelet}, with_context = false) }}
-                    </div>
-                    <div class="Case_Equipement Case_Boucles">
-                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemBoucle}, with_context = false) }}
-                    </div>
-                    <div class="Case_Equipement Case_Collier">
-                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemCollier}, with_context = false) }}
-                    </div>
-                    <div class="Case_Equipement Case_Chaussure">
-                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemChaussure}, with_context = false) }}
-                    </div>
-                    <div class="Case_Equipement Case_Fleche">
-                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemFleche}, with_context = false) }}
-                    </div>
+            <div style="position: relative; left: -3px; top: 2px;margin-bottom: 5px;">
+                {{ include('experience_bubles.html5.twig', {'myScale': '0.25'}) }}
+            </div>
 
-                    <div class="Case_Equipement Case_Special1">
-                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemSpecial1}, with_context = false) }}
-                    </div>
-                    <div class="Case_Equipement Case_Special2">
-                        {{ include('ajaxEquipement.html5.twig', {objItem: objItemSpecial2}, with_context = false) }}
-                    </div>
-
+            <div class="row" style="margin-bottom: 5px;">
+                <div class="col-lg-12" style="font-size: 14px;">
+                    <i class="material-icons md-icon-time text-gray md-20"></i> 
+                    <span style="position: relative; top:-3px;">
+                        {{ getMinutesToString(objPlayer.getPlaytime) }} de jeu
+                    </span>
                 </div>
             </div>
-            <div class="col-sm-6">
 
-                <div id="Inventaire" style="position: relative;">
-                    <div style="position: relative;top: -10px; left: -23px;">
-                        <div class="Bouton_Inventaire_1 pointer" onclick="Page_Inventaire(1);"> I </div>
-                        <div class="Bouton_Inventaire_2 pointer" onclick="Page_Inventaire(2);"> II </div>
-                        <div class="Bouton_Inventaire_3 pointer" onclick="Page_Inventaire(3);"> III </div>
-                        <div class="Bouton_Inventaire_4 pointer" onclick="Page_Inventaire(4);"> IV </div>
-                    </div>
-                    <script type="text/javascript">
-
-                        function Page_Inventaire(page) {
-                            $.ajax({
-                                type: "POST",
-                                url: "pages/MonPersonnage/ajax/ajaxInventairePage.php",
-                                data: {"id":{{ objPlayer.getId }}, "page": page},
-                                success: function (msg) {
-                                    $("#Conteneur_Inventaire").html(msg);
-                                    redraw();
-                                }
-                            });
-                        }
-                        
-                        redraw();
-
-                    </script>
-
-                    <div id="Conteneur_Inventaire">
-                        {{ viewInventairePage1|raw }}
-                    </div>
-
+            <div class="row" style="margin-bottom: 5px;">
+                <div class="col-lg-12" style="font-size: 14px;">
+                    <i class="material-icons md-icon-location text-orange md-20"></i> 
+                    <span style="position: relative; top:-3px;">
+                        <span class="text-yellow">{{ localisation.positionX }} - {{ localisation.positionY }}</span> {{ localisation.map }}
+                    </span>
                 </div>
+            </div>
+
+            <div style="margin-top: 10px;">
+                {{ include('player_stats.html5.twig') }}
+            </div>
+        </div>
+
+        <div class="col-lg-3 specialColumn">
+            {{ viewEquipement|raw }}
+            {{ viewInventaire|raw }}
+            <div style="background: #000000; height: 24px; width: 100%; border: 1px solid #6B645B; font-size: 12px; line-height: 23px; border-top: 0; padding-left: 5px; padding-right: 5px;">
+                <span style="float: right;">{{ objPlayer.getGold|number_format }} Yang</span>
             </div>
         </div>
     </div>
