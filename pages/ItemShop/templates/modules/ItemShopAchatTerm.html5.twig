@@ -9,7 +9,19 @@
         <br/>
         <br/>
 
-        L'article a été placé dans votre entrepôt item-shop.<br/><br/>
+        {% if isBonusCompte == "1" %}
+            Le bonus à été rajouté à votre compte.
+        {% else %}
+            {% if nombreBuy == nombreRequired %}
+                {{ nombreRequired }} article a été placé dans votre entrepôt item-shop.
+            {% else %}
+                {{ nombreBuy }} articles seulement ont été placés dans votre entrepôt item-shop car celui-ci ne possédait pas la place nécessaire pour {{ nombreRequired }}.<br/>
+                Votre compte à été débité uniquement du prix de ces articles.
+            {% endif %}
+        {% endif %}
+
+        <br/><br/>
+
         <span class="text-yellow">Le numéro de transaction est le : {{ idTransaction }}</span><br/>
         Gardez le précieusement, il vous sera utile en cas de réclamation.<br/><br/>
         En cas de problème n'hésitez pas à contacter le support de VamosMt2.<br/>
@@ -28,6 +40,5 @@
 {% if isBonusCompte == "1" %}
     <script type="text/javascript">
         $("#accountBonus").html("{% spaceless %}{{ include('account_bonus.html5.twig')|e('js') }}{% endspaceless   %}");
-        
     </script>  
 {% endif %}

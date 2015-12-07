@@ -21,7 +21,7 @@ class ajaxArticleBuy extends \ScriptHelper {
 
         $objItem = \Player\PlayerHelper::getItemRepository()->countByOwnerIdPosAndWindow($this->objAccount->getId(), $nextFreePosition, "MALL");
         if ($objItem > 0) {
-            if ($nextFreePosition >= 44) {
+            if ($nextFreePosition > 44) {
                 return false;
             } else {
                 return $this->checkFieldEntrepotIS($nextFreePosition + 1);
@@ -42,6 +42,7 @@ class ajaxArticleBuy extends \ScriptHelper {
 
         $idItem = $request->request->get("id_item");
         $nombreItem = $request->request->get("nombre_item");
+        $nombreItemBuy = 0;
         $objItemshop = \Site\SiteHelper::getItemshopRepository()->findItem($idItem, true);
 
         if (!$this->checkEntrepotIS()) {
@@ -85,6 +86,7 @@ class ajaxArticleBuy extends \ScriptHelper {
                             $em->persist($this->objAccount);
 
                             $em->flush();
+                            $nombreItemBuy = $nombreItem;
 
                             $session->set("VamoNaies", $this->objAccount->getCash());
                             $session->set("TanaNaies", $this->objAccount->getMileage());
@@ -120,11 +122,16 @@ class ajaxArticleBuy extends \ScriptHelper {
                                 $em->persist($this->objAccount);
                                 $em->flush();
                                 $em->detach($objItem);
+                                $nombreItemBuy++;
 
                                 $session->set("VamoNaies", $this->objAccount->getCash());
                                 $session->set("TanaNaies", $this->objAccount->getMileage());
                             } else {
-                                $arrResult = ["result" => 0, "code" => 5];
+                                if ($i > 0) {
+                                    $arrResult = ["result" => 1];
+                                } else {
+                                    $arrResult = ["result" => 0, "code" => 5];
+                                }
                                 break;
                             }
                         }
@@ -236,8 +243,8 @@ class ajaxArticleBuy extends \ScriptHelper {
 
                             $this->objAccount->setMileage($this->objAccount->getMileage() - $prixTotal);
                             $em->persist($this->objAccount);
-
                             $em->flush();
+                            $nombreItemBuy = $nombreItem;
 
                             $session->set("TanaNaies", $this->objAccount->getMileage());
                         } else {
@@ -274,9 +281,16 @@ class ajaxArticleBuy extends \ScriptHelper {
                                 $em->persist($this->objAccount);
                                 $em->flush();
                                 $em->detach($objItem);
+                                $nombreItemBuy++;
+
                                 $session->set("TanaNaies", $this->objAccount->getMileage());
                             } else {
-                                $arrResult = ["result" => 0, "code" => 5];
+                                if ($i > 0) {
+                                    $arrResult = ["result" => 1];
+                                } else {
+                                    $arrResult = ["result" => 0, "code" => 5];
+                                }
+                                break;
                             }
                         }
                     }
@@ -317,6 +331,7 @@ class ajaxArticleBuy extends \ScriptHelper {
         $em->persist($objLogAchats);
         $em->flush();
 
+        $arrResult["nombreBuy"] = $nombreItemBuy;
         $arrResult["idTransaction"] = $objLogAchats->getId();
         echo json_encode($arrResult);
     }
