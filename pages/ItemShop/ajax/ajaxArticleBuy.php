@@ -66,35 +66,49 @@ class ajaxArticleBuy extends \ScriptHelper {
                     //Si empilable
                     if ($flagItem == 4 || $flagItem == 20 || $flagItem == 132 || $flagItem == 2052 || $flagItem == 8212) {
 
-                        //Si l'entrepot n'est pas plein
-                        if ($this->checkFieldEntrepotIS() !== false) {
+                        $nombreItemTotal = $nombreItem * $objItemshop->getNbItem();
+                        $nombreCase = round($nombreItemTotal / 200);
 
-                            $nextFreePosition = $this->checkFieldEntrepotIS();
+                        for ($iModulo = 0; $iModulo <= $nombreCase; $iModulo++) {
+                            if ($nombreItemTotal > 0) {
+                                if ($this->checkFieldEntrepotIS() !== false) {
 
-                            $objItem = new \Player\Entity\Item();
-                            $objItem->setOwnerId($this->objAccount->getId());
-                            $objItem->setWindow("MALL");
-                            $objItem->setPos($nextFreePosition);
-                            $objItem->setCount($nombreItem);
-                            $objItem->setVnum($objItemshop->getIdItem());
-                            $em->persist($objItem);
+                                    $nextFreePosition = $this->checkFieldEntrepotIS();
 
-                            $prixTotal = ($objItemshop->getPrix() * $nombreItem);
+                                    $objItem = new \Player\Entity\Item();
+                                    $objItem->setOwnerId($this->objAccount->getId());
+                                    $objItem->setWindow("MALL");
+                                    $objItem->setPos($nextFreePosition);
 
-                            $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
-                            $this->objAccount->setMileage($this->objAccount->getMileage() + $prixTotal);
-                            $em->persist($this->objAccount);
+                                    if ($nombreItemTotal > 200) {
+                                        $objItem->setCount(200);
+                                        $nombreItemTotal = $nombreItemTotal - 200;
+                                    } else {
+                                        $objItem->setCount($nombreItemTotal);
+                                        $nombreItemTotal = $nombreItemTotal - $nombreItemTotal;
+                                    }
 
-                            $em->flush();
-                            $nombreItemBuy = $nombreItem;
+                                    $objItem->setVnum($objItemshop->getIdItem());
+                                    $em->persist($objItem);
+                                    $em->flush();
+                                    $em->detach($objItem);
 
-                            $session->set("VamoNaies", $this->objAccount->getCash());
-                            $session->set("TanaNaies", $this->objAccount->getMileage());
-                        } else {
-                            $arrResult = ["result" => 0, "code" => 5];
+                                    $session->set("VamoNaies", $this->objAccount->getCash());
+                                    $session->set("TanaNaies", $this->objAccount->getMileage());
+                                } else {
+                                    $arrResult = ["result" => 0, "code" => 5];
+                                }
+                                
+                                $prixTotal = ($objItemshop->getPrix() * $nombreItem);
+                                $nombreItemBuy = $nombreItem;
+                                $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
+                                $this->objAccount->setMileage($this->objAccount->getMileage() + $prixTotal);
+                                $em->persist($this->objAccount);
+                                $em->flush();
+                            }
                         }
                     } else {
-                        for ($i = 0; $i < $nombreItem; $i++) {
+                        for ($i = 0; $i < $nombreItem * $objItemshop->getNbItem(); $i++) {
 
                             $nextFreePosition = $this->checkFieldEntrepotIS();
                             if ($nextFreePosition !== false) {
@@ -226,33 +240,49 @@ class ajaxArticleBuy extends \ScriptHelper {
                     //Si empilable
                     if ($flagItem == 4 || $flagItem == 20 || $flagItem == 132 || $flagItem == 2052 || $flagItem == 8212) {
 
-                        //Si l'entrepot n'est pas plein
-                        if ($this->checkFieldEntrepotIS() !== false) {
+                        $nombreItemTotal = $nombreItem * $objItemshop->getNbItem();
+                        $nombreCase = round($nombreItemTotal / 200);
 
-                            $nextFreePosition = $this->checkFieldEntrepotIS();
+                        for ($iModulo = 0; $iModulo <= $nombreCase; $iModulo++) {
+                            if ($nombreItemTotal > 0) {
+                                if ($this->checkFieldEntrepotIS() !== false) {
 
-                            $objItem = new \Player\Entity\Item();
-                            $objItem->setOwnerId($this->objAccount->getId());
-                            $objItem->setWindow("MALL");
-                            $objItem->setPos($nextFreePosition);
-                            $objItem->setCount($nombreItem);
-                            $objItem->setVnum($objItemshop->getIdItem());
-                            $em->persist($objItem);
+                                    $nextFreePosition = $this->checkFieldEntrepotIS();
 
-                            $prixTotal = ($objItemshop->getPrix() * $nombreItem);
+                                    $objItem = new \Player\Entity\Item();
+                                    $objItem->setOwnerId($this->objAccount->getId());
+                                    $objItem->setWindow("MALL");
+                                    $objItem->setPos($nextFreePosition);
 
-                            $this->objAccount->setMileage($this->objAccount->getMileage() - $prixTotal);
-                            $em->persist($this->objAccount);
-                            $em->flush();
-                            $nombreItemBuy = $nombreItem;
+                                    if ($nombreItemTotal > 200) {
+                                        $objItem->setCount(200);
+                                        $nombreItemTotal = $nombreItemTotal - 200;
+                                    } else {
+                                        $objItem->setCount($nombreItemTotal);
+                                        $nombreItemTotal = $nombreItemTotal - $nombreItemTotal;
+                                    }
 
-                            $session->set("TanaNaies", $this->objAccount->getMileage());
-                        } else {
-                            $arrResult = ["result" => 0, "code" => 5];
+                                    $objItem->setVnum($objItemshop->getIdItem());
+                                    $em->persist($objItem);
+                                    $em->flush();
+                                    $em->detach($objItem);
+
+                                    $session->set("TanaNaies", $this->objAccount->getMileage());
+                                } else {
+                                    $arrResult = ["result" => 0, "code" => 5];
+                                }
+                            }
                         }
+
+                        $nombreItemBuy = $nombreItem;
+                        $prixTotal = ($objItemshop->getPrix() * $nombreItem);
+
+                        $this->objAccount->setMileage($this->objAccount->getMileage() - $prixTotal);
+                        $em->persist($this->objAccount);
+                        $em->flush();
                     } else {
 
-                        for ($i = 0; $i < $nombreItem; $i++) {
+                        for ($i = 0; $i < $nombreItem * $objItemshop->getNbItem(); $i++) {
 
                             $nextFreePosition = $this->checkFieldEntrepotIS();
 
