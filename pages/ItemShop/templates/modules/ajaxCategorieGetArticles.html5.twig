@@ -5,6 +5,9 @@
         <div class="Article_IS" onclick="Ajax('pages/ItemShop/ItemShopDetails.php?id_recu={{ objItemshop.getId }}');"  data-tooltip-isItemMetin="1" data-tooltip-track="1" data-tooltip="{{ objItemshop.getInfoItem }}">
             <div class="Nom_Article">
                 {{ objItemshop.getNameItem }}
+                {% if objItemshop.getType != "2" and objItemshop.getNbItem > 1 %}
+                    (x{{ objItemshop.getNbItem }})
+                {% endif %}
             </div>
             <div class="Prix_Article">
                 <span>{{ objItemshop.getPrix|number_format }}</span>

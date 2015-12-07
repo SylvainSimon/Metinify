@@ -14,14 +14,7 @@ class ajaxCategorieGetArticles extends \ScriptHelper {
         global $request;
         $idCategorie = $request->request->get("id");
 
-        $cacheManager = \CacheHelper::getCacheManager();
-        if ($cacheManager->isExisting("isArrObjItemshopCat" . $idCategorie)) {
-            $arrObjItemshop = $cacheManager->get("isArrObjItemshopCat" . $idCategorie);
-        } else {
-            $arrObjItemshop = \Site\SiteHelper::getItemshopRepository()->findItemsByCategorie($idCategorie, true);
-            $cacheManager->set("isArrObjItemshopCat" . $idCategorie, $arrObjItemshop, 3600);
-        }
-
+        $arrObjItemshop = \Site\SiteHelper::getItemshopRepository()->findItemsByCategorie($idCategorie, true);
         $this->arrayTemplate["arrObjItemshop"] = $arrObjItemshop;
 
         $view = $this->template->render($this->arrayTemplate);
