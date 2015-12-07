@@ -92,23 +92,20 @@ class ajaxArticleBuy extends \ScriptHelper {
                                     $em->persist($objItem);
                                     $em->flush();
                                     $em->detach($objItem);
-
-                                    $session->set("VamoNaies", $this->objAccount->getCash());
-                                    $session->set("TanaNaies", $this->objAccount->getMileage());
                                 } else {
                                     $arrResult = ["result" => 0, "code" => 5];
                                 }
-
-                                if ($arrResult["result"] == 1) {
-                                    $prixTotal = ($objItemshop->getPrix() * $nombreItem);
-                                    $nombreItemBuy = $nombreItem;
-                                    $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
-                                    $this->objAccount->setMileage($this->objAccount->getMileage() + $prixTotal);
-                                    $em->persist($this->objAccount);
-                                    $em->flush();
-                                }
                             }
                         }
+
+                        $prixTotal = ($objItemshop->getPrix() * $nombreItem);
+                        $nombreItemBuy = $nombreItem;
+                        $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
+                        $this->objAccount->setMileage($this->objAccount->getMileage() + $prixTotal);
+                        $em->persist($this->objAccount);
+                        $em->flush();
+                        $session->set("VamoNaies", $this->objAccount->getCash());
+                        $session->set("TanaNaies", $this->objAccount->getMileage());
                     } else {
                         for ($i = 0; $i < ($nombreItem * $objItemshop->getNbItem()); $i++) {
 
@@ -143,15 +140,13 @@ class ajaxArticleBuy extends \ScriptHelper {
                             }
                         }
 
-                        if ($arrResult["result"] == 1) {
-                            $prixTotal = ($objItemshop->getPrix() * $nombreItem);
-                            $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
-                            $this->objAccount->setMileage($this->objAccount->getMileage() + $prixTotal);
-                            $em->persist($this->objAccount);
-                            $em->flush();
-                            $session->set("VamoNaies", $this->objAccount->getCash());
-                            $session->set("TanaNaies", $this->objAccount->getMileage());
-                        }
+                        $prixTotal = ($objItemshop->getPrix() * $nombreItemBuy);
+                        $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
+                        $this->objAccount->setMileage($this->objAccount->getMileage() + $prixTotal);
+                        $em->persist($this->objAccount);
+                        $em->flush();
+                        $session->set("VamoNaies", $this->objAccount->getCash());
+                        $session->set("TanaNaies", $this->objAccount->getMileage());
                     }
                 } else {
                     $arrResult = ["result" => 0, "code" => 3];
@@ -221,9 +216,7 @@ class ajaxArticleBuy extends \ScriptHelper {
                     $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
                     $this->objAccount->setMileage($this->objAccount->getMileage() + $prixTotal);
                     $em->persist($this->objAccount);
-
                     $em->flush();
-
                     $session->set("VamoNaies", $this->objAccount->getCash());
                     $session->set("TanaNaies", $this->objAccount->getMileage());
 
@@ -269,20 +262,19 @@ class ajaxArticleBuy extends \ScriptHelper {
                                     $em->persist($objItem);
                                     $em->flush();
                                     $em->detach($objItem);
-
-                                    $session->set("TanaNaies", $this->objAccount->getMileage());
                                 } else {
                                     $arrResult = ["result" => 0, "code" => 5];
+                                    break;
                                 }
                             }
                         }
 
-                        $nombreItemBuy = $nombreItem;
                         $prixTotal = ($objItemshop->getPrix() * $nombreItem);
-
+                        $nombreItemBuy = $nombreItem;
                         $this->objAccount->setMileage($this->objAccount->getMileage() - $prixTotal);
                         $em->persist($this->objAccount);
                         $em->flush();
+                        $session->set("TanaNaies", $this->objAccount->getMileage());
                     } else {
 
                         for ($i = 0; $i < $nombreItem * $objItemshop->getNbItem(); $i++) {
@@ -307,16 +299,9 @@ class ajaxArticleBuy extends \ScriptHelper {
                                 }
 
                                 $em->persist($objItem);
-
-                                $prixTotal = ($objItemshop->getPrix() * 1);
-                                $this->objAccount->setMileage($this->objAccount->getMileage() - $prixTotal);
-
-                                $em->persist($this->objAccount);
                                 $em->flush();
                                 $em->detach($objItem);
                                 $nombreItemBuy++;
-
-                                $session->set("TanaNaies", $this->objAccount->getMileage());
                             } else {
                                 if ($i > 0) {
                                     $arrResult = ["result" => 1];
@@ -326,6 +311,12 @@ class ajaxArticleBuy extends \ScriptHelper {
                                 break;
                             }
                         }
+
+                        $prixTotal = ($objItemshop->getPrix() * $nombreItemBuy);
+                        $this->objAccount->setMileage($this->objAccount->getMileage() - $prixTotal);
+                        $em->persist($this->objAccount);
+                        $em->flush();
+                        $session->set("TanaNaies", $this->objAccount->getMileage());
                     }
                 } else {
                     $arrResult = ["result" => 0, "code" => 6];
