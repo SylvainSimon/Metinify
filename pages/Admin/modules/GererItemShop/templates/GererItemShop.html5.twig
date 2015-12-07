@@ -1,0 +1,30 @@
+<script type="text/javascript" src="pages/Admin/modules/GererItemShop/js/fonctions.min.js"></script>
+
+<div class="box box-default flat">
+
+    <div class="box-header">
+        <h3 class="box-title">Gestion de l'item-shop</h3>
+    </div>
+
+    <div class="box-body no-padding">
+
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+
+                <li class="active"><a href="javascript:void(0)" onclick="ajaxGetGererItemShop('pages/Admin/modules/GererItemShop/GererItemShopArticles.php', this);">Articles</a></li>
+                    {% if rightGererITemShopCategorie %}
+                    <li><a href="javascript:void(0)" onclick="ajaxGetGererItemShop('pages/Admin/modules/GererItemShop/GererItemShopCategories.php', this);">Catégories</a></li>
+                    {% endif %}
+                    {% if rightGererITemShopStatistiques %}
+                    <li><a href="javascript:void(0)" onclick="ajaxGetGererItemShop('pages/Admin/modules/GererItemShop/GererItemShopStatistiques.php', this);">Statistiques</a></li>
+                    {% endif %}
+            </ul>
+
+            <div id="contentCadreGererITemShop" class="tab-content">
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+    </div>
+</div>

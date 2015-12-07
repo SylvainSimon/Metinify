@@ -58,6 +58,7 @@ class ServicesHelper {
             $arrayOfFileSystem = [
                 BASE_ROOT . '/pages/Admin/templates/modules',
                 BASE_ROOT . '/pages/Admin/templates/emails',
+                BASE_ROOT . '/pages/Admin/modules/GererItemShop/templates',
                 BASE_ROOT . '/pages/Classements/templates/',
                 BASE_ROOT . '/pages/Inscription/templates/modules',
                 BASE_ROOT . '/pages/Inscription/templates/emails',

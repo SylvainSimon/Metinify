@@ -28,4 +28,7 @@ class DroitsHelper {
     const GERER_BANNISSEMENT = 24;
     const RADAR = 25;
     const RECHERCHE_GUILDE_GUERRE = 26;
+    const GERER_ITEMSHOP = 27;
+    const GERER_ITEMSHOP_CATEGORIE = 28;
+    const GERER_ITEMSHOP_STATISTIQUE = 29;
 }

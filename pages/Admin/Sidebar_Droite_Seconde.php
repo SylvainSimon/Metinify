@@ -15,6 +15,9 @@
             <?php if ($this->HaveTheRight(\DroitsHelper::GERER_EQUIPE)) { ?>
                 <tr class="pointer" onclick="Ajax('pages/Admin/GererEquipe.php')"><td> Gestion de l'équipe</td></tr>
             <?php } ?>
+            <?php if ($this->HaveTheRight(\DroitsHelper::GERER_ITEMSHOP)) { ?>
+                <tr class="pointer" onclick="Ajax('pages/Admin/modules/GererItemShop/GererItemShop.php')"><td> Gestion de l'item-shop</td></tr>
+            <?php } ?>
         </table>
     </div>
 </div>
