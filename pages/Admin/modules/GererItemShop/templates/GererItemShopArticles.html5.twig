@@ -1,1 +1,102 @@
-jff
+<script type="text/javascript" src="assets/js/tinymce/tinymce.min.js"></script>
+
+<table class="table table-condensed table-hover table-striped" id="listGererNews" style="border-collapse: collapse; margin-top: 0px !important;">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>Article</th>
+            <th>Nombre</th>
+            <th>Catégorie</th>
+            <th>Prix</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="100%" class="dataTables_empty">Tableau en cours de chargement...</td>
+        </tr>
+    </tbody>
+</table>
+
+<script type="text/javascript" charset="utf-8">
+
+    var aoColumns = [{{ dtColumns|raw }}];
+    var aoColumnsFilter = [{{ dtFilterColumns|raw  }}];
+    var sAjaxSource = '{{ ajaxSource }}';
+
+    $('#listGererNews').on('processing.dt', function (e, settings, processing) {
+        processingDatatableInBox(processing);
+    });
+
+    $(document).ready(function () {
+        oTable = $('#listGererNews').dataTable({
+            aaSorting: [[0, "asc"]],
+            aoColumns: aoColumns,
+            sDom: '<"clear"><"top">rt<lp><"clear">',
+            sAjaxSource: sAjaxSource,
+            aLengthMenu: [[10, 25, 50, 100], ["10", "25", "50", "100"]],
+            iDisplayLength: 10,
+            fnServerData: function (sSource, aoData, fnCallback) {
+                $.getJSON(sSource, aoData, function (json) {
+                    $("#datatable_total").html(json.iTotalRecords);
+                    fnCallback(json);
+                });
+            }
+        }).columnFilter({aoColumns: aoColumnsFilter});
+    });
+
+    function SuppressionNews(idNew) {
+
+        bootbox.dialog({
+            message: "Confirmez-vous la suppression de cette article ?",
+            animate: false,
+            className: "myBootBox",
+            title: 'Confirmation de la demande',
+            buttons: {
+                danger: {
+                    label: "Annuler",
+                    className: "btn-danger",
+                    callback: function () {
+
+                    }
+                },
+                success: {
+                    label: "Confirmer",
+                    className: "btn-primary",
+                    callback: function () {
+
+                        displayLoading();
+
+                        $.ajax({
+                            type: "POST",
+                            url: "pages/Admin/ajax/ajaxGererNewsDelete.php",
+                            data: {"newId": idNew},
+                            success: function (msg) {
+
+                                hideLoading();
+
+                                var json = JSON.parse(msg);
+
+                                if (json.result) {
+
+                                } else {
+                                    popBootbox(json.reasons);
+                                }
+
+                                parent.oTable.fnStandingRedraw();
+                            }
+
+                        });
+                    }
+                }
+            }
+        });
+    }
+
+</script>

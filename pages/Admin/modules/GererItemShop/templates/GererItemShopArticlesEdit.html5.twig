@@ -1,0 +1,243 @@
+<div class="box box-default flat" style="margin-bottom: 0px;">
+
+    <div class="box-header">
+        {% if objItemshop.getId > 0 %}
+            <h3 class="box-title">Modification d'un article</h3>
+        {% else %}
+            <h3 class="box-title">Ajout d'un article</h3>
+        {% endif %}
+    </div>
+
+    <input type="hidden" id="articleId" value="{{ objItemshop.getId }}">
+
+    <div class="box-body no-padding" style="padding-top: 10px !important;">
+        <div class="row" style="padding-left: 15px; margin-right: 0;">
+            <div class="col-sm-6">
+                <div class="form-group ">
+                    <label for="articleTitre">
+                        Nom de l'article
+                    </label>
+
+                    <div class="input-group col-xs-12">
+                        <input type="text" id="articleTitre" class="form-control input-sm text" value="{{ objItemshop.getNameItem }}" required >
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group ">
+                            <label for="articlePrix">
+                                Prix
+                            </label>
+                            <div class="input-group col-xs-12">
+                                <input type="text" id="articlePrix" class="form-control input-sm text" value="{{ objItemshop.getPrix }}" required >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="articlePrix">
+                                Nombre
+                            </label>
+                            <div class="input-group col-xs-12">
+                                <input type="text" id="articleNombre" class="form-control input-sm text" value="{{ objItemshop.getNbItem }}" required >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="articlePrix">
+                                Type
+                            </label>
+                            <div class="input-group col-xs-12">
+                                <select id="articleType" class="select2" onchange="verifSelector(this.value);">
+                                    <option {% if objItemshop.getType == "1" %}selected{% endif %} value="1">VamoNaies</option>
+                                    <option {% if objItemshop.getType == "2" %}selected{% endif %} value="2">Bonus (VamoNaies)</option>
+                                    <option {% if objItemshop.getType == "3" %}selected{% endif %} value="3">TanaNaies</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                                
+        <div class="col-sm-12">
+            <div class="form-group ">
+                <label for="articleCategorie">
+                    Catégorie
+                </label>
+
+                <div class="input-group col-xs-12">
+                    <select id="articleCategorie" class="select2">
+                        {% if arrObjItemShopCategorie|length > 0 %}
+                            {% for objItemShopCategorie in arrObjItemShopCategorie %}
+                                {% if objItemshop.getCat == objItemShopCategorie.getCat %}
+                                    <option value="{{ objItemShopCategorie.getCat }}" selected>{{ objItemShopCategorie.getNom }}</option>
+                                {% else %}
+                                    <option value="{{ objItemShopCategorie.getCat }}">{{ objItemShopCategorie.getNom }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+            </div>                  
+        </div>                  
+
+        <div id="selectorItem" {% if objItemshop.getType == 1 or objItemshop.getType == 3 %}style="display: inline;"{% else %}style="display: none;"{% endif %}>
+            <div class="col-sm-12">
+                <div class="form-group ">
+                    <label for="articleVnum">
+                        Item
+                    </label>
+
+                    <div class="input-group col-xs-12">
+                        <select id="articleVnum">
+                            {% if objItemProto != null %}
+                                <option value="{{ objItemProto.getVnum }}" selected="selected">{{ objItemProto.getLocaleName }}</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="selectorBonus" {% if objItemshop.getType == 1 or objItemshop.getType == 3 %}style="display: none;"{% else %}style="display: inline;"{% endif %}>
+            <div class="col-sm-12">
+                <div class="form-group ">
+                    <label for="articleVnum">
+                        Bonus
+                    </label>
+
+                    <div class="input-group col-xs-12">
+                        <select id="articleTypeBonus" class="select2">
+                            <option value=""></option>
+                            <option {% if objItemshop.getIdItem == "2" %}selected{% endif %} value="2">Anneau d'expérience</option>
+                            <option {% if objItemshop.getIdItem == "3" %}selected{% endif %} value="3">Extension d'entrepôt</option>
+                            <option {% if objItemshop.getIdItem == "1" %}selected{% endif %} value="1">Gants du voleur</option>
+                            <option {% if objItemshop.getIdItem == "5" %}selected{% endif %} value="5">Livre du pêcheur</option>
+                            <option {% if objItemshop.getIdItem == "7" %}selected{% endif %} value="7">Medaille de chance</option>
+                            <option {% if objItemshop.getIdItem == "6" %}selected{% endif %} value="6">Plume des amoureux</option>              
+                            <option {% if objItemshop.getIdItem == "4" %}selected{% endif %} value="4">Troisième main</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group ">
+                <label for="articleDescriptionCourte">
+                    Petite description
+                </label>
+
+                <div class="input-group col-xs-12">
+
+                    <textarea style="resize: none; min-height: 50px;" id="articleDescriptionCourte" class="form-control input-sm">{{ objItemshop.getInfoItem }}</textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group ">
+                <label for="articleDescriptionComplete">
+                    Grande description
+                </label>
+
+                <div class="input-group col-xs-12">
+
+                    <textarea style="resize: none; min-height: 100px; min-width: 250px;" id="articleDescriptionComplete" class="form-control input-sm">{{ objItemshop.getFullDescription }}</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-footer">
+        <div class="pull-left">
+            <input type="button" class="btn btn-danger btn-flat" onclick="$.featherlight.close();" value="Fermer" />
+        </div>
+        <div class="pull-right">
+            <input type="button" class="btn btn-success btn-flat" onclick="EnregistrementArticle();" value="Enregistrer" />
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        redrawSelect2();
+
+        $("#articleVnum").select2({
+            allowClear: true,
+            placeholder: {
+                id: "",
+                text: "-"
+            },
+            ajax: {
+                url: "core/class/SearchItemProtoByName.php",
+                dataType: 'json',
+                delay: 400,
+                data: function (params) {
+                    return {
+                        term: params.term
+                    };
+                },
+                processResults: function (data, page) {
+                    var results = [];
+                    $.each(data, function (index, item) {
+                        results.push({
+                            id: item.ID,
+                            text: item.label
+                        });
+                    });
+                    return {
+                        results: results
+                    };
+                },
+                cache: true
+            },
+            escapeMarkup: function (markup) {
+                return markup;
+            },
+            minimumInputLength: 2
+        });
+
+        function verifSelector(value) {
+
+            if (value == 2) {
+                $("#selectorItem").css("display", "none");
+                $("#selectorBonus").css("display", "inline");
+            } else {
+                $("#selectorItem").css("display", "inline");
+                $("#selectorBonus").css("display", "none");
+            }
+
+        }
+
+        function EnregistrementArticle() {
+
+            displayLoading();
+
+            $.ajax({
+                type: "POST",
+                url: "pages/Admin/modules/GererItemShop/ajax/ajaxGererItemShopArticlesEditSave.php",
+                data: {
+                    "articleId": $("#articleId").val(),
+                    "articleTitre": $("#articleTitre").val(),
+                    "articlePrix": $("#articlePrix").val(),
+                    "articleCategorie": $("#articleCategorie").val(),
+                    "articleNombre": $("#articleNombre").val(),
+                    "articleType": $("#articleType").val(),
+                    "articleVnum": $("#articleVnum").val(),
+                    "articleTypeBonus": $("#articleTypeBonus").val(),
+                    "articleDescriptionCourte": $("#articleDescriptionCourte").val(),
+                    "articleDescriptionComplete": $("#articleDescriptionComplete").val(),
+                },
+                success: function (msg) {
+                    hideLoading();
+                    $.featherlight.close();
+                    parent.oTable.fnStandingRedraw();
+                }
+
+            });
+        }
+    </script>
+</div>

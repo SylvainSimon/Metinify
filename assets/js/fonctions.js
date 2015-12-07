@@ -300,6 +300,14 @@ function processingDatatable(processing) {
     }
 }
 
+function processingDatatableInBox(processing) {
+    if (processing) {
+        displayLoading();
+    } else {
+        hideLoading();
+    }
+}
+
 function displayLoadingDataTable() {
     $(".box.boxDataTable").append('<div class="overlay"><i class="fa fa-spin material-icons md-icon-spin"></i></div>');
 }

@@ -4,6 +4,20 @@
 
     <div class="box-header">
         <h3 class="box-title">Gestion de l'item-shop</h3>
+        <div class="box-tools" style="right: 5px;">
+            <a data-featherlight="ajax" href="pages/Admin/modules/GererItemShop/GererItemShopArticlesEdit.php?mode=create">
+                <button type="button" class="btn btn-sm btn-success btn-flat" >
+                    Ajout article
+                </button>
+            </a>
+            {% if rightGererITemShopCategorie %}
+                <a data-featherlight="ajax" href="pages/Admin/modules/GererItemShop/GererItemShopCategoriesEdit.php?mode=create">
+                    <button type="button" class="btn btn-sm btn-success btn-flat" >
+                        Ajout catégorie
+                    </button>
+                </a>
+            {% endif %}
+        </div>
     </div>
 
     <div class="box-body no-padding">

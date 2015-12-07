@@ -23,6 +23,24 @@ class ItemProtoRepository extends EntityRepository {
         }
     }
     
+    public function findByNameForAjaxSelect($name = "") {
+
+        $name = ($name !== "") ? "%" . $name . "%" : "%";
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("ItemProtoEntity.vnum, ItemProtoEntity.localeName");
+        $qb->from("\Player\Entity\ItemProto", "ItemProtoEntity");
+        $qb->where("ItemProtoEntity.localeName LIKE :name");
+        $qb->setParameter("name", $name);
+
+        try {
+            return $qb->getQuery()->getArrayResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+    
     public function findSocketPctByVnum($vNum = 0) {
 
         $qb = $this->_em->createQueryBuilder();
