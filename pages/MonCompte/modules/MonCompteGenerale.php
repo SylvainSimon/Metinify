@@ -16,7 +16,7 @@ class MonCompteGenerale extends \PageHelper {
         $objPlayerIndex = \Player\PlayerHelper::getPlayerIndexRepository()->find($this->objAccount->getId());
         $objSafebox = \Player\PlayerHelper::getSafeboxRepository()->findByIdCompte($this->objAccount->getId());
 
-        $arrObjItemsPage1 = \Player\PlayerHelper::getItemRepository()->findByPosIntervalAndOwnerId(0, 44, $this->objAccount->getId(), "SAFEBOX");
+        $arrObjItemsPage1 = \Player\PlayerHelper::getItemRepository()->findByPosIntervalAndOwnerId(0, 45, $this->objAccount->getId(), "SAFEBOX");
         $templateEntrepotPage1 = $this->objTwig->loadTemplate("ajaxEntrepotPage.html5.twig");
         $viewEntrepotPage1 = $templateEntrepotPage1->render(["arrObjItems" => $arrObjItemsPage1, "iDepart" => 0]);
 

@@ -45,7 +45,7 @@ class MonPersonnageGenerale extends \PageHelper {
         
 
         $arrObjItems = \Player\PlayerHelper::getItemRepository()->findByPosIntervalAndOwnerId(0, 180, $idPlayer, "INVENTORY");
-        $arrObjItemsPage1 = \Player\PlayerHelper::getItemRepository()->findByPosIntervalAndOwnerId(0, 44, $idPlayer, "INVENTORY");
+        $arrObjItemsPage1 = \Player\PlayerHelper::getItemRepository()->findByPosIntervalAndOwnerId(0, 45, $idPlayer, "INVENTORY");
         $templateEntrepotPage1 = $this->objTwig->loadTemplate("ajaxInventairePage.html5.twig");
         $viewEntrepotPage1 = $templateEntrepotPage1->render(["arrObjItems" => $arrObjItemsPage1, "iDepart" => 0]);
         
