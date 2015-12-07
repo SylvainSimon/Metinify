@@ -20,7 +20,7 @@ class ajaxArticleBuy extends \ScriptHelper {
     public function checkFieldEntrepotIS($nextFreePosition = 0) {
 
         $objItem = \Player\PlayerHelper::getItemRepository()->countByOwnerIdPosAndWindow($this->objAccount->getId(), $nextFreePosition, "MALL");
-        if ($objItem > 0) {
+        if ($objItem > 0 || $nextFreePosition > 44) {
             if ($nextFreePosition > 44) {
                 return false;
             } else {
@@ -345,7 +345,7 @@ class ajaxArticleBuy extends \ScriptHelper {
         $objLogAchats->setCompte($this->objAccount->getLogin());
         $objLogAchats->setVnumItem($objItemshop->getIdItem());
         $objLogAchats->setItem($objItemshop->getNameItem());
-        $objLogAchats->setQuantite($nombreItem);
+        $objLogAchats->setQuantite($nombreItemBuy);
         $objLogAchats->setPrix($objItemshop->getPrix() * $nombreItem);
         $objLogAchats->setMonnaie($ID_Monnaie);
         $objLogAchats->setIp($this->ipAdresse);

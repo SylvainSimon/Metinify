@@ -11,7 +11,7 @@ class MonCompteEntrepotIS extends \PageHelper {
 
     public function run() {
 
-        $arrObjItems = \Player\PlayerHelper::getItemRepository()->findByPosIntervalAndOwnerId(0, 44, $this->objAccount->getId(), "MALL");
+        $arrObjItems = \Player\PlayerHelper::getItemRepository()->findByPosIntervalAndOwnerId(0, 45, $this->objAccount->getId(), "MALL");
         $templateEntrepotIs = $this->objTwig->loadTemplate("ajaxEntrepotIS.html5.twig");
         $viewEntrepotIs = $templateEntrepotIs->render(["arrObjItems" => $arrObjItems, "iDepart" => 0]);
 
