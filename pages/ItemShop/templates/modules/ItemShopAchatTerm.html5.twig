@@ -12,8 +12,8 @@
         {% if isBonusCompte == "1" %}
             Le bonus à été rajouté à votre compte.
         {% else %}
-            {% if nombreBuy == nombreRequired %}
-                {{ nombreRequired }} article a été placé dans votre entrepôt item-shop.
+            {% if nombreBuy >= nombreRequired %}
+                {{ nombreBuy }} article a été placé dans votre entrepôt item-shop.
             {% else %}
                 {{ nombreBuy }} articles seulement ont été placés dans votre entrepôt item-shop car celui-ci ne possédait pas la place nécessaire pour {{ nombreRequired }}.<br/>
                 Votre compte à été débité uniquement du prix de ces articles.
