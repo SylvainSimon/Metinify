@@ -67,6 +67,8 @@ class ajaxArticleBuy extends \ScriptHelper {
                     if ($flagItem == 4 || $flagItem == 20 || $flagItem == 132 || $flagItem == 2052 || $flagItem == 8212) {
 
                         $nombreItemTotal = $nombreItem * $objItemshop->getNbItem();
+                        $nombreItemPendingTotal = $nombreItemTotal;
+                        $nombreItemOkTotal = 0;
                         $nombreCase = round($nombreItemTotal / 200);
 
                         for ($iModulo = 0; $iModulo <= $nombreCase; $iModulo++) {
@@ -83,23 +85,42 @@ class ajaxArticleBuy extends \ScriptHelper {
                                     if ($nombreItemTotal > 200) {
                                         $objItem->setCount(200);
                                         $nombreItemTotal = $nombreItemTotal - 200;
+                                        $nombreItemOkTotal = $nombreItemOkTotal + 200;
                                     } else {
                                         $objItem->setCount($nombreItemTotal);
                                         $nombreItemTotal = $nombreItemTotal - $nombreItemTotal;
+                                        $nombreItemOkTotal = $nombreItemOkTotal + $nombreItemTotal;
                                     }
 
                                     $objItem->setVnum($objItemshop->getIdItem());
                                     $em->persist($objItem);
                                     $em->flush();
                                     $em->detach($objItem);
+                                    $nombreItemBuy++;
                                 } else {
                                     $arrResult = ["result" => 0, "code" => 5];
+                                    break;
                                 }
                             }
                         }
 
-                        $prixTotal = ($objItemshop->getPrix() * $nombreItem);
-                        $nombreItemBuy = $nombreItem;
+                        if ($arrResult["result"] == 0) {
+                            if ($nombreItemOkTotal > 0) {
+
+                                $prixTotal = ($objItemshop->getPrix() * $nombreItem);
+
+                                $proportionItemOk = (($nombreItemOkTotal / $nombreItemPendingTotal) * 100);
+                                $soustraction = round(($objItemshop->getPrix() * $nombreItem) * $proportionItemOk / 100);
+                                $prixTotal = $soustraction;
+                                $arrResult["result"] = 1;
+                            } else {
+                                $prixTotal = 0;
+                            }
+                        } elseif ($arrResult["result"] == 1) {
+                            $prixTotal = ($objItemshop->getPrix() * $nombreItem);
+                            $nombreItemBuy = $nombreItem;
+                        }
+
                         $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
                         $this->objAccount->setMileage($this->objAccount->getMileage() + $prixTotal);
                         $em->persist($this->objAccount);
@@ -107,7 +128,12 @@ class ajaxArticleBuy extends \ScriptHelper {
                         $session->set("VamoNaies", $this->objAccount->getCash());
                         $session->set("TanaNaies", $this->objAccount->getMileage());
                     } else {
-                        for ($i = 0; $i < ($nombreItem * $objItemshop->getNbItem()); $i++) {
+
+                        $nombreItemTotal = ($nombreItem * $objItemshop->getNbItem());
+                        $nombreItemPendingTotal = $nombreItemTotal;
+                        $nombreItemOkTotal = 0;
+
+                        for ($i = 0; $i < $nombreItemTotal; $i++) {
 
                             $nextFreePosition = $this->checkFieldEntrepotIS();
                             if ($nextFreePosition !== false) {
@@ -130,17 +156,31 @@ class ajaxArticleBuy extends \ScriptHelper {
                                 $em->flush();
                                 $em->detach($objItem);
                                 $nombreItemBuy++;
+                                $nombreItemOkTotal++;
                             } else {
-                                if ($i > 0) {
-                                    $arrResult = ["result" => 1];
-                                } else {
-                                    $arrResult = ["result" => 0, "code" => 5];
-                                }
+                                $arrResult = ["result" => 0, "code" => 5];
                                 break;
                             }
                         }
 
-                        $prixTotal = ($objItemshop->getPrix() * $nombreItemBuy);
+                        if ($arrResult["result"] == 0) {
+                            if ($nombreItemOkTotal > 0) {
+                                $prixTotal = ($objItemshop->getPrix() * $nombreItem);
+                                $proportionItemOk = (($nombreItemOkTotal / $nombreItemPendingTotal) * 100);
+                                $soustraction = round(($objItemshop->getPrix() * $nombreItem) * $proportionItemOk / 100);
+                                $prixTotal = $soustraction;
+
+                                $arrResult["result"] = 1;
+                            }
+                        } elseif ($arrResult["result"] == 1) {
+                            $prixTotal = ($objItemshop->getPrix() * $nombreItem);
+                            $nombreItemBuy = $nombreItem;
+                        }
+
+                        if ($nombreItemBuy > 1) {
+                            $nombreItemBuy = ($nombreItemBuy / $objItemshop->getNbItem());
+                        }
+
                         $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
                         $this->objAccount->setMileage($this->objAccount->getMileage() + $prixTotal);
                         $em->persist($this->objAccount);
@@ -237,6 +277,8 @@ class ajaxArticleBuy extends \ScriptHelper {
                     if ($flagItem == 4 || $flagItem == 20 || $flagItem == 132 || $flagItem == 2052 || $flagItem == 8212) {
 
                         $nombreItemTotal = $nombreItem * $objItemshop->getNbItem();
+                        $nombreItemPendingTotal = $nombreItemTotal;
+                        $nombreItemOkTotal = 0;
                         $nombreCase = round($nombreItemTotal / 200);
 
                         for ($iModulo = 0; $iModulo <= $nombreCase; $iModulo++) {
@@ -253,15 +295,18 @@ class ajaxArticleBuy extends \ScriptHelper {
                                     if ($nombreItemTotal > 200) {
                                         $objItem->setCount(200);
                                         $nombreItemTotal = $nombreItemTotal - 200;
+                                        $nombreItemOkTotal = $nombreItemOkTotal + 200;
                                     } else {
                                         $objItem->setCount($nombreItemTotal);
                                         $nombreItemTotal = $nombreItemTotal - $nombreItemTotal;
+                                        $nombreItemOkTotal = $nombreItemOkTotal + $nombreItemTotal;
                                     }
 
                                     $objItem->setVnum($objItemshop->getIdItem());
                                     $em->persist($objItem);
                                     $em->flush();
                                     $em->detach($objItem);
+                                    $nombreItemBuy++;
                                 } else {
                                     $arrResult = ["result" => 0, "code" => 5];
                                     break;
@@ -269,8 +314,23 @@ class ajaxArticleBuy extends \ScriptHelper {
                             }
                         }
 
-                        $prixTotal = ($objItemshop->getPrix() * $nombreItem);
-                        $nombreItemBuy = $nombreItem;
+                        if ($arrResult["result"] == 0) {
+                            if ($nombreItemOkTotal > 0) {
+
+                                $prixTotal = ($objItemshop->getPrix() * $nombreItem);
+
+                                $proportionItemOk = (($nombreItemOkTotal / $nombreItemPendingTotal) * 100);
+                                $soustraction = round(($objItemshop->getPrix() * $nombreItem) * $proportionItemOk / 100);
+                                $prixTotal = $soustraction;
+                                $arrResult["result"] = 1;
+                            } else {
+                                $prixTotal = 0;
+                            }
+                        } elseif ($arrResult["result"] == 1) {
+                            $prixTotal = ($objItemshop->getPrix() * $nombreItem);
+                            $nombreItemBuy = $nombreItem;
+                        }
+
                         $this->objAccount->setMileage($this->objAccount->getMileage() - $prixTotal);
                         $em->persist($this->objAccount);
                         $em->flush();
@@ -344,9 +404,9 @@ class ajaxArticleBuy extends \ScriptHelper {
         $objLogAchats->setIdCompte($this->objAccount->getId());
         $objLogAchats->setCompte($this->objAccount->getLogin());
         $objLogAchats->setVnumItem($objItemshop->getIdItem());
-        $objLogAchats->setItem($objItemshop->getNameItem());
+        $objLogAchats->setItem($objItemshop->getNameItem() . " (x" . $objItemshop->getNbItem() . ")");
         $objLogAchats->setQuantite($nombreItemBuy);
-        $objLogAchats->setPrix($objItemshop->getPrix() * $nombreItem);
+        $objLogAchats->setPrix($prixTotal);
         $objLogAchats->setMonnaie($ID_Monnaie);
         $objLogAchats->setIp($this->ipAdresse);
         $objLogAchats->setDate(\Carbon\Carbon::now());
