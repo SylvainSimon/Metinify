@@ -172,13 +172,14 @@ class ajaxArticleBuy extends \ScriptHelper {
 
                                 $arrResult["result"] = 1;
                             }
+
+                            if ($nombreItemBuy > 1) {
+                                $nombreItemBuy = round($nombreItemBuy / $objItemshop->getNbItem());
+                            }
+                            
                         } elseif ($arrResult["result"] == 1) {
                             $prixTotal = ($objItemshop->getPrix() * $nombreItem);
                             $nombreItemBuy = $nombreItem;
-                        }
-
-                        if ($nombreItemBuy > 1) {
-                            $nombreItemBuy = ($nombreItemBuy / $objItemshop->getNbItem());
                         }
 
                         $this->objAccount->setCash($this->objAccount->getCash() - $prixTotal);
@@ -382,13 +383,14 @@ class ajaxArticleBuy extends \ScriptHelper {
 
                                 $arrResult["result"] = 1;
                             }
+                            
+                            if ($nombreItemBuy > 1) {
+                                $nombreItemBuy = round($nombreItemBuy / $objItemshop->getNbItem());
+                            }
+                            
                         } elseif ($arrResult["result"] == 1) {
                             $prixTotal = ($objItemshop->getPrix() * $nombreItem);
                             $nombreItemBuy = $nombreItem;
-                        }
-
-                        if ($nombreItemBuy > 1) {
-                            $nombreItemBuy = ($nombreItemBuy / $objItemshop->getNbItem());
                         }
 
                         $this->objAccount->setMileage($this->objAccount->getMileage() - $prixTotal);
