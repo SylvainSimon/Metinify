@@ -51,7 +51,7 @@
         }).columnFilter({aoColumns: aoColumnsFilter});
     });
 
-    function SuppressionNews(idNew) {
+    function SuppressionArticle(idArticle) {
 
         bootbox.dialog({
             message: "Confirmez-vous la suppression de cette article ?",
@@ -75,8 +75,8 @@
 
                         $.ajax({
                             type: "POST",
-                            url: "pages/Admin/ajax/ajaxGererNewsDelete.php",
-                            data: {"newId": idNew},
+                            url: "pages/Admin/modules/GererItemShop/ajax/ajaxGererItemShopArticlesDelete.php",
+                            data: {"idArticle": idArticle},
                             success: function (msg) {
 
                                 hideLoading();
