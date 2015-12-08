@@ -337,7 +337,11 @@ class ajaxArticleBuy extends \ScriptHelper {
                         $session->set("TanaNaies", $this->objAccount->getMileage());
                     } else {
 
-                        for ($i = 0; $i < $nombreItem * $objItemshop->getNbItem(); $i++) {
+                        $nombreItemTotal = ($nombreItem * $objItemshop->getNbItem());
+                        $nombreItemPendingTotal = $nombreItemTotal;
+                        $nombreItemOkTotal = 0;
+
+                        for ($i = 0; $i < $nombreItemTotal; $i++) {
 
                             $nextFreePosition = $this->checkFieldEntrepotIS();
 
@@ -362,17 +366,31 @@ class ajaxArticleBuy extends \ScriptHelper {
                                 $em->flush();
                                 $em->detach($objItem);
                                 $nombreItemBuy++;
+                                $nombreItemOkTotal++;
                             } else {
-                                if ($i > 0) {
-                                    $arrResult = ["result" => 1];
-                                } else {
-                                    $arrResult = ["result" => 0, "code" => 5];
-                                }
+                                $arrResult = ["result" => 0, "code" => 5];
                                 break;
                             }
                         }
 
-                        $prixTotal = ($objItemshop->getPrix() * $nombreItemBuy);
+                        if ($arrResult["result"] == 0) {
+                            if ($nombreItemOkTotal > 0) {
+                                $prixTotal = ($objItemshop->getPrix() * $nombreItem);
+                                $proportionItemOk = (($nombreItemOkTotal / $nombreItemPendingTotal) * 100);
+                                $soustraction = round(($objItemshop->getPrix() * $nombreItem) * $proportionItemOk / 100);
+                                $prixTotal = $soustraction;
+
+                                $arrResult["result"] = 1;
+                            }
+                        } elseif ($arrResult["result"] == 1) {
+                            $prixTotal = ($objItemshop->getPrix() * $nombreItem);
+                            $nombreItemBuy = $nombreItem;
+                        }
+
+                        if ($nombreItemBuy > 1) {
+                            $nombreItemBuy = ($nombreItemBuy / $objItemshop->getNbItem());
+                        }
+
                         $this->objAccount->setMileage($this->objAccount->getMileage() - $prixTotal);
                         $em->persist($this->objAccount);
                         $em->flush();
@@ -404,7 +422,11 @@ class ajaxArticleBuy extends \ScriptHelper {
         $objLogAchats->setIdCompte($this->objAccount->getId());
         $objLogAchats->setCompte($this->objAccount->getLogin());
         $objLogAchats->setVnumItem($objItemshop->getIdItem());
-        $objLogAchats->setItem($objItemshop->getNameItem() . " (x" . $objItemshop->getNbItem() . ")");
+        if ($objItemshop->getNbItem() > 1) {
+            $objLogAchats->setItem($objItemshop->getNameItem() . " (x" . $objItemshop->getNbItem() . ")");
+        } else {
+            $objLogAchats->setItem($objItemshop->getNameItem());
+        }
         $objLogAchats->setQuantite($nombreItemBuy);
         $objLogAchats->setPrix($prixTotal);
         $objLogAchats->setMonnaie($ID_Monnaie);
