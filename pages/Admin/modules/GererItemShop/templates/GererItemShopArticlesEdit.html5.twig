@@ -85,7 +85,7 @@
             </div>                  
         </div>                  
 
-        <div id="selectorItem" {% if objItemshop.getType == 1 or objItemshop.getType == 3 %}style="display: inline;"{% else %}style="display: none;"{% endif %}>
+        <div id="selectorItem" {% if objItemshop.getType == 1 or objItemshop.getType == 3 %}style="display: inline;"{% elseif objItemshop.getType == 2 %}style="display: none;"{% endif %}>
             <div class="col-sm-12">
                 <div class="form-group ">
                     <label for="articleVnum">
@@ -103,7 +103,7 @@
             </div>
         </div>
 
-        <div id="selectorBonus" {% if objItemshop.getType == 1 or objItemshop.getType == 3 %}style="display: none;"{% else %}style="display: inline;"{% endif %}>
+        <div id="selectorBonus" {% if objItemshop.getType == 1 or objItemshop.getType == 3 %}style="display: none;"{% elseif objItemshop.getType == 2 %}style="display: inline;"{% elseif objItemshop.getType == 0 %}style="display: none;"{% endif %}>
             <div class="col-sm-12">
                 <div class="form-group ">
                     <label for="articleVnum">
