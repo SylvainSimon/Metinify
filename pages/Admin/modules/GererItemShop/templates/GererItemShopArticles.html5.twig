@@ -1,6 +1,4 @@
-<script type="text/javascript" src="assets/js/tinymce/tinymce.min.js"></script>
-
-<table class="table table-condensed table-hover table-striped" id="listGererNews" style="border-collapse: collapse; margin-top: 0px !important;">
+<table class="table table-condensed table-hover table-striped" id="listItemShopArticles" style="border-collapse: collapse; margin-top: 0px !important;">
     <thead>
         <tr>
             <th></th>
@@ -30,12 +28,12 @@
     var aoColumnsFilter = [{{ dtFilterColumns|raw  }}];
     var sAjaxSource = '{{ ajaxSource }}';
 
-    $('#listGererNews').on('processing.dt', function (e, settings, processing) {
+    $('#listItemShopArticles').on('processing.dt', function (e, settings, processing) {
         processingDatatableInBox(processing);
     });
 
     $(document).ready(function () {
-        oTable = $('#listGererNews').dataTable({
+        oTable = $('#listItemShopArticles').dataTable({
             aaSorting: [[0, "asc"]],
             aoColumns: aoColumns,
             sDom: '<"clear"><"top">rt<lp><"clear">',

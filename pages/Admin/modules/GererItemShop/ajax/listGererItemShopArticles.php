@@ -4,7 +4,7 @@ namespace Administration\Ajax;
 
 require __DIR__ . '../../../../../../core/initialize.php';
 
-class listGererNews extends \ScriptHelper {
+class listGererItemShopArticles extends \ScriptHelper {
 
     public function run() {
 
@@ -90,5 +90,5 @@ class listGererNews extends \ScriptHelper {
 
 }
 
-$class = new listGererNews();
+$class = new listGererItemShopArticles();
 $class->run();

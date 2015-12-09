@@ -17,6 +17,20 @@ class GererItemShopCategories extends \PageHelper {
 
     public function run() {
 
+        $sColumns = '';
+        $sColumns .= '{ "mData": "categorie", "bSortable": true, "sWidth": "150px" },';
+        $sColumns .= '{ "mData": "description", "bSortable": true },';
+        $sColumns .= '{ "mData": "actions", "bSortable": false, "sWidth": "55px" },';
+
+        $sFilterColumns = '';
+        $sFilterColumns .= '{ type: "text", placeholder: "" },';
+        $sFilterColumns .= '{ type: "text", placeholder: "" },';
+        $sFilterColumns .= 'null,';
+
+        $this->arrayTemplate["dtColumns"] = rtrim($sColumns, ',');
+        $this->arrayTemplate["dtFilterColumns"] = rtrim($sFilterColumns, ',');
+        $this->arrayTemplate["ajaxSource"] = "pages/Admin/modules/GererItemShop/ajax/listGererItemShopCategories.php?sEcho=1";
+        
         $view = $this->template->render($this->arrayTemplate);
 
         $this->response->setContent($view);

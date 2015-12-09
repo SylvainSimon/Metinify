@@ -20,9 +20,6 @@ class GererItemShopArticlesEdit extends \PageHelper {
         global $request;
         $mode = $request->query->get("mode");
 
-        //$objPlayer = null;
-        //$objAccount = null;
-
         if ($mode == "create") {
             $objItemshop = new \Site\Entity\Itemshop();
         } else if ($mode == "mod") {
@@ -33,17 +30,12 @@ class GererItemShopArticlesEdit extends \PageHelper {
                 $objItemProto = \Player\PlayerHelper::getItemProtoRepository()->find($objItemshop->getIdItem());
                 $this->arrayTemplate["objItemProto"] = $objItemProto;
             }
-            //$objPlayer = \Player\PlayerHelper::getPlayerRepository()->findByName($objItemshop->getMname());
-            //$objAccount = \Account\AccountHelper::getAccountRepository()->findAccountByLogin($objItemshop->getMaccount());
         }
         
         $arrObjItemShopCategorie = \Site\SiteHelper::getItemshopCategoriesRepository()->findAll();
 
-        //$this->arrayTemplate["arrAuthority"] = \AuthorityHelper::getAll();
         $this->arrayTemplate["objItemshop"] = $objItemshop;
         $this->arrayTemplate["arrObjItemShopCategorie"] = $arrObjItemShopCategorie;
-        //$this->arrayTemplate["objPlayer"] = $objPlayer;
-        //$this->arrayTemplate["objAccount"] = $objAccount;
 
         $view = $this->template->render($this->arrayTemplate);
 

@@ -6,6 +6,38 @@ use \Shared\EntityRepository;
 
 class ItemshopCategoriesRepository extends EntityRepository {
 
+    public function findByCat($idCat = 0) {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("ItemshopCategoriesEntity");
+        $qb->from("\Site\Entity\ItemshopCategories", "ItemshopCategoriesEntity");
+        $qb->where("ItemshopCategoriesEntity.cat = :idCat");
+        $qb->setParameter("idCat", $idCat);
+        $qb->setMaxResults(1);
+
+        try {
+            return $qb->getQuery()->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+    
+    public function findMaxCat() {
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("MAX(ItemshopCategoriesEntity.cat)");
+        $qb->from("\Site\Entity\ItemshopCategories", "ItemshopCategoriesEntity");
+        $qb->setMaxResults(1);
+
+        try {
+            return $qb->getQuery()->getSingleScalarResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+    
     public function findCategoriesNotEmpty() {
 
         $qb = $this->_em->createQueryBuilder();
