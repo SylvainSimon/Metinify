@@ -77,19 +77,6 @@ class ajaxBuyPlayer extends \ScriptHelper {
                                 $session->set("VamoNaies", $this->objAccount->getCash());
                                 $session->set("TanaNaies", $this->objAccount->getMileage());
 
-                                $objLogAchats = new \Site\Entity\LogAchats();
-                                $objLogAchats->setIdCompte($this->objAccount->getId());
-                                $objLogAchats->setCompte($this->objAccount->getLogin());
-                                $objLogAchats->setVnumItem("999999999");
-                                $objLogAchats->setItem("Personnage");
-                                $objLogAchats->setQuantite(1);
-                                $objLogAchats->setPrix($prixMarcheArticle);
-                                $objLogAchats->setMonnaie($deviseMarcheArticle);
-                                $objLogAchats->setDate(\Carbon\Carbon::now());
-                                $objLogAchats->setIp($this->ipAdresse);
-                                $objLogAchats->setResultat("Réussi");
-                                $em->persist($objLogAchats);
-
                                 $objLogsMarcheAchats = new \Site\Entity\LogsMarcheAchats();
                                 $objLogsMarcheAchats->setIdVendeur($idVendeur);
                                 $objLogsMarcheAchats->setIdAcheteur($this->objAccount->getId());

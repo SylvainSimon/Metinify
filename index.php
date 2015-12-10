@@ -141,7 +141,7 @@ class IndexWebsite extends PageHelper {
 
                         <div class="col-md-12" style="padding-bottom: 60px;">
                             <div class="row">
-                                <?php if ($session->get("Administration_PannelAdmin") !== null) { ?>
+                                <?php if ($this->isAdmin) { ?>
                                     <?php include 'pages/Admin/Accueil_Seconde.php'; ?>
                                 <?php } else { ?>
                                     <?php include 'pages/_LegacyPages/Accueil.php'; ?>

@@ -30,5 +30,5 @@ class DroitsHelper {
     const RECHERCHE_GUILDE_GUERRE = 26;
     const GERER_ITEMSHOP = 27;
     const GERER_ITEMSHOP_CATEGORIE = 28;
-    const GERER_ITEMSHOP_STATISTIQUE = 29;
+    const GERER_ITEMSHOP_LOGS_ACHATS = 29;
 }

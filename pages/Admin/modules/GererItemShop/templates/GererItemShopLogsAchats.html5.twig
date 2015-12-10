@@ -1,0 +1,53 @@
+<table class="table table-condensed table-hover table-striped" id="listItemShopLogsAchats" style="border-collapse: collapse; margin-top: 0px !important;">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <th>Article</th>
+            <th>Nombre</th>
+            <th>Dépense</th>
+            <th>Compte</th>
+            <th>Résultat</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="100%" class="dataTables_empty">Tableau en cours de chargement...</td>
+        </tr>
+    </tbody>
+</table>
+
+<script type="text/javascript" charset="utf-8">
+
+    var aoColumns = [{{ dtColumns|raw }}];
+    var aoColumnsFilter = [{{ dtFilterColumns|raw  }}];
+    var sAjaxSource = '{{ ajaxSource }}';
+
+    $('#listItemShopLogsAchats').on('processing.dt', function (e, settings, processing) {
+        processingDatatableInBox(processing);
+    });
+
+    $(document).ready(function () {
+        oTable = $('#listItemShopLogsAchats').dataTable({
+            aaSorting: [[0, "asc"]],
+            aoColumns: aoColumns,
+            sDom: '<"clear"><"top">rt<lp><"clear">',
+            sAjaxSource: sAjaxSource,
+            aLengthMenu: [[10, 25, 50, 100], ["10", "25", "50", "100"]],
+            iDisplayLength: 10,
+            fnServerData: function (sSource, aoData, fnCallback) {
+                $.getJSON(sSource, aoData, function (json) {
+                    $("#datatable_total").html(json.iTotalRecords);
+                    fnCallback(json);
+                });
+            }
+        }).columnFilter({aoColumns: aoColumnsFilter});
+    });
+</script>

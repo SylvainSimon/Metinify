@@ -171,12 +171,13 @@ class ajaxArticleBuy extends \ScriptHelper {
                                 $prixTotal = $soustraction;
 
                                 $arrResult["result"] = 1;
+                            } else {
+                                $prixTotal = 0;
                             }
 
                             if ($nombreItemBuy > 1) {
                                 $nombreItemBuy = round($nombreItemBuy / $objItemshop->getNbItem());
                             }
-                            
                         } elseif ($arrResult["result"] == 1) {
                             $prixTotal = ($objItemshop->getPrix() * $nombreItem);
                             $nombreItemBuy = $nombreItem;
@@ -382,12 +383,13 @@ class ajaxArticleBuy extends \ScriptHelper {
                                 $prixTotal = $soustraction;
 
                                 $arrResult["result"] = 1;
+                            } else {
+                                $prixTotal = 0;
                             }
-                            
+
                             if ($nombreItemBuy > 1) {
                                 $nombreItemBuy = round($nombreItemBuy / $objItemshop->getNbItem());
                             }
-                            
                         } elseif ($arrResult["result"] == 1) {
                             $prixTotal = ($objItemshop->getPrix() * $nombreItem);
                             $nombreItemBuy = $nombreItem;
@@ -417,7 +419,21 @@ class ajaxArticleBuy extends \ScriptHelper {
         if ($arrResult["result"] == 1) {
             $Resultat_Achat = "Réussi";
         } else {
-            $Resultat_Achat = "Erreur";
+            if ($arrResult["code"] == 4) {
+                $Resultat_Achat = "Type d'item inconnu";
+            } elseif ($arrResult["code"] == 5) {
+                if ($nombreItemOkTotal > 0) {
+                    $Resultat_Achat = "Livraison partiel";
+                } else {
+                    $Resultat_Achat = "Manque de place";
+                }
+            } elseif ($arrResult["code"] == 6) {
+                $Resultat_Achat = "Pas assez de " . \DeviseHelper::getLibelle(2);
+            } elseif ($arrResult["code"] == 3) {
+                $Resultat_Achat = "Pas assez de " . \DeviseHelper::getLibelle(1);
+            } else {
+                $Resultat_Achat = "Erreur";
+            }
         }
 
         $objLogAchats = new \Site\Entity\LogAchats();

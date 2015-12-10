@@ -39,7 +39,7 @@ class GererItemShop extends \PageHelper {
         ]);
         
         $this->arrayTemplate["rightGererITemShopCategorie"] = $this->HaveTheRight(\DroitsHelper::GERER_ITEMSHOP_CATEGORIE);
-        $this->arrayTemplate["rightGererITemShopStatistiques"] = $this->HaveTheRight(\DroitsHelper::GERER_ITEMSHOP_STATISTIQUE);
+        $this->arrayTemplate["rightGererITemShopLogsAchats"] = $this->HaveTheRight(\DroitsHelper::GERER_ITEMSHOP_LOGS_ACHATS);
         $this->arrayTemplate["viewItemShopArticles"] = $viewItemShopArticles;
         
         $view = $this->template->render($this->arrayTemplate);

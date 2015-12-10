@@ -59,8 +59,10 @@ class CoreHelper {
             $this->objAccount = $objAccount;
             $this->ReloadSessionValues();
 
+            $this->LoadAdminSessionValues();
+            
             if ($this->isAdminProtected) {
-                if (!$this->LoadAdminSessionValues()) {
+                if (!$this->isAdmin) {
                     include '../../pages/_LegacyPages/News.php';
                     exit();
                 }
