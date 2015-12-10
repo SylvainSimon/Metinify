@@ -2,9 +2,9 @@
 
 namespace Administration\Ajax;
 
-require __DIR__ . '../../../../core/initialize.php';
+require __DIR__ . '../../../../../../core/initialize.php';
 
-class listGererEquipe extends \ScriptHelper {
+class listGererEquipeJeu extends \ScriptHelper {
 
     public function run() {
 
@@ -88,7 +88,7 @@ class listGererEquipe extends \ScriptHelper {
                 'dtField' => 'actions',
                 'formatter' => function( $d, $row ) {
 
-                    $varButton = '<a class="btn btn-material btn-primary btn-sm" data-featherlight="ajax" href="pages/Admin/GererEquipeEdit.php?mode=mod&idMembre=' . $d . '" data-tooltip="Modifier"><i class="material-icons md-icon-edit"></i></a>';
+                    $varButton = '<a class="btn btn-material btn-primary btn-sm" data-featherlight="ajax" href="pages/Admin/modules/GererEquipeJeu/GererEquipeJeuEdit.php?mode=mod&idMembre=' . $d . '" data-tooltip="Modifier"><i class="material-icons md-icon-edit"></i></a>';
                     $varButton .= '<a class="btn btn-material btn-danger btn-sm " data-tooltip="Supprimer" onclick="SuppressionMembreEquipe(' . $d . ')"><i class="material-icons md-icon-delete"></i></a>';
 
                     return '<div class="btn-toolbar">' . $varButton . "</div>";
@@ -108,5 +108,5 @@ class listGererEquipe extends \ScriptHelper {
 
 }
 
-$class = new listGererEquipe();
+$class = new listGererEquipeJeu();
 $class->run();

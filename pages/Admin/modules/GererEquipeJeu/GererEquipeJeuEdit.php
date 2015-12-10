@@ -2,17 +2,17 @@
 
 namespace Administration;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../../core/initialize.php';
 
-class GererNews extends \PageHelper {
+class GererEquipeJeuEdit extends \PageHelper {
 
     public $isProtected = true;
     public $isAdminProtected = true;
-    public $strTemplate = "GererEquipeEdit.html5.twig";
+    public $strTemplate = "GererEquipeJeuEdit.html5.twig";
 
     public function __construct() {
         parent::__construct();
-        $this->VerifyTheRight(\DroitsHelper::GERER_EQUIPE);
+        $this->VerifyTheRight(\DroitsHelper::GERER_EQUIPE_JEU);
     }
 
     public function run() {
@@ -45,5 +45,5 @@ class GererNews extends \PageHelper {
 
 }
 
-$class = new GererNews();
+$class = new GererEquipeJeuEdit();
 $class->run();

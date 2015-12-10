@@ -2,16 +2,16 @@
 
 namespace Administration;
 
-require __DIR__ . '../../../../core/initialize.php';
+require __DIR__ . '../../../../../../core/initialize.php';
 
-class ajaxGererEquipeEditSave extends \PageHelper {
+class ajaxGererEquipeJeuEditSave extends \PageHelper {
 
     public $isProtected = true;
     public $isAdminProtected = true;
 
     public function __construct() {
         parent::__construct();
-        $this->VerifyTheRight(\DroitsHelper::GERER_EQUIPE);
+        $this->VerifyTheRight(\DroitsHelper::GERER_EQUIPE_JEU);
     }
 
     public function run() {
@@ -52,5 +52,5 @@ class ajaxGererEquipeEditSave extends \PageHelper {
 
 }
 
-$class = new ajaxGererEquipeEditSave();
+$class = new ajaxGererEquipeJeuEditSave();
 $class->run();

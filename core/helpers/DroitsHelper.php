@@ -24,11 +24,12 @@ class DroitsHelper {
     const VIEW_ACCOUNT = 20;
     const GERER_MONNAIES = 21;
     const GERER_NEWS = 22;
-    const GERER_EQUIPE = 23;
+    const GERER_EQUIPE_JEU = 23;
     const GERER_BANNISSEMENT = 24;
     const RADAR = 25;
     const RECHERCHE_GUILDE_GUERRE = 26;
     const GERER_ITEMSHOP = 27;
     const GERER_ITEMSHOP_CATEGORIE = 28;
     const GERER_ITEMSHOP_LOGS_ACHATS = 29;
+    const GERER_EQUIPE_SITE = 30;
 }

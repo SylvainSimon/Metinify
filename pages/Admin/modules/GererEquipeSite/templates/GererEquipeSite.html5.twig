@@ -1,0 +1,112 @@
+<script type="text/javascript" src="assets/js/tinymce/tinymce.min.js"></script>
+
+<div class="box boxDataTable box-default flat">
+
+    <div class="box-header">
+        <h3 class="box-title">Équipe sur le site</h3>
+        <div class="box-tools" style="right: 5px;">
+            <a data-featherlight="ajax" href="pages/Admin/modules/GererEquipeSite/GererEquipeSiteEdit.php?mode=create">
+                <button type="button" class="btn btn-sm btn-success btn-flat" >
+                    Ajouter
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <div class="box-body no-padding">
+
+        <table class="table table-condensed table-hover table-striped" id="listGererEquipeSite" style="border-collapse: collapse; margin-top: 0px !important;">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Compte</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="100%" class="dataTables_empty">Tableau en cours de chargement...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+
+    var aoColumns = [{{ dtColumns|raw }}];
+    var aoColumnsFilter = [{{ dtFilterColumns|raw  }}];
+    var sAjaxSource = '{{ ajaxSource }}';
+
+    $('#listGererEquipeSite').on('processing.dt', function (e, settings, processing) {
+        processingDatatable(processing);
+    });
+
+    $(document).ready(function () {
+        oTable = $('#listGererEquipeSite').dataTable({
+            aaSorting: [[0, "desc"]],
+            aoColumns: aoColumns,
+            sDom: '<"clear"><"top">rt<lp><"clear">',
+            sAjaxSource: sAjaxSource,
+            aLengthMenu: [[10, 25, 50, 100], ["10", "25", "50", "100"]],
+            iDisplayLength: 10,
+            fnServerData: function (sSource, aoData, fnCallback) {
+                $.getJSON(sSource, aoData, function (json) {
+                    $("#datatable_total").html(json.iTotalRecords);
+                    fnCallback(json);
+                });
+            }
+        }).columnFilter({aoColumns: aoColumnsFilter});
+    });
+    
+    function SuppressionMembreEquipe(idMember) {
+
+        bootbox.dialog({
+            message: "Confirmez-vous la suppression de ce membre de l'équipe du site ?",
+            animate: false,
+            className: "myBootBox",
+            title: 'Confirmation de la demande',
+            buttons: {
+                danger: {
+                    label: "Annuler",
+                    className: "btn-danger",
+                    callback: function () {
+
+                    }
+                },
+                success: {
+                    label: "Confirmer",
+                    className: "btn-primary",
+                    callback: function () {
+
+                        displayLoading();
+
+                        $.ajax({
+                            type: "POST",
+                            url: "pages/Admin/modules/GererEquipeJeu/ajax/ajaxGererEquipeSiteDelete.php",
+                            data: {"memberId": idMember},
+                            success: function (msg) {
+
+                                hideLoading();
+
+                                var json = JSON.parse(msg);
+
+                                if (json.result) {
+
+                                } else {
+                                    popBootbox(json.reasons);
+                                }
+
+                                parent.oTable.fnStandingRedraw();
+                            }
+
+                        });
+                    }
+                }
+            }
+        });
+    }
+</script>

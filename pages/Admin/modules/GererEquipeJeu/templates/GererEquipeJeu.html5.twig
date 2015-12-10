@@ -3,9 +3,9 @@
 <div class="box boxDataTable box-default flat">
 
     <div class="box-header">
-        <h3 class="box-title">Gestion de l'équipe</h3>
+        <h3 class="box-title">Équipe dans le jeu</h3>
         <div class="box-tools" style="right: 5px;">
-            <a data-featherlight="ajax" href="pages/Admin/GererEquipeEdit.php?mode=create" data-tooltip="Ajouter un membre dans l'équipe">
+            <a data-featherlight="ajax" href="pages/Admin/modules/GererEquipeJeu/GererEquipeJeuEdit.php?mode=create">
                 <button type="button" class="btn btn-sm btn-success btn-flat" >
                     Ajouter
                 </button>
@@ -15,7 +15,7 @@
 
     <div class="box-body no-padding">
 
-        <table class="table table-condensed table-hover table-striped" id="listGererEquipe" style="border-collapse: collapse; margin-top: 0px !important;">
+        <table class="table table-condensed table-hover table-striped" id="listGererEquipeJeu" style="border-collapse: collapse; margin-top: 0px !important;">
             <thead>
                 <tr>
                     <th></th>
@@ -51,12 +51,12 @@
     var aoColumnsFilter = [{{ dtFilterColumns|raw  }}];
     var sAjaxSource = '{{ ajaxSource }}';
 
-    $('#listGererEquipe').on('processing.dt', function (e, settings, processing) {
+    $('#listGererEquipeJeu').on('processing.dt', function (e, settings, processing) {
         processingDatatable(processing);
     });
 
     $(document).ready(function () {
-        oTableGererEquipe = $('#listGererEquipe').dataTable({
+        oTable = $('#listGererEquipeJeu').dataTable({
             aaSorting: [[0, "desc"]],
             aoColumns: aoColumns,
             sDom: '<"clear"><"top">rt<lp><"clear">',
@@ -75,7 +75,7 @@
     function SuppressionMembreEquipe(idMember) {
 
         bootbox.dialog({
-            message: "Confirmez-vous la suppression de ce membre de l'équipe ?",
+            message: "Confirmez-vous la suppression de ce membre de l'équipe du jeu ?",
             animate: false,
             className: "myBootBox",
             title: 'Confirmation de la demande',
@@ -96,7 +96,7 @@
 
                         $.ajax({
                             type: "POST",
-                            url: "pages/Admin/ajax/ajaxGererEquipeDelete.php",
+                            url: "pages/Admin/modules/GererEquipeJeu/ajax/ajaxGererEquipeJeuDelete.php",
                             data: {"memberId": idMember},
                             success: function (msg) {
 
@@ -110,7 +110,7 @@
                                     popBootbox(json.reasons);
                                 }
 
-                                parent.oTableGererEquipe.fnStandingRedraw();
+                                parent.oTable.fnStandingRedraw();
                             }
 
                         });

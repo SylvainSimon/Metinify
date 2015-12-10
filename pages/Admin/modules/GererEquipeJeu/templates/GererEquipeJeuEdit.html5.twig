@@ -117,12 +117,12 @@
 
             $.ajax({
                 type: "POST",
-                url: "pages/Admin/ajax/ajaxGererEquipeEditSave.php",
+                url: "pages/Admin/modules/GererEquipeJeu/ajax/ajaxGererEquipeJeuEditSave.php",
                 data: {"GmListMid": $("#GmListMid").val(), "playerId": $("#playerId").val(), "playerIp": $("#playerIp").val(), "authority": $("#authority").val()},
                 success: function (msg) {
                     hideLoading();
                     $.featherlight.close();
-                    parent.oTableGererEquipe.fnStandingRedraw();
+                    parent.oTable.fnStandingRedraw();
                 }
 
             });

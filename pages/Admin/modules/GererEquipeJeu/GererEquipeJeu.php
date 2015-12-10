@@ -2,18 +2,18 @@
 
 namespace Administration;
 
-require __DIR__ . '../../../core/initialize.php';
+require __DIR__ . '../../../../../core/initialize.php';
 
-class GererEquipe extends \PageHelper {
+class GererEquipeJeu extends \PageHelper {
 
     public $isProtected = true;
     public $isAdminProtected = true;
-    public $strTemplate = "GererEquipe.html5.twig";
+    public $strTemplate = "GererEquipeJeu.html5.twig";
 
     public function __construct() {
         parent::__construct();
 
-        $this->VerifyTheRight(\DroitsHelper::GERER_EQUIPE);
+        $this->VerifyTheRight(\DroitsHelper::GERER_EQUIPE_JEU);
     }
 
     public function run() {
@@ -38,7 +38,7 @@ class GererEquipe extends \PageHelper {
 
         $this->arrayTemplate["dtColumns"] = rtrim($sColumns, ',');
         $this->arrayTemplate["dtFilterColumns"] = rtrim($sFilterColumns, ',');
-        $this->arrayTemplate["ajaxSource"] = "pages/Admin/ajax/listGererEquipe.php?sEcho=1";
+        $this->arrayTemplate["ajaxSource"] = "pages/Admin/modules/GererEquipeJeu/ajax/listGererEquipeJeu.php?sEcho=1";
 
         $view = $this->template->render($this->arrayTemplate);
 
@@ -48,5 +48,5 @@ class GererEquipe extends \PageHelper {
 
 }
 
-$class = new GererEquipe();
+$class = new GererEquipeJeu();
 $class->run();

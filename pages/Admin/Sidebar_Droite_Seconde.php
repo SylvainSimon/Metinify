@@ -6,17 +6,20 @@
     <div class="box-body no-padding">
 
         <table class="table table-condensed table-hover" style="border-collapse: collapse;">
-            <?php if ($this->HaveTheRight(\DroitsHelper::GERER_MONNAIES)) { ?>
-                <tr class="pointer" onclick="Ajax('pages/Admin/GererMonnaies.php');"><td> Gestion des monnaies</td></tr>
-            <?php } ?>
             <?php if ($this->HaveTheRight(\DroitsHelper::GERER_NEWS)) { ?>
-                <tr class="pointer" onclick="Ajax('pages/Admin/GererNews.php')"><td> Gestion des news</td></tr>
+                <tr class="pointer" onclick="Ajax('pages/Admin/GererNews.php')"><td> Actualités</td></tr>
             <?php } ?>
-            <?php if ($this->HaveTheRight(\DroitsHelper::GERER_EQUIPE)) { ?>
-                <tr class="pointer" onclick="Ajax('pages/Admin/GererEquipe.php')"><td> Gestion de l'équipe</td></tr>
+            <?php if ($this->HaveTheRight(\DroitsHelper::GERER_MONNAIES)) { ?>
+                <tr class="pointer" onclick="Ajax('pages/Admin/GererMonnaies.php');"><td> Monnaies</td></tr>
+            <?php } ?>
+            <?php if ($this->HaveTheRight(\DroitsHelper::GERER_EQUIPE_JEU)) { ?>
+                <tr class="pointer" onclick="Ajax('pages/Admin/modules/GererEquipeJeu/GererEquipeJeu.php')"><td> Équipe du jeu</td></tr>
+            <?php } ?>
+            <?php if ($this->HaveTheRight(\DroitsHelper::GERER_EQUIPE_SITE)) { ?>
+                <tr class="pointer" onclick="Ajax('pages/Admin/modules/GererEquipeSite/GererEquipeSite.php')"><td> Équipe du site</td></tr>
             <?php } ?>
             <?php if ($this->HaveTheRight(\DroitsHelper::GERER_ITEMSHOP)) { ?>
-                <tr class="pointer" onclick="Ajax('pages/Admin/modules/GererItemShop/GererItemShop.php')"><td> Gestion de l'item-shop</td></tr>
+                <tr class="pointer" onclick="Ajax('pages/Admin/modules/GererItemShop/GererItemShop.php')"><td> Item-shop</td></tr>
             <?php } ?>
         </table>
     </div>
