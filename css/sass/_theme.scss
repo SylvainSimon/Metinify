@@ -905,7 +905,7 @@ tbody td.lineIcon{
 }
 
 .featherLightbox_90 .featherlight-content{
-    min-width: 99% !important;
+    min-width: 50% !important;
 }
 
 @media only screen and (max-width: 1024px){
@@ -916,6 +916,9 @@ tbody td.lineIcon{
         min-width: 85% !important;
         padding: 10px 10px 0;
         border-bottom: 10px solid transparent;
+    }
+    .featherLightbox_90 .featherlight-content{
+        min-width: 90% !important;
     }
 }
 
