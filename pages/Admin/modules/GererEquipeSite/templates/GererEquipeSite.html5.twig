@@ -62,7 +62,7 @@
         }).columnFilter({aoColumns: aoColumnsFilter});
     });
     
-    function SuppressionMembreEquipe(idMember) {
+    function SuppressionMembreEquipeSite(idAdministrationUser) {
 
         bootbox.dialog({
             message: "Confirmez-vous la suppression de ce membre de l'équipe du site ?",
@@ -87,7 +87,7 @@
                         $.ajax({
                             type: "POST",
                             url: "pages/Admin/modules/GererEquipeJeu/ajax/ajaxGererEquipeSiteDelete.php",
-                            data: {"memberId": idMember},
+                            data: {"idAdministrationUser": idAdministrationUser},
                             success: function (msg) {
 
                                 hideLoading();

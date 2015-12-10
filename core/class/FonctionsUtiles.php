@@ -185,7 +185,7 @@ class FonctionsUtiles {
         if ($objAccount->getFishMindExpire() > \Carbon\Carbon::now()) {
             $count++;
         }
-        
+
         return $count;
     }
 

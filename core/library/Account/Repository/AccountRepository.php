@@ -25,6 +25,24 @@ class AccountRepository extends EntityRepository {
         }
     }
 
+    public function finByLoginForAjaxSelect($login = "") {
+
+        $login = ($login !== "") ? "%" . $login . "%" : "%";
+
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb->select("AccountEntity.id, AccountEntity.login");
+        $qb->from("\Account\Entity\Account", "AccountEntity");
+        $qb->andWhere("AccountEntity.login LIKE :login");
+        $qb->setParameter("login", $login);
+
+        try {
+            return $qb->getQuery()->getArrayResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return [];
+        }
+    }
+
     public function findAccountByEmailAndLogin($email = "", $login = "") {
 
         $qb = $this->_em->createQueryBuilder();
@@ -59,7 +77,7 @@ class AccountRepository extends EntityRepository {
             return [];
         }
     }
-    
+
     public function findByIpCreation($ip = "") {
 
         $qb = $this->_em->createQueryBuilder();
@@ -75,7 +93,7 @@ class AccountRepository extends EntityRepository {
             return [];
         }
     }
-    
+
     public function findAccountByLogin($login = "") {
 
         $qb = $this->_em->createQueryBuilder();
