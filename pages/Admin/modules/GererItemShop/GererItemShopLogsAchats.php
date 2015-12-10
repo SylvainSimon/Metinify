@@ -18,7 +18,7 @@ class GererItemShopLogsAchats extends \PageHelper {
     public function run() {
 
         $sColumns = '';
-        $sColumns .= '{ "mData": "date", "bSortable": true },';
+        $sColumns .= '{ "mData": "date", "bSortable": true, "sWidth": "130px" },';
         $sColumns .= '{ "mData": "article", "bSortable": true },';
         $sColumns .= '{ "mData": "quantite", "bSortable": true },';
         $sColumns .= '{ "mData": "prix", "bSortable": true },';
@@ -26,7 +26,7 @@ class GererItemShopLogsAchats extends \PageHelper {
         $sColumns .= '{ "mData": "result", "bSortable": true },';
 
         $sFilterColumns = '';
-        $sFilterColumns .= '{ type: "text", placeholder: "" },';
+        $sFilterColumns .= '{ type: "date-range"},';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
