@@ -18,18 +18,18 @@ class RechercheBanned extends \PageHelper {
     public function run() {
 
         $sColumns = '';
-        $sColumns .= '{ "mData": "compte", "bSortable": true },';
-        $sColumns .= '{ "mData": "names", "bSortable": false },';
-        $sColumns .= '{ "mData": "raison", "bSortable": true },';
-        $sColumns .= '{ "mData": "duree", "bSortable": true, "sWidth": "80px" },';
-        $sColumns .= '{ "mData": "empire", "bSortable": true, "sClass": "text-center lineIcon", "sWidth": "80px" },';
+        $sColumns .= '{ "mData": "compte", "bSortable": true, "className": "all" },';
+        $sColumns .= '{ "mData": "names", "bSortable": false, "className": "all" },';
+        $sColumns .= '{ "mData": "raison", "bSortable": true, "className": "min-tablet" },';
+        $sColumns .= '{ "mData": "duree", "bSortable": true, "className": "min-desktop", "sWidth": "80px" },';
+        $sColumns .= '{ "mData": "empire", "bSortable": true, "className": "text-center lineIcon min-tablet", "sWidth": "80px" },';
 
         if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_IP)) {
-            $sColumns .= '{ "mData": "ip", "bSortable": true, "sWidth": "100px" },';
+            $sColumns .= '{ "mData": "ip", "bSortable": true, "className": "min-desktop", "sWidth": "100px" },';
         }
 
         if ($this->HaveTheRight(\DroitsHelper::DEBANNISSEMENT)) {
-            $sColumns .= '{ "mData": "actions", "bSortable": false, "sWidth": "40px" },';
+            $sColumns .= '{ "mData": "actions", "bSortable": false, "className": "all", "sWidth": "40px" },';
         }
 
         $sFilterColumns = '';
