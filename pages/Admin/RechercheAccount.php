@@ -21,21 +21,21 @@ class RechercheAccount extends \PageHelper {
         $sColumns .= '{ "mData": "compte", "bSortable": true },';
 
         if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_EMAIL)) {
-            $sColumns .= '{ "mData": "email", "bSortable": true, "sWidth": "100px" },';
+            $sColumns .= '{ "mData": "email", "bSortable": true, "className": "min-desktop", "sWidth": "100px" },';
         }
 
         $sColumns .= '{ "mData": "cash", "bSortable": true, "sWidth": "75px" },';
         $sColumns .= '{ "mData": "mileage", "bSortable": true, "sWidth": "75px" },';
 
-        $sColumns .= '{ "mData": "empire", "bSortable": true, "sClass": "text-center lineIcon", "sWidth": "80px" },';
-        $sColumns .= '{ "mData": "status", "bSortable": true, "sClass": "text-center lineIcon", "sWidth": "68px" },';
+        $sColumns .= '{ "mData": "empire", "bSortable": true, "className": "text-center lineIcon min-tablet", "sWidth": "80px" },';
+        $sColumns .= '{ "mData": "status", "bSortable": true, "className": "text-center lineIcon min-tablet", "sWidth": "68px" },';
 
         if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_IP)) {
-            $sColumns .= '{ "mData": "ip", "bSortable": true, "sWidth": "100px" },';
+            $sColumns .= '{ "mData": "ip", "bSortable": true, "className": "min-desktop", "sWidth": "100px" },';
         }
         
         if ($this->HaveTheRight(\DroitsHelper::BANNISSEMENT)) {
-            $sColumns .= '{ "mData": "actions", "bSortable": false, "sWidth": "40px" },';
+            $sColumns .= '{ "mData": "actions", "bSortable": false, "className": "all", "sWidth": "40px" },';
         }
 
         $sFilterColumns = '';

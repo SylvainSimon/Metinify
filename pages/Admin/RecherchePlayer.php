@@ -21,20 +21,20 @@ class Recherche_Joueurs extends \PageHelper {
         $sColumns .= '{ "mData": "name", "bSortable": true },';
 
         if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_COMPTE)) {
-            $sColumns .= '{ "mData": "compte", "bSortable": true, "sWidth": "80px" },';
+            $sColumns .= '{ "mData": "compte", "bSortable": true, "className": "min-tablet", "sWidth": "80px" },';
         }
 
         $sColumns .= '{ "mData": "level", "bSortable": true, "sWidth": "50px" },';
-        $sColumns .= '{ "mData": "yangs", "bSortable": true, "sWidth": "90px" },';
-        $sColumns .= '{ "mData": "empire", "bSortable": true, "sClass": "text-center lineIcon", "sWidth": "80px" },';
-        $sColumns .= '{ "mData": "status", "bSortable": true, "sClass": "text-center lineIcon", "sWidth": "68px" },';
+        $sColumns .= '{ "mData": "yangs", "bSortable": true, "className": "min-desktop", "sWidth": "90px" },';
+        $sColumns .= '{ "mData": "empire", "bSortable": true, "className": "text-center lineIcon min-tablet", "sWidth": "80px" },';
+        $sColumns .= '{ "mData": "status", "bSortable": true, "className": "text-center lineIcon min-tablet", "sWidth": "68px" },';
 
         if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_IP)) {
-            $sColumns .= '{ "mData": "ip", "bSortable": true, "sWidth": "100px" },';
+            $sColumns .= '{ "mData": "ip", "bSortable": true, "className": "min-desktop", "sWidth": "100px" },';
         }
         
         if ($this->HaveTheRight(\DroitsHelper::BANNISSEMENT)) {
-            $sColumns .= '{ "mData": "actions", "bSortable": false, "sWidth": "40px" },';
+            $sColumns .= '{ "mData": "actions", "bSortable": false, "className": "all", "sWidth": "40px" },';
         }
 
         $sFilterColumns = '';

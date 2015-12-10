@@ -20,10 +20,10 @@ class RechercheGuilde extends \PageHelper {
         $sColumns = '';
         $sColumns .= '{ "mData": "name", "bSortable": true },';
         $sColumns .= '{ "mData": "chef", "bSortable": true },';
-        $sColumns .= '{ "mData": "level", "bSortable": true, "sWidth": "50px" },';
+        $sColumns .= '{ "mData": "level", "bSortable": true, "className": "min-tablet", "sWidth": "50px" },';
         $sColumns .= '{ "mData": "scores", "bSortable": true, "sWidth": "50px" },';
-        $sColumns .= '{ "mData": "empire", "bSortable": true, "sClass": "text-center lineIcon", "sWidth": "80px" },';
-        $sColumns .= '{ "mData": "status", "bSortable": true, "sClass": "text-center lineIcon", "sWidth": "68px" },';
+        $sColumns .= '{ "mData": "empire", "bSortable": true, "className": "text-center lineIcon min-tablet", "sWidth": "80px" },';
+        $sColumns .= '{ "mData": "status", "bSortable": true, "className": "text-center lineIcon min-tablet", "sWidth": "68px" },';
 
         $sFilterColumns = '';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
