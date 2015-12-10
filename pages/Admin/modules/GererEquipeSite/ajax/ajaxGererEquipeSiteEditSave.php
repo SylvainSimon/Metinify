@@ -39,7 +39,9 @@ class ajaxGererEquipeSiteEditSave extends \PageHelper {
             if ($droitParam) {
                 $arrDroitsNew[] = $idDroit;
             } else {
-                unset($arrDroitsOld[$idDroit]);
+                if (($key = array_search($idDroit, $arrDroitsOld)) !== false) {
+                    unset($arrDroitsOld[$key]);
+                }
             }
         }
 
