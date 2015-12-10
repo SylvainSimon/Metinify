@@ -141,7 +141,7 @@ class IndexWebsite extends PageHelper {
 
                         <div class="col-md-12" style="padding-bottom: 60px;">
                             <div class="row">
-                                <?php if ($this->isAdmin) { ?>
+                                <?php if ($this->isAdmin && !$this->isBanned) { ?>
                                     <?php include 'pages/Admin/Accueil_Seconde.php'; ?>
                                 <?php } else { ?>
                                     <?php include 'pages/_LegacyPages/Accueil.php'; ?>

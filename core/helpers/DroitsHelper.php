@@ -57,7 +57,7 @@ class DroitsHelper {
             self::RECHERCHE_MP => "",
             self::BANNISSEMENT => "Bannir les comptes",
             self::BANNISSEMENT_IP => "Bannir par IP",
-            self::DEBANNISSEMENT => "Lever les bannissements",
+            self::DEBANNISSEMENT => "Lever un bannissement",
             self::BANNISSEMENT_EMAIL => "Bannir par e-mail",
             self::VIEW_PLAYER => "",
             self::VIEW_ACCOUNT => "",

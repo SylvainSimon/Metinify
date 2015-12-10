@@ -11,6 +11,7 @@ class CoreHelper {
     public $arrAdminRights = [];
     public $objAccount = null;
     public $isConnected = false;
+    public $isBanned = false;
     public $response;
     public $isProtected = false;
     public $isAdminProtected = false;
@@ -58,9 +59,12 @@ class CoreHelper {
             $objAccount = Account\AccountHelper::getAccountRepository()->find($session->get("ID"));
             $this->objAccount = $objAccount;
             $this->ReloadSessionValues();
-
             $this->LoadAdminSessionValues();
-            
+
+            if ($this->objAccount->getStatus() == StatusHelper::BANNI) {
+                $this->isBanned = true;
+            }
+
             if ($this->isAdminProtected) {
                 if (!$this->isAdmin) {
                     include '../../pages/_LegacyPages/News.php';
@@ -83,6 +87,8 @@ class CoreHelper {
             if ($session->get("ID") !== null) {
 
                 if ($this->objAccount->getStatus() == StatusHelper::BANNI) {
+
+
                     if (!$this->isAllowForBlock) {
                         include BASE_ROOT . '/pages/_LegacyPages/Bannissement.php';
                         exit();

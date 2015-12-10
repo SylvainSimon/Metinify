@@ -49,7 +49,7 @@ class RechercheAccount extends \PageHelper {
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
 
         $sFilterColumns .= '{ type: "select", values: [' . \EmpireHelper::getForDatatableSelect() . '] },';
-        $sFilterColumns .= '{ type: "select", values: [' . \StatusHelper::getForDatatableSelect(true) . '], selected: "' . \StatusHelper::ACTIF . '" },';
+        $sFilterColumns .= '{ type: "select", values: [' . \StatusHelper::getForDatatableSelect() . '], selected: "' . \StatusHelper::ACTIF . '" },';
 
         if ($this->HaveTheRight(\DroitsHelper::RECHERCHE_IP)) {
             $sFilterColumns .= '{ type: "text", placeholder: "" },';
