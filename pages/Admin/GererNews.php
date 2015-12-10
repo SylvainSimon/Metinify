@@ -19,11 +19,11 @@ class GererNews extends \PageHelper {
     public function run() {
 
         $sColumns = '';
-        $sColumns .= '{ "mData": "date", "bSortable": true, "sWidth": "130px" },';
+        $sColumns .= '{ "mData": "date", "bSortable": true, "className": "min-desktop", "sWidth": "130px" },';
         $sColumns .= '{ "mData": "titre", "bSortable": true, "sWidth": "250px" },';
-        $sColumns .= '{ "mData": "message", "bSortable": true },';
-        $sColumns .= '{ "mData": "auteur", "bSortable": true, "sWidth": "90px" },';
-        $sColumns .= '{ "mData": "actions", "bSortable": false, "sWidth": "55px" },';
+        $sColumns .= '{ "mData": "message", "className": "min-desktop", "bSortable": true },';
+        $sColumns .= '{ "mData": "auteur", "bSortable": true, "className": "min-desktop", "sWidth": "90px" },';
+        $sColumns .= '{ "mData": "actions", "bSortable": false, "className": "all", "sWidth": "55px" },';
 
         $sFilterColumns = '';
         $sFilterColumns .= '{ type: "date-range"},';

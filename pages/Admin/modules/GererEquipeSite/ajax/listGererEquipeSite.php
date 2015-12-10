@@ -24,8 +24,8 @@ class listGererEquipeSite extends \ScriptHelper {
                 'dtField' => 'actions',
                 'formatter' => function( $d, $row ) {
 
-                    $varButton = '<a class="btn btn-material btn-primary btn-sm" data-featherlight="ajax" data-featherlight-variant="featherLightbox_90" href="pages/Admin/modules/GererEquipeSite/GererEquipeSiteEdit.php?mode=mod&idAdministrationUsers=' . $d . '" data-tooltip="Modifier"><i class="material-icons md-icon-edit"></i></a>';
-                    $varButton .= '<a class="btn btn-material btn-danger btn-sm " data-tooltip="Supprimer" onclick="SuppressionMembreEquipeSite(' . $d . ')"><i class="material-icons md-icon-delete"></i></a>';
+                    $varButton = '<a class="btn btn-material btn-primary btn-sm" data-featherlight="ajax" data-featherlight-variant="featherLightbox_90" href="pages/Admin/modules/GererEquipeSite/GererEquipeSiteEdit.php?mode=mod&idAdministrationUsers=' . $d . '"><i class="material-icons md-icon-edit"></i></a>';
+                    $varButton .= '<a class="btn btn-material btn-danger btn-sm " onclick="SuppressionMembreEquipeSite(' . $d . ')"><i class="material-icons md-icon-delete"></i></a>';
 
                     return '<div class="btn-toolbar">' . $varButton . "</div>";
                 }

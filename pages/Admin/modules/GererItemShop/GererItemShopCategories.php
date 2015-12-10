@@ -18,8 +18,8 @@ class GererItemShopCategories extends \PageHelper {
     public function run() {
 
         $sColumns = '';
-        $sColumns .= '{ "mData": "categorie", "bSortable": true, "sWidth": "150px" },';
-        $sColumns .= '{ "mData": "description", "bSortable": true },';
+        $sColumns .= '{ "mData": "categorie", "bSortable": true },';
+        $sColumns .= '{ "mData": "description", "className": "min-desktop", "bSortable": true },';
         $sColumns .= '{ "mData": "actions", "bSortable": false, "sWidth": "55px" },';
 
         $sFilterColumns = '';

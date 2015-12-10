@@ -31,8 +31,8 @@ class listGererItemShopCategories extends \ScriptHelper {
                 'dtField' => 'actions',
                 'formatter' => function( $d, $row ) {
 
-                    $varButton = '<a class="btn btn-material btn-primary btn-sm" data-featherlight="ajax" href="pages/Admin/modules/GererItemShop/GererItemShopCategoriesEdit.php?mode=mod&idCategorie=' . $d . '" data-tooltip="Modifier"><i class="material-icons md-icon-edit"></i></a>';
-                    $varButton .= '<a class="btn btn-material btn-danger btn-sm " data-tooltip="Supprimer" onclick="SuppressionCategorie(' . $d . ')"><i class="material-icons md-icon-delete"></i></a>';
+                    $varButton = '<a class="btn btn-material btn-primary btn-sm" data-featherlight="ajax" href="pages/Admin/modules/GererItemShop/GererItemShopCategoriesEdit.php?mode=mod&idCategorie=' . $d . '"><i class="material-icons md-icon-edit"></i></a>';
+                    $varButton .= '<a class="btn btn-material btn-danger btn-sm" onclick="SuppressionCategorie(' . $d . ')"><i class="material-icons md-icon-delete"></i></a>';
 
                     return '<div class="btn-toolbar">' . $varButton . "</div>";
                 }

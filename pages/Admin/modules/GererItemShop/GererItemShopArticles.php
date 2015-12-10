@@ -19,10 +19,10 @@ class GererItemShopArticles extends \PageHelper {
 
         $sColumns = '';
         $sColumns .= '{ "mData": "article", "bSortable": true },';
-        $sColumns .= '{ "mData": "nombre", "bSortable": true, "sWidth": "50px" },';
-        $sColumns .= '{ "mData": "categorie", "bSortable": true, "sWidth": "140px" },';
-        $sColumns .= '{ "mData": "prix", "bSortable": true, "sWidth": "80px" },';
-        $sColumns .= '{ "mData": "actions", "bSortable": false, "sWidth": "55px" },';
+        $sColumns .= '{ "mData": "nombre", "className": "min-desktop", "bSortable": true, "sWidth": "50px" },';
+        $sColumns .= '{ "mData": "categorie", "className": "min-desktop", "bSortable": true, "sWidth": "140px" },';
+        $sColumns .= '{ "mData": "prix", "className": "min-desktop", "bSortable": true, "sWidth": "80px" },';
+        $sColumns .= '{ "mData": "actions", "className": "all", "bSortable": false, "sWidth": "55px" },';
 
         $sFilterColumns = '';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';

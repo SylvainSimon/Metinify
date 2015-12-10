@@ -918,3 +918,24 @@ tbody td.lineIcon{
         border-bottom: 10px solid transparent;
     }
 }
+
+@media only screen and (max-width: 767px) {
+    li.paginate_button.previous {
+        display: inline;
+    }
+
+    li.paginate_button.next {
+        display: inline;
+    }
+
+    li.paginate_button {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px){
+    div.dataTables_wrapper>div.row>div, div.dataTables_length, div.dataTables_filter, div.dataTables_info, div.dataTables_paginate {
+        text-align: center;
+        margin-left: 2px !important;
+    }
+}

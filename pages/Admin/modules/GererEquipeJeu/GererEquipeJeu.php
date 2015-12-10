@@ -21,11 +21,11 @@ class GererEquipeJeu extends \PageHelper {
         $sColumns = '';
         $sColumns .= '{ "mData": "name", "bSortable": true },';
         $sColumns .= '{ "mData": "compte", "bSortable": true, "className": "min-tablet", "sWidth": "80px" },';
-        $sColumns .= '{ "mData": "authority", "bSortable": true, "sWidth": "100px" },';
+        $sColumns .= '{ "mData": "authority", "bSortable": true, "className": "min-tablet", "sWidth": "100px" },';
         $sColumns .= '{ "mData": "playtime", "bSortable": true, "className": "min-desktop", "sWidth": "200px" },';
         $sColumns .= '{ "mData": "lastPlay", "bSortable": true, "className": "min-desktop", "sWidth": "120px" },';
         $sColumns .= '{ "mData": "status", "bSortable": true, "className": "text-center lineIcon min-desktop", "sWidth": "68px" },';
-        $sColumns .= '{ "mData": "actions", "bSortable": false, "sWidth": "55px" },';
+        $sColumns .= '{ "mData": "actions", "bSortable": false, "className": "all", "sWidth": "55px" },';
 
         $sFilterColumns = '';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
