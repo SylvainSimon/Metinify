@@ -34,6 +34,7 @@ class IndexWebsite extends PageHelper {
                 <link href="./css/css/AdminLTE.css" rel="stylesheet" type="text/css" />
                 <link href="./vendor/almasaeed2010/adminlte/plugins/select2/select2.min.css" rel="stylesheet" type="text/css" />
                 <link href="assets/js/toastr/build/toastr.min.css" rel="stylesheet" type="text/css" />
+                <link href="assets/js/datatables/extras/Responsive/css/dataTables.responsive.min.css" rel="stylesheet" type="text/css" />
 
                 <link href="./css/css/styles.css" rel="stylesheet" type="text/css" />
 
@@ -49,7 +50,6 @@ class IndexWebsite extends PageHelper {
                 <script src='./vendor/almasaeed2010/adminlte/dist/js/app.min.js' type='text/javascript'></script>
 
                 <script src="assets/js/toastr/build/toastr.min.js" type='text/javascript'></script>
-
                 <script src="assets/js/jquery.cookie/js.cookie.min.js" type='text/javascript'></script>
                 <script src="assets/js/fonctions.min.js" type='text/javascript'></script>
 

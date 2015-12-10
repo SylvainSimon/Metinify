@@ -900,8 +900,12 @@ tbody td.lineIcon{
     border-radius: 0px;
 }
 
-.marcheFeatherLightbox .featherlight-content{
+.featherLightbox_50 .featherlight-content{
     min-width: 50% !important;
+}
+
+.featherLightbox_90 .featherlight-content{
+    min-width: 99% !important;
 }
 
 @media only screen and (max-width: 1024px){
@@ -909,7 +913,7 @@ tbody td.lineIcon{
         margin-left: 10px;
         margin-right: 10px;
         max-height: 98%;
-        min-width: 80% !important;
+        min-width: 85% !important;
         padding: 10px 10px 0;
         border-bottom: 10px solid transparent;
     }

@@ -52,7 +52,7 @@
             </div>
 
             <div style="position: absolute; bottom: 0px; right: 5px;">
-                <a  data-featherlight="ajax" href="pages/Marche/MarchePlayerInfo.php?id_marche_perso={{ objMarcheArticle.idMarchePersonnage }}">
+                <a  data-featherlight="ajax"  data-featherlight-variant="featherLightbox_50" href="pages/Marche/MarchePlayerInfo.php?id_marche_perso={{ objMarcheArticle.idMarchePersonnage }}">
                     <i data-tootlip="Voir les informations de l'article" class="material-icons md-icon-help md-36 text-blue"></i>
                 </a>
 
@@ -63,10 +63,6 @@
             </div>
         </div>
     {% endfor %}
-
-    <script type="text/javascript">
-        $.featherlight.defaults.variant = "marcheFeatherLightbox";
-    </script>
 
 {% else %}
     <div>
