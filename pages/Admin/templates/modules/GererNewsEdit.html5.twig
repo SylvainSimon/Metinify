@@ -44,34 +44,41 @@
             <input type="button" class="btn btn-success btn-flat" onclick="EnregistrementNews();" value="Enregistrer" />
         </div>
     </div>
-                
-<script>
-    function EnregistrementNews() {
 
-        displayLoading();
+    <script>
+        function EnregistrementNews() {
 
-        $.ajax({
-            type: "POST",
-            url: "pages/Admin/ajax/ajaxGererNewsEditSave.php",
-            data: {"newId": $("#newId").val(), "newTitre": $("#newTitre").val(), "newsMessage": tinymce.activeEditor.getContent()},
-            success: function (msg) {
-                hideLoading();
-                $.featherlight.close();
-                parent.oTableGererNews.fnStandingRedraw();
-            }
+            displayLoading();
 
+            $.ajax({
+                type: "POST",
+                url: "pages/Admin/ajax/ajaxGererNewsEditSave.php",
+                data: {"newId": $("#newId").val(), "newTitre": $("#newTitre").val(), "newsMessage": tinymce.activeEditor.getContent()},
+                success: function (msg) {
+                    hideLoading();
+                    $.featherlight.close();
+                    parent.oTableGererNews.fnStandingRedraw();
+                }
+
+            });
+        }
+
+        tinymce.remove();
+        tinymce.init({
+            selector: "#newsMessage",
+            theme: "modern",
+            resize: false,
+            statusbar: false,
+            menubar: false,
+            fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt',
+            plugins: [
+                'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+                'searchreplace wordcount visualblocks visualchars code fullscreen',
+                'insertdatetime media nonbreaking save table contextmenu directionality',
+                'emoticons template paste textcolor colorpicker textpattern imagetools'
+            ],
+            toolbar: 'insertfile undo redo | styleselect | bold italic | fontsizeselect alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+            forced_root_block: false
         });
-    }
-
-    tinymce.remove();
-    tinymce.init({
-        selector: "#newsMessage",
-        theme: "modern",
-        resize: false,
-        statusbar: false,
-        menubar: false,
-        plugins: "autosave charmap code fullscreen image importcss link paste searchreplace tabfocus table template visualblocks",
-        forced_root_block: false
-    });
-</script>
+    </script>
 </div>

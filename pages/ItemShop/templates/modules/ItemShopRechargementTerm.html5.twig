@@ -20,13 +20,13 @@
             </div>
 
             <div class="box-body">
-                {% if Resultat == "Reussi" %}
+                {% if result == "Reussi" %}
                     {% if compteur == "oui" %}
-                    <script type="text/javascript">
-                        window.parent.Barre_De_Statut("Achat effectué.");
-                        window.parent.Icone_Chargement(0);
-                        window.parent.Fonction_Reteneuse_Vamonaies({{ session.VamoNaies }});
-                    </script>
+                        <script type="text/javascript">
+                            window.parent.Barre_De_Statut("Achat effectué.");
+                            window.parent.Icone_Chargement(0);
+                            window.parent.Fonction_Reteneuse_Vamonaies({{ session.get("VamoNaies") }});
+                        </script>
                     {% endif %}
 
                     Votre rechargement s'est effectué avec succès.<br/><br/>

@@ -161,7 +161,7 @@ body {
     min-height: 46px; 
     background: #2B2B2B;
     position: fixed;
-    z-index: 99999;
+    z-index: 3;
     line-height: 46px;
 }
 
@@ -237,7 +237,6 @@ footer {
     min-height: 30px;
     background: #2B2B2B;
     position: fixed;
-    z-index: 99999;
     line-height: 34px;
 }
 @media (max-width: 767px) {
@@ -817,10 +816,17 @@ tbody td.lineIcon{
     background: rgba(0,0,0,.5) !important;
 }
 
-@media all{
-    .featherlight {
-        z-index: 100000 !important;
-    }
+
+.featherlight {
+    z-index: 5 !important;
+}
+
+.main-sidebar, .left-side{
+    z-index: 2 !important;
+}
+
+footer{
+    z-index: 3;
 }
 
 .mce-btn-group:not(:first-child){
@@ -830,6 +836,34 @@ tbody td.lineIcon{
 
 .select2-dropdown{
     z-index: 9999999999;
+}
+
+.mce-label{
+    text-shadow: none;
+    color: white;
+}
+
+.mce-container, .mce-container *, .mce-widget, .mce-widget *, .mce-reset{
+    color: #F9F9F9 !important;
+}
+
+.mce-window{
+    border:1px solid #565656 !important;
+}
+
+.mce-textbox{
+    border: 1px solid #6D6D6D !important;
+    background: initial !important;
+}
+
+.mce-combobox input {
+    border: 1px solid #6D6D6D !important;
+    border-right-color: #6D6D6D !important;
+}
+
+.mce-btn.mce-active, .mce-btn.mce-active:hover {
+    background-color: #6F6F6F !important;
+    border: none !important;
 }
 
 .dataTable.specialIcon tbody td .material-icons {
