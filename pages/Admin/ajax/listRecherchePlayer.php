@@ -8,19 +8,16 @@ class listHistoGererMonnaies extends \ScriptHelper {
 
     public $isProtected = true;
     public $isAdminProtected = true;
-    
+
     public function run() {
 
-        if($_GET["sEcho"] == 1){
+        if ($_GET["sEcho"] == 1) {
             exit();
         }
-        
+
         $columnsParameters = array(
             array(
                 'dbField' => 'PlayerEntity.name',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerEntity.name',
                 'dtField' => 'name',
                 'formatter' => function( $d, $row ) {
                     return \FonctionsUtiles::findIconJob($row["job"]) . " " . $d;
@@ -28,30 +25,19 @@ class listHistoGererMonnaies extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'AccountEntity.login',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.login',
                 'dtField' => 'compte',
             ),
             array(
                 'dbField' => 'PlayerEntity.job',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerEntity.job',
                 'dtField' => 'job',
             ),
             array(
                 'dbField' => 'PlayerEntity.level',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerEntity.level',
+                'filterLevel' => 'strict',
                 'dtField' => 'level',
             ),
             array(
                 'dbField' => 'PlayerEntity.gold',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerEntity.gold',
                 'dtField' => 'yangs',
                 'formatter' => function( $d, $row ) {
                     return number_format($d, 0, '.', ',');
@@ -59,9 +45,7 @@ class listHistoGererMonnaies extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'PlayerIndexEntity.empire',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerIndexEntity.empire',
+                'filterLevel' => 'strict',
                 'dtField' => 'empire',
                 'formatter' => function( $d, $row ) {
                     return \FonctionsUtiles::findIconEmpire($d);
@@ -69,9 +53,7 @@ class listHistoGererMonnaies extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'AccountEntity.status',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.status',
+                'filterLevel' => 'strict',
                 'dtField' => 'status',
                 'formatter' => function( $d, $row ) {
                     return \FonctionsUtiles::findIconStatus($d);
@@ -79,16 +61,10 @@ class listHistoGererMonnaies extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'PlayerEntity.ip',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerEntity.ip',
                 'dtField' => 'ip',
             ),
             array(
                 'dbField' => 'AccountEntity.id',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.id',
                 'dtField' => 'actions',
                 'formatter' => function( $d, $row ) {
 

@@ -11,16 +11,10 @@ class listHistoGererMonnaies extends \ScriptHelper {
         $columnsParameters = array(
             array(
                 'dbField' => 'AdministrationLogsGererMonnaiesEntity.idCompte',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => '',
                 'dtField' => 'idCompte',
             ),
             array(
                 'dbField' => 'AccountEntityUser.login',
-                'dbConcatSeparator' => ", ",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntityUser.login',
                 'dtField' => 'recepteur',
                 'formatter' => function( $d, $row ) {
                     if ($row["idCompte"] == 0) {
@@ -32,9 +26,6 @@ class listHistoGererMonnaies extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'AdministrationLogsGererMonnaiesEntity.date',
-                'dbConcatSeparator' => ", ",
-                'dbType' => "",
-                'dbSortField' => 'AdministrationLogsGererMonnaiesEntity.date',
                 'dtField' => 'date',
                 'formatter' => function( $d, $row ) {
                     return \DateTimeHelper::dateTimeToFormatedString($d);
@@ -42,16 +33,11 @@ class listHistoGererMonnaies extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'AccountEntityAdmin.login',
-                'dbConcatSeparator' => ", ",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntityAdmin.login',
                 'dtField' => 'emetteur'
             ),
             array(
                 'dbField' => 'AdministrationLogsGererMonnaiesEntity.operation',
-                'dbConcatSeparator' => ", ",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntityAdmin.operation',
+                'filterLevel' => 'strict',
                 'dtField' => 'operation',
                 'formatter' => function( $d, $row ) {
                     if ($d == 1) {
@@ -63,16 +49,12 @@ class listHistoGererMonnaies extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'AdministrationLogsGererMonnaiesEntity.montant',
-                'dbConcatSeparator' => ", ",
-                'dbType' => "",
-                'dbSortField' => 'AdministrationLogsGererMonnaiesEntity.montant',
+                'filterLevel' => 'strict',
                 'dtField' => 'montant'
             ),
             array(
                 'dbField' => 'AdministrationLogsGererMonnaiesEntity.devise',
-                'dbConcatSeparator' => ", ",
-                'dbType' => "",
-                'dbSortField' => 'AdministrationLogsGererMonnaiesEntity.devise',
+                'filterLevel' => 'strict',
                 'dtField' => 'devise',
                 'formatter' => function( $d, $row ) {
                     return \DeviseHelper::getLibelle($d);

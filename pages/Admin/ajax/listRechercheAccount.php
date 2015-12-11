@@ -18,23 +18,14 @@ class listHistoGererMonnaies extends \ScriptHelper {
         $columnsParameters = array(
             array(
                 'dbField' => 'AccountEntity.login',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.login',
                 'dtField' => 'compte',
             ),
             array(
                 'dbField' => 'AccountEntity.email',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.email',
                 'dtField' => 'email',
             ),
             array(
                 'dbField' => 'AccountEntity.cash',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.cash',
                 'dtField' => 'cash',
                 'formatter' => function( $d, $row ) {
                     return number_format($d, 0, '.', ',') . "<span style='position:relative; top:2px;'>" . \FonctionsUtiles::findIconDevise(\DeviseHelper::CASH) . "</span>";
@@ -42,9 +33,6 @@ class listHistoGererMonnaies extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'AccountEntity.mileage',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.mileage',
                 'dtField' => 'mileage',
                 'formatter' => function( $d, $row ) {
                     return number_format($d, 0, '.', ',') . "<span style='position:relative; top:2px;'>" . \FonctionsUtiles::findIconDevise(\DeviseHelper::MILEAGE) . "</span>";
@@ -52,9 +40,7 @@ class listHistoGererMonnaies extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'PlayerIndexEntity.empire',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerIndexEntity.empire',
+                'filterLevel' => 'strict',
                 'dtField' => 'empire',
                 'formatter' => function( $d, $row ) {
                     return \FonctionsUtiles::findIconEmpire($d);
@@ -62,9 +48,7 @@ class listHistoGererMonnaies extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'AccountEntity.status',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.status',
+                'filterLevel' => 'strict',
                 'dtField' => 'status',
                 'formatter' => function( $d, $row ) {
                     return \FonctionsUtiles::findIconStatus($d);
@@ -72,16 +56,10 @@ class listHistoGererMonnaies extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'AccountEntity.ipCreation',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.ipCreation',
                 'dtField' => 'ip',
             ),
             array(
                 'dbField' => 'AccountEntity.id',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.id',
                 'dtField' => 'actions',
                 'formatter' => function( $d, $row ) {
 

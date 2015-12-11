@@ -14,9 +14,7 @@ class listRechercheGuilde extends \ScriptHelper {
         $columnsParameters = array(
             array(
                 'dbField' => 'GuildEntity1.name',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'GuildEntity1.name',
+                'filterLevel' => 'strict',
                 'dtField' => 'firstGuild',
                 'formatter' => function( $d, $row ) {
                     return \FonctionsUtiles::findIconEmpire($row["firstEmpire"]) . " " . $d;
@@ -24,9 +22,7 @@ class listRechercheGuilde extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'GuildEntity2.name',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'GuildEntity2.name',
+                'filterLevel' => 'strict',
                 'dtField' => 'secondGuild',
                 'formatter' => function( $d, $row ) {
                     return \FonctionsUtiles::findIconEmpire($row["secondEmpire"]) . " " . $d;
@@ -34,16 +30,11 @@ class listRechercheGuilde extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'PlayerMaster1Entity.name',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerMaster1Entity.name',
                 'dtField' => 'firstChef',
             ),
             array(
                 'dbField' => 'GuildWarReservationEntity.time',
                 'dbConcatSeparator' => ", ",
-                'dbType' => "",
-                'dbSortField' => 'GuildWarReservationEntity.time',
                 'dtField' => 'date',
                 'formatter' => function( $d, $row ) {
                     return \DateTimeHelper::dateTimeToFormatedString($d);
@@ -51,30 +42,19 @@ class listRechercheGuilde extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'PlayerMaster2Entity.name',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerMaster2Entity.name',
                 'dtField' => 'secondChef',
             ),
             array(
                 'dbField' => 'GuildWarReservationEntity.result1',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'GuildWarReservationEntity.result1',
                 'dtField' => 'result1',
             ),
             array(
                 'dbField' => 'GuildWarReservationEntity.result2',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'GuildWarReservationEntity.result2',
                 'dtField' => 'result2',
             ),
             array(
                 'dbField' => 'GuildEntityWin.name',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'GuildEntityWin.name',
+                'filterLevel' => 'strict',
                 'dtField' => 'winner',
                 'formatter' => function( $d, $row ) {
 
@@ -82,23 +62,17 @@ class listRechercheGuilde extends \ScriptHelper {
                         return $d . " (<span class='text-green'>" . $row["result1"] . "</span> / <span class='text-red'>" . $row["result2"] . "</span>)";
                     } else if ($row["result1"] < $row["result2"]) {
                         return $d . " (<span class='text-green'>" . $row["result2"] . "</span> / <span class='text-red'>" . $row["result1"] . "</span>)";
-                    }else{
+                    } else {
                         return "Match nul";
                     }
                 }
             ),
             array(
                 'dbField' => 'PlayerIndexMaster1Entity.empire',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerIndexMaster1Entity.empire',
                 'dtField' => 'firstEmpire',
             ),
             array(
                 'dbField' => 'PlayerIndexMaster2Entity.empire',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerIndexMaster2Entity.empire',
                 'dtField' => 'secondEmpire',
             )
         );

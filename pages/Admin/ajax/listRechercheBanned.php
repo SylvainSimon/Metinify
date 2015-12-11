@@ -14,16 +14,11 @@ class listHistoGererMonnaies extends \ScriptHelper {
         $columnsParameters = array(
             array(
                 'dbField' => 'AccountEntity.login',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.login',
                 'dtField' => 'compte',
             ),
             array(
                 'dbField' => 'PlayerIndexEntity.empire',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerIndexEntity.empire',
+                'filterLevel' => 'strict',
                 'dtField' => 'empire',
                 'formatter' => function( $d, $row ) {
                     return \FonctionsUtiles::findIconEmpire($d);
@@ -37,8 +32,6 @@ class listHistoGererMonnaies extends \ScriptHelper {
                     "PlayerEntity3.name" => "PlayerEntity4.name",
                     "PlayerEntity4.name" => "PlayerEntity1.name"],
                 'dbConcatSeparator' => "|VAMOS|",
-                'dbType' => "",
-                'dbSortField' => ['PlayerEntity1.name', 'PlayerEntity2.name', 'PlayerEntity3.name', 'PlayerEntity4.name'],
                 'dtField' => 'names',
                 'formatter' => function( $d, $row ) {
             $arrReturn = array_unique(explode("|VAMOS|", $d));
@@ -47,16 +40,11 @@ class listHistoGererMonnaies extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'BannissementRaisonsEntity.raison',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'BannissementRaisonsEntity.raison',
                 'dtField' => 'raison',
             ),
             array(
                 'dbField' => 'BannissementsActifsEntity.duree',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'BannissementsActifsEntity.duree',
+                'filterLevel' => 'strict',
                 'dtField' => 'duree',
                 'formatter' => function( $d, $row ) {
 
@@ -69,16 +57,10 @@ class listHistoGererMonnaies extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'AccountEntity.ipCreation',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.ipCreation',
                 'dtField' => 'ip',
             ),
             array(
                 'dbField' => 'AccountEntity.id',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.id',
                 'dtField' => 'actions',
                 'formatter' => function( $d, $row ) {
 

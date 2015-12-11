@@ -18,24 +18,17 @@ class listRechercheGuilde extends \ScriptHelper {
         $columnsParameters = array(
             array(
                 'dbField' => 'GuildEntity.name',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'GuildEntity.name',
                 'dtField' => 'name',
             ),
             array(
                 'dbField' => 'GuildEntity.level',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'GuildEntity.level',
+                'filterLevel' => 'strict',
                 'dtField' => 'level',
             ),
             array(
                 'dbField' => ["GuildEntity.victoire", "GuildEntity.defaite", "GuildEntity.egalite"],
                 'dbSortReplaceField' => [],
                 'dbConcatSeparator' => "|VAMOS|",
-                'dbType' => "",
-                'dbSortField' => ["GuildEntity.victoire", "GuildEntity.defaite", "GuildEntity.egalite"],
                 'dtField' => 'scores',
                 'formatter' => function( $d, $row ) {
 
@@ -50,16 +43,11 @@ class listRechercheGuilde extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'AccountEntity.login',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.login',
                 'dtField' => 'chef',
             ),
             array(
                 'dbField' => 'PlayerIndexEntity.empire',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerIndexEntity.empire',
+                'filterLevel' => 'strict',
                 'dtField' => 'empire',
                 'formatter' => function( $d, $row ) {
                     return \FonctionsUtiles::findIconEmpire($d);
@@ -67,9 +55,7 @@ class listRechercheGuilde extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'AccountEntity.status',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.status',
+                'filterLevel' => 'strict',
                 'dtField' => 'status',
                 'formatter' => function( $d, $row ) {
                     return \FonctionsUtiles::findIconStatus($d);

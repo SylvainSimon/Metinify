@@ -11,9 +11,6 @@ class listGererNews extends \ScriptHelper {
         $columnsParameters = array(
             array(
                 'dbField' => 'AdminNewsEntity.date',
-                'dbConcatSeparator' => ", ",
-                'dbType' => "",
-                'dbSortField' => 'AdminNewsEntity.date',
                 'dtField' => 'date',
                 'formatter' => function( $d, $row ) {
                     return \DateTimeHelper::dateTimeToFormatedString($d);
@@ -21,16 +18,10 @@ class listGererNews extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'AdminNewsEntity.titreMessage',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AdminNewsEntity.titreMessage',
                 'dtField' => 'titre',
             ),
             array(
                 'dbField' => 'AdminNewsEntity.contenueMessage',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AdminNewsEntity.contenueMessage',
                 'dtField' => 'message',
                 'formatter' => function( $d, $row ) {
                     return \FonctionsUtiles::Raccourcissement_Chaine($d, 50);
@@ -38,16 +29,10 @@ class listGererNews extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'AccountEntity.login',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.login',
                 'dtField' => 'auteur',
             ),
             array(
                 'dbField' => 'AdminNewsEntity.id',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AdminNewsEntity.id',
                 'dtField' => 'actions',
                 'formatter' => function( $d, $row ) {
 

@@ -220,7 +220,7 @@ class DataTable {
         foreach ($columns as $column) {
             if ($column['dbField'] and $column['dtField']) {
                 $dbField = $column['dbField'];
-                $dbSeparator = ($column['dbConcatSeparator'] != '') ? $column['dbConcatSeparator'] : ',';
+                $dbSeparator = (isset($column['dbConcatSeparator'])) ? $column['dbConcatSeparator'] : '||SEPARATOR||';
 
                 if (is_array($dbField) and count($dbField) > 0) {
 
@@ -403,7 +403,6 @@ class DataTable {
                     foreach ($columns as $column) {
                         if ($column['dtField'] === $dtField) {
                             $field = $column['dtField'];
-                            $sortField = $column['dbSortField'];
                             continue;
                         }
                     }
@@ -437,17 +436,18 @@ class DataTable {
 
                         foreach ($columns as $column) {
                             if ($column['dtField'] === $dtField) {
-                                $dbSeparator = ($column['dbConcatSeparator'] != '') ? $column['dbConcatSeparator'] : " ";
+                                $dbSeparator = (isset($column['dbConcatSeparator'])) ? $column['dbConcatSeparator'] : "||SEPARATOR||";
                                 $field = $column['dbField'];
-                                $type = $column['dbType'];
+                                $filterLevel = (isset($column['filterLevel'])) ? $column['filterLevel'] : "";
+                                $type = (isset($column['dbType'])) ? $column['dbType'] : "";
                                 continue;
                             }
                         }
 
-                        if(!isset($request['sRangeSeparator'])){
+                        if (!isset($request['sRangeSeparator'])) {
                             $request['sRangeSeparator'] = "~";
                         }
-                        
+
                         $separator = $request['sRangeSeparator'];
                         $pos = strpos($value, $separator);
 
@@ -495,7 +495,12 @@ class DataTable {
                                 $concat = $this->searchConcatFields($field, $dbSeparator);
                                 $aLike[] = $queryBuilder->expr()->like($concat, '\'%' . strtolower($value) . '%\'');
                             } else {
-                                $aLike[] = $queryBuilder->expr()->like($field, '\'%' . $value . '%\'');
+
+                                if ($filterLevel == "strict") {
+                                    $queryBuilder->andWhere($field . " = '" . $value . "'");
+                                } else {
+                                    $aLike[] = $queryBuilder->expr()->like($field, '\'%' . $value . '%\'');
+                                }
                             }
                         }
                     }
@@ -602,7 +607,7 @@ class DataTable {
         header("Content-type: application/json");
         header("Pragma: no-cache");
         header("Expires: 0");
-        
+
         echo json_encode($this->getResponse());
         exit;
     }
@@ -657,7 +662,6 @@ class DataTable {
         $return = "concat(";
         foreach ($fields as $field) {
             $return .= "IFELSE(LOWER(" . $field . ") IS NULL, '', " . $field . ")" . $separator;
-
         }
         $return = rtrim($return, $separator) . ")";
         return $return;
