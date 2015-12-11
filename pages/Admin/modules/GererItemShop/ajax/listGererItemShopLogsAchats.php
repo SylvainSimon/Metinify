@@ -11,9 +11,6 @@ class listGererItemShopLogsAchats extends \ScriptHelper {
         $columnsParameters = array(
             array(
                 'dbField' => 'LogAchatsEntity.date',
-                'dbConcatSeparator' => ", ",
-                'dbType' => "",
-                'dbSortField' => 'LogAchatsEntity.date',
                 'dtField' => 'date',
                 'formatter' => function( $d, $row ) {
                     return \DateTimeHelper::dateTimeToFormatedString($d);
@@ -21,30 +18,20 @@ class listGererItemShopLogsAchats extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'LogAchatsEntity.item',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'LogAchatsEntity.item',
                 'dtField' => 'article',
             ),
             array(
                 'dbField' => 'LogAchatsEntity.quantite',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'LogAchatsEntity.quantite',
+                'filterLevel' => 'strict',
                 'dtField' => 'quantite',
             ),
             array(
                 'dbField' => 'LogAchatsEntity.monnaie',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'LogAchatsEntity.monnaie',
                 'dtField' => 'monnaie',
             ),
             array(
                 'dbField' => 'LogAchatsEntity.prix',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'LogAchatsEntity.prix',
+                'filterLevel' => 'strict',
                 'dtField' => 'prix',
                 'formatter' => function( $d, $row ) {
                     return number_format($d, 0, '.', ',') . "<span style='position:relative; top:2px;'>" . \FonctionsUtiles::findIconDevise($row["monnaie"]) . "</span>";
@@ -52,16 +39,10 @@ class listGererItemShopLogsAchats extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'AccountEntity.login',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.login',
                 'dtField' => 'compte',
             ),
             array(
                 'dbField' => 'LogAchatsEntity.resultat',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'LogAchatsEntity.resultat',
                 'dtField' => 'result',
             )
         );

@@ -11,23 +11,14 @@ class listGererItemShopCategories extends \ScriptHelper {
         $columnsParameters = array(
             array(
                 'dbField' => 'ItemshopCategoriesEntity.nom',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'ItemshopCategoriesEntity.nom',
                 'dtField' => 'categorie',
             ),
             array(
                 'dbField' => 'ItemshopCategoriesEntity.description',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'ItemshopCategoriesEntity.description',
                 'dtField' => 'description',
             ),
             array(
                 'dbField' => 'ItemshopCategoriesEntity.cat',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'ItemshopCategoriesEntity.cat',
                 'dtField' => 'actions',
                 'formatter' => function( $d, $row ) {
 

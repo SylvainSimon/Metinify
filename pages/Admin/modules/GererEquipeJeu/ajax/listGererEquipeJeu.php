@@ -11,9 +11,6 @@ class listGererEquipeJeu extends \ScriptHelper {
         $columnsParameters = array(
             array(
                 'dbField' => 'PlayerEntity.name',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerEntity.name',
                 'dtField' => 'name',
                 'formatter' => function( $d, $row ) {
                     return \FonctionsUtiles::findIconJob($row["job"]) . " " . $d;
@@ -21,23 +18,14 @@ class listGererEquipeJeu extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'AccountEntity.login',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.login',
                 'dtField' => 'compte',
             ),
             array(
                 'dbField' => 'PlayerEntity.job',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerEntity.job',
                 'dtField' => 'job',
             ),
             array(
                 'dbField' => 'GmlistEntity.mauthority',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'GmlistEntity.mauthority',
                 'dtField' => 'authority',
                 'formatter' => function( $d, $row ) {
                     return \AuthorityHelper::getLibelle($d);
@@ -45,9 +33,6 @@ class listGererEquipeJeu extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'PlayerEntity.playtime',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerEntity.playtime',
                 'dtField' => 'playtime',
                 'formatter' => function( $d, $row ) {
                     return \DateTimeHelper::minutesToString($d);
@@ -55,9 +40,6 @@ class listGererEquipeJeu extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'PlayerEntity.lastPlay',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerEntity.lastPlay',
                 'dtField' => 'lastPlay',
                 'formatter' => function( $d, $row ) {
                     return \DateTimeHelper::dateTimeToFormatedString($d);
@@ -65,9 +47,7 @@ class listGererEquipeJeu extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'AccountEntity.status',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.status',
+                'filterLevel' => 'strict',
                 'dtField' => 'status',
                 'formatter' => function( $d, $row ) {
                     return \FonctionsUtiles::findIconStatus($d);
@@ -75,16 +55,10 @@ class listGererEquipeJeu extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'PlayerEntity.ip',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'PlayerEntity.ip',
                 'dtField' => 'ip',
             ),
             array(
                 'dbField' => 'GmlistEntity.mid',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'GmlistEntity.mid',
                 'dtField' => 'actions',
                 'formatter' => function( $d, $row ) {
 

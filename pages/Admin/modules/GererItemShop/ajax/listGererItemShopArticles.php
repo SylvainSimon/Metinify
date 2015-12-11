@@ -11,16 +11,10 @@ class listGererItemShopArticles extends \ScriptHelper {
         $columnsParameters = array(
             array(
                 'dbField' => 'ItemshopEntity.nameItem',
-                'dbConcatSeparator' => ", ",
-                'dbType' => "",
-                'dbSortField' => 'ItemshopEntity.nameItem',
                 'dtField' => 'article',
             ),
             array(
                 'dbField' => 'ItemshopEntity.nbItem',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'ItemshopEntity.nbItem',
                 'dtField' => 'nombre',
                 'formatter' => function( $d, $row ) {
                     if ($row["type"] == "2") {
@@ -36,16 +30,11 @@ class listGererItemShopArticles extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'ItemshopCategoriesEntity.nom',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'ItemshopCategoriesEntity.nom',
                 'dtField' => 'categorie',
             ),
             array(
                 'dbField' => 'ItemshopEntity.prix',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'ItemshopEntity.prix',
+                'filterLevel' => 'strict',
                 'dtField' => 'prix',
                 'formatter' => function( $d, $row ) {
                     if ($row["type"] == "1") {
@@ -59,16 +48,10 @@ class listGererItemShopArticles extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'ItemshopEntity.type',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'ItemshopEntity.type',
                 'dtField' => 'type',
             ),
             array(
                 'dbField' => 'ItemshopEntity.id',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'ItemshopEntity.id',
                 'dtField' => 'actions',
                 'formatter' => function( $d, $row ) {
 

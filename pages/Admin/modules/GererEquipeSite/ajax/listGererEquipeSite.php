@@ -11,16 +11,10 @@ class listGererEquipeSite extends \ScriptHelper {
         $columnsParameters = array(
             array(
                 'dbField' => 'AccountEntity.login',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AccountEntity.login',
                 'dtField' => 'compte',
             ),
             array(
                 'dbField' => 'AdministrationUsersEntity.id',
-                'dbConcatSeparator' => "",
-                'dbType' => "",
-                'dbSortField' => 'AdministrationUsers.id',
                 'dtField' => 'actions',
                 'formatter' => function( $d, $row ) {
 
