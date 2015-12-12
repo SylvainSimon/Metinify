@@ -29,6 +29,8 @@ item_shop:
              devise:        1
          starpass: 
              activate:      true
+             idd:           337955
+             idp:           196161
              cash:          1350
              devise:        1
          paypal:

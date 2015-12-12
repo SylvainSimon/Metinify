@@ -2,7 +2,7 @@
 
 require __DIR__ . '../../../../../core/initialize.php';
 
-class homeHipay extends \PageHelper {
+class homeStarpass extends \PageHelper {
 
     public $isProtected = true;
     public $strTemplate = "homeStarpass.html5.twig";
@@ -15,8 +15,6 @@ class homeHipay extends \PageHelper {
 
     public function run() {
 
-        $this->arrayTemplate["idAccount"] = $this->objAccount->getId();
-
         $view = $this->template->render($this->arrayTemplate);
         $this->response->setContent($view);
         $this->response->send();
@@ -24,5 +22,5 @@ class homeHipay extends \PageHelper {
 
 }
 
-$class = new homeHipay();
+$class = new homeStarpass();
 $class->run();
