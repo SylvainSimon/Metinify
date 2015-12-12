@@ -5,9 +5,11 @@
     <div class="box-header">
         <h3 class="box-title">Magasin d'items</h3>
 
-        <div class="box-tools">
-            <a onclick="Ajax('pages/ItemShop/ItemShopRechargement.php?idcompte={{ session.get("ID") }}&nomCompte={{ session.get("Utilisateur") }}');" class="btn btn-sm btn-primary btn-flat">Recharger</a>
-        </div>
+        {% if config.item_shop.rechargement.activate %}
+            <div class="box-tools">
+                <a onclick="Ajax('pages/ItemShop/ItemShopRechargement.php?idcompte={{ session.get("ID") }}&nomCompte={{ session.get("Utilisateur") }}');" class="btn btn-sm btn-primary btn-flat">Recharger</a>
+            </div>
+        {% endif %}
     </div>
 
     <div class="box-body no-padding">

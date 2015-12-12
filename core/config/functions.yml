@@ -26,7 +26,7 @@ item_shop:
              siteId:        330033
              productId:     1449149
              cash:          1350
-             devise:        1
+             devise:        2
          paypal:
             activate: true
             devise: 1
