@@ -67,17 +67,22 @@ class payement extends \PageHelper {
 
             $codeResult = "Réussi";
 
-            $objAccount->setCash($objAccount->getCash() + $config->itemShopReloadCash);
+            if ($config->item_shop["rechargement"]["hipay"]["devise"] == \DeviseHelper::CASH) {
+                $objAccount->setCash($objAccount->getCash() + $config->item_shop["rechargement"]["hipay"]["cash"]);
+            } else if ($config->item_shop["rechargement"]["hipay"]["devise"] == \DeviseHelper::MILEAGE) {
+                $objAccount->setMileage($objAccount->getMileage() + $config->item_shop["rechargement"]["hipay"]["cash"]);
+            }
             $em->persist($objAccount);
 
             $session->set("VamoNaies", $objAccount->getCash());
+            $session->set("TanaNaies", $objAccount->getMileage());
 
             $objLogsRechargement = new \Site\Entity\LogsRechargements();
             $objLogsRechargement->setIdCompte($objAccount->getId());
             $objLogsRechargement->setCompte($objAccount->getLogin());
             $objLogsRechargement->setEmailCompte($objAccount->getEmail());
             $objLogsRechargement->setCode($request->query->get("RECALL"));
-            $objLogsRechargement->setNombreVamonaies($config->itemShopReloadCash);
+            $objLogsRechargement->setNombreVamonaies($config->item_shop["rechargement"]["hipay"]["cash"]);
             $objLogsRechargement->setResultat($codeResult);
             $objLogsRechargement->setDate(new \DateTime(date("Y-m-d H:i:s")));
             $objLogsRechargement->setIp($this->ipAdresse);
@@ -85,10 +90,10 @@ class payement extends \PageHelper {
             $em->flush();
 
             if ($this->isConnected) {
-                header('Location: ../../ItemShopRechargementTerm.php?Resultat=Reussi&id_compte=' . $request->query->get("data") . '&id=' . $objLogsRechargement->getId() . '&compteur=oui');
+                header('Location: ../../ItemShopRechargementTerm.php?result=1&id=' . $objLogsRechargement->getId() . '&isConnected=1');
                 exit;
             } else {
-                header('Location: ../../ItemShopRechargementTerm.php?Resultat=Reussi&id_compte=' . $request->query->get("data") . '&id=' . $objLogsRechargement->getId() . '&compteur=non');
+                header('Location: ../../ItemShopRechargementTerm.php?result=1&id=' . $objLogsRechargement->getId() . '&isConnected=0');
                 exit;
             }
         } else {
@@ -107,7 +112,7 @@ class payement extends \PageHelper {
 
             $em->flush();
 
-            header('Location: ../../ItemShopRechargementTerm.php?Resultat=Rate&Raison=ClesMauvaise&id_compte=' . $request->query->get("data") . '&id=' . $objLogsRechargement->getId() . '');
+            header('Location: ../../ItemShopRechargementTerm.php?result=0&Raison=ClesMauvaise&id=' . $objLogsRechargement->getId() . '');
             exit;
         }
     }

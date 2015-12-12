@@ -13,13 +13,16 @@ class ItemShopRechargementTerm extends \PageHelper {
 
         global $request;
 
-        $result = $request->query->get("Resultat");
-        $compteur = $request->query->get("compteur");
+        $result = $request->query->get("result");
+        $isConnected = $request->query->get("isConnected");
         $idTransaction = $request->query->get("id");
+        
+        $objLogRechargement = \Site\SiteHelper::getLogsRechargementsRepository()->find($idTransaction);
 
         $this->arrayTemplate["result"] = $result;
-        $this->arrayTemplate["compteur"] = $compteur;
+        $this->arrayTemplate["isConnected"] = $isConnected;
         $this->arrayTemplate["idTransaction"] = $idTransaction;
+        $this->arrayTemplate["objLogRechargement"] = $objLogRechargement;
         
         $view = $this->template->render($this->arrayTemplate);
         $this->response->setContent($view);

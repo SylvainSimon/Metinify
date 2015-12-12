@@ -1,20 +1,17 @@
 <link href="/css/css/Bootstrap.css" rel="stylesheet" type="text/css" />
 <link href="/css/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 <link href="/css/css/styles.css" rel="stylesheet" type="text/css" />
-
 <style>
-
     html{
         background: none !important;
     }
-
 </style>
 
 <div class="row">
     <div class="col-lg-12">
         <div class="box-body no-padding">
-            {% if result == "Reussi" %}
-                {% if compteur == "oui" %}
+            {% if result == "1" %}
+                {% if isConnected == "1" %}
                     <script type="text/javascript">
                         window.parent.Barre_De_Statut("Achat effectué.");
                         window.parent.Icone_Chargement(0);
@@ -22,14 +19,22 @@
                     </script>
                 {% endif %}
 
-                Votre rechargement s'est effectué avec succès.<br/><br/>
+                Votre rechargement de {{ objLogRechargement.getNombreVamonaies|number_format }} monnaies s'est effectué avec succès.
+                <br/><br/>
                 Votre numéro unique de transaction est le : <span class="text-yellow">{{ idTransaction }}</span>
                 <br/>
                 <br/>
-                Conservez le précieusement il vous servira en cas de réclamation auprès du support.<br/>
+                Un e-mail vous a été envoyé avec ces mêmes informations
+                <br/>
+                Conservez le précieusement il vous sera utile en cas de réclamation auprès du support.<br/>
             {% else %}
                 Une erreur s'est produite.
             {% endif %}
+        </div>
+        <div class="box-footer no-padding no-border" style="margin-top: 10px;">
+            <button type="button" class="btn btn-primary btn-flat" onclick="window.parent.Ajax('pages/ItemShop/ItemShop.php');">
+                Retourner à l'item-shop
+            </button>
         </div>
     </div>
 </div>
