@@ -11,9 +11,13 @@ class ImageFunctionExtension extends \Twig_Extension {
     public function getName() {
         return 'image_extension';
     }
-    
+
     public function getimagesize($url = "") {
-        return getimagesize($url);
+        if (file_exists($url)) {
+            return @getimagesize($url);
+        } else {
+            return false;
+        }
     }
 
 }

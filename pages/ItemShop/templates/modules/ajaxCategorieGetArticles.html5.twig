@@ -2,35 +2,55 @@
 
     {% for objItemshop in arrObjItemshop %}
 
-        <div class="Article_IS" onclick="Ajax('pages/ItemShop/ItemShopDetails.php?id_recu={{ objItemshop.getId }}');"  data-tooltip-isItemMetin="1" data-tooltip-track="1" data-tooltip="{{ objItemshop.getInfoItem }}">
-            <div class="Nom_Article">
-                {{ objItemshop.getNameItem }}
-                {% if objItemshop.getType != "2" and objItemshop.getNbItem > 1 %}
-                    (x{{ objItemshop.getNbItem }})
-                {% endif %}
-            </div>
-            <div class="Prix_Article">
-                <span>{{ objItemshop.getPrix|number_format }}</span>
-                {% if objItemshop.getCat == "7" %}
-                    <i style="top: 2px; position: relative;" class="material-icons md-icon-whatshot md-16 text-gray" title=""></i>
-                {% else %}
-                    <i style="top: 2px; position: relative;" class="material-icons md-icon-whatshot md-16 text-yellow" title=""></i>
-                {% endif %}
-            </div>
+        <div class="articleItemShop" onclick="Ajax('pages/ItemShop/ItemShopDetails.php?id_recu={{ objItemshop.getId }}');"  data-tooltip-isItemMetin="1" data-tooltip-track="1" data-tooltip="{{ objItemshop.getInfoItem }}">
 
             {% set imageSize = getimagesize(urlBase ~ "/images/items/" ~ objItemshop.getIdItem ~ ".png") %}
 
-            {% if imageSize.1 > imageSize.0 %}
+            {% if imageSize == false %}
+                <img class="Position_Icone_Article_1Case_Petite" src="../images/item_inexistant_1.png" width="32" />
+            {% else %}
 
-                {% if imageSize.1 > 64 %}
-                    <img class="Position_Icone_Article_1Case_TresGrande" src="../../images/items/{{ objItemshop.getIdItem }}.png" width="32" />
+                {% if imageSize.1 > imageSize.0 %}
+
+                    {% if imageSize.1 > 64 %}
+                        <img class="Position_Icone_Article_1Case_TresGrande" src="../../images/items/{{ objItemshop.getIdItem }}.png" />
+                    {% else %}
+                        <img class="Position_Icone_Article_1Case_Grande" src="../../images/items/{{ objItemshop.getIdItem }}.png" width="32" />
+                    {% endif %}
+
                 {% else %}
-                    <img class="Position_Icone_Article_1Case_Grande" src="../../images/items/{{ objItemshop.getIdItem }}.png" width="32" />
+                    <img class="Position_Icone_Article_1Case_Petite" src="../../images/items/{{ objItemshop.getIdItem }}.png" width="32" />
+                {% endif %}           
+            {% endif %}
+
+            <div style="position: absolute; bottom: 0px; height: 65px; width: 100%; background: #404040;">
+                <div class="Nom_Article">
+                    {{ objItemshop.getNameItem }}
+                </div>
+
+                {% if objItemshop.getNbItem > 1 %}
+                    <div class="articleNombreItemShop">
+                        {% if objItemshop.getType == "2" %}
+                            {% if objItemshop.getNbItem == 9999 %}
+                                A vie
+                            {% else %}
+                                {{ objItemshop.getNbItem }} jours
+                            {% endif %} 
+                        {% else %}
+                            x{{ objItemshop.getNbItem }}
+                        {% endif %} 
+                    </div>
                 {% endif %}
 
-            {% else %}
-                <img class="Position_Icone_Article_1Case_Petite" src="../../images/items/{{ objItemshop.getIdItem }}.png" width="32" />
-            {% endif %}
+                <div class="Prix_Article">
+                    <span>{{ objItemshop.getPrix|number_format(0, '.', '.') }}</span>
+                    {% if objItemshop.getCat == "7" %}
+                        <i style="top: 2px; position: relative;" class="material-icons md-icon-whatshot md-16 text-gray" title=""></i>
+                    {% else %}
+                        <i style="top: 2px; position: relative;" class="material-icons md-icon-whatshot md-16 text-yellow" title=""></i>
+                    {% endif %}
+                </div>
+            </div>
 
         </div>
     {% endfor %}
