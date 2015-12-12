@@ -12,7 +12,7 @@ class InscriptionForm extends \PageHelper {
         parent::__construct();
 
         global $config;
-        parent::moduleIsActivated($config->register["activate"]);
+        parent::moduleIsActivated($config["register"]["activate"]);
     }
     
     public function run() {

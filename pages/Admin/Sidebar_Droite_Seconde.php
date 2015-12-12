@@ -1,3 +1,20 @@
+<?php if ($this->HaveTheRight(\DroitsHelper::PARAMETRES)) { ?>
+<button type="button" onclick="Ajax('pages/Admin/modules/Parametres/Parametres.php');" style="margin-bottom: 10px;    border: 1px solid #8E8E8E;" class="btn btn-block bg-blue btn-flat">Paramètres du site</button>
+<?php } ?>
+
+<div class="box box-default flat">
+    <div class="box-header">
+        <h3 class="box-title">Outils</h3>
+    </div>
+    <div class="box-body no-padding">
+
+        <table class="table table-condensed table-hover" style="border-collapse: collapse;">
+            <?php if ($this->HaveTheRight(\DroitsHelper::RADAR)) { ?>
+                <tr class="pointer" onclick="Ajax('pages/Admin/Radar.php')"><td>Radar</td></tr>
+            <?php } ?>
+        </table>
+    </div>
+</div>
 
 <div class="box box-default flat">
     <div class="box-header">

@@ -15,16 +15,16 @@ class payement extends \PageHelper {
         $paymentResult = false;
 
         // Script to create a signature
-        define('API_BASE_URL', $config->item_shop["rechargement"]["hipay"]["apiBaseUrl"]);
-        define('API_KEY', $config->item_shop["rechargement"]["hipay"]["apiKey"]);
-        define('API_SECRET_KEY', $config->item_shop["rechargement"]["hipay"]["apiSecretKey"]);
+        define('API_BASE_URL', $config["item_shop"]["rechargement"]["hipay"]["apiBaseUrl"]);
+        define('API_KEY', $config["item_shop"]["rechargement"]["hipay"]["apiKey"]);
+        define('API_SECRET_KEY', $config["item_shop"]["rechargement"]["hipay"]["apiSecretKey"]);
         define('API_HASH_FUNCTION', 'sha1');
         date_default_timezone_set('UTC');
 
         // STEPS 1 and 2: Construction of query parameters
         $queryParameters = array(
-            'site_id' => $config->item_shop["rechargement"]["hipay"]["siteId"],
-            'product_id' => $config->item_shop["rechargement"]["hipay"]["productId"],
+            'site_id' => $config["item_shop"]["rechargement"]["hipay"]["siteId"],
+            'product_id' => $config["item_shop"]["rechargement"]["hipay"]["productId"],
             'api_key' => API_KEY,
             'api_hash' => API_HASH_FUNCTION,
             'api_ts' => time(),
@@ -67,10 +67,10 @@ class payement extends \PageHelper {
 
             $codeResult = "Réussi";
 
-            if ($config->item_shop["rechargement"]["hipay"]["devise"] == \DeviseHelper::CASH) {
-                $objAccount->setCash($objAccount->getCash() + $config->item_shop["rechargement"]["hipay"]["cash"]);
-            } else if ($config->item_shop["rechargement"]["hipay"]["devise"] == \DeviseHelper::MILEAGE) {
-                $objAccount->setMileage($objAccount->getMileage() + $config->item_shop["rechargement"]["hipay"]["cash"]);
+            if ($config["item_shop"]["rechargement"]["hipay"]["devise"] == \DeviseHelper::CASH) {
+                $objAccount->setCash($objAccount->getCash() + $config["item_shop"]["rechargement"]["hipay"]["cash"]);
+            } else if ($config["item_shop"]["rechargement"]["hipay"]["devise"] == \DeviseHelper::MILEAGE) {
+                $objAccount->setMileage($objAccount->getMileage() + $config["item_shop"]["rechargement"]["hipay"]["cash"]);
             }
             $em->persist($objAccount);
 
@@ -82,7 +82,7 @@ class payement extends \PageHelper {
             $objLogsRechargement->setCompte($objAccount->getLogin());
             $objLogsRechargement->setEmailCompte($objAccount->getEmail());
             $objLogsRechargement->setCode($request->query->get("RECALL"));
-            $objLogsRechargement->setNombreVamonaies($config->item_shop["rechargement"]["hipay"]["cash"]);
+            $objLogsRechargement->setNombreVamonaies($config["item_shop"]["rechargement"]["hipay"]["cash"]);
             $objLogsRechargement->setResultat($codeResult);
             $objLogsRechargement->setDate(new \DateTime(date("Y-m-d H:i:s")));
             $objLogsRechargement->setIp($this->ipAdresse);

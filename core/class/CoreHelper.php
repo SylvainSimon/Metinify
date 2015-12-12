@@ -32,7 +32,7 @@ class CoreHelper {
         global $translator;
         $translator = $container["translator"];
 
-        if (!$this->objConfig->requiredSSL) {
+        if (!$this->objConfig["requiredSSL"]) {
             $this->redirectToSSL();
         }
 

@@ -53,7 +53,7 @@ class IndexWebsite extends PageHelper {
                 <script src="assets/js/jquery.cookie/js.cookie.min.js" type='text/javascript'></script>
                 <script src="assets/js/fonctions.min.js" type='text/javascript'></script>
 
-                <?php if ($config->templateMod == "christmas") { ?>
+                <?php if ($config["templateMod"] == "christmas") { ?>
                     <script src="assets/js/snowstorm/snowstorm.min.js" type='text/javascript'></script>
                     <script type="text/javascript">
                         snowStorm.followMouse = false;
@@ -62,7 +62,7 @@ class IndexWebsite extends PageHelper {
                     <link href="./css/css/modes/christmas.css" rel="stylesheet" type="text/css" />
                 <?php } ?>
 
-                <?php if ($config->templateMod == "halloween") { ?>
+                <?php if ($config["templateMod"] == "halloween") { ?>
                     <link href="./css/css/modes/halloween.css" rel="stylesheet" type="text/css" />
                 <?php } ?>
 

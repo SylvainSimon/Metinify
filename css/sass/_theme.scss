@@ -126,6 +126,24 @@ body {
     color:white;
 }
 
+.confItem{
+    width:90px;
+    height:70px;
+    margin-right: 8px;
+    margin-bottom: 5px;
+    float:left;
+    text-align: center;
+}
+.confItem span{
+    display: block;
+}
+.confItem img{
+    opacity: 0.8;
+}
+.confItem a:hover img{
+    opacity: 1.0;
+}
+
 .box-telechargement-exe:hover{
     background-color: #8F220F !important; 
 }

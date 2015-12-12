@@ -1,22 +1,21 @@
 <?php
 
+namespace Administration;
+
 require __DIR__ . '../../../../../core/initialize.php';
 
-class homeHipay extends \PageHelper {
+class Parametres extends \PageHelper {
 
     public $isProtected = true;
-    public $strTemplate = "homeHipay.html5.twig";
+    public $isAdminProtected = true;
+    public $strTemplate = "ParametresPersonnalisation.html5.twig";
 
     public function __construct() {
         parent::__construct();
-        global $config;
-        parent::moduleIsActivated($config["item_shop"]["rechargement"]["hipay"]["activate"]);
+        $this->VerifyTheRight(\DroitsHelper::PARAMETRES);
     }
 
     public function run() {
-
-        $this->arrayTemplate["idAccount"] = $this->objAccount->getId();
-
         $view = $this->template->render($this->arrayTemplate);
         $this->response->setContent($view);
         $this->response->send();
@@ -24,5 +23,5 @@ class homeHipay extends \PageHelper {
 
 }
 
-$class = new homeHipay();
+$class = new Parametres();
 $class->run();

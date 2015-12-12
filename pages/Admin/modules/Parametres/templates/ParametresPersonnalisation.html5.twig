@@ -1,0 +1,33 @@
+<script type="text/javascript" src="pages/Admin/modules/Parametres/js/fonctions.min.js"></script>
+
+<div class="box box-default flat">
+
+    <div class="box-header">
+        <h3 class="box-title">Personnalisation</h3>
+    </div>
+
+    <div class="box-body">
+
+        <div class="form-group">
+            <div class="input-group col-xs-12">
+                <label>Thème graphique</label>
+                <select id="paramPwmed_Mise_En_Forme_Nom_Prenom_Salarie" class="select2">
+                    <option {% if(config.templateMod == "default") %}selected{% endif %} value="default">Défaut</option>
+                    <option {% if(config.templateMod == "halloween") %}selected{% endif %} value="halloween">Halloween</option>
+                    <option {% if(config.templateMod == "christmas") %}selected{% endif %} value="default">Noël</option>
+                </select>
+            </div>
+        </div>
+    </div>
+                
+    <div class="box-footer">
+        <div class="pull-left">
+            <a href="{{ urlAccueilConfig }}" class="btn btn-danger btn-flat btn-md">Retour</a>
+        </div>
+
+        <div class="pull-right">
+            <button onclick="saveAllParametre();" class="btn btn-primary btn-flat btn-md">Enregistrer</button>
+            <button onclick="saveAllParametre(true);" class="btn btn-primary btn-flat btn-md">Enregistrer et fermer</button>
+        </div>
+    </div>   
+</div>

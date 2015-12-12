@@ -12,7 +12,7 @@ class Marche extends \PageHelper {
     public function __construct() {
         parent::__construct();
         global $config;
-        parent::moduleIsActivated($config->marche["activate"]);
+        parent::moduleIsActivated($config["marche"]["activate"]);
     }
     
     public function run() {

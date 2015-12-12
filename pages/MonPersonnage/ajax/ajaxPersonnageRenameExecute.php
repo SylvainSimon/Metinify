@@ -25,8 +25,8 @@ class ajaxPersonnageRenameExecute extends \ScriptHelper {
 
         $playerNameOld = $this->objPlayer->getName();
         $playerNameNew = $request->request->get("newName");
-        $devise = $config->mod_player["rename"]["devise"];
-        $price = $config->mod_player["rename"]["price"];
+        $devise = $config["mod_player"]["rename"]["devise"];
+        $price = $config["mod_player"]["rename"]["price"];
         
         $monnaie = 0;
 

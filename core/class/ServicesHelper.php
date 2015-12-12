@@ -40,7 +40,7 @@ class ServicesHelper {
             return $translator->objInstance;
         };
 
-        $container['cacheType'] = $container['config']->fastChatType;
+        $container['cacheType'] = $container['config']["fastChatType"];
 
         $container['fastcache'] = function($container) {
             phpFastCache::setup("storage", $container['cacheType']);
@@ -61,6 +61,7 @@ class ServicesHelper {
                 BASE_ROOT . '/pages/Admin/modules/GererItemShop/templates',
                 BASE_ROOT . '/pages/Admin/modules/GererEquipeJeu/templates',
                 BASE_ROOT . '/pages/Admin/modules/GererEquipeSite/templates',
+                BASE_ROOT . '/pages/Admin/modules/Parametres/templates',
                 BASE_ROOT . '/pages/ItemShop/modules/Hipay/templates',
                 BASE_ROOT . '/pages/ItemShop/modules/Starpass/templates',
                 BASE_ROOT . '/pages/Classements/templates/',
@@ -83,8 +84,8 @@ class ServicesHelper {
                 BASE_ROOT . '/core/templates/',
             ];
 
-            if ($config->twigCache) {
-                $urlCache = BASE_ROOT . $config->twigCacheUrl;
+            if ($config["twigCache"]) {
+                $urlCache = BASE_ROOT . $config["twigCacheUrl"];
             } else {
                 $urlCache = false;
             }
@@ -130,19 +131,19 @@ class ServicesHelper {
             // build connection parameters
             $connectionParameters = array(
                 'dbname' => "site",
-                'user' => $param->bdd["user"],
-                'password' => $param->bdd["password"],
-                'host' => $param->bdd["host"],
-                'port' => $param->bdd["port"],
+                'user' => $param["bdd"]["user"],
+                'password' => $param["bdd"]["password"],
+                'host' => $param["bdd"]["host"],
+                'port' => $param["bdd"]["port"],
             );
 
-            switch (strtolower($param->bdd["driver"])) {
+            switch (strtolower($param["bdd"]["driver"])) {
                 case 'mysql':
                     $connectionParameters['driver'] = 'pdo_mysql';
-                    $connectionParameters['charset'] = strtolower($param->bdd["charset"]);
+                    $connectionParameters['charset'] = strtolower($param["bdd"]["charset"]);
                     break;
                 default:
-                    throw new RuntimeException('Database driver ' . $param->bdd["driver"] . ' not known by doctrine.');
+                    throw new RuntimeException('Database driver ' . $param["bdd"]["driver"] . ' not known by doctrine.');
             }
 
             /* if (!empty($GLOBALS['TL_CONFIG']['dbPdoDriverOptions'])) {
@@ -227,7 +228,7 @@ class ServicesHelper {
             $config->setProxyDir($proxiesCacheDir);
             $config->setProxyNamespace('entities\proxies');
 
-            switch ($param->bdd["cache"]) {
+            switch ($param["bdd"]["cache"]) {
                 case 'apc':
                     $cache = new \Doctrine\Common\Cache\ApcCache();
                     break;

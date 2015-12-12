@@ -13,8 +13,8 @@ class Telechargement extends \PageHelper {
 
         global $config;
 
-        $urlClient = $config->linkClient;
-        $urlClientTorrent = $config->linkClientTorrent;
+        $urlClient = $config["linkClient"];
+        $urlClientTorrent = $config["linkClientTorrent"];
 
         $cacheManager = \CacheHelper::getCacheManager();
         if ($cacheManager->isExisting("sizeOfClient")) {

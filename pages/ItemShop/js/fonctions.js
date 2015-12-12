@@ -19,7 +19,6 @@ function Appel_Categorie_ItemShop(id) {
 
         }
     });
-    return false;
 
 }
 

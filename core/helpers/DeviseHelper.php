@@ -10,8 +10,8 @@ class DeviseHelper {
         global $config;
 
         $arrTypeAction = array(
-            self::CASH => $config->libelleCash,
-            self::MILEAGE => $config->libelleMileage,
+            self::CASH => $config["libelleCash"],
+            self::MILEAGE => $config["libelleMileage"],
         );
 
         if ($sort) {

@@ -19,9 +19,9 @@ class EmpireHelper {
         global $config;
 
         $arrEmpire = array(
-            self::ROUGE => $config->libelleEmpire1,
-            self::JAUNE => $config->libelleEmpire2,
-            self::BLEU => $config->libelleEmpire3,
+            self::ROUGE => $config["libelleEmpire1"],
+            self::JAUNE => $config["libelleEmpire2"],
+            self::BLEU => $config["libelleEmpire3"],
         );
 
         if ($sort) {

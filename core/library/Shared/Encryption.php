@@ -16,7 +16,7 @@ class Encryption {
             throw new \Exception('Error initializing encryption module');
         }
 
-        self::$clesCryptage = $config->encryptKey;
+        self::$clesCryptage = $config["encryptKey"];
     }
 
     public static function encrypt($varValue, $clesCryptage = null) {

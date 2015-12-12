@@ -12,7 +12,7 @@ class ItemShop extends \PageHelper {
     public function __construct() {
         parent::__construct();
         global $config;
-        parent::moduleIsActivated($config->item_shop["activate"]);
+        parent::moduleIsActivated($config["item_shop"]["activate"]);
     }
 
     public function run() {

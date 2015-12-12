@@ -2,7 +2,7 @@
 
 namespace Pages;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
 class Error404 extends \PageHelper {
 

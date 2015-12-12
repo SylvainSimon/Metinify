@@ -21,7 +21,7 @@ echo $view;
         <span class="info-box-text">Télécharger</span>
 
         <?php
-        $urlClient = $config->linkClient;
+        $urlClient = $config["linkClient"];
         if ($cacheManager->isExisting("sizeOfClient")) {
             $size = $cacheManager->get("sizeOfClient");
         } else {

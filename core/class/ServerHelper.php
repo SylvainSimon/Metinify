@@ -7,8 +7,8 @@ class ServerHelper {
         global $config;
 
         if ($ip === "") {
-            $testIp = $config->serverStatus["host"];
-            $testPort = $config->serverStatus["port"];
+            $testIp = $config["serverStatus"]["host"];
+            $testPort = $config["serverStatus"]["port"];
         } else {
             $testIp = $ip;
             $testPort = $port;

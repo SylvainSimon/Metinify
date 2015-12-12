@@ -71,10 +71,10 @@ class payement extends \PageHelper {
 
             $codeResult = "Réussi";
 
-            if ($config->item_shop["rechargement"]["starpass"]["devise"] == \DeviseHelper::CASH) {
-                $objAccount->setCash($objAccount->getCash() + $config->item_shop["rechargement"]["starpass"]["cash"]);
-            } else if ($config->item_shop["rechargement"]["starpass"]["devise"] == \DeviseHelper::MILEAGE) {
-                $objAccount->setMileage($objAccount->getMileage() + $config->item_shop["rechargement"]["starpass"]["cash"]);
+            if ($config["item_shop"]["rechargement"]["starpass"]["devise"] == \DeviseHelper::CASH) {
+                $objAccount->setCash($objAccount->getCash() + $config["item_shop"]["rechargement"]["starpass"]["cash"]);
+            } else if ($config["item_shop"]["rechargement"]["starpass"]["devise"] == \DeviseHelper::MILEAGE) {
+                $objAccount->setMileage($objAccount->getMileage() + $config["item_shop"]["rechargement"]["starpass"]["cash"]);
             }
             $em->persist($objAccount);
 
@@ -86,7 +86,7 @@ class payement extends \PageHelper {
             $objLogsRechargement->setCompte($objAccount->getLogin());
             $objLogsRechargement->setEmailCompte($objAccount->getEmail());
             $objLogsRechargement->setCode($request->query->get("RECALL"));
-            $objLogsRechargement->setNombreVamonaies($config->item_shop["rechargement"]["starpass"]["cash"]);
+            $objLogsRechargement->setNombreVamonaies($config["item_shop"]["rechargement"]["starpass"]["cash"]);
             $objLogsRechargement->setResultat($codeResult);
             $objLogsRechargement->setDate(new \DateTime(date("Y-m-d H:i:s")));
             $objLogsRechargement->setIp($this->ipAdresse);

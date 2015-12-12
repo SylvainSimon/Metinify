@@ -14,7 +14,7 @@ class PersonnageRenameForm extends \PageHelper {
         parent::__construct();
 
         global $config;
-        parent::moduleIsActivated($config->mod_player["rename"]["activate"]);
+        parent::moduleIsActivated($config["mod_player"]["rename"]["activate"]);
 
         global $request;
         $this->objPlayer = parent::VerifMonJoueur(\Encryption::decrypt($request->query->get("idPlayer")));

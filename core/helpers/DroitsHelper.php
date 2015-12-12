@@ -38,6 +38,8 @@ class DroitsHelper {
     const GERER_ITEMSHOP = 27;
     const GERER_ITEMSHOP_CATEGORIE = 28;
     const GERER_ITEMSHOP_LOGS_ACHATS = 29;
+    
+    const PARAMETRES = 31;
 
     public static function getAll($sort = true) {
 
@@ -70,6 +72,7 @@ class DroitsHelper {
             self::GERER_ITEMSHOP_CATEGORIE => "Gérer les catégories",
             self::GERER_ITEMSHOP_LOGS_ACHATS => "Historique des achats",
             self::GERER_EQUIPE_SITE => "Gérer l'équipe du site",
+            self::PARAMETRES => "Paramètres du site",
         );
 
         if ($sort) {
