@@ -6,7 +6,7 @@
         <h3 class="box-title">Magasin d'items</h3>
 
         <div class="box-tools">
-            <a href="pages/ItemShop/ItemShopRechargement.php?idcompte={{ session.get("ID") }}&nomCompte={{ session.get("Utilisateur") }}" class="fancybox_Rechargement btn btn-sm btn-primary btn-flat" data-fancybox-type="iframe">Recharger</a>
+            <a onclick="Ajax('pages/ItemShop/ItemShopRechargement.php?idcompte={{ session.get("ID") }}&nomCompte={{ session.get("Utilisateur") }}');" class="btn btn-sm btn-primary btn-flat">Recharger</a>
         </div>
     </div>
 

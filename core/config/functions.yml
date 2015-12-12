@@ -16,6 +16,17 @@ register:
  
 item_shop:
      activate: true
+     rechargement:
+         activate: true
+         hipay:
+             activate:      true
+             apiBaseUrl:    https://api.allopass.com/rest
+             apiKey:        2955bb0ffd36a187359fb3f51ecb7904
+             apiSecretKey:  ff014ce9b93f163b73660bf09f629bcf
+             siteId:        330033
+             productId:     1449149
+             cash:          1350
+             
  
 marche:
      activate: true

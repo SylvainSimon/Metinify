@@ -1,35 +1,26 @@
-<link href="/css/css/Bootstrap.css" rel="stylesheet" type="text/css" />
-<link href="/css/css/AdminLTE.css" rel="stylesheet" type="text/css" />
-<link href="/css/css/styles.css" rel="stylesheet" type="text/css" />
-
-<style>
-    html{
-        background: none !important;
-    }
-    body{
-        height: 400px !important;
-        overflow: hidden !important;
-    }
-</style>
-
 <div class="row">
-    <div class="col-lg-12">
-        <div class="box box-default flat no-margin">
+    {% if config.item_shop.rechargement.hipay.activate %}
+        <div class="col-lg-7">
+            <div class="box box-default flat">
 
-            <div class="box-header">
-                <h3 class="box-title">Recharger par Allopass</h3>
-            </div>
+                <div class="box-header">
+                    <h3 class="box-title">Recharger par Allopass</h3>
+                </div>
 
-            <div class="box-body">
+                <div class="box-body">
 
-                Le rechargement par Allopass n'a pas de délais et il est crédité immédiatement quand la paiement est validé par le service.
-                <br/>
-                <br/>
-                <a class="btn btn-primary btn-flat" href="https://payment.allopass.com/buy/buy.apu?ids=330033&idd=1449149&forward_target=current&data={{ idAccount }}">
-                    1 350 Vamonaies
-                </a>
+                    Le rechargement par Allopass n'a pas de délais et il est crédité immédiatement quand la paiement est validé par le service.
+                    <br/>
+                    <br/>
+                    <a class="btn btn-primary btn-flat" onclick="Ajax('pages/ItemShop/modules/Hipay/homeHipay.php')">
+                        {{ config.item_shop.rechargement.hipay.cash|number_format }} Vamonaies
+                    </a>
+                </div>
             </div>
         </div>
+    {% endif %}
+    
+    <div class="col-lg-5">
 
         <div class="box box-default flat">
 
@@ -37,16 +28,16 @@
                 <h3 class="box-title">Recharger par Paypal</h3>
             </div>
 
-            <div class="box-body" style="height: 100%;">
+            <div class="box-body">
 
-                Le rechargement par Paypal est plus lent que les autres car il est vérifié manuellement par un administrateur.
+                Le rechargement par Paypal est plus lent car il est vérifié manuellement par un administrateur.
+                <br/>
                 <br/>
                 Le rechargement sera crédité dans un délais de 24 heures ou moins.
                 <br/>
-                <br/>
 
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-lg-12" style="margin-top: 5px;">
                         <form  target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                             <input type="hidden" name="cmd" value="_s-xclick">
                             <input type="hidden" name="hosted_button_id" value="RX9W8ULCKZ3HY">
@@ -58,10 +49,10 @@
                             <input type="hidden" value="{{ loginAccount }}" name="os1" maxlength="200">
 
                             <input type="hidden" name="currency_code" value="EUR">
-                            <input class="btn btn-primary btn-flat" type="submit" border="0" value="5 000 Vamonaies  (5€)" name="submit" alt="Payer par Paypal">
+                            <input class="btn btn-primary btn-flat" style="width: 100%" type="submit" border="0" value="5 000 Vamonaies  (5€)" name="submit" alt="Payer par Paypal">
                         </form>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-lg-12" style="margin-top: 5px;">
                         <form  target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                             <input type="hidden" name="cmd" value="_s-xclick">
                             <input type="hidden" name="hosted_button_id" value="RX9W8ULCKZ3HY">
@@ -73,10 +64,10 @@
                             <input type="hidden" value="{{ loginAccount }}" name="os1" maxlength="200">
 
                             <input type="hidden" name="currency_code" value="EUR">
-                            <input class="btn btn-primary btn-flat" type="submit" border="0" value="20 000 Vamonaies (15€)" name="submit" alt="Payer par Paypal">
+                            <input class="btn btn-primary btn-flat" style="width: 100%" type="submit" border="0" value="20 000 Vamonaies (15€)" name="submit" alt="Payer par Paypal">
                         </form>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-lg-12" style="margin-top: 5px;">
                         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                             <input type="hidden" name="cmd" value="_s-xclick">
                             <input type="hidden" name="hosted_button_id" value="RX9W8ULCKZ3HY">
@@ -88,7 +79,7 @@
                             <input type="hidden" value="{{ loginAccount }}" name="os1" maxlength="200">
 
                             <input type="hidden" name="currency_code" value="EUR">
-                            <input class="btn btn-primary btn-flat" type="submit" border="0" value="50 000 Vamonaies (35€)" name="submit" alt="Payer par Paypal">
+                            <input class="btn btn-primary btn-flat" style="width: 100%" type="submit" border="0" value="50 000 Vamonaies (35€)" name="submit" alt="Payer par Paypal">
                         </form>
                     </div>
 

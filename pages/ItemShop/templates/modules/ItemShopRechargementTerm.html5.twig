@@ -3,41 +3,33 @@
 <link href="/css/css/styles.css" rel="stylesheet" type="text/css" />
 
 <style>
+
     html{
         background: none !important;
     }
-    body{
-        height: 400px !important;
-        overflow: hidden !important;
-    }
+
 </style>
+
 <div class="row">
     <div class="col-lg-12">
-        <div class="box box-default flat no-margin">
-
-            <div class="box-header">
-                <h3 class="box-title">Résultat du rechargement</h3>
-            </div>
-
-            <div class="box-body">
-                {% if result == "Reussi" %}
-                    {% if compteur == "oui" %}
-                        <script type="text/javascript">
-                            window.parent.Barre_De_Statut("Achat effectué.");
-                            window.parent.Icone_Chargement(0);
-                            window.parent.Fonction_Reteneuse_Vamonaies({{ session.get("VamoNaies") }});
-                        </script>
-                    {% endif %}
-
-                    Votre rechargement s'est effectué avec succès.<br/><br/>
-                    Votre numéro unique de transaction est le : <span class="text-yellow">{{ idTransaction }}</span>
-                    <br/>
-                    <br/>
-                    Conservez le précieusement il vous servira en cas de réclamation auprès du support.<br/>
-                {% else %}
-                    Une erreur s'est produite.
+        <div class="box-body no-padding">
+            {% if result == "Reussi" %}
+                {% if compteur == "oui" %}
+                    <script type="text/javascript">
+                        window.parent.Barre_De_Statut("Achat effectué.");
+                        window.parent.Icone_Chargement(0);
+                        window.parent.Fonction_Reteneuse_Vamonaies({{ session.get("VamoNaies") }});
+                    </script>
                 {% endif %}
-            </div>
+
+                Votre rechargement s'est effectué avec succès.<br/><br/>
+                Votre numéro unique de transaction est le : <span class="text-yellow">{{ idTransaction }}</span>
+                <br/>
+                <br/>
+                Conservez le précieusement il vous servira en cas de réclamation auprès du support.<br/>
+            {% else %}
+                Une erreur s'est produite.
+            {% endif %}
         </div>
     </div>
 </div>

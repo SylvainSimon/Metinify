@@ -15,16 +15,16 @@ class payement extends \PageHelper {
         $paymentResult = false;
 
         // Script to create a signature
-        define('API_BASE_URL', 'https://api.allopass.com/rest');
-        define('API_KEY', '2955bb0ffd36a187359fb3f51ecb7904');
-        define('API_SECRET_KEY', 'ff014ce9b93f163b73660bf09f629bcf');
+        define('API_BASE_URL', $config->item_shop["rechargement"]["hipay"]["apiBaseUrl"]);
+        define('API_KEY', $config->item_shop["rechargement"]["hipay"]["apiKey"]);
+        define('API_SECRET_KEY', $config->item_shop["rechargement"]["hipay"]["apiSecretKey"]);
         define('API_HASH_FUNCTION', 'sha1');
         date_default_timezone_set('UTC');
 
         // STEPS 1 and 2: Construction of query parameters
         $queryParameters = array(
-            'site_id' => 330033,
-            'product_id' => 1449149,
+            'site_id' => $config->item_shop["rechargement"]["hipay"]["siteId"],
+            'product_id' => $config->item_shop["rechargement"]["hipay"]["productId"],
             'api_key' => API_KEY,
             'api_hash' => API_HASH_FUNCTION,
             'api_ts' => time(),
@@ -35,8 +35,7 @@ class payement extends \PageHelper {
         ksort($queryParameters);
 
         /* STEP 4
-         * Prepare a string to hash
-         * with the hash function "API_HASH_FUNCTION"
+         * Prepare a string to hash with the hash function "API_HASH_FUNCTION"
          */
         $stringToHash = '';
         foreach ($queryParameters as $parameter => $value) {
@@ -54,26 +53,14 @@ class payement extends \PageHelper {
 
         $data = file_get_contents($url);
         $dataDecode = json_decode($data);
-        
+
         foreach ($dataDecode->response as $response) {
             if ($response->code == 0 and $response->message == "OK") {
                 $paymentResult = true;
                 $codeResult = "Réussi";
             }
         }
-                
-        /*
-          if ($request->query->get("RECALL") !== null) {
 
-          $RECALL = urlencode($_GET['RECALL']);
-          $r = @file("http://payment.allopass.com/api/checkcode.apu?code=$RECALL&auth=227909/898935/4188626");
-          if (substr($r[0], 0, 2) == "OK") {
-          $paymentResult = true;
-          } else {
-          $codeResult = "Raté";
-          }
-          }
-         */
         $objAccount = \Account\AccountHelper::getAccountRepository()->find($request->query->get("data"));
 
         if ($paymentResult) {
@@ -96,12 +83,13 @@ class payement extends \PageHelper {
             $objLogsRechargement->setIp($this->ipAdresse);
             $em->persist($objLogsRechargement);
             $em->flush();
-                        
+
             if ($this->isConnected) {
                 header('Location: ../../ItemShopRechargementTerm.php?Resultat=Reussi&id_compte=' . $request->query->get("data") . '&id=' . $objLogsRechargement->getId() . '&compteur=oui');
                 exit;
             } else {
                 header('Location: ../../ItemShopRechargementTerm.php?Resultat=Reussi&id_compte=' . $request->query->get("data") . '&id=' . $objLogsRechargement->getId() . '&compteur=non');
+                exit;
             }
         } else {
 
