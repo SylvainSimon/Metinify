@@ -36,6 +36,9 @@
     <div class="Case_Equipement Case_Special2">
         {{ include('ajaxEquipement.html5.twig', {objItem: objItemSpecial2}, with_context = false) }}
     </div>
+    <div class="Case_Jambiere Case_Equipement">
+        {{ include('ajaxEquipement.html5.twig', {objItem: objItemJambiere}, with_context = false) }}
+    </div>
 
 </div>
 
@@ -66,6 +69,8 @@
     var initSpecial1PositionY = parseInt($(".Case_Special1").css("top"));
     var initSpecial2PositionX = parseInt($(".Case_Special2").css("left"));
     var initSpecial2PositionY = parseInt($(".Case_Special2").css("top"));
+    var initJambierePositionX = parseInt($(".Case_Jambiere").css("left"));
+    var initJambierePositionY = parseInt($(".Case_Jambiere").css("top"));
 
     function redrawCaseEquipement() {
 
@@ -83,6 +88,7 @@
         calculePositionEquipement(rationEquipementX, rationEquipementY, initFlechePositionX, initFlechePositionY, $(".Case_Fleche"));
         calculePositionEquipement(rationEquipementX, rationEquipementY, initSpecial1PositionX, initSpecial1PositionY, $(".Case_Special1"));
         calculePositionEquipement(rationEquipementX, rationEquipementY, initSpecial2PositionX, initSpecial2PositionY, $(".Case_Special2"));
+        calculePositionEquipement(rationEquipementX, rationEquipementY, initJambierePositionX, initJambierePositionY, $(".Case_Jambiere"));
     }
 
     function calculePositionEquipement(rationEquipementX, rationEquipementY, initObjectPositionX, initObjectPositionY, object) {

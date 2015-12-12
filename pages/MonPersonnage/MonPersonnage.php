@@ -34,6 +34,7 @@ class MonPersonnage extends \PageHelper {
         $objItemFleche = \Player\PlayerHelper::getItemRepository()->findByPosIntervalAndOwnerId(9, 9, $idPlayer, "EQUIPMENT", true);
         $objItemSpecial1 = \Player\PlayerHelper::getItemRepository()->findByPosIntervalAndOwnerId(7, 7, $idPlayer, "EQUIPMENT", true);
         $objItemSpecial2 = \Player\PlayerHelper::getItemRepository()->findByPosIntervalAndOwnerId(8, 8, $idPlayer, "EQUIPMENT", true);
+        $objItemJambiere = \Player\PlayerHelper::getItemRepository()->findByPosIntervalAndOwnerId(23, 23, $idPlayer, "EQUIPMENT", true);
         $viewEquipement = $templateEquipement->render([
             "tailleImageEquipementWidth" => $tailleImageEquipement[0],
             "tailleImageEquipementHeight" => $tailleImageEquipement[1],
@@ -47,7 +48,8 @@ class MonPersonnage extends \PageHelper {
             "objItemChaussure" => $objItemChaussure,
             "objItemFleche" => $objItemFleche,
             "objItemSpecial1" => $objItemSpecial1,
-            "objItemSpecial2" => $objItemSpecial2
+            "objItemSpecial2" => $objItemSpecial2,
+            "objItemJambiere" => $objItemJambiere
         ]);
         
         $arrObjItems = \Player\PlayerHelper::getItemRepository()->findByPosIntervalAndOwnerId(0, 180, $idPlayer, "INVENTORY");
