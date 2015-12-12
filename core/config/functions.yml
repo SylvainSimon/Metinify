@@ -26,11 +26,15 @@ item_shop:
              siteId:        330033
              productId:     1449149
              cash:          1350
-             devise:        2
+             devise:        1
+         starpass: 
+             activate:      true
+             cash:          1350
+             devise:        1
          paypal:
-            activate: true
-            devise: 1
-            hostedButtonId: RX9W8ULCKZ3HY
+             activate: true
+             devise: 1
+             hostedButtonId: RX9W8ULCKZ3HY
              
  
 marche:

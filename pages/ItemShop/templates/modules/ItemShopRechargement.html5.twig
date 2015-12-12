@@ -4,15 +4,15 @@
             <div class="box box-default flat">
 
                 <div class="box-header">
-                    <h3 class="box-title">Recharger par Allopass</h3>
+                    <h3 class="box-title">Recharger par Hipay</h3>
                 </div>
 
                 <div class="box-body">
 
-                    Le rechargement par Allopass n'a pas de délais et il est crédité immédiatement quand la paiement est validé par le service.
+                    Le rechargement par Hipay n'a pas de délais et il est crédité immédiatement quand la paiement est validé par le service.
                     <br/>
                     <br/>
-                    <a class="btn btn-primary btn-flat" onclick="Ajax('pages/ItemShop/modules/Hipay/homeHipay.php')">
+                    <a class="btn btn-primary btn-flat" onclick="Ajax('pages/ItemShop/modules/Hipay/homeHipay.php');">
                         {{ config.item_shop.rechargement.hipay.cash|number_format }} {{ helpDevise(config.item_shop.rechargement.hipay.devise) }}
                     </a>
                 </div>
@@ -85,6 +85,27 @@
                         </div>
 
                     </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    
+    {% if config.item_shop.rechargement.starpass.activate %}
+        <div class="col-lg-4">
+            <div class="box box-default flat">
+
+                <div class="box-header">
+                    <h3 class="box-title">Recharger par Starpass</h3>
+                </div>
+
+                <div class="box-body">
+
+                    Le rechargement par Starpass n'a pas de délais et il est crédité immédiatement quand la paiement est validé par le service.
+                    <br/>
+                    <br/>
+                    <a class="btn btn-primary btn-flat" onclick="Ajax('pages/ItemShop/modules/Starpass/homeStarpass.php');">
+                        {{ config.item_shop.rechargement.starpass.cash|number_format }} {{ helpDevise(config.item_shop.rechargement.starpass.devise) }}
+                    </a>
                 </div>
             </div>
         </div>

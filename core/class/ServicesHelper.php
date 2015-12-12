@@ -62,6 +62,7 @@ class ServicesHelper {
                 BASE_ROOT . '/pages/Admin/modules/GererEquipeJeu/templates',
                 BASE_ROOT . '/pages/Admin/modules/GererEquipeSite/templates',
                 BASE_ROOT . '/pages/ItemShop/modules/Hipay/templates',
+                BASE_ROOT . '/pages/ItemShop/modules/Starpass/templates',
                 BASE_ROOT . '/pages/Classements/templates/',
                 BASE_ROOT . '/pages/Inscription/templates/modules',
                 BASE_ROOT . '/pages/Inscription/templates/emails',
