@@ -19,7 +19,7 @@ class Marche extends \PageHelper {
 
         $templateTop = $this->objTwig->loadTemplate("ajaxGetArticles.html5.twig");
         $arrObjMarcheArticles = \Site\SiteHelper::getMarcheArticlesRepository()->findArticlePersonnages();
-        $viewArticles = $templateTop->render(["arrObjMarcheArticles" => $arrObjMarcheArticles]);
+        $viewArticles = $templateTop->render(["arrObjMarcheArticles" => $arrObjMarcheArticles, "objAccount" => $this->objAccount]);
         
         $templatePlace = $this->objTwig->loadTemplate("MarchePlace.html5.twig");
         $viewMarchePlace = $templatePlace->render(["viewArticles" => $viewArticles]);

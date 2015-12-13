@@ -19,7 +19,7 @@ class MarcheArticlesRepository extends EntityRepository {
         return $dql;
     }
 
-    public function findArticlePersonnages($idCompte = 0, $raceFilter = 0, $sexeFilter = 0, $levelFilter = 0, $orderFilter = 1, $deviseFilter = 0) {
+    public function findArticlePersonnages($idCompte = 0, $raceFilter = 0, $sexeFilter = 0, $levelFilter = 0, $orderFilter = 1, $deviseFilter = 0, $max = 20) {
 
         $qb = $this->_em->createQueryBuilder();
 
@@ -42,6 +42,7 @@ class MarcheArticlesRepository extends EntityRepository {
         $qb->innerJoin("\Site\Entity\MarchePersonnages", "MarchePersonnagesEntity", "WITH", "MarchePersonnagesEntity.id = MarcheArticlesEntity.identifiantArticle");
         $qb->innerJoin("\Player\Entity\Player", "PlayerEntity", "WITH", "PlayerEntity.id = MarchePersonnagesEntity.idPersonnage");
         $qb = $this->getDQLJoueurNonGM($qb);
+        $qb->setMaxResults($max);
 
         if ($idCompte != 0) {
             $qb->andWhere("MarchePersonnagesEntity.idProprietaire = :idCompte");

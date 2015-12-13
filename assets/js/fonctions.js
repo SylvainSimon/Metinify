@@ -225,16 +225,6 @@ toastr.options = {
     "closeHtml": "<i class='material-icons md-icon-close'></i>"
 }
 
-$(document).ajaxStart(function () {
-    Barre_De_Statut("Chargement en cours...");
-    Icone_Chargement(1);
-});
-
-$(document).ajaxSuccess(function () {
-    Barre_De_Statut("Chargement terminé");
-    Icone_Chargement(0);
-});
-
 $(document).ajaxError(function () {
     Icone_Chargement(2);
 });
@@ -292,9 +282,13 @@ $(document).ready(function () {
 });
 
 function displayLoading() {
+    Barre_De_Statut("Chargement en cours...");
+    Icone_Chargement(1);
     $("#Contenue_Principal .box").append('<div class="overlay"><i class="fa fa-spin material-icons md-icon-spin"></i></div>');
 }
 function hideLoading() {
+    Barre_De_Statut("Chargement terminé");
+    Icone_Chargement(0);
     $("#Contenue_Principal .box .overlay").remove();
 }
 

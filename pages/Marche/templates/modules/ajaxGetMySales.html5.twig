@@ -4,7 +4,7 @@
 
         <div class="Article_Marche" data-tooltip-isItemMetin="1" data-tooltip-track="1" id="Article_Vente_{{ objMarcheArticle.idMarchePersonnage }}">
 
-            <div class="Nom_Article_Marche">
+            <div class="nomArticleMarche">
                 {{ objMarcheArticle.designation }}
             </div>
 
@@ -14,8 +14,7 @@
                         <td style="border-top: 0px;" colspan="2">{{ objMarcheArticle.name }}</td>
                     </tr>
                     <tr>
-                        <td>Niveau</td>
-                        <td>{{ objMarcheArticle.level }}</td>
+                        <td>Niveau {{ objMarcheArticle.level }}</td>
                     </tr>
                     <tr>
                         <td colspan="2" style="padding-top: 0px;">                
@@ -53,9 +52,7 @@
 
             <div style="position: absolute; bottom: 0px; right: 5px;">
                 {% if objMarcheArticle.idProprietaire == session.get("ID") %}
-                    <i data-tooltip="Annuler la vente de {{ objMarcheArticle.name }}" onclick="SaleCancel({{ objMarcheArticle.idMarchePersonnage }})" class="material-icons md-icon-close md-36 text-red"></i>
-                    
-                  
+                    <i data-tooltip="Annuler la vente" onclick="SaleCancel({{ objMarcheArticle.idMarchePersonnage }})" class="material-icons md-icon-close md-36 text-red"></i>
                 {% endif %}
             </div>
         </div>

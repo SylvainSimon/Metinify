@@ -2,9 +2,9 @@
 
     {% for objMarcheArticle in arrObjMarcheArticles %}
 
-        <div class="Article_Marche" data-tooltip="{{ objMarcheArticle.description }}" data-tooltip-isItemMetin="1" data-tooltip-track="1" id="Article_Vente_{{ objMarcheArticle.idMarchePersonnage }}">
+        <div class="Article_Marche" data-tooltip="{{ objMarcheArticle.description|nl2br }}" data-tooltip-isItemMetin="1" data-tooltip-track="1" id="Article_Vente_{{ objMarcheArticle.idMarchePersonnage }}">
 
-            <div class="Nom_Article_Marche">
+            <div class="nomArticleMarche">
                 {{ objMarcheArticle.designation }}
             </div>
 
@@ -14,8 +14,7 @@
                         <td style="border-top: 0px;" colspan="2">{{ objMarcheArticle.name }}</td>
                     </tr>
                     <tr>
-                        <td>Niveau</td>
-                        <td>{{ objMarcheArticle.level }}</td>
+                        <td>Niveau {{ objMarcheArticle.level }}</td>
                     </tr>
                     <tr>
                         <td colspan="2" style="padding-top: 0px;">                
@@ -56,10 +55,11 @@
                     <i data-tootlip="Voir les informations de l'article" class="material-icons md-icon-help md-36 text-blue"></i>
                 </a>
 
-                <a onclick="Acquisition_Article({{ objMarcheArticle.idMarchePersonnage }});">
-                    <i data-tootlip="Acheter cette article" class="material-icons md-icon-shopping_cart md-36 text-yellow"></i>
-                </a>
-
+                {% if objAccount.getId != objMarcheArticle.idProprietaire %}
+                    <a onclick="Acquisition_Article({{ objMarcheArticle.idMarchePersonnage }});">
+                        <i data-tootlip="Acheter cette article" class="material-icons md-icon-shopping_cart md-36 text-yellow"></i>
+                    </a>
+                {% endif %}
             </div>
         </div>
     {% endfor %}

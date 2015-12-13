@@ -1,7 +1,3 @@
-<?php if ($this->HaveTheRight(\DroitsHelper::PARAMETRES)) { ?>
-<button type="button" onclick="Ajax('pages/Admin/modules/Parametres/Parametres.php');" style="margin-bottom: 10px; border: 1px solid #4C4C4C;" class="btn btn-block bg-black btn-flat">Paramètres du site</button>
-<?php } ?>
-
 <div class="box box-default flat">
     <div class="box-header">
         <h3 class="box-title">Outils</h3>

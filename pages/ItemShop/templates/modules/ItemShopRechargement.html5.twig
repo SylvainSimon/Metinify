@@ -1,6 +1,6 @@
 <div class="row">
     {% if config.item_shop.rechargement.hipay.activate %}
-        <div class="col-lg-7">
+        <div class="col-lg-6">
             <div class="box box-default flat">
 
                 <div class="box-header">
@@ -19,9 +19,30 @@
             </div>
         </div>
     {% endif %}
+    
+    {% if config.item_shop.rechargement.starpass.activate %}
+        <div class="col-lg-6">
+            <div class="box box-default flat">
+
+                <div class="box-header">
+                    <h3 class="box-title">Recharger par Starpass</h3>
+                </div>
+
+                <div class="box-body">
+
+                    Le rechargement par Starpass n'a pas de délais et il est crédité immédiatement quand la paiement est validé par le service.
+                    <br/>
+                    <br/>
+                    <a class="btn btn-primary btn-flat" onclick="Ajax('pages/ItemShop/modules/Starpass/homeStarpass.php');">
+                        {{ config.item_shop.rechargement.starpass.cash|number_format }} {{ helpDevise(config.item_shop.rechargement.starpass.devise) }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 
     {% if config.item_shop.rechargement.paypal.activate %}
-        <div class="col-lg-5">
+        <div class="col-lg-6">
 
             <div class="box box-default flat">
 
@@ -29,12 +50,10 @@
                     <h3 class="box-title">Recharger par Paypal</h3>
                 </div>
 
-                <div class="box-body">
+                <div class="box-body" style="min-height: 200px;">
 
-                    Le rechargement par Paypal est plus lent car il est vérifié manuellement par un administrateur.
+                    Le rechargement par Paypal est plus lent car il est vérifié manuellement par un administrateur sous 24 heures.
                     <br/>
-                    <br/>
-                    Le rechargement sera crédité dans un délais de 24 heures ou moins.
                     <br/>
 
                     <div class="row">
@@ -85,27 +104,6 @@
                         </div>
 
                     </div>
-                </div>
-            </div>
-        </div>
-    {% endif %}
-
-    {% if config.item_shop.rechargement.starpass.activate %}
-        <div class="col-lg-4">
-            <div class="box box-default flat">
-
-                <div class="box-header">
-                    <h3 class="box-title">Recharger par Starpass</h3>
-                </div>
-
-                <div class="box-body">
-
-                    Le rechargement par Starpass n'a pas de délais et il est crédité immédiatement quand la paiement est validé par le service.
-                    <br/>
-                    <br/>
-                    <a class="btn btn-primary btn-flat" onclick="Ajax('pages/ItemShop/modules/Starpass/homeStarpass.php');">
-                        {{ config.item_shop.rechargement.starpass.cash|number_format }} {{ helpDevise(config.item_shop.rechargement.starpass.devise) }}
-                    </a>
                 </div>
             </div>
         </div>

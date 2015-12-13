@@ -7,16 +7,16 @@
     margin-right: 10px;
     border: 1px solid #484848;
     cursor: pointer;
-    background: #424242;
+    background: #171717;
 
-    &:hover{ background: #464646; }
+    &:hover{ background: #1D1D1D; }
 }
 
 .btnItemShopCategorie{
     color: #F0FFFF; 
-    background-color: #424242; 
-    border:none;
-    
+    background-color: #313131; 
+    border: 1px solid #4C4C4C;
+
     &:hover{ background: #464646; color: #F0FFFF;}
     &:focus{ color: #F0FFFF;}
 }
