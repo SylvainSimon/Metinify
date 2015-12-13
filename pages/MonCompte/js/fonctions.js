@@ -1,30 +1,25 @@
 function Ajax_Appel_MonCompte(url, objet) {
 
-    Barre_De_Statut("Appel de l'onglet...");
-    Icone_Chargement(1);
-    displayLoading();
+    Pace.track(function () {
 
-    $.ajax({
-        type: "POST",
-        url: "" + url,
-        success: function (msg) {
+        displayLoading();
 
-            hideLoading();
+        $.ajax({
+            type: "POST",
+            url: "" + url,
+            success: function (msg) {
 
-            $("#Contenue_Cadre_MonCompte").html(msg);
-            
-            Barre_De_Statut("Chargement terminé.");
-            Icone_Chargement(0);
+                hideLoading();
 
-            if (objet !== false) {
-                $(".nav-tabs-custom li").attr("class", "");
-                $(objet).parent("li").attr("class", "active");
+                $("#Contenue_Cadre_MonCompte").html(msg);
+
+                if (objet !== false) {
+                    $(".nav-tabs-custom li").attr("class", "");
+                    $(objet).parent("li").attr("class", "active");
+                }
+
+                redraw();
             }
-
-            redraw();
-
-        }
+        });
     });
-    return false;
-
 }

@@ -5,13 +5,20 @@
     display: inline-block; 
     margin-bottom: 10px;
     margin-right: 10px;
-    //background: #404040;
-    border: 1px solid #404040;
+    border: 1px solid #484848;
     cursor: pointer;
+    background: #424242;
+
+    &:hover{ background: #464646; }
 }
 
-.articleItemShop:hover{
-    background: #2B2B2B;
+.btnItemShopCategorie{
+    color: #F0FFFF; 
+    background-color: #424242; 
+    border:none;
+    
+    &:hover{ background: #464646; color: #F0FFFF;}
+    &:focus{ color: #F0FFFF;}
 }
 
 .Nom_Article{
@@ -23,16 +30,13 @@
     padding-top: 5px;
 }
 
-.Prix_Article{
+.articlePrixItemShop{
     position: absolute;
     bottom: 5px;
     right: 5px;
     display: inline-block;
-    font-weight: 700;
-    color: #E0D8CB;
-    background: #56512E;
-    padding: 3px 5px;
-    padding-left: 8px;
+    color: #FFFFFF;
+    padding: 3px 7px;
 }
 
 .articleNombreItemShop{
@@ -60,34 +64,25 @@
     left:18px;
 }
 
-
-.Position_Icone_Article_1Case_Petite{
+.imgArticle{
     display: block;
     position: relative;
     margin-left: auto;
     margin-right: auto;
+    vertical-align:middle;
+    top: 50%;
+}
+
+.imgArticlePetite{
     top: 20%;
-    vertical-align:middle;
 }
-
-.Position_Icone_Article_1Case_Grande{
-
-    display: block;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 10px;
-    vertical-align:middle;
+.imgArticleGrande{
+    height: 50%;
+    top: 4%;
 }
-.Position_Icone_Article_1Case_TresGrande{
-
-    display: block;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 10px;
-    vertical-align:middle;
+.imgArticleTresGrande{
     height: 53%;
+    top: 0%;
 }
 
 /* --------------------- Detail items --------------------- */

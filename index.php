@@ -46,6 +46,7 @@ class IndexWebsite extends PageHelper {
 
                 <script src='./vendor/almasaeed2010/adminlte/plugins/slimScroll/jquery.slimscroll.min.js' type='text/javascript'></script>
                 <script src='./vendor/almasaeed2010/adminlte/plugins/select2/select2.min.js' type='text/javascript'></script>
+                <script data-pace-options='{ "restartOnRequestAfter": 10 }' src='./vendor/almasaeed2010/adminlte/plugins/pace/pace.js' type='text/javascript'></script>
                 <script src='./vendor/almasaeed2010/adminlte/plugins/select2/i18n/fr.js' type='text/javascript'></script>
                 <script src='./vendor/almasaeed2010/adminlte/dist/js/app.min.js' type='text/javascript'></script>
 

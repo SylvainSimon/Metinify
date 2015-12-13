@@ -1,29 +1,32 @@
 function Ajax(url) {
 
-    Barre_De_Statut("Appel de la page...");
-    Icone_Chargement(1);
-    displayLoading();
+    Pace.track(function () {
 
-    $.ajax({
-        type: "POST",
-        url: "" + url,
-        success: function (msg) {
+        Barre_De_Statut("Appel de la page...");
+        Icone_Chargement(1);
+        displayLoading();
 
-            nav = document.getElementById("Contenue_Principal");
+        $.ajax({
+            type: "POST",
+            url: "" + url,
+            success: function (msg) {
 
-            $("#Contenue_Principal").html(msg);
-            Barre_De_Statut("Chargement terminé.");
-            Icone_Chargement(0);
 
-            redraw();
-            hideLoading();
+                nav = document.getElementById("Contenue_Principal");
 
-        },
-        error: function () {
-            Ajax('pages/_LegacyPages/Error404.php');
-        }
+                $("#Contenue_Principal").html(msg);
+                Barre_De_Statut("Chargement terminé.");
+                Icone_Chargement(0);
+
+                redraw();
+                hideLoading();
+
+            },
+            error: function () {
+                Ajax('pages/_LegacyPages/Error404.php');
+            }
+        });
     });
-    return false;
 }
 
 
@@ -119,7 +122,7 @@ function Actualisation_Messages() {
                     } else if (Cookies.get("cookieAudio") == "Off") {
                     }
                 }
-                
+
                 createTooltip();
 
             } catch (e) {

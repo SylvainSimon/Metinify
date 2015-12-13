@@ -7,39 +7,30 @@
 
         {% if config.item_shop.rechargement.activate %}
             <div class="box-tools">
-                <a onclick="Ajax('pages/ItemShop/ItemShopRechargement.php?idcompte={{ session.get("ID") }}&nomCompte={{ session.get("Utilisateur") }}');" class="btn btn-sm btn-primary btn-flat">Recharger</a>
+                <a onclick="Ajax('pages/ItemShop/ItemShopRechargement.php?idcompte={{ session.get("ID") }}&nomCompte={{ session.get("Utilisateur") }}');" class="btn btn-primary btn-sm btn-flat">Recharger</a>
             </div>
         {% endif %}
     </div>
 
-    <div class="box-body no-padding">
+    <div class="box-body">
 
         <div class="row">
 
-            <div class="col-lg-3 specialColumn">
-                <div id="ItemShop_Partie_Menu">
+            <div class="col-lg-3 specialColumn" style="text-align: center; margin-bottom: 10px;">
 
-                    {% if arrObjItemshopCategories|length > 0 %}
-                        <table class="table table-condensed table-hover table-responsive" style="border-collapse: collapse;">
+                {% if arrObjItemshopCategories|length > 0 %}
+                    {% for objItemshopCategorie in arrObjItemshopCategories %}
+                        <button type="button" onclick="Appel_Categorie_ItemShop({{ objItemshopCategorie.getCat }})" class="btn btn-flat btn-block btnItemShopCategorie">{{ objItemshopCategorie.getNom }}</button>
+                    {% endfor %}
 
-                            {% for objItemshopCategorie in arrObjItemshopCategories %}
-                                <tr>
-                                    <td style="cursor: pointer; border-top: 0px; border-right: 1px solid #444; border-bottom: 1px solid #444;" onclick="Appel_Categorie_ItemShop({{ objItemshopCategorie.getCat }})">
-                                        <span>{{ objItemshopCategorie.getNom }}</span>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-
-                        </table>
-                    {% endif %}
-                </div>
+                {% endif %}
             </div>
 
             <div class="col-lg-9 specialColumn">
                 <div id="Item_Shop_Contenue">
 
                     <div id="Contenue_Categorie">
-                        <div id="Tableau_Liste_Article" style="padding: 10px;">
+                        <div id="Tableau_Liste_Article">
                             {{ viewItemshopDefault|raw }}
                         </div>
                     </div>

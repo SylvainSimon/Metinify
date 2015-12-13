@@ -1,7 +1,6 @@
 function Ajax_Appel_Statistiques(page, objet) {
 
-    window.parent.Barre_De_Statut("Récuperation des statistiques...");
-    window.parent.Icone_Chargement(1);
+    displayLoading();
 
     $('#Contenue_Comptes').html("<i class='material-icons md-icon-spin fa fa-spin' ></i>");
     $('#Contenue_Joueurs').html("<i class='material-icons md-icon-spin fa fa-spin' ></i>");
@@ -44,14 +43,17 @@ function Ajax_Appel_Statistiques(page, objet) {
     $('#Contenue_Pays_JP').html("<i class='material-icons md-icon-spin fa fa-spin' ></i>");
     $('#Contenue_Pays_BE').html("<i class='material-icons md-icon-spin fa fa-spin' ></i>");
 
-    $.ajax({
-        type: "POST",
-        url: "pages/Statistiques/ajax/StatistiquesGet.php",
-        data: {"page": page},
-        success: function (msg) {
+    Pace.track(function () {
 
-            try {
-                Parse_Json = JSON.parse(msg);
+        $.ajax({
+            type: "POST",
+            url: "pages/Statistiques/ajax/StatistiquesGet.php",
+            data: {"page": page},
+            success: function (msg) {
+
+                hideLoading();
+
+                var json = JSON.parse(msg);
 
                 var data = [];
                 var myPieChartRoyaume = new Chart(ctxRoyaume).Doughnut(data, {
@@ -66,21 +68,21 @@ function Ajax_Appel_Statistiques(page, objet) {
                 });
 
                 myPieChartRoyaume.addData({
-                    value: Parse_Json.shinsoo,
+                    value: json.shinsoo,
                     color: "#dd4b39",
                     highlight: "#E05D4C",
                     label: "Shinsoo"
                 });
 
                 myPieChartRoyaume.addData({
-                    value: Parse_Json.chunjo,
+                    value: json.chunjo,
                     color: "#f39c12",
                     highlight: "#F4A529",
                     label: "Chunjo"
                 });
 
                 myPieChartRoyaume.addData({
-                    value: Parse_Json.jinno,
+                    value: json.jinno,
                     color: "#0073b7",
                     highlight: "#1981BE",
                     label: "Jinno"
@@ -100,28 +102,28 @@ function Ajax_Appel_Statistiques(page, objet) {
                 });
 
                 myPieChartJob.addData({
-                    value: Parse_Json.guerriers,
+                    value: json.guerriers,
                     color: "#dd4b39",
                     highlight: "#E05D4C",
                     label: "Guerriers"
                 });
 
                 myPieChartJob.addData({
-                    value: Parse_Json.suras,
+                    value: json.suras,
                     color: "#d2d6de",
                     highlight: "#D6DAE1",
                     label: "Suras"
                 });
 
                 myPieChartJob.addData({
-                    value: Parse_Json.ninjas,
+                    value: json.ninjas,
                     color: "#00a65a",
                     highlight: "#19AE6A",
                     label: "Ninjas"
                 });
 
                 myPieChartJob.addData({
-                    value: Parse_Json.shamans,
+                    value: json.shamans,
                     color: "#f39c12",
                     highlight: "#F4A529",
                     label: "Shamans"
@@ -129,55 +131,47 @@ function Ajax_Appel_Statistiques(page, objet) {
 
                 $("#myChartJobLegend").html(myPieChartJob.generateLegend());
 
+                $("#Contenue_Comptes").html(json.comptes);
+                $("#Contenue_Joueurs").html(json.joueurs);
 
-                $("#Contenue_Comptes").html(Parse_Json.comptes);
-                $("#Contenue_Joueurs").html(Parse_Json.joueurs);
+                $("#Contenue_Hommes").html(json.hommes);
+                $("#Contenue_Femmes").html(json.femmes);
 
-                $("#Contenue_Hommes").html(Parse_Json.hommes);
-                $("#Contenue_Femmes").html(Parse_Json.femmes);
+                $("#Contenue_Connexion_Site").html(json.connexion_site);
+                $("#Contenue_Connexion_Site_Unique").html(json.connexion_site_unique);
+                $("#Contenue_Changement_Mail").html(json.changement_mail);
+                $("#Contenue_Recup_MDP").html(json.recup_mdp);
+                $("#Contenue_Changement_MDP").html(json.changement_mdp);
+                $("#Contenue_Changement_Code_Entrepot").html(json.changement_entrepot);
+                $("#Contenue_Deblocage_Yangs").html(json.deblocage_yangs);
+                $("#Contenue_Nombre_Vote").html(json.nombre_vote);
+                $("#Contenue_Nombre_Achat_Perso").html(json.nombre_achats_perso);
 
-                $("#Contenue_Connexion_Site").html(Parse_Json.connexion_site);
-                $("#Contenue_Connexion_Site_Unique").html(Parse_Json.connexion_site_unique);
-                $("#Contenue_Changement_Mail").html(Parse_Json.changement_mail);
-                $("#Contenue_Recup_MDP").html(Parse_Json.recup_mdp);
-                $("#Contenue_Changement_MDP").html(Parse_Json.changement_mdp);
-                $("#Contenue_Changement_Code_Entrepot").html(Parse_Json.changement_entrepot);
-                $("#Contenue_Deblocage_Yangs").html(Parse_Json.deblocage_yangs);
-                $("#Contenue_Nombre_Vote").html(Parse_Json.nombre_vote);
-                $("#Contenue_Nombre_Achat_Perso").html(Parse_Json.nombre_achats_perso);
+                $("#Contenue_Tickets_Ouverts").html(json.tickets_ouvert);
+                $("#Contenue_Messages_Ecrits").html(json.message_ecrits);
+                $("#Contenue_Discussions_Archives").html(json.discussion_archives);
 
-                $("#Contenue_Tickets_Ouverts").html(Parse_Json.tickets_ouvert);
-                $("#Contenue_Messages_Ecrits").html(Parse_Json.message_ecrits);
-                $("#Contenue_Discussions_Archives").html(Parse_Json.discussion_archives);
-
-                $("#Contenue_Pays_FR").html(Parse_Json.pays_fr);
-                $("#Contenue_Pays_CH").html(Parse_Json.pays_ch);
-                $("#Contenue_Pays_GB").html(Parse_Json.pays_gb);
-                $("#Contenue_Pays_DE").html(Parse_Json.pays_de);
-                $("#Contenue_Pays_RO").html(Parse_Json.pays_ro);
-                $("#Contenue_Pays_US").html(Parse_Json.pays_us);
-                $("#Contenue_Pays_IT").html(Parse_Json.pays_it);
-                $("#Contenue_Pays_ES").html(Parse_Json.pays_es);
-                $("#Contenue_Pays_PL").html(Parse_Json.pays_pl);
-                $("#Contenue_Pays_PT").html(Parse_Json.pays_pt);
-                $("#Contenue_Pays_TN").html(Parse_Json.pays_tn);
-                $("#Contenue_Pays_DZ").html(Parse_Json.pays_dz);
-                $("#Contenue_Pays_JP").html(Parse_Json.pays_jp);
-                $("#Contenue_Pays_BE").html(Parse_Json.pays_be);
-
-                window.parent.Barre_De_Statut("Chargement terminé.");
-                window.parent.Icone_Chargement(0);
+                $("#Contenue_Pays_FR").html(json.pays_fr);
+                $("#Contenue_Pays_CH").html(json.pays_ch);
+                $("#Contenue_Pays_GB").html(json.pays_gb);
+                $("#Contenue_Pays_DE").html(json.pays_de);
+                $("#Contenue_Pays_RO").html(json.pays_ro);
+                $("#Contenue_Pays_US").html(json.pays_us);
+                $("#Contenue_Pays_IT").html(json.pays_it);
+                $("#Contenue_Pays_ES").html(json.pays_es);
+                $("#Contenue_Pays_PL").html(json.pays_pl);
+                $("#Contenue_Pays_PT").html(json.pays_pt);
+                $("#Contenue_Pays_TN").html(json.pays_tn);
+                $("#Contenue_Pays_DZ").html(json.pays_dz);
+                $("#Contenue_Pays_JP").html(json.pays_jp);
+                $("#Contenue_Pays_BE").html(json.pays_be);
 
                 if (objet !== false) {
                     $(".nav-tabs-custom li").attr("class", "");
                     $(objet).parent("li").attr("class", "active");
                 }
 
-            } catch (e) {
-
             }
-
-        }
+        });
     });
-    return false;
 }

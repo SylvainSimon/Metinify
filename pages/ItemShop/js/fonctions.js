@@ -1,25 +1,22 @@
 function Appel_Categorie_ItemShop(id) {
 
-    Barre_De_Statut("Chargement de la catégorie...");
-    Icone_Chargement(1);
-    displayLoading();
+    Pace.track(function () {
 
-    $.ajax({
-        type: "POST",
-        url: "pages/ItemShop/ajax/ajaxCategorieGetArticles.php",
-        data: "id=" + id,
-        success: function (msg) {
+        displayLoading();
 
-            $("#Tableau_Liste_Article").html(msg);
-            Barre_De_Statut("Catégorie chargé.");
-            Icone_Chargement(0);
+        $.ajax({
+            type: "POST",
+            url: "pages/ItemShop/ajax/ajaxCategorieGetArticles.php",
+            data: "id=" + id,
+            success: function (msg) {
 
-            hideLoading();
-            redraw();
+                hideLoading();
+                $("#Tableau_Liste_Article").html(msg);
 
-        }
+                redraw();
+            }
+        });
     });
-
 }
 
 function Valider_Mon_Achat(id_item, nombre_item) {
@@ -42,47 +39,50 @@ function Valider_Mon_Achat(id_item, nombre_item) {
                 className: "btn-primary",
                 callback: function () {
 
-                    Barre_De_Statut("Transaction en cours...");
-                    Icone_Chargement(1);
-                    displayLoading();
+                    Pace.track(function () {
 
-                    $.ajax({
-                        type: "POST",
-                        url: "pages/ItemShop/ajax/ajaxArticleBuy.php",
-                        data: "id_item=" + id_item + "&nombre_item=" + nombre_item,
-                        success: function (msg) {
+                        Barre_De_Statut("Transaction en cours...");
+                        Icone_Chargement(1);
+                        displayLoading();
 
-                            hideLoading();
-                            var data = JSON.parse(msg);
+                        $.ajax({
+                            type: "POST",
+                            url: "pages/ItemShop/ajax/ajaxArticleBuy.php",
+                            data: "id_item=" + id_item + "&nombre_item=" + nombre_item,
+                            success: function (msg) {
 
-                            if (data.result === 1) {
-                                Ajax("pages/ItemShop/ItemShopAchatTerm.php?idTransaction=" + data.idTransaction + "&isBonusCompte=" + data.isBonusCompte + "&nombreRequired=" + nombre_item + "&nombreBuy=" + data.nombreBuy);
-                            } else {
+                                hideLoading();
+                                var data = JSON.parse(msg);
 
-                                if (data.code == 5) {
-                                    Barre_De_Statut("Entrepôt plein.");
-                                    Icone_Chargement(2);
-                                    popBootbox("Votre entrepot n'a plus de place.");
-                                } else if (data.code == 8) {
-                                    Barre_De_Statut("Entrepôt inexistant.");
-                                    Icone_Chargement(2);
-                                    popBootbox("Votre entrepot n'existe pas.");
-                                } else if (data.code == 6) {
-                                    Barre_De_Statut("Vous n'avez pas asser de Tananaies.");
-                                    Icone_Chargement(2);
-                                    popBootbox("Vous n'avez pas assez de TanaNaies.");
+                                if (data.result === 1) {
+                                    Ajax("pages/ItemShop/ItemShopAchatTerm.php?idTransaction=" + data.idTransaction + "&isBonusCompte=" + data.isBonusCompte + "&nombreRequired=" + nombre_item + "&nombreBuy=" + data.nombreBuy);
+                                } else {
 
-                                } else if (data.code == 4) {
-                                    Barre_De_Statut("L'item choisie n'est pas valide.");
-                                    Icone_Chargement(2);
-                                    popBootbox("L'item n'est pas valide.");
-                                } else if (data.code == 3) {
-                                    Barre_De_Statut("Vous n'avez pas asser de Vamonaies.");
-                                    Icone_Chargement(2);
-                                    popBootbox("Vous n'avez pas assez de Vamonaies.");
+                                    if (data.code == 5) {
+                                        Barre_De_Statut("Entrepôt plein.");
+                                        Icone_Chargement(2);
+                                        popBootbox("Votre entrepot n'a plus de place.");
+                                    } else if (data.code == 8) {
+                                        Barre_De_Statut("Entrepôt inexistant.");
+                                        Icone_Chargement(2);
+                                        popBootbox("Votre entrepot n'existe pas.");
+                                    } else if (data.code == 6) {
+                                        Barre_De_Statut("Vous n'avez pas asser de Tananaies.");
+                                        Icone_Chargement(2);
+                                        popBootbox("Vous n'avez pas assez de TanaNaies.");
+
+                                    } else if (data.code == 4) {
+                                        Barre_De_Statut("L'item choisie n'est pas valide.");
+                                        Icone_Chargement(2);
+                                        popBootbox("L'item n'est pas valide.");
+                                    } else if (data.code == 3) {
+                                        Barre_De_Statut("Vous n'avez pas asser de Vamonaies.");
+                                        Icone_Chargement(2);
+                                        popBootbox("Vous n'avez pas assez de Vamonaies.");
+                                    }
                                 }
                             }
-                        }
+                        });
                     });
                 }
             }

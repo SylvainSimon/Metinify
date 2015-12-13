@@ -1,31 +1,26 @@
 function Ajax_Appel_Marche(url, objet) {
 
-    Barre_De_Statut("Appel de l'onglet...");
-    Icone_Chargement(1);
-    displayLoading();
+    Pace.track(function () {
+        
+        displayLoading();
 
-    $.ajax({
-        type: "POST",
-        url: "" + url,
-        success: function (msg) {
+        $.ajax({
+            type: "POST",
+            url: "" + url,
+            success: function (msg) {
 
-            hideLoading();
+                hideLoading();
+                $("#Contenue_Cadre_Marche").html(msg);
 
-            $("#Contenue_Cadre_Marche").html(msg);
-            Barre_De_Statut("Chargement terminé.");
-            Icone_Chargement(0);
+                if (objet !== false) {
+                    $(".nav-tabs-custom li").attr("class", "");
+                    $(objet).parent("li").attr("class", "active");
+                }
 
-            if (objet !== false) {
-                $(".nav-tabs-custom li").attr("class", "");
-                $(objet).parent("li").attr("class", "active");
+                redraw();
             }
-
-            redraw();
-
-        }
+        });
     });
-    return false;
-
 }
 
 function Chargement_Formulaire_Vente(id_personnage) {

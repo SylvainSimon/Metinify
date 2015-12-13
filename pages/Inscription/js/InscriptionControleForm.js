@@ -148,24 +148,25 @@ function VerificationFormulaire() {
             if (json.granted) {
                 if ((UtilisateurSyntax + UtilisateurDispo + MotdePasse + MotdePasseVerif + MailSyntax) == 0) {
 
-                    Barre_De_Statut("Inscription en cours...");
-                    Icone_Chargement(1);
+                    Pace.track(function () {
+                        Barre_De_Statut("Inscription en cours...");
+                        Icone_Chargement(1);
 
-                    $.ajax({
-                        type: "POST",
-                        url: "pages/Inscription/ajax/InscriptionSubmit.php",
-                        data: "Utilisateur=" + $("#SaisieUtilisateur").val() + "&Mot_De_Passe=" + $("#SaisieMDP").val() + "&Email=" + $("#SaisieMail").val(),
-                        success: function (msg) {
-                            if (msg == 1) {
-                                Ajax("pages/Inscription/InscriptionTerm.php?Resultat=oui");
-                            }
-                            else {
+                        $.ajax({
+                            type: "POST",
+                            url: "pages/Inscription/ajax/InscriptionSubmit.php",
+                            data: "Utilisateur=" + $("#SaisieUtilisateur").val() + "&Mot_De_Passe=" + $("#SaisieMDP").val() + "&Email=" + $("#SaisieMail").val(),
+                            success: function (msg) {
+                                if (msg == 1) {
+                                    Ajax("pages/Inscription/InscriptionTerm.php?Resultat=oui");
+                                }
+                                else {
 
-                                Ajax("pages/Inscription/InscriptionTerm.php?Resultat=non");
+                                    Ajax("pages/Inscription/InscriptionTerm.php?Resultat=non");
+                                }
                             }
-                        }
+                        });
                     });
-                    return false;
 
                 } else {
 
