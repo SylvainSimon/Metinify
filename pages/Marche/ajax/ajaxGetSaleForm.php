@@ -14,7 +14,7 @@ class ajaxGetSaleForm extends \ScriptHelper {
         parent::__construct();
 
         global $request;
-        $this->objPlayer = parent::VerifMonJoueur($request->request->get("idPlayer"));
+        $this->objPlayer = parent::VerifMonJoueur(\Encryption::decrypt($request->query->get("idPlayer")));
     }
 
     public function run() {
