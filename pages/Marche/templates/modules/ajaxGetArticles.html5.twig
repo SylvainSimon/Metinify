@@ -4,62 +4,51 @@
 
         <div class="Article_Marche" data-tooltip="{{ objMarcheArticle.description|nl2br }}" data-tooltip-isItemMetin="1" data-tooltip-track="1" id="Article_Vente_{{ objMarcheArticle.idMarchePersonnage }}">
 
-            <div class="nomArticleMarche">
+            <div class="titreArticleMarche">
                 {{ objMarcheArticle.designation }}
             </div>
 
-            <div class="Level_Personnage">
-                <table class="table table-condensed" style="border-collapse: collapse; margin-bottom: 0px;">
-                    <tr>
-                        <td style="border-top: 0px;" colspan="2">{{ objMarcheArticle.name }}</td>
-                    </tr>
-                    <tr>
-                        <td>Niveau {{ objMarcheArticle.level }}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="padding-top: 0px;">                
-                            {{ objMarcheArticle.prix|number_format }} 
-                            {% if objMarcheArticle.idDevise == "1" %}
-                                <i style="top: 4px; position: relative;" class="material-icons md-icon-whatshot md-20 text-yellow" title=""></i>
-                            {% elseif objMarcheArticle.idDevise == "2" %}
-                                <i style="top: 4px; position: relative;" class="material-icons md-icon-whatshot md-20 text-gray" title=""></i>
-                            {% endif %}
-                        </td>
-                    </tr>
-                </table>
-
-            </div>
-
-            <div style="padding-top: 5px;">
+            <div style="padding-top: 10px; text-align: center;">
                 {% if objMarcheArticle.job == "0" %}
-                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Guerrier_Homme.png" height="150" />
+                    <img src="../../images/races/Guerrier_Homme.png" height="140" />
                 {% elseif objMarcheArticle.job == "1" %}
-                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Ninja_Femme.png" height="150" />
+                    <img src="../../images/races/Ninja_Femme.png" height="140" />
                 {% elseif objMarcheArticle.job == "2" %}
-                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Sura_Homme.png" height="150" />
+                    <img src="../../images/races/Sura_Homme.png" height="140" />
                 {% elseif objMarcheArticle.job == "3" %}
-                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Chaman_Femme.png" height="150" />
+                    <img src="../../images/races/Chaman_Femme.png" height="140" />
                 {% elseif objMarcheArticle.job == "4" %}
-                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Guerrier_Femme.png" height="150" />
+                    <img src="../../images/races/Guerrier_Femme.png" height="140" />
                 {% elseif objMarcheArticle.job == "5" %}
-                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Ninja_Homme.png" height="150" />
+                    <img src="../../images/races/Ninja_Homme.png" height="140" />
                 {% elseif objMarcheArticle.job == "6" %}
-                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Sura_Femme.png" height="150" />
+                    <img src="../../images/races/Sura_Femme.png" height="140" />
                 {% elseif objMarcheArticle.job == "7" %}
-                    <img class="Position_Icone_Article_Personnage" src="../../images/races/Chaman_Homme.png" height="150" />
+                    <img src="../../images/races/Chaman_Homme.png" height="140" />
                 {% endif %}
             </div>
 
-            <div style="position: absolute; bottom: 0px; right: 5px;">
-                <a  data-featherlight="ajax"  data-featherlight-variant="featherLightbox_50" href="pages/Marche/MarchePlayerInfo.php?id_marche_perso={{ objMarcheArticle.idMarchePersonnage }}">
-                    <i data-tootlip="Voir les informations de l'article" class="material-icons md-icon-help md-36 text-blue"></i>
-                </a>
+            <div style="position: absolute; bottom: 0px; height: 60px; width: 100%; background: #313131; border-top: 1px solid #484848;">
 
-                {% if objAccount.getId != objMarcheArticle.idProprietaire %}
-                    <a onclick="Acquisition_Article({{ objMarcheArticle.idMarchePersonnage }});">
-                        <i data-tootlip="Acheter cette article" class="material-icons md-icon-shopping_cart md-36 text-yellow"></i>
+                <div class="nomArticleMarche">
+                    {{ objMarcheArticle.name }} <span class="pull-right">Niveau {{ objMarcheArticle.level }}</span>
+                </div>
+
+                <div class="articlePrixMarche {% if objMarcheArticle.idDevise == "2" %}bg-gray text-black{% else %}btn-warning{% endif %}">
+                    <span>{{ objMarcheArticle.prix|number_format(0, '.', '.') }}</span>
+                </div>
+
+                <div class="buttonArticleMarche">
+                    <a data-featherlight="ajax"  data-featherlight-variant="featherLightbox_50" href="pages/Marche/MarchePlayerInfo.php?id_marche_perso={{ objMarcheArticle.idMarchePersonnage }}">
+                        <i data-tootlip="Voir les informations de l'article" class="material-icons md-icon-help md-28 text-blue"></i>
                     </a>
-                {% endif %}
+
+                    {% if objAccount.getId != objMarcheArticle.idProprietaire %}
+                        <a onclick="Acquisition_Article({{ objMarcheArticle.idMarchePersonnage }});">
+                            <i data-tootlip="Acheter cette article" class="material-icons md-icon-shopping_cart md-28 text-yellow"></i>
+                        </a>
+                    {% endif %}
+                </div>
             </div>
         </div>
     {% endfor %}
