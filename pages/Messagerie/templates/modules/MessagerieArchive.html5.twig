@@ -1,34 +1,54 @@
-<div class="row">
-
-    <div class="col-lg-12">
-        <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;">
-
-            <thead>
-                <tr>
-                    <th width="120" data-tooltip="Expediteur du premier message de la discussion">Expediteur</th>
-                    <th width="120" data-tooltip="Destinataire du premier message de la discussion">Destinataire</th>
-                    <th data-tooltip="Objet de la discussion">Objet</th>
-                    <th width="240" data-tooltip="Date du début de la discussion">Dernier message</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                {% if arrObjSupportDiscussions|length > 0 %}
-
-                    {% for objSupportDiscussion in arrObjSupportDiscussions %}
-                        <tr onclick="DiscussionOpen({{ encryptForUrl(objSupportDiscussion.id) }});" class="Pointer">
-                            <td>{{ objSupportDiscussion.user }}</td>
-                            <td>{{ objSupportDiscussion.admin }}</td>
-                            <td>{{ objSupportDiscussion.objet }}</td>
-                            <td>{{ getFormatedDateTime(objSupportDiscussion.dateDernierMessage) }}</td>
-                        </tr>
-                    {% endfor %}
-
+<table class="table table-condensed table-hover table-striped" id="listMessagerieArchive" style="border-collapse: collapse; margin-top: 0px !important;">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>Date</th>
+            {% if isAdmin %} 
+                <th>Utilisateur</th>
                 {% else %}
-                    <tr><td colspan="7">Aucune discussion en archive.</td></tr>
+                <th>Gérer par</th>
                 {% endif %}
+            <th>Objet</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="100%" class="dataTables_empty">Tableau en cours de chargement...</td>
+        </tr>
+    </tbody>
+</table>
 
-            </tbody>
-        </table>
-    </div>
-</div>
+<script type="text/javascript" charset="utf-8">
+
+    var aoColumns = [{{ dtColumns|raw }}];
+    var aoColumnsFilter = [{{ dtFilterColumns|raw  }}];
+    var sAjaxSource = '{{ ajaxSource }}';
+
+    $('#listMessagerieArchive').on('processing.dt', function (e, settings, processing) {
+        processingDatatableInBox(processing);
+    });
+
+    $(document).ready(function () {
+        oTable = $('#listMessagerieArchive').dataTable({
+            aaSorting: [[0, "desc"]],
+            aoColumns: aoColumns,
+            responsive: true,
+            sDom: '<"clear"><"top">rt<lp><"clear">',
+            sAjaxSource: sAjaxSource,
+            aLengthMenu: [[10, 25, 50, 100], ["10", "25", "50", "100"]],
+            iDisplayLength: 10,
+            fnServerData: function (sSource, aoData, fnCallback) {
+                $.getJSON(sSource, aoData, function (json) {
+                    $("#datatable_total").html(json.iTotalRecords);
+                    fnCallback(json);
+                });
+            }
+        }).columnFilter({aoColumns: aoColumnsFilter});
+    });
+</script>
