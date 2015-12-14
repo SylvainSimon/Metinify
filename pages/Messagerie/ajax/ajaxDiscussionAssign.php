@@ -22,7 +22,7 @@ class ajaxDiscussionAssign extends \PageHelper {
             $objSupportDiscussion->setIdAdmin($this->objAccount->getId());
             $em->persist($objSupportDiscussion);
             $em->flush();
-            echo $objSupportDiscussion->getId();
+            echo \Encryption::encrypt($objSupportDiscussion->getId());
         } else {
             echo "NULL";
         }

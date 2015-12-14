@@ -28,6 +28,7 @@ class MessagerieCreate extends \PageHelper {
         
         $arrObjSupportObjets = \Site\SiteHelper::getSupportObjetsRepository()->findAll();
         $this->arrayTemplate["arrObjSupportObjets"] = $arrObjSupportObjets;
+        $this->arrayTemplate["objAccount"] = $this->objAccount->getId();
         
         $view = $this->template->render($this->arrayTemplate);
         $this->response->setContent($view);

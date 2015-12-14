@@ -1,74 +1,139 @@
-<div class="row">
-    <div class="col-lg-12">
-
-        <input id="Input_Id_Expediteur_Message" style="display: none;" type="text" value="<?php echo $this->objAccount->getId(); ?>">
-
-        {% if nombreDiscussionOuverte >= config.support.max_open %}
-            <div style="padding: 10px;">
-                Il semble que possédiez trop de ticket en attente ou en cours de traitement.
-                <br/>
-                Veuillez modérer le nombre de vos tickets.
-                <br/><br/>
-                Cordialement, l'équipe VamosMt2.
-            </div>
-        {% else %}
-            
-            <script type="text/javascript">
-                var Objet_Selectionner = 1;
-                var Longueur_Minimal = 1;
-            </script>
-
-            <form type="POST" action="javascript:void(0)" id="Formulaire_Nouveau_Ticket">
-
-                <div class="col-lg-12" style="margin-top: 15px; margin-bottom: 15px;">
-                    <div class="row">
-                        <div class="col-lg-6">
-
-                            <div class="form-group ">
-                                <label for="Input_Pseudo_Expediteur_Message">
-                                    Demandeur
-                                </label>
-                                <div class="input-group col-xs-12">
-                                    <input class="form-control input-sm" id="Input_Pseudo_Expediteur_Message" name="Input_Expediteur_Message" type="text" disabled="disabled" value="{{ session.get("Pseudo_Messagerie") }}">                           
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <label for="Selecteur_Objet_Ticket">
-                                Objet
-                            </label>
-                            <div class="input-group col-xs-12">
-                                <select class="select2" onchange="Objet_selectionner();" id="Selecteur_Objet_Ticket" name="Selecteur_Objet_Ticket">
-                                    <option selected="selected" value="0"> -- </option>
-                                    {% for objSupportObjets in arrObjSupportObjets %}
-                                        <option value="{{ objSupportObjets.getId }}">{{ objSupportObjets.getObjet }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-
-                            <div class="form-group ">
-                                <label for="Textarea_Nouveau_Ticket">
-                                    Message
-                                </label>
-                                <div class="input-group col-xs-12">
-                                    <textarea maxlength="1024" style="min-height: 170px; resize: none;" id="Textarea_Nouveau_Ticket" class="form-control input-sm" onblur="Fonction_Remplacement(this.value);" onkeyup="document.getElementById('Nombre_Caracteres_Nouveau_Ticket').innerHTML = (this.value.length + this.value.replace(/[^\n]+/g, '').length);"></textarea>
-                                    <span id="Nombre_Caracteres_Nouveau_Ticket">0</span>/1024
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-success btn-flat pull-right" type="button" onclick="Valider_Formulaire_Nouveau_Ticket();">
-                        Envoyer
-                    </button>
-                </div>
-            </form>
-        {% endif %}
+<div class="box box-default flat" style="margin: 0px;">
+    <div class="box-header">
+        <h3 class="box-title">Création de ticket</h3>
     </div>
+
+    <div class="box-body no-padding">
+        <div class="row" style="padding-left: 15px; margin-right: 0;">
+
+            <input id="Input_Id_Expediteur_Message" style="display: none;" type="text" value="{{ objAccount.getId }}">
+
+            {% if nombreDiscussionOuverte >= config.support.max_open %}
+                <div style="padding: 10px;">
+                    Il semble que possédiez trop de ticket en attente ou en cours de traitement.
+                    <br/>
+                    Veuillez modérer le nombre de vos tickets.
+                    <br/><br/>
+                    Cordialement, l'équipe VamosMt2.
+                </div>
+            {% else %}
+
+                <script type="text/javascript">
+                    var Objet_Selectionner = 1;
+                    var Longueur_Minimal = 1;
+                </script>
+
+                <form type="POST" action="javascript:void(0)" id="Formulaire_Nouveau_Ticket">
+
+                    <div class="col-lg-12" style="margin-top: 15px; margin-bottom: 15px;">
+                        <div class="row">
+                            <div class="col-lg-6">
+
+                                <div class="form-group ">
+                                    <label for="Input_Pseudo_Expediteur_Message">
+                                        Demandeur
+                                    </label>
+                                    <div class="input-group col-xs-12">
+                                        <input class="form-control input-sm" id="Input_Pseudo_Expediteur_Message" name="Input_Expediteur_Message" type="text" disabled="disabled" value="{{ session.get("Pseudo_Messagerie") }}">                           
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label for="Selecteur_Objet_Ticket">
+                                    Objet
+                                </label>
+                                <div class="input-group col-xs-12">
+                                    <select class="select2" onchange="Objet_selectionner();" id="Selecteur_Objet_Ticket" name="Selecteur_Objet_Ticket">
+                                        <option selected="selected" value="0"> -- </option>
+                                        {% for objSupportObjets in arrObjSupportObjets %}
+                                            <option value="{{ objSupportObjets.getId }}">{{ objSupportObjets.getObjet }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+
+                                <div class="form-group ">
+                                    <label for="Textarea_Nouveau_Ticket">
+                                        Message
+                                    </label>
+                                    <div class="input-group col-xs-12">
+                                        <textarea maxlength="1024" style="min-height: 170px; resize: none;" id="Textarea_Nouveau_Ticket" class="form-control input-sm" onblur="Fonction_Remplacement(this.value);" onkeyup="document.getElementById('Nombre_Caracteres_Nouveau_Ticket').innerHTML = (this.value.length + this.value.replace(/[^\n]+/g, '').length);"></textarea>
+                                        <span id="Nombre_Caracteres_Nouveau_Ticket">0</span>/1024
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+    <div class="box-footer">
+        <button class="btn btn-success btn-flat pull-right" type="button" onclick="Valider_Formulaire_Nouveau_Ticket();">
+            Envoyer
+        </button>
+    </div>
+
+    <script type="text/javascript">
+        redrawSelect2();
+
+        function Valider_Formulaire_Nouveau_Ticket() {
+
+            Longueur_minimal();
+
+            Barre_De_Statut("Envoie du nouveau ticket...");
+            Icone_Chargement(1);
+
+            if (Longueur_Minimal + Objet_Selectionner == 0) {
+
+                displayLoading();
+
+                $.ajax({
+                    type: "POST",
+                    url: "pages/Messagerie/ajax/ajaxDiscussionCreate.php",
+                    data: "Nouveau_Ticket_Objet=" + $("#Selecteur_Objet_Ticket").val() + "&Nouveau_Ticket_Message=" + $("#Textarea_Nouveau_Ticket").val(),
+                    success: function (msg) {
+
+                        hideLoading();
+
+                        if (msg == 1) {
+
+                            Barre_De_Statut("Message envoyé avec succès.");
+                            Icone_Chargement(0);
+
+                            toastr.success("Votre ticket a été soumis à nos équipes.<br/>Nous traiterons votre demande dans les plus brefs délais.");
+                            $.featherlight.close();
+                            Ajax_Appel_Messagerie("pages/Messagerie/MessagerieInbox.php");
+                        }
+                    }
+                });
+                return false;
+            } else {
+
+                var Message_Erreur = "";
+
+                if (Objet_Selectionner == 1) {
+
+                    Message_Erreur += "Veuillez séléctionner un objet pour votre demande.\n";
+                }
+
+                if (Longueur_Minimal == 1) {
+
+                    Message_Erreur += "Votre message est trop cours.\n";
+                }
+
+                alert(Message_Erreur);
+
+                Barre_De_Statut("Envoie annulé.");
+                Icone_Chargement(2);
+
+                return false;
+            }
+        }
+    </script>
 </div>

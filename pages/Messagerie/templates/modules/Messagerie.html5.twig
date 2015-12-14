@@ -4,6 +4,11 @@
 
     <div class="box-header">
         <h3 class="box-title">Support</h3>
+        <div class="box-tools">
+            {% if isModerateurTicket == false %}
+                <a href="pages/Messagerie/MessagerieCreate.php" data-featherlight="ajax" class="btn btn-flat btn-success btn-sm" >Nouveau ticket</a>
+            {% endif %}
+        </div>
     </div>
 
     {{ dump(session) }}
@@ -17,10 +22,6 @@
 
                     <li class="active"><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieInbox.php', this);">En cours</a></li>
                     <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieArchive.php', this);">Archivés</a></li>
-
-                    {% if isModerateurTicket == false %}
-                        <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieCreate.php', this);">Nouveau ticket</a></li>
-                        {% endif %}
 
                     {% if isModerateurTicket %}
                         <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieWaiting.php', this);">Tickets en attentes</a></li>

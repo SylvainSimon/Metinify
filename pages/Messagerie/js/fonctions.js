@@ -154,7 +154,7 @@ function Assignation_Ticket(numero_discussion) {
 
             } else {
                 hideLoading();
-                Ajax_Ouverture_Ticket(msg);
+                DiscussionOpen(msg);
             }
         }
     });
@@ -167,63 +167,6 @@ function Objet_selectionner() {
         Objet_Selectionner = 1
     }
 
-}
-
-function Valider_Formulaire_Nouveau_Ticket() {
-
-    Longueur_minimal();
-
-    Barre_De_Statut("Envoie du nouveau ticket...");
-    Icone_Chargement(1);
-
-    if (Longueur_Minimal + Objet_Selectionner == 0) {
-
-        displayLoading();
-
-        $.ajax({
-            type: "POST",
-            url: "pages/Messagerie/ajax/ajaxDiscussionCreate.php",
-            data: "Nouveau_Ticket_Objet=" + $("#Selecteur_Objet_Ticket").val() + "&Nouveau_Ticket_Message=" + $("#Textarea_Nouveau_Ticket").val(),
-            success: function (msg) {
-
-                hideLoading();
-
-                if (msg == 1) {
-
-                    Barre_De_Statut("Message envoyé avec succès.");
-                    Icone_Chargement(0);
-
-                    Ajax_Appel_Messagerie("pages/Messagerie/MessagerieInbox.php");
-                }
-                else {
-
-                    Barre_De_Statut("Envoie du ticket échoué.");
-                    Icone_Chargement(2);
-                }
-            }
-        });
-        return false;
-    } else {
-
-        var Message_Erreur = "";
-
-        if (Objet_Selectionner == 1) {
-
-            Message_Erreur += "Veuillez séléctionner un objet pour votre demande.\n";
-        }
-
-        if (Longueur_Minimal == 1) {
-
-            Message_Erreur += "Votre message est trop cours.\n";
-        }
-
-        alert(Message_Erreur);
-
-        Barre_De_Statut("Envoie annulé.");
-        Icone_Chargement(2);
-
-        return false;
-    }
 }
 
 function verifPseudo() {
