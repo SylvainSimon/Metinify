@@ -13,19 +13,34 @@ class Messagerie extends \PageHelper {
     public function run() {
 
         $templateTop = $this->objTwig->loadTemplate("MessagerieInbox.html5.twig");
-        $arrObjSupportDiscussions = \Site\SiteHelper::getSupportDiscussionsRepository()->findDiscussions($this->objAccount->getId(), false, 20);
-        $countMessageNonLu = \Site\SiteHelper::getSupportMessagesRepository()->countMessagesNonLu($this->objAccount->getId());
-        $viewInbox = $templateTop->render(["arrObjSupportDiscussions" => $arrObjSupportDiscussions, "countMessageNonLu" => $countMessageNonLu]);
-        
+        $sColumns = '';
+        $sColumns .= '{ "mData": "compte", "bSortable": true, "className": "all", "sWidth": "130px"  },';
+        $sColumns .= '{ "mData": "objet", "className": "min-tablet", "bSortable": true },';
+        $sColumns .= '{ "mData": "date", "bSortable": true, "className": "min-tablet", "sWidth": "80px" },';
+        $sColumns .= '{ "mData": "lastMessage", "bSortable": true, "sWidth": "120px" },';
+        $sColumns .= '{ "mData": "actions", "className": "all", "bSortable": false, "sWidth": "60px" },';
+        $sFilterColumns = '';
+        $sFilterColumns .= '{ type: "text", placeholder: "" },';
+        $sFilterColumns .= '{ type: "text", placeholder: "" },';
+        $sFilterColumns .= '{ type: "date-range", withoutCalendar: "1"},';
+        $sFilterColumns .= 'null,';
+        $sFilterColumns .= 'null,';
+        $viewInbox = $templateTop->render([
+            "dtColumns" => rtrim($sColumns, ','),
+            "dtFilterColumns" => rtrim($sFilterColumns, ','),
+            "ajaxSource" => "pages/Messagerie/ajax/listMessagerieInbox.php?sEcho=1",
+            "isAdmin" => $this->isAdmin
+        ]);
+
         $countModerateur = \Site\SiteHelper::getSupportModerateursRepository()->countByIdAccount($this->objAccount->getId());
         if ($countModerateur > 0) {
             $this->arrayTemplate["isModerateurTicket"] = true;
         } else {
             $this->arrayTemplate["isModerateurTicket"] = false;
         }
-        
+
         $this->arrayTemplate["viewInbox"] = $viewInbox;
-        
+
         $view = $this->template->render($this->arrayTemplate);
         $this->response->setContent($view);
         $this->response->send();

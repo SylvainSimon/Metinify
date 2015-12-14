@@ -15,11 +15,11 @@
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
 
-                    <li class="active"><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieInbox.php', this);">Boîte de réception</a></li>
-                    <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieArchive.php', this);">Discussions archivés</a></li>
+                    <li class="active"><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieInbox.php', this);">En cours</a></li>
+                    <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieArchive.php', this);">Archivés</a></li>
 
                     {% if isModerateurTicket == false %}
-                        <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieCreate.php', this);">Créer un ticket</a></li>
+                        <li><a href="javascript:void(0)" onclick="Ajax_Appel_Messagerie('pages/Messagerie/MessagerieCreate.php', this);">Nouveau ticket</a></li>
                         {% endif %}
 
                     {% if isModerateurTicket %}

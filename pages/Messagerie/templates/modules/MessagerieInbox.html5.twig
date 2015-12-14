@@ -1,45 +1,55 @@
-<div class="row">
-    <div class="col-lg-3">
-        <table class="table table-condensed" style="border-collapse: collapse;">
-            <tr>
-                <td style="border-top: 0px;" title="Nombre de discussion ouverte">Discussions</td>
-                <td style="border-top: 0px;">{{ arrObjSupportDiscussions|length }}</td>
-            </tr>
-            <tr>
-                <td title="Nombre de message non-lu dans la boite de réception">Non-lu</td>
-                <td>{{ countMessageNonLu }}</td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="col-lg-9">
-        <table class="table table-condensed table-hover" style="border-collapse: collapse; margin-bottom: 0px;">
-
-            <thead>
-                <tr>
-                    <th width="140">Gérer par</th>
-                    <th>Objet</th>
-                    <th>Contenue</th>
-                    <th width="240">Dernier message</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                {% if arrObjSupportDiscussions|length > 0 %}
-
-                    {% for objSupportDiscussion in arrObjSupportDiscussions %}
-                        <tr data-tooltip="Ouvrir la discussion" onclick="Ajax_Ouverture_Ticket({{ objSupportDiscussion.id }})" class="Pointer">
-                            <td>{{ objSupportDiscussion.admin }}</td>
-                            <td>{{ objSupportDiscussion.objet }}</td>
-                            <td>{{ truncateString(objSupportDiscussion.message, 20) }}</td>
-                            <td>{{ getFormatedDateTime(objSupportDiscussion.dateDernierMessage) }}</td>
-                        </tr>
-                    {% endfor %}
-
+<table class="table table-condensed table-hover table-striped" id="listMessagerieInbox" style="border-collapse: collapse; margin-top: 0px !important;">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            {% if isAdmin %} 
+                <th>Utilisateur</th>
                 {% else %}
-                <td colspan="6">Vous n'avez aucune discussion active</td>
+                <th>Gérer par</th>
             {% endif %}
-            </tbody>
-        </table>
-    </div>
-</div>
+            <th>Objet</th>
+            <th>Date</th>
+            <th>Dernier</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="100%" class="dataTables_empty">Tableau en cours de chargement...</td>
+        </tr>
+    </tbody>
+</table>
+<script type="text/javascript" charset="utf-8">
+
+    var aoColumns = [{{ dtColumns|raw }}];
+    var aoColumnsFilter = [{{ dtFilterColumns|raw  }}];
+    var sAjaxSource = '{{ ajaxSource }}';
+
+    $('#listMessagerieInbox').on('processing.dt', function (e, settings, processing) {
+        processingDatatableInBox(processing);
+    });
+
+    $(document).ready(function () {
+        oTable = $('#listMessagerieInbox').dataTable({
+            aaSorting: [[2, "desc"]],
+            aoColumns: aoColumns,
+            responsive: true,
+            sDom: '<"clear"><"top">rt<lp><"clear">',
+            sAjaxSource: sAjaxSource,
+            aLengthMenu: [[10, 25, 50, 100], ["10", "25", "50", "100"]],
+            iDisplayLength: 10,
+            fnServerData: function (sSource, aoData, fnCallback) {
+                $.getJSON(sSource, aoData, function (json) {
+                    $("#datatable_total").html(json.iTotalRecords);
+                    fnCallback(json);
+                });
+            }
+        }).columnFilter({aoColumns: aoColumnsFilter});
+    });
+</script>

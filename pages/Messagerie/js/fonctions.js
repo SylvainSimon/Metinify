@@ -85,6 +85,51 @@ function Longueur_minimal() {
     }
 }
 
+function DiscussionArchivage(idDiscussion) {
+
+    bootbox.dialog({
+        message: "Êtes vous sûr de vouloir archiver la discussion ?<br/>Le traitement de votre demande sera considéré comme terminé.",
+        animate: false,
+        className: "myBootBox",
+        title: "Confirmation de l'archivage",
+        buttons: {
+            danger: {
+                label: "Annuler",
+                className: "btn-danger",
+                callback: function () {
+
+                }
+            },
+            success: {
+                label: "Confirmer",
+                className: "btn-primary",
+                callback: function () {
+
+                    Barre_De_Statut("Archivage en cours...");
+                    Icone_Chargement(1);
+
+                    $.ajax({
+                        type: "POST",
+                        url: "pages/Messagerie/ajax/ajaxDiscussionArchivage.php",
+                        data: {"idDiscussion": idDiscussion},
+                        success: function (msg) {
+
+                            if (msg == "NON") {
+
+                                Barre_De_Statut("Cette discussion ne vous appartient pas.");
+                                Icone_Chargement(2);
+
+                            } else {
+                                Ajax_Appel_Messagerie("pages/Messagerie/MessagerieInbox.php");
+                            }
+                        }
+                    });
+
+                }
+            }
+        }
+    });
+}
 
 function Assignation_Ticket(numero_discussion) {
 
@@ -131,7 +176,7 @@ function Valider_Formulaire_Nouveau_Ticket() {
     if (Longueur_Minimal + Objet_Selectionner == 0) {
 
         displayLoading();
-        
+
         $.ajax({
             type: "POST",
             url: "pages/Messagerie/ajax/ajaxDiscussionCreate.php",
