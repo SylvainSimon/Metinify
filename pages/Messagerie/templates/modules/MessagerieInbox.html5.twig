@@ -12,7 +12,7 @@
                 <th>Utilisateur</th>
                 {% else %}
                 <th>Gérer par</th>
-            {% endif %}
+                {% endif %}
             <th>Objet</th>
             <th>Date</th>
             <th>Dernier</th>
@@ -49,6 +49,10 @@
                     $("#datatable_total").html(json.iTotalRecords);
                     fnCallback(json);
                 });
+            },
+            fnRowCallback: function (nRow, aData, iDisplayIndex) {
+                $(nRow).addClass(aData['nonLuInDiscussion']);
+                return nRow;
             }
         }).columnFilter({aoColumns: aoColumnsFilter});
     });

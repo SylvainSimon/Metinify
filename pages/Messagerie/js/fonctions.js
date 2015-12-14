@@ -85,7 +85,7 @@ function Longueur_minimal() {
     }
 }
 
-function DiscussionArchivage(idDiscussion) {
+function DiscussionArchivage(idDiscussion, withReloadDatatable) {
 
     bootbox.dialog({
         message: "Êtes vous sûr de vouloir archiver la discussion ?<br/>Le traitement de la demande sera considéré comme terminé.",
@@ -115,12 +115,15 @@ function DiscussionArchivage(idDiscussion) {
                         success: function (msg) {
 
                             if (msg == "NON") {
-
                                 Barre_De_Statut("Cette discussion ne vous appartient pas.");
                                 Icone_Chargement(2);
-
                             } else {
-                                Ajax_Appel_Messagerie("pages/Messagerie/MessagerieInbox.php");
+
+                                if (withReloadDatatable) {
+                                    parent.oTable.fnStandingRedraw();
+                                } else {
+                                    Ajax_Appel_Messagerie("pages/Messagerie/MessagerieInbox.php");
+                                }
                             }
                         }
                     });

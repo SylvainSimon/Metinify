@@ -55,12 +55,23 @@ class listMessagerieInbox extends \ScriptHelper {
                 }
             ),
             array(
+                'dbField' => 'SupportMessagesEntity.id',
+                'dtField' => 'nonLuInDiscussion',
+                'formatter' => function( $d, $row ) {
+                    if ($d === null) {
+                        return "";
+                    } else {
+                        return "lineGreen";
+                    }
+                }
+            ),
+            array(
                 'dbField' => 'SupportDiscussionsEntity.id',
                 'dtField' => 'actions',
                 'formatter' => function( $d, $row ) {
 
-                    $varButton = '<a class="btn btn-material btn-primary btn-sm" onclick="DiscussionOpen(\'' . \Encryption::encryptForUrl($d) . '\')"><i class="material-icons md-icon-message"></i></a>';
-                    $varButton .= '<a class="btn btn-material btn-warning btn-sm" onclick="DiscussionArchivage(\'' . \Encryption::encrypt($d) . '\')"><i class="material-icons md-icon-archive"></i></a>';
+                    $varButton = '<a class="btn btn-material btn-primary btn-sm" onclick="DiscussionOpen(\'' . \Encryption::encrypt($d) . '\')"><i class="material-icons md-icon-message"></i></a>';
+                    $varButton .= '<a class="btn btn-material btn-warning btn-sm" onclick="DiscussionArchivage(\'' . \Encryption::encrypt($d) . '\', 1)"><i class="material-icons md-icon-archive"></i></a>';
 
                     return '<div class="btn-toolbar">' . $varButton . "</div>";
                 }
@@ -73,6 +84,7 @@ class listMessagerieInbox extends \ScriptHelper {
                 ->innerJoin("\Site\Entity\SupportObjets", "SupportObjetsEntity", "WITH", "SupportObjetsEntity.id = SupportDiscussionsEntity.idObjet")
                 ->innerJoin("\Account\Entity\Account", "AccountEntityAdmin", "WITH", "AccountEntityAdmin.id = SupportDiscussionsEntity.idAdmin")
                 ->leftJoin("\Account\Entity\Account", "AccountEntityUser", "WITH", "AccountEntityUser.id = SupportDiscussionsEntity.idCompte")
+                ->leftJoin("\Site\Entity\SupportMessages", "SupportMessagesEntity", "WITH", "SupportMessagesEntity.idDiscussion = SupportDiscussionsEntity.id AND SupportMessagesEntity.etat = " . \Site\SupportEtatMessageHelper::NON_LU . " AND SupportMessagesEntity.idCompte != " . $this->objAccount->getId() . "")
                 ->andWhere("SupportDiscussionsEntity.idCompte = " . $this->objAccount->getId() . " OR SupportDiscussionsEntity.idAdmin = " . $this->objAccount->getId() . "")
                 ->andWhere("SupportDiscussionsEntity.estArchive = 0");
 
