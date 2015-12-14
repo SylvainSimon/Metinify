@@ -16,14 +16,14 @@ class Messagerie extends \PageHelper {
         $sColumns = '';
         $sColumns .= '{ "mData": "compte", "bSortable": true, "className": "all", "sWidth": "130px"  },';
         $sColumns .= '{ "mData": "objet", "className": "min-tablet", "bSortable": true },';
-        $sColumns .= '{ "mData": "date", "bSortable": true, "className": "min-tablet", "sWidth": "80px" },';
-        $sColumns .= '{ "mData": "lastMessage", "bSortable": true, "sWidth": "120px" },';
+        $sColumns .= '{ "mData": "date", "bSortable": true, "sWidth": "80px" },';
+        $sColumns .= '{ "mData": "lastMessage", "className": "min-desktop", "bSortable": true, "sWidth": "120px" },';
         $sColumns .= '{ "mData": "actions", "className": "all", "bSortable": false, "sWidth": "60px" },';
         $sFilterColumns = '';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
         $sFilterColumns .= '{ type: "date-range", withoutCalendar: "1"},';
-        $sFilterColumns .= 'null,';
+        $sFilterColumns .= '{ type: "date-range", withoutCalendar: "1"},';
         $sFilterColumns .= 'null,';
         $viewInbox = $templateTop->render([
             "dtColumns" => rtrim($sColumns, ','),

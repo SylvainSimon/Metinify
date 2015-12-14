@@ -33,7 +33,7 @@ function hideLoadingChat() {
     $(".box.direct-chat .overlay").remove();
 }
 
-function Ajax_Ouverture_Ticket(id_ticket) {
+function DiscussionOpen(idSupportDiscussion) {
 
     Barre_De_Statut("Ouverture de la discussion...");
     Icone_Chargement(1);
@@ -42,7 +42,7 @@ function Ajax_Ouverture_Ticket(id_ticket) {
     $.ajax({
         type: "POST",
         url: "pages/Messagerie/MessagerieView.php",
-        data: "id_ticket=" + id_ticket,
+        data: {"idSupportDiscussion": idSupportDiscussion},
         success: function (msg) {
 
             $("#Contenue_Cadre_Messagerie").html(msg);
@@ -88,7 +88,7 @@ function Longueur_minimal() {
 function DiscussionArchivage(idDiscussion) {
 
     bootbox.dialog({
-        message: "Êtes vous sûr de vouloir archiver la discussion ?<br/>Le traitement de votre demande sera considéré comme terminé.",
+        message: "Êtes vous sûr de vouloir archiver la discussion ?<br/>Le traitement de la demande sera considéré comme terminé.",
         animate: false,
         className: "myBootBox",
         title: "Confirmation de l'archivage",

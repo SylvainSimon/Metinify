@@ -16,7 +16,7 @@
                 {% if arrObjSupportDiscussions|length > 0 %}
 
                     {% for objSupportDiscussion in arrObjSupportDiscussions %}
-                        <tr onclick="Ajax_Ouverture_Ticket({{ objSupportDiscussion.id }})" class="Pointer">
+                        <tr onclick="DiscussionOpen({{ encryptForUrl(objSupportDiscussion.id) }});" class="Pointer">
                             <td>{{ objSupportDiscussion.user }}</td>
                             <td>{{ objSupportDiscussion.admin }}</td>
                             <td>{{ objSupportDiscussion.objet }}</td>

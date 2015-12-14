@@ -14,7 +14,9 @@ class MessagerieView extends \PageHelper {
 
         global $request;
 
-        $objSupportDiscussion = \Site\SiteHelper::getSupportDiscussionsRepository()->find($request->request->get("id_ticket"));
+        $idSupportDiscussion = \Encryption::decrypt($request->request->get("idSupportDiscussion"));
+        
+        $objSupportDiscussion = \Site\SiteHelper::getSupportDiscussionsRepository()->find($idSupportDiscussion);
         $objAccount = \Account\AccountHelper::getAccountRepository()->find($objSupportDiscussion->getIdCompte());
         $objAccountAdmin = \Account\AccountHelper::getAccountRepository()->find($objSupportDiscussion->getIdAdmin());
         $objSupportObjet = \Site\SiteHelper::getSupportObjetsRepository()->find($objSupportDiscussion->getIdObjet());

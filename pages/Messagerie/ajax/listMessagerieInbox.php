@@ -59,8 +59,8 @@ class listMessagerieInbox extends \ScriptHelper {
                 'dtField' => 'actions',
                 'formatter' => function( $d, $row ) {
 
-                    $varButton = '<a class="btn btn-material btn-primary btn-sm" data-featherlight="ajax" href="pages/Admin/modules/GererItemShop/GererItemShopArticlesEdit.php?mode=mod&idArticle=' . $d . '"><i class="material-icons md-icon-edit"></i></a>';
-                    $varButton .= '<a class="btn btn-material btn-danger btn-sm" onclick="DiscussionArchivage(' . \Encryption::encryptForUrl($d) . ')"><i class="material-icons md-icon-delete"></i></a>';
+                    $varButton = '<a class="btn btn-material btn-primary btn-sm" onclick="DiscussionOpen(\'' . \Encryption::encryptForUrl($d) . '\')"><i class="material-icons md-icon-message"></i></a>';
+                    $varButton .= '<a class="btn btn-material btn-warning btn-sm" onclick="DiscussionArchivage(\'' . \Encryption::encrypt($d) . '\')"><i class="material-icons md-icon-archive"></i></a>';
 
                     return '<div class="btn-toolbar">' . $varButton . "</div>";
                 }
