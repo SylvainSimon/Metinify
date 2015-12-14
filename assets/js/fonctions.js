@@ -323,6 +323,13 @@ function hideLoadingDataTable() {
     $(".box.boxDataTable .overlay").remove();
 }
 
+function displayLoadingFeatherLightBox() {
+    $(".featherlight-content .box").append('<div class="overlay"><i class="fa fa-spin material-icons md-icon-spin"></i></div>');
+}
+function hideLoadingFeatherLightBox() {
+    $(".featherlight-content .box .overlay").remove();
+}
+
 function ServeurClassyd() {
 
     $.ajax({

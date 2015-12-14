@@ -5,8 +5,9 @@
                 <tr>
                     <th>Personnage</th>
                     <th>Classe</th>
+                    <th>Classe</th>
                     <th width="30">Lvl</th>
-                    <th width="55">Action</th>
+                    <th width="55" style="text-align: right;">Action</th>
                 </tr>
 
             </thead>
@@ -15,19 +16,22 @@
 
                 {% if arrObjPlayers|length > 0 %}
 
-                    {% for objPlayers in arrObjPlayers %}
+                    {% for objPlayer in arrObjPlayers %}
                         <tr>
                             <td>
-                                {{ findIconJob(objPlayers.job)|raw }}
-                                {{ objPlayers.name }}
+                                {{ findIconJob(objPlayer.job)|raw }}
+                                {{ objPlayer.name }}
                             </td>
                             <td>
-                                {{ findSkillGroup(objPlayers.getJob, objPlayers.getSkillGroup) }}
+                                {{ include('experience_bubles.html5.twig', {'myScale': '0.25'}) }}
                             </td>
-                            <td>{{ objPlayers.getLevel }}</td>
                             <td>
-                                <a data-tooltip="Vendre ce personnage" data-featherlight="ajax" data-featherlight-variant="featherLightbox_50" href="pages/Marche/ajax/ajaxGetSaleForm.php?idPlayer={{ encryptForUrl(objPlayers.id) }}">
-                                    Vendre
+                                {{ findSkillGroup(objPlayer.getJob, objPlayer.getSkillGroup) }}
+                            </td>
+                            <td>{{ objPlayer.getLevel }}</td>
+                            <td style="text-align: right;">
+                                <a data-tooltip="Vendre ce personnage" data-featherlight="ajax" data-featherlight-variant="featherLightbox_50" href="pages/Marche/ajax/ajaxGetSaleForm.php?idPlayer={{ encryptForUrl(objPlayer.id) }}">
+                                    <i class="material-icons md-icon-gavel md-28 text-blue"></i>
                                 </a>
                             </td>
                         </tr>
@@ -45,14 +49,18 @@
         </table>
 
     </div>
-    <div class="col-lg-6">
-        - Vendez votre personnage contre des monnaies.<br/>
-        - Le personnage sera détaché du compte.<br/>
-        - Il sera remplacé par un personnage factice.<br/>
-        - Votre personnage sera sur la place du marché.<br/>
-        - Cela transfère l'équipement et l'inventaire.<br/>
-        - Le royaume du personnage est celui du compte.<br/>
-        - Le prix minimal est de 2 000 Vamonaies/Tananaies.<br/>
-        - Ce personnage ne doit pas être marié et sans guilde.<br />
+    <div class="col-lg-6" style="padding: 10px; padding-top: 0px; padding-right: 25px; padding-left: 25px;">
+        <h4>Mis en vente</h4>
+        Vendez votre personnage, accompagné de son équipement et son inventaire à une autre personne contre des monnaies.
+        <br/>
+        <br/>
+        Le personnage sera détaché de votre compte et sera remplacé par un personnage factice durant la durée de la vente.
+        <br/>
+        <br/>
+        Le royaume du personnage devient celui de l'acheteur.
+        <br/>
+        <br/>
+
+        <i style="top: 4px;position: relative;" class="material-icons md-icon-help-outline text-yellow"></i> Ce personnage ne doit pas être marié et ne doit pas se trouvé dans une guilde.
     </div>
 </div>

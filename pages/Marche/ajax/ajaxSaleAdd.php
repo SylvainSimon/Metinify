@@ -13,7 +13,7 @@ class ajaxSaleAdd extends \ScriptHelper {
         global $request;
         $em = \Shared\DoctrineHelper::getEntityManager();
 
-        $playerId = $request->request->get("id_personnage");
+        $playerId = \Encryption::decrypt($request->request->get("id_personnage"));
         $titre = $request->request->get("texte_titre");
         $description = $request->request->get("texte_description");
         $prix = trim($request->request->get("prix"));

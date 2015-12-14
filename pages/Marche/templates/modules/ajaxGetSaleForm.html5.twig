@@ -69,15 +69,11 @@
                             Description
                         </label>
                         <div class="input-group col-xs-12">
-                            <textarea id="SalePlayerDescription" class="form-control input-sm" style="min-height: 150px; resize: none;" maxlength="140" /></textarea>
+                            <textarea id="SalePlayerDescription" class="form-control input-sm" style="min-height: 100px; resize: none;" maxlength="140" /></textarea>
                         </div>
                     </div>         
                 </div>   
             </div>   
-
-            <button type="button" class="pull-right btn btn-success btn-flat" style="margin-bottom: 15px;" onclick="Mettre_En_Vente()">
-                Mettre en vente    
-            </button>
 
             <script type="text/javascript">
 
@@ -91,27 +87,25 @@
 
                         Barre_De_Statut("Mise en vente...");
                         Icone_Chargement(1);
-                        displayLoading();
+                        displayLoadingFeatherLightBox();
 
                         $.ajax({
                             type: "POST",
                             url: "pages/Marche/ajax/ajaxSaleAdd.php",
                             data: {
-                                "id_personnage": '{{ objPlayer.getId }}',
+                                "id_personnage": '{{ encrypt(objPlayer.getId) }}',
                                 "texte_titre": $("#SalePlayerTitre").val(),
                                 "texte_description": $("#SalePlayerDescription").val(),
                                 "prix": $("#SalePlayerPrice").val(),
                                 "id_devise": $("#SalePlayerDevise").val()},
                             success: function (msg) {
 
-                                hideLoading();
+                                hideLoadingFeatherLightBox();
                                 var json = JSON.parse(msg);
 
                                 if (json.result) {
 
-                                    Barre_De_Statut("Mise en vente réussi.");
-                                    Icone_Chargement(0);
-
+                                    $.featherlight.close();
                                     Ajax_Appel_Marche('pages/Marche/MarcheMySales.php');
 
                                 } else {
@@ -128,5 +122,15 @@
 
             </script>
         </form>
+    </div>
+    <div class="box-footer">
+        <div class="pull-left">
+            <input type="button" class="btn btn-danger btn-flat" onclick="$.featherlight.close();" value="Fermer" />
+        </div>
+        <div class="pull-right">
+            <button type="button" class="pull-right btn btn-success btn-flat" onclick="Mettre_En_Vente()">
+                Mettre en vente    
+            </button>
+        </div>
     </div>
 </div>
