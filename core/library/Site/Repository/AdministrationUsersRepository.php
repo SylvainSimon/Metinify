@@ -26,5 +26,4 @@ class AdministrationUsersRepository extends EntityRepository {
             return null;
         }
     }
-
 }

@@ -24,10 +24,15 @@
                 </tr>
             </table>
 
+            {% if isAdmin %}
+                <div style="padding-top: 10px; padding-left: 10px;">
+                    <a href="pages/Messagerie/DiscussionTransfert.php?idDiscussion={{ encryptForUrl(objSupportDiscussion.getId) }}" class="btn btn-sm btn-flat btn-warning" data-featherlight="ajax" style="width: 100%">Transférer</a>
+                </div>
+            {% endif %}
             {% if objSupportDiscussion.getEstArchive != true %}
                 <div style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px;">
-                    <button type="button" class="btn btn-sm btn-flat btn-danger" style="width: 100%" onclick="DiscussionArchivage('{{ encryptForUrl(objSupportDiscussion.getId) }}', 0);">
-                        Archiver
+                    <button type="button" class="btn btn-sm btn-flat btn-danger" style="width: 100%" onclick="DiscussionArchivage('{{ encrypt(objSupportDiscussion.getId) }}', 0);">
+                        Clôturer
                     </button>
                 </div>
             {% endif %}
@@ -80,37 +85,42 @@
                                 {% set jourInitial = jourMessage %}
                             {% endif %}
 
-                            {% if objSupportMessages.idCompte != objSupportDiscussion.getIdCompte %}
-                                {% if objSupportDiscussion.getIdCompte != currentAccount.getId %}
-                                    {% if objSupportMessages.idCompte != objSupportDiscussion.getIdCompte %}
-                                        {% set pseudonymeMessage = objSupportMessages.pseudoMessagerie %}
-                                    {% else %}
-                                        {% set pseudonymeMessage = objSupportMessages.login %}
-                                    {% endif %}
-                                    {{ include('messageViewRight.html5.twig', {'objSupportMessage': objSupportMessages, 'pseudonyme': pseudonymeMessage}, with_context = false) }}
-                                {% else %}
-                                    {% if objSupportMessages.idCompte != objSupportDiscussion.getIdCompte %}
-                                        {% set pseudonymeMessage = objSupportMessages.pseudoMessagerie %}
-                                    {% else %}
-                                        {% set pseudonymeMessage = objSupportMessages.login %}
-                                    {% endif %}
-                                    {{ include('messageViewLeft.html5.twig', {'objSupportMessage': objSupportMessages, 'pseudonyme': pseudonymeMessage}, with_context = false) }}
-                                {% endif %}
+                            {% if objSupportMessages.idCompte == 0 %}
+                                <div style="text-align: center; margin-bottom: 10px;" >{{ objSupportMessages.message }}</div>
                             {% else %}
-                                {% if objSupportDiscussion.getIdCompte != currentAccount.getId %}
-                                    {% if objSupportMessages.idCompte != objSupportDiscussion.getIdCompte %}
-                                        {% set pseudonymeMessage = objSupportMessages.pseudoMessagerie %}
+
+                                {% if objSupportMessages.idCompte != objSupportDiscussion.getIdCompte %}
+                                    {% if objSupportDiscussion.getIdCompte != currentAccount.getId %}
+                                        {% if objSupportMessages.idCompte != objSupportDiscussion.getIdCompte %}
+                                            {% set pseudonymeMessage = objSupportMessages.pseudoMessagerie %}
+                                        {% else %}
+                                            {% set pseudonymeMessage = objSupportMessages.login %}
+                                        {% endif %}
+                                        {{ include('messageViewRight.html5.twig', {'objSupportMessage': objSupportMessages, 'pseudonyme': pseudonymeMessage}, with_context = false) }}
                                     {% else %}
-                                        {% set pseudonymeMessage = objSupportMessages.login %}
+                                        {% if objSupportMessages.idCompte != objSupportDiscussion.getIdCompte %}
+                                            {% set pseudonymeMessage = objSupportMessages.pseudoMessagerie %}
+                                        {% else %}
+                                            {% set pseudonymeMessage = objSupportMessages.login %}
+                                        {% endif %}
+                                        {{ include('messageViewLeft.html5.twig', {'objSupportMessage': objSupportMessages, 'pseudonyme': pseudonymeMessage}, with_context = false) }}
                                     {% endif %}
-                                    {{ include('messageViewLeft.html5.twig', {'objSupportMessage': objSupportMessages, 'pseudonyme': pseudonymeMessage}, with_context = false) }}
                                 {% else %}
-                                    {% if objSupportMessages.idCompte != objSupportDiscussion.getIdCompte %}
-                                        {% set pseudonymeMessage = objSupportMessages.pseudoMessagerie %}
+                                    {% if objSupportDiscussion.getIdCompte != currentAccount.getId %}
+                                        {% if objSupportMessages.idCompte != objSupportDiscussion.getIdCompte %}
+                                            {% set pseudonymeMessage = objSupportMessages.pseudoMessagerie %}
+                                        {% else %}
+                                            {% set pseudonymeMessage = objSupportMessages.login %}
+                                        {% endif %}
+                                        {{ include('messageViewLeft.html5.twig', {'objSupportMessage': objSupportMessages, 'pseudonyme': pseudonymeMessage}, with_context = false) }}
                                     {% else %}
-                                        {% set pseudonymeMessage = objSupportMessages.login %}
+                                        {% if objSupportMessages.idCompte != objSupportDiscussion.getIdCompte %}
+                                            {% set pseudonymeMessage = objSupportMessages.pseudoMessagerie %}
+                                        {% else %}
+                                            {% set pseudonymeMessage = objSupportMessages.login %}
+                                        {% endif %}
+                                        {{ include('messageViewRight.html5.twig', {'objSupportMessage': objSupportMessages, 'pseudonyme': pseudonymeMessage}, with_context = false) }}
                                     {% endif %}
-                                    {{ include('messageViewRight.html5.twig', {'objSupportMessage': objSupportMessages, 'pseudonyme': pseudonymeMessage}, with_context = false) }}
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
@@ -145,11 +155,8 @@
         var objDiv = document.getElementById("Cadre_Fil_Discussion");
         objDiv.scrollTop = objDiv.scrollHeight;
 
-
         $('.dateEtatChange').bind('inview', function (event, isVisible) {
-
             if ($(this).hasClass("NonLu")) {
-
                 if (isVisible) {
                     $.ajax({
                         type: "POST",

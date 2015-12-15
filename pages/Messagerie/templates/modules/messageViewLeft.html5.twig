@@ -10,7 +10,7 @@
             
             {{ getFormatedDateTime(objSupportMessage.date, "H:i") }}
             
-            {% if objSupportMessage.etat == etatLu %}
+            {% if objSupportMessage.etat %}
                 <div class="dateEtatChange" style="display: inline;">
                     <i style="float: right; margin-left: 5px;" data-tooltip="Vu {{ getFormatedDateTime(objSupportMessage.dateChangementEtat) }}" class="material-icons md-icon-done text-green"></i>
                 </div>

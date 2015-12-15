@@ -81,7 +81,7 @@ class SupportMessagesRepository extends EntityRepository {
         $qb->setParameter("idAccount", $idAccount);
 
         $qb->andWhere("SupportMessagesEntity.etat = :etat");
-        $qb->setParameter("etat", \Site\SupportEtatMessageHelper::NON_LU);
+        $qb->setParameter("etat", \SupportEtatMessageHelper::NON_LU);
         $qb->andWhere("SupportDiscussionsEntity.estArchive = :estArchive");
         $qb->setParameter("estArchive", false);
 

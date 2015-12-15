@@ -21,7 +21,7 @@ class ajaxMessageIsView extends \PageHelper {
         
         if($objSupportMessage !== null){
             
-            $objSupportMessage->setEtat(\Site\SupportEtatMessageHelper::LU);
+            $objSupportMessage->setEtat(\SupportEtatMessageHelper::LU);
             $em->persist($objSupportMessage);
             $em->flush();
         }

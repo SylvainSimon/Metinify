@@ -16,7 +16,7 @@ class ajaxDiscussionArchivage extends \PageHelper {
 
         $idDiscussion = \Encryption::decrypt($request->request->get("idDiscussion"));
         $objDiscussion = \Site\SiteHelper::getSupportDiscussionsRepository()->find($idDiscussion);
-
+        
         if ($objDiscussion !== null) {
 
             if ($objDiscussion->getIdCompte() == $this->objAccount->getId() OR $objDiscussion->getIdAdmin() == $this->objAccount->getId()) {

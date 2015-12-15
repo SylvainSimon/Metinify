@@ -12,7 +12,6 @@ class GererEquipeSite extends \PageHelper {
 
     public function __construct() {
         parent::__construct();
-
         $this->VerifyTheRight(\DroitsHelper::GERER_EQUIPE_SITE);
     }
 

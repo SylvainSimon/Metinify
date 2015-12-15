@@ -22,8 +22,6 @@ class MessagerieView extends \PageHelper {
         $objSupportObjet = \Site\SiteHelper::getSupportObjetsRepository()->find($objSupportDiscussion->getIdObjet());
         
         $arrObjSupportMessages = \Site\SiteHelper::getSupportMessagesRepository()->findMessages($this->objAccount->getId(), $idSupportDiscussion);
-
-        \Debug::log($idSupportDiscussion);
         
         $this->arrayTemplate["objSupportDiscussion"] = $objSupportDiscussion;
         $this->arrayTemplate["objAccount"] = $objAccount;
@@ -31,7 +29,8 @@ class MessagerieView extends \PageHelper {
         $this->arrayTemplate["objSupportObjet"] = $objSupportObjet;
         $this->arrayTemplate["arrObjSupportMessages"] = $arrObjSupportMessages;
         $this->arrayTemplate["currentAccount"] = $this->objAccount;
-        $this->arrayTemplate["etatLu"] = \Site\SupportEtatMessageHelper::LU;
+        $this->arrayTemplate["etatLu"] = \SupportEtatMessageHelper::LU;
+        $this->arrayTemplate["isAdmin"] = $this->isAdmin;
 
         $view = $this->template->render($this->arrayTemplate);
         $this->response->setContent($view);

@@ -24,7 +24,7 @@ class ajaxMessageAdd extends \PageHelper {
         $objSupportMessage->setIdDiscussion($idDiscussion);
         $objSupportMessage->setMessage($message);
         $objSupportMessage->setDate(new \DateTime(date("Y-m-d H:i:s")));
-        $objSupportMessage->setEtat(\Site\SupportEtatMessageHelper::NON_LU);
+        $objSupportMessage->setEtat(\SupportEtatMessageHelper::NON_LU);
         $objSupportMessage->setDatechangementEtat(new \DateTime(date("Y-m-d H:i:s")));
         $objSupportMessage->setIp($this->ipAdresse);
 

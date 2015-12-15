@@ -32,8 +32,7 @@ class Messagerie extends \PageHelper {
             "isAdmin" => $this->isAdmin
         ]);
 
-        $countModerateur = \Site\SiteHelper::getSupportModerateursRepository()->countByIdAccount($this->objAccount->getId());
-        if ($countModerateur > 0) {
+        if ($this->HaveTheRight(\DroitsHelper::SUPPORT_TICKET)) {
             $this->arrayTemplate["isModerateurTicket"] = true;
         } else {
             $this->arrayTemplate["isModerateurTicket"] = false;

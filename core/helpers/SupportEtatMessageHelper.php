@@ -1,7 +1,5 @@
 <?php
 
-namespace Site;
-
 class SupportEtatMessageHelper {
 
     const LU = 1;

@@ -53,10 +53,10 @@ function DiscussionOpen(idSupportDiscussion) {
 function DiscussionArchivage(idDiscussion, withReloadDatatable) {
 
     bootbox.dialog({
-        message: "Êtes vous sûr de vouloir archiver la discussion ?<br/>Le traitement de la demande sera considéré comme terminé.",
+        message: "Êtes vous sûr de vouloir clôturer le ticket ?<br/>Le traitement de la demande sera considéré comme terminé.",
         animate: false,
         className: "myBootBox",
-        title: "Confirmation de l'archivage",
+        title: "Confirmation de la clôture",
         buttons: {
             danger: {
                 label: "Annuler",
@@ -83,6 +83,8 @@ function DiscussionArchivage(idDiscussion, withReloadDatatable) {
                                 Barre_De_Statut("Cette discussion ne vous appartient pas.");
                                 Icone_Chargement(2);
                             } else {
+
+                                toastr.success("Le ticket à été cloturé avec succès.", "Ticket clôturé");
 
                                 if (withReloadDatatable) {
                                     parent.oTable.fnStandingRedraw();

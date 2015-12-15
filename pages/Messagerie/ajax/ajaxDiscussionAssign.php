@@ -9,6 +9,11 @@ class ajaxDiscussionAssign extends \PageHelper {
     public $isProtected = true;
     public $isAllowForBlock = true;
 
+    public function __construct() {
+        parent::__construct();
+        $this->VerifyTheRight(\DroitsHelper::SUPPORT_TICKET);
+    }
+    
     public function run() {
 
         global $request;
