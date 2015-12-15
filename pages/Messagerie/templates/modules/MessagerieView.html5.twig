@@ -45,8 +45,8 @@
 
                         {% if objAccount.getId == currentAccount.getId %}
                             <div class="direct-chat-msg right"style="margin-bottom: 18px;">
-                                <div class="direct-chat-text" style="background-color: #656565 !important; margin-right: 0px;width: 100%;float: right;">
-                                    <span class="direct-chat-timestamp pull-left" style="position: absolute; right: 10px;">
+                                <div class="direct-chat-text" style="width: 75%; padding-right: 52px; background-color: #656565 !important; margin-right: 0px;float: right;">
+                                    <span class="direct-chat-timestamp pull-left" style="color: #D4D4D4; position: absolute; right: 10px;">
                                         {{ getFormatedDateTime(objSupportDiscussion.getDate, "H:i") }}
                                     </span>
                                     {{ objSupportDiscussion.getMessage|nl2br }}
@@ -62,8 +62,8 @@
                                     {% endif %}
                                 </div>
                                 <i class="material-icons md-icon-person md-36 pull-left"></i>
-                                <div class="direct-chat-text bg-blue" style="margin: 5px 0 0 40px;">
-                                    <span class="direct-chat-timestamp pull-right">
+                                <div class="direct-chat-text bg-blue" style="width: 75%; padding-right: 52px; margin: 5px 0 0 40px;">
+                                    <span class="direct-chat-timestamp pull-right" style="color: #D4D4D4;">
                                         {{ getFormatedDateTime(objSupportDiscussion.getDate, "H:i:s") }}
                                     </span>
                                     {{ objSupportDiscussion.getMessage|nl2br }}
@@ -83,8 +83,8 @@
                             {% if objSupportMessages.getIdCompte == currentAccount.getId %}
 
                                 <div class="direct-chat-msg right" id="Message_{{ objSupportMessages.getId }}" style="margin-bottom: 18px;">
-                                    <div class="direct-chat-text" style="background-color: #656565 !important; margin-right: 0px;width: 100%;float: right;">
-                                        <span class="direct-chat-timestamp pull-left" style="position: absolute; right: 10px;">
+                                    <div class="direct-chat-text" style="width: 75%; padding-right: 52px; background-color: #656565 !important; margin-right: 0px;float: right;">
+                                        <span class="direct-chat-timestamp pull-left" style="color: #D4D4D4; position: absolute; right: 10px;">
                                             {{ getFormatedDateTime(objSupportMessages.getDate, "H:i") }}
                                             {% if objSupportMessages.getEtat == etatLu %}
                                                 <div class="dateEtatChange" style="display: inline;">
@@ -111,8 +111,8 @@
                                     </div>
 
                                     <i class="material-icons md-icon-person md-36 pull-left"></i>
-                                    <div class="direct-chat-text bg-blue" style="margin: 5px 0 0 40px;">
-                                        <span class="direct-chat-timestamp pull-right" style="position: absolute; right: 10px;">
+                                    <div class="direct-chat-text bg-blue" style="width: 75%; padding-right: 52px; margin: 5px 0 0 40px;">
+                                        <span class="direct-chat-timestamp pull-right" style="color: #D4D4D4; position: absolute; right: 10px;">
                                             {{ getFormatedDateTime(objSupportMessages.getDate, "H:i") }}
                                             {% if objSupportMessages.getEtat == etatLu %}
                                                 <div class="dateEtatChange" style="display: inline;">
@@ -196,7 +196,7 @@
 
                         var json = JSON.parse(msg);
 
-                        $("#Cadre_Fil_Discussion").append('<div class="direct-chat-msg right" id="Message_' + json.id + '" style="margin-bottom: 18px;"><div class="direct-chat-text" style="background-color: #656565 !important; margin-right: 0px;width: 100%;float: right; color: #ffffff;"><span class="direct-chat-timestamp pull-left" style="position: absolute; right: 10px;">' + json.date + '</span>' + json.message + '</div></div>');
+                        $("#Cadre_Fil_Discussion").append('<div class="direct-chat-msg right" id="Message_' + json.id + '" style="margin-bottom: 18px;"><div class="direct-chat-text" style="background-color: #656565 !important; margin-right: 0px;width: 100%;float: right; color: #ffffff;"><span class="direct-chat-timestamp pull-left" style="color: #D4D4D4; position: absolute; right: 10px;">' + json.date + '</span>' + json.message + '</div></div>');
 
                         $("#Contenue_Reponse_Ticket").val("");
                         $("#Cadre_Fil_Discussion").animate({scrollTop: $("#Cadre_Fil_Discussion")[0].scrollHeight}, 300);

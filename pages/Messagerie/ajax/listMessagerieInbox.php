@@ -86,7 +86,8 @@ class listMessagerieInbox extends \ScriptHelper {
                 ->leftJoin("\Account\Entity\Account", "AccountEntityUser", "WITH", "AccountEntityUser.id = SupportDiscussionsEntity.idCompte")
                 ->leftJoin("\Site\Entity\SupportMessages", "SupportMessagesEntity", "WITH", "SupportMessagesEntity.idDiscussion = SupportDiscussionsEntity.id AND SupportMessagesEntity.etat = " . \Site\SupportEtatMessageHelper::NON_LU . " AND SupportMessagesEntity.idCompte != " . $this->objAccount->getId() . "")
                 ->andWhere("SupportDiscussionsEntity.idCompte = " . $this->objAccount->getId() . " OR SupportDiscussionsEntity.idAdmin = " . $this->objAccount->getId() . "")
-                ->andWhere("SupportDiscussionsEntity.estArchive = 0");
+                ->andWhere("SupportDiscussionsEntity.estArchive = 0")
+                ->groupBy("SupportDiscussionsEntity.id");
 
         $datatable->getResult()->toJson();
     }
