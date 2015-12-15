@@ -50,10 +50,11 @@ class payement extends \PageHelper {
         // STEP 6 : Generating URL
         $queryParameters['api_sig'] = $signature;
         $url = API_BASE_URL . '/onetime/pricing?' . http_build_query($queryParameters);
+        \Debug::log(time());
 
         $data = file_get_contents($url);
         $dataDecode = json_decode($data);
-
+        
         foreach ($dataDecode->response as $response) {
             if ($response->code == 0 and $response->message == "OK") {
                 $paymentResult = true;
@@ -62,7 +63,7 @@ class payement extends \PageHelper {
         }
 
         $objAccount = \Account\AccountHelper::getAccountRepository()->find($request->query->get("data"));
-
+        
         if ($paymentResult) {
 
             $codeResult = "Réussi";
@@ -88,6 +89,17 @@ class payement extends \PageHelper {
             $objLogsRechargement->setIp($this->ipAdresse);
             $em->persist($objLogsRechargement);
             $em->flush();
+            
+            $template = $this->objTwig->loadTemplate("emailItemShopRechargement.html5.twig");
+            $result = $template->render([
+                "compte" => $objAccount->getLogin(),
+                "system" => "Hipay",
+                "nombre" => $config["item_shop"]["rechargement"]["hipay"]["cash"],
+                "devise" => $config["item_shop"]["rechargement"]["hipay"]["devise"],
+                "identifiantRechargement" => $objLogsRechargement->getId()
+            ]);
+            $subject = 'VamosMT2 - Rechargement de compte';
+            \EmailHelper::sendEmail($objAccount->getEmail(), $subject, $result);
 
             if ($this->isConnected) {
                 header('Location: ../../ItemShopRechargementTerm.php?result=1&id=' . $objLogsRechargement->getId() . '&isConnected=1');

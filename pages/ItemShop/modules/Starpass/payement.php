@@ -92,6 +92,17 @@ class payement extends \PageHelper {
             $objLogsRechargement->setIp($this->ipAdresse);
             $em->persist($objLogsRechargement);
             $em->flush();
+            
+            $template = $this->objTwig->loadTemplate("emailItemShopRechargement.html5.twig");
+            $result = $template->render([
+                "compte" => $objAccount->getLogin(),
+                "system" => "StarPass",
+                "nombre" => $config["item_shop"]["rechargement"]["starpass"]["cash"],
+                "devise" => $config["item_shop"]["rechargement"]["starpass"]["devise"],
+                "identifiantRechargement" => $objLogsRechargement->getId()
+            ]);
+            $subject = 'VamosMT2 - Rechargement de compte';
+            \EmailHelper::sendEmail($objAccount->getEmail(), $subject, $result);
 
             if ($this->isConnected) {
                 header('Location: ../../ItemShopRechargementTerm.php?result=1&id=' . $objLogsRechargement->getId() . '&isConnected=1');
