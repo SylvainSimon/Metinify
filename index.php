@@ -68,8 +68,6 @@ class IndexWebsite extends PageHelper {
                 <?php } ?>
 
                 <script src="assets/js/Ajax.js" type='text/javascript'></script>
-                <script src="assets/js/Ajax_Connexion.js" type='text/javascript'></script>
-                <script src="assets/js/Ajax_Classement.js" type="text/javascript"></script>
 
                 <script src="assets/js/jquery.contextMenu/jquery.contextMenu.min.js" type='text/javascript'></script>
                 <script src="assets/js/jquery.countdown/jquery.countdown.min.js" type='text/javascript'></script>
