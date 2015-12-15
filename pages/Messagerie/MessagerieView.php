@@ -20,6 +20,7 @@ class MessagerieView extends \PageHelper {
         $objAccount = \Account\AccountHelper::getAccountRepository()->find($objSupportDiscussion->getIdCompte());
         $objAccountAdmin = \Account\AccountHelper::getAccountRepository()->find($objSupportDiscussion->getIdAdmin());
         $objSupportObjet = \Site\SiteHelper::getSupportObjetsRepository()->find($objSupportDiscussion->getIdObjet());
+        
         $arrObjSupportMessages = \Site\SiteHelper::getSupportMessagesRepository()->findMessages($this->objAccount->getId(), $idSupportDiscussion);
 
         \Debug::log($idSupportDiscussion);

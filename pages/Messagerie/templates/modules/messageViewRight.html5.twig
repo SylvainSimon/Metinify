@@ -1,0 +1,21 @@
+<div class="direct-chat-msg right" id="Message_{{ objSupportMessage.id }}" style="margin-bottom: 18px;">
+
+    <div class="direct-chat-info clearfix">
+        <span class="direct-chat-name pull-right">{{ pseudonyme }}</span>
+    </div>
+
+    <div class="direct-chat-text" style="width: 75%; padding-right: 52px; background-color: #656565 !important; margin-right: 0px;float: right;">
+        <span class="direct-chat-timestamp pull-left" style="color: #D4D4D4; position: absolute; right: 10px;">
+            {{ getFormatedDateTime(objSupportMessage.date, "H:i") }}
+            {% if objSupportMessage.etat == etatLu %}
+                <div class="dateEtatChange" style="display: inline;">
+                    <i style="float: right; margin-left: 5px;" data-tooltip="Vu {{ getFormatedDateTime(objSupportMessage.dateChangementEtat) }}" class="material-icons md-icon-done text-green"></i>
+                </div>
+            {% else %}
+                <div class="dateEtatChange" style="display: inline;">
+                </div>
+            {% endif %}
+        </span>
+        {{ objSupportMessage.message|nl2br }}
+    </div>
+</div>

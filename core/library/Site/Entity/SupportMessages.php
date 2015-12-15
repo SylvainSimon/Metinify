@@ -61,7 +61,7 @@ class SupportMessages {
      *
      * @ORM\Column(name="dateChangementEtat", type="datetime", nullable=false)
      */
-    private $datechangementetat = '0000-00-00 00:00:00';
+    private $dateChangementEtat = '0000-00-00 00:00:00';
 
     /**
      * @var integer
@@ -190,25 +190,25 @@ class SupportMessages {
     }
 
     /**
-     * Set datechangementetat
+     * Set dateChangementEtat
      *
-     * @param \DateTime $datechangementetat
+     * @param \DateTime $dateChangementEtat
      *
      * @return SupportMessages
      */
-    public function setDatechangementEtat($datechangementetat) {
-        $this->datechangementetat = $datechangementetat;
+    public function setDatechangementEtat($dateChangementEtat) {
+        $this->dateChangementEtat = $dateChangementEtat;
 
         return $this;
     }
 
     /**
-     * Get datechangementetat
+     * Get dateChangementEtat
      *
      * @return \DateTime
      */
     public function getDatechangementEtat() {
-        return $this->datechangementetat;
+        return $this->dateChangementEtat;
     }
 
     /**

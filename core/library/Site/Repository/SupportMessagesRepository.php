@@ -10,9 +10,19 @@ class SupportMessagesRepository extends EntityRepository {
 
         $qb = $this->_em->createQueryBuilder();
 
-        $qb->select("SupportMessagesEntity");
+        $qb->select(""
+                . "SupportMessagesEntity.id, "
+                . "SupportMessagesEntity.idCompte, "
+                . "SupportMessagesEntity.date, "
+                . "SupportMessagesEntity.etat, "
+                . "SupportMessagesEntity.dateChangementEtat, "
+                . "SupportMessagesEntity.message,"
+                . "AccountEntity.login,"
+                . "AccountEntity.pseudoMessagerie"
+                . "");
         $qb->from("\Site\Entity\SupportMessages", "SupportMessagesEntity");
         $qb->innerJoin("\Site\Entity\SupportDiscussions", "SupportDiscussionsEntity", "WITH", "SupportDiscussionsEntity.id = SupportMessagesEntity.idDiscussion");
+        $qb->leftJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = SupportMessagesEntity.idCompte");
         $qb->where("SupportDiscussionsEntity.id = :idDiscussion");
         $qb->andWhere("SupportDiscussionsEntity.idCompte = :idAccount OR SupportDiscussionsEntity.idAdmin = :idAccount");
         $qb->setParameter("idDiscussion", $idDiscussion);
@@ -21,7 +31,7 @@ class SupportMessagesRepository extends EntityRepository {
         $qb->orderBy("SupportMessagesEntity.date", "ASC");
 
         try {
-            return $qb->getQuery()->getResult();
+            return $qb->getQuery()->getArrayResult();
         } catch (\Doctrine\ORM\NoResultException $e) {
             return 0;
         }
