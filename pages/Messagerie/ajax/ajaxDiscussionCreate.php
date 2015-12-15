@@ -14,8 +14,8 @@ class ajaxDiscussionCreate extends \PageHelper {
         global $request;
         $em = \Shared\DoctrineHelper::getEntityManager();
 
-        $idObjet = $request->request->get("Nouveau_Ticket_Objet");
-        $message = $request->request->get("Nouveau_Ticket_Message");
+        $idObjet = $request->request->get("discussionObjet");
+        $message = $request->request->get("discussionMessage");
         
         $objSupportDiscussion = new \Site\Entity\SupportDiscussions();
         $objSupportDiscussion->setIdCompte($this->objAccount->getId());
@@ -28,7 +28,7 @@ class ajaxDiscussionCreate extends \PageHelper {
         $em->persist($objSupportDiscussion);
         $em->flush();
         
-        echo "1";
+        echo json_encode(["result" => 1]);
     }
 
 }

@@ -77,14 +77,6 @@ function Fonction_Remplacement(montexte) {
 
 }
 
-function Longueur_minimal() {
-    if (document.getElementById('Textarea_Nouveau_Ticket').value.length < 50) {
-        Longueur_Minimal = 1;
-    } else {
-        Longueur_Minimal = 0;
-    }
-}
-
 function DiscussionArchivage(idDiscussion, withReloadDatatable) {
 
     bootbox.dialog({
