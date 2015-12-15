@@ -441,7 +441,7 @@ class ajaxArticleBuy extends \ScriptHelper {
         $objLogAchats->setCompte($this->objAccount->getLogin());
         $objLogAchats->setVnumItem($objItemshop->getIdItem());
         if ($objItemshop->getNbItem() > 1) {
-            $objLogAchats->setItem($objItemshop->getNameItem() . " (x" . $objItemshop->getNbItem() . ")");
+            $objLogAchats->setItem($objItemshop->getNameItem() . " (x" . $nombreItemBuy . ")");
         } else {
             $objLogAchats->setItem($objItemshop->getNameItem());
         }
@@ -454,6 +454,19 @@ class ajaxArticleBuy extends \ScriptHelper {
 
         $em->persist($objLogAchats);
         $em->flush();
+
+        if ($arrResult["result"] == 1) {
+            $template = $this->objTwig->loadTemplate("ItemShopArticleBuy.html5.twig");
+            $result = $template->render([
+                "compte" => $this->objAccount->getLogin(),
+                "article" => $objItemshop->getNameItem(),
+                "nombre" => $nombreItemBuy,
+                "prix" => $prixTotal,
+                "identifiantAchat" => $objLogAchats->getId(),
+            ]);
+            $subject = 'VamosMT2 - Achat de ' . $objItemshop->getNameItem();
+            \EmailHelper::sendEmail($this->objAccount->getEmail(), $subject, $result);
+        }
 
         $arrResult["nombreBuy"] = $nombreItemBuy;
         $arrResult["idTransaction"] = $objLogAchats->getId();

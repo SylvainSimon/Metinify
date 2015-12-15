@@ -93,7 +93,7 @@ function DiscussionArchivage(idDiscussion, withReloadDatatable) {
                             } else {
                                 
                                 popBootbox(json.message);
-                                Barre_De_Statut("Cette discussion ne vous appartient pas.");
+                                Barre_De_Statut(json.message);
                                 Icone_Chargement(2);
                             }
                         }
