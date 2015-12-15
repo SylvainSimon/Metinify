@@ -462,6 +462,7 @@ class ajaxArticleBuy extends \ScriptHelper {
                 "article" => $objItemshop->getNameItem(),
                 "nombre" => $nombreItemBuy,
                 "prix" => $prixTotal,
+                "devise" => $ID_Monnaie,
                 "identifiantAchat" => $objLogAchats->getId(),
             ]);
             $subject = 'VamosMT2 - Achat de ' . $objItemshop->getNameItem();
