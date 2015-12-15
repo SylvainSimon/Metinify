@@ -36,7 +36,7 @@ echo $view;
 
 <div class="box box-default flat">
     <div class="box-body no-padding">
-        <a onclick="$.featherlight({ajax: 'trailer.php', variant: 'trailerVideo'});">
+        <a onclick="$.featherlight({ajax: 'pages/_Home/trailer.php', variant: 'trailerVideo'});">
 
             <img class="ImageVideoNouveaute" src="./images/trailer.png" />
         </a>
