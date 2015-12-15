@@ -431,7 +431,7 @@ function Definition_Compteurs_VamoNaies(nombreCashCible) {
     }
 }
 
-function Distribuer_Monnaies() {
+function DistribuerMonnaiesVote() {
 
     $.ajax({
         type: "POST",
@@ -439,13 +439,11 @@ function Distribuer_Monnaies() {
         success: function (msg) {
             if (msg != "") {
                 Fonction_Reteneuse_Vamonaies(msg);
-                Barre_De_Statut("Monnaies recu avec succès.");
-                Icone_Chargement(0);
+                $("#overlayMt2").css('display', "none");
+                popBootbox("Les monnaies de votre vote ont bien été crédités.", "Vote pris en compte");
             }
         }
     });
-    return false;
-
 }
 
 $(document).ready(function () {
