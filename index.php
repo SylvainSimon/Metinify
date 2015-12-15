@@ -73,7 +73,6 @@ class IndexWebsite extends PageHelper {
 
                 <script src="assets/js/jquery.contextMenu/jquery.contextMenu.min.js" type='text/javascript'></script>
                 <script src="assets/js/jquery.countdown/jquery.countdown.min.js" type='text/javascript'></script>
-                <script src="assets/js/jquery.fancybox/jquery.fancybox.min.js" type='text/javascript'></script>
                 <script src="assets/js/bootbox/bootbox.min.js" type='text/javascript'></script>
 
                 <link href="assets/js/datatables/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />

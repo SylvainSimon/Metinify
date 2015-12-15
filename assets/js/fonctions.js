@@ -436,78 +436,8 @@ function Distribuer_Monnaies() {
 }
 
 $(document).ready(function () {
-    $(".fancybox_Rechargement").fancybox({
-        padding: 0,
-        closeBtn: false,
-        autoSize: false,
-        scrolling: 'no',
-        scrollOutside: false,
-        fitToView: true,
-        autoWidth: true,
-        height: 450,
-        closeClick: false,
-        topRatio: 0.5,
-        openEffect: 'elastic',
-        closeEffect: 'elastic',
-        openSpeed: 400,
-        closeSpeed: 200
-    });
-
-    $(".fancybox_Marche").fancybox({
-        padding: 0,
-        closeBtn: false,
-        autoSize: false,
-        scrollOutside: false,
-        fitToView: true,
-        autoWidth: false,
-        height: "auto",
-        maxHeight: "80%",
-        width: 800,
-        closeClick: false,
-        topRatio: 0.50,
-        openEffect: 'elastic',
-        closeEffect: 'elastic',
-        openSpeed: 400,
-        closeSpeed: 200
-    });
-
-    $(".fancybox_News").fancybox({
-        padding: 0,
-        closeBtn: false,
-        autoSize: false,
-        scrollOutside: false,
-        fitToView: true,
-        autoWidth: false,
-        height: "auto",
-        maxHeight: "80%",
-        width: 800,
-        closeClick: false,
-        openEffect: 'elastic',
-        closeEffect: 'elastic',
-        openSpeed: 400,
-        closeSpeed: 200
-    });
-
-    $(".fancybox_Trailer").fancybox({
-        minWidth: 1200,
-        minHeight: 521,
-        maxHeight: 521,
-        padding: 0,
-        closeBtn: false,
-        scrolling: 'no',
-        scrollOutside: false,
-        fitToView: true,
-        autoSize: false,
-        closeClick: false,
-        openEffect: 'elastic',
-        closeEffect: 'elastic',
-        openSpeed: 400,
-        closeSpeed: 200
-    });
-
     Barre_De_Statut("Chargement terminé");
     Icone_Chargement(0);
-
 });
 
 function Barre_De_Statut(statut) {

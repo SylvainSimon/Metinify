@@ -138,25 +138,6 @@ class Commandes extends \PageHelper {
 
                         }
 
-                        $(document).ready(function () {
-                            $(".fancybox").fancybox({
-                                minWidth: 800,
-                                minHeight: 540,
-                                maxHeight: 540,
-                                padding: 0,
-                                closeBtn: false,
-                                scrolling: 'no',
-                                scrollOutside: false,
-                                fitToView: true,
-                                autoSize: false,
-                                closeClick: false,
-                                openEffect: 'elastic',
-                                closeEffect: 'elastic',
-                                openSpeed: 400,
-                                closeSpeed: 200
-                            });
-                        });
-
                     </script>
 
                 <?php } else { ?>
