@@ -52,7 +52,7 @@ class ajaxMessageAdd extends \PageHelper {
 
             echo json_encode([
                 "id" => $objSupportMessage->getId(),
-                "date" => \DateTimeHelper::dateTimeToFormatedString($objSupportMessage->getDate()),
+                "date" => \DateTimeHelper::dateTimeToFormatedString($objSupportMessage->getDate(), "H:i"),
                 "message" => nl2br($objSupportMessage->getMessage())
             ]);
         } catch (Exception $ex) {

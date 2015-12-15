@@ -50,27 +50,6 @@ function DiscussionOpen(idSupportDiscussion) {
 
 }
 
-function Fonction_Remplacement(montexte) {
-
-    Barre_De_Statut("Vérification des mots utilisés...");
-    Icone_Chargement(1);
-
-    $.ajax({
-        type: "POST",
-        url: "pages/Messagerie/ajax/ajaxVerificationBadWord.php",
-        data: "Message_Texte=" + montexte,
-        success: function (msg) {
-
-            Barre_De_Statut("Chargement terminé.");
-            Icone_Chargement(0);
-
-            $("#Textarea_Nouveau_Ticket").val == "";
-            $("#Textarea_Nouveau_Ticket").val(msg);
-        }
-    });
-
-}
-
 function DiscussionArchivage(idDiscussion, withReloadDatatable) {
 
     bootbox.dialog({
@@ -118,41 +97,6 @@ function DiscussionArchivage(idDiscussion, withReloadDatatable) {
             }
         }
     });
-}
-
-function Assignation_Ticket(numero_discussion) {
-
-    Barre_De_Statut("Assignation et déplacement du ticket...");
-    Icone_Chargement(1);
-    displayLoading();
-
-    $.ajax({
-        type: "POST",
-        url: "pages/Messagerie/ajax/ajaxDiscussionAssign.php",
-        data: "Numero_Discussion=" + numero_discussion,
-        success: function (msg) {
-
-            if (msg == "NULL") {
-
-                Barre_De_Statut("Le message n'existe plus.");
-                Icone_Chargement(2);
-                hideLoading();
-
-            } else {
-                hideLoading();
-                DiscussionOpen(msg);
-            }
-        }
-    });
-}
-
-function Objet_selectionner() {
-    if (document.getElementById('Selecteur_Objet_Ticket').value != "--") {
-        Objet_Selectionner = 0;
-    } else {
-        Objet_Selectionner = 1
-    }
-
 }
 
 function verifPseudo() {
@@ -238,8 +182,7 @@ function VerificationFormulairePseudo() {
                 }
             }
         });
-        return false;
-
+        
     } else {
 
         messagederreur = "";
@@ -253,9 +196,6 @@ function VerificationFormulairePseudo() {
             verifPseudo();
         }
 
-        alert(messagederreur);
-
         messagederreur = "";
-
     }
 }

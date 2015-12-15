@@ -25,7 +25,7 @@
             <tbody>
 
                 {% if arrObjSupportDiscussions|length > 0 %}
-                    
+
                     {% for objSupportDiscussion in arrObjSupportDiscussions %}
                         <tr onclick="Assignation_Ticket({{ objSupportDiscussion.id }});" class="pointer">
                             <td>{{ objSupportDiscussion.objet }}</td>
@@ -35,7 +35,7 @@
                             <td>{{ long2ip(objSupportDiscussion.ip) }}</td>
                         </tr>
                     {% endfor %}
-                    
+
                 {% else %}
                 <td colspan="6">Aucun messages en attente.</td>
             {% endif %}
@@ -43,3 +43,31 @@
         </table>
     </div>
 </div>
+
+<script type="text/javascript">
+    function Assignation_Ticket(numero_discussion) {
+
+        Barre_De_Statut("Assignation et déplacement du ticket...");
+        Icone_Chargement(1);
+        displayLoading();
+
+        $.ajax({
+            type: "POST",
+            url: "pages/Messagerie/ajax/ajaxDiscussionAssign.php",
+            data: "Numero_Discussion=" + numero_discussion,
+            success: function (msg) {
+
+                if (msg == "NULL") {
+
+                    Barre_De_Statut("Le message n'existe plus.");
+                    Icone_Chargement(2);
+                    hideLoading();
+
+                } else {
+                    hideLoading();
+                    DiscussionOpen(msg);
+                }
+            }
+        });
+    }
+</script>

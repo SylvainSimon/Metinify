@@ -1033,3 +1033,7 @@ iframe.featherlight-inner{
 .lineGreen td{
     background: #19563A !important;
 }
+
+.direct-chat-text:after, .direct-chat-text:before{
+    content: none !important;
+}

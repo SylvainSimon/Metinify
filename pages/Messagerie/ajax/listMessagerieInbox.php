@@ -29,7 +29,7 @@ class listMessagerieInbox extends \ScriptHelper {
                 }
             ),
             array(
-                'dbField' => 'AccountEntityUser.pseudoMessagerie',
+                'dbField' => 'AccountEntityUser.login',
                 'dtField' => 'user',
             ),
             array(

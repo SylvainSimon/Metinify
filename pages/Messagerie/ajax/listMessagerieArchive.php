@@ -29,7 +29,7 @@ class listMessagerieArchive extends \ScriptHelper {
                 }
             ),
             array(
-                'dbField' => 'AccountEntityUser.pseudoMessagerie',
+                'dbField' => 'AccountEntityUser.login',
                 'dtField' => 'user',
             ),
             array(

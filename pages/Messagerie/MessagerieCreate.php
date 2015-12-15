@@ -12,17 +12,6 @@ class MessagerieCreate extends \PageHelper {
 
     public function run() {
 
-        global $session;
-
-        $arrObjBanword = \Player\PlayerHelper::getBanwordRepository()->findAll();
-        if (count($arrObjBanword) > 0) {
-            $Tableau_Mots_Bannis = [];
-            foreach ($arrObjBanword AS $objBanword) {
-                $Tableau_Mots_Bannis[] = $objBanword->getWord();
-            }
-        }
-        $session->set("Tableau_Mots_Bannis", $Tableau_Mots_Bannis);
-
         $nombreDiscussionOuverte = \Site\SiteHelper::getSupportDiscussionsRepository()->countDiscussionActiveByIdAccount($this->objAccount->getId());
         $this->arrayTemplate["nombreDiscussionOuverte"] = $nombreDiscussionOuverte;
         

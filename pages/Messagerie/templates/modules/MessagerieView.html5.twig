@@ -5,7 +5,6 @@
     <div class="row">
         <div class="col-lg-3">
 
-
             <table class="table table-condensed" style="margin-bottom: 0px; border-collapse: collapse;">
                 <tr>
                     <td style="border-top: 0px;">Gérant</td>
@@ -40,41 +39,33 @@
                 <div class="box-body" style="min-height: 400px;">
                     <div class="direct-chat-messages" id="Cadre_Fil_Discussion" style="min-height: 400px;">
 
+                        {% set jourInitial = objSupportDiscussion.getDate|date("d/m/Y", false) %}
+
+                        <div style="text-align: center;">{{ jourInitial }}</div>
+
                         {% if objAccount.getId == currentAccount.getId %}
                             <div class="direct-chat-msg right"style="margin-bottom: 18px;">
-                                <div class="direct-chat-info clearfix">
-
-                                    {% if objAccount.getId == currentAccount.getId %}
-                                        <span class="direct-chat-name pull-right">{{ objAccountAdmin.getPseudoMessagerie }}</span>
-                                    {% else %}
-                                        <span class="direct-chat-name pull-right">{{ objAccount.getPseudoMessagerie }}</span>
-                                    {% endif %}
-
-                                    <span class="direct-chat-timestamp pull-left">
-                                        {{ getFormatedDateTime(objSupportDiscussion.getDate) }}
+                                <div class="direct-chat-text" style="background-color: #656565 !important; margin-right: 0px;width: 100%;float: right;">
+                                    <span class="direct-chat-timestamp pull-left" style="position: absolute; right: 10px;">
+                                        {{ getFormatedDateTime(objSupportDiscussion.getDate, "H:i") }}
                                     </span>
-                                </div>
-                                <i class="material-icons md-icon-person md-38 pull-right"></i>
-                                <div class="direct-chat-text bg-red">
                                     {{ objSupportDiscussion.getMessage|nl2br }}
                                 </div>
                             </div>
                         {% else %}
                             <div class="direct-chat-msg"style="margin-bottom: 18px;">
                                 <div class="direct-chat-info clearfix">
-
                                     {% if objAccount.getId == currentAccount.getId %}
                                         <span class="direct-chat-name pull-left">{{ objAccountAdmin.getPseudoMessagerie }}</span>
                                     {% else %}
-                                        <span class="direct-chat-name pull-left">{{ objAccount.getPseudoMessagerie }}</span>
+                                        <span class="direct-chat-name pull-left">{{ objAccount.getLogin }}</span>
                                     {% endif %}
-
-                                    <span class="direct-chat-timestamp pull-right">
-                                        {{ getFormatedDateTime(objSupportDiscussion.getDate) }}
-                                    </span>
                                 </div>
-                                <i class="material-icons md-icon-person md-38 pull-left"></i>
-                                <div class="direct-chat-text bg-blue">
+                                <i class="material-icons md-icon-person md-36 pull-left"></i>
+                                <div class="direct-chat-text bg-blue" style="margin: 5px 0 0 40px;">
+                                    <span class="direct-chat-timestamp pull-right">
+                                        {{ getFormatedDateTime(objSupportDiscussion.getDate, "H:i:s") }}
+                                    </span>
                                     {{ objSupportDiscussion.getMessage|nl2br }}
                                 </div>
                             </div>
@@ -82,25 +73,28 @@
 
                         {% for objSupportMessages in arrObjSupportMessages %}
 
+                            {% set jourMessage = objSupportMessages.getDate|date("d/m/Y", false) %}
+                            {% if jourMessage == jourInitial %}
+                            {% else %}
+                                <div style="text-align: center;">{{ jourMessage }}</div>
+                                {% set jourInitial = jourMessage %}
+                            {% endif %}
+
                             {% if objSupportMessages.getIdCompte == currentAccount.getId %}
 
                                 <div class="direct-chat-msg right" id="Message_{{ objSupportMessages.getId }}" style="margin-bottom: 18px;">
-                                    <div class="direct-chat-info clearfix">
-                                        <span class="direct-chat-name pull-right">{{ currentAccount.getPseudoMessagerie }}</span>
-                                        <span class="direct-chat-timestamp pull-left">
-                                            {{ getFormatedDateTime(objSupportMessages.getDate) }}
-
+                                    <div class="direct-chat-text" style="background-color: #656565 !important; margin-right: 0px;width: 100%;float: right;">
+                                        <span class="direct-chat-timestamp pull-left" style="position: absolute; right: 10px;">
+                                            {{ getFormatedDateTime(objSupportMessages.getDate, "H:i") }}
                                             {% if objSupportMessages.getEtat == etatLu %}
-                                                <div class="dateEtatChange" style="display: inline;"><i data-tooltip="Vu {{ getFormatedDateTime(objSupportMessages.getDatechangementEtat) }}" class="material-icons md-icon-done text-green"></i>
+                                                <div class="dateEtatChange" style="display: inline;">
+                                                    <i style="float: right; margin-left: 5px;" data-tooltip="Vu {{ getFormatedDateTime(objSupportMessages.getDatechangementEtat) }}" class="material-icons md-icon-done text-green"></i>
                                                 </div>
                                             {% else %}
                                                 <div class="dateEtatChange" style="display: inline;">
                                                 </div>
                                             {% endif %}
                                         </span>
-                                    </div>
-                                    <i class="material-icons md-icon-person md-38 pull-right"></i>
-                                    <div class="direct-chat-text  bg-red">
                                         {{ objSupportMessages.getMessage|nl2br }}
                                     </div>
                                 </div>
@@ -109,28 +103,26 @@
                                 <div class="direct-chat-msg" id="Message_{{ objSupportMessages.getId }}" style="margin-bottom: 18px;">
 
                                     <div class="direct-chat-info clearfix">
-
                                         {% if objAccount.getId == currentAccount.getId %}
                                             <span class="direct-chat-name pull-left">{{ objAccountAdmin.getPseudoMessagerie }}</span>
                                         {% else %}
-                                            <span class="direct-chat-name pull-left">{{ objAccount.getPseudoMessagerie }}</span>
+                                            <span class="direct-chat-name pull-left">{{ objAccount.getLogin }}</span>
                                         {% endif %}
+                                    </div>
 
-                                        <span class="direct-chat-timestamp pull-right">
-                                            {{ getFormatedDateTime(objSupportMessages.getDate) }}
-
+                                    <i class="material-icons md-icon-person md-36 pull-left"></i>
+                                    <div class="direct-chat-text bg-blue" style="margin: 5px 0 0 40px;">
+                                        <span class="direct-chat-timestamp pull-right" style="position: absolute; right: 10px;">
+                                            {{ getFormatedDateTime(objSupportMessages.getDate, "H:i") }}
                                             {% if objSupportMessages.getEtat == etatLu %}
-                                                <div class="dateEtatChange" style="display: inline;"><i data-tooltip="Vu {{ getFormatedDateTime(objSupportMessages.getDatechangementEtat) }}" class="material-icons md-icon-done text-green"></i>
+                                                <div class="dateEtatChange" style="display: inline;">
+                                                    <i style="float: right; margin-left: 5px;" data-tooltip="Vu {{ getFormatedDateTime(objSupportMessages.getDatechangementEtat) }}" class="material-icons md-icon-done text-green"></i>
                                                 </div>
                                             {% else %}
                                                 <div class="dateEtatChange NonLu" style="display: inline;">
                                                 </div>
                                             {% endif %}
                                         </span>
-                                    </div>
-
-                                    <i class="material-icons md-icon-person md-38 pull-left"></i>
-                                    <div class="direct-chat-text bg-blue">
                                         {{ objSupportMessages.getMessage|nl2br }}
                                     </div>
                                 </div>
@@ -176,7 +168,7 @@
                     $.ajax({
                         type: "POST",
                         url: "pages/Messagerie/ajax/ajaxMessageIsView.php",
-                        data: "idMessage=" + $(this).parent(".direct-chat-timestamp").parent(".direct-chat-info").parent(".direct-chat-msg").attr("id"),
+                        data: "idMessage=" + $(this).parent(".direct-chat-timestamp").parent(".direct-chat-text").parent(".direct-chat-msg").attr("id"),
                         success: function (etat) {
 
                             Actualisation_Messages_Sans_Boucle();
@@ -204,7 +196,7 @@
 
                         var json = JSON.parse(msg);
 
-                        $("#Cadre_Fil_Discussion").append('<div class="direct-chat-msg right" id="Message_' + json.id + '" style="margin-bottom: 18px;"><div class="direct-chat-info clearfix"><span class="direct-chat-name pull-right">{{ currentAccount.getPseudoMessagerie }}</span><span class="direct-chat-timestamp pull-left">' + json.date + '</span></div><i class="material-icons md-icon-person md-38 pull-right"></i><div class="direct-chat-text bg-red">' + json.message + '</div></div>');
+                        $("#Cadre_Fil_Discussion").append('<div class="direct-chat-msg right" id="Message_' + json.id + '" style="margin-bottom: 18px;"><div class="direct-chat-text" style="background-color: #656565 !important; margin-right: 0px;width: 100%;float: right; color: #ffffff;"><span class="direct-chat-timestamp pull-left" style="position: absolute; right: 10px;">' + json.date + '</span>' + json.message + '</div></div>');
 
                         $("#Contenue_Reponse_Ticket").val("");
                         $("#Cadre_Fil_Discussion").animate({scrollTop: $("#Cadre_Fil_Discussion")[0].scrollHeight}, 300);
