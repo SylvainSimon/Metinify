@@ -30,7 +30,7 @@ class ajaxDiscussionTransfert extends \PageHelper {
             $objSupportMessage = new \Site\Entity\SupportMessages();
             $objSupportMessage->setDate(new \DateTime(date("Y-m-d H:i:s")));
             $objSupportMessage->setDatechangementEtat(new \DateTime(date("Y-m-d H:i:s")));
-            $objSupportMessage->setEtat(\SupportEtatMessageHelper::LIBELLE_NON_LU);
+            $objSupportMessage->setEtat(\SupportEtatMessageHelper::LU);
             $objSupportMessage->setIdCompte(0);
             $objSupportMessage->setIdDiscussion($objSupportDiscussion->getId());
             $objSupportMessage->setIp($this->ipAdresse);

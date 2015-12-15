@@ -151,6 +151,8 @@
 
         var idCompte = "{{ currentAccount.getId }}";
         var idDiscussion = "{{ objSupportDiscussion.getId }}";
+        var myLogin = "{{ currentAccount.getLogin }}";
+        var myPseudoMessagerie = "{{ currentAccount.getPseudoMessagerie }}";
 
         var objDiv = document.getElementById("Cadre_Fil_Discussion");
         objDiv.scrollTop = objDiv.scrollHeight;
@@ -189,28 +191,34 @@
 
                         var json = JSON.parse(msg);
 
-                        $("#Cadre_Fil_Discussion").append('<div class="direct-chat-msg right" id="Message_' + json.id + '" style="margin-bottom: 18px;"><div class="direct-chat-text" style="background-color: #656565 !important; margin-right: 0px;width: 100%;float: right; color: #ffffff;"><span class="direct-chat-timestamp pull-left" style="color: #D4D4D4; position: absolute; right: 10px;">' + json.date + '</span>' + json.message + '</div></div>');
+        {% if isAdmin %}
 
-                        $("#Contenue_Reponse_Ticket").val("");
-                        $("#Cadre_Fil_Discussion").animate({scrollTop: $("#Cadre_Fil_Discussion")[0].scrollHeight}, 300);
+                            $("#Cadre_Fil_Discussion").append('<div class="direct-chat-msg right" id="Message_' + json.id + '" style="margin-bottom: 18px;"><div class="direct-chat-info clearfix"><span class="direct-chat-name pull-right">' + myPseudoMessagerie + '</span></div><div class="direct-chat-text" style="width: 75%; padding-right: 52px; background-color: #656565 !important; margin-right: 0px;float: right;"><span class="direct-chat-timestamp pull-left" style="color: #D4D4D4; position: absolute; right: 10px;">' + json.date + '</span>' + json.message + '</div></div>');
+        {% else %}
+                            $("#Cadre_Fil_Discussion").append('<div class="direct-chat-msg right" id="Message_' + json.id + '" style="margin-bottom: 18px;"><div class="direct-chat-info clearfix"><span class="direct-chat-name pull-right">' + myLogin + '</span></div><div class="direct-chat-text" style="width: 75%; padding-right: 52px; background-color: #656565 !important; margin-right: 0px;float: right;"><span class="direct-chat-timestamp pull-left" style="color: #D4D4D4; position: absolute; right: 10px;">' + json.date + '</span>' + json.message + '</div></div>');
 
-                        var nombre_tempo = parseInt($("#Nombre_De_Message").html());
-                        nombre_tempo++;
-                        $("#Nombre_De_Message").html(nombre_tempo);
+        {% endif %}
 
-                        $("#Cadre_Fil_Discussion").animate({scrollTop: $("#Cadre_Fil_Discussion")[0].scrollHeight}, 1);
+                            $("#Contenue_Reponse_Ticket").val("");
+                            $("#Cadre_Fil_Discussion").animate({scrollTop: $("#Cadre_Fil_Discussion")[0].scrollHeight}, 300);
 
-                        Barre_De_Statut("Message envoyé");
-                        Icone_Chargement(0);
-                        hideLoadingChat();
+                            var nombre_tempo = parseInt($("#Nombre_De_Message").html());
+                            nombre_tempo++;
+                            $("#Nombre_De_Message").html(nombre_tempo);
 
-                    }
-                });
-            } else {
-                Barre_De_Statut("Message vide.");
-                Icone_Chargement(2);
-                return false;
+                            $("#Cadre_Fil_Discussion").animate({scrollTop: $("#Cadre_Fil_Discussion")[0].scrollHeight}, 1);
+
+                            Barre_De_Statut("Message envoyé");
+                            Icone_Chargement(0);
+                            hideLoadingChat();
+
+                        }
+                    });
+                } else {
+                    Barre_De_Statut("Message vide.");
+                    Icone_Chargement(2);
+                    return false;
+                }
             }
-        }
     </script>
 {% endif %}
