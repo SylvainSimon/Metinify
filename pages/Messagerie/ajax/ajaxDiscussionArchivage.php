@@ -15,19 +15,26 @@ class ajaxDiscussionArchivage extends \PageHelper {
         $em = \Shared\DoctrineHelper::getEntityManager();
 
         $idDiscussion = \Encryption::decrypt($request->request->get("idDiscussion"));
-        $objDiscussion = \Site\SiteHelper::getSupportDiscussionsRepository()->find($idDiscussion);
-        
-        if ($objDiscussion !== null) {
+        $objSupportDiscussion = \Site\SiteHelper::getSupportDiscussionsRepository()->find($idDiscussion);
+        $objSupportObjet = \Site\SiteHelper::getSupportObjetsRepository()->find($objSupportDiscussion->getIdObjet());
+        $objAccount = \Account\AccountHelper::getAccountRepository()->find($objSupportDiscussion->getIdCompte());
 
-            if ($objDiscussion->getIdCompte() == $this->objAccount->getId() OR $objDiscussion->getIdAdmin() == $this->objAccount->getId()) {
+        if ($objSupportDiscussion !== null) {
 
-                $objDiscussion->setEstArchive(1);
-                $em->persist($objDiscussion);
+            if ($objSupportDiscussion->getIdCompte() == $this->objAccount->getId() OR $objSupportDiscussion->getIdAdmin() == $this->objAccount->getId()) {
+
+                $objSupportDiscussion->setEstArchive(1);
+                $em->persist($objSupportDiscussion);
                 $em->flush();
 
-                echo "1";
+                $template = $this->objTwig->loadTemplate("MessagerieDiscussionCloture.html5.twig");
+                $result = $template->render(["compte" => $objAccount->getLogin(), "objet" => $objSupportObjet->getObjet()]);
+                $subject = 'VamosMT2 - Clôture de votre ticket';
+                \EmailHelper::sendEmail($objAccount->getEmail(), $subject, $result);
+
+                echo json_encode(["result" => true]);
             } else {
-                echo "NON";
+                echo json_encode(["result" => false, "message" => "Le ticket est introuvable."]);
             }
         }
     }

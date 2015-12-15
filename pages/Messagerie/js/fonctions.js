@@ -79,11 +79,10 @@ function DiscussionArchivage(idDiscussion, withReloadDatatable) {
                         data: {"idDiscussion": idDiscussion},
                         success: function (msg) {
 
-                            if (msg == "NON") {
-                                Barre_De_Statut("Cette discussion ne vous appartient pas.");
-                                Icone_Chargement(2);
-                            } else {
+                            var json = JSON.parse(msg);
 
+                            if (json.result) {
+                                
                                 toastr.success("Le ticket à été cloturé avec succès.", "Ticket clôturé");
 
                                 if (withReloadDatatable) {
@@ -91,6 +90,11 @@ function DiscussionArchivage(idDiscussion, withReloadDatatable) {
                                 } else {
                                     Ajax_Appel_Messagerie("pages/Messagerie/MessagerieInbox.php");
                                 }
+                            } else {
+                                
+                                popBootbox(json.message);
+                                Barre_De_Statut("Cette discussion ne vous appartient pas.");
+                                Icone_Chargement(2);
                             }
                         }
                     });
@@ -184,7 +188,7 @@ function VerificationFormulairePseudo() {
                 }
             }
         });
-        
+
     } else {
 
         messagederreur = "";
