@@ -42,7 +42,7 @@
             </tbody>
 
         </table>
-            
+
         <div style="padding-left: 15px; padding-right: 15px;">
 
             <div class="row" style="margin-bottom: 5px;">
@@ -90,12 +90,40 @@
                 {% if objSafebox.size == "" %}
                     <i data-tooltip="L'entrepôt n'éxiste pas encore" class="Pointer material-icons md-icon-close text-red md-20"></i>
                 {% else %}
-                    <i data-tooltip="Récupérer le code" onclick="Ajax('pages/MonCompte/modules/CodeEntrepotForgottenEmail.php');" class="Pointer material-icons md-icon-settings_backup_restore text-blue md-20"></i>
+                    <i data-tooltip="Récupérer le code" onclick="codeEntrepotSendEmail()" class="Pointer material-icons md-icon-settings_backup_restore text-blue md-20"></i>
                     <i data-tooltip="Modifier le code" onclick="Ajax('pages/MonCompte/modules/CodeEntrepotChangeForm.php');" class="Pointer material-icons md-icon-edit text-yellow md-20"></i>
                 {% endif %}
             </span>
         </h4>
         {{ viewEntrepot|raw }}
     </div>
-
 </div>
+
+<script type="text/javascript">
+
+    function codeEntrepotSendEmail() {
+
+        displayLoading();
+
+        $.ajax({
+            type: "POST",
+            url: "pages/MonCompte/ajax/ajaxCodeEntrepotSendEmail.php",
+            success: function (msg) {
+
+                var json = JSON.parse(msg);
+
+                if (json.result) {
+
+                    toastr.success("Votre code entrepôt à été envoyé.", "E-mail envoyé");
+                    hideLoading();
+                    
+                } else {
+
+                    popBootbox(json.message);
+                    Barre_De_Statut(json.message);
+                    Icone_Chargement(2);
+                }
+            }
+        });
+    }
+</script>

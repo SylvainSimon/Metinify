@@ -1,7 +1,10 @@
 <span class='text-yellow'>{{ objItem.localeName|convert_encoding('UTF-8', 'ISO-8859-1') }}</span>
 <br/>
-<span class='Couleur_Level_Item'>Level : {{ objItem.limitvalue0 }}</span>
-<br/>
+
+{% if objItem.limitvalue0 > 0 %}
+    <span class='Couleur_Level_Item'>Level : {{ objItem.limitvalue0 }}</span>
+    <br/>
+{% endif %}
 {% set bonusBase1 = objItem.applytype0 %}
 {% if bonusBase1 != 0 %}
     <br/>
