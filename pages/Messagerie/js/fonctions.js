@@ -1,7 +1,5 @@
 function Ajax_Appel_Messagerie(url, objet) {
 
-    Barre_De_Statut("Appel de l'onglet...");
-    Icone_Chargement(1);
     displayLoading();
 
     $.ajax({
@@ -10,8 +8,6 @@ function Ajax_Appel_Messagerie(url, objet) {
         success: function (msg) {
 
             $("#Contenue_Cadre_Messagerie").html(msg);
-            Barre_De_Statut("Chargement terminé.");
-            Icone_Chargement(0);
 
             hideLoading();
             redraw();
@@ -22,8 +18,6 @@ function Ajax_Appel_Messagerie(url, objet) {
             }
         }
     });
-    return false;
-
 }
 
 function displayLoadingChat() {

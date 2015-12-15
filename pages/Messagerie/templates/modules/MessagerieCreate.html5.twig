@@ -58,8 +58,8 @@
                                     Message
                                 </label>
                                 <div class="input-group col-xs-12">
-                                    <textarea maxlength="1024" style="min-height: 170px; resize: none;" id="discussionMessage" class="form-control input-sm" onblur="Fonction_Remplacement(this.value);" onkeyup="document.getElementById('Nombre_Caracteres_Nouveau_Ticket').innerHTML = (this.value.length + this.value.replace(/[^\n]+/g, '').length);"></textarea>
-                                    <span id="Nombre_Caracteres_Nouveau_Ticket">0</span>/1024
+                                    <textarea maxlength="1024" style="min-height: 170px; resize: none;" id="discussionMessage" class="form-control input-sm" onkeyup="document.getElementById('discussionMessageLenght').innerHTML = (this.value.length + this.value.replace(/[^\n]+/g, '').length);"></textarea>
+                                    <span id="discussionMessageLenght">0</span>/1024
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
 
             function validateFormDiscussionCreate() {
 
-                if ($("#discussionMessage").val().length < 50) {
+                if (parseInt($("#discussionMessageLenght").html()) < 50) {
                     popBootbox("Le message est trop court.");
                     return false;
                 }
