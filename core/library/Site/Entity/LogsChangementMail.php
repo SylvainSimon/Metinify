@@ -31,13 +31,6 @@ class LogsChangementMail {
     /**
      * @var string
      *
-     * @ORM\Column(name="compte", type="string", length=20, nullable=true)
-     */
-    private $compte;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="old", type="string", length=255, nullable=true)
      */
     private $old;
@@ -92,28 +85,6 @@ class LogsChangementMail {
      */
     public function getIdCompte() {
         return $this->idCompte;
-    }
-
-    /**
-     * Set compte
-     *
-     * @param string $compte
-     *
-     * @return LogsChangementMail
-     */
-    public function setCompte($compte) {
-        $this->compte = $compte;
-
-        return $this;
-    }
-
-    /**
-     * Get compte
-     *
-     * @return string
-     */
-    public function getCompte() {
-        return $this->compte;
     }
 
     /**

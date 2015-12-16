@@ -29,7 +29,6 @@ class ajaxEmailChangeExecute extends \ScriptHelper {
         //On insère dans les logs
         $objLogsChangementMail = new \Site\Entity\LogsChangementMail();
         $objLogsChangementMail->setIdCompte($AccountId);
-        $objLogsChangementMail->setCompte($AccountLogin);
         $objLogsChangementMail->setOld($AccountEmailOld);
         $objLogsChangementMail->setNew($AccountEmailNew);
         $objLogsChangementMail->setIp($IP);

@@ -154,10 +154,10 @@ class SiteHelper {
     }
     
     /**
-     * @return \Site\Repository\LogsChangementMotDePasseRepository
+     * @return \Site\Repository\LogsChangementPasswordRepository
      */
-    public static function getLogsChangementMotDePasseRepository() {
-        return DoctrineHelper::getRepository('\Site\Entity\LogsChangementMotDePasse');
+    public static function getLogsChangementPasswordRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\LogsChangementPassword');
     }
     
     /**

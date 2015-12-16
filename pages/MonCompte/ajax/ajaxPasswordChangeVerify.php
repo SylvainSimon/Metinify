@@ -26,13 +26,12 @@ class ajaxPasswordChangeVerify extends \ScriptHelper {
             \Site\SiteHelper::getChangementMotDePasseRepository()->deleteByAccountId($objChangementMotDePasse->getIdCompte());
 
             //Ajout dans les logs
-            $objLogsChangementMotDePasse = new \Site\Entity\LogsChangementMotDePasse();
-            $objLogsChangementMotDePasse->setIdCompte($this->objAccount->getId());
-            $objLogsChangementMotDePasse->setCompte($this->objAccount->getLogin());
-            $objLogsChangementMotDePasse->setEmail($this->objAccount->getEmail());
-            $objLogsChangementMotDePasse->setDate(new \DateTime(date("Y-m-d H:i:s")));
-            $objLogsChangementMotDePasse->setIp($this->ipAdresse);
-            $em->persist($objLogsChangementMotDePasse);
+            $objLogsChangementPassword = new \Site\Entity\LogsChangementPassword();
+            $objLogsChangementPassword->setIdCompte($this->objAccount->getId());
+            $objLogsChangementPassword->setEmail($this->objAccount->getEmail());
+            $objLogsChangementPassword->setDate(new \DateTime(date("Y-m-d H:i:s")));
+            $objLogsChangementPassword->setIp($this->ipAdresse);
+            $em->persist($objLogsChangementPassword);
             
             $em->flush();
             

@@ -5,12 +5,12 @@ namespace Site\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * LogsChangementMotDePasse
+ * LogsChangementPassword
  *
  * @ORM\Table(name="site.logs_changement_mot_de_passe")
- * @ORM\Entity(repositoryClass="Site\Repository\LogsChangementMotDePasseRepository")
+ * @ORM\Entity(repositoryClass="Site\Repository\LogsChangementPasswordRepository")
  */
-class LogsChangementMotDePasse {
+class LogsChangementPassword {
 
     /**
      * @var integer
@@ -31,14 +31,7 @@ class LogsChangementMotDePasse {
     /**
      * @var string
      *
-     * @ORM\Column(name="compte", type="string", length=20, nullable=true)
-     */
-    private $compte;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=100, nullable=true)
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     private $email;
 
@@ -70,7 +63,7 @@ class LogsChangementMotDePasse {
      *
      * @param integer $idCompte
      *
-     * @return LogsChangementMotDePasse
+     * @return LogsChangementPassword
      */
     public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
@@ -88,33 +81,11 @@ class LogsChangementMotDePasse {
     }
 
     /**
-     * Set compte
-     *
-     * @param string $compte
-     *
-     * @return LogsChangementMotDePasse
-     */
-    public function setCompte($compte) {
-        $this->compte = $compte;
-
-        return $this;
-    }
-
-    /**
-     * Get compte
-     *
-     * @return string
-     */
-    public function getCompte() {
-        return $this->compte;
-    }
-
-    /**
      * Set email
      *
      * @param string $email
      *
-     * @return LogsChangementMotDePasse
+     * @return LogsChangementPassword
      */
     public function setEmail($email) {
         $this->email = $email;
@@ -136,7 +107,7 @@ class LogsChangementMotDePasse {
      *
      * @param \DateTime $date
      *
-     * @return LogsChangementMotDePasse
+     * @return LogsChangementPassword
      */
     public function setDate($date) {
         $this->date = $date;
@@ -158,7 +129,7 @@ class LogsChangementMotDePasse {
      *
      * @param string $ip
      *
-     * @return LogsChangementMotDePasse
+     * @return LogsChangementPassword
      */
     public function setIp($ip) {
         $this->ip = $ip;

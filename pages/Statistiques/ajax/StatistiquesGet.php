@@ -54,7 +54,7 @@ class StatistiquesGet extends \PageHelper {
 
             $nombreMailChangement = \Site\SiteHelper::getLogsChangementMailRepository()->statChangementMails($intervalStat);
             $nombreOublieMotDePasse = \Site\SiteHelper::getLogsOublieMotDePasseRepository()->statOublieMotDePasse($intervalStat, 1);
-            $nombreChangementMotDePasse = \Site\SiteHelper::getLogsChangementMotDePasseRepository()->statChangementMotDePasse($intervalStat);
+            $nombreChangementMotDePasse = \Site\SiteHelper::getLogsChangementPasswordRepository()->statChangementMotDePasse($intervalStat);
             $nombreChangementCodeEntrepot = \Site\SiteHelper::getLogsCodeEntrepotChangementRepository()->statChangementCodeEntrepot($intervalStat);
 
             $nombreDeblocageYang = \Site\SiteHelper::getLogsDeblocageYangsRepository()->statDeblocageYangs($intervalStat);
