@@ -438,8 +438,7 @@ class ajaxArticleBuy extends \ScriptHelper {
 
         $objLogsItemshopAchats = new \Site\Entity\LogsItemshopAchats();
         $objLogsItemshopAchats->setIdCompte($this->objAccount->getId());
-        $objLogsItemshopAchats->setCompte($this->objAccount->getLogin());
-        $objLogsItemshopAchats->setVnumItem($objItemshop->getIdItem());
+        $objLogsItemshopAchats->setVnum($objItemshop->getIdItem());
         if ($objItemshop->getNbItem() > 1) {
             $objLogsItemshopAchats->setItem($objItemshop->getNameItem() . " (x" . $nombreItemBuy . ")");
         } else {

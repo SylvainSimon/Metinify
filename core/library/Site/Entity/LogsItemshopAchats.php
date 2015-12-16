@@ -29,18 +29,11 @@ class LogsItemshopAchats {
     private $idCompte;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="compte", type="string", length=20, nullable=true)
-     */
-    private $compte;
-
-    /**
      * @var integer
      *
-     * @ORM\Column(name="vnum_item", type="integer", nullable=true)
+     * @ORM\Column(name="vnum", type="integer", nullable=true)
      */
-    private $vnumItem;
+    private $vnum;
 
     /**
      * @var string
@@ -85,9 +78,9 @@ class LogsItemshopAchats {
     private $resultat;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="monnaie", type="string", length=50, nullable=true)
+     * @ORM\Column(name="monnaie", type="integer", length=50, nullable=true)
      */
     private $monnaie;
 
@@ -123,47 +116,25 @@ class LogsItemshopAchats {
     }
 
     /**
-     * Set compte
+     * Set vnum
      *
-     * @param string $compte
+     * @param integer $vnum
      *
      * @return LogsItemshopAchats
      */
-    public function setCompte($compte) {
-        $this->compte = $compte;
+    public function setVnum($vnum) {
+        $this->vnum = $vnum;
 
         return $this;
     }
 
     /**
-     * Get compte
-     *
-     * @return string
-     */
-    public function getCompte() {
-        return $this->compte;
-    }
-
-    /**
-     * Set vnumItem
-     *
-     * @param integer $vnumItem
-     *
-     * @return LogsItemshopAchats
-     */
-    public function setVnumItem($vnumItem) {
-        $this->vnumItem = $vnumItem;
-
-        return $this;
-    }
-
-    /**
-     * Get vnumItem
+     * Get vnum
      *
      * @return integer
      */
-    public function getVnumItem() {
-        return $this->vnumItem;
+    public function getVnum() {
+        return $this->vnum;
     }
 
     /**
@@ -301,7 +272,7 @@ class LogsItemshopAchats {
     /**
      * Set monnaie
      *
-     * @param string $monnaie
+     * @param integer $monnaie
      *
      * @return LogsItemshopAchats
      */
@@ -314,7 +285,7 @@ class LogsItemshopAchats {
     /**
      * Get monnaie
      *
-     * @return string
+     * @return integer
      */
     public function getMonnaie() {
         return $this->monnaie;
