@@ -5,12 +5,12 @@ namespace Site\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * LogAchats
+ * LogsItemshopAchats
  *
- * @ORM\Table(name="site.log_achats")
- * @ORM\Entity(repositoryClass="Site\Repository\LogAchatsRepository")
+ * @ORM\Table(name="site.logs_itemshop_achats")
+ * @ORM\Entity(repositoryClass="Site\Repository\LogsItemshopAchatsRepository")
  */
-class LogAchats {
+class LogsItemshopAchats {
 
     /**
      * @var integer
@@ -105,7 +105,7 @@ class LogAchats {
      *
      * @param integer $idCompte
      *
-     * @return LogAchats
+     * @return LogsItemshopAchats
      */
     public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
@@ -127,7 +127,7 @@ class LogAchats {
      *
      * @param string $compte
      *
-     * @return LogAchats
+     * @return LogsItemshopAchats
      */
     public function setCompte($compte) {
         $this->compte = $compte;
@@ -149,7 +149,7 @@ class LogAchats {
      *
      * @param integer $vnumItem
      *
-     * @return LogAchats
+     * @return LogsItemshopAchats
      */
     public function setVnumItem($vnumItem) {
         $this->vnumItem = $vnumItem;
@@ -171,7 +171,7 @@ class LogAchats {
      *
      * @param string $item
      *
-     * @return LogAchats
+     * @return LogsItemshopAchats
      */
     public function setItem($item) {
         $this->item = $item;
@@ -193,7 +193,7 @@ class LogAchats {
      *
      * @param integer $quantite
      *
-     * @return LogAchats
+     * @return LogsItemshopAchats
      */
     public function setQuantite($quantite) {
         $this->quantite = $quantite;
@@ -215,7 +215,7 @@ class LogAchats {
      *
      * @param integer $prix
      *
-     * @return LogAchats
+     * @return LogsItemshopAchats
      */
     public function setPrix($prix) {
         $this->prix = $prix;
@@ -237,7 +237,7 @@ class LogAchats {
      *
      * @param \DateTime $date
      *
-     * @return LogAchats
+     * @return LogsItemshopAchats
      */
     public function setDate($date) {
         $this->date = $date;
@@ -259,7 +259,7 @@ class LogAchats {
      *
      * @param string $ip
      *
-     * @return LogAchats
+     * @return LogsItemshopAchats
      */
     public function setIp($ip) {
         $this->ip = $ip;
@@ -281,7 +281,7 @@ class LogAchats {
      *
      * @param string $resultat
      *
-     * @return LogAchats
+     * @return LogsItemshopAchats
      */
     public function setResultat($resultat) {
         $this->resultat = $resultat;
@@ -303,7 +303,7 @@ class LogAchats {
      *
      * @param string $monnaie
      *
-     * @return LogAchats
+     * @return LogsItemshopAchats
      */
     public function setMonnaie($monnaie) {
         $this->monnaie = $monnaie;

@@ -15,10 +15,10 @@ class MonCompteEntrepotIS extends \PageHelper {
         $templateEntrepotIs = $this->objTwig->loadTemplate("ajaxEntrepotIS.html5.twig");
         $viewEntrepotIs = $templateEntrepotIs->render(["arrObjItems" => $arrObjItems, "iDepart" => 0]);
 
-        $arrObjLogAchats = \Site\SiteHelper::getLogAchatsRepository()->findByIdAccount($this->objAccount->getId());
+        $arrObjLogsItemshopAchats = \Site\SiteHelper::getLogsItemshopAchatsRepository()->findByIdAccount($this->objAccount->getId());
         
         $this->arrayTemplate["viewEntrepotIs"] = $viewEntrepotIs;
-        $this->arrayTemplate["arrObjLogAchats"] = $arrObjLogAchats;
+        $this->arrayTemplate["arrObjLogsItemshopAchats"] = $arrObjLogsItemshopAchats;
 
         $view = $this->template->render($this->arrayTemplate);
         $this->response->setContent($view);

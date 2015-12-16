@@ -10,27 +10,27 @@ class listGererItemShopLogsAchats extends \ScriptHelper {
 
         $columnsParameters = array(
             array(
-                'dbField' => 'LogAchatsEntity.date',
+                'dbField' => 'LogsItemshopAchatsEntity.date',
                 'dtField' => 'date',
                 'formatter' => function( $d, $row ) {
                     return \DateTimeHelper::dateTimeToFormatedString($d);
                 }
             ),
             array(
-                'dbField' => 'LogAchatsEntity.item',
+                'dbField' => 'LogsItemshopAchatsEntity.item',
                 'dtField' => 'article',
             ),
             array(
-                'dbField' => 'LogAchatsEntity.quantite',
+                'dbField' => 'LogsItemshopAchatsEntity.quantite',
                 'filterLevel' => 'strict',
                 'dtField' => 'quantite',
             ),
             array(
-                'dbField' => 'LogAchatsEntity.monnaie',
+                'dbField' => 'LogsItemshopAchatsEntity.monnaie',
                 'dtField' => 'monnaie',
             ),
             array(
-                'dbField' => 'LogAchatsEntity.prix',
+                'dbField' => 'LogsItemshopAchatsEntity.prix',
                 'filterLevel' => 'strict',
                 'dtField' => 'prix',
                 'formatter' => function( $d, $row ) {
@@ -42,15 +42,15 @@ class listGererItemShopLogsAchats extends \ScriptHelper {
                 'dtField' => 'compte',
             ),
             array(
-                'dbField' => 'LogAchatsEntity.resultat',
+                'dbField' => 'LogsItemshopAchatsEntity.resultat',
                 'dtField' => 'result',
             )
         );
         $datatable = new \DataTable();
         $datatable->setColumnsParameters($columnsParameters)
                 ->setRequest($_GET)
-                ->from("\Site\Entity\LogAchats", "LogAchatsEntity")
-                ->leftJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = LogAchatsEntity.idCompte");
+                ->from("\Site\Entity\LogsItemshopAchats", "LogsItemshopAchatsEntity")
+                ->leftJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = LogsItemshopAchatsEntity.idCompte");
 
 
         $datatable->getResult()->toJson();

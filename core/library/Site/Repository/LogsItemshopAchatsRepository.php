@@ -4,17 +4,17 @@ namespace Site\Repository;
 
 use \Shared\EntityRepository;
 
-class LogAchatsRepository extends EntityRepository {
+class LogsItemshopAchatsRepository extends EntityRepository {
 
     public function findByIdAccount($idAccount = 0) {
 
         $qb = $this->_em->createQueryBuilder();
         
-        $qb->select("LogAchatsEntity");
-        $qb->from("\Site\Entity\LogAchats", "LogAchatsEntity");
-        $qb->where("LogAchatsEntity.idCompte = :idAccount");
+        $qb->select("LogsItemshopAchatsEntity");
+        $qb->from("\Site\Entity\LogsItemshopAchats", "LogsItemshopAchatsEntity");
+        $qb->where("LogsItemshopAchatsEntity.idCompte = :idAccount");
         $qb->setParameter("idAccount", $idAccount);
-        $qb->orderBy("LogAchatsEntity.date", "DESC");
+        $qb->orderBy("LogsItemshopAchatsEntity.date", "DESC");
 
         try {
             return $qb->getQuery()->getResult();

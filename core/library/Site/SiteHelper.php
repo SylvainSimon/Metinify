@@ -28,13 +28,6 @@ class SiteHelper {
     }
     
     /**
-     * @return \Site\Repository\BlocageInscriptionRepository
-     */
-    public static function getBlocageInscriptionRepository() {
-        return DoctrineHelper::getRepository('\Site\Entity\BlocageInscription');
-    }
-    
-    /**
      * @return \Site\Repository\ChangementMailRepository
      */
     public static function getChangementMailRepository() {
@@ -133,10 +126,10 @@ class SiteHelper {
     }
     
     /**
-     * @return \Site\Repository\LogAchatsRepository
+     * @return \Site\Repository\LogsItemshopAchatsRepository
      */
-    public static function getLogAchatsRepository() {
-        return DoctrineHelper::getRepository('\Site\Entity\LogAchats');
+    public static function getLogsItemshopAchatsRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\LogsItemshopAchats');
     }
     
     /**

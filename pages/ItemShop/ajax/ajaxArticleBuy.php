@@ -436,23 +436,23 @@ class ajaxArticleBuy extends \ScriptHelper {
             }
         }
 
-        $objLogAchats = new \Site\Entity\LogAchats();
-        $objLogAchats->setIdCompte($this->objAccount->getId());
-        $objLogAchats->setCompte($this->objAccount->getLogin());
-        $objLogAchats->setVnumItem($objItemshop->getIdItem());
+        $objLogsItemshopAchats = new \Site\Entity\LogsItemshopAchats();
+        $objLogsItemshopAchats->setIdCompte($this->objAccount->getId());
+        $objLogsItemshopAchats->setCompte($this->objAccount->getLogin());
+        $objLogsItemshopAchats->setVnumItem($objItemshop->getIdItem());
         if ($objItemshop->getNbItem() > 1) {
-            $objLogAchats->setItem($objItemshop->getNameItem() . " (x" . $nombreItemBuy . ")");
+            $objLogsItemshopAchats->setItem($objItemshop->getNameItem() . " (x" . $nombreItemBuy . ")");
         } else {
-            $objLogAchats->setItem($objItemshop->getNameItem());
+            $objLogsItemshopAchats->setItem($objItemshop->getNameItem());
         }
-        $objLogAchats->setQuantite($nombreItemBuy);
-        $objLogAchats->setPrix($prixTotal);
-        $objLogAchats->setMonnaie($ID_Monnaie);
-        $objLogAchats->setIp($this->ipAdresse);
-        $objLogAchats->setDate(\Carbon\Carbon::now());
-        $objLogAchats->setResultat($Resultat_Achat);
+        $objLogsItemshopAchats->setQuantite($nombreItemBuy);
+        $objLogsItemshopAchats->setPrix($prixTotal);
+        $objLogsItemshopAchats->setMonnaie($ID_Monnaie);
+        $objLogsItemshopAchats->setIp($this->ipAdresse);
+        $objLogsItemshopAchats->setDate(\Carbon\Carbon::now());
+        $objLogsItemshopAchats->setResultat($Resultat_Achat);
 
-        $em->persist($objLogAchats);
+        $em->persist($objLogsItemshopAchats);
         $em->flush();
 
         if ($arrResult["result"] == 1) {
@@ -463,14 +463,14 @@ class ajaxArticleBuy extends \ScriptHelper {
                 "nombre" => $nombreItemBuy,
                 "prix" => $prixTotal,
                 "devise" => $ID_Monnaie,
-                "identifiantAchat" => $objLogAchats->getId(),
+                "identifiantAchat" => $objLogsItemshopAchats->getId(),
             ]);
             $subject = 'VamosMT2 - Achat de ' . $objItemshop->getNameItem();
             \EmailHelper::sendEmail($this->objAccount->getEmail(), $subject, $result);
         }
 
         $arrResult["nombreBuy"] = $nombreItemBuy;
-        $arrResult["idTransaction"] = $objLogAchats->getId();
+        $arrResult["idTransaction"] = $objLogsItemshopAchats->getId();
         echo json_encode($arrResult);
     }
 
