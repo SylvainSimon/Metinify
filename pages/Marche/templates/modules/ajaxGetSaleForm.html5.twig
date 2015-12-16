@@ -52,9 +52,9 @@
                         <div class="input-group col-xs-12">
 
                             <select id="SalePlayerDevise" class="select2">
-                                {% if arrObjMarcheDevises|length > 0 %}
-                                    {% for objMarcheDevises in arrObjMarcheDevises %}
-                                        <option value="{{ objMarcheDevises.getId }}">{{ objMarcheDevises.getDevise }}</option>
+                                {% if arrDevises|length > 0 %}
+                                    {% for id, devise in arrDevises %}
+                                        <option value="{{ id }}">{{ devise }}</option>
                                     {% endfor %}
                                 {% endif %}
                             </select>

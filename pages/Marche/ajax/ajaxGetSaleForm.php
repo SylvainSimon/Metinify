@@ -19,10 +19,10 @@ class ajaxGetSaleForm extends \ScriptHelper {
 
     public function run() {
 
-        $arrObjMarcheDevises = \Site\SiteHelper::getMarcheDevisesRepository()->findAll();
+        $arrDevises = \DeviseHelper::getAll(false);
 
         $this->arrayTemplate["objPlayer"] = $this->objPlayer;
-        $this->arrayTemplate["arrObjMarcheDevises"] = $arrObjMarcheDevises;
+        $this->arrayTemplate["arrDevises"] = $arrDevises;
 
         $view = $this->template->render($this->arrayTemplate);
         $this->response->setContent($view);

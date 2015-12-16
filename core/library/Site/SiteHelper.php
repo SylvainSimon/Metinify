@@ -91,13 +91,6 @@ class SiteHelper {
     }
     
     /**
-     * @return \Site\Repository\MarcheDevisesRepository
-     */
-    public static function getMarcheDevisesRepository() {
-        return DoctrineHelper::getRepository('\Site\Entity\MarcheDevises');
-    }
-    
-    /**
      * @return \Site\Repository\MarchePersonnagesRepository
      */
     public static function getMarchePersonnagesRepository() {

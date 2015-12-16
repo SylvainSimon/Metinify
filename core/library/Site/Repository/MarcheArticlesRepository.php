@@ -28,8 +28,6 @@ class MarcheArticlesRepository extends EntityRepository {
                 . "MarcheArticlesEntity.description,"
                 . "MarcheArticlesEntity.prix,"
                 . "MarcheArticlesEntity.devise idDevise,"
-                . "MarcheCategoriesEntity.nomCategorie,"
-                . "MarcheDevisesEntity.devise,"
                 . "MarchePersonnagesEntity.idProprietaire,"
                 . "MarchePersonnagesEntity.id idMarchePersonnage,"
                 . "PlayerEntity.level,"
@@ -37,8 +35,6 @@ class MarcheArticlesRepository extends EntityRepository {
                 . "PlayerEntity.job");
 
         $qb->from("\Site\Entity\MarcheArticles", "MarcheArticlesEntity");
-        $qb->innerJoin("\Site\Entity\MarcheCategories", "MarcheCategoriesEntity", "WITH", "MarcheCategoriesEntity.id = MarcheArticlesEntity.categorie");
-        $qb->innerJoin("\Site\Entity\MarcheDevises", "MarcheDevisesEntity", "WITH", "MarcheDevisesEntity.id = MarcheArticlesEntity.devise");
         $qb->innerJoin("\Site\Entity\MarchePersonnages", "MarchePersonnagesEntity", "WITH", "MarchePersonnagesEntity.id = MarcheArticlesEntity.identifiantArticle");
         $qb->innerJoin("\Player\Entity\Player", "PlayerEntity", "WITH", "PlayerEntity.id = MarchePersonnagesEntity.idPersonnage");
         $qb = $this->getDQLJoueurNonGM($qb);
