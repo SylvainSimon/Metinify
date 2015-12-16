@@ -5,12 +5,12 @@ namespace Site\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * LogsCodeEffacementChangement
+ * LogsChangementCodeSurete
  *
- * @ORM\Table(name="site.logs_code_effacement_changement")
+ * @ORM\Table(name="site.logs_changement_code_surete")
  * @ORM\Entity
  */
-class LogsCodeEffacementChangement {
+class LogsChangementCodeSurete {
 
     /**
      * @var integer
@@ -31,23 +31,9 @@ class LogsCodeEffacementChangement {
     /**
      * @var string
      *
-     * @ORM\Column(name="compte", type="string", length=20, nullable=true)
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
-    private $compte;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="ancien_code", type="integer", nullable=true)
-     */
-    private $ancienCode;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="nouveau_code", type="integer", nullable=true)
-     */
-    private $nouveauCode;
+    private $email;
 
     /**
      * @var \DateTime
@@ -77,7 +63,7 @@ class LogsCodeEffacementChangement {
      *
      * @param integer $idCompte
      *
-     * @return LogsCodeEffacementChangement
+     * @return LogsChangementCodeSurete
      */
     public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
@@ -95,69 +81,25 @@ class LogsCodeEffacementChangement {
     }
 
     /**
-     * Set compte
+     * Set email
      *
-     * @param string $compte
+     * @param string $email
      *
-     * @return LogsCodeEffacementChangement
+     * @return LogsChangementCodeSurete
      */
-    public function setCompte($compte) {
-        $this->compte = $compte;
+    public function setEmail($email) {
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * Get compte
+     * Get email
      *
      * @return string
      */
-    public function getCompte() {
-        return $this->compte;
-    }
-
-    /**
-     * Set ancienCode
-     *
-     * @param integer $ancienCode
-     *
-     * @return LogsCodeEffacementChangement
-     */
-    public function setAncienCode($ancienCode) {
-        $this->ancienCode = $ancienCode;
-
-        return $this;
-    }
-
-    /**
-     * Get ancienCode
-     *
-     * @return integer
-     */
-    public function getAncienCode() {
-        return $this->ancienCode;
-    }
-
-    /**
-     * Set nouveauCode
-     *
-     * @param integer $nouveauCode
-     *
-     * @return LogsCodeEffacementChangement
-     */
-    public function setNouveauCode($nouveauCode) {
-        $this->nouveauCode = $nouveauCode;
-
-        return $this;
-    }
-
-    /**
-     * Get nouveauCode
-     *
-     * @return integer
-     */
-    public function getNouveauCode() {
-        return $this->nouveauCode;
+    public function getEmail() {
+        return $this->email;
     }
 
     /**
@@ -165,7 +107,7 @@ class LogsCodeEffacementChangement {
      *
      * @param \DateTime $date
      *
-     * @return LogsCodeEffacementChangement
+     * @return LogsChangementCodeSurete
      */
     public function setDate($date) {
         $this->date = $date;
@@ -187,7 +129,7 @@ class LogsCodeEffacementChangement {
      *
      * @param string $ip
      *
-     * @return LogsCodeEffacementChangement
+     * @return LogsChangementCodeSurete
      */
     public function setIp($ip) {
         $this->ip = $ip;

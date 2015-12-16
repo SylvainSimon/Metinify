@@ -21,14 +21,12 @@ class ajaxCodeEffacementChangeExecute extends \ScriptHelper {
             $this->objAccount->setCodeEffacement($CodeEffacementNew);
             $em->persist($this->objAccount);
 
-            $objLogsCodeEffacementChangement = new \Site\Entity\LogsCodeEffacementChangement();
-            $objLogsCodeEffacementChangement->setIdCompte($this->objAccount->getId());
-            $objLogsCodeEffacementChangement->setCompte($this->objAccount->getLogin());
-            $objLogsCodeEffacementChangement->setAncienCode($CodeEffacementOld);
-            $objLogsCodeEffacementChangement->setNouveauCode($CodeEffacementNew);
-            $objLogsCodeEffacementChangement->setDate(new \DateTime(date("Y-m-d H:i:s")));
-            $objLogsCodeEffacementChangement->setIp($this->ipAdresse);
-            $em->persist($objLogsCodeEffacementChangement);
+            $objLogsChangementCodeSurete = new \Site\Entity\LogsChangementCodeSurete();
+            $objLogsChangementCodeSurete->setIdCompte($this->objAccount->getId());
+            $objLogsChangementCodeSurete->setEmail($this->objAccount->getEmail());
+            $objLogsChangementCodeSurete->setDate(new \DateTime(date("Y-m-d H:i:s")));
+            $objLogsChangementCodeSurete->setIp($this->ipAdresse);
+            $em->persist($objLogsChangementCodeSurete);
 
             $em->flush();
 
