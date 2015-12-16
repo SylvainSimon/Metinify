@@ -80,9 +80,9 @@ class LogsItemshopAchats {
     /**
      * @var integer
      *
-     * @ORM\Column(name="monnaie", type="integer", length=50, nullable=true)
+     * @ORM\Column(name="devise", type="integer", length=50, nullable=true)
      */
-    private $monnaie;
+    private $devise;
 
     /**
      * Get id
@@ -270,25 +270,25 @@ class LogsItemshopAchats {
     }
 
     /**
-     * Set monnaie
+     * Set devise
      *
-     * @param integer $monnaie
+     * @param integer $devise
      *
      * @return LogsItemshopAchats
      */
-    public function setMonnaie($monnaie) {
-        $this->monnaie = $monnaie;
+    public function setDevise($devise) {
+        $this->devise = $devise;
 
         return $this;
     }
 
     /**
-     * Get monnaie
+     * Get devise
      *
      * @return integer
      */
-    public function getMonnaie() {
-        return $this->monnaie;
+    public function getDevise() {
+        return $this->devise;
     }
 
 }

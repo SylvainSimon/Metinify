@@ -409,11 +409,11 @@ class ajaxArticleBuy extends \ScriptHelper {
         }
 
         if ($objItemshop->getType() == 1) {
-            $ID_Monnaie = "1";
+            $idDevise = "1";
         } else if ($objItemshop->getType() == 3) {
-            $ID_Monnaie = "2";
+            $idDevise = "2";
         } else if ($objItemshop->getType() == 2) {
-            $ID_Monnaie = "1";
+            $idDevise = "1";
         }
 
         if ($arrResult["result"] == 1) {
@@ -446,7 +446,7 @@ class ajaxArticleBuy extends \ScriptHelper {
         }
         $objLogsItemshopAchats->setQuantite($nombreItemBuy);
         $objLogsItemshopAchats->setPrix($prixTotal);
-        $objLogsItemshopAchats->setMonnaie($ID_Monnaie);
+        $objLogsItemshopAchats->setDevise($idDevise);
         $objLogsItemshopAchats->setIp($this->ipAdresse);
         $objLogsItemshopAchats->setDate(\Carbon\Carbon::now());
         $objLogsItemshopAchats->setResultat($Resultat_Achat);
@@ -461,7 +461,7 @@ class ajaxArticleBuy extends \ScriptHelper {
                 "article" => $objItemshop->getNameItem(),
                 "nombre" => $nombreItemBuy,
                 "prix" => $prixTotal,
-                "devise" => $ID_Monnaie,
+                "devise" => $idDevise,
                 "identifiantAchat" => $objLogsItemshopAchats->getId(),
             ]);
             $subject = 'VamosMT2 - Achat de ' . $objItemshop->getNameItem();

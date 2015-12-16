@@ -26,15 +26,15 @@ class listGererItemShopLogsAchats extends \ScriptHelper {
                 'dtField' => 'quantite',
             ),
             array(
-                'dbField' => 'LogsItemshopAchatsEntity.monnaie',
-                'dtField' => 'monnaie',
+                'dbField' => 'LogsItemshopAchatsEntity.devise',
+                'dtField' => 'devise',
             ),
             array(
                 'dbField' => 'LogsItemshopAchatsEntity.prix',
                 'filterLevel' => 'strict',
                 'dtField' => 'prix',
                 'formatter' => function( $d, $row ) {
-                    return number_format($d, 0, '.', ',') . "<span style='position:relative; top:2px;'>" . \FonctionsUtiles::findIconDevise($row["monnaie"]) . "</span>";
+                    return number_format($d, 0, '.', ',') . "<span style='position:relative; top:2px;'>" . \FonctionsUtiles::findIconDevise($row["devise"]) . "</span>";
                 }
             ),
             array(
