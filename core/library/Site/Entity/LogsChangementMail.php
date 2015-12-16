@@ -38,16 +38,16 @@ class LogsChangementMail {
     /**
      * @var string
      *
-     * @ORM\Column(name="ancien_mail", type="string", length=100, nullable=true)
+     * @ORM\Column(name="old", type="string", length=255, nullable=true)
      */
-    private $ancienMail;
+    private $old;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nouveau_mail", type="string", length=100, nullable=true)
+     * @ORM\Column(name="new", type="string", length=255, nullable=true)
      */
-    private $nouveauMail;
+    private $new;
 
     /**
      * @var \DateTime
@@ -117,47 +117,47 @@ class LogsChangementMail {
     }
 
     /**
-     * Set ancienMail
+     * Set old
      *
-     * @param string $ancienMail
+     * @param string $old
      *
      * @return LogsChangementMail
      */
-    public function setAncienMail($ancienMail) {
-        $this->ancienMail = $ancienMail;
+    public function setOld($old) {
+        $this->old = $old;
 
         return $this;
     }
 
     /**
-     * Get ancienMail
+     * Get old
      *
      * @return string
      */
-    public function getAncienMail() {
-        return $this->ancienMail;
+    public function getOld() {
+        return $this->old;
     }
 
     /**
-     * Set nouveauMail
+     * Set new
      *
-     * @param string $nouveauMail
+     * @param string $new
      *
      * @return LogsChangementMail
      */
-    public function setNouveauMail($nouveauMail) {
-        $this->nouveauMail = $nouveauMail;
+    public function setNew($new) {
+        $this->new = $new;
 
         return $this;
     }
 
     /**
-     * Get nouveauMail
+     * Get new
      *
      * @return string
      */
-    public function getNouveauMail() {
-        return $this->nouveauMail;
+    public function getNew() {
+        return $this->new;
     }
 
     /**

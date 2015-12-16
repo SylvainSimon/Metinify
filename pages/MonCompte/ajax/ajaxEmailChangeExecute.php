@@ -27,14 +27,14 @@ class ajaxEmailChangeExecute extends \ScriptHelper {
         \Site\SiteHelper::getChangementMailRepository()->deleteByAccountId($AccountId);
 
         //On insère dans les logs
-        $objLogChangementEmail = new \Site\Entity\LogsChangementMail();
-        $objLogChangementEmail->setIdCompte($AccountId);
-        $objLogChangementEmail->setCompte($AccountLogin);
-        $objLogChangementEmail->setAncienMail($AccountEmailOld);
-        $objLogChangementEmail->setNouveauMail($AccountEmailNew);
-        $objLogChangementEmail->setIp($IP);
-        $objLogChangementEmail->setDate(new \DateTime(date("Y-m-d H:i:s")));
-        $em->persist($objLogChangementEmail);
+        $objLogsChangementMail = new \Site\Entity\LogsChangementMail();
+        $objLogsChangementMail->setIdCompte($AccountId);
+        $objLogsChangementMail->setCompte($AccountLogin);
+        $objLogsChangementMail->setOld($AccountEmailOld);
+        $objLogsChangementMail->setNew($AccountEmailNew);
+        $objLogsChangementMail->setIp($IP);
+        $objLogsChangementMail->setDate(new \DateTime(date("Y-m-d H:i:s")));
+        $em->persist($objLogsChangementMail);
 
         $em->flush();
         
