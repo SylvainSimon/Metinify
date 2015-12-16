@@ -16,10 +16,9 @@ class BannissementsActifsRepository extends EntityRepository {
                 . "BannissementsActifsEntity.commentaireBannissement, "
                 . "BannissementsActifsEntity.definitif, "
                 . "BannissementsActifsEntity.duree, "
-                . "BannissementRaisonsEntity.raison, "
+                . "BannissementsActifsEntity.raisonBannissement, "
                 . "AccountGMEntity.pseudoMessagerie");
         $qb->from("\Site\Entity\BannissementsActifs", "BannissementsActifsEntity");
-        $qb->innerJoin("\Site\Entity\BannissementRaisons", "BannissementRaisonsEntity", "WITH", "BannissementRaisonsEntity.id = BannissementsActifsEntity.raisonBannissement");
         $qb->innerJoin("\Account\Entity\Account", "AccountGMEntity", "WITH", "AccountGMEntity.id = BannissementsActifsEntity.idCompteGm");
         $qb->where("BannissementsActifsEntity.idCompte = :idAccount");
         $qb->setParameter("idAccount", $idAccount);

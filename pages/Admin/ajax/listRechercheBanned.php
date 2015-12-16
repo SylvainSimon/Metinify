@@ -39,8 +39,11 @@ class listHistoGererMonnaies extends \ScriptHelper {
         }
             ),
             array(
-                'dbField' => 'BannissementRaisonsEntity.raison',
+                'dbField' => 'BannissementsActifsEntity.raisonBannissement',
                 'dtField' => 'raison',
+                'formatter' => function( $d, $row ) {
+                    return \BanRaisonHelper::getLibelle($d);
+                }
             ),
             array(
                 'dbField' => 'BannissementsActifsEntity.duree',
@@ -85,7 +88,6 @@ class listHistoGererMonnaies extends \ScriptHelper {
                 ->leftJoin("\Player\Entity\Player", "PlayerEntity3", "WITH", "PlayerEntity3.id = PlayerIndexEntity.pid3")
                 ->leftJoin("\Player\Entity\Player", "PlayerEntity4", "WITH", "PlayerEntity4.id = PlayerIndexEntity.pid4")
                 ->leftJoin("\Site\Entity\BannissementsActifs", "BannissementsActifsEntity", "WITH", "BannissementsActifsEntity.idCompte = AccountEntity.id")
-                ->leftJoin("\Site\Entity\BannissementRaisons", "BannissementRaisonsEntity", "WITH", "BannissementRaisonsEntity.id = BannissementsActifsEntity.raisonBannissement")
                 ->andWhere("AccountEntity.status = '" . \StatusHelper::BANNI . "'");
 
         $datatable->getResult()->toJson();
