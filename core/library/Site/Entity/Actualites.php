@@ -38,7 +38,7 @@ class Actualites {
     /**
      * @var string
      *
-     * @ORM\Column(name="contenu", type="string", length=10240, nullable=true)
+     * @ORM\Column(name="contenu", type="string", nullable=true)
      */
     private $contenu;
 
