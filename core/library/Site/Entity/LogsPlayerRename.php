@@ -5,12 +5,12 @@ namespace Site\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * LogsRename
+ * LogsPlayerRename
  *
- * @ORM\Table(name="site.logs_rename")
+ * @ORM\Table(name="site.logs_player_rename")
  * @ORM\Entity
  */
-class LogsRename {
+class LogsPlayerRename {
 
     /**
      * @var integer
@@ -31,16 +31,30 @@ class LogsRename {
     /**
      * @var string
      *
-     * @ORM\Column(name="ancien_nom", type="string", length=100, nullable=true)
+     * @ORM\Column(name="old", type="string", length=255, nullable=true)
      */
-    private $ancienNom;
+    private $old;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nouveau_nom", type="string", length=100, nullable=true)
+     * @ORM\Column(name="new", type="string", length=255, nullable=true)
      */
-    private $nouveauNom;
+    private $new;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="prix", type="integer", nullable=true)
+     */
+    private $prix;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="devise", type="integer", nullable=true)
+     */
+    private $devise;
 
     /**
      * @var \DateTime
@@ -70,7 +84,7 @@ class LogsRename {
      *
      * @param integer $idCompte
      *
-     * @return LogsRename
+     * @return LogsPlayerRename
      */
     public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
@@ -88,47 +102,91 @@ class LogsRename {
     }
 
     /**
-     * Set ancienNom
+     * Set old
      *
-     * @param string $ancienNom
+     * @param string $old
      *
-     * @return LogsRename
+     * @return LogsPlayerRename
      */
-    public function setAncienNom($ancienNom) {
-        $this->ancienNom = $ancienNom;
+    public function setOld($old) {
+        $this->old = $old;
 
         return $this;
     }
 
     /**
-     * Get ancienNom
+     * Get old
      *
      * @return string
      */
-    public function getAncienNom() {
-        return $this->ancienNom;
+    public function getOld() {
+        return $this->old;
     }
 
     /**
-     * Set nouveauNom
+     * Set new
      *
-     * @param string $nouveauNom
+     * @param string $new
      *
-     * @return LogsRename
+     * @return LogsPlayerRename
      */
-    public function setNouveauNom($nouveauNom) {
-        $this->nouveauNom = $nouveauNom;
+    public function setNew($new) {
+        $this->new = $new;
 
         return $this;
     }
 
     /**
-     * Get nouveauNom
+     * Get new
      *
      * @return string
      */
-    public function getNouveauNom() {
-        return $this->nouveauNom;
+    public function getNew() {
+        return $this->new;
+    }
+    
+    /**
+     * Set prix
+     *
+     * @param integer $prix
+     *
+     * @return LogsPlayerRename
+     */
+    public function setPrix($prix) {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get prix
+     *
+     * @return integer
+     */
+    public function getPrix() {
+        return $this->prix;
+    }
+    
+    /**
+     * Set devise
+     *
+     * @param integer $devise
+     *
+     * @return LogsPlayerRename
+     */
+    public function setDevise($devise) {
+        $this->devise = $devise;
+
+        return $this;
+    }
+
+    /**
+     * Get devise
+     *
+     * @return integer
+     */
+    public function getDevise() {
+        return $this->devise;
     }
 
     /**
@@ -136,7 +194,7 @@ class LogsRename {
      *
      * @param \DateTime $date
      *
-     * @return LogsRename
+     * @return LogsPlayerRename
      */
     public function setDate($date) {
         $this->date = $date;
@@ -158,7 +216,7 @@ class LogsRename {
      *
      * @param string $ip
      *
-     * @return LogsRename
+     * @return LogsPlayerRename
      */
     public function setIp($ip) {
         $this->ip = $ip;

@@ -45,13 +45,15 @@ class ajaxPersonnageRenameExecute extends \ScriptHelper {
                 $this->objPlayer->setName($playerNameNew);
                 $em->persist($this->objPlayer);
 
-                $objLogRename = new \Site\Entity\LogsRename();
-                $objLogRename->setIdCompte($this->objAccount->getId());
-                $objLogRename->setAncienNom($playerNameOld);
-                $objLogRename->setNouveauNom($playerNameNew);
-                $objLogRename->setDate(new \DateTime(date("Y-m-d H:i:s")));
-                $objLogRename->setIp($this->ipAdresse);
-                $em->persist($objLogRename);
+                $objLogsPlayerRename = new \Site\Entity\LogsPlayerRename();
+                $objLogsPlayerRename->setIdCompte($this->objAccount->getId());
+                $objLogsPlayerRename->setOld($playerNameOld);
+                $objLogsPlayerRename->setNew($playerNameNew);
+                $objLogsPlayerRename->setPrix($config["mod_player"]["rename"]["price"]);
+                $objLogsPlayerRename->setDevise($config["mod_player"]["rename"]["devise"]);
+                $objLogsPlayerRename->setDate(new \DateTime(date("Y-m-d H:i:s")));
+                $objLogsPlayerRename->setIp($this->ipAdresse);
+                $em->persist($objLogsPlayerRename);
 
                 if ($devise == \DeviseHelper::CASH) {
                     $this->objAccount->setCash($this->objAccount->getCash() - $price);
