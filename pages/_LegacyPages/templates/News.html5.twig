@@ -1,23 +1,23 @@
 {% if arrObjActualites|length > 0 %}
 
-    {% for objActualites in arrObjActualites %}
+    {% for objActualite in arrObjActualites %}
 
         <div class="box box-default flat">
 
             <div class="box-header">
-                <h3 class="box-title">{{ objActualites.titreMessage }}</h3>
+                <h3 class="box-title">{{ objActualite.titre }}</h3>
 
                 <div class="box-tools" style="padding-top: 5px;">
-                    <i data-tooltip-position="left" data-tooltip="{{ getFormatedDateTime(objActualites.date) }}" class="material-icons md-icon-event md-20"></i>
+                    <i data-tooltip-position="left" data-tooltip="{{ getFormatedDateTime(objActualite.date) }}" class="material-icons md-icon-event md-20"></i>
                 </div>
             </div>
 
             <div class="box-body">
 
-                {{ objActualites.contenueMessage|raw }}
+                {{ objActualite.contenu|raw }}
 
                 <div style="position: absolute; bottom: 2px; right: 6px; color: grey;">
-                    <small>Publié par {{ objActualites.pseudoMessagerie }}</small>
+                    <small>Publié par {{ objActualite.pseudoMessagerie }}</small>
                 </div>
             </div>
         </div>

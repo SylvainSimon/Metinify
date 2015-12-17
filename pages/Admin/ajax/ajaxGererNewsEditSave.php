@@ -27,12 +27,12 @@ class ajaxGererNewsEditSave extends \PageHelper {
             $objActualites = \Site\SiteHelper::getActualitesRepository()->find($newId);
         } else {
             $objActualites = new \Site\Entity\Actualites();
-            $objActualites->setAuteur($this->objAccount->getId());
+            $objActualites->setIdCompte($this->objAccount->getId());
             $objActualites->setDate(new \DateTime(date("Y-m-d H:i:s")));
         }
 
-        $objActualites->setTitreMessage($newTitre);
-        $objActualites->setContenueMessage($newMessage);
+        $objActualites->setTitre($newTitre);
+        $objActualites->setContenu($newMessage);
 
         $em->persist($objActualites);
         $em->flush();

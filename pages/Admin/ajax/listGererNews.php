@@ -17,11 +17,11 @@ class listGererNews extends \ScriptHelper {
                 }
             ),
             array(
-                'dbField' => 'ActualitesEntity.titreMessage',
+                'dbField' => 'ActualitesEntity.titre',
                 'dtField' => 'titre',
             ),
             array(
-                'dbField' => 'ActualitesEntity.contenueMessage',
+                'dbField' => 'ActualitesEntity.contenu',
                 'dtField' => 'message',
                 'formatter' => function( $d, $row ) {
                     return \FonctionsUtiles::Raccourcissement_Chaine($d, 50);
@@ -29,7 +29,7 @@ class listGererNews extends \ScriptHelper {
             ),
             array(
                 'dbField' => 'AccountEntity.login',
-                'dtField' => 'auteur',
+                'dtField' => 'compte',
             ),
             array(
                 'dbField' => 'ActualitesEntity.id',
@@ -47,7 +47,7 @@ class listGererNews extends \ScriptHelper {
         $datatable->setColumnsParameters($columnsParameters)
                 ->setRequest($_GET)
                 ->from("\Site\Entity\Actualites", "ActualitesEntity")
-                ->leftJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = ActualitesEntity.auteur");
+                ->leftJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = ActualitesEntity.idCompte");
 
         $datatable->getResult()->toJson();
     }

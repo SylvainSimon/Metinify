@@ -24,23 +24,23 @@ class Actualites {
     /**
      * @var integer
      *
-     * @ORM\Column(name="auteur", type="integer", nullable=true)
+     * @ORM\Column(name="id_compte", type="integer", nullable=true)
      */
-    private $auteur;
+    private $idCompte;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="titre_message", type="string", length=255, nullable=true)
+     * @ORM\Column(name="titre", type="string", length=255, nullable=true)
      */
-    private $titreMessage;
+    private $titre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="contenue_message", type="string", length=10240, nullable=true)
+     * @ORM\Column(name="contenu", type="string", length=10240, nullable=true)
      */
-    private $contenueMessage;
+    private $contenu;
 
     /**
      * @var \DateTime
@@ -59,69 +59,69 @@ class Actualites {
     }
 
     /**
-     * Set auteur
+     * Set idCompte
      *
-     * @param integer $auteur
+     * @param integer $idCompte
      *
      * @return Actualites
      */
-    public function setAuteur($auteur) {
-        $this->auteur = $auteur;
+    public function setIdCompte($idCompte) {
+        $this->idCompte = $idCompte;
 
         return $this;
     }
 
     /**
-     * Get auteur
+     * Get idCompte
      *
      * @return integer
      */
-    public function getAuteur() {
-        return $this->auteur;
+    public function getIdCompte() {
+        return $this->idCompte;
     }
 
     /**
-     * Set titreMessage
+     * Set titre
      *
-     * @param string $titreMessage
+     * @param string $titre
      *
      * @return Actualites
      */
-    public function setTitreMessage($titreMessage) {
-        $this->titreMessage = $titreMessage;
+    public function setTitre($titre) {
+        $this->titre = $titre;
 
         return $this;
     }
 
     /**
-     * Get titreMessage
+     * Get titre
      *
      * @return string
      */
-    public function getTitreMessage() {
-        return $this->titreMessage;
+    public function getTitre() {
+        return $this->titre;
     }
 
     /**
-     * Set contenueMessage
+     * Set contenu
      *
-     * @param string $contenueMessage
+     * @param string $contenu
      *
      * @return Actualites
      */
-    public function setContenueMessage($contenueMessage) {
-        $this->contenueMessage = $contenueMessage;
+    public function setContenu($contenu) {
+        $this->contenu = $contenu;
 
         return $this;
     }
 
     /**
-     * Get contenueMessage
+     * Get contenu
      *
      * @return string
      */
-    public function getContenueMessage() {
-        return $this->contenueMessage;
+    public function getContenu() {
+        return $this->contenu;
     }
 
     /**

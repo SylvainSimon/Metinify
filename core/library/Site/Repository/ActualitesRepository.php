@@ -10,13 +10,13 @@ class ActualitesRepository extends EntityRepository {
 
         $qb = $this->_em->createQueryBuilder();
 
-        $qb->select("ActualitesEntity.auteur,"
-                . "ActualitesEntity.titreMessage,"
-                . "ActualitesEntity.contenueMessage,"
+        $qb->select("ActualitesEntity.idCompte,"
+                . "ActualitesEntity.titre,"
+                . "ActualitesEntity.contenu,"
                 . "ActualitesEntity.date,"
                 . "AccountEntity.pseudoMessagerie");
         $qb->from("\Site\Entity\Actualites", "ActualitesEntity");
-        $qb->innerJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = ActualitesEntity.auteur");
+        $qb->innerJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = ActualitesEntity.idCompte");
         $qb->orderBy("ActualitesEntity.date", "DESC");
         $qb->setMaxResults($max);
 

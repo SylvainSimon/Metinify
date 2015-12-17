@@ -22,7 +22,7 @@ class GererNews extends \PageHelper {
         $sColumns .= '{ "mData": "date", "bSortable": true, "className": "min-desktop", "sWidth": "130px" },';
         $sColumns .= '{ "mData": "titre", "bSortable": true, "sWidth": "250px" },';
         $sColumns .= '{ "mData": "message", "className": "min-desktop", "bSortable": true },';
-        $sColumns .= '{ "mData": "auteur", "bSortable": true, "className": "min-desktop", "sWidth": "90px" },';
+        $sColumns .= '{ "mData": "compte", "bSortable": true, "className": "min-desktop", "sWidth": "90px" },';
         $sColumns .= '{ "mData": "actions", "bSortable": false, "className": "all", "sWidth": "55px" },';
 
         $sFilterColumns = '';
