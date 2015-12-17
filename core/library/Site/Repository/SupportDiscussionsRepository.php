@@ -12,14 +12,12 @@ class SupportDiscussionsRepository extends EntityRepository {
 
         $qb->select(""
                 . "SupportDiscussionsEntity.id, "
-                . "SupportObjetsEntity.objet, "
                 . "SupportDiscussionsEntity.message, "
                 . "SupportDiscussionsEntity.dateDernierMessage, "
                 . "AccountEntityAdmin.pseudoMessagerie AS admin, "
                 . "AccountEntityUser.pseudoMessagerie AS user ");
 
         $qb->from("\Site\Entity\SupportDiscussions", "SupportDiscussionsEntity");
-        $qb->innerJoin("\Site\Entity\SupportObjets", "SupportObjetsEntity", "WITH", "SupportObjetsEntity.id = SupportDiscussionsEntity.idObjet");
         $qb->innerJoin("\Account\Entity\Account", "AccountEntityAdmin", "WITH", "AccountEntityAdmin.id = SupportDiscussionsEntity.idAdmin");
         $qb->leftJoin("\Account\Entity\Account", "AccountEntityUser", "WITH", "AccountEntityUser.id = SupportDiscussionsEntity.idCompte");
         $qb->where("SupportDiscussionsEntity.idCompte = :idAccount OR SupportDiscussionsEntity.idAdmin = :idAccount");
@@ -49,14 +47,13 @@ class SupportDiscussionsRepository extends EntityRepository {
 
         $qb->select(""
                 . "SupportDiscussionsEntity.id, "
-                . "SupportObjetsEntity.objet, "
                 . "SupportDiscussionsEntity.message, "
+                . "SupportDiscussionsEntity.idObjet, "
                 . "SupportDiscussionsEntity.date, "
                 . "SupportDiscussionsEntity.ip, "
                 . "AccountEntityUser.pseudoMessagerie AS user ");
 
         $qb->from("\Site\Entity\SupportDiscussions", "SupportDiscussionsEntity");
-        $qb->innerJoin("\Site\Entity\SupportObjets", "SupportObjetsEntity", "WITH", "SupportObjetsEntity.id = SupportDiscussionsEntity.idObjet");
         $qb->leftJoin("\Account\Entity\Account", "AccountEntityUser", "WITH", "AccountEntityUser.id = SupportDiscussionsEntity.idCompte");
         $qb->where("SupportDiscussionsEntity.idAdmin = 0");
         

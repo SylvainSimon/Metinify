@@ -39,12 +39,11 @@ class ajaxMessageAdd extends \PageHelper {
 
 
             if ($idCompte == $objSupportDiscussion->getIdAdmin()) {
-                $objSupportObjet = \Site\SiteHelper::getSupportObjetsRepository()->find($objSupportDiscussion->getIdObjet());
                 $objAccountJoueur = \Account\AccountHelper::getAccountRepository()->find($objSupportDiscussion->getIdCompte());
 
                 if ($objAccountJoueur !== null) {
                     $template = $this->objTwig->loadTemplate("MessagerieMessageAdd.html5.twig");
-                    $result = $template->render(["compte" => $objAccountJoueur->getLogin(), "objet" => $objSupportObjet->getObjet()]);
+                    $result = $template->render(["compte" => $objAccountJoueur->getLogin(), "objet" => \SupportObjetsHelper::getLibelle($objSupportDiscussion->getIdObjet())]);
                     $subject = 'VamosMT2 - Réponse à votre ticket';
                     \EmailHelper::sendEmail($objAccountJoueur->getEmail(), $subject, $result);
                 }

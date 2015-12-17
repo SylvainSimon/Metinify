@@ -42,8 +42,8 @@
                             <div class="input-group col-xs-12">
                                 <select class="select2" id="discussionObjet" name="discussionObjet">
                                     <option selected="selected" value="0"> -- </option>
-                                    {% for objSupportObjets in arrObjSupportObjets %}
-                                        <option value="{{ objSupportObjets.getId }}">{{ objSupportObjets.getObjet }}</option>
+                                    {% for id, libelle in arrSupportObjets %}
+                                        <option value="{{ id }}">{{ libelle }}</option>
                                     {% endfor %}
                                 </select>
                             </div>

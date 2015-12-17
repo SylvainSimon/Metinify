@@ -18,14 +18,11 @@ class ajaxCodeEffacementCreateExecute extends \ScriptHelper {
         $this->objAccount->setCodeEffacement($codeEffacementNew);
         $em->persist($this->objAccount);
 
-        $objLogsCodeEffacementDefinition = new \Site\Entity\LogsCodeEffacementDefinition();
-        $objLogsCodeEffacementDefinition->setIdCompte($this->objAccount->getId());
-        $objLogsCodeEffacementDefinition->setCompte($this->objAccount->getLogin());
-        $objLogsCodeEffacementDefinition->setCode($codeEffacementNew);
-        $objLogsCodeEffacementDefinition->setDate(new \DateTime(date("Y-m-d H:i:s")));
-        $objLogsCodeEffacementDefinition->setIp($this->ipAdresse);
-
-        $em->persist($objLogsCodeEffacementDefinition);
+        $objLogsDefinitionCodeSurete = new \Site\Entity\LogsDefinitionCodeSurete();
+        $objLogsDefinitionCodeSurete->setIdCompte($this->objAccount->getId());
+        $objLogsDefinitionCodeSurete->setDate(new \DateTime(date("Y-m-d H:i:s")));
+        $objLogsDefinitionCodeSurete->setIp($this->ipAdresse);
+        $em->persist($objLogsDefinitionCodeSurete);
 
         $em->flush();
 

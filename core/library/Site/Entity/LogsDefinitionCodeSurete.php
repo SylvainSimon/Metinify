@@ -5,12 +5,12 @@ namespace Site\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * LogsCodeEffacementDefinition
+ * LogsDefinitionCodeSurete
  *
- * @ORM\Table(name="site.logs_code_effacement_definition")
+ * @ORM\Table(name="site.logs_definition_code_surete")
  * @ORM\Entity
  */
-class LogsCodeEffacementDefinition {
+class LogsDefinitionCodeSurete {
 
     /**
      * @var integer
@@ -27,20 +27,6 @@ class LogsCodeEffacementDefinition {
      * @ORM\Column(name="id_compte", type="integer", nullable=true)
      */
     private $idCompte;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="compte", type="string", length=20, nullable=true)
-     */
-    private $compte;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="code", type="integer", nullable=true)
-     */
-    private $code;
 
     /**
      * @var \DateTime
@@ -70,7 +56,7 @@ class LogsCodeEffacementDefinition {
      *
      * @param integer $idCompte
      *
-     * @return LogsCodeEffacementDefinition
+     * @return LogsDefinitionCodeSurete
      */
     public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
@@ -88,55 +74,11 @@ class LogsCodeEffacementDefinition {
     }
 
     /**
-     * Set compte
-     *
-     * @param string $compte
-     *
-     * @return LogsCodeEffacementDefinition
-     */
-    public function setCompte($compte) {
-        $this->compte = $compte;
-
-        return $this;
-    }
-
-    /**
-     * Get compte
-     *
-     * @return string
-     */
-    public function getCompte() {
-        return $this->compte;
-    }
-
-    /**
-     * Set code
-     *
-     * @param integer $code
-     *
-     * @return LogsCodeEffacementDefinition
-     */
-    public function setCode($code) {
-        $this->code = $code;
-
-        return $this;
-    }
-
-    /**
-     * Get code
-     *
-     * @return integer
-     */
-    public function getCode() {
-        return $this->code;
-    }
-
-    /**
      * Set date
      *
      * @param \DateTime $date
      *
-     * @return LogsCodeEffacementDefinition
+     * @return LogsDefinitionCodeSurete
      */
     public function setDate($date) {
         $this->date = $date;
@@ -158,7 +100,7 @@ class LogsCodeEffacementDefinition {
      *
      * @param string $ip
      *
-     * @return LogsCodeEffacementDefinition
+     * @return LogsDefinitionCodeSurete
      */
     public function setIp($ip) {
         $this->ip = $ip;

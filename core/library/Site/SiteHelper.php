@@ -119,13 +119,6 @@ class SiteHelper {
     }
     
     /**
-     * @return \Site\Repository\SupportObjetsRepository
-     */
-    public static function getSupportObjetsRepository() {
-        return DoctrineHelper::getRepository('\Site\Entity\SupportObjets');
-    }
-    
-    /**
      * @return \Site\Repository\LogsItemshopAchatsRepository
      */
     public static function getLogsItemshopAchatsRepository() {

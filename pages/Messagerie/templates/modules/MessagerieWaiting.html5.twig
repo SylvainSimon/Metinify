@@ -28,7 +28,7 @@
 
                     {% for objSupportDiscussion in arrObjSupportDiscussions %}
                         <tr onclick="Assignation_Ticket({{ objSupportDiscussion.id }});" class="pointer">
-                            <td>{{ objSupportDiscussion.objet }}</td>
+                            <td>{{ helpSupportObjet(objSupportDiscussion.idObjet) }}</td>
                             <td>{{ truncateString(objSupportDiscussion.message, 50) }}</td>
                             <td>{{ objSupportDiscussion.user }}</td>
                             <td>{{ getFormatedDateTime(objSupportDiscussion.date) }}</td>

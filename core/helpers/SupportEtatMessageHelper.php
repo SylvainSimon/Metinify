@@ -28,14 +28,6 @@ class SupportEtatMessageHelper {
         return $Libelle_Code;
     }
 
-    public static function getLu() {
-        return self::LIBELLE_LU;
-    }
-
-    public static function getNonLu() {
-        return self::LIBELLE_NON_LU;
-    }
-
     public static function getAll() {
         return array(
             self::LU,

@@ -16,7 +16,6 @@ class ajaxDiscussionArchivage extends \PageHelper {
 
         $idDiscussion = \Encryption::decrypt($request->request->get("idDiscussion"));
         $objSupportDiscussion = \Site\SiteHelper::getSupportDiscussionsRepository()->find($idDiscussion);
-        $objSupportObjet = \Site\SiteHelper::getSupportObjetsRepository()->find($objSupportDiscussion->getIdObjet());
         $objAccount = \Account\AccountHelper::getAccountRepository()->find($objSupportDiscussion->getIdCompte());
 
         if ($objSupportDiscussion !== null) {
@@ -28,7 +27,7 @@ class ajaxDiscussionArchivage extends \PageHelper {
                 $em->flush();
 
                 $template = $this->objTwig->loadTemplate("MessagerieDiscussionCloture.html5.twig");
-                $result = $template->render(["compte" => $objAccount->getLogin(), "objet" => $objSupportObjet->getObjet()]);
+                $result = $template->render(["compte" => $objAccount->getLogin(), "objet" => \SupportObjetsHelper::getLibelle($objSupportDiscussion->getIdObjet())]);
                 $subject = 'VamosMT2 - Clôture de votre ticket';
                 \EmailHelper::sendEmail($objAccount->getEmail(), $subject, $result);
 

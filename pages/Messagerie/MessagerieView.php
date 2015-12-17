@@ -19,14 +19,12 @@ class MessagerieView extends \PageHelper {
         $objSupportDiscussion = \Site\SiteHelper::getSupportDiscussionsRepository()->find($idSupportDiscussion);
         $objAccount = \Account\AccountHelper::getAccountRepository()->find($objSupportDiscussion->getIdCompte());
         $objAccountAdmin = \Account\AccountHelper::getAccountRepository()->find($objSupportDiscussion->getIdAdmin());
-        $objSupportObjet = \Site\SiteHelper::getSupportObjetsRepository()->find($objSupportDiscussion->getIdObjet());
         
         $arrObjSupportMessages = \Site\SiteHelper::getSupportMessagesRepository()->findMessages($this->objAccount->getId(), $idSupportDiscussion);
         
         $this->arrayTemplate["objSupportDiscussion"] = $objSupportDiscussion;
         $this->arrayTemplate["objAccount"] = $objAccount;
         $this->arrayTemplate["objAccountAdmin"] = $objAccountAdmin;
-        $this->arrayTemplate["objSupportObjet"] = $objSupportObjet;
         $this->arrayTemplate["arrObjSupportMessages"] = $arrObjSupportMessages;
         $this->arrayTemplate["currentAccount"] = $this->objAccount;
         $this->arrayTemplate["etatLu"] = \SupportEtatMessageHelper::LU;

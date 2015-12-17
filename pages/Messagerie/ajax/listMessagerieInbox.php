@@ -13,8 +13,11 @@ class listMessagerieInbox extends \ScriptHelper {
 
         $columnsParameters = array(
             array(
-                'dbField' => 'SupportObjetsEntity.objet',
+                'dbField' => 'SupportDiscussionsEntity.idObjet',
                 'dtField' => 'objet',
+                'formatter' => function( $d, $row ) {
+                    return \SupportObjetsHelper::getLibelle($d);
+                }
             ),
             array(
                 'dbField' => 'AccountEntityAdmin.pseudoMessagerie',
@@ -81,7 +84,6 @@ class listMessagerieInbox extends \ScriptHelper {
         $datatable->setColumnsParameters($columnsParameters)
                 ->setRequest($_GET)
                 ->from("\Site\Entity\SupportDiscussions", "SupportDiscussionsEntity")
-                ->innerJoin("\Site\Entity\SupportObjets", "SupportObjetsEntity", "WITH", "SupportObjetsEntity.id = SupportDiscussionsEntity.idObjet")
                 ->innerJoin("\Account\Entity\Account", "AccountEntityAdmin", "WITH", "AccountEntityAdmin.id = SupportDiscussionsEntity.idAdmin")
                 ->leftJoin("\Account\Entity\Account", "AccountEntityUser", "WITH", "AccountEntityUser.id = SupportDiscussionsEntity.idCompte")
                 ->leftJoin("\Site\Entity\SupportMessages", "SupportMessagesEntity", "WITH", "SupportMessagesEntity.idDiscussion = SupportDiscussionsEntity.id AND SupportMessagesEntity.etat = " . \SupportEtatMessageHelper::NON_LU . " AND SupportMessagesEntity.idCompte != " . $this->objAccount->getId() . "")

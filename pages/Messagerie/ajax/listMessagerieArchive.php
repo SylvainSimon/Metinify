@@ -13,8 +13,11 @@ class listMessagerieArchive extends \ScriptHelper {
 
         $columnsParameters = array(
             array(
-                'dbField' => 'SupportObjetsEntity.objet',
+                'dbField' => 'SupportDiscussionsEntity.idObjet',
                 'dtField' => 'objet',
+                'formatter' => function( $d, $row ) {
+                    return \SupportObjetsHelper::getLibelle($d);
+                }
             ),
             array(
                 'dbField' => 'AccountEntityAdmin.pseudoMessagerie',
@@ -54,7 +57,6 @@ class listMessagerieArchive extends \ScriptHelper {
         $datatable->setColumnsParameters($columnsParameters)
                 ->setRequest($_GET)
                 ->from("\Site\Entity\SupportDiscussions", "SupportDiscussionsEntity")
-                ->innerJoin("\Site\Entity\SupportObjets", "SupportObjetsEntity", "WITH", "SupportObjetsEntity.id = SupportDiscussionsEntity.idObjet")
                 ->innerJoin("\Account\Entity\Account", "AccountEntityAdmin", "WITH", "AccountEntityAdmin.id = SupportDiscussionsEntity.idAdmin")
                 ->leftJoin("\Account\Entity\Account", "AccountEntityUser", "WITH", "AccountEntityUser.id = SupportDiscussionsEntity.idCompte")
                 ->andWhere("SupportDiscussionsEntity.idCompte = " . $this->objAccount->getId() . " OR SupportDiscussionsEntity.idAdmin = " . $this->objAccount->getId() . "")

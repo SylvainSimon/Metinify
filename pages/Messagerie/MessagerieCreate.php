@@ -15,8 +15,8 @@ class MessagerieCreate extends \PageHelper {
         $nombreDiscussionOuverte = \Site\SiteHelper::getSupportDiscussionsRepository()->countDiscussionActiveByIdAccount($this->objAccount->getId());
         $this->arrayTemplate["nombreDiscussionOuverte"] = $nombreDiscussionOuverte;
         
-        $arrObjSupportObjets = \Site\SiteHelper::getSupportObjetsRepository()->findAll();
-        $this->arrayTemplate["arrObjSupportObjets"] = $arrObjSupportObjets;
+        $arrSupportObjets = \SupportObjetsHelper::getAll(false);
+        $this->arrayTemplate["arrSupportObjets"] = $arrSupportObjets;
         $this->arrayTemplate["objAccount"] = $this->objAccount->getId();
         
         $view = $this->template->render($this->arrayTemplate);
