@@ -43,13 +43,6 @@ class Actualites {
     private $contenueMessage;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="lien_illustration", type="string", length=255, nullable=true)
-     */
-    private $lienIllustration;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime", nullable=true)
@@ -129,28 +122,6 @@ class Actualites {
      */
     public function getContenueMessage() {
         return $this->contenueMessage;
-    }
-
-    /**
-     * Set lienIllustration
-     *
-     * @param string $lienIllustration
-     *
-     * @return Actualites
-     */
-    public function setLienIllustration($lienIllustration) {
-        $this->lienIllustration = $lienIllustration;
-
-        return $this;
-    }
-
-    /**
-     * Get lienIllustration
-     *
-     * @return string
-     */
-    public function getLienIllustration() {
-        return $this->lienIllustration;
     }
 
     /**

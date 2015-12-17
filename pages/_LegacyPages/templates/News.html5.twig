@@ -14,15 +14,7 @@
 
             <div class="box-body">
 
-                {% if objActualites.lienIllustration != "" %}
-                    <div class="Texte_News">
-                        <img class="Image_News" style="float: left;" height="100" src="{{ objActualites.lienIllustration }}" />
-                        <div style="position: relative; padding-right: 4px; left:4px;">{{ objActualites.contenueMessage }}</div>
-                    </div>
-                {% else %}
-                    {{ objActualites.contenueMessage|raw }}
-                {% endif %}
-
+                {{ objActualites.contenueMessage|raw }}
 
                 <div style="position: absolute; bottom: 2px; right: 6px; color: grey;">
                     <small>Publié par {{ objActualites.pseudoMessagerie }}</small>

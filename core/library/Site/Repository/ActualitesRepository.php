@@ -13,7 +13,6 @@ class ActualitesRepository extends EntityRepository {
         $qb->select("ActualitesEntity.auteur,"
                 . "ActualitesEntity.titreMessage,"
                 . "ActualitesEntity.contenueMessage,"
-                . "ActualitesEntity.lienIllustration,"
                 . "ActualitesEntity.date,"
                 . "AccountEntity.pseudoMessagerie");
         $qb->from("\Site\Entity\Actualites", "ActualitesEntity");
