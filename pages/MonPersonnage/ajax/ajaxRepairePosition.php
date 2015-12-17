@@ -36,6 +36,10 @@ class ajaxRepairePosition extends \ScriptHelper {
                 $map = \MapHelper::MAP_1_BLEU;
             }
 
+            $oldMapIndex = $this->objPlayer->getMapIndex();
+            $oldX = $this->objPlayer->getX();
+            $oldY = $this->objPlayer->getY();
+
             $this->objPlayer->setMapIndex($map);
             $this->objPlayer->setX($x);
             $this->objPlayer->setY($y);
@@ -45,13 +49,22 @@ class ajaxRepairePosition extends \ScriptHelper {
 
             $em->persist($this->objPlayer);
 
-            $objLogDeblocagePerso = new \Site\Entity\LogsDeblocagePersos();
-            $objLogDeblocagePerso->setIdPerso($this->objPlayer->getId());
-            $objLogDeblocagePerso->setIdCompte($this->objAccount->getId());
-            $objLogDeblocagePerso->setMapIndex($map);
-            $objLogDeblocagePerso->setDate(new \DateTime(date("Y-m-d H:i:s")));
-            $objLogDeblocagePerso->setIp($this->ipAdresse);
-            $em->persist($objLogDeblocagePerso);
+            $objLogsRepairPosition = new \Site\Entity\LogsRepairPosition();
+            $objLogsRepairPosition->setIdPlayer($this->objPlayer->getId());
+            $objLogsRepairPosition->setNamePlayer($this->objPlayer->getName());
+            $objLogsRepairPosition->setIdCompte($this->objAccount->getId());
+
+            $objLogsRepairPosition->setOldMapIndex($oldMapIndex);
+            $objLogsRepairPosition->setOldX($oldX);
+            $objLogsRepairPosition->setOldY($oldY);
+
+            $objLogsRepairPosition->setNewMapIndex($this->objPlayer->getMapIndex());
+            $objLogsRepairPosition->setNewX($this->objPlayer->getX());
+            $objLogsRepairPosition->setNewY($this->objPlayer->getY());
+
+            $objLogsRepairPosition->setDate(new \DateTime(date("Y-m-d H:i:s")));
+            $objLogsRepairPosition->setIp($this->ipAdresse);
+            $em->persist($objLogsRepairPosition);
 
             $em->flush();
         }
