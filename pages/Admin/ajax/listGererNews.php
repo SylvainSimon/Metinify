@@ -10,18 +10,18 @@ class listGererNews extends \ScriptHelper {
 
         $columnsParameters = array(
             array(
-                'dbField' => 'AdminNewsEntity.date',
+                'dbField' => 'ActualitesEntity.date',
                 'dtField' => 'date',
                 'formatter' => function( $d, $row ) {
                     return \DateTimeHelper::dateTimeToFormatedString($d);
                 }
             ),
             array(
-                'dbField' => 'AdminNewsEntity.titreMessage',
+                'dbField' => 'ActualitesEntity.titreMessage',
                 'dtField' => 'titre',
             ),
             array(
-                'dbField' => 'AdminNewsEntity.contenueMessage',
+                'dbField' => 'ActualitesEntity.contenueMessage',
                 'dtField' => 'message',
                 'formatter' => function( $d, $row ) {
                     return \FonctionsUtiles::Raccourcissement_Chaine($d, 50);
@@ -32,7 +32,7 @@ class listGererNews extends \ScriptHelper {
                 'dtField' => 'auteur',
             ),
             array(
-                'dbField' => 'AdminNewsEntity.id',
+                'dbField' => 'ActualitesEntity.id',
                 'dtField' => 'actions',
                 'formatter' => function( $d, $row ) {
 
@@ -46,8 +46,8 @@ class listGererNews extends \ScriptHelper {
         $datatable = new \DataTable();
         $datatable->setColumnsParameters($columnsParameters)
                 ->setRequest($_GET)
-                ->from("\Site\Entity\AdminNews", "AdminNewsEntity")
-                ->leftJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = AdminNewsEntity.auteur");
+                ->from("\Site\Entity\Actualites", "ActualitesEntity")
+                ->leftJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = ActualitesEntity.auteur");
 
         $datatable->getResult()->toJson();
     }

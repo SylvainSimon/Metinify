@@ -7,10 +7,10 @@ use \Shared\DoctrineHelper;
 class SiteHelper {
 
     /**
-     * @return \Site\Repository\AdminNewsRepository
+     * @return \Site\Repository\ActualitesRepository
      */
-    public static function getAdminNewsRepository() {
-        return DoctrineHelper::getRepository('\Site\Entity\AdminNews');
+    public static function getActualitesRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\Actualites');
     }
 
     /**

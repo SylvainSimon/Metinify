@@ -12,17 +12,17 @@
             <?php include 'pages/_LegacyPages/AttenteConfirmation.php'; ?>
         <?php } else { ?>
             <?php
-            $arrObjAdminNews = \Site\SiteHelper::getAdminNewsRepository()->findNews(4);
+            $arrObjActualites = \Site\SiteHelper::getActualitesRepository()->findNews(4);
             $templateTop = $this->objTwig->loadTemplate("News.html5.twig");
-            $view = $templateTop->render(["arrObjAdminNews" => $arrObjAdminNews]);
+            $view = $templateTop->render(["arrObjActualites" => $arrObjActualites]);
             echo $view;
             ?>
         <?php } ?>
     <?php } else { ?>
         <?php
-        $arrObjAdminNews = \Site\SiteHelper::getAdminNewsRepository()->findNews(4);
+        $arrObjActualites = \Site\SiteHelper::getActualitesRepository()->findNews(4);
         $templateTop = $this->objTwig->loadTemplate("News.html5.twig");
-        $view = $templateTop->render(["arrObjAdminNews" => $arrObjAdminNews]);
+        $view = $templateTop->render(["arrObjActualites" => $arrObjActualites]);
         echo $view;
         ?>
     <?php } ?>

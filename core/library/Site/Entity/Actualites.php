@@ -5,12 +5,12 @@ namespace Site\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AdminNews
+ * Actualites
  *
- * @ORM\Table(name="site.admin_news", uniqueConstraints={@ORM\UniqueConstraint(name="id", columns={"id"})})
- * @ORM\Entity(repositoryClass="Site\Repository\AdminNewsRepository")
+ * @ORM\Table(name="site.actualites")
+ * @ORM\Entity(repositoryClass="Site\Repository\ActualitesRepository")
  */
-class AdminNews {
+class Actualites {
 
     /**
      * @var integer
@@ -70,7 +70,7 @@ class AdminNews {
      *
      * @param integer $auteur
      *
-     * @return AdminNews
+     * @return Actualites
      */
     public function setAuteur($auteur) {
         $this->auteur = $auteur;
@@ -92,7 +92,7 @@ class AdminNews {
      *
      * @param string $titreMessage
      *
-     * @return AdminNews
+     * @return Actualites
      */
     public function setTitreMessage($titreMessage) {
         $this->titreMessage = $titreMessage;
@@ -114,7 +114,7 @@ class AdminNews {
      *
      * @param string $contenueMessage
      *
-     * @return AdminNews
+     * @return Actualites
      */
     public function setContenueMessage($contenueMessage) {
         $this->contenueMessage = $contenueMessage;
@@ -136,7 +136,7 @@ class AdminNews {
      *
      * @param string $lienIllustration
      *
-     * @return AdminNews
+     * @return Actualites
      */
     public function setLienIllustration($lienIllustration) {
         $this->lienIllustration = $lienIllustration;
@@ -158,7 +158,7 @@ class AdminNews {
      *
      * @param \DateTime $date
      *
-     * @return AdminNews
+     * @return Actualites
      */
     public function setDate($date) {
         $this->date = $date;

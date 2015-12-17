@@ -22,10 +22,10 @@ class ajaxGererNewsDelete extends \PageHelper {
         $newId = $request->request->get("newId");
 
         if ($newId > 0) {
-            $objAdminNews = \Site\SiteHelper::getAdminNewsRepository()->find($newId);
+            $objActualites = \Site\SiteHelper::getActualitesRepository()->find($newId);
 
-            if ($objAdminNews !== null) {
-                $em->remove($objAdminNews);
+            if ($objActualites !== null) {
+                $em->remove($objActualites);
                 $em->flush();
 
                 $result = array(

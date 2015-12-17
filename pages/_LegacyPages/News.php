@@ -10,8 +10,8 @@ class News extends \PageHelper {
 
     public function run() {
 
-        $arrObjAdminNews = \Site\SiteHelper::getAdminNewsRepository()->findNews(4);
-        $this->arrayTemplate["arrObjAdminNews"] = $arrObjAdminNews;
+        $arrObjActualites = \Site\SiteHelper::getActualitesRepository()->findNews(4);
+        $this->arrayTemplate["arrObjActualites"] = $arrObjActualites;
         
         $view = $this->template->render($this->arrayTemplate);
 

@@ -1,14 +1,14 @@
 <div class="box box-default flat" style="margin-bottom: 0px;">
 
     <div class="box-header">
-        {% if objAdminNews.getId > 0 %}
+        {% if objActualites.getId > 0 %}
             <h3 class="box-title">Modification d'une actualité</h3>
         {% else %}
             <h3 class="box-title">Ajout d'une actualité</h3>
         {% endif %}
     </div>
 
-    <input type="hidden" id="newId" value="{{ objAdminNews.getId }}">
+    <input type="hidden" id="newId" value="{{ objActualites.getId }}">
 
     <div class="box-body no-padding" style="padding-top: 10px !important;">
         <div class="col-lg-12">
@@ -18,7 +18,7 @@
                 </label>
 
                 <div class="input-group col-xs-12">
-                    <input type="text" id="newTitre" class="form-control input-sm text" value="{{ objAdminNews.getTitreMessage }}" required >
+                    <input type="text" id="newTitre" class="form-control input-sm text" value="{{ objActualites.getTitreMessage }}" required >
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
 
                 <div class="input-group col-xs-12">
 
-                    <textarea style="resize: none; min-height: 200px;" id="newsMessage" class="form-control input-sm">{{ objAdminNews.getContenueMessage }}</textarea>
+                    <textarea style="resize: none; min-height: 200px;" id="newsMessage" class="form-control input-sm">{{ objActualites.getContenueMessage }}</textarea>
                 </div>
             </div>
         </div>

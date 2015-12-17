@@ -24,17 +24,17 @@ class ajaxGererNewsEditSave extends \PageHelper {
         $newMessage = $request->request->get("newsMessage");
 
         if ($newId > 0) {
-            $objAdminNews = \Site\SiteHelper::getAdminNewsRepository()->find($newId);
+            $objActualites = \Site\SiteHelper::getActualitesRepository()->find($newId);
         } else {
-            $objAdminNews = new \Site\Entity\AdminNews();
-            $objAdminNews->setAuteur($this->objAccount->getId());
-            $objAdminNews->setDate(new \DateTime(date("Y-m-d H:i:s")));
+            $objActualites = new \Site\Entity\Actualites();
+            $objActualites->setAuteur($this->objAccount->getId());
+            $objActualites->setDate(new \DateTime(date("Y-m-d H:i:s")));
         }
 
-        $objAdminNews->setTitreMessage($newTitre);
-        $objAdminNews->setContenueMessage($newMessage);
+        $objActualites->setTitreMessage($newTitre);
+        $objActualites->setContenueMessage($newMessage);
 
-        $em->persist($objAdminNews);
+        $em->persist($objActualites);
         $em->flush();
 
         $result = array(

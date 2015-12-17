@@ -21,13 +21,13 @@ class GererNews extends \PageHelper {
         $mode = $request->query->get("mode");
 
         if ($mode == "create") {
-            $objAdminNews = new \Site\Entity\AdminNews();
+            $objActualites = new \Site\Entity\Actualites();
         } else if ($mode == "mod") {
             $id = $request->query->get("idNews");
-            $objAdminNews = \Site\SiteHelper::getAdminNewsRepository()->find($id);
+            $objActualites = \Site\SiteHelper::getActualitesRepository()->find($id);
         }
 
-        $this->arrayTemplate["objAdminNews"] = $objAdminNews;
+        $this->arrayTemplate["objActualites"] = $objActualites;
         $view = $this->template->render($this->arrayTemplate);
 
         $this->response->setContent($view);

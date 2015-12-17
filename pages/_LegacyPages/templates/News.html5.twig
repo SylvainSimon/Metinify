@@ -1,31 +1,31 @@
-{% if arrObjAdminNews|length > 0 %}
+{% if arrObjActualites|length > 0 %}
 
-    {% for objAdminNews in arrObjAdminNews %}
+    {% for objActualites in arrObjActualites %}
 
         <div class="box box-default flat">
 
             <div class="box-header">
-                <h3 class="box-title">{{ objAdminNews.titreMessage }}</h3>
+                <h3 class="box-title">{{ objActualites.titreMessage }}</h3>
 
                 <div class="box-tools" style="padding-top: 5px;">
-                    <i data-tooltip-position="left" data-tooltip="{{ getFormatedDateTime(objAdminNews.date) }}" class="material-icons md-icon-event md-20"></i>
+                    <i data-tooltip-position="left" data-tooltip="{{ getFormatedDateTime(objActualites.date) }}" class="material-icons md-icon-event md-20"></i>
                 </div>
             </div>
 
             <div class="box-body">
 
-                {% if objAdminNews.lienIllustration != "" %}
+                {% if objActualites.lienIllustration != "" %}
                     <div class="Texte_News">
-                        <img class="Image_News" style="float: left;" height="100" src="{{ objAdminNews.lienIllustration }}" />
-                        <div style="position: relative; padding-right: 4px; left:4px;">{{ objAdminNews.contenueMessage }}</div>
+                        <img class="Image_News" style="float: left;" height="100" src="{{ objActualites.lienIllustration }}" />
+                        <div style="position: relative; padding-right: 4px; left:4px;">{{ objActualites.contenueMessage }}</div>
                     </div>
                 {% else %}
-                    {{ objAdminNews.contenueMessage|raw }}
+                    {{ objActualites.contenueMessage|raw }}
                 {% endif %}
 
 
                 <div style="position: absolute; bottom: 2px; right: 6px; color: grey;">
-                    <small>Publié par {{ objAdminNews.pseudoMessagerie }}</small>
+                    <small>Publié par {{ objActualites.pseudoMessagerie }}</small>
                 </div>
             </div>
         </div>
