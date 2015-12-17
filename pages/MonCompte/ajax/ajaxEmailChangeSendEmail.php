@@ -15,17 +15,17 @@ class ajaxEmailChangeSendEmail extends \ScriptHelper {
         $Nombre_Unique = \FonctionsUtiles::GenerateString(8, "INT");
 
         //Suppression des autres entrées de vérification
-        \Site\SiteHelper::getChangementMailRepository()->deleteByAccountId($this->objAccount->getId());
+        \Site\SiteHelper::getControleChangementMailRepository()->deleteByAccountId($this->objAccount->getId());
 
         //Insertion de la clés de vérification
-        $objChangementMail = new \Site\Entity\ChangementMail();
-        $objChangementMail->setIdCompte($this->objAccount->getId());
-        $objChangementMail->setCompte($this->objAccount->getLogin());
-        $objChangementMail->setEmail($this->objAccount->getEmail());
-        $objChangementMail->setNumeroVerif($Nombre_Unique);
-        $objChangementMail->setIp($this->ipAdresse);
-        $objChangementMail->setDate(new \DateTime(date("Y-m-d H:i:s")));
-        $em->persist($objChangementMail);
+        $objControleChangementMail = new \Site\Entity\ControleChangementMail();
+        $objControleChangementMail->setIdCompte($this->objAccount->getId());
+        $objControleChangementMail->setCompte($this->objAccount->getLogin());
+        $objControleChangementMail->setEmail($this->objAccount->getEmail());
+        $objControleChangementMail->setNumeroVerif($Nombre_Unique);
+        $objControleChangementMail->setIp($this->ipAdresse);
+        $objControleChangementMail->setDate(new \DateTime(date("Y-m-d H:i:s")));
+        $em->persist($objControleChangementMail);
 
         $em->flush();
 

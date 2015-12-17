@@ -13,9 +13,9 @@ class ajaxEmailChangeVerify extends \ScriptHelper {
         global $request;
         $numeroVerif = $request->request->get("code");
         
-        $objChangementMail = \Site\SiteHelper::getChangementMailRepository()->findByIdCompteAndNumeroVerif($this->objAccount->getId(), $numeroVerif);
+        $objControleChangementMail = \Site\SiteHelper::getControleChangementMailRepository()->findByIdCompteAndNumeroVerif($this->objAccount->getId(), $numeroVerif);
 
-        if ($objChangementMail !== null) {
+        if ($objControleChangementMail !== null) {
             echo "1";
         } else {
             echo "2";

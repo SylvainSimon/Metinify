@@ -4,16 +4,16 @@ namespace Site\Repository;
 
 use \Shared\EntityRepository;
 
-class ChangementMailRepository extends EntityRepository {
+class ControleChangementMailRepository extends EntityRepository {
 
     public function findByIdCompteAndNumeroVerif($idAccount = 0, $numeroVerif = 0) {
 
         $qb = $this->_em->createQueryBuilder();
 
-        $qb->select("ChangementMailEntity");
-        $qb->from("\Site\Entity\ChangementMail", "ChangementMailEntity");
-        $qb->where("ChangementMailEntity.idCompte = :idAccount");
-        $qb->andWhere("ChangementMailEntity.numeroVerif = :numeroVerif");
+        $qb->select("ControleChangementMailEntity");
+        $qb->from("\Site\Entity\ControleChangementMail", "ControleChangementMailEntity");
+        $qb->where("ControleChangementMailEntity.idCompte = :idAccount");
+        $qb->andWhere("ControleChangementMailEntity.numeroVerif = :numeroVerif");
         $qb->setParameter("idAccount", $idAccount);
         $qb->setParameter("numeroVerif", $numeroVerif);
 
@@ -28,8 +28,8 @@ class ChangementMailRepository extends EntityRepository {
 
         $qb = $this->_em->createQueryBuilder();
 
-        $qb->delete("\Site\Entity\ChangementMail", "ChangementMailEntity");
-        $qb->where("ChangementMailEntity.idCompte = :idAccount");
+        $qb->delete("\Site\Entity\ControleChangementMail", "ControleChangementMailEntity");
+        $qb->where("ControleChangementMailEntity.idCompte = :idAccount");
         $qb->setParameter("idAccount", $idAccount);
 
         try {

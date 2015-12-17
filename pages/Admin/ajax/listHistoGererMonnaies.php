@@ -10,7 +10,7 @@ class listHistoGererMonnaies extends \ScriptHelper {
 
         $columnsParameters = array(
             array(
-                'dbField' => 'AdministrationLogsGererMonnaiesEntity.idCompte',
+                'dbField' => 'LogsAdminGererMonnaieEntity.idCompte',
                 'dtField' => 'idCompte',
             ),
             array(
@@ -25,7 +25,7 @@ class listHistoGererMonnaies extends \ScriptHelper {
                 }
             ),
             array(
-                'dbField' => 'AdministrationLogsGererMonnaiesEntity.date',
+                'dbField' => 'LogsAdminGererMonnaieEntity.date',
                 'dtField' => 'date',
                 'formatter' => function( $d, $row ) {
                     return \DateTimeHelper::dateTimeToFormatedString($d);
@@ -36,7 +36,7 @@ class listHistoGererMonnaies extends \ScriptHelper {
                 'dtField' => 'emetteur'
             ),
             array(
-                'dbField' => 'AdministrationLogsGererMonnaiesEntity.operation',
+                'dbField' => 'LogsAdminGererMonnaieEntity.operation',
                 'filterLevel' => 'strict',
                 'dtField' => 'operation',
                 'formatter' => function( $d, $row ) {
@@ -48,12 +48,12 @@ class listHistoGererMonnaies extends \ScriptHelper {
                 }
             ),
             array(
-                'dbField' => 'AdministrationLogsGererMonnaiesEntity.montant',
+                'dbField' => 'LogsAdminGererMonnaieEntity.montant',
                 'filterLevel' => 'strict',
                 'dtField' => 'montant'
             ),
             array(
-                'dbField' => 'AdministrationLogsGererMonnaiesEntity.devise',
+                'dbField' => 'LogsAdminGererMonnaieEntity.devise',
                 'filterLevel' => 'strict',
                 'dtField' => 'devise',
                 'formatter' => function( $d, $row ) {
@@ -65,9 +65,9 @@ class listHistoGererMonnaies extends \ScriptHelper {
         $datatable = new \DataTable();
         $datatable->setColumnsParameters($columnsParameters)
                 ->setRequest($_GET)
-                ->from("\Site\Entity\AdministrationLogsGererMonnaies", "AdministrationLogsGererMonnaiesEntity")
-                ->leftJoin("\Account\Entity\Account", "AccountEntityUser", "WITH", "AccountEntityUser.id = AdministrationLogsGererMonnaiesEntity.idCompte")
-                ->innerJoin("\Account\Entity\Account", "AccountEntityAdmin", "WITH", "AccountEntityAdmin.id = AdministrationLogsGererMonnaiesEntity.idGm");
+                ->from("\Site\Entity\LogsAdminGererMonnaie", "LogsAdminGererMonnaieEntity")
+                ->leftJoin("\Account\Entity\Account", "AccountEntityUser", "WITH", "AccountEntityUser.id = LogsAdminGererMonnaieEntity.idCompte")
+                ->innerJoin("\Account\Entity\Account", "AccountEntityAdmin", "WITH", "AccountEntityAdmin.id = LogsAdminGererMonnaieEntity.idGm");
 
         $datatable->getResult()->toJson();
     }

@@ -21,18 +21,18 @@ class ajaxPasswordChangeSendEmail extends \ScriptHelper {
         if ($objAccount !== null) {
 
             //Suppression des autres demandes
-            \Site\SiteHelper::getChangementMotDePasseRepository()->deleteByAccountId($objAccount->getId());
+            \Site\SiteHelper::getControleChangementMotDePasseRepository()->deleteByAccountId($objAccount->getId());
 
             $Nombre_Unique = \FonctionsUtiles::GenerateString(8, "INT");
 
-            $objChangementMotDePasse = new \Site\Entity\ChangementMotDePasse();
-            $objChangementMotDePasse->setIdCompte($objAccount->getId());
-            $objChangementMotDePasse->setCompte($objAccount->getLogin());
-            $objChangementMotDePasse->setNouveauMotDePasse($passwordNew);
-            $objChangementMotDePasse->setNumeroVerif($Nombre_Unique);
-            $objChangementMotDePasse->setIp($this->ipAdresse);
+            $objControleChangementMotDePasse = new \Site\Entity\ControleChangementMotDePasse();
+            $objControleChangementMotDePasse->setIdCompte($objAccount->getId());
+            $objControleChangementMotDePasse->setCompte($objAccount->getLogin());
+            $objControleChangementMotDePasse->setNouveauMotDePasse($passwordNew);
+            $objControleChangementMotDePasse->setNumeroVerif($Nombre_Unique);
+            $objControleChangementMotDePasse->setIp($this->ipAdresse);
 
-            $em->persist($objChangementMotDePasse);
+            $em->persist($objControleChangementMotDePasse);
             $em->flush();
             
             $template = $this->objTwig->loadTemplate("PasswordChangeEmail.html5.twig");

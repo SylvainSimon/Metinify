@@ -24,19 +24,19 @@ class ajaxGererMonnaieExecute extends \ScriptHelper {
         $ammount = $request->request->get("nombre_monnaies");
         $devise = $request->request->get("devise");
 
-        $objAdministrationLogsGererMonnaies = new \Site\Entity\AdministrationLogsGererMonnaies();
+        $objLogsAdminGererMonnaie = new \Site\Entity\LogsAdminGererMonnaie();
 
-        $objAdministrationLogsGererMonnaies->setMontant($ammount);
-        $objAdministrationLogsGererMonnaies->setDevise($devise);
-        $objAdministrationLogsGererMonnaies->setOperation($typeTransaction);
-        $objAdministrationLogsGererMonnaies->setIdGm($this->objAccount->getId());
-        $objAdministrationLogsGererMonnaies->setDate(new \DateTime(date("Y-m-d H:i:s")));
-        $objAdministrationLogsGererMonnaies->setIp($this->ipAdresse);
+        $objLogsAdminGererMonnaie->setMontant($ammount);
+        $objLogsAdminGererMonnaie->setDevise($devise);
+        $objLogsAdminGererMonnaie->setOperation($typeTransaction);
+        $objLogsAdminGererMonnaie->setIdGm($this->objAccount->getId());
+        $objLogsAdminGererMonnaie->setDate(new \DateTime(date("Y-m-d H:i:s")));
+        $objLogsAdminGererMonnaie->setIp($this->ipAdresse);
 
         if ($compte == "*") {
 
             \Account\AccountHelper::getAccountRepository()->updateMonnaiesByLogin("", $typeTransaction, $ammount, $devise);
-            $objAdministrationLogsGererMonnaies->setIdCompte(0);
+            $objLogsAdminGererMonnaie->setIdCompte(0);
 
             $Tableau_Retour_Json = array(
                 'result' => true,
@@ -49,7 +49,7 @@ class ajaxGererMonnaieExecute extends \ScriptHelper {
             if ($objAccount !== null) {
 
                 \Account\AccountHelper::getAccountRepository()->updateMonnaiesByLogin($compte, $typeTransaction, $ammount, $devise);
-                $objAdministrationLogsGererMonnaies->setIdCompte($objAccount->getId());
+                $objLogsAdminGererMonnaie->setIdCompte($objAccount->getId());
 
                 $Tableau_Retour_Json = array(
                     'result' => true,
@@ -65,7 +65,7 @@ class ajaxGererMonnaieExecute extends \ScriptHelper {
             }
         }
         
-        $em->persist($objAdministrationLogsGererMonnaies);
+        $em->persist($objLogsAdminGererMonnaie);
         $em->flush();
         
         echo json_encode($Tableau_Retour_Json);

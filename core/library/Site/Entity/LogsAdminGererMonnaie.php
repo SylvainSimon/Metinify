@@ -5,12 +5,12 @@ namespace Site\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AdministrationLogsGererMonnaies
+ * LogsAdminGererMonnaie
  *
- * @ORM\Table(name="site.administration_logs_gerer_monnaies")
- * @ORM\Entity(repositoryClass="Site\Repository\AdministrationLogsGererMonnaiesRepository")
+ * @ORM\Table(name="site.logs_admin_gerer_monnaie")
+ * @ORM\Entity(repositoryClass="Site\Repository\LogsAdminGererMonnaieRepository")
  */
-class AdministrationLogsGererMonnaies {
+class LogsAdminGererMonnaie {
 
     /**
      * @var integer
@@ -84,7 +84,7 @@ class AdministrationLogsGererMonnaies {
      *
      * @param integer $idCompte
      *
-     * @return AdministrationLogsGererMonnaies
+     * @return LogsAdminGererMonnaie
      */
     public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
@@ -106,7 +106,7 @@ class AdministrationLogsGererMonnaies {
      *
      * @param integer $montant
      *
-     * @return AdministrationLogsGererMonnaies
+     * @return LogsAdminGererMonnaie
      */
     public function setMontant($montant) {
         $this->montant = $montant;
@@ -128,7 +128,7 @@ class AdministrationLogsGererMonnaies {
      *
      * @param integer $devise
      *
-     * @return AdministrationLogsGererMonnaies
+     * @return LogsAdminGererMonnaie
      */
     public function setDevise($devise) {
         $this->devise = $devise;
@@ -150,7 +150,7 @@ class AdministrationLogsGererMonnaies {
      *
      * @param integer $operation
      *
-     * @return AdministrationLogsGererMonnaies
+     * @return LogsAdminGererMonnaie
      */
     public function setOperation($operation) {
         $this->operation = $operation;
@@ -172,7 +172,7 @@ class AdministrationLogsGererMonnaies {
      *
      * @param integer $idGm
      *
-     * @return AdministrationLogsGererMonnaies
+     * @return LogsAdminGererMonnaie
      */
     public function setIdGm($idGm) {
         $this->idGm = $idGm;
@@ -194,7 +194,7 @@ class AdministrationLogsGererMonnaies {
      *
      * @param \DateTime $date
      *
-     * @return AdministrationLogsGererMonnaies
+     * @return LogsAdminGererMonnaie
      */
     public function setDate($date) {
         $this->date = $date;
@@ -216,7 +216,7 @@ class AdministrationLogsGererMonnaies {
      *
      * @param string $ip
      *
-     * @return AdministrationLogsGererMonnaies
+     * @return LogsAdminGererMonnaie
      */
     public function setIp($ip) {
         $this->ip = $ip;

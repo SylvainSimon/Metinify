@@ -28,10 +28,10 @@ class SiteHelper {
     }
     
     /**
-     * @return \Site\Repository\ChangementMailRepository
+     * @return \Site\Repository\ControleChangementMailRepository
      */
-    public static function getChangementMailRepository() {
-        return DoctrineHelper::getRepository('\Site\Entity\ChangementMail');
+    public static function getControleChangementMailRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\ControleChangementMail');
     }
     
     /**
@@ -63,10 +63,10 @@ class SiteHelper {
     }
     
     /**
-     * @return \Site\Repository\ChangementMotDePasseRepository
+     * @return \Site\Repository\ControleChangementMotDePasseRepository
      */
-    public static function getChangementMotDePasseRepository() {
-        return DoctrineHelper::getRepository('\Site\Entity\ChangementMotDePasse');
+    public static function getControleChangementMotDePasseRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\ControleChangementMotDePasse');
     }
     
     /**

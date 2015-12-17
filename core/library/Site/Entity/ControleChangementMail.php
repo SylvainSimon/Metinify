@@ -5,12 +5,12 @@ namespace Site\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * ChangementMail
+ * ControleChangementMail
  *
- * @ORM\Table(name="site.changement_mail")
- * @ORM\Entity(repositoryClass="Site\Repository\ChangementMailRepository")
+ * @ORM\Table(name="site.controle_changement_mail")
+ * @ORM\Entity(repositoryClass="Site\Repository\ControleChangementMailRepository")
  */
-class ChangementMail {
+class ControleChangementMail {
 
     /**
      * @var integer
@@ -77,7 +77,7 @@ class ChangementMail {
      *
      * @param integer $idCompte
      *
-     * @return ChangementMail
+     * @return ControleChangementMail
      */
     public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
@@ -99,7 +99,7 @@ class ChangementMail {
      *
      * @param string $compte
      *
-     * @return ChangementMail
+     * @return ControleChangementMail
      */
     public function setCompte($compte) {
         $this->compte = $compte;
@@ -121,7 +121,7 @@ class ChangementMail {
      *
      * @param string $email
      *
-     * @return ChangementMail
+     * @return ControleChangementMail
      */
     public function setEmail($email) {
         $this->email = $email;
@@ -143,7 +143,7 @@ class ChangementMail {
      *
      * @param string $numeroVerif
      *
-     * @return ChangementMail
+     * @return ControleChangementMail
      */
     public function setNumeroVerif($numeroVerif) {
         $this->numeroVerif = $numeroVerif;
@@ -165,7 +165,7 @@ class ChangementMail {
      *
      * @param \DateTime $date
      *
-     * @return ChangementMail
+     * @return ControleChangementMail
      */
     public function setDate($date) {
         $this->date = $date;
@@ -187,7 +187,7 @@ class ChangementMail {
      *
      * @param string $ip
      *
-     * @return ChangementMail
+     * @return ControleChangementMail
      */
     public function setIp($ip) {
         $this->ip = $ip;

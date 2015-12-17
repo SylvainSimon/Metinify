@@ -14,16 +14,16 @@ class ajaxPasswordChangeVerify extends \ScriptHelper {
         $em = \Shared\DoctrineHelper::getEntityManager();
 
         $numeroVerif = $request->request->get("code");
-        $objChangementMotDePasse = \Site\SiteHelper::getChangementMotDePasseRepository()->findByIdCompteAndNumeroVerif($this->objAccount->getId(), $numeroVerif);
+        $objControleChangementMotDePasse = \Site\SiteHelper::getControleChangementMotDePasseRepository()->findByIdCompteAndNumeroVerif($this->objAccount->getId(), $numeroVerif);
 
-        if ($objChangementMotDePasse !== null) {
+        if ($objControleChangementMotDePasse !== null) {
 
             //Application du mot de passe
-            $this->objAccount->setPassword($objChangementMotDePasse->getNouveauMotDePasse());
+            $this->objAccount->setPassword($objControleChangementMotDePasse->getNouveauMotDePasse());
             $em->persist($this->objAccount);
 
             //Suppression des demandes
-            \Site\SiteHelper::getChangementMotDePasseRepository()->deleteByAccountId($objChangementMotDePasse->getIdCompte());
+            \Site\SiteHelper::getControleChangementMotDePasseRepository()->deleteByAccountId($objControleChangementMotDePasse->getIdCompte());
 
             //Ajout dans les logs
             $objLogsChangementPassword = new \Site\Entity\LogsChangementPassword();

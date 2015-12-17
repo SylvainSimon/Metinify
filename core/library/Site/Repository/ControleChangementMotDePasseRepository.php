@@ -4,14 +4,14 @@ namespace Site\Repository;
 
 use \Shared\EntityRepository;
 
-class ChangementMotDePasseRepository extends EntityRepository {
+class ControleChangementMotDePasseRepository extends EntityRepository {
 
     public function deleteByAccountId($idAccount = 0) {
 
         $qb = $this->_em->createQueryBuilder();
 
-        $qb->delete("\Site\Entity\ChangementMotDePasse", "ChangementMotDePasseEntity");
-        $qb->where("ChangementMotDePasseEntity.idCompte = :idAccount");
+        $qb->delete("\Site\Entity\ControleChangementMotDePasse", "ControleChangementMotDePasseEntity");
+        $qb->where("ControleChangementMotDePasseEntity.idCompte = :idAccount");
         $qb->setParameter("idAccount", $idAccount);
 
         try {
@@ -25,10 +25,10 @@ class ChangementMotDePasseRepository extends EntityRepository {
 
         $qb = $this->_em->createQueryBuilder();
 
-        $qb->select("ChangementMotDePasseEntity");
-        $qb->from("\Site\Entity\ChangementMotDePasse", "ChangementMotDePasseEntity");
-        $qb->where("ChangementMotDePasseEntity.idCompte = :idAccount");
-        $qb->andWhere("ChangementMotDePasseEntity.numeroVerif = :numeroVerif");
+        $qb->select("ControleChangementMotDePasseEntity");
+        $qb->from("\Site\Entity\ControleChangementMotDePasse", "ControleChangementMotDePasseEntity");
+        $qb->where("ControleChangementMotDePasseEntity.idCompte = :idAccount");
+        $qb->andWhere("ControleChangementMotDePasseEntity.numeroVerif = :numeroVerif");
         $qb->setParameter("idAccount", $idAccount);
         $qb->setParameter("numeroVerif", $numeroVerif);
 

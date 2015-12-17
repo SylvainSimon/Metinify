@@ -5,12 +5,12 @@ namespace Site\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * ChangementMotDePasse
+ * ControleChangementMotDePasse
  *
- * @ORM\Table(name="site.changement_mot_de_passe")
- * @ORM\Entity(repositoryClass="Site\Repository\ChangementMotDePasseRepository")
+ * @ORM\Table(name="site.controle_changement_mot_de_passe")
+ * @ORM\Entity(repositoryClass="Site\Repository\ControleChangementMotDePasseRepository")
  */
-class ChangementMotDePasse {
+class ControleChangementMotDePasse {
 
     /**
      * @var integer
@@ -77,7 +77,7 @@ class ChangementMotDePasse {
      *
      * @param integer $idCompte
      *
-     * @return ChangementMotDePasse
+     * @return ControleChangementMotDePasse
      */
     public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
@@ -99,7 +99,7 @@ class ChangementMotDePasse {
      *
      * @param string $compte
      *
-     * @return ChangementMotDePasse
+     * @return ControleChangementMotDePasse
      */
     public function setCompte($compte) {
         $this->compte = $compte;
@@ -121,7 +121,7 @@ class ChangementMotDePasse {
      *
      * @param string $nouveauMotDePasse
      *
-     * @return ChangementMotDePasse
+     * @return ControleChangementMotDePasse
      */
     public function setNouveauMotDePasse($nouveauMotDePasse) {
         $this->nouveauMotDePasse = $nouveauMotDePasse;
@@ -143,7 +143,7 @@ class ChangementMotDePasse {
      *
      * @param integer $numeroVerif
      *
-     * @return ChangementMotDePasse
+     * @return ControleChangementMotDePasse
      */
     public function setNumeroVerif($numeroVerif) {
         $this->numeroVerif = $numeroVerif;
@@ -165,7 +165,7 @@ class ChangementMotDePasse {
      *
      * @param string $date
      *
-     * @return ChangementMotDePasse
+     * @return ControleChangementMotDePasse
      */
     public function setDate($date) {
         $this->date = $date;
@@ -187,7 +187,7 @@ class ChangementMotDePasse {
      *
      * @param string $ip
      *
-     * @return ChangementMotDePasse
+     * @return ControleChangementMotDePasse
      */
     public function setIp($ip) {
         $this->ip = $ip;

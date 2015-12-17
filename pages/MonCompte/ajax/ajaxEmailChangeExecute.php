@@ -24,7 +24,7 @@ class ajaxEmailChangeExecute extends \ScriptHelper {
         $em->persist($this->objAccount);
         
         //Suppression de l'entrée de vérification
-        \Site\SiteHelper::getChangementMailRepository()->deleteByAccountId($AccountId);
+        \Site\SiteHelper::getControleChangementMailRepository()->deleteByAccountId($AccountId);
 
         //On insère dans les logs
         $objLogsChangementMail = new \Site\Entity\LogsChangementMail();
