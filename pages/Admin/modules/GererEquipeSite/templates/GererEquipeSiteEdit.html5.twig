@@ -1,14 +1,14 @@
 <div class="box box-default flat" style="margin-bottom: 0px;">
 
     <div class="box-header">
-        {% if objAdministrationUsers.getId > 0 %}
+        {% if objAdmins.getId > 0 %}
             <h3 class="box-title">Modification d'un membre du site</h3>
         {% else %}
             <h3 class="box-title">Ajout d'un membre du site</h3>
         {% endif %}
     </div>
 
-    <input type="hidden" id="idAdministrationUsers" value="{{ objAdministrationUsers.getId }}">
+    <input type="hidden" id="idAdmins" value="{{ objAdmins.getId }}">
 
     <div class="box-body no-padding" style="padding-top: 10px !important;">
 
@@ -226,7 +226,7 @@
                 type: "POST",
                 url: "pages/Admin/modules/GererEquipeSite/ajax/ajaxGererEquipeSiteEditSave.php",
                 data: {
-                    "idAdministrationUsers": $("#idAdministrationUsers").val(),
+                    "idAdmins": $("#idAdmins").val(),
                     "idCompte": $("#accountId").val(),
                     "arrDroits": arrJson
                 },

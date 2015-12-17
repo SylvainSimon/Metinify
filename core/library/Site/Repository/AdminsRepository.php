@@ -4,7 +4,7 @@ namespace Site\Repository;
 
 use \Shared\EntityRepository;
 
-class AdministrationUsersRepository extends EntityRepository {
+class AdminsRepository extends EntityRepository {
 
     /**
      * Retourne les droits d'admin d'un compte
@@ -15,9 +15,9 @@ class AdministrationUsersRepository extends EntityRepository {
 
         $qb = $this->_em->createQueryBuilder();
 
-        $qb->select("AdministrationUsersEntity");
-        $qb->from("\Site\Entity\AdministrationUsers", "AdministrationUsersEntity");
-        $qb->where("AdministrationUsersEntity.idCompte = :idAccount");
+        $qb->select("AdminsEntity");
+        $qb->from("\Site\Entity\Admins", "AdminsEntity");
+        $qb->where("AdminsEntity.idCompte = :idAccount");
         $qb->setParameter("idAccount", $idAccount);
 
         try {

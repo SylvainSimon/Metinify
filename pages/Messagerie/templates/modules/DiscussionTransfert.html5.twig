@@ -16,8 +16,8 @@
 
                 <div class="input-group col-xs-12">
                     <select name="idAccount" class="select2" id="idAccount">
-                        {% for objAdministrationUsers in arrObjAdministrationUsers %}
-                            <option value="{{ objAdministrationUsers.getId }}">{{ objAdministrationUsers.getPseudoMessagerie }}</option>
+                        {% for objAdmins in arrObjAdmins %}
+                            <option value="{{ objAdmins.getId }}">{{ objAdmins.getPseudoMessagerie }}</option>
                         {% endfor %}
                     </select>
                 </div>

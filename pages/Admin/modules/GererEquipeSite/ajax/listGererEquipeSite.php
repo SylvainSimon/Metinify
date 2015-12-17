@@ -14,11 +14,11 @@ class listGererEquipeSite extends \ScriptHelper {
                 'dtField' => 'compte',
             ),
             array(
-                'dbField' => 'AdministrationUsersEntity.id',
+                'dbField' => 'AdminsEntity.id',
                 'dtField' => 'actions',
                 'formatter' => function( $d, $row ) {
 
-                    $varButton = '<a class="btn btn-material btn-primary btn-sm" data-featherlight="ajax" data-featherlight-variant="featherLightbox_90" href="pages/Admin/modules/GererEquipeSite/GererEquipeSiteEdit.php?mode=mod&idAdministrationUsers=' . $d . '"><i class="material-icons md-icon-edit"></i></a>';
+                    $varButton = '<a class="btn btn-material btn-primary btn-sm" data-featherlight="ajax" data-featherlight-variant="featherLightbox_90" href="pages/Admin/modules/GererEquipeSite/GererEquipeSiteEdit.php?mode=mod&idAdmins=' . $d . '"><i class="material-icons md-icon-edit"></i></a>';
                     $varButton .= '<a class="btn btn-material btn-danger btn-sm " onclick="SuppressionMembreEquipeSite(' . $d . ')"><i class="material-icons md-icon-delete"></i></a>';
 
                     return '<div class="btn-toolbar">' . $varButton . "</div>";
@@ -29,8 +29,8 @@ class listGererEquipeSite extends \ScriptHelper {
         $datatable = new \DataTable();
         $datatable->setColumnsParameters($columnsParameters)
                 ->setRequest($_GET)
-                ->from("\Site\Entity\AdministrationUsers", "AdministrationUsersEntity")
-                ->innerJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = AdministrationUsersEntity.idCompte");
+                ->from("\Site\Entity\Admins", "AdminsEntity")
+                ->innerJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = AdminsEntity.idCompte");
 
         $datatable->getResult()->toJson();
     }

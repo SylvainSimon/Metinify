@@ -24,13 +24,12 @@ class ajaxConnexionSubmit extends \ScriptHelper {
             $session->set("Email", $objAccount->getEmail());
             $session->set("VamoNaies", $objAccount->getCash());
             $session->set("TanaNaies", $objAccount->getMileage());
-            $session->set("Pseudo_Messagerie", $objAccount->getPseudoMessagerie());
 
-            $objAdministrationUser = \Site\SiteHelper::getAdministrationUsersRepository()->findAdministrationUser($objAccount->getId());
+            $objAdministrationUser = \Site\SiteHelper::getAdminsRepository()->findAdministrationUser($objAccount->getId());
 
             if ($objAdministrationUser !== null) {
 
-                $session->set("Administration_PannelAdmin", true);
+                $session->set("estAdmin", true);
 
                 $Tableau_Retour_Json = array(
                     'result' => "1",

@@ -14,10 +14,10 @@ class SiteHelper {
     }
 
     /**
-     * @return \Site\Repository\AdministrationUsersRepository
+     * @return \Site\Repository\AdminsRepository
      */
-    public static function getAdministrationUsersRepository() {
-        return DoctrineHelper::getRepository('\Site\Entity\AdministrationUsers');
+    public static function getAdminsRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\Admins');
     }
     
     /**

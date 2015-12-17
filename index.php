@@ -7,7 +7,7 @@ class IndexWebsite extends PageHelper {
         parent::__construct();
         global $session;
 
-        if ($session->get("Administration_PannelAdmin") !== null) {
+        if ($session->get("estAdmin") !== null) {
             parent::LoadAdminSessionValues();
         }
     }
@@ -170,7 +170,7 @@ class IndexWebsite extends PageHelper {
                         Ajax('pages/_LegacyPages/PaypalTerm.php');
         <?php } else { ?>
 
-            <?php if ($session->get("Administration_PannelAdmin") !== null) { ?>
+            <?php if ($session->get("estAdmin") !== null) { ?>
                             Ajax('pages/Admin/Bienvenu.php');
             <?php } ?>
 

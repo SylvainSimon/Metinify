@@ -23,16 +23,16 @@ class GererEquipeJeuEdit extends \PageHelper {
         $objAccount = null;
 
         if ($mode == "create") {
-            $objAdministrationUsers = new \Site\Entity\AdministrationUsers();
-            $arrDroits = $objAdministrationUsers->getDroits();
+            $objAdmins = new \Site\Entity\Admins();
+            $arrDroits = $objAdmins->getDroits();
         } else if ($mode == "mod") {
-            $id = $request->query->get("idAdministrationUsers");
-            $objAdministrationUsers = \Site\SiteHelper::getAdministrationUsersRepository()->find($id);
-            $arrDroits = $objAdministrationUsers->getDroits();
-            $objAccount = \Account\AccountHelper::getAccountRepository()->find($objAdministrationUsers->getIdCompte());
+            $id = $request->query->get("idAdmins");
+            $objAdmins = \Site\SiteHelper::getAdminsRepository()->find($id);
+            $arrDroits = $objAdmins->getDroits();
+            $objAccount = \Account\AccountHelper::getAccountRepository()->find($objAdmins->getIdCompte());
         }
 
-        $this->arrayTemplate["objAdministrationUsers"] = $objAdministrationUsers;
+        $this->arrayTemplate["objAdmins"] = $objAdmins;
         $this->arrayTemplate["arrDroits"] = $arrDroits;
         $this->arrayTemplate["objAccount"] = $objAccount;
 

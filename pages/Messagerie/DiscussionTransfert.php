@@ -20,15 +20,15 @@ class DiscussionTransfert extends \PageHelper {
         global $request;
         $idDiscussion = \Encryption::decrypt($request->query->get("idDiscussion"));
 
-        $arrObjAdministrationUsers = \Site\SiteHelper::getAdministrationUsersRepository()->findAll();
+        $arrObjAdmins = \Site\SiteHelper::getAdminsRepository()->findAll();
         $arrUsers = [];
-        foreach ($arrObjAdministrationUsers AS $objAdministrationUsers) {
+        foreach ($arrObjAdmins AS $objAdmins) {
 
-            $arrDroits = $objAdministrationUsers->getDroits();
+            $arrDroits = $objAdmins->getDroits();
 
             if (in_array(\DroitsHelper::SUPPORT_TICKET, $arrDroits)) {
 
-                $objAccount = \Account\AccountHelper::getAccountRepository()->find($objAdministrationUsers->getIdCompte());
+                $objAccount = \Account\AccountHelper::getAccountRepository()->find($objAdmins->getIdCompte());
                 if ($objAccount !== null) {
                     $arrUsers[] = $objAccount;
                 }
@@ -36,7 +36,7 @@ class DiscussionTransfert extends \PageHelper {
         }
 
         $this->arrayTemplate["idDiscussion"] = $idDiscussion;
-        $this->arrayTemplate["arrObjAdministrationUsers"] = $arrUsers;
+        $this->arrayTemplate["arrObjAdmins"] = $arrUsers;
 
         $view = $this->template->render($this->arrayTemplate);
         $this->response->setContent($view);

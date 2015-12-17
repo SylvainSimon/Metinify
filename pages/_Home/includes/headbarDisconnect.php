@@ -5,7 +5,7 @@ namespace Home;
 require __DIR__ . '../../../../core/initialize.php';
 
 $session = \SessionHelper::getSession();
-$etaitAdmin = $session->get("Administration_PannelAdmin");
+$etaitAdmin = $session->get("estAdmin");
 \SessionHelper::destroySession();
 ?>
 

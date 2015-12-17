@@ -19,21 +19,21 @@ class ajaxGererEquipeSiteEditSave extends \PageHelper {
         global $request;
         $em = \Shared\DoctrineHelper::getEntityManager();
 
-        $idAdministrationUsers = $request->request->get("idAdministrationUsers");
+        $idAdmins = $request->request->get("idAdmins");
         $idCompte = $request->request->get("idCompte");
         $arrDroitsParam = json_decode($request->request->get("arrDroits"));
         $arrDroitsNew = [];
 
-        if ($idAdministrationUsers > 0) {
-            $objAdministrationUsers = \Site\SiteHelper::getAdministrationUsersRepository()->find($idAdministrationUsers);
-            $arrDroitsOld = $objAdministrationUsers->getDroits();
+        if ($idAdmins > 0) {
+            $objAdmins = \Site\SiteHelper::getAdminsRepository()->find($idAdmins);
+            $arrDroitsOld = $objAdmins->getDroits();
         } else {
-            $objAdministrationUsers = new \Site\Entity\AdministrationUsers();
-            $objAdministrationUsers->setPannelAdmin(0);
+            $objAdmins = new \Site\Entity\Admins();
+            $objAdmins->setEstActif(1);
             $arrDroitsOld = [];
         }
 
-        $objAdministrationUsers->setIdCompte($idCompte);
+        $objAdmins->setIdCompte($idCompte);
 
         foreach ($arrDroitsParam AS $idDroit => $droitParam) {
             if ($droitParam) {
@@ -45,8 +45,8 @@ class ajaxGererEquipeSiteEditSave extends \PageHelper {
             }
         }
 
-        $objAdministrationUsers->setDroits($arrDroitsNew + $arrDroitsOld);
-        $em->persist($objAdministrationUsers);
+        $objAdmins->setDroits($arrDroitsNew + $arrDroitsOld);
+        $em->persist($objAdmins);
         $em->flush();
     }
 

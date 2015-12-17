@@ -170,18 +170,16 @@ class CoreHelper {
         $session->set("Email", $this->objAccount->getEmail());
         $session->set("VamoNaies", $this->objAccount->getCash());
         $session->set("TanaNaies", $this->objAccount->getMileage());
-        $session->set("Date_de_creation", $this->objAccount->getCreateTime());
         $session->set("Status", $this->objAccount->getStatus());
-        $session->set("Pseudo_Messagerie", $this->objAccount->getPseudoMessagerie());
     }
 
     public function LoadAdminSessionValues() {
 
-        $objAdministrationUser = Site\SiteHelper::getAdministrationUsersRepository()->findAdministrationUser($this->objAccount->getId());
+        $objAdministrationUser = Site\SiteHelper::getAdminsRepository()->findAdministrationUser($this->objAccount->getId());
 
         if ($objAdministrationUser !== null) {
 
-            $this->isAdmin = $objAdministrationUser->getPannelAdmin();
+            $this->isAdmin = $objAdministrationUser->getEstActif();
             $this->arrAdminRights = $objAdministrationUser->getDroits();
 
             return true;
