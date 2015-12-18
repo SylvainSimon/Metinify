@@ -16,7 +16,7 @@ class ItemshopRepository extends EntityRepository {
         $qb->setParameter("idItem", $idItem);
 
         if ($estActif !== "") {
-            $qb->andWhere("ItemshopEntity.actif = :estActif");
+            $qb->andWhere("ItemshopEntity.estActif = :estActif");
             $qb->setParameter("estActif", $estActif);
         }
 
@@ -42,7 +42,7 @@ class ItemshopRepository extends EntityRepository {
         }
 
         if ($estActif !== "") {
-            $qb->andWhere("ItemshopEntity.actif = :estActif");
+            $qb->andWhere("ItemshopEntity.estActif = :estActif");
             $qb->setParameter("estActif", $estActif);
         }
 

@@ -36,7 +36,7 @@ class ajaxGererItemShopArticlesEditSave extends \PageHelper {
             $objItemShop = new \Site\Entity\Itemshop();
         }
 
-        $objItemShop->setActif(1);
+        $objItemShop->setEstActif(1);
         $objItemShop->setCat($articleCategorie);
         $objItemShop->setFullDescription($articleDescriptionComplete);
 

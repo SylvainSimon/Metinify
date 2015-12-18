@@ -80,16 +80,16 @@ class Itemshop {
     /**
      * @var boolean
      *
-     * @ORM\Column(name="actif", type="boolean", nullable=true)
+     * @ORM\Column(name="est_actif", type="boolean", nullable=true)
      */
-    private $actif = '0';
+    private $estActif = '0';
 
     /**
-     * @var integer
+     * @var boolean
      *
-     * @ORM\Column(name="ordre", type="integer", nullable=true)
+     * @ORM\Column(name="est_important", type="boolean", nullable=false)
      */
-    private $ordre;
+    private $estImportant;
 
     /**
      * Get id
@@ -277,47 +277,47 @@ class Itemshop {
     }
 
     /**
-     * Set actif
+     * Set estActif
      *
-     * @param boolean $actif
+     * @param boolean $estActif
      *
      * @return Itemshop
      */
-    public function setActif($actif) {
-        $this->actif = $actif;
+    public function setEstActif($estActif) {
+        $this->estActif = $estActif;
 
         return $this;
     }
 
     /**
-     * Get actif
+     * Get estActif
      *
      * @return boolean
      */
-    public function getActif() {
-        return $this->actif;
+    public function getEstActif() {
+        return $this->estActif;
     }
 
     /**
-     * Set ordre
+     * Set estImportant
      *
-     * @param integer $ordre
+     * @param boolean $estImportant
      *
      * @return Itemshop
      */
-    public function setOrdre($ordre) {
-        $this->ordre = $ordre;
+    public function setEstImportant($estImportant) {
+        $this->estImportant = $estImportant;
 
         return $this;
     }
 
     /**
-     * Get ordre
+     * Get estImportant
      *
-     * @return integer
+     * @return boolean
      */
-    public function getOrdre() {
-        return $this->ordre;
+    public function getEstImportant() {
+        return $this->estImportant;
     }
 
 }
