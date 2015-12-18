@@ -73,10 +73,10 @@
                     <select id="articleCategorie" class="select2">
                         {% if arrObjItemShopCategorie|length > 0 %}
                             {% for objItemShopCategorie in arrObjItemShopCategorie %}
-                                {% if objItemshop.getCat == objItemShopCategorie.getCat %}
-                                    <option value="{{ objItemShopCategorie.getCat }}" selected>{{ objItemShopCategorie.getNom }}</option>
+                                {% if objItemshop.getId == objItemShopCategorie.getId %}
+                                    <option value="{{ objItemShopCategorie.getId }}" selected>{{ objItemShopCategorie.getNom }}</option>
                                 {% else %}
-                                    <option value="{{ objItemShopCategorie.getCat }}">{{ objItemShopCategorie.getNom }}</option>
+                                    <option value="{{ objItemShopCategorie.getId }}">{{ objItemShopCategorie.getNom }}</option>
                                 {% endif %}
                             {% endfor %}
                         {% endif %}
