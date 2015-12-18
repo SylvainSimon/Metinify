@@ -29,6 +29,7 @@ class ajaxGererItemShopArticlesEditSave extends \PageHelper {
         $articleTypeBonus = $request->request->get("articleTypeBonus");
         $articleDescriptionCourte = $request->request->get("articleDescriptionCourte");
         $articleDescriptionComplete = $request->request->get("articleDescriptionComplete");
+        $articleEstActif = $request->request->get("articleEstActif");
 
         if ($articleId > 0) {
             $objItemShop = \Site\SiteHelper::getItemshopRepository()->find($articleId);
@@ -36,7 +37,12 @@ class ajaxGererItemShopArticlesEditSave extends \PageHelper {
             $objItemShop = new \Site\Entity\Itemshop();
         }
 
-        $objItemShop->setEstActif(1);
+        if ($articleEstActif !== null && $articleEstActif == "true") {
+            $objItemShop->setEstActif(1);
+        } else {
+            $objItemShop->setEstActif(0);
+        }
+        
         $objItemShop->setCat($articleCategorie);
         $objItemShop->setFullDescription($articleDescriptionComplete);
 
@@ -45,7 +51,7 @@ class ajaxGererItemShopArticlesEditSave extends \PageHelper {
         } else {
             $objItemShop->setIdItem($articleVnum);
         }
-        
+
         $objItemShop->setInfoItem($articleDescriptionCourte);
         $objItemShop->setNameItem($articleTitre);
         $objItemShop->setNbItem($articleNombre);

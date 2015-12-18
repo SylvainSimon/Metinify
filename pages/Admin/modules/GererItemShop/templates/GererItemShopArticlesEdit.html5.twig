@@ -62,8 +62,8 @@
                 </div>
             </div>
         </div>
-                                
-        <div class="col-sm-12">
+
+        <div class="col-sm-8">
             <div class="form-group ">
                 <label for="articleCategorie">
                     Catégorie
@@ -73,7 +73,7 @@
                     <select id="articleCategorie" class="select2">
                         {% if arrObjItemShopCategorie|length > 0 %}
                             {% for objItemShopCategorie in arrObjItemShopCategorie %}
-                                {% if objItemshop.getId == objItemShopCategorie.getId %}
+                                {% if objItemshop.getCat == objItemShopCategorie.getId %}
                                     <option value="{{ objItemShopCategorie.getId }}" selected>{{ objItemShopCategorie.getNom }}</option>
                                 {% else %}
                                     <option value="{{ objItemShopCategorie.getId }}">{{ objItemShopCategorie.getNom }}</option>
@@ -84,6 +84,9 @@
                 </div>
             </div>                  
         </div>                  
+        <div class="col-sm-4">
+            <input type="checkbox" id="articleEstActif" class="icheck" {% if objItemshop.getEstActif == "1" %}checked{% endif %} /> <label for="articleEstActif">Article visible</label>
+        </div>             
 
         <div id="selectorItem" {% if objItemshop.getType == 1 or objItemshop.getType == 3 %}style="display: inline;"{% elseif objItemshop.getType == 2 %}style="display: none;"{% endif %}>
             <div class="col-sm-12">
@@ -164,6 +167,7 @@
     <script type="text/javascript">
 
         redrawSelect2();
+        redrawCheckbox();
 
         $("#articleVnum").select2({
             allowClear: true,
@@ -230,6 +234,7 @@
                     "articleTypeBonus": $("#articleTypeBonus").val(),
                     "articleDescriptionCourte": $("#articleDescriptionCourte").val(),
                     "articleDescriptionComplete": $("#articleDescriptionComplete").val(),
+                    "articleEstActif": $("#articleEstActif").prop("checked")
                 },
                 success: function (msg) {
                     hideLoading();
