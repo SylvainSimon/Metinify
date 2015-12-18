@@ -24,7 +24,7 @@ class GererItemShopCategoriesEdit extends \PageHelper {
             $objItemshopCategories = new \Site\Entity\ItemshopCategories();
         } else if ($mode == "mod") {
             $id = $request->query->get("idCategorie");
-            $objItemshopCategories = \Site\SiteHelper::getItemshopCategoriesRepository()->findByCat($id);
+            $objItemshopCategories = \Site\SiteHelper::getItemshopCategoriesRepository()->find($id);
         }
         
         $this->arrayTemplate["objItemshopCategories"] = $objItemshopCategories;

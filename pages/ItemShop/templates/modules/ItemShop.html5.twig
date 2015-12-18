@@ -20,7 +20,7 @@
 
                 {% if arrObjItemshopCategories|length > 0 %}
                     {% for objItemshopCategorie in arrObjItemshopCategories %}
-                        <button type="button" onclick="Appel_Categorie_ItemShop({{ objItemshopCategorie.getCat }})" class="btn btn-flat btn-block btnItemShopCategorie">{{ objItemshopCategorie.getNom }}</button>
+                        <button type="button" onclick="Appel_Categorie_ItemShop({{ objItemshopCategorie.getId }})" class="btn btn-flat btn-block btnItemShopCategorie">{{ objItemshopCategorie.getNom }}</button>
                     {% endfor %}
                 {% endif %}
             </div>

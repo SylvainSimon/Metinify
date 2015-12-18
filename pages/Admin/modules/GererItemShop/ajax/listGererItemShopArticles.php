@@ -66,7 +66,7 @@ class listGererItemShopArticles extends \ScriptHelper {
         $datatable->setColumnsParameters($columnsParameters)
                 ->setRequest($_GET)
                 ->from("\Site\Entity\Itemshop", "ItemshopEntity")
-                ->leftJoin("\Site\Entity\ItemshopCategories", "ItemshopCategoriesEntity", "WITH", "ItemshopCategoriesEntity.cat = ItemshopEntity.cat");
+                ->leftJoin("\Site\Entity\ItemshopCategories", "ItemshopCategoriesEntity", "WITH", "ItemshopCategoriesEntity.id = ItemshopEntity.cat");
 
         $datatable->getResult()->toJson();
     }

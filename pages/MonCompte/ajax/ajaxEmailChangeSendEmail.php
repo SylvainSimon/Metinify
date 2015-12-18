@@ -20,7 +20,6 @@ class ajaxEmailChangeSendEmail extends \ScriptHelper {
         //Insertion de la clés de vérification
         $objControleChangementMail = new \Site\Entity\ControleChangementMail();
         $objControleChangementMail->setIdCompte($this->objAccount->getId());
-        $objControleChangementMail->setCompte($this->objAccount->getLogin());
         $objControleChangementMail->setEmail($this->objAccount->getEmail());
         $objControleChangementMail->setNumeroVerif($Nombre_Unique);
         $objControleChangementMail->setIp($this->ipAdresse);

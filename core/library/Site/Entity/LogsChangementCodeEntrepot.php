@@ -5,12 +5,12 @@ namespace Site\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * ControleChangementMail
+ * LogsChangementCodeEntrepot
  *
- * @ORM\Table(name="site.controle_changement_mail")
- * @ORM\Entity(repositoryClass="Site\Repository\ControleChangementMailRepository")
+ * @ORM\Table(name="site.logs_changement_code_entrepot")
+ * @ORM\Entity(repositoryClass="Site\Repository\LogsChangementCodeEntrepotRepository")
  */
-class ControleChangementMail {
+class LogsChangementCodeEntrepot {
 
     /**
      * @var integer
@@ -27,20 +27,6 @@ class ControleChangementMail {
      * @ORM\Column(name="id_compte", type="integer", nullable=true)
      */
     private $idCompte;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255, nullable=true)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="numero_verif", type="string", length=18, nullable=true)
-     */
-    private $numeroVerif;
 
     /**
      * @var \DateTime
@@ -70,7 +56,7 @@ class ControleChangementMail {
      *
      * @param integer $idCompte
      *
-     * @return ControleChangementMail
+     * @return LogsChangementCodeEntrepot
      */
     public function setIdCompte($idCompte) {
         $this->idCompte = $idCompte;
@@ -87,57 +73,12 @@ class ControleChangementMail {
         return $this->idCompte;
     }
 
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return ControleChangementMail
-     */
-    public function setEmail($email) {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail() {
-        return $this->email;
-    }
-
-    /**
-     * Set numeroVerif
-     *
-     * @param string $numeroVerif
-     *
-     * @return ControleChangementMail
-     */
-    public function setNumeroVerif($numeroVerif) {
-        $this->numeroVerif = $numeroVerif;
-
-        return $this;
-    }
-
-    /**
-     * Get numeroVerif
-     *
-     * @return string
-     */
-    public function getNumeroVerif() {
-        return $this->numeroVerif;
-    }
-
     /**
      * Set date
      *
      * @param \DateTime $date
      *
-     * @return ControleChangementMail
+     * @return LogsChangementCodeEntrepot
      */
     public function setDate($date) {
         $this->date = $date;
@@ -159,7 +100,7 @@ class ControleChangementMail {
      *
      * @param string $ip
      *
-     * @return ControleChangementMail
+     * @return LogsChangementCodeEntrepot
      */
     public function setIp($ip) {
         $this->ip = $ip;

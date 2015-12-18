@@ -23,7 +23,7 @@ class ajaxGererItemShopArticlesDelete extends \PageHelper {
 
         if ($idCategorie > 0) {
 
-            $objItemshopCategories = \Site\SiteHelper::getItemshopCategoriesRepository()->findByCat($idCategorie);
+            $objItemshopCategories = \Site\SiteHelper::getItemshopCategoriesRepository()->find($idCategorie);
             
             if ($objItemshopCategories !== null) {
                 $em->remove($objItemshopCategories);

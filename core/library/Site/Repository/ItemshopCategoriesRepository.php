@@ -12,7 +12,7 @@ class ItemshopCategoriesRepository extends EntityRepository {
 
         $qb->select("ItemshopCategoriesEntity");
         $qb->from("\Site\Entity\ItemshopCategories", "ItemshopCategoriesEntity");
-        $qb->where("ItemshopCategoriesEntity.cat = :idCat");
+        $qb->where("ItemshopCategoriesEntity.id = :idCat");
         $qb->setParameter("idCat", $idCat);
         $qb->setMaxResults(1);
 
@@ -27,7 +27,7 @@ class ItemshopCategoriesRepository extends EntityRepository {
 
         $qb = $this->_em->createQueryBuilder();
 
-        $qb->select("MAX(ItemshopCategoriesEntity.cat)");
+        $qb->select("MAX(ItemshopCategoriesEntity.id)");
         $qb->from("\Site\Entity\ItemshopCategories", "ItemshopCategoriesEntity");
         $qb->setMaxResults(1);
 
@@ -44,7 +44,7 @@ class ItemshopCategoriesRepository extends EntityRepository {
 
         $qb->select("ItemshopCategoriesEntity");
         $qb->from("\Site\Entity\ItemshopCategories", "ItemshopCategoriesEntity");
-        $qb->where("(SELECT COUNT(ItemshopEntity) FROM \Site\Entity\Itemshop ItemshopEntity WHERE ItemshopEntity.cat = ItemshopCategoriesEntity.cat) > 0");
+        $qb->where("(SELECT COUNT(ItemshopEntity) FROM \Site\Entity\Itemshop ItemshopEntity WHERE ItemshopEntity.cat = ItemshopCategoriesEntity.id) > 0");
 
         try {
             return $qb->getQuery()->getResult();

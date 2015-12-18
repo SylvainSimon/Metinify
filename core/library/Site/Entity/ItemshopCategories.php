@@ -22,13 +22,6 @@ class ItemshopCategories {
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="cat", type="integer", nullable=true)
-     */
-    private $cat;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=50, nullable=true)
@@ -49,28 +42,6 @@ class ItemshopCategories {
      */
     public function getId() {
         return $this->id;
-    }
-
-    /**
-     * Set cat
-     *
-     * @param integer $cat
-     *
-     * @return ItemshopCategories
-     */
-    public function setCat($cat) {
-        $this->cat = $cat;
-
-        return $this;
-    }
-
-    /**
-     * Get cat
-     *
-     * @return integer
-     */
-    public function getCat() {
-        return $this->cat;
     }
 
     /**

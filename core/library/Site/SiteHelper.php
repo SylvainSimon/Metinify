@@ -148,10 +148,10 @@ class SiteHelper {
     }
     
     /**
-     * @return \Site\Repository\LogsCodeEntrepotChangementRepository
+     * @return \Site\Repository\LogsChangementCodeEntrepotRepository
      */
-    public static function getLogsCodeEntrepotChangementRepository() {
-        return DoctrineHelper::getRepository('\Site\Entity\LogsCodeEntrepotChangement');
+    public static function getLogsChangementCodeEntrepotRepository() {
+        return DoctrineHelper::getRepository('\Site\Entity\LogsChangementCodeEntrepot');
     }
     
     /**

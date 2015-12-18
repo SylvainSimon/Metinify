@@ -18,7 +18,7 @@ class listGererItemShopCategories extends \ScriptHelper {
                 'dtField' => 'description',
             ),
             array(
-                'dbField' => 'ItemshopCategoriesEntity.cat',
+                'dbField' => 'ItemshopCategoriesEntity.id',
                 'dtField' => 'actions',
                 'formatter' => function( $d, $row ) {
 

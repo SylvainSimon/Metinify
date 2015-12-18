@@ -24,14 +24,11 @@ class ajaxCodeEntrepotChangeExecute extends \ScriptHelper {
             $objSafebox->setPassword($passwordSafeboxNew);
             $em->persist($objSafebox);
 
-            $objLogsCodeEntrepotChangement = new \Site\Entity\LogsCodeEntrepotChangement();
-            $objLogsCodeEntrepotChangement->setIdCompte($this->objAccount->getId());
-            $objLogsCodeEntrepotChangement->setCompte($this->objAccount->getLogin());
-            $objLogsCodeEntrepotChangement->setAncienCode($passwordSafeboxOld);
-            $objLogsCodeEntrepotChangement->setNouveauCode($passwordSafeboxNew);
-            $objLogsCodeEntrepotChangement->setDate(new \DateTime(date("Y-m-d H:i:s")));
-            $objLogsCodeEntrepotChangement->setIp($this->ipAdresse);
-            $em->persist($objLogsCodeEntrepotChangement);
+            $objLogsChangementCodeEntrepot = new \Site\Entity\LogsChangementCodeEntrepot();
+            $objLogsChangementCodeEntrepot->setIdCompte($this->objAccount->getId());
+            $objLogsChangementCodeEntrepot->setDate(new \DateTime(date("Y-m-d H:i:s")));
+            $objLogsChangementCodeEntrepot->setIp($this->ipAdresse);
+            $em->persist($objLogsChangementCodeEntrepot);
 
             $em->flush();
 

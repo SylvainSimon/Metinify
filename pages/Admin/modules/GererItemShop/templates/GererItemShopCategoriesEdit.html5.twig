@@ -1,14 +1,14 @@
 <div class="box box-default flat" style="margin-bottom: 0px;">
 
     <div class="box-header">
-        {% if objItemshopCategories.getCat > 0 %}
+        {% if objItemshopCategorie.getId > 0 %}
             <h3 class="box-title">Modification d'une catégorie</h3>
         {% else %}
             <h3 class="box-title">Ajout d'une catégorie</h3>
         {% endif %}
     </div>
 
-    <input type="hidden" id="categorieCat" value="{{ objItemshopCategories.getCat }}">
+    <input type="hidden" id="categorieCat" value="{{ objItemshopCategorie.getId }}">
 
     <div class="box-body no-padding" style="padding-top: 10px !important;">
         
@@ -20,7 +20,7 @@
                     </label>
 
                     <div class="input-group col-xs-12">
-                        <input type="text" id="categorieNom" class="form-control input-sm text" value="{{ objItemshopCategories.getNom }}" required >
+                        <input type="text" id="categorieNom" class="form-control input-sm text" value="{{ objItemshopCategorie.getNom }}" required >
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                     </label>
 
                     <div class="input-group col-xs-12">
-                        <textarea style="resize: none; min-height: 100px; min-width: 250px;" id="categorieDescription" class="form-control input-sm">{{ objItemshopCategories.getDescription }}</textarea>
+                        <textarea style="resize: none; min-height: 100px; min-width: 250px;" id="categorieDescription" class="form-control input-sm">{{ objItemshopCategorie.getDescription }}</textarea>
                     </div>
                 </div>
             </div>

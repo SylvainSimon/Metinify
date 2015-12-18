@@ -24,10 +24,9 @@ class ajaxGererItemShopCategoriesEditSave extends \PageHelper {
         $categorieDescription = $request->request->get("categorieDescription");
 
         if ($categorieCat > 0) {
-            $objItemshopCategories = \Site\SiteHelper::getItemshopCategoriesRepository()->findByCat($categorieCat);
+            $objItemshopCategories = \Site\SiteHelper::getItemshopCategoriesRepository()->find($categorieCat);
         } else {
             $objItemshopCategories = new \Site\Entity\ItemshopCategories();
-            $objItemshopCategories->setCat((\Site\SiteHelper::getItemshopCategoriesRepository()->findMaxCat() + 1));
         }
 
         $objItemshopCategories->setNom($categorieNom);
