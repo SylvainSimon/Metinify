@@ -740,6 +740,10 @@ table.dataTable.table-condensed thead>tr:first-child>th:last-child{
     padding-right: 5px;
 }
 
+table.dataTable tbody tr.important td{
+    background: #45150F;
+}
+
 .table-striped>tbody>tr:nth-of-type(odd) {
     background-color: #242424;
 }

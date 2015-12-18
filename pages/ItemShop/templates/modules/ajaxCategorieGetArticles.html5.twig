@@ -2,7 +2,7 @@
 
     {% for objItemshop in arrObjItemshop %}
 
-        <div class="articleItemShop" onclick="Ajax('pages/ItemShop/ItemShopDetails.php?id_recu={{ objItemshop.getId }}');"  data-tooltip-isItemMetin="1" data-tooltip-track="1" data-tooltip="{{ objItemshop.getInfoItem }}">
+        <div class="articleItemShop {% if objItemshop.getEstImportant == "1" %}important{% endif %}" onclick="Ajax('pages/ItemShop/ItemShopDetails.php?id_recu={{ objItemshop.getId }}');"  data-tooltip-isItemMetin="1" data-tooltip-track="1" data-tooltip="{{ objItemshop.getInfoItem }}">
 
             {% set imageSize = getimagesize(urlBase ~ "/images/items/" ~ objItemshop.getIdItem ~ ".png") %}
 

@@ -84,8 +84,11 @@
                 </div>
             </div>                  
         </div>                  
-        <div class="col-sm-4">
-            <input type="checkbox" id="articleEstActif" class="icheck" {% if objItemshop.getEstActif == "1" %}checked{% endif %} /> <label for="articleEstActif">Article visible</label>
+        <div class="col-sm-2" style="margin-top: 26px;">
+            <input type="checkbox" id="articleEstActif" class="icheck" {% if objItemshop.getEstActif == "1" %}checked{% endif %} /> <label for="articleEstActif">Visible</label>
+        </div>             
+        <div class="col-sm-2" style="margin-top: 26px; margin-bottom: 10px;">
+            <input type="checkbox" id="articleEstImportant" class="icheck" {% if objItemshop.getEstImportant == "1" %}checked{% endif %} /> <label for="articleEstImportant">Important</label>
         </div>             
 
         <div id="selectorItem" {% if objItemshop.getType == 1 or objItemshop.getType == 3 %}style="display: inline;"{% elseif objItemshop.getType == 2 %}style="display: none;"{% endif %}>
@@ -234,7 +237,8 @@
                     "articleTypeBonus": $("#articleTypeBonus").val(),
                     "articleDescriptionCourte": $("#articleDescriptionCourte").val(),
                     "articleDescriptionComplete": $("#articleDescriptionComplete").val(),
-                    "articleEstActif": $("#articleEstActif").prop("checked")
+                    "articleEstActif": $("#articleEstActif").prop("checked"),
+                    "articleEstImportant": $("#articleEstImportant").prop("checked")
                 },
                 success: function (msg) {
                     hideLoading();

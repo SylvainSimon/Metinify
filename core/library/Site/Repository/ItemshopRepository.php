@@ -46,7 +46,7 @@ class ItemshopRepository extends EntityRepository {
             $qb->setParameter("estActif", $estActif);
         }
 
-        $qb->orderBy("ItemshopEntity.nameItem", "ASC");
+        $qb->orderBy("ItemshopEntity.estImportant DESC, ItemshopEntity.nameItem", "ASC");
 
         try {
             return $qb->getQuery()->getResult();

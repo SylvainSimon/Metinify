@@ -46,6 +46,10 @@
                     $("#datatable_total").html(json.iTotalRecords);
                     fnCallback(json);
                 });
+            },
+            fnRowCallback: function (nRow, aData, iDisplayIndex) {
+                $(nRow).addClass(aData['estImportant']);
+                return nRow;
             }
         }).columnFilter({aoColumns: aoColumnsFilter});
     });

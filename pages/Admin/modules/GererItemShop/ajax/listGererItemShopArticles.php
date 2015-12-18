@@ -51,6 +51,17 @@ class listGererItemShopArticles extends \ScriptHelper {
                 'dtField' => 'type',
             ),
             array(
+                'dbField' => 'ItemshopEntity.estImportant',
+                'dtField' => 'estImportant',
+                'formatter' => function( $d, $row ) {
+                    if ($d == 1) {
+                        return "important";
+                    } else {
+                        return "";
+                    }
+                }
+            ),
+            array(
                 'dbField' => 'ItemshopEntity.id',
                 'dtField' => 'actions',
                 'formatter' => function( $d, $row ) {
