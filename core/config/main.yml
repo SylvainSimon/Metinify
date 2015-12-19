@@ -14,6 +14,20 @@ templateMod: default #halloween #christmas
 twigCache: false
 twigCacheUrl: /cache/twig
 
+speedlink:
+    facebook:
+        activate: true
+        url: https://www.facebook.com/groups/vamosmt2
+    twitter: 
+        activate: true
+        url: https://twitter.com/VamosMT2
+    youtube:
+        activate: true
+        url: http://www.youtube.com/VamosMt2
+    teamspeack:
+        activate: true
+        url: ts3.vamosmt2.org
+
 bdd:
     cache: array
     driver: mysql
