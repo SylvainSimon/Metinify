@@ -1,32 +1,45 @@
-baseURL: https://vamosmt2.local/
-gameVersion: 5.1.9
-requiredSSL: true
-encryptKey: vamoslelapin
+nameServer:         Metinify
+baseURL:            https://vamosmt2.local/
+gameVersion:        5.1.9
+requiredSSL:        true
+encryptKey:         vamoslelapin
 
-happy_hours_start: 20-11-2015 10:20:50
-happy_hours_end: 05-12-2015 09:20:50
+happy_hours_start:  20-11-2015 10:20:50
+happy_hours_end:    05-12-2015 09:20:50
 
-linkClient: http://vamosmt2.org:81/Installateur%20VamosMT2%20Client%20officiel%202014-2015.exe
-linkClientTorrent: http://vamosmt2.org:81/VamosMT2%20Client%20officiel%202014-2015.exe.torrent
+linkClient:         http://vamosmt2.org:81/Installateur%20VamosMT2%20Client%20officiel%202014-2015.exe
+linkClientTorrent:  http://vamosmt2.org:81/VamosMT2%20Client%20officiel%202014-2015.exe.torrent
 
-templateMod: default #halloween #christmas
+templateMod:        default #halloween #christmas
 
-twigCache: false
-twigCacheUrl: /cache/twig
+twigCache:          false
+twigCacheUrl:       /cache/twig
 
-speedlink:
+sociale:
     facebook:
-        activate: true
-        url: https://www.facebook.com/groups/vamosmt2
+        activate:   true
+        url:        https://www.facebook.com/groups/vamosmt2
     twitter: 
-        activate: true
-        url: https://twitter.com/VamosMT2
+        activate:   true
+        url:        https://twitter.com/VamosMT2
     youtube:
-        activate: true
-        url: http://www.youtube.com/VamosMt2
+        activate:   true
+        url:        http://www.youtube.com/VamosMt2
     teamspeack:
-        activate: true
-        url: ts3.vamosmt2.org
+        activate:   true
+        url:        ts3.vamosmt2.org
+        
+contextMenu:        #Menu on right-click
+    activate:       true
+    facebook:       true
+    twitter:        true
+    youtube:        true
+    teamspeack:     true
+    calendar:       true
+    statistiques:   true
+    pilori:         true
+    securite:       true
+    
 
 bdd:
     cache: array

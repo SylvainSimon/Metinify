@@ -70,7 +70,10 @@ class IndexWebsite extends PageHelper {
 
                 <script src="assets/js/Ajax.js" type='text/javascript'></script>
 
-                <script src="assets/js/jquery.contextMenu/jquery.contextMenu.min.js" type='text/javascript'></script>
+                <?php if ($config["contextMenu"]["activate"]) { ?>
+                    <script src="assets/js/jquery.contextMenu/jquery.contextMenu.min.js" type='text/javascript'></script>
+                <?php } ?>
+
                 <script src="assets/js/jquery.countdown/jquery.countdown.min.js" type='text/javascript'></script>
                 <script src="assets/js/bootbox/bootbox.min.js" type='text/javascript'></script>
 
@@ -93,7 +96,7 @@ class IndexWebsite extends PageHelper {
                 <script src="./vendor/afarkas/html5shiv/dist/html5shiv.min.js"></script>
                 <script src="./vendor/rogeriopradoj/respond/dest/respond.min.js"></script>
                 <![endif]-->
-                
+
                 <!--[if lt IE 11]>
                 <link rel="icon" type="image/ico" href="images/favicon.ico" />
                 <![endif]-->
@@ -121,7 +124,7 @@ class IndexWebsite extends PageHelper {
                                 echo $templateHeadbar->render(["objAccount" => $this->objAccount]);
                             }
                             ?>
-                            
+
                         </div>
                     </div>
 
@@ -170,6 +173,73 @@ class IndexWebsite extends PageHelper {
             </body>
 
             <script type="text/javascript">
+
+        <?php if ($config["contextMenu"]["activate"]) { ?>
+                        $(function () {
+                            
+                            var arrItems = {};
+            <?php if ($config["contextMenu"]["facebook"]) { ?>
+                <?php if ($config["sociale"]["facebook"]["activate"]) { ?>
+                                    arrItems["facebook"] = {name: "Page Facebook"};
+                <?php } ?>
+            <?php } ?>
+            <?php if ($config["contextMenu"]["twitter"]) { ?>
+                <?php if ($config["sociale"]["twitter"]["activate"]) { ?>
+                                    arrItems["twitter"] = {name: "Page Twitter"};
+                <?php } ?>
+            <?php } ?>
+            <?php if ($config["contextMenu"]["youtube"]) { ?>
+                <?php if ($config["sociale"]["youtube"]["activate"]) { ?>
+                                    arrItems["youtube"] = {name: "Chaîne Youtube"};
+                <?php } ?>
+            <?php } ?>
+
+            <?php if ($config["contextMenu"]["teamspeack"]) { ?>
+                <?php if ($config["sociale"]["teamspeack"]["activate"]) { ?>
+                                    arrItems["teamspeack"] = {name: "TeamSpeak"};
+                <?php } ?>
+            <?php } ?>
+            <?php if ($config["contextMenu"]["calendar"]) { ?>
+                                arrItems["calen"] = {name: "Calendrier"};
+            <?php } ?>
+            <?php if ($config["contextMenu"]["statistiques"]) { ?>
+                                arrItems["stati"] = {name: "Statistiques"};
+            <?php } ?>
+            <?php if ($config["contextMenu"]["pilori"]) { ?>
+                                arrItems["pilori"] = {name: "Pilori"};
+            <?php } ?>
+            <?php if ($config["contextMenu"]["securite"]) { ?>
+                                arrItems["securite"] = {name: "Conseils de sécurité"};
+            <?php } ?>
+                
+                            $.contextMenu({
+                                selector: 'body',
+                                zIndex: 99999,
+                                duration: 500, show: "slideDown", hide: "slideUp",
+                                callback: function (key, options) {
+                                    if (key == "facebook") {
+                                        window.open("<?= $config["sociale"]["facebook"]["url"] ?>", "_blank");
+                                    } else if (key == "twitter") {
+                                        window.open("<?= $config["sociale"]["twitter"]["url"] ?>", "_blank");
+                                    } else if (key == "youtube") {
+                                        window.open("<?= $config["sociale"]["youtube"]["url"] ?>", "_blank");
+                                    } else if (key == "teamspeack") {
+                                        window.open("ts3server://<?= $config["sociale"]["teamspeack"]["url"] ?>", "_top");
+                                    } else if (key == "pilori") {
+                                        Ajax('pages/_LegacyPages/Pilori.php');
+                                    } else if (key == "stati") {
+                                        Ajax("pages/Statistiques/Statistiques.php");
+                                    } else if (key == "calen") {
+                                        Ajax("pages/_LegacyPages/Calendrier.php");
+                                    } else if (key == "securite") {
+                                        Ajax("pages/_LegacyPages/Securite.php");
+                                    }
+                                },
+                                items: arrItems
+                            });
+                        });
+        <?php } ?>
+
         <?php if ($request->query->get("ok") !== null) { ?>
                         Ajax('pages/_LegacyPages/AccountActivationTerm.php');
         <?php } elseif ($request->query->get("paypal") !== null) { ?>
