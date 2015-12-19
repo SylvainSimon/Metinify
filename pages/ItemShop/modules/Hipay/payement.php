@@ -75,7 +75,7 @@ class payement extends \PageHelper {
             }
             $em->persist($objAccount);
 
-            $session->set("VamoNaies", $objAccount->getCash());
+            $session->set("Cash", $objAccount->getCash());
             $session->set("TanaNaies", $objAccount->getMileage());
 
             $objLogsRechargement = new \Site\Entity\LogsRechargements();

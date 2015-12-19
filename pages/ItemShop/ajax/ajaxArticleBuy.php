@@ -57,8 +57,8 @@ class ajaxArticleBuy extends \ScriptHelper {
             /* ------- Si l'item est de type Simple 1 -------- */
             if ($objItemshop->getType() == 1) {
 
-                //Si le Membre a assez de Vamonaies
-                if ($session->get("VamoNaies") >= ($objItemshop->getPrix() * $nombreItem)) {
+                //Si le Membre a assez de Cash
+                if ($session->get("Cash") >= ($objItemshop->getPrix() * $nombreItem)) {
 
                     $flagItem = \Player\PlayerHelper::getItemProtoRepository()->findFlagByVnum($objItemshop->getIdItem());
                     $socketPct = \Player\PlayerHelper::getItemProtoRepository()->findSocketPctByVnum($objItemshop->getIdItem());
@@ -125,7 +125,7 @@ class ajaxArticleBuy extends \ScriptHelper {
                         $this->objAccount->setMileage($this->objAccount->getMileage() + $prixTotal);
                         $em->persist($this->objAccount);
                         $em->flush();
-                        $session->set("VamoNaies", $this->objAccount->getCash());
+                        $session->set("Cash", $this->objAccount->getCash());
                         $session->set("TanaNaies", $this->objAccount->getMileage());
                     } else {
 
@@ -187,7 +187,7 @@ class ajaxArticleBuy extends \ScriptHelper {
                         $this->objAccount->setMileage($this->objAccount->getMileage() + $prixTotal);
                         $em->persist($this->objAccount);
                         $em->flush();
-                        $session->set("VamoNaies", $this->objAccount->getCash());
+                        $session->set("Cash", $this->objAccount->getCash());
                         $session->set("TanaNaies", $this->objAccount->getMileage());
                     }
                 } else {
@@ -198,7 +198,7 @@ class ajaxArticleBuy extends \ScriptHelper {
             } elseif ($objItemshop->getType() == 2) {
 
                 //Si le membre a assez de cash
-                if ($session->get("VamoNaies") >= $objItemshop->getPrix()) {
+                if ($session->get("Cash") >= $objItemshop->getPrix()) {
 
                     $anneeRestantMysql = (2037 - date("Y"));
                     $dateActuel = \Carbon\Carbon::now();
@@ -259,7 +259,7 @@ class ajaxArticleBuy extends \ScriptHelper {
                     $this->objAccount->setMileage($this->objAccount->getMileage() + $prixTotal);
                     $em->persist($this->objAccount);
                     $em->flush();
-                    $session->set("VamoNaies", $this->objAccount->getCash());
+                    $session->set("Cash", $this->objAccount->getCash());
                     $session->set("TanaNaies", $this->objAccount->getMileage());
 
                     $arrResult["isBonusCompte"] = 1;

@@ -2,11 +2,7 @@
     Bonjour {{ compte }}
     <br/>
     <br/>
-    {% if devise == 1 %}
-        Nous vous confirmons l'achat du personnage {{ player }} pour le prix de {{ prix }} VamoNaies.
-    {% else %}
-        Nous vous confirmons l'achat du personnage {{ player }} pour le prix de {{ prix }} TanaNaies.
-    {% endif %}
+    Nous vous confirmons l'achat du personnage {{ player }} pour le prix de {{ prix }} {{ helpDevise(devise) }}.
     <br/>
     <br/>
     Le joueur a été rattaché à votre compte et vous pouvez dés à présent vous connecter.

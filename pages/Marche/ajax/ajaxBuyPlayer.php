@@ -74,7 +74,7 @@ class ajaxBuyPlayer extends \ScriptHelper {
                                 $em->persist($objAccountProprietaire);
                                 $em->persist($this->objAccount);
 
-                                $session->set("VamoNaies", $this->objAccount->getCash());
+                                $session->set("Cash", $this->objAccount->getCash());
                                 $session->set("TanaNaies", $this->objAccount->getMileage());
 
                                 $objLogsMarcheAchats = new \Site\Entity\LogsMarcheAchats();

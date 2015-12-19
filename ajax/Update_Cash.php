@@ -4,15 +4,15 @@ namespace Ajax;
 
 require __DIR__ . '../../core/initialize.php';
 
-class Update_Vamonaies extends \ScriptHelper {
+class Update_Cash extends \ScriptHelper {
 
     public function run() {
         
         global $session;
-        echo $session->get("VamoNaies");
+        echo $session->get("Cash");
     }
 
 }
 
-$class = new Update_Vamonaies();
+$class = new Update_Cash();
 $class->run();

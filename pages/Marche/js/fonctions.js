@@ -110,7 +110,7 @@ function Acquisition_Article(id) {
 
                             if (json.result) {
 
-                                Fonction_Reteneuse_Vamonaies(json.cash);
+                                Fonction_Reteneuse_Cash(json.cash);
                                 Fonction_Reteneuse_Tananaies(json.mileage);
 
                                 Ajax('pages/MonPersonnage/MonPersonnage.php?id=' + json.idPlayer + '')

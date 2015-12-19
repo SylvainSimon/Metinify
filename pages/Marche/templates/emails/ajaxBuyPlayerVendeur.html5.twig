@@ -2,11 +2,7 @@
     Bonjour {{ compte }}
     <br/>
     <br/>
-    {% if devise == 1 %}
-        Votre personnage {{ player }} a été vendu sur le marché pour le prix de {{ prix }} VamoNaies.
-    {% else %}
-        Votre personnage {{ player }} a été vendu sur le marché pour le prix de {{ prix }} TanaNaies.
-    {% endif %}
+    Votre personnage {{ player }} a été vendu sur le marché pour le prix de {{ prix }} {{ helpDevise(devise) }}.
     <br/>
     <br/>
     L'emplacement du personnage a donc été libérer sur votre compte.

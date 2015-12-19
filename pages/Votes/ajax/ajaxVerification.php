@@ -20,7 +20,7 @@ class ajaxVerification extends \PageHelper {
         } else {
 
             $this->objAccount->setCash($this->objAccount->getCash() + 20);
-            $session->set("VamoNaies", $this->objAccount->getCash());
+            $session->set("Cash", $this->objAccount->getCash());
             $em->persist($this->objAccount);
             
             $objVotesLogs = new \Site\Entity\VotesLogs();

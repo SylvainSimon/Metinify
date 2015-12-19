@@ -407,27 +407,27 @@ function Definition_Compteurs_Tananaies(nombreMileageCible) {
     }
 }
 
-function Fonction_Reteneuse_Vamonaies(Nombre_Objectif_Vamonaie) {
-    Nombre_Transmis_Vamonaies = Nombre_Objectif_Vamonaie;
-    Definition_Compteurs_VamoNaies(Nombre_Transmis_Vamonaies);
+function Fonction_Reteneuse_Cash(Nombre_Objectif_Vamonaie) {
+    Nombre_Transmis_Cash = Nombre_Objectif_Vamonaie;
+    Definition_Compteurs_Cash(Nombre_Transmis_Cash);
 }
 
 
-function Definition_Compteurs_VamoNaies(nombreCashCible) {
+function Definition_Compteurs_Cash(nombreCashCible) {
 
-    var nombreCash = parseInt($("#Nombre_De_Vamonaies").html().replace(",", ""));
+    var nombreCash = parseInt($("#Nombre_De_Cash").html().replace(",", ""));
 
     if (nombreCash != nombreCashCible) {
 
         if (nombreCash < nombreCashCible) {
-            $("#Nombre_De_Vamonaies").html((nombreCash + 1).formatMoney(0));
+            $("#Nombre_De_Cash").html((nombreCash + 1).formatMoney(0));
         } else if (nombreCash > nombreCashCible) {
-            $("#Nombre_De_Vamonaies").html((nombreCash - 1).formatMoney(0));
+            $("#Nombre_De_Cash").html((nombreCash - 1).formatMoney(0));
         }
     }
 
     if (nombreCash != nombreCashCible) {
-        setTimeout("Definition_Compteurs_VamoNaies(Nombre_Transmis_Vamonaies)", 2);
+        setTimeout("Definition_Compteurs_Cash(Nombre_Transmis_Cash)", 2);
     }
 }
 
@@ -435,10 +435,10 @@ function DistribuerMonnaiesVote() {
 
     $.ajax({
         type: "POST",
-        url: "ajax/Update_Vamonaies.php",
+        url: "ajax/Update_Cash.php",
         success: function (msg) {
             if (msg != "") {
-                Fonction_Reteneuse_Vamonaies(msg);
+                Fonction_Reteneuse_Cash(msg);
                 $("#overlayMt2").css('display', "none");
                 popBootbox("Les monnaies de votre vote ont bien été crédités.", "Vote pris en compte");
             }

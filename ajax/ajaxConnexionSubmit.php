@@ -22,7 +22,7 @@ class ajaxConnexionSubmit extends \ScriptHelper {
             $session->set("ID", $objAccount->getId());
             $session->set("Utilisateur", $objAccount->getLogin());
             $session->set("Email", $objAccount->getEmail());
-            $session->set("VamoNaies", $objAccount->getCash());
+            $session->set("Cash", $objAccount->getCash());
             $session->set("TanaNaies", $objAccount->getMileage());
 
             $objAdministrationUser = \Site\SiteHelper::getAdminsRepository()->findAdministrationUser($objAccount->getId());

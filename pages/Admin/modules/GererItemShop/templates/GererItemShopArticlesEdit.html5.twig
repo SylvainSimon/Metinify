@@ -52,9 +52,9 @@
                             </label>
                             <div class="input-group col-xs-12">
                                 <select id="articleType" class="select2" onchange="verifSelector(this.value);">
-                                    <option {% if objItemshop.getType == "1" %}selected{% endif %} value="1">VamoNaies</option>
-                                    <option {% if objItemshop.getType == "2" %}selected{% endif %} value="2">Bonus (VamoNaies)</option>
-                                    <option {% if objItemshop.getType == "3" %}selected{% endif %} value="3">TanaNaies</option>
+                                    <option {% if objItemshop.getType == "1" %}selected{% endif %} value="1">{{ helpDevise(1) }}</option>
+                                    <option {% if objItemshop.getType == "2" %}selected{% endif %} value="2">Bonus ({{ helpDevise(1) }})</option>
+                                    <option {% if objItemshop.getType == "3" %}selected{% endif %} value="3">{{ helpDevise(2) }}</option>
                                 </select>
                             </div>
                         </div>

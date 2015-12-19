@@ -11,7 +11,7 @@ if (count($arrObjVotesListeSites) > 0) {
         <div class="box-body">
 
             <?php foreach ($arrObjVotesListeSites AS $objVotesListeSites) { ?>
-                <input data-tooltip="Voter et gagner 20 Vamonaies" data-tooltip-position="left" class="btn btn-default btn-flat btn-pile" style="width: 100%;" type="button" onclick="Verification_Connection_Vote(<?php echo $objVotesListeSites->getIdSiteVote() ?>, '<?php echo $objVotesListeSites->getLienSiteVote(); ?>');" value="<?php echo $objVotesListeSites->getNomSiteVote(); ?> " />
+                <input data-tooltip="Voter et gagner 20 <?php echo DeviseHelper::getLibelle(1) ?>" data-tooltip-position="left" class="btn btn-default btn-flat btn-pile" style="width: 100%;" type="button" onclick="Verification_Connection_Vote(<?php echo $objVotesListeSites->getIdSiteVote() ?>, '<?php echo $objVotesListeSites->getLienSiteVote(); ?>');" value="<?php echo $objVotesListeSites->getNomSiteVote(); ?> " />
             <?php } ?>
         </div>
     </div>
@@ -32,7 +32,7 @@ if (count($arrObjVotesListeSites) > 0) {
                         isConnected = true;
                         message = "Si vous souhaitez voter et obtenir les monnaies, merci de cliquer sur le bouton suivant.<br/><br/><a target='_blank' onclick='DistributionVote(" + id_site_vote + "); bootbox.hideAll()' class='btn btn-primary btn-flat' href='" + linkWebsite + "'>Se rendre sur le site</a>";
                     } else if (msg == 0) {
-                        message = "Vous n'êtes pas connecté sur VamosMT2.<br/>En vous reconnectant, vous pourrez bénéficier de 20 Vamonaies pour votre vote.<br/><br/>Vous pouvez toutefois vous rendre sur le site de vote en cliquant sur le bouton suivant.<br/><br/><a onclick='bootbox.hideAll();' target='_blank' class='btn btn-primary btn-flat' href='" + linkWebsite + "'>Se rendre sur le site</a>";
+                        message = "Vous n'êtes pas connecté sur VamosMT2.<br/>En vous reconnectant, vous pourrez bénéficier de 20 <?php echo DeviseHelper::getLibelle(1) ?> pour votre vote.<br/><br/>Vous pouvez toutefois vous rendre sur le site de vote en cliquant sur le bouton suivant.<br/><br/><a onclick='bootbox.hideAll();' target='_blank' class='btn btn-primary btn-flat' href='" + linkWebsite + "'>Se rendre sur le site</a>";
                     }
 
                     bootbox.dialog({
@@ -78,7 +78,7 @@ if (count($arrObjVotesListeSites) > 0) {
 
                     } else {
                         bootbox.dialog({
-                            message: "Votre vote ne vous a pas rapporté de Vamonaies.<br/><br/>Il semble que vous ayez voté il y à moins de 2 heures.<br/>Pour recevoir de nouveau des Vamonaies, il faut patienter.",
+                            message: "Votre vote ne vous a pas rapporté de <?php echo DeviseHelper::getLibelle(1) ?>.<br/><br/>Il semble que vous ayez voté il y à moins de 2 heures.<br/>Pour recevoir de nouveau des <?php echo DeviseHelper::getLibelle(1) ?>, il faut patienter.",
                             animate: false,
                             className: "myBootBox",
                             title: 'Information',

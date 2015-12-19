@@ -76,9 +76,9 @@ function Valider_Mon_Achat(id_item, nombre_item) {
                                         Icone_Chargement(2);
                                         popBootbox("L'item n'est pas valide.");
                                     } else if (data.code == 3) {
-                                        Barre_De_Statut("Vous n'avez pas asser de Vamonaies.");
+                                        Barre_De_Statut("Vous n'avez pas asser de monnaies.");
                                         Icone_Chargement(2);
-                                        popBootbox("Vous n'avez pas assez de Vamonaies.");
+                                        popBootbox("Vous n'avez pas assez de monnaies.");
                                     }
                                 }
                             }

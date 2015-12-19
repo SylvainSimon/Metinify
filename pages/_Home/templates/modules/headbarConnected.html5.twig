@@ -7,12 +7,12 @@
         </div>
 
         <div style="position: relative; left:-4px; top: 1px;"  class="col-lg-5 col-md-6 col-sm-6">
-            <span data-tooltip="VamoNaies">
+            <span data-tooltip="{{ helpDevise(1) }}">
                 <i style="top: 7px; position: relative;" class="material-icons md-icon-whatshot md-24 text-yellow"></i>
-                <div style="font-size: 14px;" class="inline" id="Nombre_De_Vamonaies">{{ session.get("VamoNaies")|number_format }} </div>
+                <div style="font-size: 14px;" class="inline" id="Nombre_De_Cash">{{ session.get("Cash")|number_format }} </div>
             </span>
 
-            <span data-tooltip="TanaNaies">
+            <span data-tooltip="{{ helpDevise(2) }}">
                 <i style="top: 7px; position: relative; margin-left: 10px;" class="material-icons md-icon-whatshot md-24 text-gray"></i>
                 <div style="font-size: 14px;" class="inline" id="Nombre_De_Tananaies">{{ session.get("TanaNaies")|number_format }}</div>
             </span>
