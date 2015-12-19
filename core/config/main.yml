@@ -1,6 +1,6 @@
 nameServer:         Metinify
 baseURL:            https://vamosmt2.local/
-gameVersion:        5.1.9
+copyright:          © Metinify
 requiredSSL:        true
 encryptKey:         vamoslelapin
 
