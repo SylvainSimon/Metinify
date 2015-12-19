@@ -37,9 +37,7 @@ contextMenu:        #Menu on right-click
     teamspeack:     true
     calendar:       true
     statistiques:   true
-    pilori:         true
-    securite:       true
-    
+    pilori:         true    
 
 bdd:
     cache: array

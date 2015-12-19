@@ -208,9 +208,6 @@ class IndexWebsite extends PageHelper {
             <?php if ($config["contextMenu"]["pilori"]) { ?>
                                 arrItems["pilori"] = {name: "Pilori"};
             <?php } ?>
-            <?php if ($config["contextMenu"]["securite"]) { ?>
-                                arrItems["securite"] = {name: "Conseils de sécurité"};
-            <?php } ?>
                 
                             $.contextMenu({
                                 selector: 'body',
@@ -231,8 +228,6 @@ class IndexWebsite extends PageHelper {
                                         Ajax("pages/Statistiques/Statistiques.php");
                                     } else if (key == "calen") {
                                         Ajax("pages/_LegacyPages/Calendrier.php");
-                                    } else if (key == "securite") {
-                                        Ajax("pages/_LegacyPages/Securite.php");
                                     }
                                 },
                                 items: arrItems
