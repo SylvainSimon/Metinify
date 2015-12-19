@@ -27,7 +27,8 @@ class IndexWebsite extends PageHelper {
                 <meta charset="UTF-8">
                 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-                <link rel="icon" type="image/ico" href="favicon.ico" />
+                <link rel="icon" type="image/png" href="images/favicon.png" />
+
                 <title>VamosMT2 :: Site Officiel</title>
 
                 <link href="./css/css/Bootstrap.css" rel="stylesheet" type="text/css" />
@@ -91,6 +92,10 @@ class IndexWebsite extends PageHelper {
                 <!--[if lt IE 9]>
                 <script src="./vendor/afarkas/html5shiv/dist/html5shiv.min.js"></script>
                 <script src="./vendor/rogeriopradoj/respond/dest/respond.min.js"></script>
+                <![endif]-->
+                
+                <!--[if lt IE 11]>
+                <link rel="icon" type="image/ico" href="images/favicon.ico" />
                 <![endif]-->
 
             </head>
