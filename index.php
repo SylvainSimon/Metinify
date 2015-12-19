@@ -121,6 +121,7 @@ class IndexWebsite extends PageHelper {
                                 echo $templateHeadbar->render(["objAccount" => $this->objAccount]);
                             }
                             ?>
+                            
                         </div>
                     </div>
 
