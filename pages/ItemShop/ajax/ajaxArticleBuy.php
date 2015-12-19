@@ -126,7 +126,7 @@ class ajaxArticleBuy extends \ScriptHelper {
                         $em->persist($this->objAccount);
                         $em->flush();
                         $session->set("Cash", $this->objAccount->getCash());
-                        $session->set("TanaNaies", $this->objAccount->getMileage());
+                        $session->set("Mileage", $this->objAccount->getMileage());
                     } else {
 
                         $nombreItemTotal = ($nombreItem * $objItemshop->getNbItem());
@@ -188,7 +188,7 @@ class ajaxArticleBuy extends \ScriptHelper {
                         $em->persist($this->objAccount);
                         $em->flush();
                         $session->set("Cash", $this->objAccount->getCash());
-                        $session->set("TanaNaies", $this->objAccount->getMileage());
+                        $session->set("Mileage", $this->objAccount->getMileage());
                     }
                 } else {
                     $arrResult = ["result" => 0, "code" => 3];
@@ -260,17 +260,17 @@ class ajaxArticleBuy extends \ScriptHelper {
                     $em->persist($this->objAccount);
                     $em->flush();
                     $session->set("Cash", $this->objAccount->getCash());
-                    $session->set("TanaNaies", $this->objAccount->getMileage());
+                    $session->set("Mileage", $this->objAccount->getMileage());
 
                     $arrResult["isBonusCompte"] = 1;
                 } else {
                     $arrResult = ["result" => 0, "code" => 3];
                 }
 
-                /* -------------- Si l'item est de type TanaNaies -------------- */
+                /* -------------- Si l'item est de type Mileage -------------- */
             } elseif ($objItemshop->getType() == 3) {
                 //Si le membre a assez de marques
-                if ($session->get("TanaNaies") >= ($objItemshop->getPrix() * $nombreItem)) {
+                if ($session->get("Mileage") >= ($objItemshop->getPrix() * $nombreItem)) {
 
                     $flagItem = \Player\PlayerHelper::getItemProtoRepository()->findFlagByVnum($objItemshop->getIdItem());
                     $socketPct = \Player\PlayerHelper::getItemProtoRepository()->findSocketPctByVnum($objItemshop->getIdItem());
@@ -336,7 +336,7 @@ class ajaxArticleBuy extends \ScriptHelper {
                         $this->objAccount->setMileage($this->objAccount->getMileage() - $prixTotal);
                         $em->persist($this->objAccount);
                         $em->flush();
-                        $session->set("TanaNaies", $this->objAccount->getMileage());
+                        $session->set("Mileage", $this->objAccount->getMileage());
                     } else {
 
                         $nombreItemTotal = ($nombreItem * $objItemshop->getNbItem());
@@ -398,7 +398,7 @@ class ajaxArticleBuy extends \ScriptHelper {
                         $this->objAccount->setMileage($this->objAccount->getMileage() - $prixTotal);
                         $em->persist($this->objAccount);
                         $em->flush();
-                        $session->set("TanaNaies", $this->objAccount->getMileage());
+                        $session->set("Mileage", $this->objAccount->getMileage());
                     }
                 } else {
                     $arrResult = ["result" => 0, "code" => 6];

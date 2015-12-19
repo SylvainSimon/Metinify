@@ -370,10 +370,10 @@ function JoueursConnectes() {
     return false;
 }
 
-function Fonction_Reteneuse_Tananaies(Nombre_Objectif_Tananaies) {
+function Fonction_Reteneuse_Mileage(Nombre_Objectif_Mileage) {
 
-    Nombre_Transmis_Tananaies = Nombre_Objectif_Tananaies;
-    Definition_Compteurs_Tananaies(Nombre_Transmis_Tananaies);
+    Nombre_Transmis_Mileage = Nombre_Objectif_Mileage;
+    Definition_Compteurs_Mileage(Nombre_Transmis_Mileage);
 }
 
 Number.prototype.formatMoney = function (c, d, t) {
@@ -388,22 +388,22 @@ Number.prototype.formatMoney = function (c, d, t) {
 };
 
 
-function Definition_Compteurs_Tananaies(nombreMileageCible) {
+function Definition_Compteurs_Mileage(nombreMileageCible) {
 
-    var nombreMileage = parseInt($("#Nombre_De_Tananaies").html().replace(",", ""));
+    var nombreMileage = parseInt($("#Nombre_De_Mileage").html().replace(",", ""));
 
     if (nombreMileage != nombreMileageCible) {
 
         if (nombreMileage < nombreMileageCible) {
-            $("#Nombre_De_Tananaies").html((nombreMileage + 1).formatMoney(0));
+            $("#Nombre_De_Mileage").html((nombreMileage + 1).formatMoney(0));
 
         } else if (nombreMileage > nombreMileageCible) {
-            $("#Nombre_De_Tananaies").html((nombreMileage - 1).formatMoney(0));
+            $("#Nombre_De_Mileage").html((nombreMileage - 1).formatMoney(0));
         }
     }
 
     if (nombreMileage != nombreMileageCible) {
-        setTimeout("Definition_Compteurs_Tananaies(Nombre_Transmis_Tananaies)", 1);
+        setTimeout("Definition_Compteurs_Mileage(Nombre_Transmis_Mileage)", 1);
     }
 }
 

@@ -65,7 +65,7 @@ class ajaxPersonnageRenameExecute extends \ScriptHelper {
                 $em->persist($this->objAccount);
 
                 $session->set("Cash", $this->objAccount->getCash());
-                $session->set("TanaNaies", $this->objAccount->getMileage());
+                $session->set("Mileage", $this->objAccount->getMileage());
 
                 $em->flush();
 

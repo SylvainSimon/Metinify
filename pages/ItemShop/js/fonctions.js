@@ -67,9 +67,9 @@ function Valider_Mon_Achat(id_item, nombre_item) {
                                         Icone_Chargement(2);
                                         popBootbox("Votre entrepot n'existe pas.");
                                     } else if (data.code == 6) {
-                                        Barre_De_Statut("Vous n'avez pas asser de Tananaies.");
+                                        Barre_De_Statut("Vous n'avez pas asser de monnaies.");
                                         Icone_Chargement(2);
-                                        popBootbox("Vous n'avez pas assez de TanaNaies.");
+                                        popBootbox("Vous n'avez pas assez de monnaies.");
 
                                     } else if (data.code == 4) {
                                         Barre_De_Statut("L'item choisie n'est pas valide.");

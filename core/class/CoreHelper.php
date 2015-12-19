@@ -169,7 +169,7 @@ class CoreHelper {
         $session->set("Utilisateur", $this->objAccount->getLogin());
         $session->set("Email", $this->objAccount->getEmail());
         $session->set("Cash", $this->objAccount->getCash());
-        $session->set("TanaNaies", $this->objAccount->getMileage());
+        $session->set("Mileage", $this->objAccount->getMileage());
         $session->set("Status", $this->objAccount->getStatus());
     }
 
