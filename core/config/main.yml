@@ -2,7 +2,7 @@ nameServer:         Metinify
 baseURL:            https://vamosmt2.local/
 copyright:          © Metinify
 requiredSSL:        true
-encryptKey:         vamoslelapin
+encryptKey:         metinifyisthebest
 
 happy_hours_start:  20-11-2015 10:20:50
 happy_hours_end:    05-12-2015 09:20:50
