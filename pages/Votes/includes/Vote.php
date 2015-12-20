@@ -25,7 +25,7 @@ if (count($arrObjVotesListeSites) > 0) {
 
             $.ajax({
                 type: "POST",
-                url: "ajax/ajaxTestConnexion.php",
+                url: "pages/Votes/ajax/ajaxTestConnexion.php",
                 success: function (msg) {
 
                     if (msg == 1) {

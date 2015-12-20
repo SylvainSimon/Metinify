@@ -9,7 +9,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "ajax/ajaxConnexionSubmit.php",
+            url: "pages/_Home/ajax/ajaxConnexionSubmit.php",
             data: "Utilisateur=" + $("#login").val() + "&Mot_De_Passe=" + $("#password").val(),
             success: function (msg) {
 

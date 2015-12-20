@@ -1,8 +1,8 @@
 <?php
 
-namespace Ajax;
+namespace Pages\Home\Ajax;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../../core/initialize.php';
 
 class ajaxConnexionSubmit extends \ScriptHelper {
 

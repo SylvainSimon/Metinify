@@ -4,7 +4,7 @@ namespace Pages\Votes\Ajax;
 
 require __DIR__ . '../../../../core/initialize.php';
 
-class ajaxVerification extends \PageHelper {
+class ajaxVerification extends \ScriptHelper {
 
     public function run() {
 

@@ -347,7 +347,7 @@ function ServeurClassyd() {
 
     $.ajax({
         type: "POST",
-        url: "ajax/ajaxStatutServeur.php",
+        url: "core/ajax/ajaxStatutServeur.php",
         success: function (msg) {
             $("#ServeurClassyd").html(msg);
             $(".iconStatutServer").html(msg);
@@ -361,7 +361,7 @@ function JoueursConnectes() {
 
     $.ajax({
         type: "POST",
-        url: "ajax/ajaxStatutNombreJoueur.php",
+        url: "core/ajax/ajaxStatutNombreJoueur.php",
         success: function (msg) {
             $("#nombrePlayerConnected").html(msg);
             redraw();
@@ -435,7 +435,7 @@ function DistribuerMonnaiesVote() {
 
     $.ajax({
         type: "POST",
-        url: "ajax/Update_Cash.php",
+        url: "core/ajax/Update_Cash.php",
         success: function (msg) {
             if (msg != "") {
                 Fonction_Reteneuse_Cash(msg);
