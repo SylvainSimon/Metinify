@@ -142,7 +142,7 @@ class IndexWebsite extends PageHelper {
                     <div class="content-wrapper">
 
                         <div id="logo">
-                            <img height="55" width="360" src="./images/logo.svg" onerror="this.src='./images/logo.png'">
+                            <img height="75" width="360" src="./images/logo.svg" onerror="this.src='./images/logo.png'">
                         </div>
 
 
