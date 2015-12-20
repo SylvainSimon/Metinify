@@ -10,14 +10,14 @@
 
         <div class="col-sm-12">
             <div class="form-group ">
-                <label for="idAccount">
+                <label for="idAdmin">
                     Membre de l'équipe
                 </label>
 
                 <div class="input-group col-xs-12">
-                    <select name="idAccount" class="select2" id="idAccount">
+                    <select name="idAdmin" class="select2" id="idAdmin">
                         {% for objAdmins in arrObjAdmins %}
-                            <option value="{{ objAdmins.getId }}">{{ objAdmins.getPseudoMessagerie }}</option>
+                            <option value="{{ objAdmins.getId }}">{{ objAdmins.getName }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -64,7 +64,7 @@
                             url: "pages/Messagerie/ajax/ajaxDiscussionTransfert.php",
                             data: {
                                 "idDiscussion": $("#idDiscussion").val(),
-                                "idAccount": $("#idAccount").val()
+                                "idAdmin": $("#idAdmin").val()
                             },
                             success: function (msg) {
 

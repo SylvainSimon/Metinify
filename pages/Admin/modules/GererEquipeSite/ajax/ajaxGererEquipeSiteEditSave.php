@@ -21,6 +21,7 @@ class ajaxGererEquipeSiteEditSave extends \PageHelper {
 
         $idAdmins = $request->request->get("idAdmins");
         $idCompte = $request->request->get("idCompte");
+        $adminName = $request->request->get("adminName");
         $arrDroitsParam = json_decode($request->request->get("arrDroits"));
         $arrDroitsNew = [];
 
@@ -34,6 +35,7 @@ class ajaxGererEquipeSiteEditSave extends \PageHelper {
         }
 
         $objAdmins->setIdCompte($idCompte);
+        $objAdmins->setName($adminName);
 
         foreach ($arrDroitsParam AS $idDroit => $droitParam) {
             if ($droitParam) {

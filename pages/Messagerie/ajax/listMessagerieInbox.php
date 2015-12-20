@@ -20,7 +20,7 @@ class listMessagerieInbox extends \ScriptHelper {
                 }
             ),
             array(
-                'dbField' => 'AccountEntityAdmin.pseudoMessagerie',
+                'dbField' => 'AdminsEntity.name',
                 'dtField' => 'compte',
                 'formatter' => function( $d, $row ) {
 
@@ -84,7 +84,7 @@ class listMessagerieInbox extends \ScriptHelper {
         $datatable->setColumnsParameters($columnsParameters)
                 ->setRequest($_GET)
                 ->from("\Site\Entity\SupportDiscussions", "SupportDiscussionsEntity")
-                ->innerJoin("\Account\Entity\Account", "AccountEntityAdmin", "WITH", "AccountEntityAdmin.id = SupportDiscussionsEntity.idAdmin")
+                ->innerJoin("\Site\Entity\Admins", "AdminsEntity", "WITH", "AdminsEntity.idCompte = SupportDiscussionsEntity.idAdmin")
                 ->leftJoin("\Account\Entity\Account", "AccountEntityUser", "WITH", "AccountEntityUser.id = SupportDiscussionsEntity.idCompte")
                 ->leftJoin("\Site\Entity\SupportMessages", "SupportMessagesEntity", "WITH", "SupportMessagesEntity.idDiscussion = SupportDiscussionsEntity.id AND SupportMessagesEntity.etat = " . \SupportEtatMessageHelper::NON_LU . " AND SupportMessagesEntity.idCompte != " . $this->objAccount->getId() . "")
                 ->andWhere("SupportDiscussionsEntity.idCompte = " . $this->objAccount->getId() . " OR SupportDiscussionsEntity.idAdmin = " . $this->objAccount->getId() . "")

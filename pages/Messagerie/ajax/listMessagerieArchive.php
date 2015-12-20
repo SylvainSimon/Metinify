@@ -20,7 +20,7 @@ class listMessagerieArchive extends \ScriptHelper {
                 }
             ),
             array(
-                'dbField' => 'AccountEntityAdmin.pseudoMessagerie',
+                'dbField' => 'AdminsEntity.name',
                 'dtField' => 'compte',
                 'formatter' => function( $d, $row ) {
 
@@ -57,7 +57,7 @@ class listMessagerieArchive extends \ScriptHelper {
         $datatable->setColumnsParameters($columnsParameters)
                 ->setRequest($_GET)
                 ->from("\Site\Entity\SupportDiscussions", "SupportDiscussionsEntity")
-                ->innerJoin("\Account\Entity\Account", "AccountEntityAdmin", "WITH", "AccountEntityAdmin.id = SupportDiscussionsEntity.idAdmin")
+                ->innerJoin("\Site\Entity\Admins", "AdminsEntity", "WITH", "AdminsEntity.idCompte = SupportDiscussionsEntity.idAdmin")
                 ->leftJoin("\Account\Entity\Account", "AccountEntityUser", "WITH", "AccountEntityUser.id = SupportDiscussionsEntity.idCompte")
                 ->andWhere("SupportDiscussionsEntity.idCompte = " . $this->objAccount->getId() . " OR SupportDiscussionsEntity.idAdmin = " . $this->objAccount->getId() . "")
                 ->andWhere("SupportDiscussionsEntity.estArchive = 1");

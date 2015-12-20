@@ -14,9 +14,10 @@ class ActualitesRepository extends EntityRepository {
                 . "ActualitesEntity.titre,"
                 . "ActualitesEntity.contenu,"
                 . "ActualitesEntity.date,"
-                . "AccountEntity.pseudoMessagerie");
+                . "AdminsEntity.name");
         $qb->from("\Site\Entity\Actualites", "ActualitesEntity");
         $qb->innerJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = ActualitesEntity.idCompte");
+        $qb->leftJoin("\Site\Entity\Admins", "AdminsEntity", "WITH", "AdminsEntity.idCompte = AccountEntity.id");
         $qb->orderBy("ActualitesEntity.date", "DESC");
         $qb->setMaxResults($max);
 

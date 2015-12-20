@@ -20,10 +20,11 @@ class ajaxDiscussionTransfert extends \PageHelper {
         $em = \Shared\DoctrineHelper::getEntityManager();
 
         $idDiscussion = $request->request->get("idDiscussion");
-        $idAccount = $request->request->get("idAccount");
+        $idAdmin = $request->request->get("idAdmin");
 
         $objSupportDiscussion = \Site\SiteHelper::getSupportDiscussionsRepository()->find($idDiscussion);
-        $objAccount = \Account\AccountHelper::getAccountRepository()->find($idAccount);
+        $objAdmins = \Site\SiteHelper::getAdminsRepository()->find($idAdmin);
+        $objAccount = \Account\AccountHelper::getAccountRepository()->find($objAdmins->getIdCompte());
 
         if ($objSupportDiscussion !== null and $objAccount !== null) {
 
@@ -34,7 +35,7 @@ class ajaxDiscussionTransfert extends \PageHelper {
             $objSupportMessage->setIdCompte(0);
             $objSupportMessage->setIdDiscussion($objSupportDiscussion->getId());
             $objSupportMessage->setIp($this->ipAdresse);
-            $objSupportMessage->setMessage("" . $this->objAccount->getPseudoMessagerie() . " à transféré le ticket à " . $objAccount->getPseudoMessagerie() . ".");
+            $objSupportMessage->setMessage("" . $this->objAdmin->getName() . " à transféré le ticket à " . $objAdmins->getName() . ".");
 
             $objSupportDiscussion->setIdAdmin($objAccount->getId());
             $em->persist($objSupportMessage);

@@ -42,6 +42,12 @@ class Admins {
      */
     private $estActif;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", nullable=true)
+     */
+    private $name;
 
     /**
      * Get id
@@ -82,7 +88,7 @@ class Admins {
      * @return Admins
      */
     public function setDroits($droits) {
-        
+
         $this->droits = serialize(json_encode($droits));
 
         return $this;
@@ -117,6 +123,28 @@ class Admins {
      */
     public function getEstActif() {
         return $this->estActif;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Admins
+     */
+    public function setName($name) {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName() {
+        return $this->name;
     }
 
 }

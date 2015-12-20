@@ -8,7 +8,7 @@
             <table class="table table-condensed" style="margin-bottom: 0px; border-collapse: collapse;">
                 <tr>
                     <td style="border-top: 0px;">Gérant</td>
-                    <td style="border-top: 0px;">{{ objAccountAdmin.getPseudoMessagerie }}</td>
+                    <td style="border-top: 0px;">{{ objAdmins.getName }}</td>
                 </tr>
                 <tr>
                     <td>Début</td> 
@@ -61,7 +61,7 @@
                             <div class="direct-chat-msg"style="margin-bottom: 18px;">
                                 <div class="direct-chat-info clearfix">
                                     {% if objAccount.getId == currentAccount.getId %}
-                                        <span class="direct-chat-name pull-left">{{ objAccountAdmin.getPseudoMessagerie }}</span>
+                                        <span class="direct-chat-name pull-left">{{ objAdmins.getName }}</span>
                                     {% else %}
                                         <span class="direct-chat-name pull-left">{{ objAccount.getLogin }}</span>
                                     {% endif %}
@@ -152,7 +152,7 @@
         var idCompte = "{{ currentAccount.getId }}";
         var idDiscussion = "{{ objSupportDiscussion.getId }}";
         var myLogin = "{{ currentAccount.getLogin }}";
-        var myPseudoMessagerie = "{{ currentAccount.getPseudoMessagerie }}";
+        var myPseudoMessagerie = "{{ currentAdmin.getName }}";
 
         var objDiv = document.getElementById("Cadre_Fil_Discussion");
         objDiv.scrollTop = objDiv.scrollHeight;

@@ -10,6 +10,7 @@ class CoreHelper {
     public $isAdmin = false;
     public $arrAdminRights = [];
     public $objAccount = null;
+    public $objAdmin = null;
     public $isConnected = false;
     public $isBanned = false;
     public $response;
@@ -179,6 +180,7 @@ class CoreHelper {
 
         if ($objAdministrationUser !== null) {
 
+            $this->objAdmin = $objAdministrationUser;
             $this->isAdmin = $objAdministrationUser->getEstActif();
             $this->arrAdminRights = $objAdministrationUser->getDroits();
 

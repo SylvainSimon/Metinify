@@ -14,6 +14,10 @@ class listGererEquipeSite extends \ScriptHelper {
                 'dtField' => 'compte',
             ),
             array(
+                'dbField' => 'AdminsEntity.name',
+                'dtField' => 'nom',
+            ),
+            array(
                 'dbField' => 'AdminsEntity.id',
                 'dtField' => 'actions',
                 'formatter' => function( $d, $row ) {

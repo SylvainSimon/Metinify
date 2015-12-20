@@ -29,6 +29,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-sm-6">
+                    <div class="form-group ">
+                        <label for="adminName">
+                            Nom publique
+                        </label>
+
+                        <div class="input-group col-xs-12">
+                            <input type="text" id="adminName" class="form-control input-sm text" value="{{ objAdmins.getName }}" required >
+                        </div>
+                    </div>
+                </div>
 
                 <div class="clearfix"></div>
 
@@ -228,6 +239,7 @@
                 data: {
                     "idAdmins": $("#idAdmins").val(),
                     "idCompte": $("#accountId").val(),
+                    "adminName": $("#adminName").val(),
                     "arrDroits": arrJson
                 },
                 success: function (msg) {

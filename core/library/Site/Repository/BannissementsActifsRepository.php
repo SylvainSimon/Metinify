@@ -17,9 +17,10 @@ class BannissementsActifsRepository extends EntityRepository {
                 . "BannissementsActifsEntity.definitif, "
                 . "BannissementsActifsEntity.duree, "
                 . "BannissementsActifsEntity.raisonBannissement, "
-                . "AccountGMEntity.pseudoMessagerie");
+                . "AdminsEntity.name");
         $qb->from("\Site\Entity\BannissementsActifs", "BannissementsActifsEntity");
         $qb->innerJoin("\Account\Entity\Account", "AccountGMEntity", "WITH", "AccountGMEntity.id = BannissementsActifsEntity.idCompteGm");
+        $qb->leftJoin("\Site\Entity\Admins", "AdminsEntity", "WITH", "AdminsEntity.idCompte = AccountGMEntity.id");
         $qb->where("BannissementsActifsEntity.idCompte = :idAccount");
         $qb->setParameter("idAccount", $idAccount);
 

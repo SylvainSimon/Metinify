@@ -19,9 +19,11 @@ class GererEquipeSite extends \PageHelper {
 
         $sColumns = '';
         $sColumns .= '{ "mData": "compte", "bSortable": true },';
+        $sColumns .= '{ "mData": "nom", "bSortable": true, "sWidth": "150px" },';
         $sColumns .= '{ "mData": "actions", "bSortable": false, "sWidth": "55px" },';
 
         $sFilterColumns = '';
+        $sFilterColumns .= '{ type: "text", placeholder: "" },';
         $sFilterColumns .= '{ type: "text", placeholder: "" },';
         $sFilterColumns .= 'null,';
 

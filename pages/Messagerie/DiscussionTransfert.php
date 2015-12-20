@@ -30,7 +30,7 @@ class DiscussionTransfert extends \PageHelper {
 
                 $objAccount = \Account\AccountHelper::getAccountRepository()->find($objAdmins->getIdCompte());
                 if ($objAccount !== null) {
-                    $arrUsers[] = $objAccount;
+                    $arrUsers[] = $objAdmins;
                 }
             }
         }
