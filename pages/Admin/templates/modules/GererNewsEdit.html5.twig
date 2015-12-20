@@ -75,10 +75,13 @@
                 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
                 'searchreplace wordcount visualblocks visualchars code fullscreen',
                 'insertdatetime media nonbreaking save table contextmenu directionality',
-                'emoticons template paste textcolor colorpicker textpattern imagetools'
+                'emoticons template paste textcolor colorpicker textpattern imagetools responsivefilemanager'
             ],
-            toolbar: 'insertfile undo redo | styleselect | bold italic | fontsizeselect alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-            forced_root_block: false
+            toolbar: 'responsivefilemanager | insertfile undo redo | styleselect | bold italic | fontsizeselect alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+            forced_root_block: false,
+            external_filemanager_path: "/assets/filemanager/",
+            filemanager_title: "Responsive Filemanager",
+            external_plugins: {"filemanager": "/assets/filemanager/plugin.min.js"}
         });
     </script>
 </div>

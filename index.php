@@ -29,7 +29,7 @@ class IndexWebsite extends PageHelper {
 
                 <link rel="icon" type="image/png" href="images/favicon.png" />
 
-                <title>VamosMT2 :: Site Officiel</title>
+                <title><?= $config["nameServer"] ?> :: Site Officiel</title>
 
                 <link href="./css/css/Bootstrap.css" rel="stylesheet" type="text/css" />
                 <link href="./css/css/AdminLTE.css" rel="stylesheet" type="text/css" />
