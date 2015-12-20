@@ -18,11 +18,12 @@ class SupportMessagesRepository extends EntityRepository {
                 . "SupportMessagesEntity.dateChangementEtat, "
                 . "SupportMessagesEntity.message,"
                 . "AccountEntity.login,"
-                . "AccountEntity.pseudoMessagerie"
+                . "AdminEntity.name AS nameAdmin"
                 . "");
         $qb->from("\Site\Entity\SupportMessages", "SupportMessagesEntity");
         $qb->innerJoin("\Site\Entity\SupportDiscussions", "SupportDiscussionsEntity", "WITH", "SupportDiscussionsEntity.id = SupportMessagesEntity.idDiscussion");
         $qb->leftJoin("\Account\Entity\Account", "AccountEntity", "WITH", "AccountEntity.id = SupportMessagesEntity.idCompte");
+        $qb->leftJoin("\Site\Entity\Admins", "AdminEntity", "WITH", "AdminEntity.idCompte = SupportMessagesEntity.idCompte");
         $qb->where("SupportDiscussionsEntity.id = :idDiscussion");
         $qb->andWhere("SupportDiscussionsEntity.idCompte = :idAccount OR SupportDiscussionsEntity.idAdmin = :idAccount");
         $qb->setParameter("idDiscussion", $idDiscussion);

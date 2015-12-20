@@ -5,41 +5,6 @@ namespace Site\Repository;
 use \Shared\EntityRepository;
 
 class SupportDiscussionsRepository extends EntityRepository {
-
-    public function findDiscussions($idAccount = 0, $estArchive = "", $limit = "") {
-
-        $qb = $this->_em->createQueryBuilder();
-
-        $qb->select(""
-                . "SupportDiscussionsEntity.id, "
-                . "SupportDiscussionsEntity.message, "
-                . "SupportDiscussionsEntity.dateDernierMessage, "
-                . "AccountEntityAdmin.pseudoMessagerie AS admin, "
-                . "AccountEntityUser.pseudoMessagerie AS user ");
-
-        $qb->from("\Site\Entity\SupportDiscussions", "SupportDiscussionsEntity");
-        $qb->innerJoin("\Account\Entity\Account", "AccountEntityAdmin", "WITH", "AccountEntityAdmin.id = SupportDiscussionsEntity.idAdmin");
-        $qb->leftJoin("\Account\Entity\Account", "AccountEntityUser", "WITH", "AccountEntityUser.id = SupportDiscussionsEntity.idCompte");
-        $qb->where("SupportDiscussionsEntity.idCompte = :idAccount OR SupportDiscussionsEntity.idAdmin = :idAccount");
-        $qb->setParameter("idAccount", $idAccount);
-
-        if ($estArchive !== "") {
-            $qb->andWhere("SupportDiscussionsEntity.estArchive = :estArchive");
-            $qb->setParameter("estArchive", $estArchive);
-        }
-
-        $qb->orderBy("SupportDiscussionsEntity.dateDernierMessage", "DESC");
-
-        if ($limit !== "") {
-            $qb->setMaxResults($limit);
-        }
-
-        try {
-            return $qb->getQuery()->getResult();
-        } catch (\Doctrine\ORM\NoResultException $e) {
-            return 0;
-        }
-    }
     
     public function findDiscussionsEnAttente($limit = "") {
 
@@ -51,7 +16,7 @@ class SupportDiscussionsRepository extends EntityRepository {
                 . "SupportDiscussionsEntity.idObjet, "
                 . "SupportDiscussionsEntity.date, "
                 . "SupportDiscussionsEntity.ip, "
-                . "AccountEntityUser.pseudoMessagerie AS user ");
+                . "AccountEntityUser.login AS user ");
 
         $qb->from("\Site\Entity\SupportDiscussions", "SupportDiscussionsEntity");
         $qb->leftJoin("\Account\Entity\Account", "AccountEntityUser", "WITH", "AccountEntityUser.id = SupportDiscussionsEntity.idCompte");
