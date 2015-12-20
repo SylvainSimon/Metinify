@@ -20,25 +20,25 @@
     <div class="pull-right" id="barre_social" style="padding-top: 5px; padding-bottom: 2px;">
 
         {% if config.sociale.facebook.activate %}
-            <a data-tooltip-position="top" data-tooltip="Notre page Facebook" href="{{ config.speedlink.facebook.url }}" target="_blank" style="color:white; margin-left: 5px;">
+            <a data-tooltip-position="top" data-tooltip="Notre page Facebook" href="{{ config.sociale.facebook.url }}" target="_blank" style="color:white; margin-left: 5px;">
                 <i class="genericon genericon-facebook-alt withOpacity" style="background: #3b5998; border-radius: 50%; padding: 6px;"></i>
             </a>
         {% endif %}
 
         {% if config.sociale.twitter.activate %}
-            <a data-tooltip-position="top" data-tooltip="Notre page Twiter" href="{{ config.speedlink.twitter.url }}" target="_blank" style="color:white; margin-left: 5px;">
+            <a data-tooltip-position="top" data-tooltip="Notre page Twiter" href="{{ config.sociale.twitter.url }}" target="_blank" style="color:white; margin-left: 5px;">
                 <i class="genericon genericon-twitter withOpacity" style="background: #55acee; border-radius: 50%; padding: 6px;"></i>
             </a>
         {% endif %}
 
         {% if config.sociale.youtube.activate %}
-            <a data-tooltip-position="top" data-tooltip="Notre chaine Youtube" href="{{ config.speedlink.youtube.url }}" target="_blank" style="color:white; margin-left: 5px;">
+            <a data-tooltip-position="top" data-tooltip="Notre chaine Youtube" href="{{ config.sociale.youtube.url }}" target="_blank" style="color:white; margin-left: 5px;">
                 <i class="genericon genericon-youtube withOpacity" style="background: #FF2D2D; border-radius: 50%; padding: 6px;"></i>
             </a>
         {% endif %}
 
         {% if config.sociale.teamspeack.activate %}
-            <a data-tooltip-position="top" data-tooltip="Teamspeack" href="ts3server://{{ config.speedlink.teamspeack.url }}" style="color:white; margin-left: 5px;">
+            <a data-tooltip-position="top" data-tooltip="Teamspeack" href="ts3server://{{ config.sociale.teamspeack.url }}" style="color:white; margin-left: 5px;">
                 <i class="genericon genericon-microphone withOpacity" style="background: #676B77; border-radius: 50%; padding: 6px;"></i>
             </a>
         {% endif %}

@@ -18,16 +18,16 @@ twigCacheUrl:       /cache/twig
 sociale:
     facebook:
         activate:   true
-        url:        https://www.facebook.com/groups/vamosmt2
+        url:        https://www.facebook.com
     twitter: 
         activate:   true
-        url:        https://twitter.com/VamosMT2
+        url:        https://twitter.com
     youtube:
         activate:   true
-        url:        http://www.youtube.com/VamosMt2
+        url:        http://www.youtube.com
     teamspeack:
         activate:   true
-        url:        ts3.vamosmt2.org
+        url:        ts3.serveur.org:41325
         
 contextMenu:        #Menu on right-click
     activate:       true

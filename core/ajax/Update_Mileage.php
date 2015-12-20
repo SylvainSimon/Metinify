@@ -2,7 +2,7 @@
 
 namespace Ajax;
 
-require __DIR__ . '../../core/initialize.php';
+require __DIR__ . '../../../core/initialize.php';
 
 class Update_Mileage extends \ScriptHelper {
 
